@@ -239,7 +239,7 @@
           <div class="wfr-topline-value" id="wfr-top-orders"></div>
         </div>
         <div class="wfr-topline-stat">
-          <div class="wfr-topline-label">WFR Total (mis-shipment orders / total orders)</div>
+          <div class="wfr-topline-label">WFR Total (refunded/returned orders / total orders)</div>
           <div class="wfr-topline-value" id="wfr-top-total"></div>
           <div class="wfr-topline-sub" id="wfr-top-total-sub"></div>
         </div>
@@ -400,7 +400,7 @@
         <h3>Ticket-level detail</h3>
         <div class="wfr-scroll">
           <table class="wfr-table" id="eod-ticket-table">
-            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Created</th><th>WH Accepted</th><th>Reason</th></tr></thead>
+            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Created</th><th>WH Accepted</th><th>WH team comment</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -605,7 +605,11 @@ function sumOrders(start, end) {
 function renderTopline(tickets) {
   const [start, end] = rangeWindow(currentRangeDays);
   const totalOrders = sumOrders(start, end);
-  const wfrTotalOrders = new Set(tickets.map(t => t.order_id)).size;
+  // WFR Total = orders with an actual refund/return on file (wh_accepted + bod + considered_bod),
+  // NOT every ticket raised - a raw ticket count would include tickets with no return ever
+  // processed (resolution === 'no_return_record'), which is just noise/customer complaints,
+  // not confirmed mis-shipments.
+  const wfrTotalOrders = new Set(tickets.filter(t => t.resolution !== 'no_return_record').map(t => t.order_id)).size;
   const wfrAcceptedOrders = new Set(tickets.filter(t => t.resolution === 'wh_accepted').map(t => t.order_id)).size;
   const totalPct = totalOrders ? (wfrTotalOrders / totalOrders * 100) : 0;
   const acceptedPct = totalOrders ? (wfrAcceptedOrders / totalOrders * 100) : 0;
@@ -671,7 +675,7 @@ document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t 
   <td>${t.location}</td>
   <td>${new Date(t.created_time).toLocaleString('en-IN', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'})}</td>
   <td><span class="wfr-pill ${t.wh_accepted_text ? 'yes' : 'no'}">${t.wh_accepted_text ? 'WH Accepted' : 'Not counted'}</span></td>
-  <td class="wfr-reason">${t.reason}</td>
+  <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '(no WH-team comment)'}</td>
 </tr>`).join('') || '<tr><td colspan="7" class="wfr-empty">No tickets yesterday</td></tr>';
 
 // Tabs

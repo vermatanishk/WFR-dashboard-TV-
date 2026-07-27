@@ -1,13 +1,16 @@
 """
 Builds the Zoho EOD tab dataset: yesterday's mis-shipment tickets only,
-classified WH-Accepted purely by category (text-based, no ClickHouse
-return-record dependency) per the accountability-tracker requirement -
-"even if the return isn't processed yet, we still see it at EOD".
+classified WH-Accepted by the WAREHOUSE TEAM's own comment text - not
+by category, and not by what the support agent/customer said.
 
-WH-Accepted (text) = category is Missing/Wrong Qty ("short qty") or
-Wrong Medicines ("incorrect item sent"). Damaged/Defective and Expiry
-are tracked but not counted WH-Accepted under this definition, since
-they aren't necessarily a picking error.
+WH-Accepted (text) = a comment from a "Warehouse" role commenter on the
+ticket contains a genuine ADMISSION (e.g. "we have sent wrong sku",
+"we have sent short qty"). The common WH template "We have sent proper
+medicine to Cx" is a DENIAL, not an admission, and does NOT count -
+even though it's the same commenter/role, the content matters.
+Support/L2-agent comments restating the customer's complaint (e.g.
+"customer has received X instead of Y") never count - only the WH
+team's own words do.
 
 Location comes from marketplace_orders.warehouse_id directly (not the
 return_request join used elsewhere), since same-day tickets usually
@@ -19,9 +22,7 @@ from collections import defaultdict
 
 HERE = Path(__file__).parent
 
-TEXT_WH_ACCEPTED_CATEGORIES = {"Missing/Wrong Qty", "Wrong Medicines"}
-
-# order_id -> (warehouse_name, city), from ClickHouse marketplace_orders join
+# order_id -> location, from ClickHouse marketplace_orders join
 ORDER_LOCATION = {
     3037230: "Kolkata", 3120313: "Kolkata", 3120838: "Lucknow", 3147111: "Delhi",
     3142506: "Kolkata", 3164368: "Delhi", 3107816: "Delhi", 3171395: "Kolkata",
@@ -29,6 +30,37 @@ ORDER_LOCATION = {
     3145977: "Mumbai", 3136382: "Lucknow", 3106929: "Bangalore", 3156143: "Kolkata",
     3123162: "Bangalore", 2848423: "Mumbai", 3169351: "Delhi", 3151215: "Delhi",
     3132055: "Delhi", 3122871: "Delhi", 3151349: "Kolkata", 3141425: "Kolkata",
+}
+
+# Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
+# pulled via Zoho Desk getTicketComments and filtered to that role. None/"" means
+# no Warehouse-role comment was posted on the ticket (only L2/agent notes, if any).
+WH_COMMENT = {
+    "245052": "We have sent proper medicine to Cx",
+    "245208": "We have sent proper medicine to Cx",
+    "245481": "We have sent proper medicine to Cx",
+    "245827": None,
+    "245834": "We have sent proper medicine to Cx",
+    "245111": "We have sent proper medicine to Cx",
+    "245735": "We have sent proper medicine to Cx",
+    "245871": "We have sent proper medicine to Cx",
+    "245189": "We have sent proper medicine to Cx",
+    "245198": "We have sent proper medicine to Cx",
+    "245897": "We have sent proper medicine to Cx",
+    "245197": "We have sent proper medicine to Cx",
+    "245485": None,
+    "246023": "We have sent proper medicine to Cx",
+    "245804": "We have sent wrong sku to Cx",
+    "245161": "We have sent proper medicine to Cx",
+    "245206": "We have sent wrong sku to Cx",
+    "245689": None,
+    "245877": "We have sent proper medicine to cx",
+    "245124": None,
+    "245199": None,
+    "245756": None,
+    "245213": None,
+    "245739": None,
+    "245732": None,
 }
 
 TICKETS = [
@@ -59,26 +91,37 @@ TICKETS = [
     {"ticket_id": "245732", "order_id": 3141425, "category": "Damaged/Defective", "created_time": "2026-07-26T09:21:23"},
 ]
 
+# Genuine admission phrases the WH team uses when they DO own the mistake.
+# "we have sent proper medicine" / "correct item" etc. are denials and never match.
+ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
+                      "short qty", "less qty", "sent short", "sent wrong", "missing qty"]
+
+
+def classify(wh_comment):
+    if not wh_comment:
+        return False, "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
+    low = wh_comment.lower()
+    if any(p in low for p in ADMISSION_PHRASES):
+        return True, f"Warehouse team comment: \"{wh_comment}\" - explicit admission, counted WH-Accepted."
+    return False, f"Warehouse team comment: \"{wh_comment}\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+
+
 out_tickets = []
 for t in TICKETS:
-    wh_accepted = t["category"] in TEXT_WH_ACCEPTED_CATEGORIES
+    wh_comment = WH_COMMENT.get(t["ticket_id"])
+    wh_accepted, reason = classify(wh_comment)
     out_tickets.append({
         **t,
         "location": ORDER_LOCATION.get(t["order_id"], "Unknown"),
+        "wh_comment": wh_comment,
         "wh_accepted_text": wh_accepted,
-        "reason": (
-            f"Category '{t['category']}' is a WH-fulfillment issue (short qty / wrong item) - "
-            "counted WH-Accepted immediately for EOD accountability, independent of return status."
-            if wh_accepted else
-            f"Category '{t['category']}' is not counted WH-Accepted under the text-based EOD rule "
-            "(only Missing/Wrong Qty and Wrong Medicines are)."
-        ),
+        "reason": reason,
     })
 
 eod_data = {
-    "generated_at": "2026-07-27T13:30:00Z",
+    "generated_at": "2026-07-27T16:20:00Z",
     "for_date": "2026-07-26",
-    "methodology": "WH-Accepted here is TEXT-BASED: any ticket in Missing/Wrong Qty ('short qty') or Wrong Medicines ('incorrect item sent') is counted immediately, without waiting for a ClickHouse return record - so ops has same-day accountability. Location comes from marketplace_orders.warehouse_id directly (not the return-request join), since same-day tickets usually have no return record yet.",
+    "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
     "tickets": out_tickets,
 }
 (HERE / "data_eod.json").write_text(json.dumps(eod_data, indent=2))
