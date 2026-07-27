@@ -1,0 +1,232 @@
+{
+  "generated_at": "2026-07-27T13:30:00Z",
+  "for_date": "2026-07-26",
+  "methodology": "WH-Accepted here is TEXT-BASED: any ticket in Missing/Wrong Qty ('short qty') or Wrong Medicines ('incorrect item sent') is counted immediately, without waiting for a ClickHouse return record - so ops has same-day accountability. Location comes from marketplace_orders.warehouse_id directly (not the return-request join), since same-day tickets usually have no return record yet.",
+  "tickets": [
+    {
+      "ticket_id": "245052",
+      "order_id": 3037230,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T03:21:27",
+      "location": "Kolkata",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245208",
+      "order_id": 3120313,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T07:32:29",
+      "location": "Kolkata",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245481",
+      "order_id": 3120838,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T07:56:57",
+      "location": "Lucknow",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245827",
+      "order_id": 3147111,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T11:47:40",
+      "location": "Delhi",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245834",
+      "order_id": 3142506,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T12:01:49",
+      "location": "Kolkata",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245111",
+      "order_id": 3164368,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T04:59:36",
+      "location": "Delhi",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245735",
+      "order_id": 3107816,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T09:22:26",
+      "location": "Delhi",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245871",
+      "order_id": 3171395,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T13:11:31",
+      "location": "Kolkata",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245189",
+      "order_id": 3164189,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T07:14:35",
+      "location": "Bangalore",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245198",
+      "order_id": 3111787,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T07:21:09",
+      "location": "Bangalore",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245897",
+      "order_id": 3159511,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-26T13:50:07",
+      "location": "Bangalore",
+      "wh_accepted_text": true,
+      "reason": "Category 'Missing/Wrong Qty' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245197",
+      "order_id": 3145977,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-26T07:18:39",
+      "location": "Mumbai",
+      "wh_accepted_text": true,
+      "reason": "Category 'Wrong Medicines' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245485",
+      "order_id": 3136382,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-26T07:57:01",
+      "location": "Lucknow",
+      "wh_accepted_text": true,
+      "reason": "Category 'Wrong Medicines' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "246023",
+      "order_id": 3037230,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-26T14:21:12",
+      "location": "Kolkata",
+      "wh_accepted_text": true,
+      "reason": "Category 'Wrong Medicines' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245804",
+      "order_id": 3106929,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-26T11:02:47",
+      "location": "Bangalore",
+      "wh_accepted_text": true,
+      "reason": "Category 'Wrong Medicines' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245161",
+      "order_id": 3156143,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-26T06:23:50",
+      "location": "Kolkata",
+      "wh_accepted_text": true,
+      "reason": "Category 'Wrong Medicines' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245206",
+      "order_id": 3123162,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-26T07:28:39",
+      "location": "Bangalore",
+      "wh_accepted_text": true,
+      "reason": "Category 'Wrong Medicines' is a WH-fulfillment issue (short qty / wrong item) - counted WH-Accepted immediately for EOD accountability, independent of return status."
+    },
+    {
+      "ticket_id": "245689",
+      "order_id": 2848423,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T08:16:11",
+      "location": "Mumbai",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245877",
+      "order_id": 3169351,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T13:22:09",
+      "location": "Delhi",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245124",
+      "order_id": 3151215,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T05:24:09",
+      "location": "Delhi",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245199",
+      "order_id": 3132055,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T07:22:45",
+      "location": "Delhi",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245756",
+      "order_id": 3122871,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T10:02:43",
+      "location": "Delhi",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245213",
+      "order_id": 3151349,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T07:38:32",
+      "location": "Kolkata",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245739",
+      "order_id": 3141425,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T09:35:52",
+      "location": "Kolkata",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    },
+    {
+      "ticket_id": "245732",
+      "order_id": 3141425,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-26T09:21:23",
+      "location": "Kolkata",
+      "wh_accepted_text": false,
+      "reason": "Category 'Damaged/Defective' is not counted WH-Accepted under the text-based EOD rule (only Missing/Wrong Qty and Wrong Medicines are)."
+    }
+  ]
+}

@@ -76,11 +76,12 @@
   .wfr-banner .dot { flex: none; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: var(--status-warning); }
   .wfr-banner b { color: var(--text-primary); }
 
-  .wfr-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--gridline); margin-bottom: 20px; }
+  .wfr-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--gridline); margin-bottom: 20px; overflow-x: auto; }
   .wfr-tab {
     appearance: none; border: none; background: none; cursor: pointer;
     font: inherit; font-size: 13.5px; font-weight: 600; color: var(--text-muted);
     padding: 10px 14px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+    white-space: nowrap; flex: none;
   }
   .wfr-tab[aria-selected="true"] { color: var(--text-primary); border-bottom-color: var(--series-1); }
   .wfr-tab:hover { color: var(--text-primary); }
@@ -172,6 +173,18 @@
     border-radius: 6px; padding: 6px 9px; font-size: 11.5px; color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     display: none; white-space: nowrap; z-index: 5;
   }
+
+  .wfr-topline { background: linear-gradient(135deg, color-mix(in srgb, var(--series-1) 10%, var(--surface-1)), var(--surface-1)); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; }
+  .wfr-topline-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+  .wfr-topline-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
+  .wfr-topline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 720px) { .wfr-topline-grid { grid-template-columns: 1fr; } }
+  .wfr-topline-stat { }
+  .wfr-topline-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+  .wfr-topline-value { font-size: 32px; font-weight: 800; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .wfr-topline-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+  .wfr-select { appearance: none; max-width: 100%; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 28px 6px 12px; border-radius: 8px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23898781'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
 </style>
 
 <div class="wfr-root">
@@ -183,7 +196,8 @@
       </div>
       <div class="wfr-meta">
         Refreshed <span id="wfr-refreshed"></span><br>
-        Source: Zoho Desk API (live) + ClickHouse (live)
+        Source: Zoho Desk API (live) + ClickHouse (live)<br>
+        Auto-refreshes 5:00 AM &amp; 5:00 PM IST daily
       </div>
     </div>
 
@@ -199,12 +213,49 @@
       <button class="wfr-range-btn" data-range="14" aria-pressed="false">Last 14 days</button>
       <button class="wfr-range-btn" data-range="30" aria-pressed="false">Last 30 days</button>
       <button class="wfr-range-btn" data-range="90" aria-pressed="true">Last 90 days</button>
+      <span class="wfr-filters-label" style="margin-left:10px">Category</span>
+      <select class="wfr-select" id="filter-category">
+        <option value="all">All categories</option>
+        <option value="Missing/Wrong Qty">Missing/Wrong Qty</option>
+        <option value="Wrong Medicines">Wrong Medicines</option>
+        <option value="Expiry Issue">Expiry Issue</option>
+        <option value="Damaged/Defective">Damaged/Defective</option>
+        <option value="Switch Orders">Switch Orders</option>
+      </select>
+      <span class="wfr-filters-label">Location</span>
+      <select class="wfr-select" id="filter-location">
+        <option value="all">All locations</option>
+      </select>
+    </div>
+    <div class="wfr-footnote" style="margin: -10px 0 16px">Date range, category, and location filters apply across Tab 1 and Tab 2 (and the topline below). Tab 3's order-volume denominators stay pinned to the full 90-day window since a picker/checker's total processed count needs the full window to be meaningful — narrowing the date range there only affects "error orders". Tab 4 is always yesterday, unaffected by these filters.</div>
+
+    <div class="wfr-topline" id="wfr-topline">
+      <div class="wfr-topline-head">
+        <span class="wfr-topline-title">WFR — Wrong Fulfilment Rate (of all orders placed)</span>
+      </div>
+      <div class="wfr-topline-grid">
+        <div class="wfr-topline-stat">
+          <div class="wfr-topline-label">Total orders (selected range)</div>
+          <div class="wfr-topline-value" id="wfr-top-orders"></div>
+        </div>
+        <div class="wfr-topline-stat">
+          <div class="wfr-topline-label">WFR Total (mis-shipment orders / total orders)</div>
+          <div class="wfr-topline-value" id="wfr-top-total"></div>
+          <div class="wfr-topline-sub" id="wfr-top-total-sub"></div>
+        </div>
+        <div class="wfr-topline-stat">
+          <div class="wfr-topline-label">WFR Accepted (WH-accepted orders / total orders)</div>
+          <div class="wfr-topline-value good" id="wfr-top-accepted"></div>
+          <div class="wfr-topline-sub" id="wfr-top-accepted-sub"></div>
+        </div>
+      </div>
     </div>
 
     <div class="wfr-tabs" role="tablist">
       <button class="wfr-tab" role="tab" aria-selected="true" data-tab="t1">1 · Everything</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t2">2 · Location</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t3">3 · Personnel</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t4">4 · Zoho EOD</button>
     </div>
 
     <div class="wfr-toolbar">
@@ -322,6 +373,40 @@
       </div>
     </div>
 
+    <!-- TAB 4: Zoho EOD -->
+    <div class="wfr-panel" id="t4">
+      <div class="wfr-banner">
+        <span class="dot"></span>
+        <div><b>EOD accountability tracker:</b> <span id="eod-methodology"></span></div>
+      </div>
+      <div class="wfr-tiles tiles-4b">
+        <div class="wfr-tile"><div class="wfr-tile-label">For date</div><div class="wfr-tile-value" id="eod-date" style="font-size:20px"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">Total tickets</div><div class="wfr-tile-value" id="eod-total"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">WH Accepted (text)</div><div class="wfr-tile-value good" id="eod-accepted"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">Accept %</div><div class="wfr-tile-value good" id="eod-accept-pct"></div></div>
+      </div>
+
+      <div class="wfr-card">
+        <h3>By category</h3>
+        <div id="eod-cat-bars"></div>
+      </div>
+
+      <div class="wfr-card">
+        <h3>By location</h3>
+        <div id="eod-loc-bars"></div>
+      </div>
+
+      <div class="wfr-card">
+        <h3>Ticket-level detail</h3>
+        <div class="wfr-scroll">
+          <table class="wfr-table" id="eod-ticket-table">
+            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Created</th><th>WH Accepted</th><th>Reason</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -330,6 +415,8 @@ const DATA = __AGGREGATES_JSON__;
 const ALL_TICKETS = __TICKETS_JSON__;
 const PERSONNEL = __PERSONNEL_JSON__;
 const TREND = __TREND_JSON__;
+const ORDERS_BY_DAY = __ORDERS_BY_DAY_JSON__;
+const EOD = __EOD_JSON__;
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -469,27 +556,123 @@ document.querySelectorAll('[data-res-filter]').forEach(btn => {
 document.getElementById('ticket-pg-prev').addEventListener('click', () => { ticketPage--; renderTicketTable(window.__wfrFiltered || ALL_TICKETS); });
 document.getElementById('ticket-pg-next').addEventListener('click', () => { ticketPage++; renderTicketTable(window.__wfrFiltered || ALL_TICKETS); });
 
+// Populate location filter from the full dataset
+const ALL_LOCATIONS = Array.from(new Set(ALL_TICKETS.map(t => t.location))).sort();
+const locSelect = document.getElementById('filter-location');
+ALL_LOCATIONS.forEach(loc => {
+  const opt = document.createElement('option');
+  opt.value = loc; opt.textContent = loc;
+  locSelect.appendChild(opt);
+});
+
+let currentRangeDays = '90';
+
 // Date-range filter (Yesterday / 7 / 14 / 30 / 90 days) - the 90-day base dataset is exhaustive/live
-function applyRange(days) {
+function rangeWindow(days) {
   const now = new Date();
   if (days === '1') {
     const start = new Date(now); start.setDate(start.getDate() - 1); start.setHours(0,0,0,0);
     const end = new Date(now); end.setHours(0,0,0,0);
-    return ALL_TICKETS.filter(t => { const d = new Date(t.created_time); return d >= start && d < end; });
+    return [start, end];
   }
   const cutoff = new Date(now);
   cutoff.setDate(cutoff.getDate() - Number(days));
-  return ALL_TICKETS.filter(t => new Date(t.created_time) >= cutoff);
+  return [cutoff, now];
 }
+
+function applyFilters() {
+  const [start, end] = rangeWindow(currentRangeDays);
+  const cat = document.getElementById('filter-category').value;
+  const loc = document.getElementById('filter-location').value;
+  return ALL_TICKETS.filter(t => {
+    const d = new Date(t.created_time);
+    if (d < start || d >= end) return false;
+    if (cat !== 'all' && t.category !== cat) return false;
+    if (loc !== 'all' && t.location !== loc) return false;
+    return true;
+  });
+}
+
+function sumOrders(start, end) {
+  let sum = 0;
+  for (const [dateStr, count] of Object.entries(ORDERS_BY_DAY)) {
+    const d = new Date(dateStr + 'T00:00:00');
+    if (d >= start && d < end) sum += count;
+  }
+  return sum;
+}
+
+function renderTopline(tickets) {
+  const [start, end] = rangeWindow(currentRangeDays);
+  const totalOrders = sumOrders(start, end);
+  const wfrTotalOrders = new Set(tickets.map(t => t.order_id)).size;
+  const wfrAcceptedOrders = new Set(tickets.filter(t => t.resolution === 'wh_accepted').map(t => t.order_id)).size;
+  const totalPct = totalOrders ? (wfrTotalOrders / totalOrders * 100) : 0;
+  const acceptedPct = totalOrders ? (wfrAcceptedOrders / totalOrders * 100) : 0;
+
+  document.getElementById('wfr-top-orders').textContent = totalOrders.toLocaleString('en-IN');
+  document.getElementById('wfr-top-total').textContent = totalPct.toFixed(3) + '%';
+  document.getElementById('wfr-top-total-sub').textContent = `${wfrTotalOrders.toLocaleString('en-IN')} / ${totalOrders.toLocaleString('en-IN')} orders`;
+  document.getElementById('wfr-top-accepted').textContent = acceptedPct.toFixed(3) + '%';
+  document.getElementById('wfr-top-accepted-sub').textContent = `${wfrAcceptedOrders.toLocaleString('en-IN')} / ${totalOrders.toLocaleString('en-IN')} orders`;
+}
+
+function refresh() {
+  const tickets = applyFilters();
+  render(tickets);
+  renderTopline(tickets);
+}
+
 document.querySelectorAll('.wfr-range-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.wfr-range-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
     btn.setAttribute('aria-pressed', 'true');
-    render(applyRange(btn.dataset.range));
+    currentRangeDays = btn.dataset.range;
+    refresh();
   });
 });
+document.getElementById('filter-category').addEventListener('change', refresh);
+document.getElementById('filter-location').addEventListener('change', refresh);
 
-render(applyRange('90'));
+refresh();
+
+// ---- Tab 4: Zoho EOD (yesterday, text-based WH-Accepted) ----
+document.getElementById('eod-methodology').textContent = EOD.methodology;
+document.getElementById('eod-date').textContent = new Date(EOD.for_date + 'T00:00:00').toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
+const eodTotal = EOD.tickets.length;
+const eodAccepted = EOD.tickets.filter(t => t.wh_accepted_text).length;
+document.getElementById('eod-total').textContent = eodTotal;
+document.getElementById('eod-accepted').textContent = eodAccepted;
+document.getElementById('eod-accept-pct').textContent = eodTotal ? Math.round(eodAccepted/eodTotal*1000)/10 + '%' : '0%';
+
+const eodByCat = {};
+CATEGORIES.forEach(c => eodByCat[c] = {total:0, accepted:0});
+EOD.tickets.forEach(t => {
+  eodByCat[t.category] = eodByCat[t.category] || {total:0, accepted:0};
+  eodByCat[t.category].total++;
+  if (t.wh_accepted_text) eodByCat[t.category].accepted++;
+});
+const maxEodCat = Math.max(...Object.values(eodByCat).map(r => r.total), 1);
+document.getElementById('eod-cat-bars').innerHTML = Object.entries(eodByCat).filter(([,r]) => r.total > 0).map(([c,r]) => barRow(c, r.total, r.accepted, maxEodCat)).join('') || '<div class="wfr-empty">No tickets</div>';
+
+const eodByLoc = {};
+EOD.tickets.forEach(t => {
+  eodByLoc[t.location] = eodByLoc[t.location] || {total:0, accepted:0};
+  eodByLoc[t.location].total++;
+  if (t.wh_accepted_text) eodByLoc[t.location].accepted++;
+});
+const maxEodLoc = Math.max(...Object.values(eodByLoc).map(r => r.total), 1);
+document.getElementById('eod-loc-bars').innerHTML = Object.entries(eodByLoc).sort((a,b)=>b[1].total-a[1].total).map(([l,r]) => barRow(l, r.total, r.accepted, maxEodLoc)).join('') || '<div class="wfr-empty">No tickets</div>';
+
+document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t => `<tr>
+  <td>${t.ticket_id}</td>
+  <td>${t.order_id}</td>
+  <td>${t.category}</td>
+  <td>${t.location}</td>
+  <td>${new Date(t.created_time).toLocaleString('en-IN', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'})}</td>
+  <td><span class="wfr-pill ${t.wh_accepted_text ? 'yes' : 'no'}">${t.wh_accepted_text ? 'WH Accepted' : 'Not counted'}</span></td>
+  <td class="wfr-reason">${t.reason}</td>
+</tr>`).join('') || '<tr><td colspan="7" class="wfr-empty">No tickets yesterday</td></tr>';
 
 // Tabs
 document.querySelectorAll('.wfr-tab').forEach(btn => {
