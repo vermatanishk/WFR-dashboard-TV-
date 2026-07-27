@@ -1,0 +1,613 @@
+<title>WFR Ops Dashboard — PlatinumRx</title>
+<style>
+  .wfr-root {
+    color-scheme: light;
+    --surface-1:      #fcfcfb;
+    --surface-2:      #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+    --series-1:       #2a78d6; /* blue - total */
+    --series-3:       #1baf7a; /* aqua - accepted */
+    --status-good:    #0ca30c;
+    --status-warning: #fab219;
+    --status-critical:#d03b3b;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) .wfr-root {
+      color-scheme: dark;
+      --surface-1:      #1a1a19;
+      --surface-2:      #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255,255,255,0.10);
+      --series-1:       #3987e5;
+      --series-3:       #199e70;
+      --status-good:    #0ca30c;
+      --status-warning: #fab219;
+      --status-critical:#e66767;
+    }
+  }
+  :root[data-theme="dark"] .wfr-root {
+    color-scheme: dark;
+    --surface-1:      #1a1a19;
+    --surface-2:      #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+    --series-1:       #3987e5;
+    --series-3:       #199e70;
+    --status-good:    #0ca30c;
+    --status-warning: #fab219;
+    --status-critical:#e66767;
+  }
+
+  .wfr-root * { box-sizing: border-box; }
+  .wfr-root { background: var(--surface-2); color: var(--text-primary); min-height: 100%; }
+  .wfr-wrap { max-width: 1120px; margin: 0 auto; padding: 24px 20px 64px; }
+
+  .wfr-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .wfr-title { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .wfr-sub { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
+  .wfr-meta { text-align: right; font-size: 12px; color: var(--text-muted); }
+
+  .wfr-banner {
+    margin: 16px 0 20px;
+    padding: 12px 14px;
+    background: color-mix(in srgb, var(--status-warning) 14%, var(--surface-1));
+    border: 1px solid color-mix(in srgb, var(--status-warning) 45%, var(--border));
+    border-radius: 8px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 10px;
+  }
+  .wfr-banner .dot { flex: none; width: 8px; height: 8px; margin-top: 5px; border-radius: 50%; background: var(--status-warning); }
+  .wfr-banner b { color: var(--text-primary); }
+
+  .wfr-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--gridline); margin-bottom: 20px; }
+  .wfr-tab {
+    appearance: none; border: none; background: none; cursor: pointer;
+    font: inherit; font-size: 13.5px; font-weight: 600; color: var(--text-muted);
+    padding: 10px 14px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .wfr-tab[aria-selected="true"] { color: var(--text-primary); border-bottom-color: var(--series-1); }
+  .wfr-tab:hover { color: var(--text-primary); }
+
+  .wfr-panel { display: none; }
+  .wfr-panel.active { display: block; }
+
+  .wfr-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  @media (max-width: 720px) { .wfr-tiles { grid-template-columns: repeat(2, 1fr); } }
+  .wfr-tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .wfr-tile-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); }
+  .wfr-tile-value { font-size: 26px; font-weight: 700; margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .wfr-tile-value.good { color: var(--status-good); }
+
+  .wfr-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin-bottom: 20px; }
+  .wfr-card h3 { margin: 0 0 14px; font-size: 14px; font-weight: 700; }
+  .wfr-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .wfr-card-head h3 { margin: 0; }
+
+  .wfr-bar-row { display: grid; grid-template-columns: 150px 1fr 90px; align-items: center; gap: 10px; padding: 7px 0; font-size: 12.5px; }
+  .wfr-bar-row + .wfr-bar-row { border-top: 1px solid var(--gridline); }
+  .wfr-bar-name { color: var(--text-secondary); }
+  .wfr-bar-track { position: relative; height: 18px; background: var(--surface-2); border-radius: 3px; overflow: hidden; display: flex; }
+  .wfr-bar-fill-total { height: 100%; background: var(--series-1); border-radius: 3px 0 0 3px; }
+  .wfr-bar-fill-accepted { height: 100%; background: var(--series-3); margin-left: 2px; border-radius: 3px; }
+  .wfr-bar-vals { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+
+  .wfr-legend { display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; }
+  .wfr-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .wfr-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .wfr-legend i.line { width: 14px; height: 2px; border-radius: 0; }
+
+  table.wfr-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  table.wfr-table th { text-align: left; color: var(--text-muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; padding: 6px 8px; border-bottom: 1px solid var(--gridline); }
+  table.wfr-table td { padding: 7px 8px; border-bottom: 1px solid var(--gridline); vertical-align: top; }
+  table.wfr-table tr:last-child td { border-bottom: none; }
+  table.wfr-table td.num, table.wfr-table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .wfr-pill { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .wfr-pill.yes { background: color-mix(in srgb, var(--status-good) 16%, transparent); color: var(--status-good); }
+  .wfr-pill.no { background: color-mix(in srgb, var(--text-muted) 16%, transparent); color: var(--text-secondary); }
+  .wfr-reason { color: var(--text-muted); font-size: 11.5px; }
+  .wfr-scroll { overflow-x: auto; }
+
+  .wfr-toolbar { display: flex; justify-content: flex-end; margin-bottom: 14px; }
+  .wfr-btn { appearance: none; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); font: inherit; font-size: 12.5px; font-weight: 600; padding: 8px 14px; border-radius: 7px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .wfr-btn:hover { background: var(--surface-2); }
+  .wfr-btn:disabled { opacity: 0.4; cursor: default; }
+  .wfr-btn.sm { padding: 5px 10px; font-size: 12px; }
+
+  .wfr-footnote { font-size: 11.5px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+  .wfr-filters { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .wfr-filters-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-right: 2px; }
+  .wfr-range-btn, .wfr-chip {
+    appearance: none; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+    font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 99px; cursor: pointer;
+  }
+  .wfr-range-btn[aria-pressed="true"], .wfr-chip[aria-pressed="true"] { background: var(--series-1); border-color: var(--series-1); color: #fff; }
+  .wfr-range-btn:hover:not([aria-pressed="true"]), .wfr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-2); }
+
+  .wfr-tiles.tiles-4b { grid-template-columns: repeat(4, 1fr); }
+  .wfr-tile-value.bod { color: var(--text-secondary); }
+  .wfr-reconcile { font-size: 12px; margin-top: 2px; }
+  .wfr-reconcile.ok { color: var(--status-good); }
+  .wfr-reconcile.bad { color: var(--status-critical); font-weight: 700; }
+
+  .wfr-pill.bod { background: color-mix(in srgb, var(--status-warning) 20%, transparent); color: color-mix(in srgb, var(--status-warning) 70%, var(--text-primary)); }
+  .wfr-pill.cbod { background: color-mix(in srgb, var(--text-muted) 18%, transparent); color: var(--text-secondary); }
+  .wfr-pill.none { background: color-mix(in srgb, var(--text-muted) 12%, transparent); color: var(--text-muted); }
+
+  .wfr-empty { padding: 24px; text-align: center; color: var(--text-muted); font-size: 12.5px; }
+
+  .wfr-pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; font-size: 12px; color: var(--text-secondary); }
+  .wfr-pagination .pg-btns { display: flex; gap: 6px; }
+
+  .wfr-subtabs { display: flex; gap: 4px; margin-bottom: 16px; border: 1px solid var(--border); border-radius: 8px; padding: 3px; width: fit-content; }
+  .wfr-subtab { appearance: none; border: none; background: none; cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--text-muted); padding: 7px 16px; border-radius: 6px; }
+  .wfr-subtab[aria-selected="true"] { background: var(--series-1); color: #fff; }
+  .wfr-subpanel { display: none; }
+  .wfr-subpanel.active { display: block; }
+
+  .wfr-wh-group { margin-bottom: 18px; }
+  .wfr-wh-group h4 { font-size: 12.5px; font-weight: 700; margin: 0 0 8px; color: var(--text-primary); }
+
+  .wfr-chart { position: relative; }
+  .wfr-chart svg { width: 100%; height: auto; display: block; }
+  .wfr-chart-tooltip {
+    position: absolute; pointer-events: none; background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 9px; font-size: 11.5px; color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: none; white-space: nowrap; z-index: 5;
+  }
+</style>
+
+<div class="wfr-root">
+  <div class="wfr-wrap">
+    <div class="wfr-header">
+      <div>
+        <div class="wfr-title">WFR — Wrong Fulfilment Ops Dashboard</div>
+        <div class="wfr-sub">PlatinumRx · Mis-shipment tickets, Total vs. Warehouse-Accepted</div>
+      </div>
+      <div class="wfr-meta">
+        Refreshed <span id="wfr-refreshed"></span><br>
+        Source: Zoho Desk API (live) + ClickHouse (live)
+      </div>
+    </div>
+
+    <div class="wfr-banner">
+      <span class="dot"></span>
+      <div><b>Data-freshness note:</b> <span id="wfr-sample-note"></span></div>
+    </div>
+
+    <div class="wfr-filters">
+      <span class="wfr-filters-label">Date range</span>
+      <button class="wfr-range-btn" data-range="1" aria-pressed="false">Yesterday</button>
+      <button class="wfr-range-btn" data-range="7" aria-pressed="false">Last 7 days</button>
+      <button class="wfr-range-btn" data-range="14" aria-pressed="false">Last 14 days</button>
+      <button class="wfr-range-btn" data-range="30" aria-pressed="false">Last 30 days</button>
+      <button class="wfr-range-btn" data-range="90" aria-pressed="true">Last 90 days</button>
+    </div>
+
+    <div class="wfr-tabs" role="tablist">
+      <button class="wfr-tab" role="tab" aria-selected="true" data-tab="t1">1 · Everything</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t2">2 · Location</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t3">3 · Personnel</button>
+    </div>
+
+    <div class="wfr-toolbar">
+      <button class="wfr-btn" id="wfr-download">⬇ Download today's report (CSV)</button>
+    </div>
+
+    <!-- TAB 1 -->
+    <div class="wfr-panel active" id="t1">
+      <div class="wfr-tiles tiles-4b">
+        <div class="wfr-tile"><div class="wfr-tile-label">Total tickets raised</div><div class="wfr-tile-value" id="k-total-tickets"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">Total refunds/returns issued</div><div class="wfr-tile-value" id="k-total-returns"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">WH Accepted</div><div class="wfr-tile-value good" id="k-wh-accepted"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">BOD + Considered BOD</div><div class="wfr-tile-value bod" id="k-bod"></div>
+          <div class="wfr-reconcile" id="k-reconcile"></div>
+        </div>
+      </div>
+
+      <div class="wfr-card">
+        <div class="wfr-card-head">
+          <h3>Tickets raised vs. accepted, over time</h3>
+          <div class="wfr-filters" style="margin-bottom:0">
+            <button class="wfr-chip" data-trend-cat="All" aria-pressed="true">All</button>
+            <button class="wfr-chip" data-trend-cat="Missing/Wrong Qty" aria-pressed="false">Missing/Wrong Qty</button>
+            <button class="wfr-chip" data-trend-cat="Wrong Medicines" aria-pressed="false">Wrong Medicines</button>
+            <button class="wfr-chip" data-trend-cat="Expiry Issue" aria-pressed="false">Expiry Issue</button>
+            <button class="wfr-chip" data-trend-cat="Damaged/Defective" aria-pressed="false">Damaged/Defective</button>
+          </div>
+        </div>
+        <div class="wfr-legend">
+          <span><i class="line" style="background:var(--series-1)"></i>Raised</span>
+          <span><i class="line" style="background:var(--series-3)"></i>Accepted</span>
+        </div>
+        <div class="wfr-chart" id="trend-chart"></div>
+      </div>
+
+      <div class="wfr-card">
+        <h3>Raised vs. Accepted, by category</h3>
+        <div class="wfr-legend">
+          <span><i style="background:var(--series-1)"></i>Total</span>
+          <span><i style="background:var(--series-3)"></i>WH Accepted</span>
+        </div>
+        <div id="cat-bars"></div>
+        <div class="wfr-scroll" style="margin-top:14px">
+          <table class="wfr-table" id="cat-table">
+            <thead><tr><th>Category</th><th class="num">Tickets</th><th class="num">% of total</th><th class="num">Accepted</th><th class="num">Accepted %</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="wfr-card">
+        <div class="wfr-card-head">
+          <h3>Ticket-level detail</h3>
+          <div class="wfr-filters" style="margin-bottom:0">
+            <button class="wfr-chip" data-res-filter="all" aria-pressed="true">All</button>
+            <button class="wfr-chip" data-res-filter="wh_accepted" aria-pressed="false">WH Accepted</button>
+            <button class="wfr-chip" data-res-filter="bod" aria-pressed="false">BOD</button>
+            <button class="wfr-chip" data-res-filter="considered_bod" aria-pressed="false">Considered BOD</button>
+            <button class="wfr-chip" data-res-filter="no_return_record" aria-pressed="false">No return record</button>
+          </div>
+        </div>
+        <div class="wfr-scroll">
+          <table class="wfr-table" id="ticket-table">
+            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Created</th><th>Resolution</th><th>Reason</th><th>Picker</th><th>QC</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="wfr-pagination">
+          <span id="ticket-pg-info"></span>
+          <div class="pg-btns">
+            <button class="wfr-btn sm" id="ticket-pg-prev">← Prev</button>
+            <button class="wfr-btn sm" id="ticket-pg-next">Next →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2 -->
+    <div class="wfr-panel" id="t2">
+      <div class="wfr-card">
+        <h3>Location leaderboard — Total vs. Accepted</h3>
+        <div class="wfr-legend">
+          <span><i style="background:var(--series-1)"></i>Total</span>
+          <span><i style="background:var(--series-3)"></i>Accepted</span>
+        </div>
+        <div id="loc-bars"></div>
+        <div class="wfr-footnote">"Unknown" = ticket has no matching ClickHouse return_request row, so no warehouse could be attributed (tracked explicitly rather than dropped).</div>
+      </div>
+      <div class="wfr-card">
+        <h3>Location × category</h3>
+        <div class="wfr-scroll">
+          <table class="wfr-table" id="loc-table">
+            <thead><tr><th>Location</th><th class="num">Total</th><th class="num">Accepted</th><th class="num">Accept %</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3 -->
+    <div class="wfr-panel" id="t3">
+      <div class="wfr-subtabs" role="tablist">
+        <button class="wfr-subtab" aria-selected="true" data-subtab="pickers">Pickers</button>
+        <button class="wfr-subtab" aria-selected="false" data-subtab="checkers">QC Checkers</button>
+      </div>
+
+      <div class="wfr-subpanel active" id="sub-pickers">
+        <div class="wfr-footnote" style="margin-bottom:14px">"Total orders processed" and "Error orders" are both counted over the same 90-day live window as the rest of this dashboard (not affected by the date-range buttons above, since order-volume denominators need the full window to be meaningful). "Error orders" = WH-Accepted mis-shipment tickets attributed to that picker.</div>
+        <div id="pickers-by-wh"></div>
+      </div>
+
+      <div class="wfr-subpanel" id="sub-checkers">
+        <div class="wfr-footnote" style="margin-bottom:14px">Same methodology as Pickers, but for QC checkers (who marked the order "packedAndQCed").</div>
+        <div id="checkers-by-wh"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const DATA = __AGGREGATES_JSON__;
+const ALL_TICKETS = __TICKETS_JSON__;
+const PERSONNEL = __PERSONNEL_JSON__;
+const TREND = __TREND_JSON__;
+const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
+const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
+const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
+const PAGE_SIZE = 25;
+
+document.getElementById('wfr-refreshed').textContent = new Date(DATA.generated_at).toLocaleString('en-IN', {dateStyle:'medium', timeStyle:'short'});
+document.getElementById('wfr-sample-note').textContent = DATA.sample_note;
+
+function barRow(name, total, accepted, maxTotal) {
+  const pctTotal = maxTotal ? (total / maxTotal * 100) : 0;
+  const pctAcc = total ? (accepted / total * 100) : 0;
+  const acceptPct = total ? Math.round(accepted / total * 1000) / 10 : 0;
+  return `<div class="wfr-bar-row">
+    <div class="wfr-bar-name">${name}</div>
+    <div class="wfr-bar-track" style="width:${pctTotal}%">
+      <div class="wfr-bar-fill-total" style="width:100%">
+        <div class="wfr-bar-fill-accepted" style="width:${pctAcc}%"></div>
+      </div>
+    </div>
+    <div class="wfr-bar-vals">${accepted}/${total} · ${acceptPct}%</div>
+  </div>`;
+}
+
+function computeAggregates(tickets) {
+  const total_tickets = tickets.length;
+  const withReturn = tickets.filter(t => t.resolution !== 'no_return_record');
+  const whAccepted = tickets.filter(t => t.resolution === 'wh_accepted');
+  const bod = tickets.filter(t => t.resolution === 'bod' || t.resolution === 'considered_bod');
+  const noReturn = tickets.filter(t => t.resolution === 'no_return_record');
+
+  const byCategory = {};
+  CATEGORIES.forEach(c => byCategory[c] = {total: 0, accepted: 0});
+  tickets.forEach(t => {
+    if (!byCategory[t.category]) byCategory[t.category] = {total: 0, accepted: 0};
+    byCategory[t.category].total++;
+    if (t.resolution === 'wh_accepted') byCategory[t.category].accepted++;
+  });
+  const catRows = CATEGORIES.map(c => {
+    const r = byCategory[c];
+    return {
+      category: c, total: r.total,
+      pct_of_total: total_tickets ? Math.round(r.total / total_tickets * 1000) / 10 : 0,
+      accepted: r.accepted,
+      accept_pct: r.total ? Math.round(r.accepted / r.total * 1000) / 10 : 0,
+    };
+  });
+
+  const byLoc = {};
+  tickets.forEach(t => {
+    byLoc[t.location] = byLoc[t.location] || {total: 0, accepted: 0};
+    byLoc[t.location].total++;
+    if (t.resolution === 'wh_accepted') byLoc[t.location].accepted++;
+  });
+  const locRows = Object.entries(byLoc).sort((a,b) => b[1].total - a[1].total).map(([loc, r]) => ({
+    location: loc, total: r.total, accepted: r.accepted,
+    accept_pct: r.total ? Math.round(r.accepted / r.total * 1000) / 10 : 0,
+  }));
+
+  return {
+    total_tickets, total_returns: withReturn.length,
+    wh_accepted: whAccepted.length, bod: bod.length, no_return_record: noReturn.length,
+    reconciles: (whAccepted.length + bod.length) === withReturn.length,
+    by_category: catRows, tab2: locRows,
+  };
+}
+
+let ticketPage = 0;
+let resFilter = 'all';
+
+function filteredTickets(tickets) {
+  return resFilter === 'all' ? tickets : tickets.filter(t => t.resolution === resFilter);
+}
+
+function renderTicketTable(tickets) {
+  const filtered = filteredTickets(tickets);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  ticketPage = Math.min(ticketPage, totalPages - 1);
+  const pageRows = filtered.slice(ticketPage * PAGE_SIZE, ticketPage * PAGE_SIZE + PAGE_SIZE);
+
+  const ticketBody = document.querySelector('#ticket-table tbody');
+  ticketBody.innerHTML = pageRows.length ? pageRows.map(t => `<tr>
+    <td>${t.ticket_id}</td>
+    <td>${t.order_id}</td>
+    <td>${t.category}</td>
+    <td>${t.location}</td>
+    <td>${new Date(t.created_time).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'})}</td>
+    <td><span class="wfr-pill ${RESOLUTION_PILL_CLASS[t.resolution]}">${RESOLUTION_LABEL[t.resolution]}</span></td>
+    <td class="wfr-reason">${t.accept_reason}</td>
+    <td>${t.picker || '—'}</td>
+    <td>${t.qc || '—'}</td>
+  </tr>`).join('') : '<tr><td colspan="9" class="wfr-empty">No tickets in this range</td></tr>';
+
+  document.getElementById('ticket-pg-info').textContent = filtered.length
+    ? `${ticketPage * PAGE_SIZE + 1}–${Math.min((ticketPage + 1) * PAGE_SIZE, filtered.length)} of ${filtered.length}`
+    : '0 of 0';
+  document.getElementById('ticket-pg-prev').disabled = ticketPage === 0;
+  document.getElementById('ticket-pg-next').disabled = ticketPage >= totalPages - 1;
+}
+
+function render(tickets) {
+  const agg = computeAggregates(tickets);
+
+  document.getElementById('k-total-tickets').textContent = agg.total_tickets;
+  document.getElementById('k-total-returns').textContent = agg.total_returns;
+  document.getElementById('k-wh-accepted').textContent = agg.wh_accepted;
+  document.getElementById('k-bod').textContent = agg.bod;
+  const rec = document.getElementById('k-reconcile');
+  rec.textContent = agg.reconciles ? `✓ = Total refunds/returns (${agg.wh_accepted}+${agg.bod}=${agg.total_returns})` : `⚠ does not reconcile with total returns`;
+  rec.className = 'wfr-reconcile ' + (agg.reconciles ? 'ok' : 'bad');
+
+  const maxCat = Math.max(...agg.by_category.map(r => r.total), 1);
+  document.getElementById('cat-bars').innerHTML = agg.by_category.map(r => barRow(r.category, r.total, r.accepted, maxCat)).join('');
+  document.querySelector('#cat-table tbody').innerHTML = agg.by_category.map(r =>
+    `<tr><td>${r.category}</td><td class="num">${r.total}</td><td class="num">${r.pct_of_total}%</td><td class="num">${r.accepted}</td><td class="num">${r.accept_pct}%</td></tr>`
+  ).join('');
+
+  const maxLoc = Math.max(...agg.tab2.map(r => r.total), 1);
+  document.getElementById('loc-bars').innerHTML = agg.tab2.map(r => barRow(r.location, r.total, r.accepted, maxLoc)).join('') || '<div class="wfr-empty">No tickets in this range</div>';
+  document.querySelector('#loc-table tbody').innerHTML = agg.tab2.map(r => `<tr><td>${r.location}</td><td class="num">${r.total}</td><td class="num">${r.accepted}</td><td class="num">${r.accept_pct}%</td></tr>`).join('');
+
+  ticketPage = 0;
+  renderTicketTable(tickets);
+
+  window.__wfrFiltered = tickets;
+  window.__wfrAgg = agg;
+}
+
+document.querySelectorAll('[data-res-filter]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-res-filter]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    btn.setAttribute('aria-pressed', 'true');
+    resFilter = btn.dataset.resFilter;
+    ticketPage = 0;
+    renderTicketTable(window.__wfrFiltered || ALL_TICKETS);
+  });
+});
+document.getElementById('ticket-pg-prev').addEventListener('click', () => { ticketPage--; renderTicketTable(window.__wfrFiltered || ALL_TICKETS); });
+document.getElementById('ticket-pg-next').addEventListener('click', () => { ticketPage++; renderTicketTable(window.__wfrFiltered || ALL_TICKETS); });
+
+// Date-range filter (Yesterday / 7 / 14 / 30 / 90 days) - the 90-day base dataset is exhaustive/live
+function applyRange(days) {
+  const now = new Date();
+  if (days === '1') {
+    const start = new Date(now); start.setDate(start.getDate() - 1); start.setHours(0,0,0,0);
+    const end = new Date(now); end.setHours(0,0,0,0);
+    return ALL_TICKETS.filter(t => { const d = new Date(t.created_time); return d >= start && d < end; });
+  }
+  const cutoff = new Date(now);
+  cutoff.setDate(cutoff.getDate() - Number(days));
+  return ALL_TICKETS.filter(t => new Date(t.created_time) >= cutoff);
+}
+document.querySelectorAll('.wfr-range-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.wfr-range-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    btn.setAttribute('aria-pressed', 'true');
+    render(applyRange(btn.dataset.range));
+  });
+});
+
+render(applyRange('90'));
+
+// Tabs
+document.querySelectorAll('.wfr-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.wfr-tab').forEach(b => b.setAttribute('aria-selected', 'false'));
+    document.querySelectorAll('.wfr-panel').forEach(p => p.classList.remove('active'));
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.wfr-subtab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.wfr-subtab').forEach(b => b.setAttribute('aria-selected', 'false'));
+    document.querySelectorAll('.wfr-subpanel').forEach(p => p.classList.remove('active'));
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('sub-' + btn.dataset.subtab).classList.add('active');
+  });
+});
+
+// CSV download (reflects current date-range + resolution filter)
+document.getElementById('wfr-download').addEventListener('click', () => {
+  const tickets = filteredTickets(window.__wfrFiltered || ALL_TICKETS);
+  const agg = window.__wfrAgg || computeAggregates(tickets);
+  const rows = [
+    ['WFR Daily Report', DATA.generated_at],
+    [],
+    ['Ticket ID','Order ID','Category','Location','Created Time','Resolution','Reason','Picker','QC Checker'],
+    ...tickets.map(t => [t.ticket_id, t.order_id, t.category, t.location, t.created_time, RESOLUTION_LABEL[t.resolution], t.accept_reason, t.picker || '-', t.qc || '-']),
+    [],
+    ['Summary'],
+    ['Total tickets raised', agg.total_tickets],
+    ['Total refunds/returns issued', agg.total_returns],
+    ['WH Accepted', agg.wh_accepted],
+    ['BOD + Considered BOD', agg.bod],
+    ['No return record (excluded from refund total)', agg.no_return_record],
+    ['Reconciles', agg.reconciles ? 'Yes' : 'NO - CHECK DATA'],
+  ];
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `wfr_daily_report_${DATA.generated_at.slice(0,10)}.csv`;
+  a.click();
+});
+
+// ---- Tab 3: Personnel leaderboards by warehouse ----
+function renderPersonnelTable(rows, isQC) {
+  if (!rows.length) return '<div class="wfr-empty">No data</div>';
+  const nameCol = isQC ? 'QC Checker' : 'Picker';
+  return `<div class="wfr-scroll"><table class="wfr-table">
+    <thead><tr><th>${nameCol}</th><th class="num">Total orders processed</th><th class="num">Error orders</th><th class="num">Error-free orders</th><th class="num">Error rate</th></tr></thead>
+    <tbody>${rows.map(r => `<tr>
+      <td>${isQC ? r.name : 'user_' + r.user_id}</td>
+      <td class="num">${r.total_orders || '—'}</td>
+      <td class="num">${r.error_orders}</td>
+      <td class="num">${r.error_free_orders}</td>
+      <td class="num">${r.error_rate_pct != null ? r.error_rate_pct + '%' : '—'}</td>
+    </tr>`).join('')}</tbody>
+  </table></div>`;
+}
+
+function renderByWarehouse(container, byWh, isQC) {
+  const whs = Object.keys(byWh).sort((a,b) => byWh[b].length - byWh[a].length);
+  container.innerHTML = whs.map(wh => `<div class="wfr-wh-group"><h4>${wh}</h4>${renderPersonnelTable(byWh[wh], isQC)}</div>`).join('') || '<div class="wfr-empty">No data</div>';
+}
+renderByWarehouse(document.getElementById('pickers-by-wh'), PERSONNEL.pickers_by_warehouse, false);
+renderByWarehouse(document.getElementById('checkers-by-wh'), PERSONNEL.qc_by_warehouse, true);
+
+// ---- Tab 1: trend chart (SVG line, raised vs accepted, filterable by category) ----
+let trendCat = 'All';
+function drawTrend() {
+  const w = 1040, h = 260, padL = 36, padR = 12, padT = 12, padB = 24;
+  const days = TREND.map(d => d.date);
+  const raised = TREND.map(d => (d.series[trendCat] || {raised:0}).raised);
+  const accepted = TREND.map(d => (d.series[trendCat] || {accepted:0}).accepted);
+  const maxY = Math.max(...raised, ...accepted, 1);
+  const n = days.length;
+  const x = i => padL + (i / Math.max(n - 1, 1)) * (w - padL - padR);
+  const y = v => h - padB - (v / maxY) * (h - padT - padB);
+  const path = arr => arr.map((v, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
+
+  const gridlines = [0, 0.25, 0.5, 0.75, 1].map(f => {
+    const val = Math.round(maxY * f);
+    const yy = y(val);
+    return `<line x1="${padL}" y1="${yy}" x2="${w-padR}" y2="${yy}" stroke="var(--gridline)" stroke-width="1"/><text x="2" y="${yy+4}" font-size="10" fill="var(--text-muted)">${val}</text>`;
+  }).join('');
+
+  const svg = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    ${gridlines}
+    <path d="${path(raised)}" fill="none" stroke="var(--series-1)" stroke-width="2"/>
+    <path d="${path(accepted)}" fill="none" stroke="var(--series-3)" stroke-width="2"/>
+    ${raised.map((v,i) => `<circle class="pt" data-i="${i}" cx="${x(i)}" cy="${y(v)}" r="7" fill="transparent"/>`).join('')}
+  </svg><div class="wfr-chart-tooltip" id="trend-tip"></div>`;
+  const el = document.getElementById('trend-chart');
+  el.innerHTML = svg;
+
+  const tip = document.getElementById('trend-tip');
+  el.querySelectorAll('.pt').forEach(pt => {
+    pt.addEventListener('mouseenter', (e) => {
+      const i = +pt.dataset.i;
+      tip.textContent = `${days[i]} · Raised ${raised[i]} · Accepted ${accepted[i]}`;
+      tip.style.display = 'block';
+    });
+    pt.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      tip.style.left = (e.clientX - rect.left + 12) + 'px';
+      tip.style.top = (e.clientY - rect.top - 10) + 'px';
+    });
+    pt.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+  });
+}
+document.querySelectorAll('[data-trend-cat]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('[data-trend-cat]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    btn.setAttribute('aria-pressed', 'true');
+    trendCat = btn.dataset.trendCat;
+    drawTrend();
+  });
+});
+drawTrend();
+</script>
