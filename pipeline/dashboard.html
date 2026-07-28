@@ -194,7 +194,7 @@
         <option value="all">All locations</option>
       </select>
     </div>
-    <div class="wfr-footnote" style="margin: -10px 0 16px">Date range, category, and location filters apply across Tab 1 and Tab 2 (and the topline below). Tab 3's order-volume denominators stay pinned to the full 90-day window since a picker/checker's total processed count needs the full window to be meaningful — narrowing the date range there only affects "error orders". Tab 4 is always yesterday, unaffected by these filters.</div>
+    <div class="wfr-footnote" style="margin: -10px 0 16px">Date range, category, and location filters apply across Tab 1 and Tab 2 (and the topline below). The topline's "Total Orders" denominator also narrows by Location (so WFR% for a single warehouse is meaningful), but not by Category — mis-shipment category doesn't partition all orders placed, only the numerator. Tab 3's order-volume denominators stay pinned to the full 90-day window since a picker/checker's total processed count needs the full window to be meaningful — narrowing the date range there only affects "error orders". Tab 4 is always yesterday, unaffected by these filters.</div>
 
     <div class="wfr-topline" id="wfr-topline">
       <div class="wfr-topline-head">
@@ -232,7 +232,7 @@
     <!-- TAB 1 -->
     <div class="wfr-panel active" id="t1">
       <div class="wfr-tiles tiles-4b">
-        <div class="wfr-tile"><div class="wfr-tile-label">Total tickets raised</div><div class="wfr-tile-value" id="k-total-tickets"></div></div>
+        <div class="wfr-tile"><div class="wfr-tile-label">Total issues raised (unique per order)</div><div class="wfr-tile-value" id="k-total-tickets"></div></div>
         <div class="wfr-tile"><div class="wfr-tile-label">Total refunds/returns issued</div><div class="wfr-tile-value" id="k-total-returns"></div></div>
         <div class="wfr-tile"><div class="wfr-tile-label">WH Accepted</div><div class="wfr-tile-value good" id="k-wh-accepted"></div></div>
         <div class="wfr-tile"><div class="wfr-tile-label">BOD + Considered BOD</div><div class="wfr-tile-value bod" id="k-bod"></div>
@@ -383,6 +383,7 @@ const ALL_TICKETS = __TICKETS_JSON__;
 const PERSONNEL = __PERSONNEL_JSON__;
 const TREND = __TREND_JSON__;
 const ORDERS_BY_DAY = __ORDERS_BY_DAY_JSON__;
+const ORDERS_BY_DAY_LOC = __ORDERS_BY_DAY_LOCATION_JSON__;
 const EOD = __EOD_JSON__;
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
@@ -407,40 +408,57 @@ function barRow(name, total, accepted, maxTotal) {
   </div>`;
 }
 
-function computeAggregates(tickets) {
-  const total_tickets = tickets.length;
-  const withReturn = tickets.filter(t => t.resolution !== 'no_return_record');
-  const whAccepted = tickets.filter(t => t.resolution === 'wh_accepted');
-  const bod = tickets.filter(t => t.resolution === 'bod' || t.resolution === 'considered_bod');
-  const noReturn = tickets.filter(t => t.resolution === 'no_return_record');
+// Multiple tickets can be raised for the same order (repeat customer contact about the
+// same issue) - dedupe by order_id so headline counts reflect distinct issues, not raw
+// ticket volume. Within a dedup group, resolution/location are identical across tickets
+// (they're looked up per order_id from ClickHouse), so picking any one row is safe.
+function dedupeByOrder(tickets) {
+  const seen = new Map();
+  tickets.forEach(t => { if (!seen.has(t.order_id)) seen.set(t.order_id, t); });
+  return Array.from(seen.values());
+}
 
-  const byCategory = {};
-  CATEGORIES.forEach(c => byCategory[c] = {total: 0, accepted: 0});
+function computeAggregates(tickets) {
+  const uniqueTickets = dedupeByOrder(tickets);
+  const total_tickets = uniqueTickets.length;
+  const withReturn = uniqueTickets.filter(t => t.resolution !== 'no_return_record');
+  const whAccepted = uniqueTickets.filter(t => t.resolution === 'wh_accepted');
+  const bod = uniqueTickets.filter(t => t.resolution === 'bod' || t.resolution === 'considered_bod');
+  const noReturn = uniqueTickets.filter(t => t.resolution === 'no_return_record');
+
+  // Category dedup is per-category (an order can legitimately appear in two categories if
+  // it has genuinely distinct issues raised against it - only same-order-same-category
+  // repeats are collapsed).
+  const byCategoryTickets = {};
+  CATEGORIES.forEach(c => byCategoryTickets[c] = []);
   tickets.forEach(t => {
-    if (!byCategory[t.category]) byCategory[t.category] = {total: 0, accepted: 0};
-    byCategory[t.category].total++;
-    if (t.resolution === 'wh_accepted') byCategory[t.category].accepted++;
+    if (!byCategoryTickets[t.category]) byCategoryTickets[t.category] = [];
+    byCategoryTickets[t.category].push(t);
   });
   const catRows = CATEGORIES.map(c => {
-    const r = byCategory[c];
+    const rows = dedupeByOrder(byCategoryTickets[c] || []);
+    const accepted = rows.filter(t => t.resolution === 'wh_accepted').length;
     return {
-      category: c, total: r.total,
-      pct_of_total: total_tickets ? Math.round(r.total / total_tickets * 1000) / 10 : 0,
-      accepted: r.accepted,
-      accept_pct: r.total ? Math.round(r.accepted / r.total * 1000) / 10 : 0,
+      category: c, total: rows.length,
+      pct_of_total: total_tickets ? Math.round(rows.length / total_tickets * 1000) / 10 : 0,
+      accepted,
+      accept_pct: rows.length ? Math.round(accepted / rows.length * 1000) / 10 : 0,
     };
   });
 
-  const byLoc = {};
+  const byLocTickets = {};
   tickets.forEach(t => {
-    byLoc[t.location] = byLoc[t.location] || {total: 0, accepted: 0};
-    byLoc[t.location].total++;
-    if (t.resolution === 'wh_accepted') byLoc[t.location].accepted++;
+    byLocTickets[t.location] = byLocTickets[t.location] || [];
+    byLocTickets[t.location].push(t);
   });
-  const locRows = Object.entries(byLoc).sort((a,b) => b[1].total - a[1].total).map(([loc, r]) => ({
-    location: loc, total: r.total, accepted: r.accepted,
-    accept_pct: r.total ? Math.round(r.accepted / r.total * 1000) / 10 : 0,
-  }));
+  const locRows = Object.entries(byLocTickets).map(([loc, rows]) => {
+    const unique = dedupeByOrder(rows);
+    const accepted = unique.filter(t => t.resolution === 'wh_accepted').length;
+    return {
+      location: loc, total: unique.length, accepted,
+      accept_pct: unique.length ? Math.round(accepted / unique.length * 1000) / 10 : 0,
+    };
+  }).sort((a,b) => b.total - a.total);
 
   return {
     total_tickets, total_returns: withReturn.length,
@@ -578,9 +596,20 @@ function normalizeOrdersByDay(raw) {
   return out;
 }
 const ORDERS_BY_DAY_MAP = normalizeOrdersByDay(ORDERS_BY_DAY);
+// ORDERS_BY_DAY_LOCATION: {"YYYY-MM-DD": {"Delhi": 2551, "Mumbai": 1604, ...}} - lets the
+// Total Orders denominator actually narrow by warehouse when the Location filter is set,
+// instead of staying at the all-locations total while the numerator gets filtered.
+const ORDERS_BY_DAY_LOCATION = typeof ORDERS_BY_DAY_LOC !== 'undefined' ? ORDERS_BY_DAY_LOC : {};
 
-function sumOrders(start, end) {
+function sumOrders(start, end, location) {
   let sum = 0;
+  if (location && location !== 'all') {
+    for (const [dateStr, byLoc] of Object.entries(ORDERS_BY_DAY_LOCATION)) {
+      const d = new Date(dateStr + 'T00:00:00');
+      if (d >= start && d < end) sum += (byLoc[location] || 0);
+    }
+    return sum;
+  }
   for (const [dateStr, count] of Object.entries(ORDERS_BY_DAY_MAP)) {
     const d = new Date(dateStr + 'T00:00:00');
     if (d >= start && d < end) sum += count;
@@ -590,7 +619,8 @@ function sumOrders(start, end) {
 
 function renderTopline(tickets) {
   const [start, end] = rangeWindow(currentRangeDays);
-  const totalOrders = sumOrders(start, end);
+  const locFilter = document.getElementById('filter-location').value;
+  const totalOrders = sumOrders(start, end, locFilter);
   // WFR Total = orders with an actual refund/return on file (wh_accepted + bod + considered_bod),
   // NOT every ticket raised - a raw ticket count would include tickets with no return ever
   // processed (resolution === 'no_return_record'), which is just noise/customer complaints,
@@ -693,7 +723,7 @@ document.getElementById('wfr-download').addEventListener('click', () => {
     ...tickets.map(t => [t.ticket_id, t.order_id, t.category, t.location, t.created_time, RESOLUTION_LABEL[t.resolution], t.accept_reason, t.picker || '-', t.qc || '-']),
     [],
     ['Summary'],
-    ['Total tickets raised', agg.total_tickets],
+    ['Total issues raised (unique per order)', agg.total_tickets],
     ['Total refunds/returns issued', agg.total_returns],
     ['WH Accepted', agg.wh_accepted],
     ['BOD + Considered BOD', agg.bod],
