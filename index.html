@@ -204,7 +204,7 @@
         <option value="all">All locations</option>
       </select>
     </div>
-    <div class="wfr-footnote" style="margin: -10px 0 16px">Date range, category, and location filters apply across Tab 1 and Tab 2 (and the topline below). The topline's "Total Orders" denominator also narrows by Location (so WFR% for a single warehouse is meaningful), but not by Category — mis-shipment category doesn't partition all orders placed, only the numerator. Tab 3's order-volume denominators stay pinned to the full 90-day window since a picker/checker's total processed count needs the full window to be meaningful — narrowing the date range there only affects "error orders". Tab 4 is always yesterday, unaffected by these filters.</div>
+    <div class="wfr-footnote" style="margin: -10px 0 16px">Date range, category, and location filters apply across Tab 1, Tab 2, and Tab 3 (and the topline below). The topline's "Total Orders" denominator also narrows by Location (so WFR% for a single warehouse is meaningful), but not by Category — mis-shipment category doesn't partition all orders placed, only the numerator. Tab 3's "Total orders processed" denominator stays pinned to the full 90-day window since a picker/checker's total throughput needs the full window to be meaningful, but "Error orders" (and the derived error-free count / error rate) recompute live from the filtered tickets, and the Location filter narrows which warehouse groups are shown. Tab 4 is always yesterday, unaffected by these filters.</div>
 
     <div class="wfr-topline" id="wfr-topline">
       <div class="wfr-topline-head">
@@ -707,6 +707,7 @@ function refresh() {
   const tickets = applyFilters();
   render(tickets);
   renderTopline(tickets);
+  renderPersonnel(tickets);
 }
 
 document.querySelectorAll('.wfr-range-btn').forEach(btn => {
@@ -820,12 +821,45 @@ function renderPersonnelTable(rows, isQC) {
   </table></div>`;
 }
 
-function renderByWarehouse(container, byWh, isQC) {
-  const whs = Object.keys(byWh).sort((a,b) => byWh[b].length - byWh[a].length);
-  container.innerHTML = whs.map(wh => `<div class="wfr-wh-group"><h4>${wh}</h4>${renderPersonnelTable(byWh[wh], isQC)}</div>`).join('') || '<div class="wfr-empty">No data</div>';
+// "Error orders" = WH-Accepted mis-shipment orders attributed to that picker/QC, recomputed
+// from whatever tickets are currently in scope (date range + category + location), so the
+// leaderboard reacts to the same filters as the rest of the dashboard. "Total orders processed"
+// stays pinned to the full 90-day picker/QC throughput baseline (see footnote above).
+function computePersonnelErrors(tickets) {
+  const pickerErrors = {}, qcErrors = {};
+  dedupeByOrder(tickets).forEach(t => {
+    if (t.resolution !== 'wh_accepted') return;
+    (t.picker_ids || []).forEach(uid => { pickerErrors[uid] = (pickerErrors[uid] || 0) + 1; });
+    if (t.qc_id) qcErrors[t.qc_id] = (qcErrors[t.qc_id] || 0) + 1;
+  });
+  return { pickerErrors, qcErrors };
 }
-renderByWarehouse(document.getElementById('pickers-by-wh'), PERSONNEL.pickers_by_warehouse, false);
-renderByWarehouse(document.getElementById('checkers-by-wh'), PERSONNEL.qc_by_warehouse, true);
+
+function renderByWarehouse(container, byWh, errorsMap, isQC, locFilter) {
+  const whs = Object.keys(byWh)
+    .filter(wh => locFilter === 'all' || wh === locFilter)
+    .sort((a,b) => byWh[b].length - byWh[a].length);
+  container.innerHTML = whs.map(wh => {
+    const rows = byWh[wh].map(r => {
+      const errors = errorsMap[r.user_id] || 0;
+      const total = r.total_orders;
+      return {
+        ...r,
+        error_orders: errors,
+        error_free_orders: total ? Math.max(total - errors, 0) : r.error_free_orders,
+        error_rate_pct: total ? Math.round(errors / total * 10000) / 100 : r.error_rate_pct,
+      };
+    }).sort((a,b) => b.error_orders - a.error_orders);
+    return `<div class="wfr-wh-group"><h4>${wh}</h4>${renderPersonnelTable(rows, isQC)}</div>`;
+  }).join('') || '<div class="wfr-empty">No data for this filter</div>';
+}
+
+function renderPersonnel(tickets) {
+  const { pickerErrors, qcErrors } = computePersonnelErrors(tickets);
+  const locFilter = document.getElementById('filter-location').value;
+  renderByWarehouse(document.getElementById('pickers-by-wh'), PERSONNEL.pickers_by_warehouse, pickerErrors, false, locFilter);
+  renderByWarehouse(document.getElementById('checkers-by-wh'), PERSONNEL.qc_by_warehouse, qcErrors, true, locFilter);
+}
 
 // ---- Tab 1: trend chart (SVG line, raised vs accepted, filterable by category) ----
 let trendCat = 'All';
