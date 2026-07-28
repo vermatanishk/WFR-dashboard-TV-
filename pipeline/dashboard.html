@@ -560,9 +560,28 @@ function applyFilters() {
   });
 }
 
+// Accepts either shape for ORDERS_BY_DAY: a flat {"YYYY-MM-DD": count} object,
+// or an array of {order_date|date: "YYYY-MM-DD", total_orders|count: N} rows
+// (the raw ClickHouse query shape) - normalize once so a future refresh can't
+// silently zero out the topline again just because it wrote the other shape.
+function normalizeOrdersByDay(raw) {
+  const out = {};
+  if (Array.isArray(raw)) {
+    raw.forEach(row => {
+      const date = row.order_date || row.date;
+      const count = row.total_orders != null ? row.total_orders : row.count;
+      if (date != null && count != null) out[date] = Number(count);
+    });
+  } else if (raw && typeof raw === 'object') {
+    Object.entries(raw).forEach(([date, count]) => { out[date] = Number(count); });
+  }
+  return out;
+}
+const ORDERS_BY_DAY_MAP = normalizeOrdersByDay(ORDERS_BY_DAY);
+
 function sumOrders(start, end) {
   let sum = 0;
-  for (const [dateStr, count] of Object.entries(ORDERS_BY_DAY)) {
+  for (const [dateStr, count] of Object.entries(ORDERS_BY_DAY_MAP)) {
     const d = new Date(dateStr + 'T00:00:00');
     if (d >= start && d < end) sum += count;
   }
