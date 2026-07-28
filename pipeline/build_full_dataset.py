@@ -98,6 +98,19 @@ user_wh = {}
 for r in load_jsonl(HERE / "zoho_raw90/user_warehouse_map.jsonl"):
     user_wh[r["internal_user_id"]] = r["warehouse_name"]
 
+# Real names for pickers/QC (auth_internal_users.username), keyed by user_id as string.
+user_names = {}
+_names_path = HERE / "zoho_raw90/user_names.json"
+if _names_path.exists():
+    user_names = {int(k): v for k, v in json.loads(_names_path.read_text()).items()}
+
+# Cold-chain classification per order_id (True/False), from mdm_master_drug_data.cold_storage
+# joined via marketplace_order_item_batches. Missing/unmatched order_id -> None (unknown).
+order_cold_flag = {}
+_cold_path = HERE / "order_cold_flag.json"
+if _cold_path.exists():
+    order_cold_flag = {int(k): v for k, v in json.loads(_cold_path.read_text()).items()}
+
 def parse_order_id(raw):
     """Best-effort clean of the raw Zoho 'Order ID' custom-field text.
     Returns an int order_id, or None if the field is missing/unparseable/ambiguous
@@ -133,7 +146,7 @@ for t in tickets:
     accepted = resolution == "wh_accepted"
     pick_uids = picker_str(order_id) if accepted else None
     qc = qc_info(order_id) if accepted else None
-    picker_display = " / ".join(f"user_{u}" for u in pick_uids) if pick_uids else None
+    picker_display = " / ".join(user_names.get(u, f"user_{u}") for u in pick_uids) if pick_uids else None
     out_tickets.append({
         "ticket_id": t["ticket_id"],
         "order_id": order_id,
@@ -147,6 +160,7 @@ for t in tickets:
         "picker_ids": pick_uids or [],
         "qc": qc[0] if qc else None,
         "qc_id": qc[1] if qc else None,
+        "is_cold": order_cold_flag.get(order_id),
     })
 
 _now = datetime.now(timezone.utc)
@@ -192,42 +206,42 @@ for t in out_tickets:
     if t["qc_id"]:
         qc_errors[t["qc_id"]] += 1
 
-by_wh_pickers = defaultdict(list)
-for uid, errors in picker_errors.items():
-    wh = user_wh.get(uid, "Unknown")
-    total = picker_totals.get(uid, 0)
-    by_wh_pickers[wh].append({
-        "user_id": uid, "total_orders": total, "error_orders": errors,
-        "error_free_orders": max(total - errors, 0),
-        "error_rate_pct": round(100 * errors / total, 2) if total else None,
-    })
-
-by_wh_qc = defaultdict(list)
-for uid, errors in qc_errors.items():
-    wh = user_wh.get(uid, "Unknown")
-    total = qc_totals.get(uid, 0)
-    name = next((r.get("name") for r in [{}] ), None)
-    by_wh_qc[wh].append({
-        "user_id": uid, "total_orders": total, "error_orders": errors,
-        "error_free_orders": max(total - errors, 0),
-        "error_rate_pct": round(100 * errors / total, 2) if total else None,
-    })
-
-# attach names for qc
 qc_names = {}
 for line in open(HERE / "zoho_raw90/qc_totals.csv"):
     line = line.strip()
     if not line or line.startswith("user_id"): continue
     parts = line.split(",")
     qc_names[int(parts[0])] = parts[1]
-for wh, rows_ in by_wh_qc.items():
-    for r in rows_:
-        r["name"] = qc_names.get(r["user_id"], f"user_{r['user_id']}")
 
+# Full roster (not just pickers/QC with at least one error) so the leaderboard shows
+# error-free staff too - useful for comparing good performers against bad, not just
+# surfacing problems.
+by_wh_pickers = defaultdict(list)
+for uid, total in picker_totals.items():
+    errors = picker_errors.get(uid, 0)
+    wh = user_wh.get(uid, "Unknown")
+    by_wh_pickers[wh].append({
+        "user_id": uid, "name": user_names.get(uid, f"user_{uid}"), "total_orders": total, "error_orders": errors,
+        "error_free_orders": max(total - errors, 0),
+        "error_rate_pct": round(100 * errors / total, 2) if total else None,
+    })
+
+by_wh_qc = defaultdict(list)
+for uid, total in qc_totals.items():
+    errors = qc_errors.get(uid, 0)
+    wh = user_wh.get(uid, "Unknown")
+    by_wh_qc[wh].append({
+        "user_id": uid, "name": user_names.get(uid, qc_names.get(uid, f"user_{uid}")), "total_orders": total, "error_orders": errors,
+        "error_free_orders": max(total - errors, 0),
+        "error_rate_pct": round(100 * errors / total, 2) if total else None,
+    })
+
+# Ascending by error rate (best performers first); people with total_orders=0 (no
+# throughput data) sort last since their rate is undefined.
 for wh, rows_ in by_wh_pickers.items():
-    rows_.sort(key=lambda r: -r["error_orders"])
+    rows_.sort(key=lambda r: r["error_rate_pct"] if r["error_rate_pct"] is not None else 999999)
 for wh, rows_ in by_wh_qc.items():
-    rows_.sort(key=lambda r: -r["error_orders"])
+    rows_.sort(key=lambda r: r["error_rate_pct"] if r["error_rate_pct"] is not None else 999999)
 
 personnel = {"pickers_by_warehouse": by_wh_pickers, "qc_by_warehouse": by_wh_qc}
 (HERE / "personnel.json").write_text(json.dumps(personnel))

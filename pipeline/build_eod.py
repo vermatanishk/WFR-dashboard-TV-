@@ -1,7 +1,12 @@
 """
-Builds the Zoho EOD tab dataset: yesterday's mis-shipment tickets only,
-classified WH-Accepted by the WAREHOUSE TEAM's own comment text - not
-by category, and not by what the support agent/customer said.
+Builds the Zoho EOD tab dataset: T-2 (the day before yesterday)'s mis-shipment
+tickets only, classified WH-Accepted by the WAREHOUSE TEAM's own comment text -
+not by category, and not by what the support agent/customer said.
+
+Pull window is T-2, not T-1 ("yesterday"), per ops feedback: at the 5am run,
+the Warehouse team often hasn't posted its comment on a T-1 ticket yet, so a
+same-day/T-1 pull undercounts WH-Accepted just from comment-posting lag, not
+an actual absence of admission. T-2 gives the WH team a full day to comment.
 
 WH-Accepted (text) = a comment from a "Warehouse" role commenter on the
 ticket contains a genuine ADMISSION (e.g. "we have sent wrong sku",
