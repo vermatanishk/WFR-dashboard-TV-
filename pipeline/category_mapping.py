@@ -27,6 +27,7 @@ CATEGORY_MAP = {
     "damaged or defective packaging": "Damaged/Defective",
     "order/item damage": "Damaged/Defective",
     "defective device or accessory": "Damaged/Defective",
+    "defective or damaged device or accessory": "Damaged/Defective",
 
     # Switch Orders
     "order switch": "Switch Orders",

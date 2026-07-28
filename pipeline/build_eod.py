@@ -44,7 +44,7 @@ WH_COMMENT = {
     "245052": "We have sent proper medicine to Cx",
     "245208": "We have sent proper medicine to Cx",
     "245481": "We have sent proper medicine to Cx",
-    "245827": None,
+    "245827": "We have sent proper medicine to Cx",
     "245834": "We have sent proper medicine to Cx",
     "245111": "We have sent proper medicine to Cx",
     "245735": "We have sent proper medicine to Cx",
@@ -124,7 +124,7 @@ for t in TICKETS:
     })
 
 eod_data = {
-    "generated_at": "2026-07-27T16:20:00Z",
+    "generated_at": "2026-07-28T13:41:07Z",
     "for_date": "2026-07-26",
     "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
     "tickets": out_tickets,
