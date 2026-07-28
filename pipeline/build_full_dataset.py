@@ -5,6 +5,7 @@ pipeline/data.json, plus personnel leaderboard data (pipeline/personnel.json)
 and a daily trend series (pipeline/trend.json).
 """
 import json
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from collections import defaultdict
 from category_mapping import WH_FAULT_CONFIRMED_REMARK_PATTERNS, NON_WH_FAULT_REMARK_PATTERNS
@@ -97,9 +98,37 @@ user_wh = {}
 for r in load_jsonl(HERE / "zoho_raw90/user_warehouse_map.jsonl"):
     user_wh[r["internal_user_id"]] = r["warehouse_name"]
 
+def parse_order_id(raw):
+    """Best-effort clean of the raw Zoho 'Order ID' custom-field text.
+    Returns an int order_id, or None if the field is missing/unparseable/ambiguous
+    (never guesses between multiple candidate IDs on a single ticket)."""
+    if not raw:
+        return None
+    s = str(raw).strip().rstrip(".")
+    if not s or " " in s or not s.lstrip("+-").isdigit():
+        return None
+    n = int(s)
+    if not (10**5 <= n <= 10**9):  # plausible order-id magnitude; filters phone numbers etc.
+        return None
+    return n
+
+
+no_order_id_tickets = []
+valid_tickets = []
+for t in tickets:
+    oid = parse_order_id(t.get("order_id"))
+    if oid is None:
+        no_order_id_tickets.append(t)
+    else:
+        t["order_id"] = oid
+        valid_tickets.append(t)
+tickets = valid_tickets
+if no_order_id_tickets:
+    print(f"WARNING: {len(no_order_id_tickets)} tickets have no usable Order ID in Zoho (missing/malformed/ambiguous - data-quality gap in source) - excluded from joined dataset: {[t['ticket_id'] for t in no_order_id_tickets]}")
+
 out_tickets = []
 for t in tickets:
-    order_id = int(t["order_id"])
+    order_id = t["order_id"]
     resolution, location, reason_note = classify(order_id)
     accepted = resolution == "wh_accepted"
     pick_uids = picker_str(order_id) if accepted else None
@@ -120,12 +149,15 @@ for t in tickets:
         "qc_id": qc[1] if qc else None,
     })
 
+_now = datetime.now(timezone.utc)
+_window_start = _now - timedelta(days=90)
 data = {
-    "generated_at": "2026-07-27T12:00:00Z",
+    "generated_at": _now.strftime("%Y-%m-%dT%H:%M:%SZ"),
     "sheet_source": "Zoho Desk API (live) via connected MCP - org 60026539570, department Support",
     "clickhouse_service": "PRx Nucleus",
-    "pull_window": "Last 90 days (2026-04-28 to 2026-07-27), exhaustive within that window",
-    "sample_note": f"Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days (2026-04-28 to 2026-07-27) - {len(out_tickets)} tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window.",
+    "pull_window": f"Last 90 days ({_window_start.strftime('%Y-%m-%d')} to {_now.strftime('%Y-%m-%d')}), exhaustive within that window",
+    "sample_note": f"Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - {len(out_tickets)} tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window."
+    + (f" {len(no_order_id_tickets)} tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable)." if no_order_id_tickets else ""),
     "tickets": out_tickets,
 }
 (HERE / "data.json").write_text(json.dumps(data))
