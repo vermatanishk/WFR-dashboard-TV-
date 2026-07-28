@@ -133,6 +133,16 @@
   .wfr-wh-group { margin-bottom: 18px; }
   .wfr-wh-group h4 { font-size: 12.5px; font-weight: 700; margin: 0 0 8px; color: var(--text-primary); }
 
+  .wfr-row-2col { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; align-items: stretch; }
+  @media (max-width: 860px) { .wfr-row-2col { grid-template-columns: 1fr; } }
+
+  .wfr-pie-wrap { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .wfr-pie-legend { display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; flex: 1; min-width: 160px; }
+  .wfr-pie-legend-row { display: flex; align-items: center; gap: 8px; }
+  .wfr-pie-legend-row i { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+  .wfr-pie-legend-row span:first-of-type { color: var(--text-secondary); flex: 1; }
+  .wfr-pie-legend-val { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+
   .wfr-chart { position: relative; }
   .wfr-chart svg { width: 100%; height: auto; display: block; }
   .wfr-chart-tooltip {
@@ -240,22 +250,33 @@
         </div>
       </div>
 
-      <div class="wfr-card">
-        <div class="wfr-card-head">
-          <h3>Tickets raised vs. accepted, over time</h3>
-          <div class="wfr-filters" style="margin-bottom:0">
-            <button class="wfr-chip" data-trend-cat="All" aria-pressed="true">All</button>
-            <button class="wfr-chip" data-trend-cat="Missing/Wrong Qty" aria-pressed="false">Missing/Wrong Qty</button>
-            <button class="wfr-chip" data-trend-cat="Wrong Medicines" aria-pressed="false">Wrong Medicines</button>
-            <button class="wfr-chip" data-trend-cat="Expiry Issue" aria-pressed="false">Expiry Issue</button>
-            <button class="wfr-chip" data-trend-cat="Damaged/Defective" aria-pressed="false">Damaged/Defective</button>
+      <div class="wfr-row-2col">
+        <div class="wfr-card" style="margin-bottom:0">
+          <div class="wfr-card-head">
+            <h3>Tickets raised vs. accepted, over time</h3>
+            <div class="wfr-filters" style="margin-bottom:0">
+              <button class="wfr-chip" data-trend-cat="All" aria-pressed="true">All</button>
+              <button class="wfr-chip" data-trend-cat="Missing/Wrong Qty" aria-pressed="false">Missing/Wrong Qty</button>
+              <button class="wfr-chip" data-trend-cat="Wrong Medicines" aria-pressed="false">Wrong Medicines</button>
+              <button class="wfr-chip" data-trend-cat="Expiry Issue" aria-pressed="false">Expiry Issue</button>
+              <button class="wfr-chip" data-trend-cat="Damaged/Defective" aria-pressed="false">Damaged/Defective</button>
+            </div>
           </div>
+          <div class="wfr-legend">
+            <span><i class="line" style="background:var(--series-1)"></i>Raised</span>
+            <span><i class="line" style="background:var(--series-3)"></i>Accepted</span>
+          </div>
+          <div class="wfr-chart" id="trend-chart"></div>
         </div>
-        <div class="wfr-legend">
-          <span><i class="line" style="background:var(--series-1)"></i>Raised</span>
-          <span><i class="line" style="background:var(--series-3)"></i>Accepted</span>
+
+        <div class="wfr-card" style="margin-bottom:0">
+          <h3>% of total issues, by category</h3>
+          <div class="wfr-pie-wrap">
+            <div id="cat-pie-chart"></div>
+            <div id="cat-pie-legend" class="wfr-pie-legend"></div>
+          </div>
+          <div class="wfr-footnote">Reflects the current date range, category, and location filters — unique per order, same as the "Total issues raised" tile above.</div>
         </div>
-        <div class="wfr-chart" id="trend-chart"></div>
       </div>
 
       <div class="wfr-card">
@@ -522,11 +543,56 @@ function render(tickets) {
   document.getElementById('loc-bars').innerHTML = agg.tab2.map(r => barRow(r.location, r.total, r.accepted, maxLoc)).join('') || '<div class="wfr-empty">No tickets in this range</div>';
   document.querySelector('#loc-table tbody').innerHTML = agg.tab2.map(r => `<tr><td>${r.location}</td><td class="num">${r.total}</td><td class="num">${r.accepted}</td><td class="num">${r.accept_pct}%</td></tr>`).join('');
 
+  drawCategoryPie(agg.by_category);
+
   ticketPage = 0;
   renderTicketTable(tickets);
 
   window.__wfrFiltered = tickets;
   window.__wfrAgg = agg;
+}
+
+// Categorical palette slots 1-5 (blue/orange/aqua/yellow/magenta) - distinct hues per
+// category, separate from the Total/Accepted blue-vs-aqua encoding used elsewhere.
+const CATEGORY_COLORS = {
+  'Missing/Wrong Qty': '#2a78d6',
+  'Wrong Medicines': '#eb6834',
+  'Expiry Issue': '#1baf7a',
+  'Damaged/Defective': '#eda100',
+  'Switch Orders': '#e87ba4',
+};
+
+function drawCategoryPie(byCategory) {
+  const rows = byCategory.filter(r => r.total > 0);
+  const total = rows.reduce((s, r) => s + r.total, 0);
+  const size = 168, r = 58, cx = size / 2, cy = size / 2, strokeWidth = 30;
+  const circumference = 2 * Math.PI * r;
+
+  if (!total) {
+    document.getElementById('cat-pie-chart').innerHTML = '<div class="wfr-empty">No tickets in this range</div>';
+    document.getElementById('cat-pie-legend').innerHTML = '';
+    return;
+  }
+
+  let offset = 0;
+  const segs = rows.map(r2 => {
+    const frac = r2.total / total;
+    const len = frac * circumference;
+    const seg = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${CATEGORY_COLORS[r2.category] || '#898781'}" stroke-width="${strokeWidth}" stroke-dasharray="${len} ${circumference - len}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset += len;
+    return seg;
+  }).join('');
+
+  document.getElementById('cat-pie-chart').innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    ${segs}
+    <text x="${cx}" y="${cy - 4}" text-anchor="middle" font-size="24" font-weight="800" fill="var(--text-primary)">${total}</text>
+    <text x="${cx}" y="${cy + 15}" text-anchor="middle" font-size="10.5" fill="var(--text-muted)">issues</text>
+  </svg>`;
+
+  document.getElementById('cat-pie-legend').innerHTML = rows.map(r2 => {
+    const pct = Math.round(r2.total / total * 1000) / 10;
+    return `<div class="wfr-pie-legend-row"><i style="background:${CATEGORY_COLORS[r2.category] || '#898781'}"></i><span>${r2.category}</span><span class="wfr-pie-legend-val">${pct}%</span></div>`;
+  }).join('');
 }
 
 document.querySelectorAll('[data-res-filter]').forEach(btn => {
