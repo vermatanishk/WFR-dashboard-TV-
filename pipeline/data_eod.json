@@ -1,287 +1,257 @@
 {
-  "generated_at": "2026-07-29T13:45:00Z",
-  "for_date": "2026-07-27",
-  "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
+  "generated_at": "2026-07-30T13:45:00Z",
+  "for_date": "2026-07-28",
+  "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy. Pull window is T-2 (2026-07-28), not T-1, so the WH team has a full day to comment before the run.",
   "tickets": [
     {
-      "ticket_id": "246862",
-      "order_id": 3107185,
+      "ticket_id": "247642",
+      "order_id": 3167696,
       "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T13:17:25",
-      "location": "Mumbai",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246849",
-      "order_id": 3142847,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T12:58:24",
-      "location": "Mumbai",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246835",
-      "order_id": 3136033,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T12:34:08",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx to",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx to\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246440",
-      "order_id": 3116640,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T06:27:18",
-      "location": "Bangalore",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246428",
-      "order_id": 3128155,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T06:18:09",
-      "location": "Bangalore",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246449",
-      "order_id": 3143740,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T06:40:31",
-      "location": "Bangalore",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246858",
-      "order_id": 3153502,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T13:12:10",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246856",
-      "order_id": 3154920,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T13:09:46",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246485",
-      "order_id": 3161465,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T07:29:54",
-      "location": "Kolkata",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246486",
-      "order_id": 3150330,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T07:32:24",
-      "location": "Kolkata",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246515",
-      "order_id": 3098845,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T08:04:06",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246763",
-      "order_id": 3038162,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T10:33:23",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246506",
-      "order_id": 3130995,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T07:53:58",
-      "location": "Mumbai",
-      "wh_comment": "We have sent proper medicine to Cx to",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx to\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246386",
-      "order_id": 3098238,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T05:18:29",
-      "location": "Bangalore",
-      "wh_comment": "We have sent proper medicine to cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246477",
-      "order_id": 3152646,
-      "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T07:23:45",
+      "created_time": "2026-07-28T12:52:25",
       "location": "Lucknow",
       "wh_comment": "We have sent proper medicine to Cx",
       "wh_accepted_text": false,
       "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
     },
     {
-      "ticket_id": "246521",
-      "order_id": 3164799,
+      "ticket_id": "247453",
+      "order_id": 3171004,
       "category": "Missing/Wrong Qty",
-      "created_time": "2026-07-27T08:10:58",
-      "location": "Delhi",
+      "created_time": "2026-07-28T09:22:18",
+      "location": "Kolkata",
       "wh_comment": "We have sent proper medicine to Cx",
       "wh_accepted_text": false,
       "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
     },
     {
-      "ticket_id": "246816",
-      "order_id": 3141605,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T11:57:27",
+      "ticket_id": "247608",
+      "order_id": 3113063,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T11:56:38",
       "location": "Bangalore",
       "wh_comment": "We have sent proper medicine to Cx",
       "wh_accepted_text": false,
       "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
     },
     {
-      "ticket_id": "246773",
-      "order_id": 3158835,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T10:52:23",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx (New Pak its not a wrong medicine)",
+      "ticket_id": "247650",
+      "order_id": 3186743,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T13:02:28",
+      "location": "Bangalore",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247278",
+      "order_id": 3153679,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T07:56:40",
+      "location": "Mumbai",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247660",
+      "order_id": 3174252,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T13:10:57",
+      "location": "Bangalore",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247657",
+      "order_id": 3180098,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T13:08:58",
+      "location": "Bangalore",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247654",
+      "order_id": 3184841,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T13:05:40",
+      "location": "Kolkata",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247647",
+      "order_id": 3152921,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T12:59:20",
+      "location": "Bangalore",
+      "wh_comment": "We have sent short qty to Cx",
       "wh_accepted_text": true,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx (New Pak its not a wrong medicine)\" - explicit admission, counted WH-Accepted."
+      "reason": "Warehouse team comment: \"We have sent short qty to Cx\" - explicit admission, counted WH-Accepted."
     },
     {
-      "ticket_id": "246283",
-      "order_id": 3163391,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T02:52:46",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246442",
-      "order_id": 3088226,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T06:29:38",
+      "ticket_id": "247624",
+      "order_id": 3161893,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T12:16:22",
       "location": "Mumbai",
       "wh_comment": "We have sent proper medicine to Cx",
       "wh_accepted_text": false,
       "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
     },
     {
-      "ticket_id": "246398",
-      "order_id": 3174461,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T05:35:41",
-      "location": "Mumbai",
-      "wh_comment": null,
-      "wh_accepted_text": false,
-      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
-    },
-    {
-      "ticket_id": "246513",
-      "order_id": 3119511,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T07:59:10",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246770",
-      "order_id": 3082131,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T10:45:44",
-      "location": "Delhi",
-      "wh_comment": null,
-      "wh_accepted_text": false,
-      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
-    },
-    {
-      "ticket_id": "246302",
-      "order_id": 3136867,
-      "category": "Wrong Medicines",
-      "created_time": "2026-07-27T03:23:14",
+      "ticket_id": "247621",
+      "order_id": 3178893,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T12:12:48",
       "location": "Lucknow",
-      "wh_comment": null,
-      "wh_accepted_text": false,
-      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
+      "wh_comment": "We have sent short qty to Cx",
+      "wh_accepted_text": true,
+      "reason": "Warehouse team comment: \"We have sent short qty to Cx\" - explicit admission, counted WH-Accepted."
     },
     {
-      "ticket_id": "246391",
-      "order_id": 3171959,
-      "category": "Damaged/Defective",
-      "created_time": "2026-07-27T05:26:35",
-      "location": "Delhi",
-      "wh_comment": "We have sent proper medicine to cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246578",
-      "order_id": 3162719,
-      "category": "Damaged/Defective",
-      "created_time": "2026-07-27T08:50:53",
-      "location": "Mumbai",
-      "wh_comment": "We have sent proper medicine to Cx",
-      "wh_accepted_text": false,
-      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
-    },
-    {
-      "ticket_id": "246341",
-      "order_id": 3163432,
-      "category": "Damaged/Defective",
-      "created_time": "2026-07-27T04:26:25",
-      "location": "Bangalore",
-      "wh_comment": null,
-      "wh_accepted_text": false,
-      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
-    },
-    {
-      "ticket_id": "246511",
-      "order_id": 3164893,
-      "category": "Damaged/Defective",
-      "created_time": "2026-07-27T07:56:25",
+      "ticket_id": "247612",
+      "order_id": 3129044,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T11:58:24",
       "location": "Kolkata",
       "wh_comment": "We have sent proper medicine to Cx",
       "wh_accepted_text": false,
       "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247604",
+      "order_id": 3146952,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T11:49:45",
+      "location": "Bangalore",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247641",
+      "order_id": 3169434,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T12:47:16",
+      "location": "Mumbai",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247535",
+      "order_id": 3170326,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T10:03:46",
+      "location": "Bangalore",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247182",
+      "order_id": 3117054,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T05:55:11",
+      "location": "Delhi",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247264",
+      "order_id": 3151993,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T07:31:57",
+      "location": "Lucknow",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247162",
+      "order_id": 2991758,
+      "category": "Missing/Wrong Qty",
+      "created_time": "2026-07-28T05:25:44",
+      "location": "Delhi",
+      "wh_comment": null,
+      "wh_accepted_text": false,
+      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
+    },
+    {
+      "ticket_id": "247700",
+      "order_id": 3175757,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-28T14:20:37",
+      "location": "Mumbai",
+      "wh_comment": null,
+      "wh_accepted_text": false,
+      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
+    },
+    {
+      "ticket_id": "247579",
+      "order_id": 3179452,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-28T11:04:18",
+      "location": "Delhi",
+      "wh_comment": "We have sent wrong sku to Cx",
+      "wh_accepted_text": true,
+      "reason": "Warehouse team comment: \"We have sent wrong sku to Cx\" - explicit admission, counted WH-Accepted."
+    },
+    {
+      "ticket_id": "247617",
+      "order_id": 3153746,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-28T12:07:53",
+      "location": "Bangalore",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247646",
+      "order_id": 3154853,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-28T12:57:05",
+      "location": "Delhi",
+      "wh_comment": "We have sent proper medicine to Cx",
+      "wh_accepted_text": false,
+      "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
+    },
+    {
+      "ticket_id": "247651",
+      "order_id": 3167632,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-28T13:02:46",
+      "location": "Bangalore",
+      "wh_comment": "We have sent wrong sku to Cx",
+      "wh_accepted_text": true,
+      "reason": "Warehouse team comment: \"We have sent wrong sku to Cx\" - explicit admission, counted WH-Accepted."
+    },
+    {
+      "ticket_id": "247622",
+      "order_id": 3158818,
+      "category": "Wrong Medicines",
+      "created_time": "2026-07-28T12:14:54",
+      "location": "Bangalore",
+      "wh_comment": "We have sent wrong sku to Cx",
+      "wh_accepted_text": true,
+      "reason": "Warehouse team comment: \"We have sent wrong sku to Cx\" - explicit admission, counted WH-Accepted."
+    },
+    {
+      "ticket_id": "247063",
+      "order_id": 3179470,
+      "category": "Damaged/Defective",
+      "created_time": "2026-07-28T02:57:27",
+      "location": "Bangalore",
+      "wh_comment": null,
+      "wh_accepted_text": false,
+      "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
     }
   ]
 }
