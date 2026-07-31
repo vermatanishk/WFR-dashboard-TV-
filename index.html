@@ -167,6 +167,45 @@
   .wfr-topline-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; font-variant-numeric: tabular-nums; }
 
   .wfr-select { appearance: none; max-width: 100%; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 28px 6px 12px; border-radius: 8px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23898781'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
+
+  /* Print: designed for "switch to Tab 4 (Zoho EOD), then Ctrl+P" - only that tab's
+     content prints, everything else (filters, topline, tab nav, download button) is
+     stripped, and sizing is compacted to fit the tiles + both bar charts + the full
+     ticket table in 2 landscape pages for sharing as a PDF with the WH group. */
+  @media print {
+    @page { size: A4 landscape; margin: 10mm 12mm; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body, .wfr-root { background: #fff !important; }
+    .wfr-wrap { max-width: none; padding: 0; }
+
+    #wfr-disclaimer-banner, #wfr-filters-bar, #wfr-filters-footnote,
+    #wfr-topline, #wfr-tabs-nav, .wfr-toolbar, .wfr-header .wfr-meta {
+      display: none !important;
+    }
+
+    .wfr-header { margin-bottom: 6px; }
+    .wfr-title { font-size: 16px; }
+    .wfr-sub { font-size: 11px; }
+
+    .wfr-panel { display: none !important; }
+    .wfr-panel.active { display: block !important; }
+
+    #t4 .wfr-banner { padding: 6px 10px; font-size: 9.5px; margin-bottom: 8px; }
+    #t4 .wfr-tiles { gap: 8px; margin-bottom: 8px; }
+    #t4 .wfr-tile { padding: 8px 10px; }
+    #t4 .wfr-tile-label { font-size: 9.5px; }
+    #t4 .wfr-tile-value { font-size: 18px; margin-top: 2px; }
+    #t4 .wfr-card { padding: 10px 12px; margin-bottom: 8px; page-break-inside: avoid; }
+    #t4 .wfr-card h3 { font-size: 12px; margin: 0 0 6px; }
+    #t4 .wfr-bar-row { font-size: 9px; padding: 3px 0; grid-template-columns: 110px 1fr 70px; gap: 6px; }
+    #t4 .wfr-bar-track { height: 12px; }
+
+    #t4 .wfr-scroll { overflow: visible !important; }
+    #t4 table.wfr-table { font-size: 8.5px; }
+    #t4 table.wfr-table th, #t4 table.wfr-table td { padding: 3px 5px; }
+    #t4 table.wfr-table thead { display: table-header-group; }
+    #t4 table.wfr-table tr { page-break-inside: avoid; }
+  }
 </style>
 
 <div class="wfr-root">
@@ -183,12 +222,12 @@
       </div>
     </div>
 
-    <div class="wfr-banner">
+    <div class="wfr-banner" id="wfr-disclaimer-banner">
       <span class="dot"></span>
       <div><b>Data-freshness note:</b> <span id="wfr-sample-note"></span></div>
     </div>
 
-    <div class="wfr-filters">
+    <div class="wfr-filters" id="wfr-filters-bar">
       <span class="wfr-filters-label">Date range</span>
       <button class="wfr-range-btn" data-range="1" aria-pressed="false" title="Day before yesterday - shifted from T-1 per ops feedback, since WH-team comments often aren't posted yet at T-1">T-2</button>
       <button class="wfr-range-btn" data-range="7" aria-pressed="false">Last 7 days</button>
@@ -219,7 +258,7 @@
         <option value="non-cold">Non-cold only</option>
       </select>
     </div>
-    <div class="wfr-footnote" style="margin: -10px 0 16px">Date range, category, location, and SKU-type filters apply across Tab 1, Tab 2, and Tab 3 (and the topline below). The topline's "Total Orders" denominator also narrows by Location (so WFR% for a single warehouse is meaningful), but not by Category or SKU type — those don't partition all orders placed, only the numerator. Tab 3's "Total orders processed" denominator stays pinned to the full 90-day window since a picker/checker's total throughput needs the full window to be meaningful, but "Error orders" (and the derived error-free count / error rate) recompute live from the filtered tickets, and the Location filter narrows which warehouse groups are shown. "T-2" (day before yesterday) replaces the old "Yesterday" quick-filter and Tab 4's pull window, per ops feedback that Warehouse-team comments often aren't posted yet by the time T-1 data is pulled. Tab 4 is always T-2, unaffected by these filters. SKU-type classification (cold-chain vs non-cold) is only available for orders placed in the last 90 days; a handful of very old or edge-case orders with no item-batch record show as "Unknown" and are excluded when a SKU-type filter is active.</div>
+    <div class="wfr-footnote" id="wfr-filters-footnote" style="margin: -10px 0 16px">Date range, category, location, and SKU-type filters apply across Tab 1, Tab 2, and Tab 3 (and the topline below). The topline's "Total Orders" denominator also narrows by Location (so WFR% for a single warehouse is meaningful), but not by Category or SKU type — those don't partition all orders placed, only the numerator. Tab 3's "Total orders processed" denominator stays pinned to the full 90-day window since a picker/checker's total throughput needs the full window to be meaningful, but "Error orders" (and the derived error-free count / error rate) recompute live from the filtered tickets, and the Location filter narrows which warehouse groups are shown. "T-2" (day before yesterday) replaces the old "Yesterday" quick-filter and Tab 4's pull window, per ops feedback that Warehouse-team comments often aren't posted yet by the time T-1 data is pulled. Tab 4 is always T-2, unaffected by these filters. SKU-type classification (cold-chain vs non-cold) is only available for orders placed in the last 90 days; a handful of very old or edge-case orders with no item-batch record show as "Unknown" and are excluded when a SKU-type filter is active.</div>
 
     <div class="wfr-topline" id="wfr-topline">
       <div class="wfr-topline-head">
@@ -243,7 +282,7 @@
       </div>
     </div>
 
-    <div class="wfr-tabs" role="tablist">
+    <div class="wfr-tabs" id="wfr-tabs-nav" role="tablist">
       <button class="wfr-tab" role="tab" aria-selected="true" data-tab="t1">1 · Everything</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t2">2 · Location</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t3">3 · Personnel</button>
