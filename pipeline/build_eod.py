@@ -108,6 +108,21 @@ TICKETS = [
 ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
                       "short qty", "less qty", "sent short", "sent wrong", "missing qty"]
 
+# Picker/QC attribution for WH-Accepted (text) tickets only, from ClickHouse
+# (warehouse_warehouse_scan_log for picker, marketplace_order_status_log
+# current_status_id=61 for QC, both FINAL + _peerdb_is_deleted=0), joined by
+# order_id - independent of the ClickHouse return-request resolution, since a
+# T-2 order usually has no return record yet. Picker = the scanner(s) with the
+# most picks on that order (ties shown as "A / B"). Only populated for tickets
+# where wh_accepted_text is True - not counted tickets don't need attribution.
+PICKER_QC = {
+    "247647": {"picker": "Kavana_BLRWH", "qc": "Shivaraj_BLRWH"},
+    "247621": {"picker": "Gayatri.M_LKO / Anshu.S_LKO", "qc": "Arti_LKO"},
+    "247579": {"picker": "Sonu_DEL", "qc": "Shailesh_DEL"},
+    "247651": {"picker": "Rahman_BLRWH", "qc": "kannanmuthu_BLRWH"},
+    "247622": {"picker": "Ebinesar / Veena_BLRWH", "qc": "Shwetha_BLRWH"},
+}
+
 
 def classify(wh_comment):
     if not wh_comment:
@@ -122,12 +137,15 @@ out_tickets = []
 for t in TICKETS:
     wh_comment = WH_COMMENT.get(t["ticket_id"])
     wh_accepted, reason = classify(wh_comment)
+    pq = PICKER_QC.get(t["ticket_id"], {}) if wh_accepted else {}
     out_tickets.append({
         **t,
         "location": ORDER_LOCATION.get(t["order_id"], "Unknown"),
         "wh_comment": wh_comment,
         "wh_accepted_text": wh_accepted,
         "reason": reason,
+        "picker": pq.get("picker"),
+        "qc": pq.get("qc"),
     })
 
 eod_data = {

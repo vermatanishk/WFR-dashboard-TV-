@@ -205,6 +205,11 @@
     #t4 table.wfr-table th, #t4 table.wfr-table td { padding: 3px 5px; }
     #t4 table.wfr-table thead { display: table-header-group; }
     #t4 table.wfr-table tr { page-break-inside: avoid; }
+
+    /* Ticket-level detail always starts fresh on page 2, so page 1 is the
+       acceptance-funnel summary (tiles + category/location + personnel) and
+       page 2 is only the ticket table. */
+    #t4 #eod-ticket-detail-card { page-break-before: always; break-before: page; page-break-inside: auto; }
   }
 </style>
 
@@ -439,6 +444,16 @@
       </div>
 
       <div class="wfr-card">
+        <h3>Picker &amp; Checker — WH-Accepted tickets</h3>
+        <div class="wfr-scroll">
+          <table class="wfr-table" id="eod-personnel-table">
+            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Picker</th><th>Checker</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="wfr-card" id="eod-ticket-detail-card">
         <h3>Ticket-level detail</h3>
         <div class="wfr-scroll">
           <table class="wfr-table" id="eod-ticket-table">
@@ -838,6 +853,16 @@ EOD.tickets.forEach(t => {
 });
 const maxEodLoc = Math.max(...Object.values(eodByLoc).map(r => r.total), 1);
 document.getElementById('eod-loc-bars').innerHTML = Object.entries(eodByLoc).sort((a,b)=>b[1].total-a[1].total).map(([l,r]) => barRow(l, r.total, r.accepted, maxEodLoc)).join('') || '<div class="wfr-empty">No tickets</div>';
+
+const eodAcceptedTickets = EOD.tickets.filter(t => t.wh_accepted_text);
+document.querySelector('#eod-personnel-table tbody').innerHTML = eodAcceptedTickets.map(t => `<tr>
+  <td>${t.ticket_id}</td>
+  <td>${t.order_id}</td>
+  <td>${t.category}</td>
+  <td>${t.location}</td>
+  <td>${t.picker || '—'}</td>
+  <td>${t.qc || '—'}</td>
+</tr>`).join('') || '<tr><td colspan="6" class="wfr-empty">No WH-Accepted tickets for T-2</td></tr>';
 
 document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t => `<tr>
   <td>${t.ticket_id}</td>
