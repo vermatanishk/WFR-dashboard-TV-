@@ -1,5 +1,71 @@
 [
   {
+    "ticket_id": "249556",
+    "order_id": "3209814",
+    "sub_disposition": "Spilled or broken or spoiled contents",
+    "created_time": "2026-07-31T06:40:42.000Z",
+    "category": "Damaged/Defective",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "247063",
+    "order_id": "3179470",
+    "sub_disposition": "Spilled or broken or spoiled contents",
+    "created_time": "2026-07-28T02:57:27.000Z",
+    "category": "Damaged/Defective",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "249628",
+    "order_id": "3192916",
+    "sub_disposition": "Spilled or broken or spoiled contents",
+    "created_time": "2026-07-31T08:24:58.000Z",
+    "category": "Damaged/Defective",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "249633",
+    "order_id": "3219234",
+    "sub_disposition": "Spilled or broken or spoiled contents",
+    "created_time": "2026-07-31T08:33:09.000Z",
+    "category": "Damaged/Defective",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "249010",
+    "order_id": "3205002",
+    "sub_disposition": "Spilled or broken or spoiled contents",
+    "created_time": "2026-07-30T09:52:05.000Z",
+    "category": "Damaged/Defective",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "249219",
+    "order_id": "3144326",
+    "sub_disposition": "Spilled or broken or spoiled contents",
+    "created_time": "2026-07-30T11:56:15.000Z",
+    "category": "Damaged/Defective",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
     "ticket_id": "246906",
     "order_id": null,
     "sub_disposition": "Spilled or broken or spoiled contents",
@@ -53,17 +119,6 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Katyayani Singh"
-  },
-  {
-    "ticket_id": "247063",
-    "order_id": "3179470",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-07-28T02:57:27.000Z",
-    "category": "Damaged/Defective",
-    "status": "Open",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Naveen N"
   },
   {
     "ticket_id": "244453",
@@ -3531,43 +3586,10 @@
     "assignee": "Muskan Gurung"
   },
   {
-    "ticket_id": "201242",
-    "order_id": "2298041",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T11:22:28.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "201090",
-    "order_id": " 2306963",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T09:04:47.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
     "ticket_id": "202287",
     "order_id": "2281821",
     "sub_disposition": "Spilled or broken or spoiled contents",
     "created_time": "2026-05-05T09:00:55.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "200936",
-    "order_id": "2283653",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T04:47:39.000Z",
     "category": "Damaged/Defective",
     "status": "Closed",
     "channel": "Web",
@@ -3612,105 +3634,6 @@
     "order_id": "2294984",
     "sub_disposition": "Spilled or broken or spoiled contents",
     "created_time": "2026-05-03T05:27:15.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "201274",
-    "order_id": "2317526",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T13:18:52.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh"
-  },
-  {
-    "ticket_id": "201277",
-    "order_id": "2285195",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T13:21:39.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh"
-  },
-  {
-    "ticket_id": "201243",
-    "order_id": "2294864",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T11:23:00.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "201143",
-    "order_id": "2234213",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T10:41:29.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh"
-  },
-  {
-    "ticket_id": "201038",
-    "order_id": "2306872",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T07:42:51.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "201108",
-    "order_id": "2262299",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T09:29:48.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "201021",
-    "order_id": " 2300451",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T07:08:20.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "200876",
-    "order_id": "2301992",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-02T00:42:49.000Z",
-    "category": "Damaged/Defective",
-    "status": "Closed",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Bikranth Singh"
-  },
-  {
-    "ticket_id": "200816",
-    "order_id": "2287322",
-    "sub_disposition": "Spilled or broken or spoiled contents",
-    "created_time": "2026-05-01T14:04:03.000Z",
     "category": "Damaged/Defective",
     "status": "Closed",
     "channel": "Web",
