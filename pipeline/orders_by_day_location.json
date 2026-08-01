@@ -1,725 +1,726 @@
 {
-  "2026-05-02": {
-    "Mumbai": 265,
-    "Lucknow": 106,
-    "Bangalore": 454,
-    "DocPharma": 4,
-    "Delhi": 910
-  },
   "2026-05-03": {
-    "Mumbai": 928,
-    "Delhi": 2896,
-    "Lucknow": 342,
-    "Bangalore": 1635,
-    "DocPharma": 30
+    "Lucknow": 74,
+    "Mumbai": 296,
+    "DocPharma": 3,
+    "Bangalore": 463,
+    "Delhi": 894
   },
   "2026-05-04": {
-    "Lucknow": 244,
     "DocPharma": 19,
-    "Bangalore": 1437,
     "Delhi": 2632,
+    "Lucknow": 244,
+    "Bangalore": 1437,
     "Mumbai": 981
   },
   "2026-05-05": {
-    "DocPharma": 33,
-    "Delhi": 2900,
     "Mumbai": 1130,
-    "Bangalore": 1756,
-    "Lucknow": 320
+    "Lucknow": 320,
+    "DocPharma": 33,
+    "Bangalore": 1755,
+    "Delhi": 2900
   },
   "2026-05-06": {
     "Kolkata": 27,
+    "Bangalore": 1723,
+    "Lucknow": 323,
     "Delhi": 2774,
-    "Mumbai": 1094,
-    "Bangalore": 1729,
     "DocPharma": 35,
-    "Lucknow": 323
+    "Mumbai": 1094
   },
   "2026-05-07": {
+    "Kolkata": 105,
     "DocPharma": 25,
-    "Kolkata": 107,
-    "Bangalore": 1697,
     "Mumbai": 1131,
-    "Delhi": 2826,
-    "Lucknow": 375
+    "Lucknow": 375,
+    "Delhi": 2821,
+    "Bangalore": 1695
   },
   "2026-05-08": {
-    "Bangalore": 1611,
-    "Kolkata": 105,
     "Mumbai": 1106,
+    "Kolkata": 105,
     "DocPharma": 36,
     "Lucknow": 472,
+    "Bangalore": 1604,
     "Delhi": 2550
   },
   "2026-05-09": {
-    "DocPharma": 36,
     "Delhi": 2447,
-    "Mumbai": 1046,
-    "Kolkata": 77,
     "Bangalore": 1502,
-    "Lucknow": 518
+    "Kolkata": 77,
+    "Mumbai": 1046,
+    "Lucknow": 518,
+    "DocPharma": 36
   },
   "2026-05-10": {
     "DocPharma": 35,
+    "Kolkata": 101,
     "Bangalore": 1395,
     "Lucknow": 462,
-    "Kolkata": 101,
-    "Mumbai": 1034,
-    "Delhi": 2387
+    "Delhi": 2387,
+    "Mumbai": 1034
   },
   "2026-05-11": {
-    "Bangalore": 1726,
-    "Lucknow": 561,
+    "Bangalore": 1722,
     "DocPharma": 26,
     "Kolkata": 158,
+    "Lucknow": 561,
     "Mumbai": 1152,
     "Delhi": 2075
   },
   "2026-05-12": {
+    "Bangalore": 1322,
+    "DocPharma": 36,
     "Delhi": 2160,
     "Lucknow": 775,
     "Kolkata": 221,
-    "Mumbai": 1287,
-    "DocPharma": 36,
-    "Bangalore": 1322
+    "Mumbai": 1287
   },
   "2026-05-13": {
-    "Lucknow": 633,
-    "Kolkata": 262,
     "Delhi": 2423,
     "DocPharma": 27,
-    "Bangalore": 1459,
-    "Mumbai": 1054
+    "Mumbai": 1054,
+    "Lucknow": 633,
+    "Kolkata": 262,
+    "Bangalore": 1459
   },
   "2026-05-14": {
     "Lucknow": 644,
-    "Bangalore": 1485,
-    "Delhi": 2315,
+    "Bangalore": 1483,
+    "Delhi": 2313,
     "Mumbai": 1097,
     "DocPharma": 44,
     "Kolkata": 251
   },
   "2026-05-15": {
-    "DocPharma": 25,
-    "Lucknow": 717,
-    "Bangalore": 1384,
-    "Delhi": 1886,
     "Mumbai": 1050,
-    "Kolkata": 225
+    "Delhi": 1883,
+    "Bangalore": 1384,
+    "DocPharma": 25,
+    "Kolkata": 225,
+    "Lucknow": 717
   },
   "2026-05-16": {
-    "Bangalore": 1475,
     "Lucknow": 533,
-    "DocPharma": 28,
+    "Bangalore": 1475,
+    "Mumbai": 1034,
     "Kolkata": 176,
     "Delhi": 2158,
-    "Mumbai": 1034
+    "DocPharma": 28
   },
   "2026-05-17": {
-    "Bangalore": 1401,
-    "DocPharma": 26,
-    "Kolkata": 236,
-    "Lucknow": 577,
     "Mumbai": 1074,
-    "Delhi": 2496
+    "Lucknow": 577,
+    "Bangalore": 1401,
+    "Delhi": 2496,
+    "DocPharma": 26,
+    "Kolkata": 236
   },
   "2026-05-18": {
-    "Bangalore": 1432,
+    "Delhi": 2314,
+    "Mumbai": 1162,
     "Lucknow": 522,
-    "Kolkata": 242,
-    "Delhi": 2315,
     "DocPharma": 33,
-    "Mumbai": 1162
+    "Kolkata": 242,
+    "Bangalore": 1432
   },
   "2026-05-19": {
-    "DocPharma": 32,
-    "Kolkata": 283,
-    "Mumbai": 1111,
     "Bangalore": 1553,
+    "DocPharma": 32,
+    "Lucknow": 746,
     "Delhi": 1991,
-    "Lucknow": 746
+    "Kolkata": 283,
+    "Mumbai": 1111
   },
   "2026-05-20": {
-    "Delhi": 2114,
-    "Mumbai": 1343,
-    "Lucknow": 760,
-    "Bangalore": 1427,
     "DocPharma": 35,
-    "Kolkata": 296
+    "Delhi": 2113,
+    "Kolkata": 296,
+    "Bangalore": 1427,
+    "Mumbai": 1343,
+    "Lucknow": 760
   },
   "2026-05-21": {
-    "Delhi": 2140,
-    "Mumbai": 1231,
-    "Lucknow": 542,
-    "Kolkata": 286,
     "DocPharma": 33,
+    "Lucknow": 542,
+    "Delhi": 2138,
+    "Mumbai": 1231,
+    "Kolkata": 286,
     "Bangalore": 1366
   },
   "2026-05-22": {
-    "Bangalore": 1499,
-    "DocPharma": 42,
-    "Delhi": 2277,
     "Lucknow": 591,
+    "Delhi": 2275,
+    "DocPharma": 42,
+    "Bangalore": 1499,
     "Mumbai": 1210,
     "Kolkata": 288
   },
   "2026-05-23": {
+    "Kolkata": 292,
     "Delhi": 2249,
     "Bangalore": 1542,
     "DocPharma": 19,
-    "Mumbai": 1083,
     "Lucknow": 555,
-    "Kolkata": 292
+    "Mumbai": 1083
   },
   "2026-05-24": {
+    "Kolkata": 273,
+    "DocPharma": 20,
+    "Lucknow": 531,
     "Delhi": 2421,
     "Bangalore": 1553,
-    "Lucknow": 531,
-    "Mumbai": 1200,
-    "Kolkata": 273,
-    "DocPharma": 20
+    "Mumbai": 1200
   },
   "2026-05-25": {
     "Delhi": 2377,
     "Bangalore": 1597,
-    "Lucknow": 483,
     "DocPharma": 29,
-    "Mumbai": 1182,
-    "Kolkata": 338
+    "Kolkata": 337,
+    "Lucknow": 483,
+    "Mumbai": 1182
   },
   "2026-05-26": {
     "DocPharma": 57,
-    "Lucknow": 527,
-    "Bangalore": 1513,
-    "Delhi": 2232,
     "Kolkata": 423,
-    "Mumbai": 1132
+    "Lucknow": 527,
+    "Mumbai": 1132,
+    "Bangalore": 1513,
+    "Delhi": 2231
   },
   "2026-05-27": {
     "Lucknow": 474,
     "Mumbai": 1142,
-    "DocPharma": 41,
-    "Delhi": 2077,
     "Bangalore": 1405,
+    "Delhi": 2077,
+    "DocPharma": 41,
     "Kolkata": 414
   },
   "2026-05-28": {
-    "Bangalore": 1427,
-    "Lucknow": 457,
     "Kolkata": 475,
-    "Mumbai": 1112,
-    "Delhi": 2364,
-    "DocPharma": 36
+    "Lucknow": 457,
+    "DocPharma": 36,
+    "Delhi": 2357,
+    "Bangalore": 1426,
+    "Mumbai": 1112
   },
   "2026-05-29": {
-    "DocPharma": 34,
     "Bangalore": 1520,
-    "Delhi": 2281,
-    "Mumbai": 1142,
     "Lucknow": 487,
-    "Kolkata": 480
+    "DocPharma": 34,
+    "Kolkata": 480,
+    "Delhi": 2278,
+    "Mumbai": 1142
   },
   "2026-05-30": {
-    "Kolkata": 533,
-    "Lucknow": 452,
     "Bangalore": 1649,
-    "DocPharma": 63,
+    "Kolkata": 533,
     "Delhi": 2328,
+    "Lucknow": 452,
+    "DocPharma": 63,
     "Mumbai": 1154
   },
   "2026-05-31": {
     "Delhi": 2244,
-    "Mumbai": 1099,
-    "DocPharma": 54,
-    "Kolkata": 664,
     "Bangalore": 1349,
-    "Lucknow": 479
+    "Mumbai": 1099,
+    "Lucknow": 479,
+    "DocPharma": 54,
+    "Kolkata": 664
   },
   "2026-06-01": {
-    "Lucknow": 620,
     "DocPharma": 44,
     "Bangalore": 1586,
-    "Kolkata": 741,
     "Mumbai": 1147,
-    "Delhi": 2168
+    "Delhi": 2165,
+    "Kolkata": 741,
+    "Lucknow": 620
   },
   "2026-06-02": {
-    "Bangalore": 1601,
-    "Mumbai": 1253,
+    "Bangalore": 1598,
     "Kolkata": 832,
+    "Mumbai": 1253,
     "DocPharma": 64,
     "Lucknow": 761,
     "Delhi": 2346
   },
   "2026-06-03": {
-    "Lucknow": 549,
-    "DocPharma": 52,
     "Mumbai": 1147,
+    "Delhi": 2456,
     "Kolkata": 940,
-    "Bangalore": 1559,
-    "Delhi": 2456
+    "DocPharma": 52,
+    "Bangalore": 1558,
+    "Lucknow": 549
   },
   "2026-06-04": {
     "DocPharma": 57,
-    "Bangalore": 1476,
     "Delhi": 2281,
-    "Lucknow": 588,
     "Kolkata": 996,
+    "Bangalore": 1475,
+    "Lucknow": 588,
     "Mumbai": 1161
   },
   "2026-06-05": {
-    "DocPharma": 48,
-    "Mumbai": 1150,
-    "Kolkata": 1026,
-    "Bangalore": 1486,
+    "Bangalore": 1480,
     "Delhi": 2290,
-    "Lucknow": 524
+    "Kolkata": 1026,
+    "Mumbai": 1150,
+    "Lucknow": 524,
+    "DocPharma": 48
   },
   "2026-06-06": {
-    "Bangalore": 1569,
-    "Kolkata": 969,
     "Mumbai": 1129,
+    "Kolkata": 969,
     "DocPharma": 50,
     "Lucknow": 634,
-    "Delhi": 2534
+    "Delhi": 2534,
+    "Bangalore": 1569
   },
   "2026-06-07": {
-    "DocPharma": 46,
     "Kolkata": 1042,
-    "Bangalore": 1600,
+    "DocPharma": 46,
     "Mumbai": 1081,
+    "Lucknow": 648,
     "Delhi": 2626,
-    "Lucknow": 648
+    "Bangalore": 1600
   },
   "2026-06-08": {
-    "Delhi": 2428,
     "Kolkata": 996,
-    "Mumbai": 1187,
     "Bangalore": 1565,
+    "Delhi": 2428,
+    "Lucknow": 517,
     "DocPharma": 48,
-    "Lucknow": 517
+    "Mumbai": 1187
   },
   "2026-06-09": {
-    "DocPharma": 41,
     "Mumbai": 1183,
-    "Kolkata": 1041,
+    "Lucknow": 553,
     "Delhi": 2466,
-    "Bangalore": 1481,
-    "Lucknow": 553
+    "DocPharma": 41,
+    "Kolkata": 1041,
+    "Bangalore": 1481
   },
   "2026-06-10": {
-    "Lucknow": 827,
     "DocPharma": 47,
     "Delhi": 2238,
-    "Kolkata": 1061,
+    "Lucknow": 827,
     "Bangalore": 1505,
-    "Mumbai": 1234
+    "Mumbai": 1234,
+    "Kolkata": 1060
   },
   "2026-06-11": {
-    "Mumbai": 1282,
     "Lucknow": 901,
-    "Bangalore": 1658,
     "Delhi": 2195,
+    "Mumbai": 1282,
     "DocPharma": 57,
+    "Bangalore": 1658,
     "Kolkata": 1101
   },
   "2026-06-12": {
-    "Bangalore": 1278,
-    "Lucknow": 929,
-    "Kolkata": 795,
+    "Mumbai": 1418,
     "Delhi": 2198,
+    "Lucknow": 929,
     "DocPharma": 86,
-    "Mumbai": 1418
+    "Kolkata": 795,
+    "Bangalore": 1278
   },
   "2026-06-13": {
-    "Bangalore": 1547,
-    "DocPharma": 94,
-    "Delhi": 2556,
-    "Kolkata": 1045,
+    "Mumbai": 1232,
     "Lucknow": 755,
-    "Mumbai": 1232
+    "Bangalore": 1547,
+    "Delhi": 2556,
+    "DocPharma": 94,
+    "Kolkata": 1045
   },
   "2026-06-14": {
-    "Bangalore": 1470,
     "Lucknow": 626,
-    "DocPharma": 37,
-    "Kolkata": 1069,
+    "Bangalore": 1469,
     "Delhi": 2583,
-    "Mumbai": 1057
+    "Mumbai": 1057,
+    "Kolkata": 1069,
+    "DocPharma": 37
   },
   "2026-06-15": {
-    "Lucknow": 1173,
-    "Bangalore": 1490,
-    "Delhi": 2238,
     "Mumbai": 1025,
-    "Kolkata": 1107
+    "Bangalore": 1490,
+    "Kolkata": 1107,
+    "Delhi": 2238,
+    "Lucknow": 1173
   },
   "2026-06-16": {
     "Lucknow": 885,
-    "Bangalore": 1546,
+    "Bangalore": 1545,
     "Delhi": 2326,
     "Mumbai": 1068,
     "Kolkata": 1045
   },
   "2026-06-17": {
-    "Lucknow": 1010,
-    "Kolkata": 1088,
     "DocPharma": 70,
     "Delhi": 2113,
-    "Bangalore": 1297,
-    "Mumbai": 1112
+    "Mumbai": 1112,
+    "Lucknow": 1010,
+    "Kolkata": 1088,
+    "Bangalore": 1297
   },
   "2026-06-18": {
-    "Lucknow": 682,
-    "Delhi": 2176,
-    "Kolkata": 1250,
-    "Mumbai": 1056,
+    "Bangalore": 1324,
     "DocPharma": 82,
-    "Bangalore": 1324
+    "Lucknow": 682,
+    "Kolkata": 1250,
+    "Delhi": 2176,
+    "Mumbai": 1056
   },
   "2026-06-19": {
     "Bangalore": 1226,
-    "Lucknow": 707,
-    "Delhi": 2139,
     "DocPharma": 86,
     "Kolkata": 1366,
-    "Mumbai": 1028
+    "Lucknow": 707,
+    "Mumbai": 1028,
+    "Delhi": 2139
   },
   "2026-06-20": {
     "DocPharma": 66,
-    "Lucknow": 915,
-    "Bangalore": 1246,
-    "Delhi": 2245,
     "Kolkata": 1340,
-    "Mumbai": 1117
+    "Lucknow": 915,
+    "Delhi": 2245,
+    "Mumbai": 1117,
+    "Bangalore": 1246
   },
   "2026-06-21": {
-    "Bangalore": 1225,
-    "Lucknow": 674,
-    "DocPharma": 61,
-    "Mumbai": 1094,
     "Delhi": 2266,
-    "Kolkata": 1212
+    "Bangalore": 1225,
+    "DocPharma": 61,
+    "Kolkata": 1212,
+    "Lucknow": 674,
+    "Mumbai": 1094
   },
   "2026-06-22": {
-    "Bangalore": 1345,
-    "Lucknow": 788,
-    "Mumbai": 1142,
     "Kolkata": 1286,
-    "Delhi": 2088,
-    "DocPharma": 68
+    "DocPharma": 64,
+    "Lucknow": 788,
+    "Delhi": 2087,
+    "Bangalore": 1343,
+    "Mumbai": 1142
   },
   "2026-06-23": {
-    "Bangalore": 1281,
-    "DocPharma": 42,
-    "Mumbai": 1010,
-    "Lucknow": 834,
     "Kolkata": 1430,
-    "Delhi": 2200
+    "Delhi": 2191,
+    "Bangalore": 1279,
+    "DocPharma": 42,
+    "Lucknow": 834,
+    "Mumbai": 1010
   },
   "2026-06-24": {
-    "Bangalore": 1308,
-    "DocPharma": 45,
     "Lucknow": 833,
-    "Delhi": 2164,
+    "DocPharma": 45,
+    "Bangalore": 1308,
     "Mumbai": 1062,
-    "Kolkata": 1530
+    "Kolkata": 1530,
+    "Delhi": 2164
   },
   "2026-06-25": {
-    "Mumbai": 1102,
-    "Lucknow": 881,
-    "Kolkata": 1359,
-    "Delhi": 2195,
     "DocPharma": 43,
-    "Bangalore": 1274
+    "Lucknow": 881,
+    "Mumbai": 1102,
+    "Delhi": 2195,
+    "Kolkata": 1359,
+    "Bangalore": 1273
   },
   "2026-06-26": {
-    "Mumbai": 1213,
-    "Lucknow": 894,
-    "Bangalore": 1393,
-    "Delhi": 2264,
     "DocPharma": 44,
-    "Kolkata": 1522
+    "Kolkata": 1522,
+    "Bangalore": 1393,
+    "Mumbai": 1213,
+    "Delhi": 2264,
+    "Lucknow": 894
   },
   "2026-06-27": {
-    "DocPharma": 55,
-    "Kolkata": 1452,
-    "Mumbai": 1190,
     "Bangalore": 1469,
+    "DocPharma": 55,
+    "Lucknow": 990,
     "Delhi": 2275,
-    "Lucknow": 990
+    "Kolkata": 1452,
+    "Mumbai": 1190
   },
   "2026-06-28": {
-    "Lucknow": 856,
-    "DocPharma": 41,
     "Mumbai": 1219,
+    "Delhi": 2352,
     "Kolkata": 1574,
+    "DocPharma": 41,
     "Bangalore": 1403,
-    "Delhi": 2352
+    "Lucknow": 856
   },
   "2026-06-29": {
-    "Bangalore": 1781,
-    "Mumbai": 801,
+    "Bangalore": 1779,
     "Kolkata": 1597,
+    "Mumbai": 801,
+    "Delhi": 2311,
     "DocPharma": 45,
-    "Lucknow": 1137,
-    "Delhi": 2311
+    "Lucknow": 1137
   },
   "2026-06-30": {
-    "Lucknow": 1693,
     "DocPharma": 74,
-    "Bangalore": 2393,
+    "Bangalore": 2391,
+    "Mumbai": 18,
     "Delhi": 2644,
     "Kolkata": 1647,
-    "Mumbai": 18
+    "Lucknow": 1692
   },
   "2026-07-01": {
-    "Delhi": 2615,
-    "Mumbai": 633,
-    "DocPharma": 56,
-    "Kolkata": 1656,
     "Bangalore": 2149,
-    "Lucknow": 1159
+    "Mumbai": 633,
+    "Lucknow": 1159,
+    "DocPharma": 56,
+    "Delhi": 2615,
+    "Kolkata": 1655
   },
   "2026-07-02": {
+    "Bangalore": 1591,
     "Kolkata": 1626,
     "Lucknow": 1163,
-    "Bangalore": 1591,
-    "Delhi": 2434,
     "DocPharma": 53,
+    "Delhi": 2434,
     "Mumbai": 1411
   },
   "2026-07-03": {
     "Delhi": 2419,
-    "DocPharma": 37,
     "Bangalore": 1485,
-    "Mumbai": 1223,
     "Lucknow": 956,
-    "Kolkata": 1676
+    "DocPharma": 37,
+    "Kolkata": 1676,
+    "Mumbai": 1223
   },
   "2026-07-04": {
-    "Bangalore": 1524,
-    "Lucknow": 1043,
     "Kolkata": 1590,
     "Delhi": 2390,
-    "Mumbai": 1544,
-    "DocPharma": 42
+    "Lucknow": 1043,
+    "DocPharma": 41,
+    "Bangalore": 1524,
+    "Mumbai": 1544
   },
   "2026-07-05": {
     "Lucknow": 1124,
-    "Delhi": 2539,
     "Mumbai": 1202,
-    "DocPharma": 32,
     "Bangalore": 1562,
-    "Kolkata": 1611
+    "DocPharma": 32,
+    "Kolkata": 1611,
+    "Delhi": 2539
   },
   "2026-07-06": {
-    "Mumbai": 1446,
     "Lucknow": 869,
-    "Delhi": 2209,
-    "DocPharma": 53,
     "Kolkata": 1579,
+    "Mumbai": 1446,
+    "DocPharma": 53,
+    "Delhi": 2209,
     "Bangalore": 1581
   },
   "2026-07-07": {
-    "Kolkata": 1515,
-    "Delhi": 2213,
     "DocPharma": 35,
-    "Lucknow": 840,
+    "Kolkata": 1515,
     "Mumbai": 1462,
-    "Bangalore": 1347
+    "Bangalore": 1344,
+    "Delhi": 2213,
+    "Lucknow": 840
   },
   "2026-07-08": {
-    "Kolkata": 1599,
-    "Bangalore": 1380,
-    "DocPharma": 42,
     "Lucknow": 777,
+    "Kolkata": 1599,
+    "Mumbai": 1365,
     "Delhi": 2203,
-    "Mumbai": 1365
+    "DocPharma": 42,
+    "Bangalore": 1379
   },
   "2026-07-09": {
-    "Kolkata": 1591,
+    "Delhi": 2193,
     "Lucknow": 877,
-    "Bangalore": 1383,
-    "Mumbai": 1456,
+    "Bangalore": 1376,
     "DocPharma": 48,
-    "Delhi": 2193
+    "Kolkata": 1591,
+    "Mumbai": 1456
   },
   "2026-07-10": {
-    "Bangalore": 1361,
-    "Delhi": 2253,
+    "Delhi": 2236,
+    "DocPharma": 30,
     "Lucknow": 878,
-    "Mumbai": 1309,
+    "Bangalore": 1350,
     "Kolkata": 1561,
-    "DocPharma": 30
+    "Mumbai": 1309
   },
   "2026-07-11": {
     "Bangalore": 1409,
+    "Lucknow": 1015,
+    "Delhi": 2184,
     "DocPharma": 26,
     "Kolkata": 1541,
-    "Delhi": 2184,
-    "Mumbai": 1419,
-    "Lucknow": 1015
+    "Mumbai": 1419
   },
   "2026-07-12": {
-    "Delhi": 2391,
-    "Kolkata": 1510,
-    "Bangalore": 1372,
-    "DocPharma": 26,
     "Lucknow": 935,
-    "Mumbai": 1339
+    "Bangalore": 1372,
+    "Delhi": 2391,
+    "Mumbai": 1339,
+    "DocPharma": 26,
+    "Kolkata": 1510
   },
   "2026-07-13": {
-    "Mumbai": 1488,
-    "Bangalore": 1458,
     "Lucknow": 964,
+    "Bangalore": 1458,
+    "Mumbai": 1488,
+    "DocPharma": 33,
     "Delhi": 2303,
-    "Kolkata": 1507,
-    "DocPharma": 33
+    "Kolkata": 1507
   },
   "2026-07-14": {
     "Mumbai": 1429,
-    "Lucknow": 974,
     "Bangalore": 1395,
-    "Delhi": 2266,
-    "Kolkata": 1502,
-    "DocPharma": 35
+    "Lucknow": 974,
+    "Delhi": 2263,
+    "DocPharma": 35,
+    "Kolkata": 1502
   },
   "2026-07-15": {
-    "Lucknow": 808,
-    "Mumbai": 1358,
-    "Delhi": 2516,
     "Kolkata": 1548,
+    "Mumbai": 1358,
     "Bangalore": 1450,
-    "DocPharma": 38
+    "Delhi": 2513,
+    "DocPharma": 38,
+    "Lucknow": 808
   },
   "2026-07-16": {
-    "Mumbai": 1344,
     "DocPharma": 30,
-    "Lucknow": 853,
-    "Bangalore": 1289,
+    "Bangalore": 1285,
+    "Delhi": 2373,
     "Kolkata": 1450,
-    "Delhi": 2377
+    "Lucknow": 853,
+    "Mumbai": 1344
   },
   "2026-07-17": {
-    "Lucknow": 744,
-    "DocPharma": 33,
-    "Kolkata": 1384,
-    "Bangalore": 1212,
+    "Delhi": 2165,
     "Mumbai": 1359,
-    "Delhi": 2165
+    "Kolkata": 1384,
+    "Lucknow": 744,
+    "Bangalore": 1205,
+    "DocPharma": 33
   },
   "2026-07-18": {
     "DocPharma": 61,
-    "Delhi": 2320,
-    "Bangalore": 1340,
     "Lucknow": 861,
+    "Mumbai": 1343,
+    "Bangalore": 1340,
     "Kolkata": 1461,
-    "Mumbai": 1343
+    "Delhi": 2320
   },
   "2026-07-19": {
-    "DocPharma": 95,
-    "Mumbai": 1271,
-    "Kolkata": 1625,
-    "Bangalore": 1428,
     "Delhi": 2300,
-    "Lucknow": 806
+    "Bangalore": 1427,
+    "DocPharma": 95,
+    "Kolkata": 1625,
+    "Lucknow": 806,
+    "Mumbai": 1271
   },
   "2026-07-20": {
-    "Kolkata": 1422,
     "DocPharma": 80,
+    "Mumbai": 1382,
+    "Kolkata": 1422,
     "Delhi": 2405,
     "Lucknow": 691,
-    "Bangalore": 1512,
-    "Mumbai": 1382
+    "Bangalore": 1512
   },
   "2026-07-21": {
-    "Mumbai": 1344,
-    "DocPharma": 96,
-    "Bangalore": 1432,
-    "Kolkata": 1550,
+    "Kolkata": 1545,
     "Lucknow": 791,
-    "Delhi": 2415
+    "DocPharma": 96,
+    "Mumbai": 1344,
+    "Delhi": 2415,
+    "Bangalore": 1427
   },
   "2026-07-22": {
     "DocPharma": 86,
-    "Delhi": 2459,
-    "Mumbai": 1273,
     "Kolkata": 1367,
-    "Bangalore": 1360,
+    "Mumbai": 1273,
+    "Bangalore": 1353,
+    "Delhi": 2458,
     "Lucknow": 732
   },
   "2026-07-23": {
-    "Kolkata": 1230,
-    "Lucknow": 858,
-    "Delhi": 2420,
-    "DocPharma": 84,
+    "Delhi": 2419,
     "Bangalore": 1440,
-    "Mumbai": 1281
+    "Lucknow": 858,
+    "Mumbai": 1281,
+    "DocPharma": 84,
+    "Kolkata": 1230
   },
   "2026-07-24": {
-    "Bangalore": 1508,
-    "Kolkata": 1264,
-    "Lucknow": 895,
-    "Delhi": 2391,
+    "Delhi": 2389,
     "DocPharma": 71,
-    "Mumbai": 1284
+    "Lucknow": 889,
+    "Mumbai": 1284,
+    "Kolkata": 1264,
+    "Bangalore": 1508
   },
   "2026-07-25": {
-    "Delhi": 2530,
     "Kolkata": 1243,
     "Bangalore": 1404,
     "DocPharma": 70,
-    "Mumbai": 1485,
-    "Lucknow": 1000
+    "Lucknow": 1000,
+    "Delhi": 2530,
+    "Mumbai": 1485
   },
   "2026-07-26": {
-    "Bangalore": 1451,
-    "Kolkata": 1304,
-    "Lucknow": 926,
-    "DocPharma": 85,
     "Mumbai": 1427,
-    "Delhi": 2588
+    "Delhi": 2588,
+    "Bangalore": 1452,
+    "Kolkata": 1304,
+    "DocPharma": 84,
+    "Lucknow": 926
   },
   "2026-07-27": {
-    "Mumbai": 1596,
-    "Lucknow": 955,
-    "Delhi": 2545,
     "Bangalore": 1598,
+    "Delhi": 2545,
+    "Lucknow": 955,
+    "Kolkata": 1373,
     "DocPharma": 85,
-    "Kolkata": 1373
+    "Mumbai": 1596
   },
   "2026-07-28": {
-    "Lucknow": 1078,
-    "Delhi": 2753,
-    "Kolkata": 1345,
-    "Mumbai": 1538,
     "DocPharma": 56,
-    "Bangalore": 1582
+    "Lucknow": 1078,
+    "Mumbai": 1538,
+    "Bangalore": 1579,
+    "Delhi": 2753,
+    "Kolkata": 1345
   },
   "2026-07-29": {
-    "DocPharma": 61,
-    "Bangalore": 1605,
-    "Mumbai": 1278,
     "Kolkata": 1304,
+    "Lucknow": 1061,
     "Delhi": 2678,
-    "Lucknow": 1061
+    "Mumbai": 1278,
+    "DocPharma": 61,
+    "Bangalore": 1604
   },
   "2026-07-30": {
-    "Mumbai": 1546,
-    "Delhi": 2832,
-    "Lucknow": 1081,
-    "Kolkata": 1500,
-    "Bangalore": 1579,
-    "DocPharma": 57
+    "DocPharma": 57,
+    "Mumbai": 1544,
+    "Lucknow": 1078,
+    "Bangalore": 1584,
+    "Delhi": 2833,
+    "Kolkata": 1499
   },
   "2026-07-31": {
-    "Mumbai": 1044,
-    "Bangalore": 997,
-    "Lucknow": 765,
+    "Mumbai": 1471,
+    "Bangalore": 1649,
+    "Kolkata": 1522,
     "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED": 2,
-    "Delhi": 1964,
-    "DocPharma": 33,
-    "Kolkata": 1034
+    "Delhi": 2843,
+    "Lucknow": 1125,
+    "DocPharma": 52
+  },
+  "2026-08-01": {
+    "DocPharma": 30,
+    "Bangalore": 1092,
+    "Mumbai": 1054,
+    "Kolkata": 1052,
+    "Lucknow": 787,
+    "Delhi": 1946
   }
 }
