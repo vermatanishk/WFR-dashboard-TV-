@@ -112,6 +112,18 @@ TICKETS = [
 
 # Genuine admission phrases the WH team uses when they DO own the mistake.
 # "we have sent proper medicine" / "correct item" etc. are denials and never match.
+#
+# WARNING (confirmed false-positive, 2026-08-01, ticket 248136): naive substring
+# matching is not enough. The WH comment "Kindly share the image of wrong
+# medicine Because it helpfull to find" matched "wrong medicine" and was
+# wrongly counted WH-Accepted - it's the WH team ASKING for photo evidence,
+# not admitting fault. classify() below is a simplified reference impl for
+# offline/manual runs only; when the live routine (an LLM reading real
+# comment text) applies this list, it MUST read the full sentence for intent
+# - a request for evidence, a question, or someone else's restatement is NOT
+# an admission even if it contains a matching phrase. Only count a first-
+# person WH statement of fact about what THEY did ("we sent/dispatched
+# wrong/short X").
 ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
                       "short qty", "less qty", "sent short", "sent wrong", "missing qty"]
 
@@ -137,10 +149,20 @@ PICKER_QC = {
 }
 
 
+# Request-for-evidence phrasing that can contain admission-sounding words
+# without being an admission (see WARNING above re: ticket 248136).
+REQUEST_PHRASES = ["kindly share", "please share", "share the image", "share image",
+                    "share the photo", "share photo", "send the image", "send image",
+                    "send the photo", "send photo", "provide image", "provide photo",
+                    "helpfull to find", "helpful to find"]
+
+
 def classify(wh_comment):
     if not wh_comment:
         return False, "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
     low = wh_comment.lower()
+    if any(p in low for p in REQUEST_PHRASES):
+        return False, f"Warehouse team comment: \"{wh_comment}\" - this is a REQUEST for evidence, not an admission (an admission phrase may appear as a substring, but the sentence isn't a first-person statement of fault). Not counted."
     if any(p in low for p in ADMISSION_PHRASES):
         return True, f"Warehouse team comment: \"{wh_comment}\" - explicit admission, counted WH-Accepted."
     return False, f"Warehouse team comment: \"{wh_comment}\" - this is a denial (WH says they sent the correct item), not an admission. Not counted."
