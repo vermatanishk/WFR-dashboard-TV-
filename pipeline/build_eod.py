@@ -75,34 +75,30 @@ WH_COMMENT = {
 }
 
 TICKETS = [
-    {"ticket_id": "246862", "order_id": 3107185, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T13:17:25"},
-    {"ticket_id": "246849", "order_id": 3142847, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T12:58:24"},
-    {"ticket_id": "246835", "order_id": 3136033, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T12:34:08"},
-    {"ticket_id": "246440", "order_id": 3116640, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T06:27:18"},
-    {"ticket_id": "246428", "order_id": 3128155, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T06:18:09"},
-    {"ticket_id": "246449", "order_id": 3143740, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T06:40:31"},
-    {"ticket_id": "246858", "order_id": 3153502, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T13:12:10"},
-    {"ticket_id": "246856", "order_id": 3154920, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T13:09:46"},
-    {"ticket_id": "246485", "order_id": 3161465, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T07:29:54"},
-    {"ticket_id": "246486", "order_id": 3150330, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T07:32:24"},
-    {"ticket_id": "246515", "order_id": 3098845, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T08:04:06"},
-    {"ticket_id": "246763", "order_id": 3038162, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T10:33:23"},
-    {"ticket_id": "246506", "order_id": 3130995, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T07:53:58"},
-    {"ticket_id": "246386", "order_id": 3098238, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T05:18:29"},
-    {"ticket_id": "246477", "order_id": 3152646, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T07:23:45"},
-    {"ticket_id": "246521", "order_id": 3164799, "category": "Missing/Wrong Qty", "created_time": "2026-07-27T08:10:58"},
-    {"ticket_id": "246816", "order_id": 3141605, "category": "Wrong Medicines", "created_time": "2026-07-27T11:57:27"},
-    {"ticket_id": "246773", "order_id": 3158835, "category": "Wrong Medicines", "created_time": "2026-07-27T10:52:23"},
-    {"ticket_id": "246283", "order_id": 3163391, "category": "Wrong Medicines", "created_time": "2026-07-27T02:52:46"},
-    {"ticket_id": "246442", "order_id": 3088226, "category": "Wrong Medicines", "created_time": "2026-07-27T06:29:38"},
-    {"ticket_id": "246398", "order_id": 3174461, "category": "Wrong Medicines", "created_time": "2026-07-27T05:35:41"},
-    {"ticket_id": "246513", "order_id": 3119511, "category": "Wrong Medicines", "created_time": "2026-07-27T07:59:10"},
-    {"ticket_id": "246770", "order_id": 3082131, "category": "Wrong Medicines", "created_time": "2026-07-27T10:45:44"},
-    {"ticket_id": "246302", "order_id": 3136867, "category": "Wrong Medicines", "created_time": "2026-07-27T03:23:14"},
-    {"ticket_id": "246391", "order_id": 3171959, "category": "Damaged/Defective", "created_time": "2026-07-27T05:26:35"},
-    {"ticket_id": "246578", "order_id": 3162719, "category": "Damaged/Defective", "created_time": "2026-07-27T08:50:53"},
-    {"ticket_id": "246341", "order_id": 3163432, "category": "Damaged/Defective", "created_time": "2026-07-27T04:26:25"},
-    {"ticket_id": "246511", "order_id": 3164893, "category": "Damaged/Defective", "created_time": "2026-07-27T07:56:25"},
+    {"ticket_id": "248994", "order_id": 3202949, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T15:09:28"},
+    {"ticket_id": "248995", "order_id": 3169611, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T15:09:38"},
+    {"ticket_id": "249005", "order_id": 3203163, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T15:17:59"},
+    {"ticket_id": "249236", "order_id": 3189206, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T17:55:26"},
+    {"ticket_id": "249241", "order_id": 3219086, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T18:05:05"},
+    {"ticket_id": "248900", "order_id": 3181750, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T12:37:46"},
+    {"ticket_id": "249004", "order_id": 3207770, "category": "Missing/Wrong Qty", "created_time": "2026-07-30T15:16:58"},
+    {"ticket_id": "249350", "order_id": 3171161, "category": "Wrong Medicines", "created_time": "2026-07-30T22:12:01"},
+    {"ticket_id": "249175", "order_id": 3201361, "category": "Wrong Medicines", "created_time": "2026-07-30T16:57:52"},
+    {"ticket_id": "248815", "order_id": 3163311, "category": "Wrong Medicines", "created_time": "2026-07-30T10:54:46"},
+    {"ticket_id": "248868", "order_id": 3208865, "category": "Wrong Medicines", "created_time": "2026-07-30T12:06:24"},
+    {"ticket_id": "249234", "order_id": 3125858, "category": "Wrong Medicines", "created_time": "2026-07-30T17:54:32"},
+    {"ticket_id": "249042", "order_id": 3171447, "category": "Wrong Medicines", "created_time": "2026-07-30T16:05:59"},
+    {"ticket_id": "248907", "order_id": 3172803, "category": "Wrong Medicines", "created_time": "2026-07-30T12:44:56"},
+    {"ticket_id": "249232", "order_id": 3185005, "category": "Wrong Medicines", "created_time": "2026-07-30T17:50:40"},
+    {"ticket_id": "249041", "order_id": 3126713, "category": "Wrong Medicines", "created_time": "2026-07-30T16:04:12"},
+    {"ticket_id": "249048", "order_id": 3171882, "category": "Wrong Medicines", "created_time": "2026-07-30T16:19:26"},
+    {"ticket_id": "248753", "order_id": 3204676, "category": "Wrong Medicines", "created_time": "2026-07-30T09:33:04"},
+    {"ticket_id": "248943", "order_id": 3163311, "category": "Wrong Medicines", "created_time": "2026-07-30T13:21:33"},
+    {"ticket_id": "248845", "order_id": 3186409, "category": "Wrong Medicines", "created_time": "2026-07-30T11:39:41"},
+    {"ticket_id": "249010", "order_id": 3205002, "category": "Damaged/Defective", "created_time": "2026-07-30T15:22:05"},
+    {"ticket_id": "249219", "order_id": 3144326, "category": "Damaged/Defective", "created_time": "2026-07-30T17:26:15"},
+    {"ticket_id": "248976", "order_id": 2882682, "category": "Damaged/Defective", "created_time": "2026-07-30T14:38:37"},
+    {"ticket_id": "248735", "order_id": 3127802, "category": "Damaged/Defective", "created_time": "2026-07-30T09:14:11"},
 ]
 
 # Genuine admission phrases the WH team uses when they DO own the mistake.
@@ -136,11 +132,8 @@ ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
 #   manifester - marketplace_order_status_log, ops_user_name at
 #                current_status_id=64 ("manifested")
 PICKER_QC = {
-    "247647": {"picker": "Kavana_BLRWH", "packer": "Kavana_BLRWH", "qc": "Shivaraj_BLRWH", "manifester": "Mustaqeem_BLRWH"},
-    "247621": {"picker": "Gayatri.M_LKO / Anshu.S_LKO", "packer": "Anshu.S_LKO", "qc": "Arti_LKO", "manifester": "Vinod_LKO"},
-    "247579": {"picker": "Sonu_DEL", "packer": "Sonu_DEL", "qc": "Shailesh_DEL", "manifester": "Ruksana_DEL"},
-    "247651": {"picker": "Rahman_BLRWH", "packer": "Kavana_BLRWH", "qc": "kannanmuthu_BLRWH", "manifester": "Mustaqeem_BLRWH"},
-    "247622": {"picker": "Ebinesar / Veena_BLRWH", "packer": "Veena_BLRWH", "qc": "Shwetha_BLRWH", "manifester": "Mustaqeem_BLRWH"},
+    "249350": {"picker": "Veena_BLRWH", "packer": "Veena_BLRWH", "qc": "Shwetha_BLRWH", "manifester": "SUMITH"},
+    "248845": {"picker": "TarunP_MUM", "packer": "AniketP_MUM", "qc": "AnshuG_MUM", "manifester": "Hussain_MUM"},
 }
 
 
@@ -181,8 +174,8 @@ for t in TICKETS:
     })
 
 eod_data = {
-    "generated_at": "2026-07-29T13:45:00Z",
-    "for_date": "2026-07-27",
+    "generated_at": "2026-08-01T13:42:50Z",
+    "for_date": "2026-07-30",
     "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
     "tickets": out_tickets,
 }
