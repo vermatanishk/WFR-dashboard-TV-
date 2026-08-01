@@ -444,10 +444,10 @@
       </div>
 
       <div class="wfr-card">
-        <h3>Picker &amp; Checker — WH-Accepted tickets</h3>
+        <h3>Picker, Packer, Checker &amp; Manifester — WH-Accepted tickets</h3>
         <div class="wfr-scroll">
           <table class="wfr-table" id="eod-personnel-table">
-            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Picker</th><th>Checker</th></tr></thead>
+            <thead><tr><th>Ticket</th><th>Order</th><th>Category</th><th>Location</th><th>Picker</th><th>Packer</th><th>Checker</th><th>Manifester</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -861,8 +861,10 @@ document.querySelector('#eod-personnel-table tbody').innerHTML = eodAcceptedTick
   <td>${t.category}</td>
   <td>${t.location}</td>
   <td>${t.picker || '—'}</td>
+  <td>${t.packer || '—'}</td>
   <td>${t.qc || '—'}</td>
-</tr>`).join('') || '<tr><td colspan="6" class="wfr-empty">No WH-Accepted tickets for T-2</td></tr>';
+  <td>${t.manifester || '—'}</td>
+</tr>`).join('') || '<tr><td colspan="8" class="wfr-empty">No WH-Accepted tickets for T-2</td></tr>';
 
 document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t => `<tr>
   <td>${t.ticket_id}</td>

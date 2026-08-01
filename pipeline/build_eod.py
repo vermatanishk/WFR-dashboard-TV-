@@ -108,19 +108,25 @@ TICKETS = [
 ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
                       "short qty", "less qty", "sent short", "sent wrong", "missing qty"]
 
-# Picker/QC attribution for WH-Accepted (text) tickets only, from ClickHouse
-# (warehouse_warehouse_scan_log for picker, marketplace_order_status_log
-# current_status_id=61 for QC, both FINAL + _peerdb_is_deleted=0), joined by
-# order_id - independent of the ClickHouse return-request resolution, since a
-# T-2 order usually has no return record yet. Picker = the scanner(s) with the
-# most picks on that order (ties shown as "A / B"). Only populated for tickets
-# where wh_accepted_text is True - not counted tickets don't need attribution.
+# Full fulfilment-chain attribution for WH-Accepted (text) tickets only, from
+# ClickHouse, joined by order_id - independent of the ClickHouse return-request
+# resolution, since a T-2 order usually has no return record yet. Only
+# populated for tickets where wh_accepted_text is True - not-counted tickets
+# don't need attribution. Sources (all FINAL + _peerdb_is_deleted=0):
+#   picker     - warehouse_warehouse_scan_log, scanner(s) with the most picks
+#                on that order (ties shown as "A / B")
+#   packer     - marketplace_order_status_log, ops_user_name at
+#                current_status_id=52 ("pharmacistAccepted")
+#   qc         - marketplace_order_status_log, ops_user_name at
+#                current_status_id=61 ("packedAndQCed")
+#   manifester - marketplace_order_status_log, ops_user_name at
+#                current_status_id=64 ("manifested")
 PICKER_QC = {
-    "247647": {"picker": "Kavana_BLRWH", "qc": "Shivaraj_BLRWH"},
-    "247621": {"picker": "Gayatri.M_LKO / Anshu.S_LKO", "qc": "Arti_LKO"},
-    "247579": {"picker": "Sonu_DEL", "qc": "Shailesh_DEL"},
-    "247651": {"picker": "Rahman_BLRWH", "qc": "kannanmuthu_BLRWH"},
-    "247622": {"picker": "Ebinesar / Veena_BLRWH", "qc": "Shwetha_BLRWH"},
+    "247647": {"picker": "Kavana_BLRWH", "packer": "Kavana_BLRWH", "qc": "Shivaraj_BLRWH", "manifester": "Mustaqeem_BLRWH"},
+    "247621": {"picker": "Gayatri.M_LKO / Anshu.S_LKO", "packer": "Anshu.S_LKO", "qc": "Arti_LKO", "manifester": "Vinod_LKO"},
+    "247579": {"picker": "Sonu_DEL", "packer": "Sonu_DEL", "qc": "Shailesh_DEL", "manifester": "Ruksana_DEL"},
+    "247651": {"picker": "Rahman_BLRWH", "packer": "Kavana_BLRWH", "qc": "kannanmuthu_BLRWH", "manifester": "Mustaqeem_BLRWH"},
+    "247622": {"picker": "Ebinesar / Veena_BLRWH", "packer": "Veena_BLRWH", "qc": "Shwetha_BLRWH", "manifester": "Mustaqeem_BLRWH"},
 }
 
 
@@ -145,7 +151,9 @@ for t in TICKETS:
         "wh_accepted_text": wh_accepted,
         "reason": reason,
         "picker": pq.get("picker"),
+        "packer": pq.get("packer"),
         "qc": pq.get("qc"),
+        "manifester": pq.get("manifester"),
     })
 
 eod_data = {
