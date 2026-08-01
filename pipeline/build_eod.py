@@ -19,7 +19,14 @@ team's own words do.
 
 Location comes from marketplace_orders.warehouse_id directly (not the
 return_request join used elsewhere), since same-day tickets usually
-have no return record yet.
+have no return record yet. CRITICAL: marketplace_orders has TWO id
+columns - "id" (internal PK) and "order_id" (the customer-facing
+number used everywhere else - Zoho tickets, marketplace_order_status_
+log, warehouse_warehouse_scan_log). The join MUST be on order_id, not
+id - joining on id silently returns the wrong warehouse (or Unknown)
+for most orders, since the two numbers diverge. This caused every
+location in this tab to be wrong or Unknown until 2026-08-01; always
+verify the join column name explicitly before trusting a location.
 """
 import json
 from pathlib import Path
