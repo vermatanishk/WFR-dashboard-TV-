@@ -1,0 +1,23 @@
+{
+  "249516": {"order_id": 3219025, "admitted": true, "wh_comment": "We have sent short qty to Cx", "reason": "Explicit admission - genuine first-person WH statement, not a request/denial. Confirmed 2026-08-02 backfill after user-reported bug."},
+  "249232": {"order_id": 3185005, "admitted": false, "wh_comment": "We have sent proper medicine to Cx", "reason": "Stock denial - not an admission."},
+  "248408": {"order_id": 3143761, "admitted": false, "wh_comment": "We have sent proper medicine to Cx", "reason": "Stock denial - not an admission."},
+  "246856": {"order_id": 3154920, "admitted": false, "wh_comment": "We have sent proper medicine to Cx", "reason": "Stock denial - not an admission."},
+  "245877": {"order_id": 3169351, "admitted": false, "wh_comment": "We have sent proper medicine to cx", "reason": "Stock denial - not an admission."},
+  "241397": {"order_id": 3082131, "admitted": false, "wh_comment": null, "reason": "No Warehouse-role comment on this ticket."},
+  "244646": {"order_id": 3154607, "admitted": false, "wh_comment": "We have sent proper medicine to Cx", "reason": "Stock denial - not an admission."},
+  "239190": {"order_id": 3056362, "admitted": false, "wh_comment": "We have sent proper medicine to CX", "reason": "Stock denial - not an admission."},
+  "231949": {"order_id": 2926098, "admitted": false, "wh_comment": "We have sent proper medicine to CX", "reason": "Stock denial - not an admission (a later L2 note mentions 'BOD issued to the cx for missing qty', but that's an L2 policy note, not a WH admission)."},
+  "227335": {"order_id": 2905187, "admitted": false, "wh_comment": null, "reason": "No Warehouse-role comment on this ticket."},
+  "219373": {"order_id": 2727135, "admitted": false, "wh_comment": null, "reason": "No Warehouse-role comment on this ticket."},
+  "216326": {"order_id": 2695822, "admitted": false, "wh_comment": null, "reason": "No comments at all on this ticket."},
+  "213807": {"order_id": 2624765, "admitted": false, "wh_comment": "Return pickup has been iniated.", "reason": "Not from Warehouse role (Arun Kumar, no role) - no admission."},
+  "212598": {"order_id": 2559659, "admitted": false, "wh_comment": "We have sent proper medicine to CX", "reason": "Stock denial - not an admission."},
+  "211047": {"order_id": 2474716, "admitted": false, "wh_comment": "We have sent proper medicine to cx", "reason": "Stock denial - not an admission."},
+  "208732": {"order_id": 2460262, "admitted": false, "wh_comment": "We have sent proper medicine to CX", "reason": "Stock denial - not an admission."},
+  "207865": {"order_id": 2400818, "admitted": false, "wh_comment": "We have sent proper medicine to cx", "reason": "Stock denial - not an admission."},
+  "206918": {"order_id": 2425169, "admitted": false, "wh_comment": null, "reason": "No Warehouse-role comment on this ticket (only Logistics L2 and a support agent)."},
+  "203702": {"order_id": 2267431, "admitted": true, "wh_comment": "We have sent wrong medicine to cx", "reason": "Explicit admission - genuine first-person WH statement. Found during 2026-08-02 backfill sweep, previously misclassified as considered_bod (blank ClickHouse remark)."},
+  "202515": {"order_id": 2328990, "admitted": false, "wh_comment": "We have sent proper medicine to cx", "reason": "Stock denial - not an admission."},
+  "201575": {"order_id": 2315911, "admitted": false, "wh_comment": "We have sent sent with ice packs to cx", "reason": "Stock denial (asserting correct cold-chain handling) - not an admission of a mis-shipment mistake."}
+}

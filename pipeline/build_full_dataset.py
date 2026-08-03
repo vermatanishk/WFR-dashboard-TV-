@@ -52,7 +52,26 @@ for r in qc_raw:
         qc_by_order[r["order_id"]].append((r["ops_user_name"], r.get("user_id")))
 
 
-def classify(order_id):
+# Text-confirmed WH admissions from Zoho ticket comments, used as a fallback
+# ONLY when the ClickHouse remark doesn't itself confirm WH fault (blank or
+# unrecognized). Keyed by ticket_id (string). {"admitted": bool, "wh_comment":
+# str|null, "reason": str}. This closes a real gap: ~10% of return_request
+# rows never get a remark typed in by whoever processes the physical return,
+# even when the Warehouse team already admitted the mistake in the Zoho
+# thread (confirmed 2026-08-02, ticket 249516/order 3219025 - WH commented
+# "we have sent short qty" but ClickHouse remark was blank, so it silently
+# defaulted to considered_bod). Populated incrementally by the scheduled
+# routine (see its instructions) - grows over time, never re-checks a
+# ticket_id already present. Same admission/request-phrase logic as the EOD
+# tab's build_eod.py classify(), applied here to the full 90-day set instead
+# of just T-2.
+wh_text_checks = {}
+_wh_text_path = HERE / "zoho_raw90/wh_text_check.json"
+if _wh_text_path.exists():
+    wh_text_checks = json.loads(_wh_text_path.read_text())
+
+
+def classify(order_id, ticket_id=None):
     rows = returns_by_order.get(order_id, [])
     if not rows:
         return "no_return_record", "Unknown", "No matching marketplace_return_request row found in ClickHouse for this order"
@@ -73,9 +92,15 @@ def classify(order_id):
         if needle in remark_l:
             return "bod", location, f"remark='{remarks[0]}' - explicit customer-favor/policy resolution, not a WH-fault admission"
 
+    # Remark doesn't confirm WH fault - fall back to the Zoho WH-comment text
+    # check before defaulting to considered_bod.
+    check = wh_text_checks.get(ticket_id) if ticket_id else None
+    if check and check.get("admitted"):
+        return "wh_accepted", location, f"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: \"{check.get('wh_comment')}\""
+
     if remarks:
-        return "considered_bod", location, f"remark='{remarks[0]}' is ambiguous/unrecognized - not confirmed WH-fault, treated as BOD by default"
-    return "considered_bod", location, "return exists but remark is empty - treated as BOD by default (unconfirmed resolution)"
+        return "considered_bod", location, f"remark='{remarks[0]}' is ambiguous/unrecognized and no WH-team Zoho admission found - treated as BOD by default"
+    return "considered_bod", location, "return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution)"
 
 
 def picker_str(order_id):
@@ -142,7 +167,7 @@ if no_order_id_tickets:
 out_tickets = []
 for t in tickets:
     order_id = t["order_id"]
-    resolution, location, reason_note = classify(order_id)
+    resolution, location, reason_note = classify(order_id, t["ticket_id"])
     accepted = resolution == "wh_accepted"
     pick_uids = picker_str(order_id) if accepted else None
     qc = qc_info(order_id) if accepted else None
