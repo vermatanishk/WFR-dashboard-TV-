@@ -1,14 +1,157 @@
 [
   {
-    "ticket_id": "246283",
-    "order_id": "3163391",
+    "ticket_id": "246749",
+    "order_id": "3130685",
     "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-27T02:52:46.000Z",
+    "created_time": "2026-07-27T10:05:35.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "250598",
+    "order_id": "3117114",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-03T08:11:59.000Z",
     "category": "Wrong Medicines",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Pijush Das"
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "249698",
+    "order_id": "3220034",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-31T10:14:34.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Ayushi Kumari"
+  },
+  {
+    "ticket_id": "248426",
+    "order_id": "3198258",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-29T12:21:04.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "247700",
+    "order_id": "3175757",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-28T14:20:37.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250666",
+    "order_id": "3273880",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-03T12:53:49.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "250659",
+    "order_id": "3245906",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-03T12:38:31.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "250590",
+    "order_id": null,
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-03T07:58:08.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan"
+  },
+  {
+    "ticket_id": "249812",
+    "order_id": null,
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-31T14:13:40.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "250405",
+    "order_id": "3222307",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-02T04:52:29.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "246750",
+    "order_id": "3165881",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-27T10:09:14.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "250331",
+    "order_id": "3213338",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-01T11:56:14.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250631",
+    "order_id": "3252916",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-03T11:03:43.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan"
+  },
+  {
+    "ticket_id": "250629",
+    "order_id": "3209100",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-03T10:54:25.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan"
   },
   {
     "ticket_id": "250494",
@@ -16,7 +159,51 @@
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-02T12:04:48.000Z",
     "category": "Wrong Medicines",
-    "status": "Assigned",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "248815",
+    "order_id": "3163311",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-30T05:24:46.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "243789",
+    "order_id": "3125583",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-24T07:21:03.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "250346",
+    "order_id": "3209420",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-01T12:25:26.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250454",
+    "order_id": "3211157",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-02T08:39:09.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
     "channel": "Web",
     "department": "Support",
     "assignee": "Naveen N"
@@ -33,15 +220,59 @@
     "assignee": "Naveen N"
   },
   {
-    "ticket_id": "243789",
-    "order_id": "3125583",
+    "ticket_id": "248437",
+    "order_id": "3156299",
     "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-24T07:21:03.000Z",
+    "created_time": "2026-07-29T12:34:56.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "213876",
+    "order_id": "2639584",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-06-10T11:38:49.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250251",
+    "order_id": "3222039",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-01T07:44:41.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "248943",
+    "order_id": "3163311",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-30T07:51:33.000Z",
     "category": "Wrong Medicines",
     "status": "Resolved",
     "channel": "Email",
     "department": "Support",
-    "assignee": "Naveen N"
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "246283",
+    "order_id": "3163391",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-07-27T02:52:46.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Pijush Das"
   },
   {
     "ticket_id": "249746",
@@ -53,28 +284,6 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Katyayani Singh"
-  },
-  {
-    "ticket_id": "246749",
-    "order_id": "3130685",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-27T10:05:35.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Katyayani Singh"
-  },
-  {
-    "ticket_id": "250454",
-    "order_id": "3211157",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-08-02T08:39:09.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Naveen N"
   },
   {
     "ticket_id": "248907",
@@ -99,17 +308,6 @@
     "assignee": "Sajjad Ali"
   },
   {
-    "ticket_id": "250251",
-    "order_id": "3222039",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-08-01T07:44:41.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sajjad Ali"
-  },
-  {
     "ticket_id": "250189",
     "order_id": "3136355",
     "sub_disposition": "Wrong item Delivered",
@@ -119,17 +317,6 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan"
-  },
-  {
-    "ticket_id": "248437",
-    "order_id": "3156299",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-29T12:34:56.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sajjad Ali"
   },
   {
     "ticket_id": "249350",
@@ -165,17 +352,6 @@
     "assignee": "Katyayani Singh"
   },
   {
-    "ticket_id": "248815",
-    "order_id": "3163311",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-30T05:24:46.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sajjad Ali"
-  },
-  {
     "ticket_id": "248868",
     "order_id": "3208865",
     "sub_disposition": "Wrong item Delivered",
@@ -196,28 +372,6 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Naveen N"
-  },
-  {
-    "ticket_id": "247700",
-    "order_id": "3175757",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-28T14:20:37.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Kirti Sharma"
-  },
-  {
-    "ticket_id": "246770",
-    "order_id": "3082131",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-27T10:45:44.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Katyayani Singh"
   },
   {
     "ticket_id": "246810",
@@ -330,17 +484,6 @@
     "assignee": "Pijush Das"
   },
   {
-    "ticket_id": "248426",
-    "order_id": "3198258",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-29T12:21:04.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Katyayani Singh"
-  },
-  {
     "ticket_id": "248753",
     "order_id": "3204676",
     "sub_disposition": "Wrong item Delivered",
@@ -363,17 +506,6 @@
     "assignee": "Sajjad Ali"
   },
   {
-    "ticket_id": "246750",
-    "order_id": "3165881",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-27T10:09:14.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Katyayani Singh"
-  },
-  {
     "ticket_id": "248136",
     "order_id": "3183133",
     "sub_disposition": "Wrong item Delivered",
@@ -381,17 +513,6 @@
     "category": "Wrong Medicines",
     "status": "Resolved",
     "channel": "Web",
-    "department": "Support",
-    "assignee": "Sajjad Ali"
-  },
-  {
-    "ticket_id": "248943",
-    "order_id": "3163311",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-07-30T07:51:33.000Z",
-    "category": "Wrong Medicines",
-    "status": "In Progress",
-    "channel": "Email",
     "department": "Support",
     "assignee": "Sajjad Ali"
   },
@@ -812,17 +933,6 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Ayushi Kumari"
-  },
-  {
-    "ticket_id": "213876",
-    "order_id": "2639584",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-06-10T11:38:49.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sajjad Ali"
   },
   {
     "ticket_id": "223887",
@@ -5599,17 +5709,6 @@
     "assignee": "Muskan Gurung"
   },
   {
-    "ticket_id": "202248",
-    "order_id": "2218438",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T07:35:57.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
     "ticket_id": "202574",
     "order_id": "2339934",
     "sub_disposition": "Wrong item Delivered",
@@ -5619,71 +5718,5 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "202150",
-    "order_id": "2314623",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T04:05:30.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh"
-  },
-  {
-    "ticket_id": "202341",
-    "order_id": "2272864",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T11:57:35.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "202247",
-    "order_id": "2305771",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T07:34:03.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
-  },
-  {
-    "ticket_id": "202242",
-    "order_id": "2309376",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T07:22:34.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "202187",
-    "order_id": "2321353",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T05:19:43.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "202230",
-    "order_id": "2297654",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-05T06:58:57.000Z",
-    "category": "Wrong Medicines",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh"
   }
 ]

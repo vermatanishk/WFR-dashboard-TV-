@@ -1,11 +1,22 @@
 [
   {
+    "ticket_id": "250651",
+    "order_id": "3136802",
+    "sub_disposition": "Expired or near expiry",
+    "created_time": "2026-08-03T12:05:48.000Z",
+    "category": "Expiry Issue",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
     "ticket_id": "250101",
     "order_id": "3218105",
     "sub_disposition": "Expired or near expiry",
     "created_time": "2026-07-31T17:00:25.000Z",
     "category": "Expiry Issue",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Email",
     "department": "Support",
     "assignee": "Raja Sarashanth"
@@ -482,16 +493,5 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Bikranth Singh"
-  },
-  {
-    "ticket_id": "202245",
-    "order_id": "2313536",
-    "sub_disposition": "Expired or near expiry",
-    "created_time": "2026-05-05T07:32:39.000Z",
-    "category": "Expiry Issue",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
   }
 ]

@@ -1,1 +1,156 @@
-[{"ticket_id": "248353", "order_id": "3166754", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T10:21:23.000Z", "category": "Missing/Wrong Qty", "status": "In Progress", "channel": "Email", "department": "Support", "assignee": "Kirti Sharma"}, {"ticket_id": "248087", "order_id": "3163302", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T08:07:50.000Z", "category": "Missing/Wrong Qty", "status": "In Progress", "channel": "Web", "department": "Support", "assignee": "Katyayani Singh"}, {"ticket_id": "248030", "order_id": "3053582", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T07:01:36.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248465", "order_id": "3170900", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T13:15:45.000Z", "category": "Missing/Wrong Qty", "status": "In Progress", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248410", "order_id": "3175010", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T12:06:26.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248460", "order_id": "3173348", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T13:09:50.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248075", "order_id": "3158217", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T07:52:45.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248466", "order_id": "3173348", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T13:17:56.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Kirti Sharma"}, {"ticket_id": "248073", "order_id": "3166974", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T07:51:18.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248089", "order_id": "3194178", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T08:10:09.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248409", "order_id": "3191119", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T12:04:43.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248354", "order_id": "3167961", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T10:22:31.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Kirti Sharma"}, {"ticket_id": "248378", "order_id": "3178152", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T10:55:10.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Kirti Sharma"}, {"ticket_id": "248383", "order_id": "3187708", "sub_disposition": "Missing or less quantity received", "created_time": "2026-07-29T11:15:40.000Z", "category": "Missing/Wrong Qty", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Katyayani Singh"}, {"ticket_id": "248105", "order_id": "2861537", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T08:24:22.000Z", "category": "Wrong Medicines", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248426", "order_id": "3198258", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T12:21:04.000Z", "category": "Wrong Medicines", "status": "In Progress", "channel": "Web", "department": "Support", "assignee": "Katyayani Singh"}, {"ticket_id": "248494", "order_id": "3212318", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T14:15:22.000Z", "category": "Wrong Medicines", "status": "In Progress", "channel": "Web", "department": "Support", "assignee": "Katyayani Singh"}, {"ticket_id": "248437", "order_id": "3156299", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T12:34:56.000Z", "category": "Wrong Medicines", "status": "In Progress", "channel": "Web", "department": "Support", "assignee": "Katyayani Singh"}, {"ticket_id": "248408", "order_id": "3143761", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T12:00:45.000Z", "category": "Wrong Medicines", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248136", "order_id": "3183133", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T08:48:23.000Z", "category": "Wrong Medicines", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Sajjad Ali"}, {"ticket_id": "248363", "order_id": "3116236", "sub_disposition": "Wrong item Delivered", "created_time": "2026-07-29T10:30:25.000Z", "category": "Wrong Medicines", "status": "Resolved", "channel": "Web", "department": "Support", "assignee": "Kirti Sharma"}]
+[
+  {
+    "ticket_id": "250509",
+    "order_id": "3246347",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T13:35:29.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "250480",
+    "order_id": "3242929",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T10:47:53.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250482",
+    "order_id": "3240712",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T10:52:44.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250458",
+    "order_id": "3241917",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T08:47:56.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "250489",
+    "order_id": "3248204",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T11:47:59.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250479",
+    "order_id": "3223227",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T10:45:08.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250432",
+    "order_id": "3234383",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T06:50:04.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250491",
+    "order_id": "3214541",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T11:54:01.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250487",
+    "order_id": "3235104",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T11:43:10.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250488",
+    "order_id": "3231814",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T11:44:15.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "250476",
+    "order_id": "3239875",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-02T10:35:16.000Z",
+    "category": "Missing/Wrong Qty",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250405",
+    "order_id": "3222307",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-02T04:52:29.000Z",
+    "category": "Wrong Medicines",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "250494",
+    "order_id": "3231210",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-02T12:04:48.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sajjad Ali"
+  },
+  {
+    "ticket_id": "250454",
+    "order_id": "3211157",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-02T08:39:09.000Z",
+    "category": "Wrong Medicines",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  }
+]
