@@ -1372,5 +1372,713 @@
     "admitted": false,
     "wh_comment": "We have sent proper medicine to Mahiboob bee",
     "reason": "Warehouse team comment: \"We have sent proper medicine to Mahiboob bee\" - this is a denial or unrelated, not an admission. Not counted."
+  },
+  "250877": {
+    "order_id": 3276217,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250876": {
+    "order_id": 3197183,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250867": {
+    "order_id": 3268611,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250857": {
+    "order_id": 3244229,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role."
+  },
+  "250854": {
+    "order_id": 3187230,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250852": {
+    "order_id": 3252253,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250846": {
+    "order_id": 3270537,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250844": {
+    "order_id": 3222210,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250838": {
+    "order_id": 3244557,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250830": {
+    "order_id": 3226235,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250829": {
+    "order_id": 3225587,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250823": {
+    "order_id": 3199128,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role."
+  },
+  "250822": {
+    "order_id": 3277312,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250817": {
+    "order_id": 3270470,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role."
+  },
+  "250808": {
+    "order_id": 3241703,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "250781": {
+    "order_id": 3237120,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250733": {
+    "order_id": 3062757,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "250669": {
+    "order_id": 3240524,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250667": {
+    "order_id": 3267812,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "250590": {
+    "order_id": 3230891,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role."
+  },
+  "250394": {
+    "order_id": 3144543,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "250383": {
+    "order_id": 3234805,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250283": {
+    "order_id": 3200311,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "213404": {
+    "order_id": 2623178,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "213374": {
+    "order_id": 2620070,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "213371": {
+    "order_id": 2626223,
+    "admitted": true,
+    "wh_comment": "We have sent short expiry medicine to CX",
+    "reason": "Explicit admission - Warehouse role (admits sending short-expiry medicine)."
+  },
+  "213307": {
+    "order_id": 2552358,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "213145": {
+    "order_id": 2609692,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Stock denial - not an admission (L2 granted BOD as goodwill, not a WH admission)."
+  },
+  "213043": {
+    "order_id": 2582584,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx Naveen",
+    "reason": "Stock denial - not an admission (WH also noted batch unavailable in inventory, not a fault admission)."
+  },
+  "213041": {
+    "order_id": 2545909,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "213033": {
+    "order_id": 2619940,
+    "admitted": false,
+    "wh_comment": "Footage not found because cctv under Maintenance",
+    "reason": "Warehouse comment is a footage/CCTV status note, not an admission of fault."
+  },
+  "213021": {
+    "order_id": 2501487,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx Naveen",
+    "reason": "Stock denial - not an admission (L2's mention of packer error is not a WH-role statement)."
+  },
+  "212847": {
+    "order_id": 2601156,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "212600": {
+    "order_id": 2612563,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "212456": {
+    "order_id": 2486709,
+    "admitted": true,
+    "wh_comment": "We have sent wrong batch to cx Naveen",
+    "reason": "Explicit admission - Warehouse role (admits sending wrong batch)."
+  },
+  "212417": {
+    "order_id": 2603811,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "212363": {
+    "order_id": 2589348,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Stock denial - not an admission (WH also stated they don't stock that item)."
+  },
+  "212311": {
+    "order_id": 2580625,
+    "admitted": false,
+    "wh_comment": "This one is singles it's not 15s mrp also singles",
+    "reason": "Warehouse clarifying product packaging - not an admission of a mistake."
+  },
+  "212304": {
+    "order_id": 2573576,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "212272": {
+    "order_id": 2568909,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to cx Naveen",
+    "reason": "Explicit admission - Warehouse role (admits sending short quantity)."
+  },
+  "212263": {
+    "order_id": 2501068,
+    "admitted": false,
+    "wh_comment": "No batch available in our inventory",
+    "reason": "Warehouse inventory note - not an admission of fault."
+  },
+  "212151": {
+    "order_id": 2562921,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx Naveen",
+    "reason": "Stock denial - not an admission."
+  },
+  "212124": {
+    "order_id": 2582801,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "212121": {
+    "order_id": 2591713,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211990": {
+    "order_id": 2574783,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211792": {
+    "order_id": 2475952,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211869": {
+    "order_id": 2543231,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to cx Naveen",
+    "reason": "Explicit admission - Warehouse role (admits sending short quantity)."
+  },
+  "211857": {
+    "order_id": 2573634,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx Naveen",
+    "reason": "Stock denial - not an admission."
+  },
+  "211844": {
+    "order_id": 2528586,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to cx Naveen",
+    "reason": "Explicit admission - Warehouse role (admits sending short quantity)."
+  },
+  "211529": {
+    "order_id": 2575152,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211520": {
+    "order_id": 2458477,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211509": {
+    "order_id": 2518689,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to cx Naveen",
+    "reason": "Explicit admission - Warehouse role (admits sending short quantity)."
+  },
+  "211500": {
+    "order_id": 2561183,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to CX Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role (admits sending short quantity)."
+  },
+  "211473": {
+    "order_id": 2544261,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211324": {
+    "order_id": 2511732,
+    "admitted": true,
+    "wh_comment": "Short qty sent",
+    "reason": "Explicit admission - Warehouse role (admits sending short quantity)."
+  },
+  "211320": {
+    "order_id": 2523546,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "211314": {
+    "order_id": 2455185,
+    "admitted": true,
+    "wh_comment": "We have sent no expiry medicine to cx",
+    "reason": "Explicit admission - Warehouse role (admits sending medicine without expiry markings, matching cx's complaint of missing expiry stamp)."
+  },
+  "211271": {
+    "order_id": 2526709,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "210791": {
+    "order_id": 2534731,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
+  },
+  "210531": {
+    "order_id": 2524262,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "210414": {
+    "order_id": 2542956,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "209962": {
+    "order_id": 2519118,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "209861": {
+    "order_id": 2506995,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "209800": {
+    "order_id": 2485682,
+    "admitted": false,
+    "wh_comment": "We have a sent proper medicine to cx pls",
+    "reason": "Stock denial - not an admission."
+  },
+  "209731": {
+    "order_id": 2511732,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "209663": {
+    "order_id": 2502153,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "209648": {
+    "order_id": 2486708,
+    "admitted": true,
+    "wh_comment": "We have sent expriy medicine to cx",
+    "reason": "Explicit admission - Warehouse-role comment admits sending expired medicine."
+  },
+  "209498": {
+    "order_id": 2475213,
+    "admitted": false,
+    "wh_comment": "This batch is not available in our inventory",
+    "reason": "Inventory/stock note, not an admission of sending wrong item."
+  },
+  "209486": {
+    "order_id": 2485096,
+    "admitted": true,
+    "wh_comment": "We have sent wrong medicine to cx",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "209358": {
+    "order_id": 2448808,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "208934": {
+    "order_id": 2500741,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "208717": {
+    "order_id": 2422422,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "208631": {
+    "order_id": 2461287,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "208551": {
+    "order_id": 2473402,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket (the 'proper medicine...Mahiboob bee' line was posted by agent Muskan Gurung, roleName empty, not the Warehouse role)."
+  },
+  "208536": {
+    "order_id": 2426998,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket (the 'proper medicine...Mahiboob bee' line was posted by agent Muskan Gurung, roleName empty, not the Warehouse role)."
+  },
+  "208414": {
+    "order_id": 2453060,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket (the 'short qty' line was posted by agent Muskan Gurung, roleName empty, not the Warehouse role)."
+  },
+  "208364": {
+    "order_id": 2466693,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "208252": {
+    "order_id": 2468051,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "208165": {
+    "order_id": 2425692,
+    "admitted": false,
+    "wh_comment": "Footage not found",
+    "reason": "Warehouse-role comment about footage availability - not an admission."
+  },
+  "208034": {
+    "order_id": 2426998,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to CX",
+    "reason": "Stock denial - not an admission."
+  },
+  "208014": {
+    "order_id": 2460419,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "207983": {
+    "order_id": 2460419,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "207742": {
+    "order_id": 2446064,
+    "admitted": false,
+    "wh_comment": "We have sent  proper medicine with properly paked cold storage medicine to CX",
+    "reason": "Stock denial - not an admission."
+  },
+  "207722": {
+    "order_id": 2406310,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to CX",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "207592": {
+    "order_id": 2268039,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "207562": {
+    "order_id": 2443664,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "207501": {
+    "order_id": 2454732,
+    "admitted": false,
+    "wh_comment": "Footage not found",
+    "reason": "Warehouse-role comment about footage availability - not an admission."
+  },
+  "207355": {
+    "order_id": 2425692,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "207244": {
+    "order_id": 2366381,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "207014": {
+    "order_id": 2426936,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206962": {
+    "order_id": 2415365,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206956": {
+    "order_id": 2424502,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206926": {
+    "order_id": 2373474,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to CX",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "206920": {
+    "order_id": 2418647,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206873": {
+    "order_id": 2435857,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206740": {
+    "order_id": 2421291,
+    "admitted": false,
+    "wh_comment": "Footage not found",
+    "reason": "Warehouse-role comment about footage availability - not an admission."
+  },
+  "206735": {
+    "order_id": 2431235,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206733": {
+    "order_id": 2421291,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "206432": {
+    "order_id": 2429146,
+    "admitted": false,
+    "wh_comment": "we have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "205013": {
+    "order_id": 2368919,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx pls",
+    "reason": "Stock denial - not an admission."
+  },
+  "204987": {
+    "order_id": 2358447,
+    "admitted": true,
+    "wh_comment": "We have sent wrong medicine to cx",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "204460": {
+    "order_id": 2353173,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "204408": {
+    "order_id": 2369482,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "204096": {
+    "order_id": 2379554,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "203830": {
+    "order_id": 2370920,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to CX",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "203821": {
+    "order_id": 2353173,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to CX",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "203674": {
+    "order_id": 2363426,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "203354": {
+    "order_id": 2349647,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "203316": {
+    "order_id": 2346505,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "203038": {
+    "order_id": 2246529,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to CX",
+    "reason": "Stock denial - not an admission."
+  },
+  "203016": {
+    "order_id": 2205029,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "202960": {
+    "order_id": 2324375,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "202695": {
+    "order_id": 2316597,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "202689": {
+    "order_id": 2328990,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "202665": {
+    "order_id": 2320209,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "202655": {
+    "order_id": 2325858,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "202654": {
+    "order_id": 2345283,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket."
+  },
+  "202573": {
+    "order_id": 2285158,
+    "admitted": true,
+    "wh_comment": "we have sent wrong medicine to cx",
+    "reason": "Explicit admission - genuine first-person Warehouse-role statement."
   }
 }
