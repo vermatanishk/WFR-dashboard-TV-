@@ -179,10 +179,11 @@
   table.wfr-lb-table tr.wfr-lb-row td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
   table.wfr-lb-table tr.wfr-lb-row td:last-child { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
   table.wfr-lb-table td.wfr-lb-name { font-weight: 700; }
-  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; background: var(--series-1); }
+  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; }
   .wfr-lb-medal { margin-left: 4px; font-size: 13px; }
-  tr.wfr-lb-row:nth-child(even) { background: var(--surface-2); }
   .wfr-lb-poster { display: block; max-width: 480px; width: 100%; height: auto; margin: 20px auto 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
+  #lb-tbody-other tr.wfr-lb-row td:first-child { border-top: 2px solid var(--gridline); }
+  .wfr-lb-chip { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: color-mix(in srgb, var(--text-muted) 20%, transparent); color: var(--text-secondary); vertical-align: middle; }
 
   /* Print: designed for "switch to Tab 4 (Zoho EOD), then Ctrl+P" - only that tab's
      content prints, everything else (filters, topline, tab nav, download button) is
@@ -498,11 +499,12 @@
           <div class="wfr-lb-title" id="lb-month-title">Monthly Leaderboard</div>
           <div class="wfr-lb-subtitle" id="lb-asof"></div>
         </div>
-        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the ongoing calendar month. Ranked by total accepted (WH-fault) errors, fewest first — same "accepted error" definition used across the dashboard (WH-Accepted mis-shipment tickets, deduped per order).</div>
+        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the ongoing calendar month. Ranked by total accepted (WH-fault) errors, fewest first — same "accepted error" definition used across the dashboard (WH-Accepted mis-shipment tickets, deduped per order). DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
         <div class="wfr-scroll">
           <table class="wfr-table wfr-lb-table" id="lb-table">
             <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th></tr></thead>
-            <tbody></tbody>
+            <tbody id="lb-tbody"></tbody>
+            <tbody id="lb-tbody-other"></tbody>
           </table>
         </div>
         <img class="wfr-lb-poster" src="pipeline/assets/zero_warehouse_error_poster.png" alt="Affolife Retail — Zero Warehouse Error campaign poster, starting August 2026">
@@ -968,35 +970,48 @@ function renderMonthlyLeaderboard() {
     return ordersByWh[wh] > 0 && (daysSeenAllTime[wh] || 0) >= totalDaysHistory * 0.7;
   });
 
-  let rows = active.map(wh => {
+  const toRow = wh => {
     const total = ordersByWh[wh] || 0;
     const perDay = Math.round(total / daysElapsed);
     const errors = errorsByWh[wh] || 0;
     const per1000 = total ? Math.round(errors / total * 1000 * 100) / 100 : 0;
     return { wh, total, perDay, errors, per1000 };
-  });
-  // Rank strictly by performance (errors, then errors/1000 as the tiebreak metric).
-  // Only when two sites are genuinely tied on BOTH metrics does a secondary house
-  // preference apply - PlatinumRx-owned warehouses rank above the DocPharma partner
-  // site on an exact tie, never above a warehouse that actually performed better.
-  rows.sort((a, b) => {
-    if (a.errors !== b.errors) return a.errors - b.errors;
-    if (a.per1000 !== b.per1000) return a.per1000 - b.per1000;
-    const aOwn = a.wh !== 'DocPharma', bOwn = b.wh !== 'DocPharma';
-    if (aOwn !== bOwn) return aOwn ? -1 : 1;
-    return a.wh.localeCompare(b.wh);
-  });
+  };
+
+  // DocPharma is a partner site, not a PlatinumRx-owned warehouse - shown separately
+  // below the ranked table, out of scope for the reward, never ranked against them.
+  let rows = active.filter(wh => wh !== 'DocPharma').map(toRow);
+  rows.sort((a, b) => a.errors - b.errors || a.per1000 - b.per1000);
   rows.forEach((r, i) => r.rank = i + 1);
 
   const medal = { 1: '🥇', 2: '🥈', 3: '🥉' };
-  document.querySelector('#lb-table tbody').innerHTML = rows.length ? rows.map(r => `<tr class="wfr-lb-row">
-      <td><span class="wfr-lb-rank">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
+  const n = rows.length;
+  document.getElementById('lb-tbody').innerHTML = rows.length ? rows.map(r => {
+    const hue = n > 1 ? Math.round(120 * (1 - (r.rank - 1) / (n - 1))) : 120;
+    return `<tr class="wfr-lb-row" style="background:hsl(${hue}, 65%, 94%)">
+      <td><span class="wfr-lb-rank" style="background:hsl(${hue}, 60%, 42%)">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
       <td class="wfr-lb-name">${r.wh}</td>
       <td class="num">${r.total.toLocaleString('en-IN')}</td>
       <td class="num">${r.perDay.toLocaleString('en-IN')}</td>
       <td class="num">${r.errors.toLocaleString('en-IN')}</td>
       <td class="num">${r.per1000}</td>
-    </tr>`).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
+    </tr>`;
+  }).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
+
+  const docTbody = document.getElementById('lb-tbody-other');
+  if (daysSeenAllTime['DocPharma'] && ordersByWh['DocPharma']) {
+    const d = toRow('DocPharma');
+    docTbody.innerHTML = `<tr class="wfr-lb-row" style="background:var(--surface-2)">
+      <td><span class="wfr-lb-rank" style="background:var(--text-muted)">—</span></td>
+      <td class="wfr-lb-name">${d.wh}<span class="wfr-lb-chip">Out of scope for reward</span></td>
+      <td class="num">${d.total.toLocaleString('en-IN')}</td>
+      <td class="num">${d.perDay.toLocaleString('en-IN')}</td>
+      <td class="num">${d.errors.toLocaleString('en-IN')}</td>
+      <td class="num">${d.per1000}</td>
+    </tr>`;
+  } else {
+    docTbody.innerHTML = '';
+  }
 }
 renderMonthlyLeaderboard();
 
