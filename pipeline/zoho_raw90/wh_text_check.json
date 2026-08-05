@@ -2080,5 +2080,131 @@
     "admitted": true,
     "wh_comment": "we have sent wrong medicine to cx",
     "reason": "Explicit admission - genuine first-person Warehouse-role statement."
+  },
+  "251051": {
+    "order_id": 3298479,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "251046": {
+    "order_id": 3284818,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "251044": {
+    "order_id": 3271572,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role."
+  },
+  "251042": {
+    "order_id": 3293999,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "251041": {
+    "order_id": 3187434,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "251037": {
+    "order_id": 3274566,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "251029": {
+    "order_id": 3245312,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "251027": {
+    "order_id": 3262438,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 Agent request: \"kindly share the packaging footage\")."
+  },
+  "251015": {
+    "order_id": 3219740,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "251007": {
+    "order_id": 3299838,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250979": {
+    "order_id": 3295771,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role (most recent WH comment; a later L2 note just records pickup initiation)."
+  },
+  "250974": {
+    "order_id": 3256168,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 Agent comment with a screenshot attachment, no text)."
+  },
+  "250968": {
+    "order_id": 3251974,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments at all on this ticket."
+  },
+  "250960": {
+    "order_id": 3293256,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to Cx Mahiboob bee",
+    "reason": "Explicit admission - Warehouse role."
+  },
+  "250951": {
+    "order_id": 3265569,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250940": {
+    "order_id": 3282424,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250934": {
+    "order_id": 3275354,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission (a later L2 note just records the customer being abused/disconnected on a call)."
+  },
+  "250878": {
+    "order_id": 3263619,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 Agent note: \"ADDED TO STATUS CHANGED SHEET\")."
+  },
+  "250871": {
+    "order_id": 3258291,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission."
+  },
+  "250851": {
+    "order_id": 3231210,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 Agent note: \"order swap / Return Pickup Initiated\")."
+  },
+  "250758": {
+    "order_id": 3258350,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Stock denial - not an admission (later L2 notes just record order-swap pickup and a call attempt)."
   }
 }

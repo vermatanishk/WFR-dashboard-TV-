@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-08-04T16:29:39Z",
-  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2451 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 42 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-05-06 to 2026-08-04), exhaustive within that window",
+  "generated_at": "2026-08-05T17:29:55Z",
+  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2229 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 35 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
+  "pull_window": "Last 90 days (2026-05-07 to 2026-08-05), exhaustive within that window",
   "tab1": {
-    "total_tickets": 2451,
-    "total_orders": 2305,
-    "total_returns": 2212,
-    "wh_accepted": 552,
-    "bod": 1417,
-    "considered_bod": 243,
-    "no_return_record": 239,
-    "accept_pct": 23.9,
+    "total_tickets": 2229,
+    "total_orders": 2101,
+    "total_returns": 2010,
+    "wh_accepted": 521,
+    "bod": 1276,
+    "considered_bod": 213,
+    "no_return_record": 219,
+    "accept_pct": 24.8,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
-        "total": 1509,
-        "pct_of_total": 61.6,
-        "accepted": 424,
-        "accept_pct": 28.1
+        "total": 1493,
+        "pct_of_total": 67.0,
+        "accepted": 418,
+        "accept_pct": 28.0
       },
       {
         "category": "Wrong Medicines",
-        "total": 523,
-        "pct_of_total": 21.3,
-        "accepted": 94,
-        "accept_pct": 18.0
+        "total": 326,
+        "pct_of_total": 14.6,
+        "accepted": 69,
+        "accept_pct": 21.2
       },
       {
         "category": "Expiry Issue",
         "total": 46,
-        "pct_of_total": 1.9,
+        "pct_of_total": 2.1,
         "accepted": 7,
         "accept_pct": 15.2
       },
       {
         "category": "Damaged/Defective",
-        "total": 373,
-        "pct_of_total": 15.2,
+        "total": 364,
+        "pct_of_total": 16.3,
         "accepted": 27,
-        "accept_pct": 7.2
+        "accept_pct": 7.4
       },
       {
         "category": "Switch Orders",
@@ -53,39 +53,39 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 747,
-      "accepted": 159,
-      "accept_pct": 21.3
+      "total": 686,
+      "accepted": 150,
+      "accept_pct": 21.9
     },
     {
       "location": "Bangalore",
-      "total": 663,
-      "accepted": 199,
-      "accept_pct": 30.0
+      "total": 598,
+      "accepted": 187,
+      "accept_pct": 31.3
     },
     {
       "location": "Mumbai",
-      "total": 292,
-      "accepted": 72,
-      "accept_pct": 24.7
+      "total": 267,
+      "accepted": 65,
+      "accept_pct": 24.3
     },
     {
       "location": "Kolkata",
-      "total": 244,
+      "total": 222,
       "accepted": 78,
-      "accept_pct": 32.0
+      "accept_pct": 35.1
     },
     {
       "location": "Unknown",
-      "total": 239,
+      "total": 219,
       "accepted": 0,
       "accept_pct": 0.0
     },
     {
       "location": "Lucknow",
-      "total": 218,
-      "accepted": 34,
-      "accept_pct": 15.6
+      "total": 190,
+      "accepted": 32,
+      "accept_pct": 16.8
     },
     {
       "location": "DocPharma",
@@ -95,9 +95,9 @@
     },
     {
       "location": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED",
-      "total": 3,
-      "accepted": 1,
-      "accept_pct": 33.3
+      "total": 2,
+      "accepted": 0,
+      "accept_pct": 0.0
     }
   ]
 }
