@@ -179,10 +179,10 @@
   table.wfr-lb-table tr.wfr-lb-row td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
   table.wfr-lb-table tr.wfr-lb-row td:last-child { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
   table.wfr-lb-table td.wfr-lb-name { font-weight: 700; }
-  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; }
+  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; background: var(--series-1); }
   .wfr-lb-medal { margin-left: 4px; font-size: 13px; }
-  .wfr-lb-legend { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted); margin-top: 12px; }
-  .wfr-lb-legend .wfr-lb-gradient { width: 120px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, hsl(120,65%,45%), hsl(60,75%,50%), hsl(0,70%,50%)); }
+  tr.wfr-lb-row:nth-child(even) { background: var(--surface-2); }
+  .wfr-lb-poster { display: block; max-width: 480px; width: 100%; height: auto; margin: 20px auto 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
 
   /* Print: designed for "switch to Tab 4 (Zoho EOD), then Ctrl+P" - only that tab's
      content prints, everything else (filters, topline, tab nav, download button) is
@@ -235,6 +235,7 @@
     #t5 table.wfr-lb-table td { padding: 7px 8px; }
     #t5 table.wfr-lb-table tr { page-break-inside: avoid; }
     #t5 table.wfr-lb-table thead { display: table-header-group; }
+    #t5 .wfr-lb-poster { max-width: 320px; page-break-before: always; break-before: page; box-shadow: none; }
   }
 </style>
 
@@ -504,7 +505,7 @@
             <tbody></tbody>
           </table>
         </div>
-        <div class="wfr-lb-legend"><span>Best</span><span class="wfr-lb-gradient"></span><span>Worst</span></div>
+        <img class="wfr-lb-poster" src="pipeline/assets/zero_warehouse_error_poster.png" alt="Affolife Retail — Zero Warehouse Error campaign poster, starting August 2026">
       </div>
     </div>
 
@@ -974,24 +975,28 @@ function renderMonthlyLeaderboard() {
     const per1000 = total ? Math.round(errors / total * 1000 * 100) / 100 : 0;
     return { wh, total, perDay, errors, per1000 };
   });
-  rows.sort((a, b) => a.errors - b.errors || a.per1000 - b.per1000);
+  // Rank strictly by performance (errors, then errors/1000 as the tiebreak metric).
+  // Only when two sites are genuinely tied on BOTH metrics does a secondary house
+  // preference apply - PlatinumRx-owned warehouses rank above the DocPharma partner
+  // site on an exact tie, never above a warehouse that actually performed better.
+  rows.sort((a, b) => {
+    if (a.errors !== b.errors) return a.errors - b.errors;
+    if (a.per1000 !== b.per1000) return a.per1000 - b.per1000;
+    const aOwn = a.wh !== 'DocPharma', bOwn = b.wh !== 'DocPharma';
+    if (aOwn !== bOwn) return aOwn ? -1 : 1;
+    return a.wh.localeCompare(b.wh);
+  });
   rows.forEach((r, i) => r.rank = i + 1);
 
-  const n = rows.length;
   const medal = { 1: '🥇', 2: '🥈', 3: '🥉' };
-  document.querySelector('#lb-table tbody').innerHTML = rows.length ? rows.map(r => {
-    const hue = n > 1 ? Math.round(120 * (1 - (r.rank - 1) / (n - 1))) : 120;
-    const rowBg = `hsl(${hue}, 65%, 94%)`;
-    const rankBg = `hsl(${hue}, 60%, 42%)`;
-    return `<tr class="wfr-lb-row" style="background:${rowBg}">
-      <td><span class="wfr-lb-rank" style="background:${rankBg}">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
+  document.querySelector('#lb-table tbody').innerHTML = rows.length ? rows.map(r => `<tr class="wfr-lb-row">
+      <td><span class="wfr-lb-rank">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
       <td class="wfr-lb-name">${r.wh}</td>
       <td class="num">${r.total.toLocaleString('en-IN')}</td>
       <td class="num">${r.perDay.toLocaleString('en-IN')}</td>
       <td class="num">${r.errors.toLocaleString('en-IN')}</td>
       <td class="num">${r.per1000}</td>
-    </tr>`;
-  }).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
+    </tr>`).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
 }
 renderMonthlyLeaderboard();
 
