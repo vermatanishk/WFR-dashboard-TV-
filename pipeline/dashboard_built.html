@@ -168,6 +168,22 @@
 
   .wfr-select { appearance: none; max-width: 100%; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-primary); font: inherit; font-size: 12.5px; font-weight: 600; padding: 6px 28px 6px 12px; border-radius: 8px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23898781'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
 
+  /* Tab 5: Monthly Leaderboard - IPL-points-table styling: each row tinted on a
+     green(best)->red(worst) gradient by rank, with a jersey-style rank badge. */
+  .wfr-lb-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .wfr-lb-title { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+  .wfr-lb-subtitle { font-size: 12px; color: var(--text-muted); font-style: italic; }
+  table.wfr-lb-table { font-size: 13px; }
+  table.wfr-lb-table th { font-size: 11px; }
+  table.wfr-lb-table td { padding: 10px 8px; }
+  table.wfr-lb-table tr.wfr-lb-row td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+  table.wfr-lb-table tr.wfr-lb-row td:last-child { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+  table.wfr-lb-table td.wfr-lb-name { font-weight: 700; }
+  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; }
+  .wfr-lb-medal { margin-left: 4px; font-size: 13px; }
+  .wfr-lb-legend { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted); margin-top: 12px; }
+  .wfr-lb-legend .wfr-lb-gradient { width: 120px; height: 8px; border-radius: 4px; background: linear-gradient(90deg, hsl(120,65%,45%), hsl(60,75%,50%), hsl(0,70%,50%)); }
+
   /* Print: designed for "switch to Tab 4 (Zoho EOD), then Ctrl+P" - only that tab's
      content prints, everything else (filters, topline, tab nav, download button) is
      stripped, and sizing is compacted to fit the tiles + both bar charts + the full
@@ -210,6 +226,15 @@
        acceptance-funnel summary (tiles + category/location + personnel) and
        page 2 is only the ticket table. */
     #t4 #eod-ticket-detail-card { page-break-before: always; break-before: page; page-break-inside: auto; }
+
+    /* Tab 5 (Monthly Leaderboard) prints as a single clean page - "switch to Tab 5, Ctrl+P". */
+    #t5 .wfr-lb-title { font-size: 18px; }
+    #t5 .wfr-lb-subtitle { font-size: 11px; }
+    #t5 .wfr-card { padding: 12px 14px; }
+    #t5 table.wfr-lb-table { font-size: 11.5px; }
+    #t5 table.wfr-lb-table td { padding: 7px 8px; }
+    #t5 table.wfr-lb-table tr { page-break-inside: avoid; }
+    #t5 table.wfr-lb-table thead { display: table-header-group; }
   }
 </style>
 
@@ -292,6 +317,7 @@
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t2">2 · Location</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t3">3 · Personnel</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t4">4 · Zoho EOD</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t5">5 · Monthly Leaderboard</button>
     </div>
 
     <div class="wfr-toolbar">
@@ -461,6 +487,24 @@
             <tbody></tbody>
           </table>
         </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: Monthly Leaderboard -->
+    <div class="wfr-panel" id="t5">
+      <div class="wfr-card">
+        <div class="wfr-lb-header">
+          <div class="wfr-lb-title" id="lb-month-title">Monthly Leaderboard</div>
+          <div class="wfr-lb-subtitle" id="lb-asof"></div>
+        </div>
+        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the ongoing calendar month. Ranked by total accepted (WH-fault) errors, fewest first — same "accepted error" definition used across the dashboard (WH-Accepted mis-shipment tickets, deduped per order).</div>
+        <div class="wfr-scroll">
+          <table class="wfr-table wfr-lb-table" id="lb-table">
+            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="wfr-lb-legend"><span>Best</span><span class="wfr-lb-gradient"></span><span>Worst</span></div>
       </div>
     </div>
 
@@ -875,6 +919,81 @@ document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t 
   <td><span class="wfr-pill ${t.wh_accepted_text ? 'yes' : 'no'}">${t.wh_accepted_text ? 'WH Accepted' : 'Not counted'}</span></td>
   <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '(no WH-team comment)'}</td>
 </tr>`).join('') || '<tr><td colspan="7" class="wfr-empty">No tickets for T-2</td></tr>';
+
+// ---- Tab 5: Monthly Leaderboard (ongoing calendar month, IPL-points-table style) ----
+function renderMonthlyLeaderboard() {
+  const genDate = new Date(DATA.generated_at);
+  const monthStr = `${genDate.getFullYear()}-${String(genDate.getMonth() + 1).padStart(2, '0')}`;
+  document.getElementById('lb-month-title').textContent = genDate.toLocaleDateString('en-IN', {month: 'long', year: 'numeric'}) + ' Leaderboard';
+  document.getElementById('lb-asof').textContent = `Updated scores as on ${genDate.toLocaleDateString('en-IN', {day: 'numeric', month: 'short', year: 'numeric'})}`;
+
+  // Orders processed this month, per warehouse, from the daily order-volume feed.
+  const ordersByWh = {}, daysSeenByWh = {};
+  Object.entries(ORDERS_BY_DAY_LOCATION).forEach(([dateStr, byLoc]) => {
+    if (!dateStr.startsWith(monthStr)) return;
+    Object.entries(byLoc).forEach(([wh, count]) => {
+      ordersByWh[wh] = (ordersByWh[wh] || 0) + count;
+      (daysSeenByWh[wh] = daysSeenByWh[wh] || new Set()).add(dateStr);
+    });
+  });
+  const daysElapsed = new Set(Object.keys(ORDERS_BY_DAY_LOCATION).filter(d => d.startsWith(monthStr))).size || 1;
+
+  // Accepted (WH-fault) errors this month, per warehouse, deduped by order - same
+  // methodology as the rest of the dashboard's "WH Accepted" counts.
+  const monthTickets = ALL_TICKETS.filter(t => {
+    const d = new Date(t.created_time);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` === monthStr;
+  });
+  const errorsByWh = {};
+  dedupeByOrder(monthTickets.filter(t => t.resolution === 'wh_accepted')).forEach(t => {
+    errorsByWh[t.location] = (errorsByWh[t.location] || 0) + 1;
+  });
+
+  // "Active" = a real, regularly-operating warehouse, judged over the FULL order-volume
+  // history (not just the few days elapsed this month, where even a one-off blip would
+  // clear a same-month threshold) - present on most days ever recorded. This is what
+  // separates a genuine site like DocPharma (present ~98% of days) from a one-off/test
+  // entity like "MOTHER WAREHOUSE..." (present on 2 of 91 days, a stray blip).
+  const allDates = Object.keys(ORDERS_BY_DAY_LOCATION);
+  const totalDaysHistory = allDates.length || 1;
+  const daysSeenAllTime = {};
+  allDates.forEach(dateStr => {
+    Object.keys(ORDERS_BY_DAY_LOCATION[dateStr]).forEach(wh => {
+      daysSeenAllTime[wh] = (daysSeenAllTime[wh] || 0) + 1;
+    });
+  });
+  const active = Object.keys(ordersByWh).filter(wh => {
+    if (wh === 'Unknown') return false;
+    return ordersByWh[wh] > 0 && (daysSeenAllTime[wh] || 0) >= totalDaysHistory * 0.7;
+  });
+
+  let rows = active.map(wh => {
+    const total = ordersByWh[wh] || 0;
+    const perDay = Math.round(total / daysElapsed);
+    const errors = errorsByWh[wh] || 0;
+    const per1000 = total ? Math.round(errors / total * 1000 * 100) / 100 : 0;
+    return { wh, total, perDay, errors, per1000 };
+  });
+  rows.sort((a, b) => a.errors - b.errors || a.per1000 - b.per1000);
+  rows.forEach((r, i) => r.rank = i + 1);
+
+  const n = rows.length;
+  const medal = { 1: '🥇', 2: '🥈', 3: '🥉' };
+  document.querySelector('#lb-table tbody').innerHTML = rows.length ? rows.map(r => {
+    const hue = n > 1 ? Math.round(120 * (1 - (r.rank - 1) / (n - 1))) : 120;
+    const rowBg = `hsl(${hue}, 65%, 94%)`;
+    const rankBg = `hsl(${hue}, 60%, 42%)`;
+    return `<tr class="wfr-lb-row" style="background:${rowBg}">
+      <td><span class="wfr-lb-rank" style="background:${rankBg}">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
+      <td class="wfr-lb-name">${r.wh}</td>
+      <td class="num">${r.total.toLocaleString('en-IN')}</td>
+      <td class="num">${r.perDay.toLocaleString('en-IN')}</td>
+      <td class="num">${r.errors.toLocaleString('en-IN')}</td>
+      <td class="num">${r.per1000}</td>
+    </tr>`;
+  }).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
+}
+renderMonthlyLeaderboard();
 
 // Tabs
 document.querySelectorAll('.wfr-tab').forEach(btn => {
