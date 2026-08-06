@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-08-05T17:29:55Z",
-  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2229 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 35 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-05-07 to 2026-08-05), exhaustive within that window",
+  "generated_at": "2026-08-06T13:58:27Z",
+  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2428 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 45 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
+  "pull_window": "Last 90 days (2026-05-08 to 2026-08-06), exhaustive within that window",
   "tab1": {
-    "total_tickets": 2229,
-    "total_orders": 2101,
-    "total_returns": 2010,
-    "wh_accepted": 521,
-    "bod": 1276,
-    "considered_bod": 213,
-    "no_return_record": 219,
-    "accept_pct": 24.8,
+    "total_tickets": 2428,
+    "total_orders": 2289,
+    "total_returns": 2192,
+    "wh_accepted": 538,
+    "bod": 1418,
+    "considered_bod": 236,
+    "no_return_record": 236,
+    "accept_pct": 23.5,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
-        "total": 1493,
-        "pct_of_total": 67.0,
-        "accepted": 418,
-        "accept_pct": 28.0
+        "total": 1495,
+        "pct_of_total": 61.6,
+        "accepted": 413,
+        "accept_pct": 27.6
       },
       {
         "category": "Wrong Medicines",
-        "total": 326,
-        "pct_of_total": 14.6,
-        "accepted": 69,
-        "accept_pct": 21.2
+        "total": 525,
+        "pct_of_total": 21.6,
+        "accepted": 91,
+        "accept_pct": 17.3
       },
       {
         "category": "Expiry Issue",
-        "total": 46,
-        "pct_of_total": 2.1,
+        "total": 47,
+        "pct_of_total": 1.9,
         "accepted": 7,
-        "accept_pct": 15.2
+        "accept_pct": 14.9
       },
       {
         "category": "Damaged/Defective",
-        "total": 364,
-        "pct_of_total": 16.3,
+        "total": 361,
+        "pct_of_total": 14.9,
         "accepted": 27,
-        "accept_pct": 7.4
+        "accept_pct": 7.5
       },
       {
         "category": "Switch Orders",
@@ -53,39 +53,39 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 686,
-      "accepted": 150,
-      "accept_pct": 21.9
+      "total": 736,
+      "accepted": 154,
+      "accept_pct": 20.9
     },
     {
       "location": "Bangalore",
-      "total": 598,
-      "accepted": 187,
-      "accept_pct": 31.3
+      "total": 647,
+      "accepted": 191,
+      "accept_pct": 29.5
     },
     {
       "location": "Mumbai",
-      "total": 267,
-      "accepted": 65,
-      "accept_pct": 24.3
+      "total": 289,
+      "accepted": 71,
+      "accept_pct": 24.6
     },
     {
       "location": "Kolkata",
-      "total": 222,
-      "accepted": 78,
-      "accept_pct": 35.1
+      "total": 247,
+      "accepted": 79,
+      "accept_pct": 32.0
     },
     {
       "location": "Unknown",
-      "total": 219,
+      "total": 236,
       "accepted": 0,
       "accept_pct": 0.0
     },
     {
       "location": "Lucknow",
-      "total": 190,
-      "accepted": 32,
-      "accept_pct": 16.8
+      "total": 226,
+      "accepted": 34,
+      "accept_pct": 15.0
     },
     {
       "location": "DocPharma",
