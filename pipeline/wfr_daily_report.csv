@@ -1,4 +1,4 @@
-WFR Daily Report,2026-08-07T06:31:28Z
+WFR Daily Report,2026-08-07T11:24:37Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 203618,2332030,Missing/Wrong Qty,Unknown,2026-05-09T03:42:50.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
@@ -2380,7 +2380,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 250960,3293256,Missing/Wrong Qty,Bangalore,2026-08-05T06:35:35.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Uzma1_BLRWH,Kaveri_BLRWH
 250964,3252820,Missing/Wrong Qty,Lucknow,2026-08-05T06:40:56.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250966,3209498,Missing/Wrong Qty,Lucknow,2026-08-05T06:44:11.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Gayatri.M_LKO,Adiba.F_LKO
-250968,3251974,Wrong Medicines,Bangalore,2026-08-05T06:47:40.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+250968,3251974,Wrong Medicines,Bangalore,2026-08-05T06:47:40.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx Mahiboob bee""",Nagesh / Kavana_BLRWH,Shwetha_BLRWH
 250974,3256168,Wrong Medicines,Delhi,2026-08-05T07:07:20.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 250979,3295771,Wrong Medicines,Bangalore,2026-08-05T07:27:40.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx Mahiboob bee""",Nahila_BLRW,Shwetha_BLRWH
 251007,3299838,Missing/Wrong Qty,Mumbai,2026-08-05T10:31:49.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
@@ -2433,8 +2433,8 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 Summary
 Total tickets raised,2428
 Total refunds/returns issued,2192
-WH Accepted,538
+WH Accepted,539
 BOD,1418
-Considered BOD,236
+Considered BOD,235
 No return record (excluded from refund total),236
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes
