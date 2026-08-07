@@ -138,6 +138,13 @@
   .wfr-wh-card-body table.wfr-table thead th { position: sticky; top: 0; background: var(--surface-1); z-index: 1; }
   .wfr-rate-badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-weight: 700; font-size: 11.5px; }
 
+  /* EOD "By location" warehouse cards - row-level attention flagging */
+  tr.wfr-eod-row-flag { background: color-mix(in srgb, var(--status-critical) 16%, var(--surface-1)); }
+  tr.wfr-eod-row-clear { background: var(--surface-2); }
+  .wfr-eod-legend-flag, .wfr-eod-legend-clear { display: inline-block; padding: 1px 8px; border-radius: 4px; font-weight: 700; }
+  .wfr-eod-legend-flag { background: color-mix(in srgb, var(--status-critical) 16%, var(--surface-1)); color: var(--status-critical); }
+  .wfr-eod-legend-clear { background: var(--surface-2); color: var(--text-secondary); }
+
   .wfr-row-2col { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px; align-items: stretch; }
   @media (max-width: 860px) { .wfr-row-2col { grid-template-columns: 1fr; } }
 
@@ -222,6 +229,14 @@
     #t4 table.wfr-table th, #t4 table.wfr-table td { padding: 3px 5px; }
     #t4 table.wfr-table thead { display: table-header-group; }
     #t4 table.wfr-table tr { page-break-inside: avoid; }
+
+    /* "By location" warehouse cards - unclip the fixed-height scroll box so every
+       row actually prints, and pack 3 cards per row to fit landscape width. */
+    #t4 .wfr-personnel-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    #t4 .wfr-wh-card { height: auto; page-break-inside: avoid; }
+    #t4 .wfr-wh-card-body { overflow: visible; }
+    #t4 .wfr-wh-card h4 { font-size: 9.5px; padding: 5px 8px; }
+    #t4 .wfr-wh-count { font-size: 8.5px; }
 
     /* Ticket-level detail always starts fresh on page 2, so page 1 is the
        acceptance-funnel summary (tiles + category/location + personnel) and
@@ -468,7 +483,8 @@
 
       <div class="wfr-card">
         <h3>By location</h3>
-        <div id="eod-loc-bars"></div>
+        <div class="wfr-footnote" style="margin-bottom:14px">One card per warehouse (same layout as the Personnel tab). Each row is a T-2 ticket - <span class="wfr-eod-legend-flag">red</span> = WH-Accepted (needs attention), <span class="wfr-eod-legend-clear">grey</span> = not accepted.</div>
+        <div class="wfr-personnel-grid" id="eod-loc-cards"></div>
       </div>
 
       <div class="wfr-card">
@@ -892,14 +908,25 @@ EOD.tickets.forEach(t => {
 const maxEodCat = Math.max(...Object.values(eodByCat).map(r => r.total), 1);
 document.getElementById('eod-cat-bars').innerHTML = Object.entries(eodByCat).filter(([,r]) => r.total > 0).map(([c,r]) => barRow(c, r.total, r.accepted, maxEodCat)).join('') || '<div class="wfr-empty">No tickets</div>';
 
-const eodByLoc = {};
+// "By location" - one card per warehouse (same wfr-wh-card pattern as the Personnel
+// tab), each row a T-2 ticket, flagged red if WH-Accepted (needs attention) or
+// grey if not - so ops can scan straight for the rows that matter, warehouse by warehouse.
+const eodByLocTickets = {};
 EOD.tickets.forEach(t => {
-  eodByLoc[t.location] = eodByLoc[t.location] || {total:0, accepted:0};
-  eodByLoc[t.location].total++;
-  if (t.wh_accepted_text) eodByLoc[t.location].accepted++;
+  (eodByLocTickets[t.location] = eodByLocTickets[t.location] || []).push(t);
 });
-const maxEodLoc = Math.max(...Object.values(eodByLoc).map(r => r.total), 1);
-document.getElementById('eod-loc-bars').innerHTML = Object.entries(eodByLoc).sort((a,b)=>b[1].total-a[1].total).map(([l,r]) => barRow(l, r.total, r.accepted, maxEodLoc)).join('') || '<div class="wfr-empty">No tickets</div>';
+document.getElementById('eod-loc-cards').innerHTML = Object.entries(eodByLocTickets)
+  .sort((a, b) => b[1].length - a[1].length)
+  .map(([loc, tickets]) => {
+    const accepted = tickets.filter(t => t.wh_accepted_text).length;
+    const rows = tickets.map(t => `<tr class="${t.wh_accepted_text ? 'wfr-eod-row-flag' : 'wfr-eod-row-clear'}">
+        <td>${t.ticket_id}</td>
+        <td>${t.category}</td>
+        <td>${t.wh_accepted_text ? '<span class="wfr-pill yes">WH Accepted</span>' : '<span class="wfr-pill no">Not counted</span>'}</td>
+        <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '—'}</td>
+      </tr>`).join('');
+    return `<div class="wfr-wh-card"><h4>${loc}<span class="wfr-wh-count">${tickets.length} tickets${accepted ? ` · ${accepted} accepted` : ''}</span></h4><div class="wfr-wh-card-body"><table class="wfr-table"><thead><tr><th>Ticket</th><th>Category</th><th>Status</th><th>Comment</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+  }).join('') || '<div class="wfr-empty">No tickets for T-2</div>';
 
 const eodAcceptedTickets = EOD.tickets.filter(t => t.wh_accepted_text);
 document.querySelector('#eod-personnel-table tbody').innerHTML = eodAcceptedTickets.map(t => `<tr>

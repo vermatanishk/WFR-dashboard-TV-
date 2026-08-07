@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-06T13:58:27Z",
+  "generated_at": "2026-08-07T06:31:28Z",
   "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2428 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 45 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-05-08 to 2026-08-06), exhaustive within that window",
+  "pull_window": "Last 90 days (2026-05-09 to 2026-08-07), exhaustive within that window",
   "tab1": {
     "total_tickets": 2428,
     "total_orders": 2289,
