@@ -922,10 +922,8 @@ document.getElementById('eod-loc-cards').innerHTML = Object.entries(eodByLocTick
     const rows = tickets.map(t => `<tr class="${t.wh_accepted_text ? 'wfr-eod-row-flag' : 'wfr-eod-row-clear'}">
         <td>${t.ticket_id}</td>
         <td>${t.category}</td>
-        <td>${t.wh_accepted_text ? '<span class="wfr-pill yes">WH Accepted</span>' : '<span class="wfr-pill no">Not counted</span>'}</td>
-        <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '—'}</td>
       </tr>`).join('');
-    return `<div class="wfr-wh-card"><h4>${loc}<span class="wfr-wh-count">${tickets.length} tickets${accepted ? ` · ${accepted} accepted` : ''}</span></h4><div class="wfr-wh-card-body"><table class="wfr-table"><thead><tr><th>Ticket</th><th>Category</th><th>Status</th><th>Comment</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
+    return `<div class="wfr-wh-card"><h4>${loc}<span class="wfr-wh-count">${tickets.length} tickets${accepted ? ` · ${accepted} accepted` : ''}</span></h4><div class="wfr-wh-card-body"><table class="wfr-table"><thead><tr><th>Ticket</th><th>Category</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
   }).join('') || '<div class="wfr-empty">No tickets for T-2</div>';
 
 const eodAcceptedTickets = EOD.tickets.filter(t => t.wh_accepted_text);
