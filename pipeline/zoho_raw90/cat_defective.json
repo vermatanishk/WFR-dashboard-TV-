@@ -1,5 +1,27 @@
 [
   {
+    "ticket_id": "251412",
+    "order_id": "3278083",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-08-07T13:32:08.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Shaik Furquan",
+    "category": "Damaged/Defective"
+  },
+  {
+    "ticket_id": "250733",
+    "order_id": "3062757",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-08-04T05:06:34.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan",
+    "category": "Damaged/Defective"
+  },
+  {
     "ticket_id": "251391",
     "order_id": "3146598",
     "sub_disposition": "Defective or damaged device or accessory",
@@ -19,17 +41,6 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Soumen Das",
-    "category": "Damaged/Defective"
-  },
-  {
-    "ticket_id": "250733",
-    "order_id": "3062757",
-    "sub_disposition": "Defective or damaged device or accessory",
-    "created_time": "2026-08-04T05:06:34.000Z",
-    "status": "Assigned",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sanjeev Mohan",
     "category": "Damaged/Defective"
   },
   {
