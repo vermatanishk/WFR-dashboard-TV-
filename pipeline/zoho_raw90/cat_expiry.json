@@ -491,7 +491,18 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
+    "category": "Expiry Issue"
+  },
+  {
+    "ticket_id": "251054",
+    "order_id": "3259192",
+    "sub_disposition": "Expired or near expiry",
+    "created_time": "2026-08-05T12:58:57.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma",
     "category": "Expiry Issue"
   },
   {
@@ -502,7 +513,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Expiry Issue"
   }
 ]

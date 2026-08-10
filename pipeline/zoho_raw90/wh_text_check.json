@@ -2362,5 +2362,65 @@
     "admitted": false,
     "wh_comment": null,
     "reason": "No Warehouse-role comment on this ticket (only an L2 agent's internal note about updating a sheet) - not counted."
+  },
+  "251489": {
+    "order_id": 3314394,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251538": {
+    "order_id": 3330255,
+    "admitted": false,
+    "wh_comment": "Footage not found because cctv is under Maintenance",
+    "reason": "Warehouse comment addresses CCTV footage availability, not a first-person admission of fault - not counted."
+  },
+  "251220": {
+    "order_id": 3283743,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251530": {
+    "order_id": 3320630,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251501": {
+    "order_id": 3277005,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx | This batch is not available in our inventory",
+    "reason": "Stock denial followed by an inventory-availability note - neither is a first-person admission of WH fault. Not counted."
+  },
+  "251292": {
+    "order_id": 3196229,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only LightAgent/L2 Agent notes) - not counted."
+  },
+  "251054": {
+    "order_id": 3259192,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No comments on this ticket at all - not counted."
+  },
+  "251554": {
+    "order_id": 3231812,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 agent note) - not counted."
+  },
+  "251017": {
+    "order_id": 3199760,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251479": {
+    "order_id": 3281140,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket (only L2 agent notes) - not counted."
   }
 }

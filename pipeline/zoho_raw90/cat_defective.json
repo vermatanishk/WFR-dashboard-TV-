@@ -466,7 +466,7 @@
     "order_id": "2942289",
     "sub_disposition": "Defective or damaged device or accessory",
     "created_time": "2026-07-11T13:08:55.000Z",
-    "status": "Waiting on Customer",
+    "status": "Assigned",
     "channel": "Web",
     "department": "Support",
     "assignee": "Soumen Das",
@@ -642,10 +642,21 @@
     "order_id": "3278083",
     "sub_disposition": "Defective or damaged device or accessory",
     "created_time": "2026-08-07T13:32:08.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Shaik Furquan",
+    "assignee": "Katyayani Singh",
+    "category": "Damaged/Defective"
+  },
+  {
+    "ticket_id": "251554",
+    "order_id": "3231812",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-08-08T10:49:11.000Z",
+    "status": "Resolved",
+    "channel": "Contact Us",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan",
     "category": "Damaged/Defective"
   }
 ]

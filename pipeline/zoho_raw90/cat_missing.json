@@ -1,159 +1,5 @@
 [
   {
-    "ticket_id": "204667",
-    "order_id": "2379329",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-11T14:13:23.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204676",
-    "order_id": "2390305",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-11T14:30:29.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204838",
-    "order_id": "2377581",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T04:50:10.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204857",
-    "order_id": "2384305",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T05:22:24.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204887",
-    "order_id": "2344798",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T06:16:03.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204896",
-    "order_id": "2386443",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T06:26:52.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204907",
-    "order_id": "2372071",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T06:50:24.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204925",
-    "order_id": "2376712",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T07:23:14.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Bikranth Singh",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204928",
-    "order_id": "2315378",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T07:29:15.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204929",
-    "order_id": "2367074",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T07:31:13.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "204992",
-    "order_id": " 2378003",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T09:40:25.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "205008",
-    "order_id": "2160081",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T10:05:18.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "205018",
-    "order_id": "2388947",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T10:31:18.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
-    "ticket_id": "205029",
-    "order_id": "2389005",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-05-12T10:52:24.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Missing/Wrong Qty"
-  },
-  {
     "ticket_id": "205048",
     "order_id": "2373645",
     "sub_disposition": "Missing or less quantity received",
@@ -4334,17 +4180,6 @@
     "category": "Missing/Wrong Qty"
   },
   {
-    "ticket_id": "212320",
-    "order_id": "2488134",
-    "sub_disposition": "Missing or less quantity received",
-    "created_time": "2026-06-05T06:46:20.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar",
-    "category": "Missing/Wrong Qty"
-  },
-  {
     "ticket_id": "212319",
     "order_id": "2488134",
     "sub_disposition": "Missing or less quantity received",
@@ -4353,6 +4188,17 @@
     "channel": "Web",
     "department": "Support",
     "assignee": "Muskan Gurung",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "212320",
+    "order_id": "2488134",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-06-05T06:46:20.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Arun Kumar",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -15580,7 +15426,7 @@
     "order_id": "3225587",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-04T10:42:28.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
@@ -15657,7 +15503,7 @@
     "order_id": "3187230",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-04T12:06:22.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Ayushi Kumari",
@@ -15682,7 +15528,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Raja Sarashanth",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -15726,7 +15572,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -15825,7 +15671,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16038,6 +15884,17 @@
     "category": "Missing/Wrong Qty"
   },
   {
+    "ticket_id": "251220",
+    "order_id": "3283743",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-06T11:33:12.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Pijush Das",
+    "category": "Missing/Wrong Qty"
+  },
+  {
     "ticket_id": "251230",
     "order_id": "3272492",
     "sub_disposition": "Missing or less quantity received",
@@ -16078,6 +15935,17 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
+    "assignee": "Pijush Das",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251301",
+    "order_id": "3326696",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-07T06:17:08.000Z",
+    "status": "Waiting on Customer",
+    "channel": "Web",
+    "department": "Support",
     "assignee": "Naveen N",
     "category": "Missing/Wrong Qty"
   },
@@ -16086,7 +15954,7 @@
     "order_id": "3272139",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-07T12:07:56.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Naveen N",
@@ -16100,7 +15968,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Naveen N",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16111,7 +15979,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16122,7 +15990,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16130,7 +15998,7 @@
     "order_id": "3276240",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-08T06:33:11.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
@@ -16144,7 +16012,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16155,7 +16023,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16177,7 +16045,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16185,7 +16053,7 @@
     "order_id": "3279125",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-08T10:38:23.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
@@ -16199,7 +16067,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16207,7 +16075,7 @@
     "order_id": "3330303",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-08T11:57:10.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
@@ -16221,7 +16089,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16232,7 +16100,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16240,10 +16108,21 @@
     "order_id": "3314822",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-08T12:59:42.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251602",
+    "order_id": "3286268",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-08T13:15:41.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Pijush Das",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16251,10 +16130,32 @@
     "order_id": "3309863",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-09T06:50:04.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251685",
+    "order_id": null,
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-09T07:25:33.000Z",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Kirti Sharma",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251695",
+    "order_id": "3318605",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-09T07:45:59.000Z",
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Kirti Sharma",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16265,7 +16166,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Kirti Sharma",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16273,10 +16174,10 @@
     "order_id": "3306795",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-09T10:11:04.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Sanjeev Mohan",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16287,7 +16188,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Ayushi Kumari",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16298,7 +16199,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Ayushi Kumari",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16306,10 +16207,10 @@
     "order_id": "3339298",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-09T10:51:39.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Ayushi Kumari",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16317,10 +16218,10 @@
     "order_id": "3326942",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-09T12:31:52.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Sanjeev Mohan",
     "category": "Missing/Wrong Qty"
   },
   {
@@ -16328,6 +16229,83 @@
     "order_id": "3293223",
     "sub_disposition": "Missing or less quantity received",
     "created_time": "2026-08-09T12:39:44.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251832",
+    "order_id": "3139834",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T04:44:55.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251839",
+    "order_id": "3323274",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T04:57:30.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma",
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251918",
+    "order_id": "3326482",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T10:16:47.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": null,
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251920",
+    "order_id": "3315632",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T10:21:45.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": null,
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251923",
+    "order_id": "3344321",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T10:25:06.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": null,
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251930",
+    "order_id": "3306311",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T10:45:14.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": null,
+    "category": "Missing/Wrong Qty"
+  },
+  {
+    "ticket_id": "251937",
+    "order_id": "3368432",
+    "sub_disposition": "Missing or less quantity received",
+    "created_time": "2026-08-10T11:10:24.000Z",
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",

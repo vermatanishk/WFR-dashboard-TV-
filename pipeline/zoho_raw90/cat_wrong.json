@@ -1,93 +1,5 @@
 [
   {
-    "ticket_id": "204655",
-    "order_id": "2362008",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-11T13:41:19.000Z",
-    "status": "Closed",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "204836",
-    "order_id": "2394244",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T04:49:00.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "204844",
-    "order_id": "2377217",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T05:02:12.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "204886",
-    "order_id": "2297226",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T06:15:01.000Z",
-    "status": "Closed",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "204951",
-    "order_id": "2294992",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T08:09:12.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "204983",
-    "order_id": "2367074",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T09:25:49.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "204987",
-    "order_id": "2358447",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T09:29:29.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar",
-    "category": "Wrong Medicines"
-  },
-  {
-    "ticket_id": "205010",
-    "order_id": "2331954",
-    "sub_disposition": "Wrong item Delivered",
-    "created_time": "2026-05-12T10:09:47.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung",
-    "category": "Wrong Medicines"
-  },
-  {
     "ticket_id": "205060",
     "order_id": "2090470.",
     "sub_disposition": "Wrong item Delivered",
@@ -5218,7 +5130,7 @@
     "order_id": "3240524",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-03T13:01:38.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Kirti Sharma",
@@ -5276,7 +5188,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5331,7 +5243,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Ayushi Kumari",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5353,7 +5265,7 @@
     "status": "In Progress",
     "channel": "Email",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Raja Sarashanth",
     "category": "Wrong Medicines"
   },
   {
@@ -5364,7 +5276,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5375,7 +5287,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5496,7 +5408,7 @@
     "status": "In Progress",
     "channel": "Email",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Raja Sarashanth",
     "category": "Wrong Medicines"
   },
   {
@@ -5518,7 +5430,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5540,7 +5452,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5562,7 +5474,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5573,7 +5485,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5581,7 +5493,7 @@
     "order_id": "3296337",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-06T10:20:20.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Kirti Sharma",
@@ -5595,7 +5507,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Kirti Sharma",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5603,10 +5515,21 @@
     "order_id": "3254972",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-06T12:55:13.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Katyayani Singh",
+    "category": "Wrong Medicines"
+  },
+  {
+    "ticket_id": "251260",
+    "order_id": null,
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-06T15:23:06.000Z",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Naveen N",
     "category": "Wrong Medicines"
   },
   {
@@ -5661,7 +5584,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5672,7 +5595,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5683,7 +5606,18 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh",
+    "assignee": "Pijush Das",
+    "category": "Wrong Medicines"
+  },
+  {
+    "ticket_id": "251426",
+    "order_id": "3324045",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-07T14:32:23.000Z",
+    "status": "In Progress",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Raja Sarashanth",
     "category": "Wrong Medicines"
   },
   {
@@ -5702,7 +5636,7 @@
     "order_id": "3284114",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-08T05:11:23.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
@@ -5738,7 +5672,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5749,7 +5683,7 @@
     "status": "In Progress",
     "channel": "Email",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Raja Sarashanth",
     "category": "Wrong Medicines"
   },
   {
@@ -5757,7 +5691,7 @@
     "order_id": "3292968",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-08T11:52:36.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Sanjeev Mohan",
@@ -5782,7 +5716,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Sanjeev Mohan",
+    "assignee": "Pijush Das",
     "category": "Wrong Medicines"
   },
   {
@@ -5793,7 +5727,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Sanjeev Mohan",
     "category": "Wrong Medicines"
   },
   {
@@ -5804,7 +5738,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Katyayani Singh",
     "category": "Wrong Medicines"
   },
   {
@@ -5815,7 +5749,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Katyayani Singh",
     "category": "Wrong Medicines"
   },
   {
@@ -5823,10 +5757,10 @@
     "order_id": "3219032",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-09T10:59:22.000Z",
-    "status": "In Progress",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Katyayani Singh",
     "category": "Wrong Medicines"
   },
   {
@@ -5837,7 +5771,7 @@
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
-    "assignee": null,
+    "assignee": "Ayushi Kumari",
     "category": "Wrong Medicines"
   },
   {
@@ -5845,6 +5779,39 @@
     "order_id": "3303820",
     "sub_disposition": "Wrong item Delivered",
     "created_time": "2026-08-09T12:50:18.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan",
+    "category": "Wrong Medicines"
+  },
+  {
+    "ticket_id": "251831",
+    "order_id": "3327261",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-10T04:43:41.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan",
+    "category": "Wrong Medicines"
+  },
+  {
+    "ticket_id": "251934",
+    "order_id": "3309959",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-10T11:05:38.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": null,
+    "category": "Wrong Medicines"
+  },
+  {
+    "ticket_id": "251936",
+    "order_id": "3340056",
+    "sub_disposition": "Wrong item Delivered",
+    "created_time": "2026-08-10T11:08:28.000Z",
     "status": "In Progress",
     "channel": "Web",
     "department": "Support",
