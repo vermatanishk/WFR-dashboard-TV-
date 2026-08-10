@@ -1,28 +1,77 @@
-{"order_id": 3083458, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3080616, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3080616, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3080616, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3080616, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3080616, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2752104, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer unreachable"}
+{"order_id": 2754753, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
+{"order_id": 2751900, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
+{"order_id": 2758814, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": "doc pharma"}
+{"order_id": 2754488, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
+{"order_id": 2753585, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2753257, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
+{"order_id": 2757868, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2755348, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
+{"order_id": 2762458, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2751893, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2770247, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
+{"order_id": 2770911, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
+{"order_id": 2759471, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2765082, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2782422, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2761131, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
+{"order_id": 2769612, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
+{"order_id": 2785662, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2761278, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
+{"order_id": 2771118, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2785005, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": "doc pharma cx received medicine "}
+{"order_id": 2794312, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2783772, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Claiim Rejected as complete order was sent"}
+{"order_id": 2770084, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2773750, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2760801, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
+{"order_id": 2793867, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2787936, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2753752, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
+{"order_id": 2778779, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
+{"order_id": 2767613, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2784031, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
+{"order_id": 2786171, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2764591, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
+{"order_id": 2764591, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
+{"order_id": 2783368, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2764591, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2768941, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2790065, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2776477, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2796679, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2769651, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2791143, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2789281, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2793051, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2802367, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2802367, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2771083, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
 {"order_id": 2806989, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2794640, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
+{"order_id": 2791572, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2815012, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2815012, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2815012, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
+{"order_id": 2782440, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2779612, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2777806, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 2795421, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
 {"order_id": 2795421, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2807766, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
 {"order_id": 2796880, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2796880, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
+{"order_id": 2769324, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Customer received correct order"}
 {"order_id": 2818178, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2786647, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2812436, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2792313, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2820096, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2822620, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2763618, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 2822049, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
 {"order_id": 2817307, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2792662, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2823065, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2830624, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2823515, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
@@ -38,43 +87,55 @@
 {"order_id": 2799274, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2832908, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer received correct order"}
 {"order_id": 2794484, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2790455, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2814867, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2806796, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2833896, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2811361, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2812069, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Return In Transit for Over 10 Days - Credit note created later due to prolonged transit delay."}
 {"order_id": 2834325, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2758571, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2824463, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2808128, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
 {"order_id": 2803307, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2846975, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 2846975, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2790498, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2828835, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2817486, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2848821, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2817909, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2817909, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2817909, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Return In Transit for Over 10 Days - Credit note created later due to prolonged transit delay."}
+{"order_id": 2763168, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2799046, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2811958, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2758571, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
+{"order_id": 2758571, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2828901, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2822971, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2852142, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2827024, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2841654, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2835638, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2763618, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2808962, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2856122, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2839836, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2854926, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2846367, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer unreachable"}
+{"order_id": 2774646, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
 {"order_id": 2794596, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2838105, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Return In Transit for Over 10 Days - Credit note created later due to prolonged transit delay."}
 {"order_id": 2835633, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2812752, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2819772, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2819772, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2770742, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Return In Transit for Over 10 Days - Credit note created later due to prolonged transit delay."}
+{"order_id": 2791858, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2789556, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2840400, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2780453, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
 {"order_id": 2864007, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 2813513, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2841744, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -82,10 +143,12 @@
 {"order_id": 2866965, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2847504, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2846567, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2765145, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2836511, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2812354, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2859599, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2817058, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
+{"order_id": 2779433, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2842517, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2802199, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 2842159, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
@@ -103,6 +166,7 @@
 {"order_id": 2828718, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
 {"order_id": 2795002, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2875234, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2784737, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2819024, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2841509, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2867501, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
@@ -118,7 +182,9 @@
 {"order_id": 2850663, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2842483, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
 {"order_id": 2864044, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2777776, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2889937, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2862323, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2869898, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2863435, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2828512, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
@@ -126,9 +192,11 @@
 {"order_id": 2883191, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2830635, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "QC completed successfully"}
 {"order_id": 2859396, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2778409, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 2862735, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2845823, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2817782, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2772808, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2799719, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2881039, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 2864676, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
@@ -185,6 +253,7 @@
 {"order_id": 2850167, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2905053, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
 {"order_id": 2876512, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2788462, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer received correct order"}
 {"order_id": 2910663, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2879912, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2892302, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -193,9 +262,12 @@
 {"order_id": 2852638, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
 {"order_id": 2891979, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2852638, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2771013, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer unreachable"}
 {"order_id": 2896055, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2910350, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2912742, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2780287, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
+{"order_id": 2780287, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2893405, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Customer received correct order"}
 {"order_id": 2860605, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
 {"order_id": 2842674, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
@@ -378,6 +450,7 @@
 {"order_id": 2979239, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2972540, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2961646, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 2946699, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2949799, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2942596, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 2979140, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -446,12 +519,12 @@
 {"order_id": 3020154, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
 {"order_id": 3020154, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 3002757, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3040032, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 3010110, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2982490, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3027223, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 2929954, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2979371, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
+{"order_id": 2962904, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3019779, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 3019779, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2995168, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -462,193 +535,77 @@
 {"order_id": 2975089, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 3009439, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2970545, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3041975, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3008216, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer changed their mind - retained order"}
+{"order_id": 2765157, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3025811, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2905853, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2960725, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3010751, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3027535, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3009954, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3045576, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Customer received correct order"}
-{"order_id": 3043432, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Customer received correct order"}
-{"order_id": 3044467, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3007920, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3050981, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3019863, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2992204, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 2942289, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
 {"order_id": 2992204, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 2992204, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 2992204, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3056265, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "order switch / cog<100"}
-{"order_id": 3040605, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3040605, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3040620, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3009733, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3056534, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
-{"order_id": 3041040, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
-{"order_id": 3041040, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Customer unreachable"}
 {"order_id": 2963922, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
 {"order_id": 2980590, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3047490, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3034199, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3026648, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3047144, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2999881, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 3017382, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2999881, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3048313, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3029427, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3068005, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3017382, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 3017382, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3064777, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3041985, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3027386, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3035373, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3063156, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer received correct order"}
-{"order_id": 3053986, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3034355, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3039342, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 3023793, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3058589, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
-{"order_id": 3042389, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3011928, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3038815, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3056362, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
-{"order_id": 3047328, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
 {"order_id": 3032637, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3068465, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3031275, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 3031275, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3031537, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3040626, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Customer received correct order"}
-{"order_id": 3094280, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": null}
-{"order_id": 3068569, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3068566, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3075114, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
-{"order_id": 3063486, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 2998928, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
-{"order_id": 3061522, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2969740, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2959092, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "QC completed successfully"}
-{"order_id": 3070884, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3076348, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2985258, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3082819, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer received correct order"}
 {"order_id": 3011986, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3066832, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3075113, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3084071, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer received correct order"}
-{"order_id": 3044878, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3026740, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3070389, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3071485, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3061162, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "order switch / cog<100"}
-{"order_id": 3071584, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3076088, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
 {"order_id": 3012181, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3086463, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3095363, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2957219, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3037431, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3095138, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": null}
-{"order_id": 3095138, "warehouse_id": 4, "warehouse_name": "DocPharma", "city": "Bangalore", "remark": "doc pharma / cx received correct medicine "}
-{"order_id": 3084562, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3097103, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3085623, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3039275, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3078748, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3014034, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3089257, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3092298, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3057922, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3082131, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
-{"order_id": 3083335, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3070818, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3031581, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Customer received correct order"}
-{"order_id": 3078036, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": " exception case - refund processed"}
-{"order_id": 3094405, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3087999, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
-{"order_id": 3087999, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3090646, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Customer received correct order"}
-{"order_id": 3074481, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3092502, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3067267, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3092666, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3056529, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2883711, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3080552, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3091444, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3050085, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3064029, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 3027919, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 3027919, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 3027919, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 3027919, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3093545, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
-{"order_id": 3070124, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 2979239, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
 {"order_id": 3033705, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
-{"order_id": 3094604, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3071583, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3089629, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": null}
-{"order_id": 3058635, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3049482, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3062178, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3096560, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3061170, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3043066, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
-{"order_id": 3043066, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2975690, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
 {"order_id": 3037230, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 3037230, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3038162, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3093171, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3062757, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
 {"order_id": 2860489, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2931791, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
 {"order_id": 2990816, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "NSZ for Return Pickup (RVP) - Unable to return order as pickup not possible(NSZ) and COG isn't high."}
 {"order_id": 2954877, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2965088, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": null}
 {"order_id": 2861537, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Customer unreachable"}
-{"order_id": 3037542, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 3025209, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3058321, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 3009226, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2948206, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
-{"order_id": 3041855, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
-{"order_id": 3057718, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2875668, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
-{"order_id": 3044911, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
-{"order_id": 3069365, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 2991758, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3038397, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
 {"order_id": 2948499, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3057369, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3046811, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3022372, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3070418, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3040851, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3072410, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
-{"order_id": 3092242, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
-{"order_id": 3082131, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": null}
-{"order_id": 3075994, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "Validated"}
 {"order_id": 3028140, "warehouse_id": 5, "warehouse_name": "Lucknow", "city": "Lucknow", "remark": "NSZ for Return Pickup (RVP) - Unable to return order as pickup not possible(NSZ) and COG isn't high."}
-{"order_id": 3077495, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Validated"}
-{"order_id": 3053582, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3068271, "warehouse_id": 1, "warehouse_name": "Bangalore", "city": "Bangalore", "remark": "Validated"}
-{"order_id": 3044640, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
 {"order_id": 3027919, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 2808128, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "QC completed successfully"}
-{"order_id": 3044649, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
-{"order_id": 3074397, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": "Validated"}
-{"order_id": 3077540, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "Validated"}
-{"order_id": 3088226, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3062757, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": null}
-{"order_id": 3095379, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 2882682, "warehouse_id": 3, "warehouse_name": "Mumbai", "city": "Mumbai", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
-{"order_id": 3042349, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2879912, "warehouse_id": 6, "warehouse_name": "Kolkata", "city": "Kolkata", "remark": null}
 {"order_id": 3033409, "warehouse_id": 2, "warehouse_name": "Delhi", "city": "New Delhi", "remark": "QC completed successfully"}
