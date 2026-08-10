@@ -2422,5 +2422,41 @@
     "admitted": false,
     "wh_comment": null,
     "reason": "No Warehouse-role comment on this ticket (only L2 agent notes) - not counted."
+  },
+  "251595": {
+    "order_id": 3314874,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251591": {
+    "order_id": 3286202,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251580": {
+    "order_id": 3308388,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx",
+    "reason": "Explicit first-person WH admission of sending wrong SKU."
+  },
+  "251577": {
+    "order_id": 3292968,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251572": {
+    "order_id": 3285565,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Stock denial - not an admission."
+  },
+  "251063": {
+    "order_id": 3280300,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket."
   }
 }
