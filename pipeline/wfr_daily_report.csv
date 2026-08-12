@@ -1,4 +1,4 @@
-WFR Daily Report,2026-08-12T05:21:34Z
+WFR Daily Report,2026-08-12T12:41:42Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 205274,2404478,Missing/Wrong Qty,Mumbai,2026-05-13T04:55:10.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Rajesh_MUM / KaranZ_MUM,PrathmeshP_MUM
@@ -2006,7 +2006,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 251773,3303820,Wrong Medicines,Delhi,2026-08-09T12:50:18.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251795,3357792,Wrong Medicines,Delhi,2026-08-09T16:05:48.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251831,3327261,Wrong Medicines,Delhi,2026-08-10T04:43:41.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong medicine to cx Naveen""",Sanjay_v_DEL,Devki-DEL
-251934,3309959,Wrong Medicines,Delhi,2026-08-10T11:05:38.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+251934,3309959,Wrong Medicines,Delhi,2026-08-10T11:05:38.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong medicine to cx""",Roshan_P-DEL,Shailesh_DEL
 251936,3340056,Wrong Medicines,Delhi,2026-08-10T11:08:28.000,WH Accepted,remark matches WH-fault-confirmed pattern ('wrong medicine delivered'),Shivam.KR_DEL,CHANDAN_DEL
 251964,3341818,Wrong Medicines,Mumbai,2026-08-10T12:29:16.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252139,3304901,Wrong Medicines,Delhi,2026-08-11T08:43:07.000,WH Accepted,remark matches WH-fault-confirmed pattern ('wrong medicine delivered'),Muskan_Del,Babita_DEL
@@ -2422,8 +2422,8 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 Summary
 Total tickets raised,2417
 Total refunds/returns issued,2196
-WH Accepted,513
+WH Accepted,514
 BOD,1430
-Considered BOD,253
+Considered BOD,252
 No return record (excluded from refund total),221
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes

@@ -2518,5 +2518,65 @@
     "admitted": false,
     "wh_comment": null,
     "reason": "No Warehouse-role comment on ticket - only L2/Logistics notes about a failed pickup. Not counted."
+  },
+  "251934": {
+    "order_id": 3309959,
+    "admitted": true,
+    "wh_comment": "We have sent wrong medicine to cx",
+    "reason": "Explicit first-person WH admission of sending wrong medicine."
+  },
+  "251964": {
+    "order_id": 3341818,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Denial - WH says correct medicine was sent, not an admission."
+  },
+  "251961": {
+    "order_id": 3321270,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Denial - WH says correct medicine was sent, not an admission."
+  },
+  "251960": {
+    "order_id": 3333178,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Denial - WH says correct medicine was sent, not an admission."
+  },
+  "251945": {
+    "order_id": 3321729,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Denial - WH says correct medicine was sent, not an admission."
+  },
+  "251951": {
+    "order_id": 3282854,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Denial - WH says correct medicine was sent, not an admission (multi-item ticket, other item BOD-closed separately by L2)."
+  },
+  "251888": {
+    "order_id": 3369390,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket - only an L2 note."
+  },
+  "251882": {
+    "order_id": 3347474,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket - only an unrelated L2 note."
+  },
+  "251866": {
+    "order_id": 3341591,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment on this ticket - only an L2 note."
+  },
+  "251859": {
+    "order_id": 3199760,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment - only an L2 note referencing an unrelated prior ticket resolution."
   }
 }
