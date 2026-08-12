@@ -2458,5 +2458,65 @@
     "admitted": false,
     "wh_comment": null,
     "reason": "No Warehouse-role comment on this ticket."
+  },
+  "251364": {
+    "order_id": 3324045,
+    "admitted": false,
+    "wh_comment": "Kindly share images of medicine you have received in the box",
+    "reason": "Warehouse-role comment matches REQUEST_PHRASES (\"kindly share\") - asking for photo evidence, not an admission. Not counted."
+  },
+  "251795": {
+    "order_id": 3357792,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
+    "reason": "Warehouse-role comment is the standard stock-denial template (\"We have sent proper medicine to Cx\"), not an admission."
+  },
+  "251831": {
+    "order_id": 3327261,
+    "admitted": true,
+    "wh_comment": "We have sent wrong medicine to cx Naveen",
+    "reason": "Warehouse-role comment is a genuine first-person admission, matches ADMISSION_PHRASES \"wrong medicine\". Counted WH-Accepted."
+  },
+  "251695": {
+    "order_id": 3318605,
+    "admitted": false,
+    "wh_comment": "Still not received the wh",
+    "reason": "Warehouse-role comment does not match ADMISSION_PHRASES and is not a first-person fault statement (non-committal status note). Not counted."
+  },
+  "251317": {
+    "order_id": 3321497,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on ticket - only a Manager L1 L2 note (\"Return In Transit\"). Not counted."
+  },
+  "251426": {
+    "order_id": 3324045,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on ticket - only LightAgent/support notes. Not counted."
+  },
+  "251703": {
+    "order_id": 3309976,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx Naveen",
+    "reason": "Warehouse-role comment is the standard stock-denial template, not an admission."
+  },
+  "251744": {
+    "order_id": 3219032,
+    "admitted": true,
+    "wh_comment": "We have sent wrong medicine to cx Naveen",
+    "reason": "Warehouse-role comment is a genuine first-person admission, matches ADMISSION_PHRASES \"wrong medicine\". Counted WH-Accepted."
+  },
+  "251766": {
+    "order_id": 3307557,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx Naveen",
+    "reason": "Warehouse-role comment is the standard stock-denial template, not an admission."
+  },
+  "251828": {
+    "order_id": 3131834,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on ticket - only L2/Logistics notes about a failed pickup. Not counted."
   }
 }
