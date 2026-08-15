@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-08-14T14:12:18Z",
+  "generated_at": "2026-08-15T13:56:12Z",
   "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2415 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 54 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-05-16 to 2026-08-14), exhaustive within that window",
+  "pull_window": "Last 90 days (2026-05-17 to 2026-08-15), exhaustive within that window",
   "tab1": {
     "total_tickets": 2415,
     "total_orders": 2277,
-    "total_returns": 2210,
-    "wh_accepted": 519,
-    "bod": 1424,
-    "considered_bod": 267,
-    "no_return_record": 205,
-    "accept_pct": 22.8,
+    "total_returns": 2212,
+    "wh_accepted": 517,
+    "bod": 1420,
+    "considered_bod": 275,
+    "no_return_record": 203,
+    "accept_pct": 22.7,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
         "total": 1489,
         "pct_of_total": 61.7,
-        "accepted": 398,
+        "accepted": 397,
         "accept_pct": 26.7
       },
       {
         "category": "Wrong Medicines",
-        "total": 536,
-        "pct_of_total": 22.2,
-        "accepted": 88,
-        "accept_pct": 16.4
+        "total": 538,
+        "pct_of_total": 22.3,
+        "accepted": 87,
+        "accept_pct": 16.2
       },
       {
         "category": "Expiry Issue",
-        "total": 46,
-        "pct_of_total": 1.9,
+        "total": 48,
+        "pct_of_total": 2.0,
         "accepted": 6,
-        "accept_pct": 13.0
+        "accept_pct": 12.5
       },
       {
         "category": "Damaged/Defective",
-        "total": 344,
-        "pct_of_total": 14.2,
+        "total": 340,
+        "pct_of_total": 14.1,
         "accepted": 27,
-        "accept_pct": 7.8
+        "accept_pct": 7.9
       },
       {
         "category": "Switch Orders",
@@ -53,37 +53,37 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 735,
-      "accepted": 150,
-      "accept_pct": 20.4
+      "total": 733,
+      "accepted": 148,
+      "accept_pct": 20.2
     },
     {
       "location": "Bangalore",
-      "total": 628,
-      "accepted": 169,
-      "accept_pct": 26.9
+      "total": 625,
+      "accepted": 166,
+      "accept_pct": 26.6
     },
     {
       "location": "Mumbai",
-      "total": 288,
-      "accepted": 70,
-      "accept_pct": 24.3
+      "total": 289,
+      "accepted": 73,
+      "accept_pct": 25.3
     },
     {
       "location": "Kolkata",
-      "total": 270,
+      "total": 272,
       "accepted": 84,
-      "accept_pct": 31.1
+      "accept_pct": 30.9
     },
     {
       "location": "Lucknow",
-      "total": 246,
+      "total": 250,
       "accepted": 39,
-      "accept_pct": 15.9
+      "accept_pct": 15.6
     },
     {
       "location": "Unknown",
-      "total": 205,
+      "total": 203,
       "accepted": 0,
       "accept_pct": 0.0
     },
