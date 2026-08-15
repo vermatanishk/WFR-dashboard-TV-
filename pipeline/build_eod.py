@@ -59,6 +59,34 @@ admitted tickets with a later L2 action (252452 "Return Pickup Initiated",
 not a discrepancy. Location join spot-checked for all 3 WH-Accepted orders:
 3297683/3378028 -> Bangalore (usernames _BLRWH), 3386346 -> Mumbai (usernames
 _MUM) - all matched. 0/39 non-null order_ids resolved to Unknown location.
+
+2026-08-15 run note (for_date 2026-08-13): 31 T-2 tickets pulled (18
+Missing/Wrong Qty, 9 Wrong Medicines, 1 Expiry Issue, 3 Damaged/Defective).
+6 genuine WH admissions: 252650, 252655, 252582 ("we have sent short qty to
+Cx", all Missing/Wrong Qty) and 252665, 252545, 252531 ("we have sent wrong
+sku to Cx", all Wrong Medicines). Full comment threads read for every ticket
+before classifying. Two tickets (252639, 252636) both referencing order
+3395307 had a Warehouse-role comment that was neither an admission nor a
+denial ("3395307 from this order id/ticket raised 3 times a day, same
+issue" - a note about duplicate tickets) - correctly classified False by the
+"otherwise -> False" branch, not miscounted as an admission via the "raised"
+substring. No instance this run of a genuine WH admission followed by a
+contradicting L2 "BOD issued" note - all 6 admitted tickets' later L2 notes
+("Return Pickup Initiated" x3, "claim accepted / refund will be process
+shortly" x2, and one still-pending duplicate-linked ticket) are consistent
+with acceptance, not a discrepancy. No ClickHouse "Low-Value COG" remarks
+encountered (not queried this run - text-only classification). Location
+join spot-checked for all 6 WH-Accepted orders (exceeding the usual 2-3):
+3395307 -> Delhi (Pooja_B_DEL/Ashma_DEL/Neeru_DEL/Kishan_DEL), 3410778 ->
+Mumbai (JyotiD_MUM/JyotiG_MUM/JayeshW_MUM/Gauravj_MUM), 3396829 -> Mumbai
+(AmishaG_MUM/PranjalG_MUM/KasturiR_MUM/Gauravj_MUM), 3363110 -> Mumbai
+(ShivamS_MUM/TarunP_MUM/AnshuG_MUM/Gauravj_MUM), 3345916 -> Delhi
+(MD_Neshar_DEL/Kuldeep_Del/Shailesh_DEL/Ronu_DEL), 3373049 -> Bangalore
+(Aravind_BLRWH/Mukund_BLRWH/kannanmuthu_BLRWH/Mustaqeem_BLRWH) - all 6
+matched, join confirmed correct. 0/28 unique non-null order_ids resolved to
+Unknown location. Two tickets had no linkable Order ID (252514 "N/A",
+252517 "N/A") and are excluded from the location join but still count in
+the tickets total; neither had a Warehouse-role admission.
 """
 import json
 from pathlib import Path
@@ -69,16 +97,13 @@ HERE = Path(__file__).parent
 # order_id -> location, from ClickHouse marketplace_orders join (on order_id,
 # NOT the internal "id" column - see docstring above).
 ORDER_LOCATION = {
-    2966043: "Mumbai", 3153746: "Bangalore", 3297683: "Bangalore", 3301505: "Bangalore",
-    3346126: "Lucknow", 3348149: "Delhi", 3365834: "Bangalore", 3368100: "Kolkata",
-    3372609: "Bangalore", 3376411: "Delhi", 3377878: "Delhi", 3378028: "Bangalore",
-    3378807: "Kolkata", 3381072: "Lucknow", 3383888: "Mumbai", 3386346: "Mumbai",
-    3387427: "Delhi", 3243551: "Kolkata", 3289051: "Delhi", 3347737: "Bangalore",
-    3352386: "Kolkata", 3361684: "Bangalore", 3367493: "Bangalore", 3369638: "Bangalore",
-    3372512: "Bangalore", 3381612: "Delhi", 3382423: "Bangalore", 3383949: "Bangalore",
-    3385908: "Kolkata", 3387986: "Mumbai", 3395992: "Delhi", 3286570: "Delhi",
-    3290510: "Lucknow", 3295711: "Bangalore", 3342944: "Lucknow", 3352871: "Lucknow",
-    3358499: "Lucknow", 3369488: "Lucknow", 3384884: "Delhi",
+    3017846: "Delhi", 3258516: "Mumbai", 3348246: "Delhi", 3349022: "Delhi",
+    3354677: "Bangalore", 3363172: "Bangalore", 3366721: "Mumbai", 3395307: "Delhi",
+    3407150: "Delhi", 3410778: "Mumbai", 3324395: "Delhi", 3361684: "Bangalore",
+    3362740: "Delhi", 3363110: "Mumbai", 3364636: "Delhi", 3368623: "Delhi",
+    3371334: "Mumbai", 3373049: "Bangalore", 3374540: "Delhi", 3377273: "Delhi",
+    3390585: "Delhi", 3392341: "Kolkata", 3393111: "Delhi", 3396829: "Mumbai",
+    3398608: "Bangalore", 3280494: "Delhi", 3345916: "Delhi", 3373205: "Kolkata",
 }
 
 # Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
