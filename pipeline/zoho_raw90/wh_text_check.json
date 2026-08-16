@@ -2387,6 +2387,12 @@
     "reason": "Warehouse-role comment matches REQUEST_PHRASES (\"kindly share\") - asking for photo evidence, not an admission. Not counted.",
     "wh_comment": "Kindly share images of medicine you have received in the box"
   },
+  "251365": {
+    "admitted": false,
+    "order_id": 3252272,
+    "reason": "WH comment is a request for evidence, not an admission",
+    "wh_comment": "Share image of you received all medicine"
+  },
   "251378": {
     "admitted": true,
     "order_id": 3306046,
@@ -2440,6 +2446,12 @@
     "order_id": 3277005,
     "reason": "Stock denial followed by an inventory-availability note - neither is a first-person admission of WH fault. Not counted.",
     "wh_comment": "We have sent proper medicine to Cx | This batch is not available in our inventory"
+  },
+  "251508": {
+    "admitted": false,
+    "order_id": 3342458,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to cx"
   },
   "251530": {
     "admitted": false,
@@ -2657,154 +2669,214 @@
     "reason": "No Warehouse-role comment on the ticket - both comments are from L2 Agent Kirti Sharma ('duplicate ticket'); not counted.",
     "wh_comment": null
   },
-  "252469": {
-    "order_id": 3387427,
+  "252288": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
-  },
-  "252457": {
-    "order_id": 3365834,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
-  },
-  "252452": {
-    "order_id": 3386346,
-    "admitted": true,
-    "wh_comment": "We have sent wrong sku to Cx",
-    "reason": "Genuine first-person WH admission (reused from EOD tab T-2 classification)."
-  },
-  "252448": {
-    "order_id": 3378028,
-    "admitted": true,
-    "wh_comment": "We have sent wrong sku to Cx",
-    "reason": "Genuine first-person WH admission (reused from EOD tab T-2 classification)."
-  },
-  "252438": {
-    "order_id": 3301505,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
-  },
-  "252373": {
-    "order_id": 3385908,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
-  },
-  "252344": {
-    "order_id": 3382423,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-role comment on this ticket (reused from EOD tab T-2 classification)."
-  },
-  "252331": {
-    "order_id": 3295711,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
-  },
-  "252304": {
-    "order_id": 3290510,
-    "admitted": false,
-    "wh_comment": "Kindly share images of all medicine what are wrong medicine you have received",
-    "reason": "Request for evidence, not an admission (reused from EOD tab T-2 classification)."
+    "order_id": 3243551,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
   "252297": {
+    "admitted": false,
     "order_id": 3372512,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
-  "252288": {
-    "order_id": 3243551,
+  "252304": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
+    "order_id": 3290510,
+    "reason": "Request for evidence, not an admission (reused from EOD tab T-2 classification).",
+    "wh_comment": "Kindly share images of all medicine what are wrong medicine you have received"
   },
-  "251508": {
-    "order_id": 3342458,
+  "252331": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to cx",
-    "reason": "Warehouse-role comment is the stock denial template, not an admission."
+    "order_id": 3295711,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
-  "252665": {
-    "order_id": 3363110,
+  "252344": {
+    "admitted": false,
+    "order_id": 3382423,
+    "reason": "No Warehouse-role comment on this ticket (reused from EOD tab T-2 classification).",
+    "wh_comment": null
+  },
+  "252373": {
+    "admitted": false,
+    "order_id": 3385908,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252438": {
+    "admitted": false,
+    "order_id": 3301505,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252448": {
     "admitted": true,
-    "wh_comment": "We have sent wrong sku to Cx",
-    "reason": "Genuine first-person WH admission (reused from same-run EOD tab comment read for T-2 2026-08-13)."
+    "order_id": 3378028,
+    "reason": "Genuine first-person WH admission (reused from EOD tab T-2 classification).",
+    "wh_comment": "We have sent wrong sku to Cx"
   },
-  "252545": {
-    "order_id": 3345916,
+  "252452": {
     "admitted": true,
-    "wh_comment": "We have sent wrong sku to Cx",
-    "reason": "Genuine first-person WH admission (reused from same-run EOD tab comment read for T-2 2026-08-13)."
+    "order_id": 3386346,
+    "reason": "Genuine first-person WH admission (reused from EOD tab T-2 classification).",
+    "wh_comment": "We have sent wrong sku to Cx"
+  },
+  "252457": {
+    "admitted": false,
+    "order_id": 3365834,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252469": {
+    "admitted": false,
+    "order_id": 3387427,
+    "reason": "Warehouse-role comment is the stock denial template, not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
   "252531": {
-    "order_id": 3373049,
     "admitted": true,
-    "wh_comment": "We have sent wrong sku to Cx",
-    "reason": "Genuine first-person WH admission (reused from same-run EOD tab comment read for T-2 2026-08-13)."
-  },
-  "252673": {
-    "order_id": 3407150,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
-  },
-  "252669": {
-    "order_id": 3373205,
-    "admitted": false,
-    "wh_comment": "Footage not found because it is under maintenance",
-    "reason": "WH comment is neither an admission nor a denial - not a fault statement"
-  },
-  "252656": {
-    "order_id": 3258516,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
-  },
-  "252635": {
-    "order_id": 3374540,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-team comment on this ticket - not counted."
-  },
-  "252608": {
-    "order_id": 3363172,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
-  },
-  "252587": {
-    "order_id": 3371334,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
-  },
-  "252553": {
-    "order_id": 3392341,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
-  },
-  "252539": {
-    "order_id": 3349022,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
+    "order_id": 3373049,
+    "reason": "Genuine first-person WH admission (reused from same-run EOD tab comment read for T-2 2026-08-13).",
+    "wh_comment": "We have sent wrong sku to Cx"
   },
   "252533": {
+    "admitted": false,
     "order_id": 3348246,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "WH comment is a denial, not an admission"
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
-  "251365": {
-    "order_id": 3252272,
+  "252539": {
     "admitted": false,
-    "wh_comment": "Share image of you received all medicine",
-    "reason": "WH comment is a request for evidence, not an admission"
+    "order_id": 3349022,
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252545": {
+    "admitted": true,
+    "order_id": 3345916,
+    "reason": "Genuine first-person WH admission (reused from same-run EOD tab comment read for T-2 2026-08-13).",
+    "wh_comment": "We have sent wrong sku to Cx"
+  },
+  "252553": {
+    "admitted": false,
+    "order_id": 3392341,
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252587": {
+    "admitted": false,
+    "order_id": 3371334,
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252608": {
+    "admitted": false,
+    "order_id": 3363172,
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252635": {
+    "admitted": false,
+    "order_id": 3374540,
+    "reason": "No Warehouse-team comment on this ticket - not counted.",
+    "wh_comment": null
+  },
+  "252656": {
+    "admitted": false,
+    "order_id": 3258516,
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252665": {
+    "admitted": true,
+    "order_id": 3363110,
+    "reason": "Genuine first-person WH admission (reused from same-run EOD tab comment read for T-2 2026-08-13).",
+    "wh_comment": "We have sent wrong sku to Cx"
+  },
+  "252669": {
+    "admitted": false,
+    "order_id": 3373205,
+    "reason": "WH comment is neither an admission nor a denial - not a fault statement",
+    "wh_comment": "Footage not found because it is under maintenance"
+  },
+  "252673": {
+    "admitted": false,
+    "order_id": 3407150,
+    "reason": "WH comment is a denial, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252710": {
+    "admitted": false,
+    "order_id": 3414649,
+    "reason": "Only comment is from L2 Agent (Sajjad Ali) regarding return pickup; no Warehouse-role comment present.",
+    "wh_comment": null
+  },
+  "252748": {
+    "admitted": false,
+    "order_id": 3382101,
+    "reason": "Only comment is from L2 Agent (Naveen N) regarding return pickup; no Warehouse-role comment present.",
+    "wh_comment": null
+  },
+  "252754": {
+    "admitted": false,
+    "order_id": 3431212,
+    "reason": "No comments on ticket (commentCount=0).",
+    "wh_comment": null
+  },
+  "252759": {
+    "admitted": false,
+    "order_id": 3418648,
+    "reason": "No comments on ticket (commentCount=0).",
+    "wh_comment": null
+  },
+  "252768": {
+    "admitted": false,
+    "order_id": 3395075,
+    "reason": "Both comments are from L2 Agent (Naveen N); no Warehouse-role comment present.",
+    "wh_comment": null
+  },
+  "252771": {
+    "admitted": false,
+    "order_id": 3018904,
+    "reason": "Warehouse comment ('Footage not found because it is old order') does not admit fault - not a first-person statement of a shipping mistake.",
+    "wh_comment": "Footage not found because it is old order"
+  },
+  "252779": {
+    "admitted": false,
+    "order_id": 3395075,
+    "reason": "Only comment is from L2 Agent (Naveen N) regarding refund/duplicate ticket; no Warehouse-role comment present.",
+    "wh_comment": null
+  },
+  "252832": {
+    "admitted": false,
+    "order_id": 3405082,
+    "reason": "Warehouse-role comment is a denial ('We have sent proper medicine to Cx'), not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "252835": {
+    "admitted": false,
+    "order_id": 3408292,
+    "reason": "No comments on ticket (commentCount=0).",
+    "wh_comment": null
+  },
+  "252841": {
+    "admitted": true,
+    "order_id": 3416857,
+    "reason": "Warehouse team comment confirms admission (reused from same-day EOD tab check, same methodology): \"We have sent wrong sku to Cx\" - explicit admission, counted WH-Accepted.",
+    "wh_comment": "We have sent wrong sku to Cx"
+  },
+  "252857": {
+    "admitted": false,
+    "order_id": 3413534,
+    "reason": "No comments on ticket (commentCount=0).",
+    "wh_comment": null
+  },
+  "252871": {
+    "admitted": false,
+    "order_id": 3384973,
+    "reason": "Warehouse-role comment is a denial ('We have sent proper medicine to Cx'), not an admission of shipping wrong/short qty.",
+    "wh_comment": "We have sent proper medicine to Cx"
   }
 }
