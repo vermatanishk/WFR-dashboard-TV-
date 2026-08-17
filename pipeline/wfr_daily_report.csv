@@ -1,19 +1,6 @@
-WFR Daily Report,2026-08-16T13:54:48Z
+WFR Daily Report,2026-08-17T14:03:56Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
-207059,2413151,Missing/Wrong Qty,Delhi,2026-05-18T14:19:55.000,BOD,"remark='Customer received correct order' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207063,2399538,Missing/Wrong Qty,Unknown,2026-05-18T14:28:45.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-207153,2403384,Missing/Wrong Qty,Unknown,2026-05-19T04:53:45.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-207179,2452731,Missing/Wrong Qty,Bangalore,2026-05-19T06:06:32.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Sneha,Metha_BLRWH
-207185,2410216,Missing/Wrong Qty,Delhi,2026-05-19T06:17:54.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207202,2340451,Missing/Wrong Qty,Bangalore,2026-05-19T07:05:19.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Sneha / Anjana_BLRW,Asha_BLRWH
-207203,2435995,Missing/Wrong Qty,Delhi,2026-05-19T07:08:20.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207251,2425709,Missing/Wrong Qty,Unknown,2026-05-19T08:46:19.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-207278,2432966,Missing/Wrong Qty,Bangalore,2026-05-19T09:43:53.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Chaithra_BLRWH,Metha_BLRWH
-207287,2413941,Missing/Wrong Qty,Delhi,2026-05-19T10:20:50.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207293,2397474,Missing/Wrong Qty,Bangalore,2026-05-19T10:36:08.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207305,2430943,Missing/Wrong Qty,Unknown,2026-05-19T11:24:08.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-207339,2428102,Missing/Wrong Qty,Mumbai,2026-05-19T12:52:19.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 207355,2425692,Missing/Wrong Qty,Bangalore,2026-05-19T14:01:45.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 207362,2453868,Missing/Wrong Qty,Unknown,2026-05-19T14:27:13.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 207423,2442919,Missing/Wrong Qty,Delhi,2026-05-20T03:46:04.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
@@ -1461,51 +1448,70 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 252842,3369996,Missing/Wrong Qty,Lucknow,2026-08-14T11:33:04.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252847,3374160,Missing/Wrong Qty,Bangalore,2026-08-14T11:43:48.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Aravind_BLRWH,Shabana_BLRWH
 252857,3413534,Missing/Wrong Qty,Kolkata,2026-08-14T12:33:40.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-252871,3384973,Missing/Wrong Qty,Bangalore,2026-08-14T13:16:29.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252871,3384973,Missing/Wrong Qty,Bangalore,2026-08-14T13:16:29.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252873,3374005,Missing/Wrong Qty,Mumbai,2026-08-14T13:22:42.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-252919,3437170,Missing/Wrong Qty,Bangalore,2026-08-15T05:12:49.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252919,3437170,Missing/Wrong Qty,Bangalore,2026-08-15T05:12:49.000,BOD,"remark='Customer received correct order' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252936,3363058,Missing/Wrong Qty,Delhi,2026-08-15T06:52:11.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252941,3387798,Missing/Wrong Qty,Lucknow,2026-08-15T06:57:36.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252944,3379927,Missing/Wrong Qty,Unknown,2026-08-15T07:07:04.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-252973,3389099,Missing/Wrong Qty,Lucknow,2026-08-15T09:12:21.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252973,3389099,Missing/Wrong Qty,Lucknow,2026-08-15T09:12:21.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252976,3391052,Missing/Wrong Qty,Delhi,2026-08-15T09:35:14.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252983,3391162,Missing/Wrong Qty,Bangalore,2026-08-15T10:11:03.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-252986,3418099,Missing/Wrong Qty,Delhi,2026-08-15T10:17:53.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-252987,3426515,Missing/Wrong Qty,Delhi,2026-08-15T10:21:02.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252986,3418099,Missing/Wrong Qty,Delhi,2026-08-15T10:17:53.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+252987,3426515,Missing/Wrong Qty,Delhi,2026-08-15T10:21:02.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252988,3348023,Missing/Wrong Qty,Bangalore,2026-08-15T10:21:49.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-252989,3404938,Missing/Wrong Qty,Delhi,2026-08-15T10:23:10.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252989,3404938,Missing/Wrong Qty,Delhi,2026-08-15T10:23:10.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252990,3362566,Missing/Wrong Qty,Lucknow,2026-08-15T10:24:04.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252991,3410328,Missing/Wrong Qty,Lucknow,2026-08-15T10:25:22.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Prince_LKO,Anuj.S_LKO
-252992,3441959,Missing/Wrong Qty,Delhi,2026-08-15T10:26:43.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252992,3441959,Missing/Wrong Qty,Delhi,2026-08-15T10:26:43.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Saurav_DEL,Shailesh_DEL
 252996,3441544,Missing/Wrong Qty,Bangalore,2026-08-15T10:55:44.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253005,3409918,Missing/Wrong Qty,Bangalore,2026-08-15T11:26:01.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253016,3440935,Missing/Wrong Qty,Kolkata,2026-08-15T11:58:26.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253018,3422579,Missing/Wrong Qty,Delhi,2026-08-15T12:01:20.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253016,3440935,Missing/Wrong Qty,Kolkata,2026-08-15T11:58:26.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent short qty to Cx""",Anurag_KOL / Rahul_KOL,Debashish_KOL
+253018,3422579,Missing/Wrong Qty,Delhi,2026-08-15T12:01:20.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253024,3358155,Missing/Wrong Qty,Delhi,2026-08-15T12:22:15.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253027,3433342,Missing/Wrong Qty,Bangalore,2026-08-15T12:36:04.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253028,3443106,Missing/Wrong Qty,Mumbai,2026-08-15T12:37:45.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253081,3453125,Missing/Wrong Qty,Bangalore,2026-08-16T05:13:56.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253083,3432363,Missing/Wrong Qty,Delhi,2026-08-16T05:16:49.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253081,3453125,Missing/Wrong Qty,Bangalore,2026-08-16T05:13:56.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253083,3432363,Missing/Wrong Qty,Delhi,2026-08-16T05:16:49.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253088,3392213,Missing/Wrong Qty,Delhi,2026-08-16T05:53:52.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253090,3420632,Missing/Wrong Qty,Bangalore,2026-08-16T05:59:14.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253090,3420632,Missing/Wrong Qty,Bangalore,2026-08-16T05:59:14.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253139,3408813,Missing/Wrong Qty,Mumbai,2026-08-16T08:32:34.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253158,3438750,Missing/Wrong Qty,Delhi,2026-08-16T09:39:22.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253162,3376953,Missing/Wrong Qty,Lucknow,2026-08-16T10:00:12.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253163,3435207,Missing/Wrong Qty,Bangalore,2026-08-16T10:02:25.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253166,3356704,Missing/Wrong Qty,Bangalore,2026-08-16T10:11:56.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253163,3435207,Missing/Wrong Qty,Bangalore,2026-08-16T10:02:25.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253166,3356704,Missing/Wrong Qty,Bangalore,2026-08-16T10:11:56.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253167,3417800,Missing/Wrong Qty,Kolkata,2026-08-16T10:12:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253169,3388295,Missing/Wrong Qty,Bangalore,2026-08-16T10:14:40.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253170,3398334,Missing/Wrong Qty,Delhi,2026-08-16T10:15:31.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253170,3398334,Missing/Wrong Qty,Delhi,2026-08-16T10:15:31.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253186,3386312,Missing/Wrong Qty,Kolkata,2026-08-16T10:45:01.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253192,3392797,Missing/Wrong Qty,Lucknow,2026-08-16T11:00:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253207,3450480,Missing/Wrong Qty,Kolkata,2026-08-16T12:26:05.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253208,3138218,Missing/Wrong Qty,Unknown,2026-08-16T12:26:10.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-207208,2397178,Wrong Medicines,Bangalore,2026-05-19T07:23:49.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207242,2395763,Wrong Medicines,Unknown,2026-05-19T08:25:03.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-207266,2424907,Wrong Medicines,Delhi,2026-05-19T09:25:46.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207267,2407897,Wrong Medicines,Kolkata,2026-05-19T09:26:46.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207296,2421957,Wrong Medicines,Bangalore,2026-05-19T10:41:08.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207334,2446348,Wrong Medicines,Mumbai,2026-05-19T12:38:41.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-207343,2453253,Wrong Medicines,Delhi,2026-05-19T13:16:17.000,WH Accepted,remark matches WH-fault-confirmed pattern ('wrong medicine delivered'),Ammina_DEL,CHANDAN_DEL
+253207,3450480,Missing/Wrong Qty,Kolkata,2026-08-16T12:26:05.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253208,2218573,Missing/Wrong Qty,Delhi,2026-08-16T12:26:10.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253278,3461016,Missing/Wrong Qty,Bangalore,2026-08-17T06:02:01.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253304,3358155,Missing/Wrong Qty,Delhi,2026-08-17T06:54:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253307,3395307,Missing/Wrong Qty,Delhi,2026-08-17T06:58:54.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Pooja_B_DEL,Neeru_DEL
+253318,3394168,Missing/Wrong Qty,Delhi,2026-08-17T07:26:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253342,3386312,Missing/Wrong Qty,Kolkata,2026-08-17T09:12:56.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253353,3464001,Missing/Wrong Qty,Delhi,2026-08-17T10:03:28.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253354,3396547,Missing/Wrong Qty,Delhi,2026-08-17T10:04:55.000,WH Accepted,remark matches WH-fault-confirmed pattern ('wrong medicine delivered'),Azaz-DEL,Seema_DEL
+253357,3359114,Missing/Wrong Qty,Bangalore,2026-08-17T10:09:57.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253369,3416534,Missing/Wrong Qty,Unknown,2026-08-17T10:53:57.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+253370,3437978,Missing/Wrong Qty,Delhi,2026-08-17T10:53:58.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253371,3445498,Missing/Wrong Qty,Bangalore,2026-08-17T11:01:53.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253373,3428472,Missing/Wrong Qty,Lucknow,2026-08-17T11:07:59.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253375,3419301,Missing/Wrong Qty,Kolkata,2026-08-17T11:09:27.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253377,3392185,Missing/Wrong Qty,Bangalore,2026-08-17T11:10:51.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Nahila_BLRW,Shwetha_BLRWH
+253380,3384787,Missing/Wrong Qty,Delhi,2026-08-17T11:16:29.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253382,3436676,Missing/Wrong Qty,Lucknow,2026-08-17T11:18:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253384,3434260,Missing/Wrong Qty,Lucknow,2026-08-17T11:21:04.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253385,3468526,Missing/Wrong Qty,Delhi,2026-08-17T11:22:19.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Saurav_DEL,Devki-DEL
+253386,3428871,Missing/Wrong Qty,Unknown,2026-08-17T11:23:45.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+253387,3361056,Missing/Wrong Qty,Hyderabad WH,2026-08-17T11:23:53.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253395,3473173,Missing/Wrong Qty,Kolkata,2026-08-17T11:46:18.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+253410,3436152,Missing/Wrong Qty,Bangalore,2026-08-17T12:31:16.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253412,3439668,Missing/Wrong Qty,Unknown,2026-08-17T12:41:32.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+253417,3452160,Missing/Wrong Qty,Bangalore,2026-08-17T12:57:46.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253421,3454895,Missing/Wrong Qty,Delhi,2026-08-17T13:20:16.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 207603,2464372,Wrong Medicines,Delhi,2026-05-20T13:56:40.000,BOD,"remark='QC completed successfully' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 207768,2441151,Wrong Medicines,Delhi,2026-05-21T06:54:09.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 207771,2413057,Wrong Medicines,Bangalore,2026-05-21T06:59:55.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
@@ -1929,7 +1935,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 250808,3241703,Wrong Medicines,Bangalore,2026-08-04T09:28:25.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250809,3263521,Wrong Medicines,Unknown,2026-08-04T09:34:24.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 250817,3270470,Wrong Medicines,Delhi,2026-08-04T10:02:59.000,BOD,"remark='Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
-250823,3199128,Wrong Medicines,Bangalore,2026-08-04T10:20:58.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx Mahiboob bee""",Rahman_BLRWH,Shivaraj_BLRWH
+250823,3199128,Wrong Medicines,Bangalore,2026-08-04T10:20:58.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250844,3222210,Wrong Medicines,Delhi,2026-08-04T11:39:25.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 250851,3231210,Wrong Medicines,Lucknow,2026-08-04T11:57:12.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250852,3252253,Wrong Medicines,Lucknow,2026-08-04T12:01:49.000,WH Accepted,remark matches WH-fault-confirmed pattern ('wrong medicine delivered'),Kajal.k_DEL / Komal.P_LKO,Adiba.F_LKO
@@ -1962,17 +1968,17 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 251318,3313519,Wrong Medicines,Delhi,2026-08-07T07:18:13.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",Khushbu_DEL,Pankaj
 251322,3275264,Wrong Medicines,Lucknow,2026-08-07T07:24:08.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251324,3121504,Wrong Medicines,Bangalore,2026-08-07T07:28:59.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",Rahman_BLRWH / Prabhu_BLRWH,Fardeen_BLRWH
-251364,3324045,Wrong Medicines,Lucknow,2026-08-07T09:51:11.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+251364,3324045,Wrong Medicines,Lucknow,2026-08-07T09:51:11.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251365,3252272,Wrong Medicines,Lucknow,2026-08-07T09:55:40.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251378,3306046,Wrong Medicines,Bangalore,2026-08-07T10:58:35.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent switch order""",Shivaraj_BLRWH / Pallavi_BLRWH,Asha_BLRWH
-251426,3324045,Wrong Medicines,Lucknow,2026-08-07T14:32:23.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+251426,3324045,Wrong Medicines,Lucknow,2026-08-07T14:32:23.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251471,3284114,Wrong Medicines,Delhi,2026-08-08T05:11:23.000,WH Accepted,remark matches WH-fault-confirmed pattern ('wrong medicine delivered'),Sabrin_DEL,CHANDAN_DEL
 251472,3077631,Wrong Medicines,Unknown,2026-08-08T05:23:20.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 251479,3281140,Wrong Medicines,Bangalore,2026-08-08T06:05:33.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251489,3314394,Wrong Medicines,Bangalore,2026-08-08T06:25:38.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251501,3277005,Wrong Medicines,Mumbai,2026-08-08T07:09:31.000,Considered BOD,remark='Return Details are insufficient' is ambiguous/unrecognized and no WH-team Zoho admission found - treated as BOD by default,-,-
 251577,3292968,Wrong Medicines,Delhi,2026-08-08T11:52:36.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-251580,3308388,Wrong Medicines,Lucknow,2026-08-08T12:07:35.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",Gaurav.S_LKO,Adiba.F_LKO
+251580,3308388,Wrong Medicines,Lucknow,2026-08-08T12:07:35.000,BOD,"remark='QC completed successfully' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251595,3314874,Wrong Medicines,Bangalore,2026-08-08T12:57:31.000,BOD,"remark='Customer unreachable' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251725,3352871,Wrong Medicines,Lucknow,2026-08-09T10:24:44.000,BOD,"remark='Customer received correct order' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251738,3347906,Wrong Medicines,Delhi,2026-08-09T10:42:45.000,BOD,"remark='Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
@@ -1997,7 +2003,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 252308,3352871,Wrong Medicines,Lucknow,2026-08-12T06:03:25.000,BOD,"remark='Customer received correct order' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252331,3295711,Wrong Medicines,Bangalore,2026-08-12T06:27:57.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252344,3382423,Wrong Medicines,Bangalore,2026-08-12T07:06:19.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-252373,3385908,Wrong Medicines,Kolkata,2026-08-12T08:23:56.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252373,3385908,Wrong Medicines,Kolkata,2026-08-12T08:23:56.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252383,3369488,Wrong Medicines,Lucknow,2026-08-12T08:59:53.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252390,3347737,Wrong Medicines,Bangalore,2026-08-12T09:55:47.000,BOD,"remark='Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252413,3383949,Wrong Medicines,Bangalore,2026-08-12T10:42:05.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
@@ -2014,6 +2020,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 252665,3363110,Wrong Medicines,Mumbai,2026-08-13T12:14:02.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",ShivamS_MUM,AnshuG_MUM
 252669,3373205,Wrong Medicines,Kolkata,2026-08-13T12:23:07.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252673,3407150,Wrong Medicines,Delhi,2026-08-13T12:42:18.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252685,3358399,Wrong Medicines,Unknown,2026-08-13T13:34:47.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 252748,3382101,Wrong Medicines,Mumbai,2026-08-14T06:49:25.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252759,3418648,Wrong Medicines,Kolkata,2026-08-14T07:16:15.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252768,3395075,Wrong Medicines,Delhi,2026-08-14T07:38:54.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
@@ -2022,22 +2029,27 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 252779,3395075,Wrong Medicines,Delhi,2026-08-14T07:49:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252835,3408292,Wrong Medicines,Mumbai,2026-08-14T11:10:33.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252841,3416857,Wrong Medicines,Mumbai,2026-08-14T11:31:38.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",AniketP_MUM,PrathmeshP_MUM
-252867,3380889,Wrong Medicines,Unknown,2026-08-14T13:09:25.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+252867,3380889,Wrong Medicines,Delhi,2026-08-14T13:09:25.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252909,3127474,Wrong Medicines,Kolkata,2026-08-15T02:47:55.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252932,3324654,Wrong Medicines,Lucknow,2026-08-15T06:27:47.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252942,3397668,Wrong Medicines,Mumbai,2026-08-15T06:58:06.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-252950,3404668,Wrong Medicines,Bangalore,2026-08-15T07:40:45.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-252956,3357099,Wrong Medicines,Bangalore,2026-08-15T08:07:40.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252950,3404668,Wrong Medicines,Bangalore,2026-08-15T07:40:45.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",Shashikumar_BLRWH,Fardeen_BLRWH
+252956,3357099,Wrong Medicines,Bangalore,2026-08-15T08:07:40.000,BOD,"remark='Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252960,3406287,Wrong Medicines,Mumbai,2026-08-15T08:17:36.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252981,3322499,Wrong Medicines,Lucknow,2026-08-15T09:58:09.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253000,3383932,Wrong Medicines,Delhi,2026-08-15T11:06:15.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+252985,3119511,Wrong Medicines,Delhi,2026-08-15T10:16:33.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253000,3383932,Wrong Medicines,Delhi,2026-08-15T11:06:15.000,WH Accepted,"ClickHouse remark ambiguous/blank, but Warehouse-team Zoho comment confirms admission: ""We have sent wrong sku to Cx""",Saurav_DEL,Annu_DEL
 253022,3340068,Wrong Medicines,Kolkata,2026-08-15T12:16:56.000,Considered BOD,remark='spoken with cx / cx received correct medicine ' is ambiguous/unrecognized and no WH-team Zoho admission found - treated as BOD by default,-,-
 253098,3401807,Wrong Medicines,Bangalore,2026-08-16T06:23:15.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253116,3411966,Wrong Medicines,Bangalore,2026-08-16T07:18:43.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253124,3438352,Wrong Medicines,Lucknow,2026-08-16T07:42:29.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253126,3414582,Wrong Medicines,Bangalore,2026-08-16T07:46:24.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253154,3411966,Wrong Medicines,Bangalore,2026-08-16T09:15:12.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253188,3436656,Wrong Medicines,Lucknow,2026-08-16T10:48:10.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253211,3418335,Wrong Medicines,Delhi,2026-08-16T12:38:43.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253211,3418335,Wrong Medicines,Delhi,2026-08-16T12:38:43.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 253213,3434043,Wrong Medicines,Delhi,2026-08-16T12:51:12.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253366,3231741,Wrong Medicines,Mumbai,2026-08-17T10:42:27.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253415,3452945,Wrong Medicines,Unknown,2026-08-17T12:46:30.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 208373,2470103,Expiry Issue,Delhi,2026-05-23T05:09:50.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 208717,2422422,Expiry Issue,Bangalore,2026-05-24T08:40:11.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 208719,2457284,Expiry Issue,Kolkata,2026-05-24T08:41:30.000,BOD,"remark='NSZ for Return Pickup (RVP) - Unable to return order as pickup not possible(NSZ) and COG isn't high.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
@@ -2080,13 +2092,14 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 250101,3218105,Expiry Issue,Delhi,2026-07-31T17:00:25.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250651,3136802,Expiry Issue,Bangalore,2026-08-03T12:05:48.000,BOD,"remark='Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250721,3046935,Expiry Issue,Unknown,2026-08-04T03:53:25.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-251054,3259192,Expiry Issue,Delhi,2026-08-05T12:58:57.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+251054,3259192,Expiry Issue,Delhi,2026-08-05T12:58:57.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251187,3017846,Expiry Issue,Unknown,2026-08-06T09:37:34.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 251317,3321497,Expiry Issue,Delhi,2026-08-07T07:13:24.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252154,3322180,Expiry Issue,Delhi,2026-08-11T10:18:31.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 252642,3017846,Expiry Issue,Unknown,2026-08-13T11:00:02.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 252977,3442014,Expiry Issue,Mumbai,2026-08-15T09:38:05.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-207244,2366381,Damaged/Defective,Bangalore,2026-05-19T08:26:12.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
+253268,3209638,Expiry Issue,Unknown,2026-08-17T05:37:58.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+253388,3174434,Expiry Issue,Unknown,2026-08-17T11:27:38.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 207446,2403312,Damaged/Defective,Unknown,2026-05-20T05:10:01.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 207501,2454732,Damaged/Defective,Delhi,2026-05-20T07:12:46.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 207562,2443664,Damaged/Defective,Delhi,2026-05-20T10:37:26.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
@@ -2352,16 +2365,17 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 251828,3131834,Damaged/Defective,Delhi,2026-08-10T04:20:50.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251866,3341591,Damaged/Defective,Delhi,2026-08-10T06:17:24.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251888,3369390,Damaged/Defective,Delhi,2026-08-10T07:53:41.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-251890,3322445,Damaged/Defective,Unknown,2026-08-10T07:55:21.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+251890,3322445,Damaged/Defective,Lucknow,2026-08-10T07:55:21.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252034,3287652,Damaged/Defective,Delhi,2026-08-11T03:58:24.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252353,3368100,Damaged/Defective,Unknown,2026-08-12T07:33:45.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 252487,2966043,Damaged/Defective,Unknown,2026-08-12T16:40:49.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 252635,3374540,Damaged/Defective,Delhi,2026-08-13T10:39:05.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252710,3414649,Damaged/Defective,Lucknow,2026-08-14T02:27:32.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252754,3431212,Damaged/Defective,Kolkata,2026-08-14T07:05:02.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
-253132,3443442,Damaged/Defective,Unknown,2026-08-16T08:11:49.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+253132,3443442,Damaged/Defective,Delhi,2026-08-16T08:11:49.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253203,3444017,Damaged/Defective,Lucknow,2026-08-16T12:05:17.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 253205,3017846,Damaged/Defective,Unknown,2026-08-16T12:20:46.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+253348,3320445,Damaged/Defective,Mumbai,2026-08-17T09:32:37.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 208876,2435512,Damaged/Defective,Unknown,2026-05-25T04:41:31.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 209358,2448808,Damaged/Defective,Bangalore,2026-05-26T06:10:29.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 209383,2486160,Damaged/Defective,Bangalore,2026-05-26T07:36:07.000,WH Accepted,remark matches WH-fault-confirmed pattern ('incomplete order delivered'),Anjana_BLRW,Metha_BLRWH
@@ -2413,7 +2427,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 250733,3062757,Damaged/Defective,Mumbai,2026-08-04T05:06:34.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 250752,3080616,Damaged/Defective,Kolkata,2026-08-04T06:15:20.000,BOD,"remark='Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251119,3259760,Damaged/Defective,Unknown,2026-08-06T06:03:30.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-251391,3146598,Damaged/Defective,Kolkata,2026-08-07T11:50:24.000,BOD,"remark='QC completed successfully' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
+251391,3146598,Damaged/Defective,Kolkata,2026-08-07T11:50:24.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission",-,-
 251412,3278083,Damaged/Defective,Bangalore,2026-08-07T13:32:08.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 251554,3231812,Damaged/Defective,Delhi,2026-08-08T10:49:11.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 252207,3343936,Damaged/Defective,Mumbai,2026-08-11T12:41:57.000,WH Accepted,remark matches WH-fault-confirmed pattern ('damaged medicine'),KaranZ_MUM / AniketP_MUM,JayeshW_MUM
@@ -2422,10 +2436,10 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 253006,3288793,Damaged/Defective,Bangalore,2026-08-15T11:28:35.000,Considered BOD,return exists but remark is empty and no WH-team Zoho admission found - treated as BOD by default (unconfirmed resolution),-,-
 
 Summary
-Total tickets raised,2419
-Total refunds/returns issued,2216
-WH Accepted,515
-BOD,1414
-Considered BOD,287
-No return record (excluded from refund total),203
+Total tickets raised,2433
+Total refunds/returns issued,2232
+WH Accepted,517
+BOD,1430
+Considered BOD,285
+No return record (excluded from refund total),201
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes
