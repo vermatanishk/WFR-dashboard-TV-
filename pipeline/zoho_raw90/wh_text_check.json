@@ -2878,5 +2878,131 @@
     "order_id": 3384973,
     "reason": "Warehouse-role comment is a denial ('We have sent proper medicine to Cx'), not an admission of shipping wrong/short qty.",
     "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "253028": {
+    "order_id": 3443106,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Warehouse comment is the stock denial reply, asserting they sent the correct medicine, not an admission of fault."
+  },
+  "253027": {
+    "order_id": 3433342,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "253024": {
+    "order_id": 3358155,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "253022": {
+    "order_id": 3340068,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only an L2 note that customer confirmed receiving correct medicine."
+  },
+  "253016": {
+    "order_id": 3440935,
+    "admitted": true,
+    "wh_comment": "We have sent short qty to Cx",
+    "reason": "Genuine first-person Warehouse-role admission of sending short quantity."
+  },
+  "253006": {
+    "order_id": 3288793,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only Logistics L2 status updates about the return pickup."
+  },
+  "253005": {
+    "order_id": 3409918,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "253000": {
+    "order_id": 3383932,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx",
+    "reason": "Genuine first-person Warehouse-role admission of sending the wrong SKU."
+  },
+  "252996": {
+    "order_id": 3441544,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "252985": {
+    "order_id": 3119511,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only a Logistics L2 note about repeated pickup (AWB) cancellations."
+  },
+  "252981": {
+    "order_id": 3322499,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "252977": {
+    "order_id": 3442014,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only an L2 system status note (Partial Return Requested)."
+  },
+  "252976": {
+    "order_id": 3391052,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "252960": {
+    "order_id": 3406287,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "252950": {
+    "order_id": 3404668,
+    "admitted": true,
+    "wh_comment": "We have sent wrong sku to Cx",
+    "reason": "Genuine first-person Warehouse-role admission of sending the wrong SKU."
+  },
+  "252942": {
+    "order_id": 3397668,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "252941": {
+    "order_id": 3387798,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission."
+  },
+  "252932": {
+    "order_id": 3324654,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only L2 internal notes about status and escalation."
+  },
+  "252911": {
+    "order_id": 3281274,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only L2 notes about pickup being requested/informing customer of reimbursement."
+  },
+  "252867": {
+    "order_id": 3380889,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-role comment on this ticket; only an L2 system status note (Return Requested)."
+  },
+  "251890": {
+    "order_id": 3322445,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse comment is a denial that proper medicine was sent, not an admission; category is damaged/defective and unrelated to a WH mis-shipment admission."
   }
 }
