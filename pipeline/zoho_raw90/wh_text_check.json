@@ -3208,5 +3208,101 @@
     "order_id": 3047552,
     "wh_comment": null,
     "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence)."
+  },
+  "253859": {
+    "order_id": 3490379,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment found (only an L2 agent comment: 'return has been initiated refund will be processed')."
+  },
+  "253836": {
+    "order_id": 3450522,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial ('We have sent proper medicine to Cx'), followed by a neutral batch disclaimer ('This batch medicine was not related to our inventory') - not an admission of mis-shipment."
+  },
+  "253835": {
+    "order_id": 3414492,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment found (only Logistics-role comments about AWB/pickup)."
+  },
+  "253834": {
+    "order_id": 3449204,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial, followed by a neutral batch disclaimer ('This batch medicine is not related to our inventory') - not an admission of mis-shipment."
+  },
+  "253806": {
+    "order_id": 3473882,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253794": {
+    "order_id": 3456148,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253791": {
+    "order_id": 3486170,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253724": {
+    "order_id": 3478398,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253706": {
+    "order_id": 3464409,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial, followed by a neutral batch disclaimer ('This batch medicine was not related to our inventory') - not an admission."
+  },
+  "253703": {
+    "order_id": 3453362,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253667": {
+    "order_id": 3397673,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse first asked 'Kindly share the order id' (an information request, not an admission); after receiving it, replied with the stock denial 'We have sent proper medicine to Cx' - not an admission."
+  },
+  "253612": {
+    "order_id": 3422168,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253369": {
+    "order_id": 3416534,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
+  },
+  "253205": {
+    "order_id": 3017846,
+    "admitted": false,
+    "wh_comment": "Footage not found because it old order",
+    "reason": "Warehouse comment is neither an admission nor a denial (footage unavailable for an old order) - not an admission."
+  },
+  "252642": {
+    "order_id": 3017846,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "No Warehouse-team comment found (only an L2 agent comment: 'Should chk with soumen.')."
+  },
+  "251187": {
+    "order_id": 3017846,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Warehouse stock denial - not an admission of mis-shipment."
   }
 }
