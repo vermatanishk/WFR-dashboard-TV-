@@ -550,6 +550,19 @@ const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bo
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
 const PAGE_SIZE = 25;
 
+// Ticket created_time strings (from build_full_dataset.py / build_eod.py) are UTC values
+// with the trailing 'Z' stripped, e.g. "2026-05-22T03:30:16". `new Date(...)` on a
+// timezone-less ISO string is parsed as the BROWSER's LOCAL time, not UTC (per spec) - on
+// a TV displayed in IST that silently shifts every ticket ~5.5h earlier, which drops
+// boundary tickets out of the sliding date-range filters early and silently undercounts
+// (confirmed 2026-08-21: WH-Accepted showed 491 in-browser vs 499 unique orders in the
+// data - the gap was exactly this). Always parse created_time through this helper instead
+// of a bare `new Date(...)`.
+function parseUTC(s) {
+  if (!s) return null;
+  return new Date(/Z$|[+-]\d\d:\d\d$/.test(s) ? s : s + 'Z');
+}
+
 document.getElementById('wfr-refreshed').textContent = new Date(DATA.generated_at).toLocaleString('en-IN', {dateStyle:'medium', timeStyle:'short'});
 document.getElementById('wfr-sample-note').textContent = DATA.sample_note;
 
@@ -650,7 +663,7 @@ function renderTicketTable(tickets) {
     <td>${t.order_id}</td>
     <td>${t.category}</td>
     <td>${t.location}</td>
-    <td>${new Date(t.created_time).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'})}</td>
+    <td>${parseUTC(t.created_time).toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'})}</td>
     <td><span class="wfr-pill ${RESOLUTION_PILL_CLASS[t.resolution]}">${RESOLUTION_LABEL[t.resolution]}</span></td>
     <td class="wfr-reason">${t.accept_reason}</td>
     <td>${t.picker || '—'}</td>
@@ -789,7 +802,7 @@ function applyFilters() {
   const loc = document.getElementById('filter-location').value;
   const skuType = document.getElementById('filter-sku-type').value;
   return ALL_TICKETS.filter(t => {
-    const d = new Date(t.created_time);
+    const d = parseUTC(t.created_time);
     if (d < start || d >= end) return false;
     if (cat !== 'all' && t.category !== cat) return false;
     if (loc !== 'all' && t.location !== loc) return false;
@@ -930,7 +943,7 @@ document.getElementById('eod-loc-cards').innerHTML = Object.entries(eodByLocTick
     // oldest-created first.
     const sorted = tickets.slice().sort((a, b) => {
       if (a.wh_accepted_text !== b.wh_accepted_text) return a.wh_accepted_text ? -1 : 1;
-      return new Date(a.created_time) - new Date(b.created_time);
+      return parseUTC(a.created_time) - parseUTC(b.created_time);
     });
     const rows = sorted.map(t => `<tr class="${t.wh_accepted_text ? 'wfr-eod-row-flag' : 'wfr-eod-row-clear'}">
         <td>${t.ticket_id}</td>
@@ -956,7 +969,7 @@ document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t 
   <td>${t.order_id}</td>
   <td>${t.category}</td>
   <td>${t.location}</td>
-  <td>${new Date(t.created_time).toLocaleString('en-IN', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'})}</td>
+  <td>${parseUTC(t.created_time).toLocaleString('en-IN', {day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'})}</td>
   <td><span class="wfr-pill ${t.wh_accepted_text ? 'yes' : 'no'}">${t.wh_accepted_text ? 'WH Accepted' : 'Not counted'}</span></td>
   <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '(no WH-team comment)'}</td>
 </tr>`).join('') || '<tr><td colspan="7" class="wfr-empty">No tickets for T-2</td></tr>';
@@ -982,7 +995,7 @@ function renderMonthlyLeaderboard() {
   // Accepted (WH-fault) errors this month, per warehouse, deduped by order - same
   // methodology as the rest of the dashboard's "WH Accepted" counts.
   const monthTickets = ALL_TICKETS.filter(t => {
-    const d = new Date(t.created_time);
+    const d = parseUTC(t.created_time);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` === monthStr;
   });
   const errorsByWh = {};
