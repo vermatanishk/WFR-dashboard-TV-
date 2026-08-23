@@ -1,43 +1,43 @@
 {
-  "generated_at": "2026-08-22T14:11:57Z",
-  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2408 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 57 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-05-24 to 2026-08-22), exhaustive within that window",
+  "generated_at": "2026-08-23T13:52:04Z",
+  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2412 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 57 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
+  "pull_window": "Last 90 days (2026-05-25 to 2026-08-23), exhaustive within that window",
   "tab1": {
-    "total_tickets": 2408,
-    "total_orders": 2270,
-    "total_returns": 2224,
-    "wh_accepted": 516,
-    "bod": 1460,
-    "considered_bod": 248,
-    "no_return_record": 184,
-    "accept_pct": 22.7,
+    "total_tickets": 2412,
+    "total_orders": 2272,
+    "total_returns": 2226,
+    "wh_accepted": 518,
+    "bod": 1444,
+    "considered_bod": 264,
+    "no_return_record": 186,
+    "accept_pct": 22.8,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
-        "total": 1516,
+        "total": 1520,
         "pct_of_total": 63.0,
-        "accepted": 392,
+        "accepted": 394,
         "accept_pct": 25.9
       },
       {
         "category": "Wrong Medicines",
-        "total": 525,
+        "total": 527,
         "pct_of_total": 21.8,
         "accepted": 85,
-        "accept_pct": 16.2
+        "accept_pct": 16.1
       },
       {
         "category": "Expiry Issue",
-        "total": 52,
-        "pct_of_total": 2.2,
+        "total": 51,
+        "pct_of_total": 2.1,
         "accepted": 6,
-        "accept_pct": 11.5
+        "accept_pct": 11.8
       },
       {
         "category": "Damaged/Defective",
-        "total": 315,
-        "pct_of_total": 13.1,
+        "total": 314,
+        "pct_of_total": 13.0,
         "accepted": 33,
         "accept_pct": 10.5
       },
@@ -53,54 +53,48 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 730,
+      "total": 725,
       "accepted": 147,
-      "accept_pct": 20.1
+      "accept_pct": 20.3
     },
     {
       "location": "Bangalore",
       "total": 613,
-      "accepted": 162,
-      "accept_pct": 26.4
+      "accepted": 163,
+      "accept_pct": 26.6
     },
     {
       "location": "Mumbai",
-      "total": 291,
+      "total": 294,
       "accepted": 71,
-      "accept_pct": 24.4
+      "accept_pct": 24.1
     },
     {
       "location": "Kolkata",
-      "total": 280,
-      "accepted": 85,
+      "total": 283,
+      "accepted": 86,
       "accept_pct": 30.4
     },
     {
       "location": "Lucknow",
-      "total": 268,
+      "total": 269,
       "accepted": 44,
       "accept_pct": 16.4
     },
     {
       "location": "Unknown",
-      "total": 184,
+      "total": 186,
       "accepted": 0,
       "accept_pct": 0.0
     },
     {
       "location": "DocPharma",
-      "total": 40,
+      "total": 41,
       "accepted": 7,
-      "accept_pct": 17.5
+      "accept_pct": 17.1
     },
     {
       "location": "Hyderabad WH",
-      "total": 1,
-      "accepted": 0,
-      "accept_pct": 0.0
-    },
-    {
-      "location": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED",
       "total": 1,
       "accepted": 0,
       "accept_pct": 0.0
