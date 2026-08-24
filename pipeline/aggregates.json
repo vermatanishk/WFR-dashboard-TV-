@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-08-23T13:52:04Z",
-  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2412 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 57 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-05-25 to 2026-08-23), exhaustive within that window",
+  "generated_at": "2026-08-24T14:11:48Z",
+  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2408 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 57 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
+  "pull_window": "Last 90 days (2026-05-26 to 2026-08-24), exhaustive within that window",
   "tab1": {
-    "total_tickets": 2412,
-    "total_orders": 2272,
-    "total_returns": 2226,
-    "wh_accepted": 518,
-    "bod": 1444,
-    "considered_bod": 264,
-    "no_return_record": 186,
-    "accept_pct": 22.8,
+    "total_tickets": 2408,
+    "total_orders": 2266,
+    "total_returns": 2230,
+    "wh_accepted": 514,
+    "bod": 1454,
+    "considered_bod": 262,
+    "no_return_record": 178,
+    "accept_pct": 22.7,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
-        "total": 1520,
-        "pct_of_total": 63.0,
+        "total": 1525,
+        "pct_of_total": 63.3,
         "accepted": 394,
-        "accept_pct": 25.9
+        "accept_pct": 25.8
       },
       {
         "category": "Wrong Medicines",
-        "total": 527,
-        "pct_of_total": 21.8,
-        "accepted": 85,
-        "accept_pct": 16.1
+        "total": 521,
+        "pct_of_total": 21.6,
+        "accepted": 80,
+        "accept_pct": 15.4
       },
       {
         "category": "Expiry Issue",
-        "total": 51,
+        "total": 50,
         "pct_of_total": 2.1,
         "accepted": 6,
-        "accept_pct": 11.8
+        "accept_pct": 12.0
       },
       {
         "category": "Damaged/Defective",
-        "total": 314,
+        "total": 312,
         "pct_of_total": 13.0,
-        "accepted": 33,
-        "accept_pct": 10.5
+        "accepted": 34,
+        "accept_pct": 10.9
       },
       {
         "category": "Switch Orders",
@@ -53,37 +53,37 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 725,
-      "accepted": 147,
-      "accept_pct": 20.3
+      "total": 730,
+      "accepted": 146,
+      "accept_pct": 20.0
     },
     {
       "location": "Bangalore",
-      "total": 613,
-      "accepted": 163,
-      "accept_pct": 26.6
+      "total": 604,
+      "accepted": 159,
+      "accept_pct": 26.3
     },
     {
       "location": "Mumbai",
-      "total": 294,
+      "total": 299,
       "accepted": 71,
-      "accept_pct": 24.1
+      "accept_pct": 23.7
     },
     {
       "location": "Kolkata",
-      "total": 283,
+      "total": 286,
       "accepted": 86,
-      "accept_pct": 30.4
+      "accept_pct": 30.1
     },
     {
       "location": "Lucknow",
-      "total": 269,
-      "accepted": 44,
-      "accept_pct": 16.4
+      "total": 268,
+      "accepted": 45,
+      "accept_pct": 16.8
     },
     {
       "location": "Unknown",
-      "total": 186,
+      "total": 178,
       "accepted": 0,
       "accept_pct": 0.0
     },
@@ -95,7 +95,7 @@
     },
     {
       "location": "Hyderabad WH",
-      "total": 1,
+      "total": 2,
       "accepted": 0,
       "accept_pct": 0.0
     }
