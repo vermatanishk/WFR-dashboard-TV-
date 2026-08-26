@@ -11,7 +11,9 @@
 {"order_id": 3120441, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 3120441, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 3209420, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Return Details are insufficient"}
+{"order_id": 3234805, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3220034, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Order switch", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
+{"order_id": 3231210, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "order swap ", "remark": "Validated"}
 {"order_id": 3165881, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 3175757, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "order swap ", "remark": null}
 {"order_id": 3175757, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "order swap ", "remark": null}
@@ -24,26 +26,32 @@
 {"order_id": 3175757, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "order swap ", "remark": null}
 {"order_id": 3175757, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "order swap ", "remark": null}
 {"order_id": 3175757, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "order swap ", "remark": null}
+{"order_id": 3230891, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3222307, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "order swep", "remark": null}
 {"order_id": 3222307, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "order swep", "remark": null}
 {"order_id": 3222307, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "order swep", "remark": null}
 {"order_id": 3199128, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
+{"order_id": 3225587, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 3226235, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3222210, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3187230, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3197183, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3196229, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Prescription Changed", "remark": "Validated"}
 {"order_id": 3118702, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3121504, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
+{"order_id": 3231812, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 3219032, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": null}
 {"order_id": 3146598, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "No Longer Needed", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3183944, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 3231018, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3236098, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3018904, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Regular cx / no footage from WH (1 month)/ B number is matching with the inventory / Need to add the amount in the wallet as PRX cash / RVP NOT REQUIRED", "remark": null}
-{"order_id": 3014897, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3209638, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Expired or Near Expiry Medicines / NEED TO HIGHLIGHT TO ANISH SIR, ONCE THE STATSUS CHANGED TO RETURN DELIVERED / VALIDATED AT WAREHOUSE", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3231741, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Validated"}
+{"order_id": 3014897, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3209638, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Expired or Near Expiry Medicines / NEED TO HIGHLIGHT TO ANISH SIR, ONCE THE STATSUS CHANGED TO RETURN DELIVERED / VALIDATED AT WAREHOUSE", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3047552, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Prescription Changed", "remark": null}
 {"order_id": 2966043, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Damaged or Defective Packaging", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 3017846, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Fungus affected", "remark": null}
-{"order_id": 2940633, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": null}
 {"order_id": 2948206, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
 {"order_id": 3082131, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "order swap", "remark": "Validated"}
 {"order_id": 3027919, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "QC completed successfully"}
@@ -65,7 +73,7 @@
 {"order_id": 3212318, "warehouse_name": "Delhi", "city": "New Delhi", "reason": " order swap", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3200311, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3171882, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3107816, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3107816, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3185005, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "The sunscreen bottle was empty even though seal was packed ", "remark": null}
 {"order_id": 3185005, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "The sunscreen bottle was empty even though seal was packed ", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 3166754, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
@@ -99,12 +107,13 @@
 {"order_id": 3155212, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3125547, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3222039, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Validated"}
-{"order_id": 3213347, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3213347, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3210934, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3202949, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3230810, "warehouse_name": "DocPharma", "city": "Bangalore", "reason": "Substitutes not needed.", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3209091, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3199528, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3126713, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3126713, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3166754, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "This item is not received ", "remark": null}
 {"order_id": 3166754, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "This item is not received ", "remark": null}
 {"order_id": 3166754, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "This item is not received", "remark": null}
@@ -136,10 +145,11 @@
 {"order_id": 3144326, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 3205002, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Issue with cold storage items", "remark": null}
 {"order_id": 3209814, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": "QC completed successfully"}
-{"order_id": 3222253, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3222253, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3150299, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3219025, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3219234, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": "Validated"}
+{"order_id": 3228803, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3192916, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 3183796, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3166754, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
@@ -169,33 +179,59 @@
 {"order_id": 3210772, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3214245, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3218105, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Validated"}
-{"order_id": 3213338, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3213338, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3140456, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3231905, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3209807, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3189354, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3189354, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Customer received correct order"}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Customer received correct order"}
+{"order_id": 3225437, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3174978, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3232610, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3216655, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3217398, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3216629, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3177495, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "RTO", "remark": "QC completed successfully"}
-{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Expired or Near Expiry Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3211157, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3236738, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3234383, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Expired or Near Expiry Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3220535, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3211157, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3223227, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3223227, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3142506, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
+{"order_id": 3235104, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": " 2 packets ordered, received only 1", "remark": null}
+{"order_id": 3235104, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3231210, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": null}
+{"order_id": 3231814, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3231814, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3214541, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3238011, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3117114, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3209100, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3209100, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3212511, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3136802, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Expired or Near Expiry Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3229315, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3136802, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Expired or Near Expiry Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3033409, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "RTO", "remark": "QC completed successfully"}
 {"order_id": 3178720, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3227858, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "in complet ", "remark": null}
+{"order_id": 3227858, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3231855, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3231855, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3127657, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Expired or Near Expiry Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3083458, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "order swap / cx received completely wrong order ", "remark": "Validated"}
+{"order_id": 3237120, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Customer received correct order"}
+{"order_id": 3230117, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3080616, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Allergic Reaction", "remark": null}
 {"order_id": 3080616, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Allergic Reaction", "remark": null}
 {"order_id": 3080616, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Allergic Reaction", "remark": null}
@@ -203,54 +239,31 @@
 {"order_id": 3216102, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3144543, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Damaged or Defective Packaging", "remark": null}
 {"order_id": 3080616, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "No Longer Needed", "remark": null}
-{"order_id": 3080616, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3080616, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3219740, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": null}
 {"order_id": 3209498, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3187434, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3178485, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3178485, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3228301, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3186044, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
+{"order_id": 3231812, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "not release accurate dose of medicine when press inhaler. ", "remark": null}
+{"order_id": 3239286, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3139834, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3139834, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3199760, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3225380, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "only 3 jar received ", "remark": null}
-{"order_id": 2945380, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 2939959, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Validated"}
-{"order_id": 2947351, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2940430, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2940430, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2944208, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2943366, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Damaged or Defective Packaging", "remark": "NSZ for Return Pickup (RVP) - Unable to return order as pickup not possible(NSZ) and COG isn't high."}
 {"order_id": 2948303, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2937741, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
-{"order_id": 2937741, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
-{"order_id": 2937741, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 2937741, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2953787, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2939877, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2957458, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 2944726, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Prescription Changed", "remark": "Validated"}
-{"order_id": 2944726, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Prescription Changed", "remark": "Validated"}
-{"order_id": 2944771, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2944771, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2944771, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2958175, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2961035, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": null}
-{"order_id": 2947329, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Customer received correct order"}
-{"order_id": 2947329, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Customer received correct order"}
-{"order_id": 2937526, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Issue with cold storage items", "remark": "Validated"}
-{"order_id": 2946439, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Customer received correct order"}
-{"order_id": 2954021, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 2938024, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 2941303, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
+{"order_id": 2954021, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2957145, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2957145, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 2951546, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 2972290, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2972290, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2975537, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2973600, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2944930, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": null}
-{"order_id": 2944930, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": null}
-{"order_id": 2944930, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2980013, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2956248, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2981362, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
@@ -263,27 +276,20 @@
 {"order_id": 2980399, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2983124, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2949192, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2941789, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 2993758, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": null}
 {"order_id": 2993758, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2993758, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 2993758, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Validated"}
-{"order_id": 2937800, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Internal Reason for Cancellation"}
-{"order_id": 2937800, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Internal Reason for Cancellation"}
-{"order_id": 2937800, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Internal Reason for Cancellation"}
-{"order_id": 2944014, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2983756, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2983756, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 2943737, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2956653, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2956653, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2947600, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Issue with cold storage items", "remark": null}
 {"order_id": 2955359, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Allergic Reaction", "remark": null}
 {"order_id": 2981066, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 2982028, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Prescription Changed", "remark": null}
 {"order_id": 2982028, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2990816, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "NSZ for Return Pickup (RVP) - Unable to return order as pickup not possible(NSZ) and COG isn't high."}
-{"order_id": 2973856, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2973856, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2972429, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2964362, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2997850, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
@@ -295,10 +301,9 @@
 {"order_id": 2997850, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 2997850, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 2997850, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
-{"order_id": 2944542, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "one strip was missing ", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2999284, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3002798, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3002798, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3002798, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3002798, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2967497, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2977212, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2972726, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "No Longer Needed", "remark": "Validated"}
@@ -309,9 +314,7 @@
 {"order_id": 2979239, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Damaged or Defective Packaging", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2972540, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": null}
 {"order_id": 2961646, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2946699, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": null}
 {"order_id": 2949799, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2942596, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Damaged or Defective Packaging", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 2979140, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2975898, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Customer changed their mind - retained order"}
 {"order_id": 2972540, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Validated"}
@@ -321,7 +324,6 @@
 {"order_id": 2980250, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2980250, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3000998, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 2942689, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2958280, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2958280, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2960269, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
@@ -331,7 +333,7 @@
 {"order_id": 2985448, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2985448, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2985448, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3023193, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3023193, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2957814, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 2957814, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 2988584, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "medicine messing ", "remark": null}
@@ -348,7 +350,6 @@
 {"order_id": 2954877, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2954877, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3004007, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
-{"order_id": 2945219, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3016880, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3028014, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2965088, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": null}
@@ -374,7 +375,7 @@
 {"order_id": 3019863, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2949765, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3032605, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Validated"}
-{"order_id": 2992361, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2992361, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2958934, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3023061, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3010259, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
@@ -384,12 +385,12 @@
 {"order_id": 3010007, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3030626, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3019203, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3033695, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3033695, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3016216, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3020154, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": null}
 {"order_id": 3020154, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3020154, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": "Validated"}
-{"order_id": 3002757, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3002757, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3040032, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3010110, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2982490, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -402,7 +403,7 @@
 {"order_id": 3025209, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2995168, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3030559, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
-{"order_id": 3019111, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3019111, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3002301, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2990075, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 2975089, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": null}
@@ -410,7 +411,7 @@
 {"order_id": 2970545, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3041975, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3008216, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Customer changed their mind - retained order"}
-{"order_id": 3025811, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3025811, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 2960725, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2960725, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 2960725, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -432,7 +433,6 @@
 {"order_id": 3019863, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "BOD issued to the cx ", "remark": "Validated"}
 {"order_id": 3019863, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 2992204, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
-{"order_id": 2942289, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": null}
 {"order_id": 2992204, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2992204, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2992204, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
@@ -470,21 +470,21 @@
 {"order_id": 3017382, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": null}
 {"order_id": 2999881, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3048313, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3029427, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3029427, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3057718, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3068005, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3017382, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3017382, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3064777, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3041985, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3027386, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3035373, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3027386, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3035373, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3063156, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Customer received correct order"}
 {"order_id": 3053986, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Received Wrong Medicines", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3034355, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 3044911, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 3039342, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": "Validated"}
-{"order_id": 3023793, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3023793, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3069365, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 3058589, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3042389, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
@@ -548,12 +548,12 @@
 {"order_id": 3040851, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": " order switch issue / cx received completely wrong order", "remark": "Validated"}
 {"order_id": 3040851, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": " order switch issue / cx received completely wrong order", "remark": "Validated"}
 {"order_id": 3040851, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": " order switch issue / cx received completely wrong order", "remark": "Validated"}
-{"order_id": 2957219, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 2957219, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3037431, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Validated"}
 {"order_id": 3095138, "warehouse_name": "DocPharma", "city": "Bangalore", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3095138, "warehouse_name": "DocPharma", "city": "Bangalore", "reason": "Incomplete Order", "remark": "doc pharma / cx received correct medicine "}
 {"order_id": 3084562, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3097103, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3097103, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3072410, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3085623, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3039275, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
@@ -602,10 +602,10 @@
 {"order_id": 3108397, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Spoke with cx and she handed over the medicine namely - Seta 25mg Tablet 10s - 6 strips and Am Dine 100mg Tablet 10s - 6 strips", "remark": "Validated"}
 {"order_id": 3080552, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3114611, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "Validated"}
-{"order_id": 3091444, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3091444, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3105045, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3105045, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3091444, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3091444, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3105045, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3105045, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3050085, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3068271, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 3068271, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Issue with cold storage items", "remark": "Validated"}
@@ -647,7 +647,7 @@
 {"order_id": 3107397, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3132976, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3128448, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3112719, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Substitutes not needed.", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3112719, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Substitutes not needed.", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3108300, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3109819, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3089629, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": null}
@@ -671,10 +671,10 @@
 {"order_id": 3118034, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3077540, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Issue with cold storage items", "remark": "Validated"}
 {"order_id": 3138117, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "orders swap", "remark": "Validated"}
-{"order_id": 3134347, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3134347, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3061170, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3043066, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": null}
-{"order_id": 3043066, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3043066, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3098322, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Order switch", "remark": "Order switch / COG<100"}
 {"order_id": 3098322, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Order switch", "remark": "Order switch / COG<100"}
 {"order_id": 3098322, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Order switch", "remark": "Order switch / COG<100"}
@@ -704,15 +704,15 @@
 {"order_id": 3116640, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3116640, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Damaged or Defective Packaging", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3116640, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3088226, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3088226, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3143740, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3143740, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3143740, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3143740, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3037230, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": null}
-{"order_id": 3037230, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3037230, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3120313, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3123162, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3123162, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3111787, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3145977, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3164189, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
@@ -734,7 +734,7 @@
 {"order_id": 3159511, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "missing", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3159511, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "missing", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3159511, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "missing", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3038162, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3038162, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3158835, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": null}
 {"order_id": 3141605, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Validated"}
 {"order_id": 3163432, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Issue with cold storage items", "remark": null}
@@ -747,12 +747,12 @@
 {"order_id": 3150330, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3136033, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3136033, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3093171, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "order swap", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3093171, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "order swap", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3162719, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Issue with cold storage items", "remark": "QC completed successfully"}
 {"order_id": 3142847, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3125583, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3125583, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
-{"order_id": 3125583, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3125583, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3125583, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3125583, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3154920, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": null}
 {"order_id": 3153502, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3154920, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "only 01 strip of 10 tablets recieved incomplete order pls send 01 strip strip of 10 tablet against my order", "remark": null}
@@ -767,7 +767,7 @@
 {"order_id": 3146952, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3129044, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3129044, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3153746, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3153746, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3164893, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Damaged or Defective Packaging", "remark": "Damaged Medicine - Item received in damaged or unusable condition."}
 {"order_id": 3178893, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "Incomplete Order", "remark": "Incomplete Order Delivered - One or more items missing from the delivered order."}
 {"order_id": 3158818, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Received Wrong Medicines", "remark": "Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item."}
@@ -826,9 +826,9 @@
 {"order_id": 3175010, "warehouse_name": "Kolkata", "city": "Kolkata", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3173348, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3186409, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "Received Wrong Medicines", "remark": null}
-{"order_id": 3208865, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3208865, "warehouse_name": "Lucknow", "city": "Lucknow", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3181750, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
-{"order_id": 3127802, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": "Low-Value COG (< \u20b9100) - Amount refunded due to less COG and hence no RVP."}
+{"order_id": 3127802, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "No Longer Needed", "remark": "Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP."}
 {"order_id": 3169611, "warehouse_name": "Mumbai", "city": "Mumbai", "reason": "didn't receive 1 strip only 2 strips received ", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
 {"order_id": 3179452, "warehouse_name": "Delhi", "city": "New Delhi", "reason": "Received Wrong Medicines", "remark": "QC completed successfully"}
 {"order_id": 3207770, "warehouse_name": "Bangalore", "city": "Bangalore", "reason": "Incomplete Order", "remark": "BOD Issued to Customer - Benefit of doubt provided, refund  issued."}
