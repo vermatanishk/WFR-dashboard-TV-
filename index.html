@@ -193,11 +193,22 @@
   table.wfr-lb-table tr.wfr-lb-row td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
   table.wfr-lb-table tr.wfr-lb-row td:last-child { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
   table.wfr-lb-table td.wfr-lb-name { font-weight: 700; }
-  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; }
+  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; background: var(--text-muted); }
   .wfr-lb-medal { margin-left: 4px; font-size: 13px; }
   .wfr-lb-poster { display: block; max-width: 480px; width: 100%; height: auto; margin: 20px auto 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
   #lb-tbody-other tr.wfr-lb-row td:first-child { border-top: 2px solid var(--gridline); }
   .wfr-lb-chip { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: color-mix(in srgb, var(--text-muted) 20%, transparent); color: var(--text-secondary); vertical-align: middle; }
+
+  /* Weekly leaderboard: 2-metric traffic light (WFR errors/1000 + FDR) instead of a
+     rank-position gradient - both green = eligible, one/one = yellow, both red = red. */
+  tr.wfr-lb-row.wfr-lb-green { background: color-mix(in srgb, var(--status-good) 16%, var(--surface-1)); }
+  tr.wfr-lb-row.wfr-lb-yellow { background: color-mix(in srgb, var(--status-warning) 18%, var(--surface-1)); }
+  tr.wfr-lb-row.wfr-lb-red { background: color-mix(in srgb, var(--status-critical) 14%, var(--surface-1)); }
+  tr.wfr-lb-row.wfr-lb-pending { background: var(--surface-2); }
+  .wfr-lb-metric-good { color: var(--status-good); font-weight: 700; }
+  .wfr-lb-metric-bad { color: var(--status-critical); font-weight: 700; }
+  .wfr-lb-metric-pending { color: var(--text-muted); }
+  .wfr-lb-eligible-chip { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: color-mix(in srgb, var(--status-good) 22%, transparent); color: var(--status-good); vertical-align: middle; }
 
   /* Print: designed for "switch to Tab 4 (Zoho EOD), then Ctrl+P" - only that tab's
      content prints, everything else (filters, topline, tab nav, download button) is
@@ -515,17 +526,17 @@
       </div>
     </div>
 
-    <!-- TAB 5: Monthly Leaderboard -->
+    <!-- TAB 5: Weekly Leaderboard -->
     <div class="wfr-panel" id="t5">
       <div class="wfr-card">
         <div class="wfr-lb-header">
-          <div class="wfr-lb-title" id="lb-month-title">Monthly Leaderboard</div>
+          <div class="wfr-lb-title" id="lb-month-title">Weekly Leaderboard</div>
           <div class="wfr-lb-subtitle" id="lb-asof"></div>
         </div>
-        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the ongoing calendar month. Ranked by total accepted (WH-fault) errors, fewest first — same "accepted error" definition used across the dashboard (WH-Accepted mis-shipment tickets, deduped per order). DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
+        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the active week. Eligibility (green + chip) requires BOTH metrics green: Errors/1000 Orders &lt; 0.2 (WH-Accepted mis-shipments, deduped per order, refreshed daily) AND FDR &lt; 0.5% (Warehouse-attributable RFD/manifest breach rate, computed once per week from ClickHouse). One metric red = yellow row; both red = red row. DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
         <div class="wfr-scroll">
           <table class="wfr-table wfr-lb-table" id="lb-table">
-            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th></tr></thead>
+            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th><th class="num">FDR</th></tr></thead>
             <tbody id="lb-tbody"></tbody>
             <tbody id="lb-tbody-other"></tbody>
           </table>
@@ -545,6 +556,7 @@ const TREND = [{"date": "2026-05-27", "series": {"All": {"raised": 3, "accepted"
 const ORDERS_BY_DAY = {"2026-05-27": 1618, "2026-05-28": 5862, "2026-05-29": 5942, "2026-05-30": 6180, "2026-05-31": 5889, "2026-06-01": 6304, "2026-06-02": 6856, "2026-06-03": 6703, "2026-06-04": 6560, "2026-06-05": 6518, "2026-06-06": 6886, "2026-06-07": 7043, "2026-06-08": 6742, "2026-06-09": 6764, "2026-06-10": 6913, "2026-06-11": 7194, "2026-06-12": 6704, "2026-06-13": 7229, "2026-06-14": 6841, "2026-06-15": 7032, "2026-06-16": 6869, "2026-06-17": 6690, "2026-06-18": 6570, "2026-06-19": 6551, "2026-06-20": 6928, "2026-06-21": 6532, "2026-06-22": 6711, "2026-06-23": 6786, "2026-06-24": 6942, "2026-06-25": 6852, "2026-06-26": 7330, "2026-06-27": 7431, "2026-06-28": 7445, "2026-06-29": 7670, "2026-06-30": 8467, "2026-07-01": 8266, "2026-07-02": 8278, "2026-07-03": 7796, "2026-07-04": 8132, "2026-07-05": 8070, "2026-07-06": 7737, "2026-07-07": 7409, "2026-07-08": 7365, "2026-07-09": 7541, "2026-07-10": 7363, "2026-07-11": 7594, "2026-07-12": 7573, "2026-07-13": 7753, "2026-07-14": 7598, "2026-07-15": 7715, "2026-07-16": 7336, "2026-07-17": 6890, "2026-07-18": 7386, "2026-07-19": 7524, "2026-07-20": 7493, "2026-07-21": 7619, "2026-07-22": 7269, "2026-07-23": 7314, "2026-07-24": 7405, "2026-07-25": 7731, "2026-07-26": 7781, "2026-07-27": 8152, "2026-07-28": 8351, "2026-07-29": 7986, "2026-07-30": 8596, "2026-07-31": 8663, "2026-08-01": 8828, "2026-08-02": 8914, "2026-08-03": 8915, "2026-08-04": 8896, "2026-08-05": 8794, "2026-08-06": 8925, "2026-08-07": 8544, "2026-08-08": 8832, "2026-08-09": 9105, "2026-08-10": 8521, "2026-08-11": 8572, "2026-08-12": 8097, "2026-08-13": 8811, "2026-08-14": 7700, "2026-08-15": 8023, "2026-08-16": 8444, "2026-08-17": 8307, "2026-08-18": 8819, "2026-08-19": 8831, "2026-08-20": 8678, "2026-08-21": 8226, "2026-08-22": 8832, "2026-08-23": 8769, "2026-08-24": 9013, "2026-08-25": 5901};
 const ORDERS_BY_DAY_LOC = {"2026-05-27": {"Lucknow": 103, "DocPharma": 18, "Bangalore": 419, "Kolkata": 110, "Mumbai": 356, "Delhi": 612}, "2026-05-28": {"Delhi": 2356, "DocPharma": 36, "Mumbai": 1112, "Lucknow": 457, "Bangalore": 1426, "Kolkata": 475}, "2026-05-29": {"Lucknow": 487, "Bangalore": 1521, "Mumbai": 1142, "DocPharma": 34, "Delhi": 2278, "Kolkata": 480}, "2026-05-30": {"DocPharma": 63, "Kolkata": 533, "Bangalore": 1650, "Lucknow": 452, "Delhi": 2328, "Mumbai": 1154}, "2026-05-31": {"Kolkata": 664, "Bangalore": 1349, "Mumbai": 1099, "Delhi": 2244, "DocPharma": 54, "Lucknow": 479}, "2026-06-01": {"Kolkata": 741, "Lucknow": 620, "Mumbai": 1147, "Delhi": 2165, "DocPharma": 44, "Bangalore": 1587}, "2026-06-02": {"Mumbai": 1254, "Bangalore": 1599, "Kolkata": 832, "Lucknow": 761, "Delhi": 2346, "DocPharma": 64}, "2026-06-03": {"Lucknow": 549, "Bangalore": 1558, "Mumbai": 1148, "Delhi": 2456, "Kolkata": 940, "DocPharma": 52}, "2026-06-04": {"Mumbai": 1162, "Kolkata": 996, "Lucknow": 588, "Bangalore": 1475, "DocPharma": 57, "Delhi": 2282}, "2026-06-05": {"Bangalore": 1480, "Mumbai": 1150, "DocPharma": 48, "Delhi": 2290, "Kolkata": 1026, "Lucknow": 524}, "2026-06-06": {"Delhi": 2535, "Kolkata": 969, "Lucknow": 634, "Mumbai": 1129, "Bangalore": 1569, "DocPharma": 50}, "2026-06-07": {"Bangalore": 1600, "DocPharma": 46, "Delhi": 2626, "Kolkata": 1042, "Lucknow": 648, "Mumbai": 1081}, "2026-06-08": {"Bangalore": 1566, "Delhi": 2428, "Mumbai": 1187, "Kolkata": 996, "DocPharma": 48, "Lucknow": 517}, "2026-06-09": {"Lucknow": 553, "Kolkata": 1041, "Delhi": 2465, "Bangalore": 1481, "DocPharma": 41, "Mumbai": 1183}, "2026-06-10": {"Kolkata": 1060, "Bangalore": 1507, "DocPharma": 47, "Delhi": 2238, "Mumbai": 1234, "Lucknow": 827}, "2026-06-11": {"Delhi": 2195, "Lucknow": 901, "Mumbai": 1282, "DocPharma": 57, "Bangalore": 1658, "Kolkata": 1101}, "2026-06-12": {"DocPharma": 86, "Mumbai": 1418, "Lucknow": 929, "Delhi": 2198, "Bangalore": 1278, "Kolkata": 795}, "2026-06-13": {"Delhi": 2556, "Lucknow": 755, "DocPharma": 94, "Mumbai": 1232, "Bangalore": 1547, "Kolkata": 1045}, "2026-06-14": {"DocPharma": 37, "Bangalore": 1469, "Lucknow": 626, "Kolkata": 1069, "Delhi": 2583, "Mumbai": 1057}, "2026-06-15": {"Delhi": 2237, "Kolkata": 1107, "Mumbai": 1025, "Lucknow": 1173, "Bangalore": 1490}, "2026-06-16": {"Lucknow": 885, "Mumbai": 1068, "Delhi": 2326, "Bangalore": 1545, "Kolkata": 1045}, "2026-06-17": {"DocPharma": 70, "Kolkata": 1088, "Lucknow": 1010, "Mumbai": 1112, "Bangalore": 1297, "Delhi": 2113}, "2026-06-18": {"Mumbai": 1056, "Delhi": 2176, "Lucknow": 682, "Kolkata": 1250, "Bangalore": 1324, "DocPharma": 82}, "2026-06-19": {"Kolkata": 1366, "Lucknow": 707, "Delhi": 2138, "DocPharma": 86, "Bangalore": 1226, "Mumbai": 1028}, "2026-06-20": {"DocPharma": 66, "Delhi": 2244, "Mumbai": 1117, "Kolkata": 1340, "Lucknow": 915, "Bangalore": 1246}, "2026-06-21": {"Lucknow": 674, "Mumbai": 1094, "DocPharma": 61, "Kolkata": 1212, "Delhi": 2266, "Bangalore": 1225}, "2026-06-22": {"Delhi": 2087, "DocPharma": 64, "Bangalore": 1344, "Kolkata": 1286, "Lucknow": 788, "Mumbai": 1142}, "2026-06-23": {"Kolkata": 1430, "Lucknow": 834, "Delhi": 2191, "Mumbai": 1010, "Bangalore": 1279, "DocPharma": 42}, "2026-06-24": {"Mumbai": 1062, "DocPharma": 45, "Lucknow": 833, "Bangalore": 1308, "Delhi": 2164, "Kolkata": 1530}, "2026-06-25": {"Kolkata": 1359, "Delhi": 2194, "Lucknow": 881, "Bangalore": 1273, "DocPharma": 43, "Mumbai": 1102}, "2026-06-26": {"Mumbai": 1213, "Lucknow": 894, "Bangalore": 1393, "DocPharma": 44, "Kolkata": 1522, "Delhi": 2264}, "2026-06-27": {"Kolkata": 1452, "Bangalore": 1469, "Delhi": 2275, "DocPharma": 55, "Lucknow": 990, "Mumbai": 1190}, "2026-06-28": {"Delhi": 2352, "Lucknow": 856, "Bangalore": 1403, "Mumbai": 1219, "Kolkata": 1574, "DocPharma": 41}, "2026-06-29": {"Mumbai": 801, "Bangalore": 1779, "Kolkata": 1597, "Delhi": 2311, "Lucknow": 1137, "DocPharma": 45}, "2026-06-30": {"Delhi": 2645, "Kolkata": 1647, "Lucknow": 1692, "Mumbai": 18, "DocPharma": 74, "Bangalore": 2391}, "2026-07-01": {"Kolkata": 1655, "Bangalore": 2149, "Mumbai": 633, "DocPharma": 56, "Delhi": 2614, "Lucknow": 1159}, "2026-07-02": {"DocPharma": 53, "Kolkata": 1626, "Bangalore": 1591, "Lucknow": 1163, "Delhi": 2434, "Mumbai": 1411}, "2026-07-03": {"Delhi": 2419, "Lucknow": 956, "Bangalore": 1485, "Mumbai": 1223, "DocPharma": 37, "Kolkata": 1676}, "2026-07-04": {"DocPharma": 41, "Mumbai": 1544, "Lucknow": 1043, "Bangalore": 1524, "Kolkata": 1590, "Delhi": 2390}, "2026-07-05": {"Lucknow": 1124, "DocPharma": 32, "Bangalore": 1562, "Kolkata": 1611, "Mumbai": 1202, "Delhi": 2539}, "2026-07-06": {"Mumbai": 1446, "Lucknow": 869, "Delhi": 2209, "Bangalore": 1581, "DocPharma": 53, "Kolkata": 1579}, "2026-07-07": {"Mumbai": 1462, "DocPharma": 35, "Lucknow": 840, "Kolkata": 1515, "Bangalore": 1344, "Delhi": 2213}, "2026-07-08": {"DocPharma": 42, "Mumbai": 1365, "Bangalore": 1379, "Kolkata": 1599, "Lucknow": 777, "Delhi": 2203}, "2026-07-09": {"Kolkata": 1591, "Delhi": 2193, "Lucknow": 877, "Bangalore": 1376, "DocPharma": 48, "Mumbai": 1456}, "2026-07-10": {"Delhi": 2235, "Mumbai": 1309, "Lucknow": 878, "Bangalore": 1350, "Kolkata": 1561, "DocPharma": 30}, "2026-07-11": {"Mumbai": 1419, "Lucknow": 1015, "Kolkata": 1541, "Bangalore": 1409, "Delhi": 2184, "DocPharma": 26}, "2026-07-12": {"Delhi": 2391, "Bangalore": 1372, "Mumbai": 1339, "Lucknow": 935, "DocPharma": 26, "Kolkata": 1510}, "2026-07-13": {"Kolkata": 1507, "Bangalore": 1458, "Lucknow": 964, "Delhi": 2303, "Mumbai": 1488, "DocPharma": 33}, "2026-07-14": {"Bangalore": 1395, "Mumbai": 1429, "Kolkata": 1502, "Lucknow": 974, "Delhi": 2263, "DocPharma": 35}, "2026-07-15": {"Mumbai": 1358, "Delhi": 2513, "Kolkata": 1548, "DocPharma": 38, "Lucknow": 808, "Bangalore": 1450}, "2026-07-16": {"Lucknow": 853, "Kolkata": 1450, "Delhi": 2372, "DocPharma": 30, "Bangalore": 1287, "Mumbai": 1344}, "2026-07-17": {"Kolkata": 1384, "Bangalore": 1205, "Delhi": 2165, "Lucknow": 744, "DocPharma": 33, "Mumbai": 1359}, "2026-07-18": {"DocPharma": 61, "Kolkata": 1461, "Mumbai": 1343, "Delhi": 2320, "Lucknow": 861, "Bangalore": 1340}, "2026-07-19": {"Delhi": 2300, "Mumbai": 1271, "DocPharma": 95, "Lucknow": 806, "Kolkata": 1625, "Bangalore": 1427}, "2026-07-20": {"Kolkata": 1422, "Mumbai": 1382, "Lucknow": 691, "Delhi": 2405, "DocPharma": 80, "Bangalore": 1513}, "2026-07-21": {"Lucknow": 791, "DocPharma": 96, "Delhi": 2415, "Kolkata": 1545, "Bangalore": 1428, "Mumbai": 1344}, "2026-07-22": {"Mumbai": 1273, "Delhi": 2458, "DocPharma": 86, "Kolkata": 1367, "Bangalore": 1353, "Lucknow": 732}, "2026-07-23": {"Delhi": 2420, "Bangalore": 1440, "Mumbai": 1281, "DocPharma": 84, "Lucknow": 859, "Kolkata": 1230}, "2026-07-24": {"Kolkata": 1264, "Mumbai": 1284, "Bangalore": 1508, "Lucknow": 889, "Delhi": 2389, "DocPharma": 71}, "2026-07-25": {"Lucknow": 1001, "Bangalore": 1403, "Delhi": 2530, "Kolkata": 1243, "Mumbai": 1484, "DocPharma": 70}, "2026-07-26": {"Bangalore": 1452, "Lucknow": 926, "Mumbai": 1427, "DocPharma": 84, "Delhi": 2588, "Kolkata": 1304}, "2026-07-27": {"Bangalore": 1598, "Mumbai": 1596, "Delhi": 2545, "Lucknow": 955, "Kolkata": 1373, "DocPharma": 85}, "2026-07-28": {"Bangalore": 1580, "Kolkata": 1345, "Lucknow": 1079, "DocPharma": 56, "Mumbai": 1538, "Delhi": 2753}, "2026-07-29": {"Lucknow": 1060, "Mumbai": 1278, "DocPharma": 61, "Kolkata": 1304, "Delhi": 2679, "Bangalore": 1604}, "2026-07-30": {"Mumbai": 1544, "Delhi": 2833, "DocPharma": 57, "Lucknow": 1079, "Bangalore": 1584, "Kolkata": 1499}, "2026-07-31": {"MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED": 2, "Delhi": 2842, "Kolkata": 1522, "Bangalore": 1652, "Mumbai": 1471, "DocPharma": 52, "Lucknow": 1122}, "2026-08-01": {"MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED": 37, "DocPharma": 45, "Kolkata": 1501, "Lucknow": 1199, "Bangalore": 1747, "Mumbai": 1493, "Delhi": 2806}, "2026-08-02": {"Kolkata": 1601, "Delhi": 2995, "DocPharma": 34, "Bangalore": 1724, "Mumbai": 1361, "Lucknow": 1199}, "2026-08-03": {"DocPharma": 54, "Mumbai": 1644, "Bangalore": 1740, "Lucknow": 1095, "Delhi": 2877, "Kolkata": 1505}, "2026-08-04": {"Delhi": 2832, "DocPharma": 32, "Kolkata": 1588, "Bangalore": 1617, "Lucknow": 1131, "Mumbai": 1696}, "2026-08-05": {"Kolkata": 1524, "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED": 5, "Mumbai": 1640, "Lucknow": 1040, "Bangalore": 1671, "Delhi": 2900, "Hyderabad WH": 5, "DocPharma": 9}, "2026-08-06": {"Kolkata": 1630, "DocPharma": 26, "Hyderabad WH": 5, "Bangalore": 1650, "Lucknow": 1153, "Mumbai": 1639, "Delhi": 2822}, "2026-08-07": {"Lucknow": 1170, "Bangalore": 1585, "Mumbai": 1460, "DocPharma": 28, "Delhi": 2753, "Hyderabad WH": 13, "Kolkata": 1535}, "2026-08-08": {"Delhi": 2715, "DocPharma": 8, "Kolkata": 1515, "Hyderabad WH": 29, "Bangalore": 1817, "Lucknow": 1280, "Mumbai": 1468}, "2026-08-09": {"Lucknow": 1280, "Delhi": 2899, "Bangalore": 1720, "Kolkata": 1594, "Mumbai": 1565, "Hyderabad WH": 47}, "2026-08-10": {"Delhi": 2503, "Mumbai": 1571, "Lucknow": 1138, "Patna WH": 6, "Bangalore": 1731, "Kolkata": 1536, "Hyderabad WH": 36}, "2026-08-11": {"Mumbai": 1599, "Bangalore": 1630, "Kolkata": 1557, "Hyderabad WH": 37, "Lucknow": 1139, "Delhi": 2610}, "2026-08-12": {"Delhi": 2596, "Patna WH": 17, "Lucknow": 1048, "Bangalore": 1566, "Mumbai": 1461, "Hyderabad WH": 59, "Kolkata": 1350}, "2026-08-13": {"Kolkata": 1463, "Bangalore": 1687, "Mumbai": 1605, "Patna WH": 38, "Hyderabad WH": 111, "Lucknow": 1089, "Delhi": 2818}, "2026-08-14": {"Hyderabad WH": 105, "Kolkata": 1273, "Lucknow": 936, "Delhi": 2399, "Mumbai": 1403, "Patna WH": 67, "Bangalore": 1517}, "2026-08-15": {"Kolkata": 1338, "Delhi": 2245, "Lucknow": 1230, "Patna WH": 59, "Bangalore": 1751, "Hyderabad WH": 107, "Mumbai": 1293}, "2026-08-16": {"Mumbai": 1607, "Lucknow": 1195, "Hyderabad WH": 117, "Bangalore": 1622, "Delhi": 2317, "Patna WH": 88, "Kolkata": 1498}, "2026-08-17": {"Kolkata": 1475, "Bangalore": 1641, "Hyderabad WH": 122, "Patna WH": 99, "Lucknow": 1030, "Delhi": 2452, "Mumbai": 1488}, "2026-08-18": {"Mumbai": 1595, "Lucknow": 1006, "Patna WH": 111, "Bangalore": 1689, "Delhi": 2433, "DocPharma": 3, "Kolkata": 1701, "Hyderabad WH": 281}, "2026-08-19": {"Hyderabad WH": 306, "Lucknow": 1010, "Delhi": 2489, "Mumbai": 1591, "DocPharma": 1, "Patna WH": 161, "Kolkata": 1686, "Bangalore": 1587}, "2026-08-20": {"Delhi": 2330, "DocPharma": 56, "Mumbai": 1559, "Kolkata": 1617, "Patna WH": 198, "Lucknow": 1098, "Bangalore": 1531, "Hyderabad WH": 289}, "2026-08-21": {"Kolkata": 1523, "Hyderabad WH": 235, "Lucknow": 1082, "Patna WH": 189, "Mumbai": 1413, "Delhi": 2354, "Bangalore": 1341, "DocPharma": 89}, "2026-08-22": {"DocPharma": 112, "Delhi": 2473, "Bangalore": 1666, "Hyderabad WH": 258, "Kolkata": 1503, "Patna WH": 164, "Lucknow": 1158, "Mumbai": 1498}, "2026-08-23": {"DocPharma": 111, "Kolkata": 1529, "Lucknow": 1145, "Hyderabad WH": 297, "Mumbai": 1535, "Patna WH": 198, "Bangalore": 1416, "Delhi": 2538}, "2026-08-24": {"Lucknow": 983, "Mumbai": 1514, "Patna WH": 267, "DocPharma": 109, "Hyderabad WH": 306, "Bangalore": 1698, "Delhi": 2611, "Kolkata": 1525}, "2026-08-25": {"Hyderabad WH": 163, "Kolkata": 1049, "Lucknow": 658, "DocPharma": 62, "Delhi": 1780, "Bangalore": 915, "Patna WH": 224, "Mumbai": 1050}};
 const EOD = {"generated_at": "2026-08-25T13:46:46Z", "for_date": "2026-08-23", "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.", "tickets": [{"ticket_id": "254499", "order_id": 3469196, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T04:46:33", "location": "Mumbai", "wh_comment": "We have sent proper medicine to cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254502", "order_id": 3533232, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T05:08:19", "location": "DocPharma", "wh_comment": null, "wh_accepted_text": false, "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254503", "order_id": 3460296, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T05:09:32", "location": "Lucknow", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254514", "order_id": 3528172, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T06:37:58", "location": "Mumbai", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254516", "order_id": 3459391, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T06:49:26", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254517", "order_id": 3532128, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T06:50:29", "location": "Mumbai", "wh_comment": "We have sent short qty to Cx", "wh_accepted_text": true, "reason": "Warehouse team comment: \"We have sent short qty to Cx\" - explicit admission, counted WH-Accepted.", "picker": "SwapnilP_MUM", "packer": "TarunP_MUM", "qc": "ShivamS_MUM", "manifester": "Hussain_MUM"}, {"ticket_id": "254518", "order_id": 3541927, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T06:54:12", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254526", "order_id": 3507186, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T07:17:29", "location": "Hyderabad WH", "wh_comment": null, "wh_accepted_text": false, "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254519", "order_id": 3534357, "category": "Wrong Medicines", "created_time": "2026-08-23T06:58:30", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx | We have sent wrong medicine to cx", "wh_accepted_text": true, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx | We have sent wrong medicine to cx\" - explicit admission, counted WH-Accepted.", "picker": "Jayanth_BLRWH", "packer": "Jayanth_BLRWH", "qc": "Fardeen_BLRWH", "manifester": "SUMITH"}, {"ticket_id": "254530", "order_id": 3519880, "category": "Damaged/Defective", "created_time": "2026-08-23T07:33:53", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254548", "order_id": 3534357, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T08:20:06", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254546", "order_id": 3540215, "category": "Wrong Medicines", "created_time": "2026-08-23T08:18:17", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254550", "order_id": 3545908, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T08:23:20", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254555", "order_id": 3495905, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T08:30:35", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254559", "order_id": 3500886, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T08:38:51", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254562", "order_id": 3513986, "category": "Wrong Medicines", "created_time": "2026-08-23T08:56:24", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254563", "order_id": 3538819, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T08:57:38", "location": "Lucknow", "wh_comment": "We have sent proper medicine to Cx | We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx | We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254565", "order_id": 3379927, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T09:05:13", "location": "Kolkata", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254568", "order_id": 3507664, "category": "Wrong Medicines", "created_time": "2026-08-23T09:15:04", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254570", "order_id": 3544516, "category": "Wrong Medicines", "created_time": "2026-08-23T09:22:23", "location": "Bangalore", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254575", "order_id": 3548986, "category": "Wrong Medicines", "created_time": "2026-08-23T09:44:58", "location": "Mumbai", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254577", "order_id": 3499742, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T09:51:53", "location": "Kolkata", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254582", "order_id": 3488962, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T10:21:36", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254602", "order_id": 3498535, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T12:20:41", "location": "Delhi", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254619", "order_id": 3512714, "category": "Missing/Wrong Qty", "created_time": "2026-08-23T13:34:30", "location": "Mumbai", "wh_comment": "We have sent proper medicine to Cx", "wh_accepted_text": false, "reason": "Warehouse team comment: \"We have sent proper medicine to Cx\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.", "picker": null, "packer": null, "qc": null, "manifester": null}, {"ticket_id": "254624", "order_id": 3549116, "category": "Wrong Medicines", "created_time": "2026-08-23T14:21:34", "location": "Bangalore", "wh_comment": null, "wh_accepted_text": false, "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).", "picker": null, "packer": null, "qc": null, "manifester": null}]};
+const RFD_WEEKLY = {"week_start": "2026-08-17", "week_end": "2026-08-23", "generated_at": "2026-08-26T00:00:00Z", "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Source: prx_prod_db, Pipeline B (rfd_base/Q39073) methodology from RFD_Adherence_Logic_Documentation.md, recomputed independently in ClickHouse against orders with a recorded first_pickup_at in the given Mon-Sun week.", "by_warehouse": {"Delhi": {"eligible_orders": 16745, "overall_breach": 1011, "wh_breach": 417, "overall_breach_pct": 6.038, "wh_breach_pct": 2.49}, "Kolkata": {"eligible_orders": 10896, "overall_breach": 433, "wh_breach": 64, "overall_breach_pct": 3.974, "wh_breach_pct": 0.587}, "Mumbai": {"eligible_orders": 10468, "overall_breach": 1150, "wh_breach": 231, "overall_breach_pct": 10.986, "wh_breach_pct": 2.207}, "Bangalore": {"eligible_orders": 10023, "overall_breach": 937, "wh_breach": 281, "overall_breach_pct": 9.348, "wh_breach_pct": 2.804}, "Lucknow": {"eligible_orders": 7328, "overall_breach": 276, "wh_breach": 63, "overall_breach_pct": 3.766, "wh_breach_pct": 0.86}, "Hyderabad WH": {"eligible_orders": 1779, "overall_breach": 37, "wh_breach": 33, "overall_breach_pct": 2.08, "wh_breach_pct": 1.855}, "Patna WH": {"eligible_orders": 1114, "overall_breach": 41, "wh_breach": 38, "overall_breach_pct": 3.68, "wh_breach_pct": 3.411}, "DocPharma": {"eligible_orders": 373, "overall_breach": 1, "wh_breach": 1, "overall_breach_pct": 0.268, "wh_breach_pct": 0.268}}};
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -974,40 +986,65 @@ document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t 
   <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '(no WH-team comment)'}</td>
 </tr>`).join('') || '<tr><td colspan="7" class="wfr-empty">No tickets for T-2</td></tr>';
 
-// ---- Tab 5: Monthly Leaderboard (ongoing calendar month, IPL-points-table style) ----
-function renderMonthlyLeaderboard() {
+// ---- Tab 5: Weekly Leaderboard ----
+// The "active week" is the most recently-CLOSED Monday-Sunday period as of the last
+// refresh (i.e. the most recent Sunday on/before DATA.generated_at) - not the week
+// still in progress. FDR can only be computed once, on the Sunday that closes a week
+// (it needs first_pickup_at data to have settled), so the displayed week always has to
+// be one whose Sunday has already happened; it stays "active" (and WFR keeps refining
+// daily as the admission-check backlog catches up) until the next Sunday rolls it
+// forward by 7 days.
+function weekBounds(genDate) {
+  const end = new Date(genDate); end.setHours(0, 0, 0, 0);
+  end.setDate(end.getDate() - end.getDay()); // most recent Sunday on/before genDate
+  const start = new Date(end); start.setDate(start.getDate() - 6); // Monday
+  return { start, end };
+}
+// Local calendar-date components, not toISOString() (which reinterprets through UTC
+// and can shift the date by a day depending on timezone) - matches how every other
+// date-bucket key in this file (e.g. ORDERS_BY_DAY_LOCATION's dates) is a plain
+// YYYY-MM-DD calendar-day string with no timezone conversion involved.
+function ymd(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+
+function renderWeeklyLeaderboard() {
   const genDate = new Date(DATA.generated_at);
-  const monthStr = `${genDate.getFullYear()}-${String(genDate.getMonth() + 1).padStart(2, '0')}`;
-  document.getElementById('lb-month-title').textContent = genDate.toLocaleDateString('en-IN', {month: 'long', year: 'numeric'}) + ' Leaderboard';
+  const { start: weekStart, end: weekEnd } = weekBounds(genDate);
+  const weekStartStr = ymd(weekStart);
+  const weekDateSet = new Set(Array.from({length: 7}, (_, i) => {
+    const d = new Date(weekStart); d.setDate(d.getDate() + i); return ymd(d);
+  }));
+
+  document.getElementById('lb-month-title').textContent = 'Week of '
+    + weekStart.toLocaleDateString('en-IN', {day: 'numeric', month: 'short'}) + ' – '
+    + weekEnd.toLocaleDateString('en-IN', {day: 'numeric', month: 'short'});
   document.getElementById('lb-asof').textContent = `Updated scores as on ${genDate.toLocaleDateString('en-IN', {day: 'numeric', month: 'short', year: 'numeric'})}`;
 
-  // Orders processed this month, per warehouse, from the daily order-volume feed.
+  // Orders processed this week, per warehouse, from the daily order-volume feed.
   const ordersByWh = {}, daysSeenByWh = {};
   Object.entries(ORDERS_BY_DAY_LOCATION).forEach(([dateStr, byLoc]) => {
-    if (!dateStr.startsWith(monthStr)) return;
+    if (!weekDateSet.has(dateStr)) return;
     Object.entries(byLoc).forEach(([wh, count]) => {
       ordersByWh[wh] = (ordersByWh[wh] || 0) + count;
       (daysSeenByWh[wh] = daysSeenByWh[wh] || new Set()).add(dateStr);
     });
   });
-  const daysElapsed = new Set(Object.keys(ORDERS_BY_DAY_LOCATION).filter(d => d.startsWith(monthStr))).size || 1;
+  const daysElapsed = new Set(Object.keys(ORDERS_BY_DAY_LOCATION).filter(d => weekDateSet.has(d))).size || 1;
 
-  // Accepted (WH-fault) errors this month, per warehouse, deduped by order - same
-  // methodology as the rest of the dashboard's "WH Accepted" counts.
-  const monthTickets = ALL_TICKETS.filter(t => {
-    const d = parseUTC(t.created_time);
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` === monthStr;
-  });
+  // Accepted (WH-fault) errors this week, per warehouse, deduped by order - same
+  // methodology as the rest of the dashboard's "WH Accepted" counts. Recomputed daily
+  // (that's the "daily WFR" half) since the WH-text admission backlog can still catch
+  // up genuine admissions for tickets created a couple of days into this week.
+  const weekTickets = ALL_TICKETS.filter(t => weekDateSet.has(ymd(parseUTC(t.created_time))));
   const errorsByWh = {};
-  dedupeByOrder(monthTickets.filter(t => t.resolution === 'wh_accepted')).forEach(t => {
+  dedupeByOrder(weekTickets.filter(t => t.resolution === 'wh_accepted')).forEach(t => {
     errorsByWh[t.location] = (errorsByWh[t.location] || 0) + 1;
   });
 
   // "Active" = a real, regularly-operating warehouse, judged over the FULL order-volume
-  // history (not just the few days elapsed this month, where even a one-off blip would
-  // clear a same-month threshold) - present on most days ever recorded. This is what
-  // separates a genuine site like DocPharma (present ~98% of days) from a one-off/test
-  // entity like "MOTHER WAREHOUSE..." (present on 2 of 91 days, a stray blip).
+  // history (not just the few days in one week, where even a one-off blip would clear
+  // a same-week threshold) - present on most days ever recorded. This is what separates
+  // a genuine site like DocPharma (present ~98% of days) from a one-off/test entity
+  // like "MOTHER WAREHOUSE..." (present on 2 of 91 days, a stray blip).
   const allDates = Object.keys(ORDERS_BY_DAY_LOCATION);
   const totalDaysHistory = allDates.length || 1;
   const daysSeenAllTime = {};
@@ -1021,13 +1058,34 @@ function renderMonthlyLeaderboard() {
     return ordersByWh[wh] > 0 && (daysSeenAllTime[wh] || 0) >= totalDaysHistory * 0.7;
   });
 
+  // FDR (RFD-Adherence WH-attributable breach %) - computed once per week in ClickHouse
+  // (that's the "weekly FDR" half), only valid if it was computed for THIS active week.
+  const rfdMatches = RFD_WEEKLY && RFD_WEEKLY.week_start === weekStartStr;
+  const rfdByWh = rfdMatches ? (RFD_WEEKLY.by_warehouse || {}) : {};
+
   const toRow = wh => {
     const total = ordersByWh[wh] || 0;
     const perDay = Math.round(total / daysElapsed);
     const errors = errorsByWh[wh] || 0;
     const per1000 = total ? Math.round(errors / total * 1000 * 100) / 100 : 0;
-    return { wh, total, perDay, errors, per1000 };
+    const fdrEntry = rfdByWh[wh];
+    const fdr = fdrEntry ? fdrEntry.wh_breach_pct : null;
+    return { wh, total, perDay, errors, per1000, fdr };
   };
+
+  // Row status from the 2-metric traffic light: both green = eligible, one/one =
+  // yellow, both red = red. FDR not yet computed for this week = pending (grey).
+  function rowStatus(r) {
+    if (r.fdr == null) return 'pending';
+    const wfrGreen = r.per1000 < 0.2, fdrGreen = r.fdr < 0.5;
+    if (wfrGreen && fdrGreen) return 'green';
+    if (!wfrGreen && !fdrGreen) return 'red';
+    return 'yellow';
+  }
+  function metricCell(value, isGood, suffix) {
+    if (value == null) return `<span class="wfr-lb-metric-pending">pending</span>`;
+    return `<span class="${isGood ? 'wfr-lb-metric-good' : 'wfr-lb-metric-bad'}">${value}${suffix}</span>`;
+  }
 
   // DocPharma is a partner site, not a PlatinumRx-owned warehouse - shown separately
   // below the ranked table, out of scope for the reward, never ranked against them.
@@ -1036,18 +1094,18 @@ function renderMonthlyLeaderboard() {
   rows.forEach((r, i) => r.rank = i + 1);
 
   const medal = { 1: '🥇', 2: '🥈', 3: '🥉' };
-  const n = rows.length;
   document.getElementById('lb-tbody').innerHTML = rows.length ? rows.map(r => {
-    const hue = n > 1 ? Math.round(120 * (1 - (r.rank - 1) / (n - 1))) : 120;
-    return `<tr class="wfr-lb-row" style="background:hsl(${hue}, 65%, 94%)">
-      <td><span class="wfr-lb-rank" style="background:hsl(${hue}, 60%, 42%)">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
-      <td class="wfr-lb-name">${r.wh}</td>
+    const status = rowStatus(r);
+    return `<tr class="wfr-lb-row wfr-lb-${status}">
+      <td><span class="wfr-lb-rank">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
+      <td class="wfr-lb-name">${r.wh}${status === 'green' ? '<span class="wfr-lb-eligible-chip">Eligible</span>' : ''}</td>
       <td class="num">${r.total.toLocaleString('en-IN')}</td>
       <td class="num">${r.perDay.toLocaleString('en-IN')}</td>
       <td class="num">${r.errors.toLocaleString('en-IN')}</td>
-      <td class="num">${r.per1000}</td>
+      <td class="num">${metricCell(r.per1000, r.per1000 < 0.2, '')}</td>
+      <td class="num">${metricCell(r.fdr, r.fdr != null && r.fdr < 0.5, '%')}</td>
     </tr>`;
-  }).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
+  }).join('') : '<tr><td colspan="7" class="wfr-empty">No active warehouses this week yet</td></tr>';
 
   const docTbody = document.getElementById('lb-tbody-other');
   if (daysSeenAllTime['DocPharma'] && ordersByWh['DocPharma']) {
@@ -1059,12 +1117,13 @@ function renderMonthlyLeaderboard() {
       <td class="num">${d.perDay.toLocaleString('en-IN')}</td>
       <td class="num">${d.errors.toLocaleString('en-IN')}</td>
       <td class="num">${d.per1000}</td>
+      <td class="num">${d.fdr != null ? d.fdr + '%' : '—'}</td>
     </tr>`;
   } else {
     docTbody.innerHTML = '';
   }
 }
-renderMonthlyLeaderboard();
+renderWeeklyLeaderboard();
 
 // Tabs
 document.querySelectorAll('.wfr-tab').forEach(btn => {

@@ -193,11 +193,22 @@
   table.wfr-lb-table tr.wfr-lb-row td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
   table.wfr-lb-table tr.wfr-lb-row td:last-child { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
   table.wfr-lb-table td.wfr-lb-name { font-weight: 700; }
-  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; }
+  .wfr-lb-rank { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; font-weight: 800; font-size: 12.5px; color: #fff; background: var(--text-muted); }
   .wfr-lb-medal { margin-left: 4px; font-size: 13px; }
   .wfr-lb-poster { display: block; max-width: 480px; width: 100%; height: auto; margin: 20px auto 0; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); }
   #lb-tbody-other tr.wfr-lb-row td:first-child { border-top: 2px solid var(--gridline); }
   .wfr-lb-chip { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: color-mix(in srgb, var(--text-muted) 20%, transparent); color: var(--text-secondary); vertical-align: middle; }
+
+  /* Weekly leaderboard: 2-metric traffic light (WFR errors/1000 + FDR) instead of a
+     rank-position gradient - both green = eligible, one/one = yellow, both red = red. */
+  tr.wfr-lb-row.wfr-lb-green { background: color-mix(in srgb, var(--status-good) 16%, var(--surface-1)); }
+  tr.wfr-lb-row.wfr-lb-yellow { background: color-mix(in srgb, var(--status-warning) 18%, var(--surface-1)); }
+  tr.wfr-lb-row.wfr-lb-red { background: color-mix(in srgb, var(--status-critical) 14%, var(--surface-1)); }
+  tr.wfr-lb-row.wfr-lb-pending { background: var(--surface-2); }
+  .wfr-lb-metric-good { color: var(--status-good); font-weight: 700; }
+  .wfr-lb-metric-bad { color: var(--status-critical); font-weight: 700; }
+  .wfr-lb-metric-pending { color: var(--text-muted); }
+  .wfr-lb-eligible-chip { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: color-mix(in srgb, var(--status-good) 22%, transparent); color: var(--status-good); vertical-align: middle; }
 
   /* Print: designed for "switch to Tab 4 (Zoho EOD), then Ctrl+P" - only that tab's
      content prints, everything else (filters, topline, tab nav, download button) is
@@ -515,17 +526,17 @@
       </div>
     </div>
 
-    <!-- TAB 5: Monthly Leaderboard -->
+    <!-- TAB 5: Weekly Leaderboard -->
     <div class="wfr-panel" id="t5">
       <div class="wfr-card">
         <div class="wfr-lb-header">
-          <div class="wfr-lb-title" id="lb-month-title">Monthly Leaderboard</div>
+          <div class="wfr-lb-title" id="lb-month-title">Weekly Leaderboard</div>
           <div class="wfr-lb-subtitle" id="lb-asof"></div>
         </div>
-        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the ongoing calendar month. Ranked by total accepted (WH-fault) errors, fewest first — same "accepted error" definition used across the dashboard (WH-Accepted mis-shipment tickets, deduped per order). DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
+        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the active week. Eligibility (green + chip) requires BOTH metrics green: Errors/1000 Orders &lt; 0.2 (WH-Accepted mis-shipments, deduped per order, refreshed daily) AND FDR &lt; 0.5% (Warehouse-attributable RFD/manifest breach rate, computed once per week from ClickHouse). One metric red = yellow row; both red = red row. DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
         <div class="wfr-scroll">
           <table class="wfr-table wfr-lb-table" id="lb-table">
-            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th></tr></thead>
+            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th><th class="num">FDR</th></tr></thead>
             <tbody id="lb-tbody"></tbody>
             <tbody id="lb-tbody-other"></tbody>
           </table>
@@ -545,6 +556,7 @@ const TREND = __TREND_JSON__;
 const ORDERS_BY_DAY = __ORDERS_BY_DAY_JSON__;
 const ORDERS_BY_DAY_LOC = __ORDERS_BY_DAY_LOCATION_JSON__;
 const EOD = __EOD_JSON__;
+const RFD_WEEKLY = __RFD_WEEKLY_JSON__;
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -974,40 +986,65 @@ document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t 
   <td class="wfr-reason">${t.wh_comment ? '"' + t.wh_comment + '"' : '(no WH-team comment)'}</td>
 </tr>`).join('') || '<tr><td colspan="7" class="wfr-empty">No tickets for T-2</td></tr>';
 
-// ---- Tab 5: Monthly Leaderboard (ongoing calendar month, IPL-points-table style) ----
-function renderMonthlyLeaderboard() {
+// ---- Tab 5: Weekly Leaderboard ----
+// The "active week" is the most recently-CLOSED Monday-Sunday period as of the last
+// refresh (i.e. the most recent Sunday on/before DATA.generated_at) - not the week
+// still in progress. FDR can only be computed once, on the Sunday that closes a week
+// (it needs first_pickup_at data to have settled), so the displayed week always has to
+// be one whose Sunday has already happened; it stays "active" (and WFR keeps refining
+// daily as the admission-check backlog catches up) until the next Sunday rolls it
+// forward by 7 days.
+function weekBounds(genDate) {
+  const end = new Date(genDate); end.setHours(0, 0, 0, 0);
+  end.setDate(end.getDate() - end.getDay()); // most recent Sunday on/before genDate
+  const start = new Date(end); start.setDate(start.getDate() - 6); // Monday
+  return { start, end };
+}
+// Local calendar-date components, not toISOString() (which reinterprets through UTC
+// and can shift the date by a day depending on timezone) - matches how every other
+// date-bucket key in this file (e.g. ORDERS_BY_DAY_LOCATION's dates) is a plain
+// YYYY-MM-DD calendar-day string with no timezone conversion involved.
+function ymd(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+
+function renderWeeklyLeaderboard() {
   const genDate = new Date(DATA.generated_at);
-  const monthStr = `${genDate.getFullYear()}-${String(genDate.getMonth() + 1).padStart(2, '0')}`;
-  document.getElementById('lb-month-title').textContent = genDate.toLocaleDateString('en-IN', {month: 'long', year: 'numeric'}) + ' Leaderboard';
+  const { start: weekStart, end: weekEnd } = weekBounds(genDate);
+  const weekStartStr = ymd(weekStart);
+  const weekDateSet = new Set(Array.from({length: 7}, (_, i) => {
+    const d = new Date(weekStart); d.setDate(d.getDate() + i); return ymd(d);
+  }));
+
+  document.getElementById('lb-month-title').textContent = 'Week of '
+    + weekStart.toLocaleDateString('en-IN', {day: 'numeric', month: 'short'}) + ' – '
+    + weekEnd.toLocaleDateString('en-IN', {day: 'numeric', month: 'short'});
   document.getElementById('lb-asof').textContent = `Updated scores as on ${genDate.toLocaleDateString('en-IN', {day: 'numeric', month: 'short', year: 'numeric'})}`;
 
-  // Orders processed this month, per warehouse, from the daily order-volume feed.
+  // Orders processed this week, per warehouse, from the daily order-volume feed.
   const ordersByWh = {}, daysSeenByWh = {};
   Object.entries(ORDERS_BY_DAY_LOCATION).forEach(([dateStr, byLoc]) => {
-    if (!dateStr.startsWith(monthStr)) return;
+    if (!weekDateSet.has(dateStr)) return;
     Object.entries(byLoc).forEach(([wh, count]) => {
       ordersByWh[wh] = (ordersByWh[wh] || 0) + count;
       (daysSeenByWh[wh] = daysSeenByWh[wh] || new Set()).add(dateStr);
     });
   });
-  const daysElapsed = new Set(Object.keys(ORDERS_BY_DAY_LOCATION).filter(d => d.startsWith(monthStr))).size || 1;
+  const daysElapsed = new Set(Object.keys(ORDERS_BY_DAY_LOCATION).filter(d => weekDateSet.has(d))).size || 1;
 
-  // Accepted (WH-fault) errors this month, per warehouse, deduped by order - same
-  // methodology as the rest of the dashboard's "WH Accepted" counts.
-  const monthTickets = ALL_TICKETS.filter(t => {
-    const d = parseUTC(t.created_time);
-    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}` === monthStr;
-  });
+  // Accepted (WH-fault) errors this week, per warehouse, deduped by order - same
+  // methodology as the rest of the dashboard's "WH Accepted" counts. Recomputed daily
+  // (that's the "daily WFR" half) since the WH-text admission backlog can still catch
+  // up genuine admissions for tickets created a couple of days into this week.
+  const weekTickets = ALL_TICKETS.filter(t => weekDateSet.has(ymd(parseUTC(t.created_time))));
   const errorsByWh = {};
-  dedupeByOrder(monthTickets.filter(t => t.resolution === 'wh_accepted')).forEach(t => {
+  dedupeByOrder(weekTickets.filter(t => t.resolution === 'wh_accepted')).forEach(t => {
     errorsByWh[t.location] = (errorsByWh[t.location] || 0) + 1;
   });
 
   // "Active" = a real, regularly-operating warehouse, judged over the FULL order-volume
-  // history (not just the few days elapsed this month, where even a one-off blip would
-  // clear a same-month threshold) - present on most days ever recorded. This is what
-  // separates a genuine site like DocPharma (present ~98% of days) from a one-off/test
-  // entity like "MOTHER WAREHOUSE..." (present on 2 of 91 days, a stray blip).
+  // history (not just the few days in one week, where even a one-off blip would clear
+  // a same-week threshold) - present on most days ever recorded. This is what separates
+  // a genuine site like DocPharma (present ~98% of days) from a one-off/test entity
+  // like "MOTHER WAREHOUSE..." (present on 2 of 91 days, a stray blip).
   const allDates = Object.keys(ORDERS_BY_DAY_LOCATION);
   const totalDaysHistory = allDates.length || 1;
   const daysSeenAllTime = {};
@@ -1021,13 +1058,34 @@ function renderMonthlyLeaderboard() {
     return ordersByWh[wh] > 0 && (daysSeenAllTime[wh] || 0) >= totalDaysHistory * 0.7;
   });
 
+  // FDR (RFD-Adherence WH-attributable breach %) - computed once per week in ClickHouse
+  // (that's the "weekly FDR" half), only valid if it was computed for THIS active week.
+  const rfdMatches = RFD_WEEKLY && RFD_WEEKLY.week_start === weekStartStr;
+  const rfdByWh = rfdMatches ? (RFD_WEEKLY.by_warehouse || {}) : {};
+
   const toRow = wh => {
     const total = ordersByWh[wh] || 0;
     const perDay = Math.round(total / daysElapsed);
     const errors = errorsByWh[wh] || 0;
     const per1000 = total ? Math.round(errors / total * 1000 * 100) / 100 : 0;
-    return { wh, total, perDay, errors, per1000 };
+    const fdrEntry = rfdByWh[wh];
+    const fdr = fdrEntry ? fdrEntry.wh_breach_pct : null;
+    return { wh, total, perDay, errors, per1000, fdr };
   };
+
+  // Row status from the 2-metric traffic light: both green = eligible, one/one =
+  // yellow, both red = red. FDR not yet computed for this week = pending (grey).
+  function rowStatus(r) {
+    if (r.fdr == null) return 'pending';
+    const wfrGreen = r.per1000 < 0.2, fdrGreen = r.fdr < 0.5;
+    if (wfrGreen && fdrGreen) return 'green';
+    if (!wfrGreen && !fdrGreen) return 'red';
+    return 'yellow';
+  }
+  function metricCell(value, isGood, suffix) {
+    if (value == null) return `<span class="wfr-lb-metric-pending">pending</span>`;
+    return `<span class="${isGood ? 'wfr-lb-metric-good' : 'wfr-lb-metric-bad'}">${value}${suffix}</span>`;
+  }
 
   // DocPharma is a partner site, not a PlatinumRx-owned warehouse - shown separately
   // below the ranked table, out of scope for the reward, never ranked against them.
@@ -1036,18 +1094,18 @@ function renderMonthlyLeaderboard() {
   rows.forEach((r, i) => r.rank = i + 1);
 
   const medal = { 1: '🥇', 2: '🥈', 3: '🥉' };
-  const n = rows.length;
   document.getElementById('lb-tbody').innerHTML = rows.length ? rows.map(r => {
-    const hue = n > 1 ? Math.round(120 * (1 - (r.rank - 1) / (n - 1))) : 120;
-    return `<tr class="wfr-lb-row" style="background:hsl(${hue}, 65%, 94%)">
-      <td><span class="wfr-lb-rank" style="background:hsl(${hue}, 60%, 42%)">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
-      <td class="wfr-lb-name">${r.wh}</td>
+    const status = rowStatus(r);
+    return `<tr class="wfr-lb-row wfr-lb-${status}">
+      <td><span class="wfr-lb-rank">${r.rank}</span>${medal[r.rank] ? `<span class="wfr-lb-medal">${medal[r.rank]}</span>` : ''}</td>
+      <td class="wfr-lb-name">${r.wh}${status === 'green' ? '<span class="wfr-lb-eligible-chip">Eligible</span>' : ''}</td>
       <td class="num">${r.total.toLocaleString('en-IN')}</td>
       <td class="num">${r.perDay.toLocaleString('en-IN')}</td>
       <td class="num">${r.errors.toLocaleString('en-IN')}</td>
-      <td class="num">${r.per1000}</td>
+      <td class="num">${metricCell(r.per1000, r.per1000 < 0.2, '')}</td>
+      <td class="num">${metricCell(r.fdr, r.fdr != null && r.fdr < 0.5, '%')}</td>
     </tr>`;
-  }).join('') : '<tr><td colspan="6" class="wfr-empty">No active warehouses this month yet</td></tr>';
+  }).join('') : '<tr><td colspan="7" class="wfr-empty">No active warehouses this week yet</td></tr>';
 
   const docTbody = document.getElementById('lb-tbody-other');
   if (daysSeenAllTime['DocPharma'] && ordersByWh['DocPharma']) {
@@ -1059,12 +1117,13 @@ function renderMonthlyLeaderboard() {
       <td class="num">${d.perDay.toLocaleString('en-IN')}</td>
       <td class="num">${d.errors.toLocaleString('en-IN')}</td>
       <td class="num">${d.per1000}</td>
+      <td class="num">${d.fdr != null ? d.fdr + '%' : '—'}</td>
     </tr>`;
   } else {
     docTbody.innerHTML = '';
   }
 }
-renderMonthlyLeaderboard();
+renderWeeklyLeaderboard();
 
 // Tabs
 document.querySelectorAll('.wfr-tab').forEach(btn => {

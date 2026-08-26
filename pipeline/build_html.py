@@ -19,11 +19,15 @@ files = {
     "__ORDERS_BY_DAY_JSON__": "orders_by_day.json",
     "__ORDERS_BY_DAY_LOCATION_JSON__": "orders_by_day_location.json",
     "__EOD_JSON__": "data_eod.json",
+    "__RFD_WEEKLY_JSON__": "rfd_weekly.json",
 }
 
 out = template
 for placeholder, fname in files.items():
-    payload = json.loads((HERE / fname).read_text())
+    fpath = HERE / fname
+    # rfd_weekly.json only exists once the first Sunday RFD-Adherence run has
+    # happened - default to empty so the leaderboard just shows FDR as pending.
+    payload = json.loads(fpath.read_text()) if fpath.exists() else {}
     if placeholder == "__TICKETS_JSON__":
         payload = payload["tickets"]
     marker_count = out.count(placeholder)

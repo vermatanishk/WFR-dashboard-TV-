@@ -1,0 +1,16 @@
+{
+  "week_start": "2026-08-17",
+  "week_end": "2026-08-23",
+  "generated_at": "2026-08-26T00:00:00Z",
+  "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Source: prx_prod_db, Pipeline B (rfd_base/Q39073) methodology from RFD_Adherence_Logic_Documentation.md, recomputed independently in ClickHouse against orders with a recorded first_pickup_at in the given Mon-Sun week.",
+  "by_warehouse": {
+    "Delhi": {"eligible_orders": 16745, "overall_breach": 1011, "wh_breach": 417, "overall_breach_pct": 6.038, "wh_breach_pct": 2.49},
+    "Kolkata": {"eligible_orders": 10896, "overall_breach": 433, "wh_breach": 64, "overall_breach_pct": 3.974, "wh_breach_pct": 0.587},
+    "Mumbai": {"eligible_orders": 10468, "overall_breach": 1150, "wh_breach": 231, "overall_breach_pct": 10.986, "wh_breach_pct": 2.207},
+    "Bangalore": {"eligible_orders": 10023, "overall_breach": 937, "wh_breach": 281, "overall_breach_pct": 9.348, "wh_breach_pct": 2.804},
+    "Lucknow": {"eligible_orders": 7328, "overall_breach": 276, "wh_breach": 63, "overall_breach_pct": 3.766, "wh_breach_pct": 0.86},
+    "Hyderabad WH": {"eligible_orders": 1779, "overall_breach": 37, "wh_breach": 33, "overall_breach_pct": 2.08, "wh_breach_pct": 1.855},
+    "Patna WH": {"eligible_orders": 1114, "overall_breach": 41, "wh_breach": 38, "overall_breach_pct": 3.68, "wh_breach_pct": 3.411},
+    "DocPharma": {"eligible_orders": 373, "overall_breach": 1, "wh_breach": 1, "overall_breach_pct": 0.268, "wh_breach_pct": 0.268}
+  }
+}
