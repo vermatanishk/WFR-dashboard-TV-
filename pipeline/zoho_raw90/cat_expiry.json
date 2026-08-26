@@ -1,5 +1,15 @@
 [
   {
+    "ticket_id": "255097",
+    "order_id": "3573466",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-26T05:10:22.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
     "ticket_id": "254154",
     "order_id": "3501056",
     "category": "Expiry Issue",
@@ -474,26 +484,6 @@
     "order_id": "2485526",
     "category": "Expiry Issue",
     "created_time": "2026-05-29T12:39:33.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "209689",
-    "order_id": "2467915",
-    "category": "Expiry Issue",
-    "created_time": "2026-05-27T11:46:28.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "209611",
-    "order_id": "2501521",
-    "category": "Expiry Issue",
-    "created_time": "2026-05-27T06:00:38.000Z",
     "status": "Closed",
     "channel": "Web",
     "department": "Support",
