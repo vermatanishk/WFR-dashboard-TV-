@@ -1,253 +1,203 @@
 [
   {
-    "ticket_id": "255097",
-    "order_id": "3573466",
+    "ticket_id": "210982",
+    "order_id": "2516719",
     "category": "Expiry Issue",
-    "created_time": "2026-08-26T05:10:22.000Z",
-    "status": "In Progress",
+    "created_time": "2026-05-31T03:44:49.000Z",
+    "status": "Closed",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh"
+    "assignee": "Arun Kumar"
   },
   {
-    "ticket_id": "254154",
-    "order_id": "3501056",
+    "ticket_id": "210984",
+    "order_id": "2516719",
     "category": "Expiry Issue",
-    "created_time": "2026-08-21T07:42:13.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sanjeev Mohan"
-  },
-  {
-    "ticket_id": "253878",
-    "order_id": "3477213",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-19T15:05:28.000Z",
-    "status": "Resolved",
-    "channel": "Contact Us",
-    "department": "Support",
-    "assignee": "Sanjeev Mohan"
-  },
-  {
-    "ticket_id": "254005",
-    "order_id": "3468459",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-20T09:41:19.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Naveen N"
-  },
-  {
-    "ticket_id": "253264",
-    "order_id": "3209638",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-17T05:16:20.000Z",
-    "status": "In Progress",
-    "channel": "Contact Us",
-    "department": "Support",
-    "assignee": "Soumen Das"
-  },
-  {
-    "ticket_id": "253879",
-    "order_id": "34477213",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-19T15:06:55.000Z",
-    "status": "Resolved",
+    "created_time": "2026-05-31T03:47:22.000Z",
+    "status": "Closed",
     "channel": "Email",
     "department": "Support",
-    "assignee": "Kirti Sharma"
+    "assignee": "Arun Kumar"
   },
   {
-    "ticket_id": "253388",
-    "order_id": "03174434",
+    "ticket_id": "211047",
+    "order_id": "2474716",
     "category": "Expiry Issue",
-    "created_time": "2026-08-17T11:27:38.000Z",
-    "status": "Resolved",
+    "created_time": "2026-05-31T08:02:20.000Z",
+    "status": "Closed",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh"
+    "assignee": "Arun Kumar"
   },
   {
-    "ticket_id": "253268",
-    "order_id": "3209638",
+    "ticket_id": "211271",
+    "order_id": "2526709",
     "category": "Expiry Issue",
-    "created_time": "2026-08-17T05:37:58.000Z",
-    "status": "Resolved",
+    "created_time": "2026-06-01T07:28:28.000Z",
+    "status": "Closed",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Katyayani Singh"
+    "assignee": "Arun Kumar"
   },
   {
-    "ticket_id": "252642",
-    "order_id": "3017846",
+    "ticket_id": "211314",
+    "order_id": "2455185",
     "category": "Expiry Issue",
-    "created_time": "2026-08-13T11:00:02.000Z",
-    "status": "Resolved",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Sanjeev Mohan"
-  },
-  {
-    "ticket_id": "252977",
-    "order_id": "3442014",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-15T09:38:05.000Z",
-    "status": "Resolved",
+    "created_time": "2026-06-01T09:37:50.000Z",
+    "status": "Closed",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Ayushi Kumari"
+    "assignee": "Arun Kumar"
   },
   {
-    "ticket_id": "251187",
-    "order_id": "3017846",
+    "ticket_id": "211491",
+    "order_id": "2487776",
     "category": "Expiry Issue",
-    "created_time": "2026-08-06T09:37:34.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Pijush Das"
-  },
-  {
-    "ticket_id": "252154",
-    "order_id": "3322180",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-11T10:18:31.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Naveen N"
-  },
-  {
-    "ticket_id": "250721",
-    "order_id": "3046935",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-04T03:53:25.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Pijush Das"
-  },
-  {
-    "ticket_id": "251317",
-    "order_id": "3321497",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-07T07:13:24.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Raja Sarashanth"
-  },
-  {
-    "ticket_id": "251054",
-    "order_id": "3259192",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-05T12:58:57.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Kirti Sharma"
-  },
-  {
-    "ticket_id": "250651",
-    "order_id": "3136802",
-    "category": "Expiry Issue",
-    "created_time": "2026-08-03T12:05:48.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Kirti Sharma"
-  },
-  {
-    "ticket_id": "250101",
-    "order_id": "3218105",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-31T17:00:25.000Z",
-    "status": "Resolved",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Raja Sarashanth"
-  },
-  {
-    "ticket_id": "246516",
-    "order_id": "3161097",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-27T08:04:11.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Kirti Sharma"
-  },
-  {
-    "ticket_id": "241128",
-    "order_id": "3078036",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-21T07:40:34.000Z",
-    "status": "Resolved",
-    "channel": "Email",
-    "department": "Support",
-    "assignee": "Soumen Das"
-  },
-  {
-    "ticket_id": "241118",
-    "order_id": "3078036",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-21T07:23:47.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Naveen N"
-  },
-  {
-    "ticket_id": "237001",
-    "order_id": "2733590",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-17T13:13:11.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Ayushi Kumari"
-  },
-  {
-    "ticket_id": "231597",
-    "order_id": "2931531",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-10T05:46:32.000Z",
-    "status": "Resolved",
+    "created_time": "2026-06-02T06:01:43.000Z",
+    "status": "Closed",
     "channel": "Web",
     "department": "Support",
     "assignee": "Muskan Gurung"
   },
   {
-    "ticket_id": "230430",
-    "order_id": "2898522",
+    "ticket_id": "212158",
+    "order_id": "2528972",
     "category": "Expiry Issue",
-    "created_time": "2026-07-08T11:45:54.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Naveen N"
-  },
-  {
-    "ticket_id": "231825",
-    "order_id": "2898522",
-    "category": "Expiry Issue",
-    "created_time": "2026-07-10T10:50:50.000Z",
-    "status": "Resolved",
+    "created_time": "2026-06-04T12:06:26.000Z",
+    "status": "Closed",
     "channel": "Web",
     "department": "Support",
     "assignee": "Muskan Gurung"
   },
   {
-    "ticket_id": "230389",
-    "order_id": "2932138",
+    "ticket_id": "212263",
+    "order_id": "2501068",
     "category": "Expiry Issue",
-    "created_time": "2026-07-08T10:57:28.000Z",
+    "created_time": "2026-06-05T04:39:43.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Muskan Gurung"
+  },
+  {
+    "ticket_id": "213371",
+    "order_id": "2626223",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-09T06:08:43.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Arun Kumar"
+  },
+  {
+    "ticket_id": "213398",
+    "order_id": "2638961",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-09T07:21:18.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Soumen Das"
+  },
+  {
+    "ticket_id": "213709",
+    "order_id": "2582584",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-10T05:25:54.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Muskan Gurung"
+  },
+  {
+    "ticket_id": "213887",
+    "order_id": "2620943",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-10T11:58:14.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Arun Kumar"
+  },
+  {
+    "ticket_id": "214993",
+    "order_id": "2683913",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-13T03:10:30.000Z",
+    "status": "Closed",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Muskan Gurung"
+  },
+  {
+    "ticket_id": "217438",
+    "order_id": "2714061",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-19T08:01:31.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Soumen Das"
+  },
+  {
+    "ticket_id": "218389",
+    "order_id": "2761278",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-21T13:12:18.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Soumen Das"
+  },
+  {
+    "ticket_id": "218597",
+    "order_id": "2718293",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-22T05:31:28.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Soumen Das"
+  },
+  {
+    "ticket_id": "221683",
+    "order_id": "2686583",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-27T07:50:31.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sufia Samreen"
+  },
+  {
+    "ticket_id": "223458",
+    "order_id": "2811361",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-29T08:27:06.000Z",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "223584",
+    "order_id": "2807581",
+    "category": "Expiry Issue",
+    "created_time": "2026-06-29T11:53:34.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "224772",
+    "order_id": "2774646",
+    "category": "Expiry Issue",
+    "created_time": "2026-07-01T06:38:12.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Muskan Gurung"
   },
   {
     "ticket_id": "227175",
@@ -280,213 +230,253 @@
     "assignee": "Naveen N"
   },
   {
-    "ticket_id": "224772",
-    "order_id": "2774646",
+    "ticket_id": "230389",
+    "order_id": "2932138",
     "category": "Expiry Issue",
-    "created_time": "2026-07-01T06:38:12.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "221683",
-    "order_id": "2686583",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-27T07:50:31.000Z",
-    "status": "Resolved",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Sufia Samreen"
-  },
-  {
-    "ticket_id": "223584",
-    "order_id": "2807581",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-29T11:53:34.000Z",
+    "created_time": "2026-07-08T10:57:28.000Z",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Naveen N"
   },
   {
-    "ticket_id": "223458",
-    "order_id": "2811361",
+    "ticket_id": "230430",
+    "order_id": "2898522",
     "category": "Expiry Issue",
-    "created_time": "2026-06-29T08:27:06.000Z",
+    "created_time": "2026-07-08T11:45:54.000Z",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
     "assignee": "Naveen N"
   },
   {
-    "ticket_id": "218597",
-    "order_id": "2718293",
+    "ticket_id": "231597",
+    "order_id": "2931531",
     "category": "Expiry Issue",
-    "created_time": "2026-06-22T05:31:28.000Z",
+    "created_time": "2026-07-10T05:46:32.000Z",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Soumen Das"
+    "assignee": "Muskan Gurung"
   },
   {
-    "ticket_id": "218389",
-    "order_id": "2761278",
+    "ticket_id": "231825",
+    "order_id": "2898522",
     "category": "Expiry Issue",
-    "created_time": "2026-06-21T13:12:18.000Z",
+    "created_time": "2026-07-10T10:50:50.000Z",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Soumen Das"
+    "assignee": "Muskan Gurung"
   },
   {
-    "ticket_id": "217438",
-    "order_id": "2714061",
+    "ticket_id": "237001",
+    "order_id": "2733590",
     "category": "Expiry Issue",
-    "created_time": "2026-06-19T08:01:31.000Z",
+    "created_time": "2026-07-17T13:13:11.000Z",
     "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Soumen Das"
+    "assignee": "Ayushi Kumari"
   },
   {
-    "ticket_id": "214993",
-    "order_id": "2683913",
+    "ticket_id": "241118",
+    "order_id": "3078036",
     "category": "Expiry Issue",
-    "created_time": "2026-06-13T03:10:30.000Z",
-    "status": "Closed",
+    "created_time": "2026-07-21T07:23:47.000Z",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Muskan Gurung"
+    "assignee": "Naveen N"
   },
   {
-    "ticket_id": "213887",
-    "order_id": "2620943",
+    "ticket_id": "241128",
+    "order_id": "3078036",
     "category": "Expiry Issue",
-    "created_time": "2026-06-10T11:58:14.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
-  },
-  {
-    "ticket_id": "213709",
-    "order_id": "2582584",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-10T05:25:54.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "213398",
-    "order_id": "2638961",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-09T07:21:18.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Soumen Das"
-  },
-  {
-    "ticket_id": "213371",
-    "order_id": "2626223",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-09T06:08:43.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
-  },
-  {
-    "ticket_id": "212263",
-    "order_id": "2501068",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-05T04:39:43.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "212158",
-    "order_id": "2528972",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-04T12:06:26.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "211491",
-    "order_id": "2487776",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-02T06:01:43.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Muskan Gurung"
-  },
-  {
-    "ticket_id": "211314",
-    "order_id": "2455185",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-01T09:37:50.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
-  },
-  {
-    "ticket_id": "211271",
-    "order_id": "2526709",
-    "category": "Expiry Issue",
-    "created_time": "2026-06-01T07:28:28.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
-  },
-  {
-    "ticket_id": "211047",
-    "order_id": "2474716",
-    "category": "Expiry Issue",
-    "created_time": "2026-05-31T08:02:20.000Z",
-    "status": "Closed",
-    "channel": "Web",
-    "department": "Support",
-    "assignee": "Arun Kumar"
-  },
-  {
-    "ticket_id": "210984",
-    "order_id": "2516719",
-    "category": "Expiry Issue",
-    "created_time": "2026-05-31T03:47:22.000Z",
-    "status": "Closed",
+    "created_time": "2026-07-21T07:40:34.000Z",
+    "status": "Resolved",
     "channel": "Email",
     "department": "Support",
-    "assignee": "Arun Kumar"
+    "assignee": "Soumen Das"
   },
   {
-    "ticket_id": "210982",
-    "order_id": "2516719",
+    "ticket_id": "246516",
+    "order_id": "3161097",
     "category": "Expiry Issue",
-    "created_time": "2026-05-31T03:44:49.000Z",
-    "status": "Closed",
+    "created_time": "2026-07-27T08:04:11.000Z",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Arun Kumar"
+    "assignee": "Kirti Sharma"
   },
   {
-    "ticket_id": "210421",
-    "order_id": "2485526",
+    "ticket_id": "250101",
+    "order_id": "3218105",
     "category": "Expiry Issue",
-    "created_time": "2026-05-29T12:39:33.000Z",
-    "status": "Closed",
+    "created_time": "2026-07-31T17:00:25.000Z",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Raja Sarashanth"
+  },
+  {
+    "ticket_id": "250651",
+    "order_id": "3136802",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-03T12:05:48.000Z",
+    "status": "Resolved",
     "channel": "Web",
     "department": "Support",
-    "assignee": "Muskan Gurung"
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "250721",
+    "order_id": "3046935",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-04T03:53:25.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Pijush Das"
+  },
+  {
+    "ticket_id": "251054",
+    "order_id": "3259192",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-05T12:58:57.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "251187",
+    "order_id": "3017846",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-06T09:37:34.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Pijush Das"
+  },
+  {
+    "ticket_id": "251317",
+    "order_id": "3321497",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-07T07:13:24.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Raja Sarashanth"
+  },
+  {
+    "ticket_id": "252154",
+    "order_id": "3322180",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-11T10:18:31.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "252642",
+    "order_id": "3017846",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-13T11:00:02.000Z",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan"
+  },
+  {
+    "ticket_id": "252977",
+    "order_id": "3442014",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-15T09:38:05.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Ayushi Kumari"
+  },
+  {
+    "ticket_id": "253264",
+    "order_id": "3209638",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-17T05:16:20.000Z",
+    "status": "In Progress",
+    "channel": "Contact Us",
+    "department": "Support",
+    "assignee": "Soumen Das"
+  },
+  {
+    "ticket_id": "253268",
+    "order_id": "3209638",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-17T05:37:58.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "253388",
+    "order_id": "03174434",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-17T11:27:38.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
+  },
+  {
+    "ticket_id": "253878",
+    "order_id": "3477213",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-19T15:05:28.000Z",
+    "status": "Resolved",
+    "channel": "Contact Us",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan"
+  },
+  {
+    "ticket_id": "253879",
+    "order_id": "34477213",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-19T15:06:55.000Z",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Kirti Sharma"
+  },
+  {
+    "ticket_id": "254005",
+    "order_id": "3468459",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-20T09:41:19.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Naveen N"
+  },
+  {
+    "ticket_id": "254154",
+    "order_id": "3501056",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-21T07:42:13.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Sanjeev Mohan"
+  },
+  {
+    "ticket_id": "255097",
+    "order_id": "3573466",
+    "category": "Expiry Issue",
+    "created_time": "2026-08-26T05:10:22.000Z",
+    "status": "In Progress",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Katyayani Singh"
   }
 ]
