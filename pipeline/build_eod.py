@@ -420,6 +420,39 @@ orders (picker/packer/qc/manifester all resolved, no null roles). No
 low-value-COG-vs-text-admission conflict or WH-admission-vs-later-BOD-note
 discrepancy pattern recurred this run.
 
+2026-08-29 run note (for_date 2026-08-27): 19 T-2 tickets pulled (18 Missing/Wrong
+Qty, 0 Wrong Medicines, 0 Expiry Issue, 1 Damaged/Defective, 0 Defective device
+sub-disposition) - notably zero Wrong Medicines and zero Expiry Issue tickets at
+all this run, a departure from the usual several-per-run volume in those two
+categories. Zero genuine WH admissions this run - a fourth occurrence of a
+0-admission day (after 2026-08-22, 2026-08-24, 2026-08-26). Full comment threads
+enumerated for every ticket with commentCount > 0 before classifying (per the
+251580/254519 lesson); twelve tickets (255328, 255356, 255362, 255365, 255383,
+255384, 255386, 255387, 255391, 255392, 255393, 255456) had commentCount 0 in the
+search response - confirmed literally zero comments, correctly False via the "no
+WH comment" branch, no getTicketComments call needed. Six tickets (255354, 255359,
+255417, 255421, 255423, 255433) carried the standard Warehouse-role denial "We have
+sent proper medicine to Cx" as their only (or, for 255417, final) comment - correctly
+False. Ticket 255417 had two comments: an L2 restatement of the customer's complaint
+("Glycoheal PG 2/500/15mg Tablet SR total Quantity of 12 Stripe received only 3")
+followed by the Warehouse-role denial - correctly classified False from the
+Warehouse comment alone, not the L2 restatement (same "don't classify from the
+wrong commenter" discipline as always). Ticket 255336 (Damaged/Defective, order
+3606974) had a single L2-only comment ("checking with soumen") - no Warehouse-role
+comment at all, correctly False via the "no WH comment" branch. Since 0 tickets were
+WH-Accepted, PICKER_QC is empty this run and no fulfilment-chain attribution was
+needed - moot for both known discrepancy patterns (no WH-admission-vs-later-BOD-note
+conflict and no Low-Value-COG-vs-text-admission conflict to check). One ticket,
+255456, had a blank Order ID in Zoho and is excluded from the location join but
+still counts in the tickets total; it had no Warehouse comment either. No
+duplicate-ticket or duplicate-order clusters this run - all 18 non-null order_ids
+were unique. Location join (single batched query over all 18 non-null order_ids)
+spot-checked against packer/qc/manifester ops_user_name city suffixes for 4 orders:
+3463566 -> Lucknow (Sachin_LKO/Roshani_LKO/Vinod_LKO), 3548196 -> Kolkata
+(Arpan_KOL/Sudip_KOL), 3591121 -> Mumbai (HarshadaM_MUM/SujalS_MUM/Hussain_MUM),
+3606974 -> Mumbai (SakshiH_MUM/KasturiR_MUM/Gauravj_MUM) - all matched, join
+confirmed correct. 0/18 unique non-null order_ids resolved to Unknown location.
+
 2026-08-28 run note (for_date 2026-08-26): 31 T-2 tickets pulled (21 Missing/Wrong
 Qty, 7 Wrong Medicines, 2 Damaged/Defective, 1 Expiry Issue, 0 Defective device
 sub-disposition). Zero genuine WH admissions this run - a third occurrence of a
@@ -462,14 +495,11 @@ HERE = Path(__file__).parent
 # order_id -> location, from ClickHouse marketplace_orders join (on order_id,
 # NOT the internal "id" column - see docstring above).
 ORDER_LOCATION = {
-    3515032: "Mumbai", 3532151: "Delhi", 3460699: "Bangalore", 3461594: "Kolkata",
-    3475218: "Delhi", 3517170: "Mumbai", 3528089: "Bangalore", 3549749: "Mumbai",
-    3552310: "Delhi", 3554613: "Bangalore", 3555782: "Delhi", 3564451: "Mumbai",
-    3571017: "Mumbai", 3573466: "Delhi", 3577195: "Kolkata", 3578715: "Mumbai",
-    3581152: "Delhi", 3582343: "Patna WH", 3582346: "Delhi", 3582374: "Delhi",
-    3584925: "DocPharma", 3585462: "Kolkata", 3587243: "Lucknow", 3590704: "Bangalore",
-    3599018: "Delhi", 3600070: "Bangalore", 3544622: "Bangalore", 3568976: "Delhi",
-    3543795: "Bangalore", 3586060: "Bangalore",
+    3548196: "Kolkata", 3606974: "Mumbai", 3572178: "Kolkata", 3463566: "Lucknow",
+    3611301: "Kolkata", 3530558: "Bangalore", 3555108: "Delhi", 3523365: "Lucknow",
+    3586885: "Kolkata", 3605672: "Bangalore", 3577260: "Delhi", 3603254: "Delhi",
+    3535394: "Bangalore", 3617165: "Delhi", 3593434: "Delhi", 3601356: "Mumbai",
+    3591121: "Mumbai", 3607019: "Bangalore",
 }
 
 # Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
