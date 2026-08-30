@@ -1,16 +1,64 @@
 {
-  "week_start": "2026-08-17",
-  "week_end": "2026-08-23",
-  "generated_at": "2026-08-26T00:00:00Z",
+  "week_start": "2026-08-24",
+  "week_end": "2026-08-30",
+  "generated_at": "2026-08-30T00:00:00Z",
   "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Source: prx_prod_db, Pipeline B (rfd_base/Q39073) methodology from RFD_Adherence_Logic_Documentation.md, recomputed independently in ClickHouse against orders with a recorded first_pickup_at in the given Mon-Sun week.",
   "by_warehouse": {
-    "Delhi": {"eligible_orders": 16745, "overall_breach": 1011, "wh_breach": 417, "overall_breach_pct": 6.038, "wh_breach_pct": 2.49},
-    "Kolkata": {"eligible_orders": 10896, "overall_breach": 433, "wh_breach": 64, "overall_breach_pct": 3.974, "wh_breach_pct": 0.587},
-    "Mumbai": {"eligible_orders": 10468, "overall_breach": 1150, "wh_breach": 231, "overall_breach_pct": 10.986, "wh_breach_pct": 2.207},
-    "Bangalore": {"eligible_orders": 10023, "overall_breach": 937, "wh_breach": 281, "overall_breach_pct": 9.348, "wh_breach_pct": 2.804},
-    "Lucknow": {"eligible_orders": 7328, "overall_breach": 276, "wh_breach": 63, "overall_breach_pct": 3.766, "wh_breach_pct": 0.86},
-    "Hyderabad WH": {"eligible_orders": 1779, "overall_breach": 37, "wh_breach": 33, "overall_breach_pct": 2.08, "wh_breach_pct": 1.855},
-    "Patna WH": {"eligible_orders": 1114, "overall_breach": 41, "wh_breach": 38, "overall_breach_pct": 3.68, "wh_breach_pct": 3.411},
-    "DocPharma": {"eligible_orders": 373, "overall_breach": 1, "wh_breach": 1, "overall_breach_pct": 0.268, "wh_breach_pct": 0.268}
+    "Delhi": {
+      "eligible_orders": 15820,
+      "overall_breach": 1335,
+      "wh_breach": 649,
+      "overall_breach_pct": 8.439,
+      "wh_breach_pct": 4.102
+    },
+    "Kolkata": {
+      "eligible_orders": 9981,
+      "overall_breach": 306,
+      "wh_breach": 51,
+      "overall_breach_pct": 3.066,
+      "wh_breach_pct": 0.511
+    },
+    "Mumbai": {
+      "eligible_orders": 9430,
+      "overall_breach": 1137,
+      "wh_breach": 327,
+      "overall_breach_pct": 12.057,
+      "wh_breach_pct": 3.468
+    },
+    "Bangalore": {
+      "eligible_orders": 8637,
+      "overall_breach": 603,
+      "wh_breach": 182,
+      "overall_breach_pct": 6.982,
+      "wh_breach_pct": 2.107
+    },
+    "Lucknow": {
+      "eligible_orders": 6461,
+      "overall_breach": 223,
+      "wh_breach": 21,
+      "overall_breach_pct": 3.451,
+      "wh_breach_pct": 0.325
+    },
+    "Patna WH": {
+      "eligible_orders": 1861,
+      "overall_breach": 16,
+      "wh_breach": 10,
+      "overall_breach_pct": 0.86,
+      "wh_breach_pct": 0.537
+    },
+    "Hyderabad WH": {
+      "eligible_orders": 1767,
+      "overall_breach": 17,
+      "wh_breach": 11,
+      "overall_breach_pct": 0.962,
+      "wh_breach_pct": 0.623
+    },
+    "DocPharma": {
+      "eligible_orders": 442,
+      "overall_breach": 1,
+      "wh_breach": 1,
+      "overall_breach_pct": 0.226,
+      "wh_breach_pct": 0.226
+    }
   }
 }
