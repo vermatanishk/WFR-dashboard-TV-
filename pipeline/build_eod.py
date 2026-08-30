@@ -485,6 +485,44 @@ spot-checked against packer/qc/manifester ops_user_name city suffixes for 4 orde
 (Arpan_KOL/Sudip_KOL), 3591121 -> Mumbai (HarshadaM_MUM/SujalS_MUM/Hussain_MUM),
 3606974 -> Mumbai (SakshiH_MUM/KasturiR_MUM/Gauravj_MUM) - all matched, join
 confirmed correct. 0/18 unique non-null order_ids resolved to Unknown location.
+
+2026-08-30 run note (for_date 2026-08-28): 15 T-2 tickets pulled (11 Missing/Wrong
+Qty, 4 Wrong Medicines, 0 Expiry Issue, 0 Damaged/Defective, 0 Defective device
+sub-disposition) - a notably low volume this run. Zero genuine WH admissions this
+run - a fifth occurrence of a 0-admission day (after 2026-08-22, 2026-08-24,
+2026-08-26, 2026-08-27), and the third CONSECUTIVE occurrence (2026-08-26, -27, -28
+back to back). 11/15 tickets carried the standard "We have sent proper medicine to
+Cx" denial as the Warehouse team's word. Full comment threads enumerated for every
+ticket with commentCount > 0 before classifying (per the 251580/254519 lesson -
+never classify from a partial read); three tickets (255549, 255617, 255462) had no
+Warehouse-role comment at all - 255549 and 255617 each had a single L2-only comment
+("X Fresh Ultra Eye Drop 10ml 1qty is missing" and "Raised to DOC Pharma, awaiting
+for an update?" respectively, neither a Warehouse reply) and 255462 had commentCount
+0 in the search response (confirmed literally zero comments, no getTicketComments
+call needed) - all three correctly False via the "no WH comment" branch. Ticket
+255467 (order 3250639) had a Warehouse comment "Footage not found because it old
+order" - the same factual non-admission/non-denial pattern seen repeatedly in
+earlier runs (253205/254126/255097), correctly False by the "otherwise -> False"
+branch. Since 0 tickets were WH-Accepted, PICKER_QC is empty this run and no
+fulfilment-chain attribution or Low-Value-COG cross-check was needed - both known
+discrepancy patterns are moot this run (no admission to check a later "BOD Issued"
+note against, and no admission to compare against a ClickHouse return-request
+remark). One ticket, 255462 (Wrong Medicines), had a null Order ID in Zoho and is
+excluded from the location join but still counts in the tickets total; it had no
+Warehouse comment either. Ticket 255549's Order ID ("3616906") was submitted to
+Zoho with a leading space but still parsed and resolved cleanly to 3616906 ->
+Delhi (same minor-formatting-quirk pattern as the leading-zero order ID noted in
+the 2026-08-19 run). No duplicate-ticket or duplicate-order clusters this run -
+all 14 non-null order_ids were unique. Location join (single batched query over
+all 14 non-null order_ids) spot-checked against packer/qc/manifester ops_user_name
+city suffixes for 3 orders: 3250639 -> Kolkata (packer Trishna_KOL, qc
+Surojit_KOL), 3595950 -> Lucknow (packer Shivam.V_LKO, qc Arti_LKO, manifester
+Subhashini.Y_LKO), 3607487 -> Bangalore (packer Ranjini_BLRWH, qc Asha_BLRWH,
+manifester Vasantha - the recurring no-suffix-but-Bangalore name seen in prior
+runs) - all matched, join confirmed correct. 0/14 unique non-null order_ids
+resolved to Unknown location; one order, 3644458 (ticket 255617, no Warehouse
+comment), resolved to "DocPharma" - a legitimate non-Unknown warehouse_name (same
+pattern as 254312/254669/255096 in earlier runs), not a join failure.
 """
 import json
 from pathlib import Path
@@ -495,11 +533,10 @@ HERE = Path(__file__).parent
 # order_id -> location, from ClickHouse marketplace_orders join (on order_id,
 # NOT the internal "id" column - see docstring above).
 ORDER_LOCATION = {
-    3548196: "Kolkata", 3606974: "Mumbai", 3572178: "Kolkata", 3463566: "Lucknow",
-    3611301: "Kolkata", 3530558: "Bangalore", 3555108: "Delhi", 3523365: "Lucknow",
-    3586885: "Kolkata", 3605672: "Bangalore", 3577260: "Delhi", 3603254: "Delhi",
-    3535394: "Bangalore", 3617165: "Delhi", 3593434: "Delhi", 3601356: "Mumbai",
-    3591121: "Mumbai", 3607019: "Bangalore",
+    3617521: "Kolkata", 3610833: "Bangalore", 3616906: "Delhi", 3604549: "Delhi",
+    3585140: "Mumbai", 3250639: "Kolkata", 3595950: "Lucknow", 3607487: "Bangalore",
+    3544843: "Delhi", 3565633: "Delhi", 3644458: "DocPharma", 3443594: "Delhi",
+    3618259: "Mumbai", 3474976: "Kolkata",
 }
 
 # Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
