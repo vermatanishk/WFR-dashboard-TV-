@@ -2,63 +2,56 @@
   "week_start": "2026-08-24",
   "week_end": "2026-08-30",
   "generated_at": "2026-08-31T00:00:00Z",
-  "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Source: prx_prod_db, Pipeline B (rfd_base/Q39073) methodology from RFD_Adherence_Logic_Documentation.md, recomputed independently in ClickHouse against orders with a recorded first_pickup_at in the given Mon-Sun week. FIXED 2026-08-31: the 2026-08-24 to 2026-08-30 run (and this file's prior version) was missing the order_scope filter (status_id exclusion + test-user exclusion) used everywhere else in this pipeline, which let cancelled/draft/test orders inflate the order universe - most severely for Bangalore (raw 51,006 vs correct 11,045 orders that week). Cross-checked against the actual RFD ADHERENCE.xlsx workbook's rfd_base sheet after the fix - order counts now match within ~1% for every warehouse (CDC lag). A smaller residual gap remains for Bangalore/Hyderabad/Patna's eligible_orders (their first_pickup_at coverage in marketplace_order_analytics is measurably thinner than Delhi/Kolkata/Mumbai/Lucknow - 24%/15%/10% of orders have no analytics row at all vs ~1-2% elsewhere), not yet root-caused further.",
+  "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. SOURCE CHANGED 2026-08-31: values below are read directly from the live 'RFD ADHERENCE' Google Sheet's Master FDR Dashboard tab (NEW_RFD_BASE, gid=883665959), L7D column, ending 30-Aug - this is the actual ground-truth pipeline the WH team trusts, not an independent reconstruction. A prior independent ClickHouse recomputation (Pipeline B / rfd_base / Q39073 methodology, see RFD_Adherence_Logic_Documentation.md) got within ~1% of these numbers for Delhi/Kolkata/Mumbai/Lucknow but stayed short for Bangalore/Hyderabad/Patna because those sites' first_pickup coverage in marketplace_order_analytics is measurably thinner (10-24% of orders missing a record vs 1-2% elsewhere) - the sheet evidently falls back to a computed courier-cutoff-slot estimate for those orders, which requires a per-order carrier assignment not visible in the ClickHouse tables checked. Until reliable automated access to this specific tab exists, this file is corrected manually whenever the user shares a fresh export of it; the scheduled routine's Sunday ClickHouse recompute remains the automated fallback for other weeks.",
   "by_warehouse": {
     "Delhi": {
-      "eligible_orders": 15313,
-      "overall_breach": 1310,
-      "wh_breach": 624,
-      "overall_breach_pct": 8.555,
-      "wh_breach_pct": 4.075
+      "eligible_orders": 15556,
+      "overall_breach": 1540,
+      "wh_breach": 601,
+      "overall_breach_pct": 9.9,
+      "wh_breach_pct": 3.86
     },
     "Kolkata": {
-      "eligible_orders": 9731,
-      "overall_breach": 301,
-      "wh_breach": 44,
-      "overall_breach_pct": 3.093,
-      "wh_breach_pct": 0.452
+      "eligible_orders": 9697,
+      "overall_breach": 390,
+      "wh_breach": 45,
+      "overall_breach_pct": 4.02,
+      "wh_breach_pct": 0.46
     },
     "Mumbai": {
-      "eligible_orders": 9142,
-      "overall_breach": 1173,
-      "wh_breach": 272,
-      "overall_breach_pct": 12.831,
-      "wh_breach_pct": 2.975
+      "eligible_orders": 9302,
+      "overall_breach": 1371,
+      "wh_breach": 273,
+      "overall_breach_pct": 14.74,
+      "wh_breach_pct": 2.93
     },
     "Bangalore": {
-      "eligible_orders": 8394,
-      "overall_breach": 532,
-      "wh_breach": 118,
-      "overall_breach_pct": 6.338,
-      "wh_breach_pct": 1.406
+      "eligible_orders": 10774,
+      "overall_breach": 1132,
+      "wh_breach": 142,
+      "overall_breach_pct": 10.51,
+      "wh_breach_pct": 1.32
     },
     "Lucknow": {
-      "eligible_orders": 6277,
-      "overall_breach": 221,
-      "wh_breach": 18,
-      "overall_breach_pct": 3.521,
-      "wh_breach_pct": 0.287
+      "eligible_orders": 6459,
+      "overall_breach": 262,
+      "wh_breach": 15,
+      "overall_breach_pct": 4.06,
+      "wh_breach_pct": 0.23
     },
     "Patna WH": {
-      "eligible_orders": 1807,
-      "overall_breach": 15,
-      "wh_breach": 9,
-      "overall_breach_pct": 0.83,
-      "wh_breach_pct": 0.498
+      "eligible_orders": 1938,
+      "overall_breach": 18,
+      "wh_breach": 7,
+      "overall_breach_pct": 0.93,
+      "wh_breach_pct": 0.36
     },
     "Hyderabad WH": {
-      "eligible_orders": 1770,
-      "overall_breach": 15,
-      "wh_breach": 8,
-      "overall_breach_pct": 0.847,
-      "wh_breach_pct": 0.452
-    },
-    "DocPharma": {
-      "eligible_orders": 427,
-      "overall_breach": 1,
-      "wh_breach": 1,
-      "overall_breach_pct": 0.234,
-      "wh_breach_pct": 0.234
+      "eligible_orders": 2029,
+      "overall_breach": 27,
+      "wh_breach": 18,
+      "overall_breach_pct": 1.33,
+      "wh_breach_pct": 0.89
     }
   }
 }
