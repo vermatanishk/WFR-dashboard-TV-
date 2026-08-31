@@ -3922,5 +3922,29 @@
     "order_id": 3536569,
     "reason": "No Warehouse-team comment on this ticket",
     "wh_comment": null
+  },
+  "255706": {
+    "order_id": 3626848,
+    "admitted": false,
+    "wh_comment": null,
+    "reason": "Only comment is an L2 Agent system note (Return Pickup Initiated) - no Warehouse-role comment at all."
+  },
+  "254430": {
+    "order_id": 3508663,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "L2 comment restates customer complaint (not Warehouse-role); the Warehouse-role comment is the standard stock denial, not an admission."
+  },
+  "255264": {
+    "order_id": 3599018,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "Manager and LightAgent comments do not count; the one Warehouse-role comment is the standard stock denial, not an admission."
+  },
+  "255643": {
+    "order_id": 3474976,
+    "admitted": false,
+    "wh_comment": "We have sent proper medicine to Cx",
+    "reason": "L2 system note (Partial Return Requested) does not count; the Warehouse-role comment is the standard stock denial, not an admission."
   }
 }
