@@ -199,7 +199,7 @@
   #lb-tbody-other tr.wfr-lb-row td:first-child { border-top: 2px solid var(--gridline); }
   .wfr-lb-chip { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 99px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; background: color-mix(in srgb, var(--text-muted) 20%, transparent); color: var(--text-secondary); vertical-align: middle; }
 
-  /* Weekly leaderboard: 2-metric traffic light (WFR errors/1000 + FDR) instead of a
+  /* Weekly leaderboard: 2-metric traffic light (WFR errors/1000 + RFD) instead of a
      rank-position gradient - both green = eligible, one/one = yellow, both red = red. */
   tr.wfr-lb-row.wfr-lb-green { background: color-mix(in srgb, var(--status-good) 16%, var(--surface-1)); }
   tr.wfr-lb-row.wfr-lb-yellow { background: color-mix(in srgb, var(--status-warning) 18%, var(--surface-1)); }
@@ -533,10 +533,10 @@
           <div class="wfr-lb-title" id="lb-month-title">Weekly Leaderboard</div>
           <div class="wfr-lb-subtitle" id="lb-asof"></div>
         </div>
-        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the active week. Eligibility (green + chip) requires BOTH metrics green: Errors/1000 Orders &lt; 0.2 (WH-Accepted mis-shipments, deduped per order, refreshed daily) AND FDR &lt; 0.5% (Warehouse-attributable RFD/manifest breach rate, computed once per week from ClickHouse). One metric red = yellow row; both red = red row. DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
+        <div class="wfr-footnote" style="margin-bottom:14px">Active warehouses only, for the active week. Eligibility (green + chip) requires BOTH metrics green: Errors/1000 Orders &lt; 0.2 (WH-Accepted mis-shipments, deduped per order, refreshed daily) AND RFD &lt; 0.5% (Warehouse-attributable RFD/manifest breach rate, computed once per week from ClickHouse). One metric red = yellow row; both red = red row. DocPharma is a partner site, listed separately below and out of scope for the reward.</div>
         <div class="wfr-scroll">
           <table class="wfr-table wfr-lb-table" id="lb-table">
-            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th><th class="num">FDR</th></tr></thead>
+            <thead><tr><th>Rank</th><th>Warehouse</th><th class="num">Orders Processed</th><th class="num">Orders/Day</th><th class="num">Accepted Errors</th><th class="num">Errors / 1000 Orders</th><th class="num">RFD</th></tr></thead>
             <tbody id="lb-tbody"></tbody>
             <tbody id="lb-tbody-other"></tbody>
           </table>
@@ -989,7 +989,7 @@ document.querySelector('#eod-ticket-table tbody').innerHTML = EOD.tickets.map(t 
 // ---- Tab 5: Weekly Leaderboard ----
 // The "active week" is the most recently-CLOSED Monday-Sunday period as of the last
 // refresh (i.e. the most recent Sunday on/before DATA.generated_at) - not the week
-// still in progress. FDR can only be computed once, on the Sunday that closes a week
+// still in progress. RFD can only be computed once, on the Sunday that closes a week
 // (it needs first_pickup_at data to have settled), so the displayed week always has to
 // be one whose Sunday has already happened; it stays "active" (and WFR keeps refining
 // daily as the admission-check backlog catches up) until the next Sunday rolls it
@@ -1058,8 +1058,8 @@ function renderWeeklyLeaderboard() {
     return ordersByWh[wh] > 0 && (daysSeenAllTime[wh] || 0) >= totalDaysHistory * 0.7;
   });
 
-  // FDR (RFD-Adherence WH-attributable breach %) - computed once per week in ClickHouse
-  // (that's the "weekly FDR" half), only valid if it was computed for THIS active week.
+  // RFD (RFD-Adherence WH-attributable breach %) - computed once per week in ClickHouse
+  // (that's the "weekly RFD" half), only valid if it was computed for THIS active week.
   const rfdMatches = RFD_WEEKLY && RFD_WEEKLY.week_start === weekStartStr;
   const rfdByWh = rfdMatches ? (RFD_WEEKLY.by_warehouse || {}) : {};
 
@@ -1074,7 +1074,7 @@ function renderWeeklyLeaderboard() {
   };
 
   // Row status from the 2-metric traffic light: both green = eligible, one/one =
-  // yellow, both red = red. FDR not yet computed for this week = pending (grey).
+  // yellow, both red = red. RFD not yet computed for this week = pending (grey).
   function rowStatus(r) {
     if (r.fdr == null) return 'pending';
     const wfrGreen = r.per1000 < 0.2, fdrGreen = r.fdr < 0.5;
