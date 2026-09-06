@@ -1,57 +1,64 @@
 {
-  "week_start": "2026-08-24",
-  "week_end": "2026-08-30",
-  "generated_at": "2026-08-31T00:00:00Z",
+  "week_start": "2026-08-31",
+  "week_end": "2026-09-06",
+  "generated_at": "2026-09-06T13:45:00Z",
   "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. SOURCE CHANGED 2026-08-31: values below are read directly from the live 'RFD ADHERENCE' Google Sheet's Master FDR Dashboard tab (NEW_RFD_BASE, gid=883665959), L7D column, ending 30-Aug - this is the actual ground-truth pipeline the WH team trusts, not an independent reconstruction. A prior independent ClickHouse recomputation (Pipeline B / rfd_base / Q39073 methodology, see RFD_Adherence_Logic_Documentation.md) got within ~1% of these numbers for Delhi/Kolkata/Mumbai/Lucknow but stayed short for Bangalore/Hyderabad/Patna because those sites' first_pickup coverage in marketplace_order_analytics is measurably thinner (10-24% of orders missing a record vs 1-2% elsewhere) - the sheet evidently falls back to a computed courier-cutoff-slot estimate for those orders, which requires a per-order carrier assignment not visible in the ClickHouse tables checked. Until reliable automated access to this specific tab exists, this file is corrected manually whenever the user shares a fresh export of it; the scheduled routine's Sunday ClickHouse recompute remains the automated fallback for other weeks.",
   "by_warehouse": {
     "Delhi": {
-      "eligible_orders": 15556,
-      "overall_breach": 1540,
-      "wh_breach": 601,
-      "overall_breach_pct": 9.9,
-      "wh_breach_pct": 3.86
+      "eligible_orders": 11064,
+      "overall_breach": 571,
+      "wh_breach": 214,
+      "overall_breach_pct": 5.161,
+      "wh_breach_pct": 1.934
     },
     "Kolkata": {
-      "eligible_orders": 9697,
-      "overall_breach": 390,
-      "wh_breach": 45,
-      "overall_breach_pct": 4.02,
-      "wh_breach_pct": 0.46
+      "eligible_orders": 7163,
+      "overall_breach": 237,
+      "wh_breach": 14,
+      "overall_breach_pct": 3.309,
+      "wh_breach_pct": 0.195
     },
     "Mumbai": {
-      "eligible_orders": 9302,
-      "overall_breach": 1371,
-      "wh_breach": 273,
-      "overall_breach_pct": 14.74,
-      "wh_breach_pct": 2.93
+      "eligible_orders": 6909,
+      "overall_breach": 702,
+      "wh_breach": 209,
+      "overall_breach_pct": 10.161,
+      "wh_breach_pct": 3.025
     },
     "Bangalore": {
-      "eligible_orders": 10774,
-      "overall_breach": 1132,
-      "wh_breach": 142,
-      "overall_breach_pct": 10.51,
-      "wh_breach_pct": 1.32
+      "eligible_orders": 6722,
+      "overall_breach": 495,
+      "wh_breach": 131,
+      "overall_breach_pct": 7.364,
+      "wh_breach_pct": 1.949
     },
     "Lucknow": {
-      "eligible_orders": 6459,
-      "overall_breach": 262,
-      "wh_breach": 15,
-      "overall_breach_pct": 4.06,
-      "wh_breach_pct": 0.23
-    },
-    "Patna WH": {
-      "eligible_orders": 1938,
-      "overall_breach": 18,
-      "wh_breach": 7,
-      "overall_breach_pct": 0.93,
-      "wh_breach_pct": 0.36
+      "eligible_orders": 4100,
+      "overall_breach": 107,
+      "wh_breach": 10,
+      "overall_breach_pct": 2.61,
+      "wh_breach_pct": 0.244
     },
     "Hyderabad WH": {
-      "eligible_orders": 2029,
-      "overall_breach": 27,
-      "wh_breach": 18,
-      "overall_breach_pct": 1.33,
-      "wh_breach_pct": 0.89
+      "eligible_orders": 1920,
+      "overall_breach": 17,
+      "wh_breach": 9,
+      "overall_breach_pct": 0.885,
+      "wh_breach_pct": 0.469
+    },
+    "Patna WH": {
+      "eligible_orders": 1867,
+      "overall_breach": 18,
+      "wh_breach": 9,
+      "overall_breach_pct": 0.964,
+      "wh_breach_pct": 0.482
+    },
+    "DocPharma": {
+      "eligible_orders": 261,
+      "overall_breach": 0,
+      "wh_breach": 0,
+      "overall_breach_pct": 0,
+      "wh_breach_pct": 0
     }
   }
 }
