@@ -11,6 +11,7 @@
     --baseline:       #c3c2b7;
     --border:         rgba(11,11,11,0.10);
     --series-1:       #2a78d6; /* blue - total */
+    --series-2:       #8a5fd1; /* violet - BOD */
     --series-3:       #1baf7a; /* aqua - accepted */
     --status-good:    #0ca30c;
     --status-warning: #fab219;
@@ -166,9 +167,34 @@
   .wfr-chart svg { width: 100%; height: auto; display: block; }
   .wfr-chart-tooltip {
     position: absolute; pointer-events: none; background: var(--surface-1); border: 1px solid var(--border);
-    border-radius: 6px; padding: 6px 9px; font-size: 11.5px; color: var(--text-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    display: none; white-space: nowrap; z-index: 5;
+    border-radius: 6px; padding: 8px 11px; font-size: 11.5px; color: var(--text-primary); box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+    display: none; white-space: nowrap; z-index: 5; line-height: 1.6;
   }
+  .wfr-chart-tooltip .tip-date { font-weight: 700; margin-bottom: 3px; display: block; }
+  .wfr-chart-tooltip .tip-row { display: flex; align-items: center; gap: 6px; }
+  .wfr-chart-tooltip .tip-row i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; flex: none; }
+  .wfr-chart-tooltip .tip-row b { font-variant-numeric: tabular-nums; margin-left: auto; padding-left: 10px; }
+  .wfr-chart-crosshair { stroke: var(--baseline); stroke-width: 1; pointer-events: none; }
+
+  .wfr-icon-btn {
+    appearance: none; border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+    font: inherit; font-size: 15px; line-height: 1; padding: 6px 9px; border-radius: 7px; cursor: pointer;
+  }
+  .wfr-icon-btn:hover { background: var(--surface-2); color: var(--text-primary); }
+
+  .wfr-chart-overlay {
+    position: fixed; inset: 0; background: rgba(20,19,17,0.6); z-index: 1000;
+    display: none; align-items: center; justify-content: center; padding: 32px;
+  }
+  .wfr-chart-overlay.active { display: flex; }
+  .wfr-chart-overlay-inner {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px;
+    padding: 24px 28px 28px; width: 100%; max-width: 1280px; max-height: 92vh; overflow: auto; position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+  .wfr-chart-overlay-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+  .wfr-chart-overlay-head h3 { margin: 0; font-size: 16px; }
+  .wfr-chart-overlay .wfr-chart svg { height: 480px; }
 
   .wfr-topline { background: linear-gradient(135deg, color-mix(in srgb, var(--series-1) 10%, var(--surface-1)), var(--surface-1)); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; }
   .wfr-topline-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
@@ -373,20 +399,23 @@
       <div class="wfr-row-2col">
         <div class="wfr-card" style="margin-bottom:0">
           <div class="wfr-card-head">
-            <h3>Tickets raised vs. accepted, over time</h3>
-            <div class="wfr-filters" style="margin-bottom:0">
-              <button class="wfr-chip" data-trend-cat="All" aria-pressed="true">All</button>
-              <button class="wfr-chip" data-trend-cat="Missing/Wrong Qty" aria-pressed="false">Missing/Wrong Qty</button>
-              <button class="wfr-chip" data-trend-cat="Wrong Medicines" aria-pressed="false">Wrong Medicines</button>
-              <button class="wfr-chip" data-trend-cat="Expiry Issue" aria-pressed="false">Expiry Issue</button>
-              <button class="wfr-chip" data-trend-cat="Damaged/Defective" aria-pressed="false">Damaged/Defective</button>
+            <h3>Issues vs. orders, over time</h3>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <div class="wfr-filters" style="margin-bottom:0">
+                <button class="wfr-range-btn" data-trend-period="daily" aria-pressed="true">Daily</button>
+                <button class="wfr-range-btn" data-trend-period="weekly" aria-pressed="false">Weekly</button>
+                <button class="wfr-range-btn" data-trend-period="monthly" aria-pressed="false">Monthly</button>
+              </div>
+              <button class="wfr-icon-btn" id="trend-expand-btn" title="Expand" aria-label="Expand chart">⛶</button>
             </div>
           </div>
           <div class="wfr-legend">
-            <span><i class="line" style="background:var(--series-1)"></i>Raised</span>
-            <span><i class="line" style="background:var(--series-3)"></i>Accepted</span>
+            <span><i class="line" style="background:var(--series-1)"></i>Issues raised (% of orders)</span>
+            <span><i class="line" style="background:var(--series-3)"></i>Accepted (% of issues)</span>
+            <span><i class="line" style="background:var(--series-2)"></i>BOD given (% of issues)</span>
           </div>
           <div class="wfr-chart" id="trend-chart"></div>
+          <div class="wfr-footnote">Hover a point for the exact counts behind each line. "Issues raised" is plotted as a share of that period's total orders processed (right-hand axis, in blue — a much smaller scale since it's a share of all orders); "Accepted" and "BOD given" are each plotted as a share of that period's issues raised (left-hand axis).</div>
         </div>
 
         <div class="wfr-card" style="margin-bottom:0">
@@ -545,6 +574,21 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="wfr-chart-overlay" id="trend-overlay">
+    <div class="wfr-chart-overlay-inner">
+      <div class="wfr-chart-overlay-head">
+        <h3>Issues vs. orders, over time</h3>
+        <button class="wfr-icon-btn" id="trend-collapse-btn" title="Close" aria-label="Close expanded chart">✕</button>
+      </div>
+      <div class="wfr-legend">
+        <span><i class="line" style="background:var(--series-1)"></i>Issues raised (% of orders)</span>
+        <span><i class="line" style="background:var(--series-3)"></i>Accepted (% of issues)</span>
+        <span><i class="line" style="background:var(--series-2)"></i>BOD given (% of issues)</span>
+      </div>
+      <div class="wfr-chart" id="trend-chart-full"></div>
+    </div>
   </div>
 </div>
 
@@ -1243,56 +1287,164 @@ function renderPersonnel(tickets) {
   renderByWarehouse(document.getElementById('checkers-by-wh'), PERSONNEL.qc_by_warehouse, qcErrors, true, locFilter);
 }
 
-// ---- Tab 1: trend chart (SVG line, raised vs accepted, filterable by category) ----
-let trendCat = 'All';
-function drawTrend() {
-  const w = 1040, h = 260, padL = 36, padR = 12, padT = 12, padB = 24;
-  const days = TREND.map(d => d.date);
-  const raised = TREND.map(d => (d.series[trendCat] || {raised:0}).raised);
-  const accepted = TREND.map(d => (d.series[trendCat] || {accepted:0}).accepted);
-  const maxY = Math.max(...raised, ...accepted, 1);
-  const n = days.length;
-  const x = i => padL + (i / Math.max(n - 1, 1)) * (w - padL - padR);
-  const y = v => h - padB - (v / maxY) * (h - padT - padB);
-  const path = arr => arr.map((v, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
+// ---- Tab 1: consolidated trend chart ----
+// 3 lines, one 0-100% axis: issues raised (% of that period's orders processed),
+// accepted (% of that period's issues raised), BOD given (% of that period's issues
+// raised). "BOD given" mirrors the Tab-1 tile: bod + considered_bod combined.
+// Bucketed daily/weekly(Mon-start)/monthly via the period toggle.
+let trendPeriod = 'daily';
+const TREND_MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function trendWeekStart(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00Z');
+  const dow = (d.getUTCDay() + 6) % 7; // Mon=0 .. Sun=6
+  d.setUTCDate(d.getUTCDate() - dow);
+  return d.toISOString().slice(0, 10);
+}
+function trendBucketKey(dateStr, period) {
+  if (period === 'weekly') return trendWeekStart(dateStr);
+  if (period === 'monthly') return dateStr.slice(0, 7);
+  return dateStr;
+}
+function trendBucketLabel(key, period) {
+  if (period === 'monthly') {
+    const [y, m] = key.split('-');
+    return `${TREND_MONTHS[+m - 1]} ${y}`;
+  }
+  const d = new Date(key + 'T00:00:00Z');
+  const start = `${TREND_MONTHS[d.getUTCMonth()]} ${d.getUTCDate()}`;
+  if (period !== 'weekly') return start;
+  const end = new Date(d); end.setUTCDate(end.getUTCDate() + 6);
+  const endLabel = end.getUTCMonth() === d.getUTCMonth() ? `${end.getUTCDate()}` : `${TREND_MONTHS[end.getUTCMonth()]} ${end.getUTCDate()}`;
+  return `${start}–${endLabel}`;
+}
+function buildTrendBuckets(period) {
+  const buckets = new Map();
+  TREND.forEach(row => {
+    const key = trendBucketKey(row.date, period);
+    const s = row.series['All'] || { raised: 0, accepted: 0, bod: 0 };
+    const orders = ORDERS_BY_DAY_MAP[row.date] || 0;
+    if (!buckets.has(key)) buckets.set(key, { raised: 0, accepted: 0, bod: 0, orders: 0 });
+    const b = buckets.get(key);
+    b.raised += s.raised || 0;
+    b.accepted += s.accepted || 0;
+    b.bod += s.bod || 0;
+    b.orders += orders;
+  });
+  return Array.from(buckets.keys()).sort().map(key => {
+    const b = buckets.get(key);
+    return {
+      label: trendBucketLabel(key, period),
+      orders: b.orders, raised: b.raised, accepted: b.accepted, bod: b.bod,
+      issuePct: b.orders ? b.raised / b.orders * 100 : 0,
+      acceptedPct: b.raised ? b.accepted / b.raised * 100 : 0,
+      bodPct: b.raised ? b.bod / b.raised * 100 : 0,
+    };
+  });
+}
+
+function drawTrendChart(containerId, tipId, period) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const rows = buildTrendBuckets(period);
+  if (!rows.length) { el.innerHTML = '<div class="wfr-empty">No data for this range</div>'; return; }
+
+  // Dual axis: "Issues raised" runs a full order of magnitude below Accepted/BOD
+  // (fractions of a %, vs. tens of %) since it's a share of orders, not of issues.
+  // A single shared axis flattens it to an invisible line, so it gets its own
+  // right-hand scale while Accepted/BOD share the left 0-100%-ish axis.
+  const w = 1040, h = 300, padL = 40, padR = 46, padT = 14, padB = 26;
+  const issuePct = rows.map(r => r.issuePct), acceptedPct = rows.map(r => r.acceptedPct), bodPct = rows.map(r => r.bodPct);
+  const leftMax = Math.max(...acceptedPct, ...bodPct, 1) * 1.15;
+  const rightMax = Math.max(...issuePct, 0.01) * 1.15;
+  const n = rows.length;
+  const x = i => n === 1 ? (padL + w - padL - padR) / 2 : padL + (i / (n - 1)) * (w - padL - padR);
+  const yFrac = f => h - padB - f * (h - padT - padB);
+  const yLeft = v => yFrac(v / leftMax);
+  const yRight = v => yFrac(v / rightMax);
+  const pathOn = (arr, yFn) => arr.map((v, i) => `${i === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${yFn(v).toFixed(1)}`).join(' ');
 
   const gridlines = [0, 0.25, 0.5, 0.75, 1].map(f => {
-    const val = Math.round(maxY * f);
-    const yy = y(val);
-    return `<line x1="${padL}" y1="${yy}" x2="${w-padR}" y2="${yy}" stroke="var(--gridline)" stroke-width="1"/><text x="2" y="${yy+4}" font-size="10" fill="var(--text-muted)">${val}</text>`;
+    const yy = yFrac(f);
+    const leftLabel = (leftMax * f).toFixed(0) + '%';
+    const rightLabel = (rightMax * f).toFixed(2) + '%';
+    return `<line x1="${padL}" y1="${yy}" x2="${w - padR}" y2="${yy}" stroke="var(--gridline)" stroke-width="1"/>`
+      + `<text x="2" y="${yy + 4}" font-size="10" fill="var(--text-muted)">${leftLabel}</text>`
+      + `<text x="${w - 2}" y="${yy + 4}" font-size="10" fill="var(--series-1)" text-anchor="end">${rightLabel}</text>`;
   }).join('');
+
+  // Show every Nth x-axis label so daily view (up to ~90 points) doesn't overlap.
+  const labelStride = Math.max(1, Math.ceil(n / 10));
+  const xLabels = rows.map((r, i) => (i % labelStride === 0 || i === n - 1)
+    ? `<text x="${x(i).toFixed(1)}" y="${h - 6}" font-size="10" fill="var(--text-muted)" text-anchor="middle">${r.label}</text>` : '').join('');
+
+  const dots = (arr, yFn, color) => arr.map((v, i) => `<circle cx="${x(i).toFixed(1)}" cy="${yFn(v).toFixed(1)}" r="2.5" fill="${color}"/>`).join('');
 
   const svg = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
     ${gridlines}
-    <path d="${path(raised)}" fill="none" stroke="var(--series-1)" stroke-width="2"/>
-    <path d="${path(accepted)}" fill="none" stroke="var(--series-3)" stroke-width="2"/>
-    ${raised.map((v,i) => `<circle class="pt" data-i="${i}" cx="${x(i)}" cy="${y(v)}" r="7" fill="transparent"/>`).join('')}
-  </svg><div class="wfr-chart-tooltip" id="trend-tip"></div>`;
-  const el = document.getElementById('trend-chart');
+    ${xLabels}
+    <path d="${pathOn(issuePct, yRight)}" fill="none" stroke="var(--series-1)" stroke-width="2.25"/>
+    <path d="${pathOn(acceptedPct, yLeft)}" fill="none" stroke="var(--series-3)" stroke-width="2.25"/>
+    <path d="${pathOn(bodPct, yLeft)}" fill="none" stroke="var(--series-2)" stroke-width="2.25"/>
+    ${dots(issuePct, yRight, 'var(--series-1)')}${dots(acceptedPct, yLeft, 'var(--series-3)')}${dots(bodPct, yLeft, 'var(--series-2)')}
+    <line class="wfr-chart-crosshair" id="${containerId}-crosshair" x1="0" y1="${padT}" x2="0" y2="${h - padB}" style="display:none"/>
+    ${rows.map((r, i) => `<rect class="pt" data-i="${i}" x="${(x(i) - (w / n) / 2).toFixed(1)}" y="0" width="${(w / n).toFixed(1)}" height="${h}" fill="transparent"/>`).join('')}
+  </svg><div class="wfr-chart-tooltip" id="${tipId}"></div>`;
   el.innerHTML = svg;
 
-  const tip = document.getElementById('trend-tip');
+  const tip = document.getElementById(tipId);
+  const crosshair = document.getElementById(`${containerId}-crosshair`);
+  const fmtN = v => v.toLocaleString('en-IN');
   el.querySelectorAll('.pt').forEach(pt => {
-    pt.addEventListener('mouseenter', (e) => {
+    pt.addEventListener('mouseenter', () => {
       const i = +pt.dataset.i;
-      tip.textContent = `${days[i]} · Raised ${raised[i]} · Accepted ${accepted[i]}`;
+      const r = rows[i];
+      crosshair.setAttribute('x1', x(i).toFixed(1));
+      crosshair.setAttribute('x2', x(i).toFixed(1));
+      crosshair.style.display = 'block';
+      tip.innerHTML = `<span class="tip-date">${r.label}</span>`
+        + `<div class="tip-row"><i style="background:var(--series-1)"></i>Issues raised<b>${fmtN(r.raised)} (${r.issuePct.toFixed(2)}% of ${fmtN(r.orders)} orders)</b></div>`
+        + `<div class="tip-row"><i style="background:var(--series-3)"></i>Accepted<b>${fmtN(r.accepted)} (${r.acceptedPct.toFixed(1)}%)</b></div>`
+        + `<div class="tip-row"><i style="background:var(--series-2)"></i>BOD given<b>${fmtN(r.bod)} (${r.bodPct.toFixed(1)}%)</b></div>`;
       tip.style.display = 'block';
     });
     pt.addEventListener('mousemove', (e) => {
       const rect = el.getBoundingClientRect();
-      tip.style.left = (e.clientX - rect.left + 12) + 'px';
+      let left = e.clientX - rect.left + 14;
+      if (left + 220 > rect.width) left = e.clientX - rect.left - 234;
+      tip.style.left = left + 'px';
       tip.style.top = (e.clientY - rect.top - 10) + 'px';
     });
-    pt.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+    pt.addEventListener('mouseleave', () => { tip.style.display = 'none'; crosshair.style.display = 'none'; });
   });
 }
-document.querySelectorAll('[data-trend-cat]').forEach(btn => {
+
+function redrawTrendCharts() {
+  drawTrendChart('trend-chart', 'trend-tip', trendPeriod);
+  if (document.getElementById('trend-overlay').classList.contains('active')) {
+    drawTrendChart('trend-chart-full', 'trend-tip-full', trendPeriod);
+  }
+}
+document.querySelectorAll('[data-trend-period]').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('[data-trend-cat]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    document.querySelectorAll('[data-trend-period]').forEach(b => b.setAttribute('aria-pressed', 'false'));
     btn.setAttribute('aria-pressed', 'true');
-    trendCat = btn.dataset.trendCat;
-    drawTrend();
+    trendPeriod = btn.dataset.trendPeriod;
+    redrawTrendCharts();
   });
 });
-drawTrend();
+document.getElementById('trend-expand-btn').addEventListener('click', () => {
+  document.getElementById('trend-overlay').classList.add('active');
+  drawTrendChart('trend-chart-full', 'trend-tip-full', trendPeriod);
+});
+document.getElementById('trend-collapse-btn').addEventListener('click', () => {
+  document.getElementById('trend-overlay').classList.remove('active');
+});
+document.getElementById('trend-overlay').addEventListener('click', (e) => {
+  if (e.target.id === 'trend-overlay') document.getElementById('trend-overlay').classList.remove('active');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') document.getElementById('trend-overlay').classList.remove('active');
+});
+drawTrendChart('trend-chart', 'trend-tip', trendPeriod);
 </script>

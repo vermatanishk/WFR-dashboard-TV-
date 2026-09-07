@@ -272,8 +272,10 @@ personnel = {"pickers_by_warehouse": by_wh_pickers, "qc_by_warehouse": by_wh_qc}
 (HERE / "personnel.json").write_text(json.dumps(personnel))
 print("Wrote personnel.json:", {k: len(v) for k, v in by_wh_pickers.items()})
 
-# ---- Daily trend (raised vs accepted, by category) ----
-trend = defaultdict(lambda: defaultdict(lambda: {"raised": 0, "accepted": 0}))
+# ---- Daily trend (raised vs accepted vs BOD, by category) ----
+# "bod" here mirrors the Tab 1 tile grouping: bod + considered_bod combined,
+# i.e. every ticket that isn't wh_accepted or no_return_record.
+trend = defaultdict(lambda: defaultdict(lambda: {"raised": 0, "accepted": 0, "bod": 0}))
 for t in out_tickets:
     day = t["created_time"][:10]
     trend[day]["All"]["raised"] += 1
@@ -281,6 +283,9 @@ for t in out_tickets:
     if t["accepted"]:
         trend[day]["All"]["accepted"] += 1
         trend[day][t["category"]]["accepted"] += 1
+    elif t["resolution"] in ("bod", "considered_bod"):
+        trend[day]["All"]["bod"] += 1
+        trend[day][t["category"]]["bod"] += 1
 
 trend_out = []
 for day in sorted(trend.keys()):
