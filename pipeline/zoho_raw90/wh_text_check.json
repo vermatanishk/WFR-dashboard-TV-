@@ -3347,6 +3347,12 @@
     "reason": "no Warehouse comment found (only L2 notes: 'Raised the issue with shivdhan', 'Return Pickup Initiated')",
     "wh_comment": null
   },
+  "253876": {
+    "admitted": false,
+    "order_id": 3482827,
+    "reason": "Stock denial plus a claim about what the order contained - not an admission of sending the wrong medicine.",
+    "wh_comment": "We have sent proper medicine to Cx Your order id containce minkesh forte Mahiboob bee"
+  },
   "253878": {
     "admitted": false,
     "order_id": 3477213,
@@ -3784,6 +3790,12 @@
     "order_id": 3549749,
     "reason": "Warehouse-team comment is the stock denial template, not a first-person admission of fault - not counted.",
     "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "255147": {
+    "admitted": false,
+    "order_id": 3461594,
+    "reason": "Stock denial template despite missing/wrong-qty complaint - no WH admission found; later comments are only a Logistics image request and an L2 note about missing invoice.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
   },
   "255162": {
     "admitted": false,
@@ -4319,6 +4331,12 @@
     "reason": "Full thread read (1 comment): Warehouse comment is the stock denial - not an admission.",
     "wh_comment": "We have sent proper medicine to Cx"
   },
+  "257042": {
+    "admitted": false,
+    "order_id": 3720638,
+    "reason": "Warehouse-role comment is the standard stock denial template, not an admission. Not counted.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
   "257044": {
     "admitted": false,
     "order_id": 3691779,
@@ -4367,268 +4385,322 @@
     "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).",
     "wh_comment": null
   },
-  "257042": {
-    "order_id": 3720638,
+  "257226": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee",
-    "reason": "Warehouse-role comment is the standard stock denial template, not an admission. Not counted."
-  },
-  "257358": {
-    "order_id": 3684695,
-    "admitted": false,
-    "wh_comment": "Return request is approved from from warehouse",
-    "reason": "Warehouse-role comment approves the return request but does not state WH sent the wrong/short item - neither an admission nor a denial phrase, correctly False by the otherwise-branch."
-  },
-  "257408": {
-    "order_id": 3743532,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-role comment on this ticket - only an L2 Agent note (\"spoke with cx to create return req from her side as it was order swap\"). Not counted."
-  },
-  "257295": {
-    "order_id": 3556945,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-role comment on this ticket - only an L2 Agent note (\"Return pickup initiated.\"). Not counted."
+    "order_id": 3737141,
+    "reason": "commentCount 0 - confirmed literally zero comments, no Warehouse-role comment possible. Not counted.",
+    "wh_comment": null
   },
   "257237": {
-    "order_id": 3216743,
     "admitted": false,
-    "wh_comment": "Footage not found because it is old order",
-    "reason": "Recurring factual non-admission/non-denial pattern (footage unavailable), not a first-person admission. Not counted."
+    "order_id": 3216743,
+    "reason": "Recurring factual non-admission/non-denial pattern (footage unavailable), not a first-person admission. Not counted.",
+    "wh_comment": "Footage not found because it is old order"
   },
   "257239": {
-    "order_id": 3673856,
     "admitted": false,
-    "wh_comment": "Still order is not reached at warehouse | Return pickup initiated.",
-    "reason": "Warehouse comment is ambiguous (neither an admission nor the standard denial); the second comment is L2-only. Full 2-comment thread read before classifying. Not counted."
+    "order_id": 3673856,
+    "reason": "Warehouse comment is ambiguous (neither an admission nor the standard denial); the second comment is L2-only. Full 2-comment thread read before classifying. Not counted.",
+    "wh_comment": "Still order is not reached at warehouse | Return pickup initiated."
+  },
+  "257295": {
+    "admitted": false,
+    "order_id": 3556945,
+    "reason": "No Warehouse-role comment on this ticket - only an L2 Agent note (\"Return pickup initiated.\"). Not counted.",
+    "wh_comment": null
   },
   "257344": {
+    "admitted": false,
     "order_id": 3678071,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-role comment on this ticket - only an L2 Agent note (\"Duplicate ticket, hence closing this\"). Not counted."
+    "reason": "No Warehouse-role comment on this ticket - only an L2 Agent note (\"Duplicate ticket, hence closing this\"). Not counted.",
+    "wh_comment": null
   },
-  "257226": {
-    "order_id": 3737141,
+  "257358": {
     "admitted": false,
-    "wh_comment": null,
-    "reason": "commentCount 0 - confirmed literally zero comments, no Warehouse-role comment possible. Not counted."
+    "order_id": 3684695,
+    "reason": "Warehouse-role comment approves the return request but does not state WH sent the wrong/short item - neither an admission nor a denial phrase, correctly False by the otherwise-branch.",
+    "wh_comment": "Return request is approved from from warehouse"
   },
-  "257641": {
-    "order_id": 3736539,
+  "257408": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257639": {
-    "order_id": 3686482,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257638": {
-    "order_id": 3705216,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-team comment on this ticket"
-  },
-  "257631": {
-    "order_id": 3699419,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257630": {
-    "order_id": 3748292,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257627": {
-    "order_id": 3749388,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257626": {
-    "order_id": 3728808,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257615": {
-    "order_id": 3750868,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "No Warehouse-team comment - only L2/LightAgent notes about medicine dispute"
-  },
-  "257609": {
-    "order_id": 3720210,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257607": {
-    "order_id": 3655081,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257606": {
-    "order_id": 3726141,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257596": {
-    "order_id": 3721390,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257592": {
-    "order_id": 3733993,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257588": {
-    "order_id": 3723181,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257587": {
-    "order_id": 3726013,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257584": {
-    "order_id": 3712451,
-    "admitted": false,
-    "wh_comment": "Free item is not mentioned on the raper",
-    "reason": "Neither admission nor denial - factual disclaimer about free item, not a first-person fault admission"
-  },
-  "257581": {
-    "order_id": 3687221,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257578": {
-    "order_id": 3715883,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257577": {
-    "order_id": 3705809,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257565": {
-    "order_id": 3748891,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "commentCount 0 - no comments at all"
-  },
-  "257543": {
-    "order_id": 3712149,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257542": {
-    "order_id": 3714062,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template; L2 restating customer complaint does not count"
-  },
-  "257540": {
-    "order_id": 3712309,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257533": {
-    "order_id": 3706804,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257531": {
-    "order_id": 3697399,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257530": {
-    "order_id": 3665873,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257498": {
-    "order_id": 3737837,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
-  },
-  "257490": {
-    "order_id": 3718425,
-    "admitted": true,
-    "wh_comment": "We have sent short qty to Cx",
-    "reason": "Genuine first-person WH admission of sending short quantity"
-  },
-  "257482": {
-    "order_id": 3734372,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Denial template, not admission"
+    "order_id": 3743532,
+    "reason": "No Warehouse-role comment on this ticket - only an L2 Agent note (\"spoke with cx to create return req from her side as it was order swap\"). Not counted.",
+    "wh_comment": null
   },
   "257480": {
+    "admitted": false,
     "order_id": 3748949,
-    "admitted": false,
-    "wh_comment": null,
-    "reason": "commentCount 0 - no comments at all"
+    "reason": "commentCount 0 - no comments at all",
+    "wh_comment": null
   },
-  "257847": {
-    "order_id": 3754817,
+  "257482": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse comment is the standard denial template, not an admission"
+    "order_id": 3734372,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
-  "257843": {
-    "order_id": 3730418,
-    "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Warehouse denial template stands; later comment is from LightAgent/L2 support reiterating cx's claim (L2/support comments don't count), not a WH admission"
-  },
-  "257833": {
-    "order_id": 3764559,
+  "257490": {
     "admitted": true,
-    "wh_comment": "We have sent deferent pharm medicine to Cx",
-    "reason": "Warehouse comment admits sending a different-manufacturer medicine than ordered, matching the ticket's 'different manufacture company' complaint - genuine admission"
+    "order_id": 3718425,
+    "reason": "Genuine first-person WH admission of sending short quantity",
+    "wh_comment": "We have sent short qty to Cx"
   },
-  "257826": {
-    "order_id": 3708705,
+  "257498": {
     "admitted": false,
-    "wh_comment": "We have sent proper medicine to Cx",
-    "reason": "Standard denial template, not an admission"
+    "order_id": 3737837,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
-  "257783": {
-    "order_id": 3713096,
-    "admitted": true,
-    "wh_comment": "We have sent wrong sku to Cx",
-    "reason": "Genuine first-person WH admission of sending wrong SKU"
+  "257530": {
+    "admitted": false,
+    "order_id": 3665873,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257531": {
+    "admitted": false,
+    "order_id": 3697399,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257533": {
+    "admitted": false,
+    "order_id": 3706804,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257540": {
+    "admitted": false,
+    "order_id": 3712309,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257542": {
+    "admitted": false,
+    "order_id": 3714062,
+    "reason": "Denial template; L2 restating customer complaint does not count",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257543": {
+    "admitted": false,
+    "order_id": 3712149,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257565": {
+    "admitted": false,
+    "order_id": 3748891,
+    "reason": "commentCount 0 - no comments at all",
+    "wh_comment": null
+  },
+  "257577": {
+    "admitted": false,
+    "order_id": 3705809,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257578": {
+    "admitted": false,
+    "order_id": 3715883,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257581": {
+    "admitted": false,
+    "order_id": 3687221,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257584": {
+    "admitted": false,
+    "order_id": 3712451,
+    "reason": "Neither admission nor denial - factual disclaimer about free item, not a first-person fault admission",
+    "wh_comment": "Free item is not mentioned on the raper"
+  },
+  "257587": {
+    "admitted": false,
+    "order_id": 3726013,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257588": {
+    "admitted": false,
+    "order_id": 3723181,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257592": {
+    "admitted": false,
+    "order_id": 3733993,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
   },
   "257594": {
-    "order_id": 3750149,
     "admitted": false,
-    "wh_comment": null,
-    "reason": "No comments on ticket at all - no WH admission found"
+    "order_id": 3750149,
+    "reason": "No comments on ticket at all - no WH admission found",
+    "wh_comment": null
+  },
+  "257596": {
+    "admitted": false,
+    "order_id": 3721390,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257606": {
+    "admitted": false,
+    "order_id": 3726141,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257607": {
+    "admitted": false,
+    "order_id": 3655081,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257609": {
+    "admitted": false,
+    "order_id": 3720210,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257615": {
+    "admitted": false,
+    "order_id": 3750868,
+    "reason": "No Warehouse-team comment - only L2/LightAgent notes about medicine dispute",
+    "wh_comment": null
+  },
+  "257626": {
+    "admitted": false,
+    "order_id": 3728808,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257627": {
+    "admitted": false,
+    "order_id": 3749388,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257630": {
+    "admitted": false,
+    "order_id": 3748292,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257631": {
+    "admitted": false,
+    "order_id": 3699419,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257638": {
+    "admitted": false,
+    "order_id": 3705216,
+    "reason": "No Warehouse-team comment on this ticket",
+    "wh_comment": null
+  },
+  "257639": {
+    "admitted": false,
+    "order_id": 3686482,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257641": {
+    "admitted": false,
+    "order_id": 3736539,
+    "reason": "Denial template, not admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257783": {
+    "admitted": true,
+    "order_id": 3713096,
+    "reason": "Genuine first-person WH admission of sending wrong SKU",
+    "wh_comment": "We have sent wrong sku to Cx"
+  },
+  "257826": {
+    "admitted": false,
+    "order_id": 3708705,
+    "reason": "Standard denial template, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257833": {
+    "admitted": true,
+    "order_id": 3764559,
+    "reason": "Warehouse comment admits sending a different-manufacturer medicine than ordered, matching the ticket's 'different manufacture company' complaint - genuine admission",
+    "wh_comment": "We have sent deferent pharm medicine to Cx"
+  },
+  "257843": {
+    "admitted": false,
+    "order_id": 3730418,
+    "reason": "Warehouse denial template stands; later comment is from LightAgent/L2 support reiterating cx's claim (L2/support comments don't count), not a WH admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257847": {
+    "admitted": false,
+    "order_id": 3754817,
+    "reason": "Warehouse comment is the standard denial template, not an admission",
+    "wh_comment": "We have sent proper medicine to Cx"
+  },
+  "257903": {
+    "admitted": false,
+    "order_id": 3760392,
+    "reason": "Stock denial template - not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
+  "257949": {
+    "admitted": true,
+    "order_id": 3735893,
+    "reason": "Admission phrase 'wrong sku' matched - WH admitted sending wrong strength/SKU, consistent with cx's 25mg-vs-50mg complaint. Full thread read: earlier L2 comments were only requesting a packaging video, not admissions.",
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee"
+  },
+  "257954": {
+    "admitted": false,
+    "order_id": 3725275,
+    "reason": "Stock denial template (generic reply) - no missing-qty admission despite Missing/Wrong Qty category.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
+  "258002": {
+    "admitted": false,
+    "order_id": 3718013,
+    "reason": "Stock denial template - not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
+  "258007": {
+    "admitted": false,
+    "order_id": 3712230,
+    "reason": "Stock denial template - not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
+  "258008": {
+    "admitted": false,
+    "order_id": 3785603,
+    "reason": "Stock denial template despite Damaged/Defective category - no admission of damage/spoilage, only one WH comment in thread.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
+  "258009": {
+    "admitted": true,
+    "order_id": 3746530,
+    "reason": "Admission phrase 'wrong sku' matched - genuine Warehouse admission.",
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee"
+  },
+  "258032": {
+    "admitted": false,
+    "order_id": 3770976,
+    "reason": "Stock denial template - not an admission.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
+  },
+  "258047": {
+    "admitted": true,
+    "order_id": 3761359,
+    "reason": "Warehouse-role comment is a first-person admission matching ADMISSION_PHRASES ('wrong sku').",
+    "wh_comment": "We have sent wrong sku to Cx Mahiboob bee"
+  },
+  "258056": {
+    "admitted": false,
+    "order_id": 3757143,
+    "reason": "Stock denial template ('we have sent proper medicine') - not an admission of the wrong-medicine complaint.",
+    "wh_comment": "We have sent proper medicine to Cx Mahiboob bee"
   }
 }
