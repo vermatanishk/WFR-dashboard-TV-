@@ -1,331 +1,27 @@
-{"order_id":3605729,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer unreachable","reason":"Received Wrong Medicines"}
-{"order_id":3554613,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer unreachable","reason":"Damaged or Defective Packaging"}
-{"order_id":3531974,"warehouse_name":"Delhi","city":"New Delhi","remark":"Damaged Medicine - Item received in damaged or unusable condition.","reason":"Damaged or Defective Packaging"}
-{"order_id":3580094,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3530558,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3586885,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3535394,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3590704,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Substitutes not needed."}
-{"order_id":3610110,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3651596,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer unreachable","reason":"Substitutes not needed."}
-{"order_id":3620655,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3594110,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3602256,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Damaged or Defective Packaging"}
-{"order_id":3602256,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Damaged or Defective Packaging"}
-{"order_id":3602256,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"No Longer Needed"}
-{"order_id":3548196,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer unreachable","reason":"Damaged or Defective Packaging"}
-{"order_id":3624098,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer unreachable","reason":"Received Wrong Medicines"}
-{"order_id":3599018,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3626848,"warehouse_name":"Delhi","city":"New Delhi","remark":"Damaged Medicine - Item received in damaged or unusable condition.","reason":"Issue with cold storage items"}
-{"order_id":3621416,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Damaged or Defective Packaging"}
-{"order_id":3636416,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3569746,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3556945,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Prescription Changed"}
-{"order_id":3663872,"warehouse_name":"Mumbai","city":"Mumbai","remark":"QC completed successfully","reason":"Issue with cold storage items"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"refund need to be process in wallet as BOD"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"refund need to be process in wallet as BOD"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"refund need to be process in wallet as BOD  "}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
-{"order_id":3684613,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
-{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
-{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
-{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
-{"order_id":3702208,"warehouse_name":"Delhi","city":"New Delhi","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
-{"order_id":3687299,"warehouse_name":"Kolkata","city":"Kolkata","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3648356,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3645256,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3691779,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3699329,"warehouse_name":"Mumbai","city":"Mumbai","remark":"QC completed successfully","reason":"No Longer Needed"}
-{"order_id":3662423,"warehouse_name":"Mumbai","city":"Mumbai","remark":"OTP Cancelled","reason":"Order switch"}
-{"order_id":3673360,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"No Longer Needed"}
-{"order_id":3700598,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3641450,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Issue with cold storage items"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3559560,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"No Longer Needed"}
-{"order_id":3559560,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Incomplete Order"}
-{"order_id":3665224,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3626579,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3706148,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Issue with cold storage items"}
-{"order_id":3665873,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
-{"order_id":3697399,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer unreachable","reason":"Received Wrong Medicines"}
-{"order_id":3695127,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3706804,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer received correct order","reason":"scoop missing"}
-{"order_id":3664920,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Manufacturer is different."}
-{"order_id":3714062,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3712149,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3651712,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3715883,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3687221,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3687221,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3712451,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"No Longer Needed"}
-{"order_id":3732225,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3725639,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3726013,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"order swap "}
-{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"order swap "}
-{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"order swap "}
-{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"order swap "}
-{"order_id":3723181,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3730741,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3719837,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"No Longer Needed"}
-{"order_id":3719837,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"No Longer Needed"}
-{"order_id":3606974,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3721390,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3655081,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3720210,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3673856,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
-{"order_id":3728808,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3728808,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3728808,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3748292,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3699419,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3737141,"warehouse_name":"Delhi","city":"New Delhi","remark":"OTP Cancelled ","reason":"Issue with cold storage items"}
-{"order_id":3728825,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3687259,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3687259,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3686482,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3677843,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"No Longer Needed"}
-{"order_id":3736539,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3728398,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"item missing in the box"}
-{"order_id":3728398,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"mising in the box"}
-{"order_id":3714676,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3714676,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3734372,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3711810,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3711810,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3713096,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3743532,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":" order swap"}
-{"order_id":3743532,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":" order swap"}
-{"order_id":3743532,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"order swap"}
-{"order_id":3675782,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3718425,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3738322,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
-{"order_id":3716535,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3726899,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3726899,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3722632,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3718266,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3674472,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3647328,"warehouse_name":"Delhi","city":"New Delhi","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Received Wrong Medicines"}
-{"order_id":3748891,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":" order swap issue / cx reecived complete wrong medicines"}
-{"order_id":3748891,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":" order swap issue / cx reecived complete wrong medicines"}
-{"order_id":3748891,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":" order swap issue / cx reecived complete wrong medicines"}
-{"order_id":3719039,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3719039,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3755039,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3730418,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3737837,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3579004,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Damaged or Defective Packaging"}
-{"order_id":3708705,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"No Longer Needed"}
-{"order_id":3708705,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"No Longer Needed"}
-{"order_id":3754817,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3754817,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
-{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
-{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
-{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
-{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
-{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
-{"order_id":3616552,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3690997,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3750868,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3697134,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3717044,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3634601,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3772032,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3769461,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3769461,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3744300,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3720638,"warehouse_name":"Mumbai","city":"Mumbai","remark":"QC completed successfully","reason":"Issue with cold storage items"}
-{"order_id":3756670,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3755282,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3765539,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3770123,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3747722,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3725462,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"missing item  empty box i need refund my money "}
-{"order_id":3707523,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3724914,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3758771,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3758771,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3711776,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3752292,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3713641,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3713641,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3627161,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3769663,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3691075,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3634917,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3732279,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3756281,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3729320,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3718013,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3712230,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3746530,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3771683,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3771683,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3771683,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Duplicate Order"}
-{"order_id":3785639,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
-{"order_id":3770976,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3777523,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3760392,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Box is empty "}
-{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3761359,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3757143,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Prescription Changed"}
-{"order_id":3727670,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3735893,"warehouse_name":"Bangalore","city":"Bangalore","remark":"cx received wrong medicine / now he wants difference amount","reason":"Received Wrong Medicines"}
-{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3764559,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3756911,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"Incomplete Order"}
-{"order_id":3756911,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3789083,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3715804,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3715804,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3757143,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3769048,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3769048,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3683680,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3745096,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"missing"}
-{"order_id":3772865,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3790222,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3774935,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3774935,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Damaged or Defective Packaging"}
-{"order_id":3780688,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3772605,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3755580,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"product not received completely missing "}
-{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"product not received completely missing "}
-{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3701380,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3701380,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3785603,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
-{"order_id":3747427,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3747427,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3747427,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
-{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
-{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
-{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
-{"order_id":3750149,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"others"}
-{"order_id":3750149,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"others"}
-{"order_id":3750149,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"others"}
-{"order_id":3776449,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3806566,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3802105,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3767115,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3767865,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"missing item "}
-{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"I ordered 15 box but I received 3box only, and the order was not complete. "}
-{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"I ordered 15 box but I received 3box only, and the order was not complete. "}
-{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"I ordered 15 box but I received 3box only, and the order was not complete. "}
-{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
-{"order_id":3805153,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"lipaglyn 4 mg ka box me medicine hi nahi h empty box ricive hua h usme dawa hi nahi h Maine box ki pic bhej di h"}
-{"order_id":3802948,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3696862,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3781890,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Damaged or Defective Packaging"}
-{"order_id":3780371,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Missing in box"}
-{"order_id":3807819,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"Incomplete Order"}
-{"order_id":3785413,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3785413,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
-{"order_id":3825886,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"No Longer Needed"}
-{"order_id":3525777,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
-{"order_id":3525777,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
-{"order_id":3531152,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3531152,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3531152,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3531152,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3531152,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3532721,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3537002,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3532151,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3525943,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3544813,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"No Longer Needed"}
 {"order_id":3544813,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
-{"order_id":3533795,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
 {"order_id":3542085,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3536838,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3524039,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer received correct order","reason":"Incomplete Order"}
 {"order_id":3541476,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3544516,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3527682,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3527682,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3548986,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3530010,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
 {"order_id":3548986,"warehouse_name":"Mumbai","city":"Mumbai","remark":"as per the update from logistics / cx received the parcel ","reason":"received wrong medicine addressed to someone else delivered."}
-{"order_id":3533232,"warehouse_name":"DocPharma","city":"Bangalore","remark":"doc pharma ","reason":"Incomplete Order"}
 {"order_id":3540215,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
-{"order_id":3532128,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3541927,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3540215,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3528172,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3534357,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"received only 1 quantity "}
 {"order_id":3545908,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3538819,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3541957,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":"NSZ for Return Pickup (RVP) - Unable to return order as pickup not possible(NSZ) and COG isn't high.","reason":"No Longer Needed"}
 {"order_id":3559560,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3530010,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3535809,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3563269,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3544280,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3532554,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Received Wrong Medicines"}
 {"order_id":3546926,"warehouse_name":"Delhi","city":"New Delhi","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Received Wrong Medicines"}
-{"order_id":3529249,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3543830,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3534357,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Incomplete Order"}
-{"order_id":3534357,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Received Wrong Medicines"}
 {"order_id":3541143,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
 {"order_id":3577442,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
 {"order_id":3577442,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
 {"order_id":3577442,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
-{"order_id":3529625,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3564285,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3558356,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
 {"order_id":3550080,"warehouse_name":"Delhi","city":"New Delhi","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
@@ -341,7 +37,6 @@
 {"order_id":3555439,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Received Wrong Medicines"}
 {"order_id":3543270,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3554868,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Validated","reason":"Received Wrong Medicines"}
-{"order_id":3530486,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3578504,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3580029,"warehouse_name":"DocPharma","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
 {"order_id":3554345,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Received Wrong Medicines"}
@@ -363,9 +58,6 @@
 {"order_id":3540978,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3589921,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3588394,"warehouse_name":"Delhi","city":"New Delhi","remark":"Damaged Medicine - Item received in damaged or unusable condition.","reason":"Issue with cold storage items"}
-{"order_id":3535559,"warehouse_name":"DocPharma","city":"Bangalore","remark":"cx received correct medicine as per update from the doc pharma ","reason":"Received Wrong Medicines"}
-{"order_id":3535559,"warehouse_name":"DocPharma","city":"Bangalore","remark":"cx received correct medicine as per update from the doc pharma ","reason":"Received Wrong Medicines"}
-{"order_id":3535559,"warehouse_name":"DocPharma","city":"Bangalore","remark":"cx received correct medicine as per update from the doc pharma ","reason":"Received Wrong Medicines"}
 {"order_id":3584434,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Received Wrong Medicines"}
 {"order_id":3580094,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"wrong varient recieved i ordered without flavour one but got cherry flavour "}
 {"order_id":3549749,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
@@ -373,7 +65,6 @@
 {"order_id":3573466,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Expired or Near Expiry Medicines"}
 {"order_id":3581152,"warehouse_name":"Delhi","city":"New Delhi","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
 {"order_id":3578715,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Dear Sir/MamValclovir 1000 3 boxes (30 Tablets) were ordered, but in one box there were no tablets. (Missing 10 tablets)"}
-{"order_id":3528089,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3582346,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3543795,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"one  empty box  received "}
 {"order_id":3543795,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"one  empty box  received "}
@@ -399,7 +90,6 @@
 {"order_id":3605672,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3577260,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3603254,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3535394,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
 {"order_id":3617165,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
 {"order_id":3617165,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3587106,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"No Longer Needed"}
@@ -441,13 +131,9 @@
 {"order_id":3576395,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3650334,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3627478,"warehouse_name":"DocPharma","city":"Bangalore","remark":"doc pharma / received the medicine ","reason":"Received Wrong Medicines"}
-{"order_id":3533586,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Received Wrong Medicines"}
 {"order_id":3641552,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3594104,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3528266,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
-{"order_id":3528266,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3630968,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3650846,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
 {"order_id":3596122,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3596122,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3607459,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
@@ -515,6 +201,8 @@
 {"order_id":3669606,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"this item missing my order"}
 {"order_id":3669606,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"this item missing my order "}
 {"order_id":3669606,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"this item missing my order many times"}
+{"order_id":3700638,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"did not recieve order in the box"}
+{"order_id":3700638,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"did not recieve order in the box"}
 {"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
 {"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
 {"order_id":3695102,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
@@ -532,10 +220,6 @@
 {"order_id":3641753,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
 {"order_id":3641753,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
 {"order_id":3641753,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
-{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
 {"order_id":3673670,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3691592,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3691592,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
@@ -577,6 +261,9 @@
 {"order_id":3657925,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
 {"order_id":3657925,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
 {"order_id":3571063,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Issue with cold storage items"}
+{"order_id":3650561,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3650561,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3650561,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
 {"order_id":3579970,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
 {"order_id":3671927,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3648839,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
@@ -585,15 +272,322 @@
 {"order_id":3718801,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
 {"order_id":3649562,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
 {"order_id":3696565,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
-{"order_id":3712309,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3712309,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
 {"order_id":3658218,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Damaged or Defective Packaging"}
 {"order_id":3658218,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Damaged or Defective Packaging"}
 {"order_id":3555782,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
 {"order_id":3705809,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
 {"order_id":3733993,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
 {"order_id":3726141,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3726141,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
-{"order_id":3749388,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
-{"order_id":3705216,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":null,"reason":"Incomplete Order"}
 {"order_id":3722632,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3554613,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer unreachable","reason":"Damaged or Defective Packaging"}
+{"order_id":3580094,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3586885,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3590704,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Substitutes not needed."}
+{"order_id":3605729,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer unreachable","reason":"Received Wrong Medicines"}
+{"order_id":3610110,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3651596,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer unreachable","reason":"Substitutes not needed."}
+{"order_id":3620655,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3594110,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3602256,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Damaged or Defective Packaging"}
+{"order_id":3602256,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Damaged or Defective Packaging"}
+{"order_id":3602256,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3650846,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3548196,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer unreachable","reason":"Damaged or Defective Packaging"}
+{"order_id":3624098,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer unreachable","reason":"Received Wrong Medicines"}
+{"order_id":3599018,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Issue with cold storage items"}
+{"order_id":3626848,"warehouse_name":"Delhi","city":"New Delhi","remark":"Damaged Medicine - Item received in damaged or unusable condition.","reason":"Issue with cold storage items"}
+{"order_id":3621416,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Damaged or Defective Packaging"}
+{"order_id":3636416,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3569746,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3556945,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Prescription Changed"}
+{"order_id":3663872,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Validated","reason":"Issue with cold storage items"}
+{"order_id":3700638,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"refund need to be process in wallet as BOD"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"refund need to be process in wallet as BOD"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"refund need to be process in wallet as BOD  "}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3649688,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Prescription Changed"}
+{"order_id":3684613,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3643832,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3702208,"warehouse_name":"Delhi","city":"New Delhi","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"Incomplete Order"}
+{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3685419,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3687299,"warehouse_name":"Kolkata","city":"Kolkata","remark":"QC completed successfully","reason":"Received Wrong Medicines"}
+{"order_id":3648356,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3645256,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3691779,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3699329,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3662423,"warehouse_name":"Mumbai","city":"Mumbai","remark":"OTP Cancelled","reason":"Order switch"}
+{"order_id":3673360,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3700598,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3641450,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Issue with cold storage items"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3681433,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3559560,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"No Longer Needed"}
+{"order_id":3559560,"warehouse_name":"Delhi","city":"New Delhi","remark":"QC completed successfully","reason":"Incomplete Order"}
+{"order_id":3665224,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3626579,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3706148,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Issue with cold storage items"}
+{"order_id":3665873,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
+{"order_id":3697399,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer unreachable","reason":"Received Wrong Medicines"}
+{"order_id":3695127,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3706804,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer received correct order","reason":"scoop missing"}
+{"order_id":3664920,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Manufacturer is different."}
+{"order_id":3712309,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3712309,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3714062,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3712149,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3678071,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3651712,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
+{"order_id":3715883,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3687221,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3687221,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3712451,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"No Longer Needed"}
+{"order_id":3732225,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
+{"order_id":3725639,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Issue with cold storage items"}
+{"order_id":3726013,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"order swap "}
+{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"order swap "}
+{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"order swap "}
+{"order_id":3702824,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"order swap "}
+{"order_id":3723181,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3730741,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3719837,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3719837,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Validated","reason":"No Longer Needed"}
+{"order_id":3606974,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Issue with cold storage items"}
+{"order_id":3721390,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3726141,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3655081,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3720210,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3673856,"warehouse_name":"Delhi","city":"New Delhi","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3728808,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
+{"order_id":3728808,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
+{"order_id":3728808,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
+{"order_id":3749388,"warehouse_name":"Delhi","city":"New Delhi","remark":"Return Details are insufficient","reason":"Incomplete Order"}
+{"order_id":3748292,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3699419,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3737141,"warehouse_name":"Delhi","city":"New Delhi","remark":"OTP Cancelled ","reason":"Issue with cold storage items"}
+{"order_id":3728825,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Validated","reason":"Received Wrong Medicines"}
+{"order_id":3705216,"warehouse_name":"Hyderabad WH","city":"Hyderabad","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3687259,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"Issue with cold storage items"}
+{"order_id":3687259,"warehouse_name":"Bangalore","city":"Bangalore","remark":"QC completed successfully","reason":"Issue with cold storage items"}
+{"order_id":3686482,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3677843,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"No Longer Needed"}
+{"order_id":3736539,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3728398,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"item missing in the box"}
+{"order_id":3728398,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"mising in the box"}
+{"order_id":3714676,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3714676,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3734372,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3711810,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3711810,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3713096,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3743532,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":" order swap"}
+{"order_id":3743532,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":" order swap"}
+{"order_id":3743532,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"order swap"}
+{"order_id":3675782,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3718425,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3738322,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3748949,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"order swap "}
+{"order_id":3716535,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3726899,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3726899,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3764734,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3722632,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3718266,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3674472,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3647328,"warehouse_name":"Delhi","city":"New Delhi","remark":"Wrong Medicine Delivered - Incorrect SKU sent instead of the ordered item.","reason":"Received Wrong Medicines"}
+{"order_id":3748891,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":" order swap issue / cx reecived complete wrong medicines"}
+{"order_id":3748891,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":" order swap issue / cx reecived complete wrong medicines"}
+{"order_id":3748891,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":" order swap issue / cx reecived complete wrong medicines"}
+{"order_id":3719039,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
+{"order_id":3719039,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3755039,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3730418,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3737837,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3579004,"warehouse_name":"Mumbai","city":"Mumbai","remark":"QC completed successfully","reason":"Damaged or Defective Packaging"}
+{"order_id":3708705,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"No Longer Needed"}
+{"order_id":3708705,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"No Longer Needed"}
+{"order_id":3754817,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3754817,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
+{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
+{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
+{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
+{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
+{"order_id":3654334,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Order Swap "}
+{"order_id":3616552,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3690997,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3750868,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
+{"order_id":3697134,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3717044,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3634601,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3772032,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3769461,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3769461,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3744300,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3720638,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Validated","reason":"Damaged or Defective Packaging"}
+{"order_id":3756670,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3755282,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3765539,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3770123,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3725275,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3747722,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3725462,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"missing item  empty box i need refund my money "}
+{"order_id":3707523,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3724914,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3758771,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3758771,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3711776,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3752292,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3713641,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3713641,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3627161,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3769663,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3691075,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3634917,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3732279,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3756281,"warehouse_name":"Delhi","city":"New Delhi","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3729320,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3718013,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3712230,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3746530,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3771683,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3771683,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3771683,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Duplicate Order"}
+{"order_id":3785639,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Customer received correct order","reason":"Incomplete Order"}
+{"order_id":3770976,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3777523,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3760392,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3716673,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3761359,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3757143,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Prescription Changed"}
+{"order_id":3727670,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3735893,"warehouse_name":"Bangalore","city":"Bangalore","remark":"cx received wrong medicine / now he wants difference amount","reason":"Received Wrong Medicines"}
+{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3753420,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3764559,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3756911,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"Incomplete Order"}
+{"order_id":3756911,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3789083,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3715804,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3715804,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3757143,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3769048,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3769048,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3683680,"warehouse_name":"Mumbai","city":"Mumbai","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3745096,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"missing"}
+{"order_id":3772865,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3790222,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3729706,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3774935,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3774935,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Damaged or Defective Packaging"}
+{"order_id":3780688,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3772605,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3755580,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"product not received completely missing "}
+{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"product not received completely missing "}
+{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3758627,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3701380,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3701380,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3784221,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3785603,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Issue with cold storage items"}
+{"order_id":3747427,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3747427,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3747427,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
+{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
+{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3791385,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3750149,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"others"}
+{"order_id":3750149,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"others"}
+{"order_id":3750149,"warehouse_name":"Lucknow","city":"Lucknow","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"others"}
+{"order_id":3776449,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
+{"order_id":3806566,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3796170,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3802105,"warehouse_name":"Bangalore","city":"Bangalore","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3767115,"warehouse_name":"Delhi","city":"New Delhi","remark":"Incomplete Order Delivered - One or more items missing from the delivered order.","reason":"Incomplete Order"}
+{"order_id":3767865,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"missing item "}
+{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"I ordered 15 box but I received 3box only, and the order was not complete. "}
+{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"I ordered 15 box but I received 3box only, and the order was not complete. "}
+{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"I ordered 15 box but I received 3box only, and the order was not complete. "}
+{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Incomplete Order"}
+{"order_id":3776579,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3805153,"warehouse_name":"Patna WH","city":"Patna","remark":null,"reason":"lipaglyn 4 mg ka box me medicine hi nahi h empty box ricive hua h usme dawa hi nahi h Maine box ki pic bhej di h"}
+{"order_id":3802948,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3696862,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3776751,"warehouse_name":"Mumbai","city":"Mumbai","remark":null,"reason":"Incomplete Order"}
+{"order_id":3781890,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Damaged or Defective Packaging"}
+{"order_id":3780371,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Missing in box"}
+{"order_id":3804526,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3807819,"warehouse_name":"Patna WH","city":"Patna","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3785413,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3785413,"warehouse_name":"Kolkata","city":"Kolkata","remark":null,"reason":"No Longer Needed"}
+{"order_id":3792224,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3705197,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3825886,"warehouse_name":"Kolkata","city":"Kolkata","remark":"Low-Value COG (< ₹100) - Amount refunded due to less COG and hence no RVP.","reason":"No Longer Needed"}
+{"order_id":3803074,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3772094,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3772094,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"No Longer Needed"}
+{"order_id":3789916,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Incomplete Order"}
+{"order_id":3779945,"warehouse_name":"Lucknow","city":"Lucknow","remark":null,"reason":"Incomplete Order"}
+{"order_id":3812936,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
+{"order_id":3758430,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3758430,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3758430,"warehouse_name":"Mumbai","city":"Mumbai","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3785667,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Received Wrong Medicines"}
+{"order_id":3758601,"warehouse_name":"Delhi","city":"New Delhi","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"five bottles are empty "}
+{"order_id":3745933,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"TYNOR E06 WRIST BRACE  missing item "}
+{"order_id":3822188,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3810065,"warehouse_name":"Bangalore","city":"Bangalore","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3776225,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3776225,"warehouse_name":"Lucknow","city":"Lucknow","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3810674,"warehouse_name":"Kolkata","city":"Kolkata","remark":"BOD Issued to Customer - Benefit of doubt provided, refund  issued.","reason":"Incomplete Order"}
+{"order_id":3804561,"warehouse_name":"Bangalore","city":"Bangalore","remark":null,"reason":"Damaged or Defective Packaging"}
+{"order_id":3813570,"warehouse_name":"Delhi","city":"New Delhi","remark":null,"reason":"Incomplete Order"}
