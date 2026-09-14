@@ -1,9 +1,13 @@
 {"internal_user_id": 0, "warehouse_name": "Delhi"}
+{"internal_user_id": 1, "warehouse_name": "Bangalore"}
+{"internal_user_id": 1, "warehouse_name": "Delhi"}
 {"internal_user_id": 1, "warehouse_name": "Mumbai"}
+{"internal_user_id": 2, "warehouse_name": "Bangalore"}
 {"internal_user_id": 2, "warehouse_name": "Delhi"}
 {"internal_user_id": 4, "warehouse_name": "Bangalore"}
 {"internal_user_id": 6, "warehouse_name": "Bangalore"}
 {"internal_user_id": 7, "warehouse_name": "Bangalore"}
+{"internal_user_id": 8, "warehouse_name": "Bangalore"}
 {"internal_user_id": 8, "warehouse_name": "Delhi"}
 {"internal_user_id": 9, "warehouse_name": "Bangalore"}
 {"internal_user_id": 10, "warehouse_name": "Bangalore"}
@@ -11,6 +15,7 @@
 {"internal_user_id": 12, "warehouse_name": "Bangalore"}
 {"internal_user_id": 13, "warehouse_name": "Bangalore"}
 {"internal_user_id": 14, "warehouse_name": "Bangalore"}
+{"internal_user_id": 15, "warehouse_name": "Bangalore"}
 {"internal_user_id": 15, "warehouse_name": "Delhi"}
 {"internal_user_id": 16, "warehouse_name": "Bangalore"}
 {"internal_user_id": 17, "warehouse_name": "Bangalore"}
@@ -22,7 +27,12 @@
 {"internal_user_id": 23, "warehouse_name": "Bangalore"}
 {"internal_user_id": 24, "warehouse_name": "Bangalore"}
 {"internal_user_id": 26, "warehouse_name": "Bangalore"}
+{"internal_user_id": 27, "warehouse_name": "Bangalore"}
 {"internal_user_id": 27, "warehouse_name": "Delhi"}
+{"internal_user_id": 27, "warehouse_name": "Mumbai"}
+{"internal_user_id": 27, "warehouse_name": "Lucknow"}
+{"internal_user_id": 27, "warehouse_name": "Kolkata"}
+{"internal_user_id": 27, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 28, "warehouse_name": "Bangalore"}
 {"internal_user_id": 29, "warehouse_name": "Bangalore"}
 {"internal_user_id": 30, "warehouse_name": "Bangalore"}
@@ -99,15 +109,34 @@
 {"internal_user_id": 106, "warehouse_name": "Bangalore"}
 {"internal_user_id": 107, "warehouse_name": "Bangalore"}
 {"internal_user_id": 108, "warehouse_name": "Bangalore"}
+{"internal_user_id": 109, "warehouse_name": "Bangalore"}
 {"internal_user_id": 109, "warehouse_name": "Delhi"}
 {"internal_user_id": 110, "warehouse_name": "Bangalore"}
+{"internal_user_id": 111, "warehouse_name": "Bangalore"}
 {"internal_user_id": 111, "warehouse_name": "Delhi"}
+{"internal_user_id": 111, "warehouse_name": "Mumbai"}
+{"internal_user_id": 111, "warehouse_name": "Kolkata"}
+{"internal_user_id": 111, "warehouse_name": "Lucknow"}
 {"internal_user_id": 112, "warehouse_name": "Bangalore"}
 {"internal_user_id": 113, "warehouse_name": "Bangalore"}
+{"internal_user_id": 114, "warehouse_name": "Bangalore"}
+{"internal_user_id": 114, "warehouse_name": "Delhi"}
+{"internal_user_id": 114, "warehouse_name": "Mumbai"}
+{"internal_user_id": 114, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 114, "warehouse_name": "Lucknow"}
+{"internal_user_id": 114, "warehouse_name": "Kolkata"}
+{"internal_user_id": 114, "warehouse_name": "Patna WH"}
+{"internal_user_id": 114, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 115, "warehouse_name": "Bangalore"}
 {"internal_user_id": 116, "warehouse_name": "Bangalore"}
+{"internal_user_id": 117, "warehouse_name": "Bangalore"}
+{"internal_user_id": 117, "warehouse_name": "Delhi"}
+{"internal_user_id": 117, "warehouse_name": "Mumbai"}
+{"internal_user_id": 117, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 117, "warehouse_name": "Kolkata"}
+{"internal_user_id": 117, "warehouse_name": "Lucknow"}
+{"internal_user_id": 117, "warehouse_name": "Patna WH"}
+{"internal_user_id": 117, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 118, "warehouse_name": "Bangalore"}
 {"internal_user_id": 119, "warehouse_name": "Bangalore"}
 {"internal_user_id": 120, "warehouse_name": "Bangalore"}
@@ -129,6 +158,7 @@
 {"internal_user_id": 136, "warehouse_name": "Bangalore"}
 {"internal_user_id": 137, "warehouse_name": "Bangalore"}
 {"internal_user_id": 138, "warehouse_name": "Bangalore"}
+{"internal_user_id": 139, "warehouse_name": "Bangalore"}
 {"internal_user_id": 139, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 140, "warehouse_name": "Bangalore"}
 {"internal_user_id": 141, "warehouse_name": "Bangalore"}
@@ -141,6 +171,7 @@
 {"internal_user_id": 149, "warehouse_name": "Bangalore"}
 {"internal_user_id": 155, "warehouse_name": "Bangalore"}
 {"internal_user_id": 156, "warehouse_name": "Bangalore"}
+{"internal_user_id": 157, "warehouse_name": "Bangalore"}
 {"internal_user_id": 157, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 158, "warehouse_name": "Bangalore"}
 {"internal_user_id": 159, "warehouse_name": "Bangalore"}
@@ -200,6 +231,7 @@
 {"internal_user_id": 213, "warehouse_name": "Bangalore"}
 {"internal_user_id": 214, "warehouse_name": "Bangalore"}
 {"internal_user_id": 215, "warehouse_name": "Bangalore"}
+{"internal_user_id": 216, "warehouse_name": "Bangalore"}
 {"internal_user_id": 216, "warehouse_name": "Delhi"}
 {"internal_user_id": 217, "warehouse_name": "Bangalore"}
 {"internal_user_id": 218, "warehouse_name": "Bangalore"}
@@ -328,9 +360,21 @@
 {"internal_user_id": 403, "warehouse_name": "Bangalore"}
 {"internal_user_id": 404, "warehouse_name": "Bangalore"}
 {"internal_user_id": 439, "warehouse_name": "Bangalore"}
+{"internal_user_id": 440, "warehouse_name": "Bangalore"}
+{"internal_user_id": 440, "warehouse_name": "Delhi"}
+{"internal_user_id": 440, "warehouse_name": "Mumbai"}
+{"internal_user_id": 440, "warehouse_name": "DocPharma"}
+{"internal_user_id": 440, "warehouse_name": "Lucknow"}
+{"internal_user_id": 440, "warehouse_name": "Kolkata"}
 {"internal_user_id": 440, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 441, "warehouse_name": "Bangalore"}
 {"internal_user_id": 442, "warehouse_name": "Bangalore"}
+{"internal_user_id": 554, "warehouse_name": "Delhi"}
+{"internal_user_id": 554, "warehouse_name": "Lucknow"}
+{"internal_user_id": 554, "warehouse_name": "Bangalore"}
+{"internal_user_id": 554, "warehouse_name": "Mumbai"}
+{"internal_user_id": 554, "warehouse_name": "Kolkata"}
+{"internal_user_id": 554, "warehouse_name": "Patna WH"}
 {"internal_user_id": 554, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 555, "warehouse_name": "Delhi"}
 {"internal_user_id": 556, "warehouse_name": "Delhi"}
@@ -374,6 +418,7 @@
 {"internal_user_id": 960, "warehouse_name": "Delhi"}
 {"internal_user_id": 961, "warehouse_name": "Delhi"}
 {"internal_user_id": 962, "warehouse_name": "Delhi"}
+{"internal_user_id": 965, "warehouse_name": "Bangalore"}
 {"internal_user_id": 965, "warehouse_name": "Delhi"}
 {"internal_user_id": 966, "warehouse_name": "Delhi"}
 {"internal_user_id": 967, "warehouse_name": "Bangalore"}
@@ -413,7 +458,9 @@
 {"internal_user_id": 1660, "warehouse_name": "Bangalore"}
 {"internal_user_id": 1661, "warehouse_name": "Bangalore"}
 {"internal_user_id": 1662, "warehouse_name": "Delhi"}
+{"internal_user_id": 1796, "warehouse_name": "Bangalore"}
 {"internal_user_id": 1796, "warehouse_name": "Delhi"}
+{"internal_user_id": 1796, "warehouse_name": "Mumbai"}
 {"internal_user_id": 1829, "warehouse_name": "Lucknow"}
 {"internal_user_id": 1895, "warehouse_name": "Bangalore"}
 {"internal_user_id": 1896, "warehouse_name": "Delhi"}
@@ -452,6 +499,7 @@
 {"internal_user_id": 2866, "warehouse_name": "Delhi"}
 {"internal_user_id": 2867, "warehouse_name": "Delhi"}
 {"internal_user_id": 2934, "warehouse_name": "Bangalore"}
+{"internal_user_id": 3035, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 3035, "warehouse_name": "Bangalore"}
 {"internal_user_id": 3102, "warehouse_name": "Delhi"}
 {"internal_user_id": 3168, "warehouse_name": "Delhi"}
@@ -460,6 +508,7 @@
 {"internal_user_id": 3203, "warehouse_name": "Delhi"}
 {"internal_user_id": 3204, "warehouse_name": "Delhi"}
 {"internal_user_id": 3205, "warehouse_name": "Delhi"}
+{"internal_user_id": 3238, "warehouse_name": "Bangalore"}
 {"internal_user_id": 3238, "warehouse_name": "Delhi"}
 {"internal_user_id": 3338, "warehouse_name": "Delhi"}
 {"internal_user_id": 3339, "warehouse_name": "Delhi"}
@@ -498,12 +547,22 @@
 {"internal_user_id": 4661, "warehouse_name": "Bangalore"}
 {"internal_user_id": 4694, "warehouse_name": "Bangalore"}
 {"internal_user_id": 4760, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 4760, "warehouse_name": "Delhi"}
+{"internal_user_id": 4760, "warehouse_name": "Mumbai"}
+{"internal_user_id": 4760, "warehouse_name": "Lucknow"}
+{"internal_user_id": 4760, "warehouse_name": "Bangalore"}
 {"internal_user_id": 4793, "warehouse_name": "Delhi"}
 {"internal_user_id": 5061, "warehouse_name": "Delhi"}
 {"internal_user_id": 5062, "warehouse_name": "Delhi"}
 {"internal_user_id": 5095, "warehouse_name": "Bangalore"}
 {"internal_user_id": 5128, "warehouse_name": "Delhi"}
 {"internal_user_id": 5129, "warehouse_name": "Delhi"}
+{"internal_user_id": 5229, "warehouse_name": "Mumbai"}
+{"internal_user_id": 5229, "warehouse_name": "Bangalore"}
+{"internal_user_id": 5229, "warehouse_name": "Delhi"}
+{"internal_user_id": 5229, "warehouse_name": "Hyderabad WH"}
+{"internal_user_id": 5229, "warehouse_name": "Kolkata"}
+{"internal_user_id": 5229, "warehouse_name": "Lucknow"}
 {"internal_user_id": 5229, "warehouse_name": "Patna WH"}
 {"internal_user_id": 5262, "warehouse_name": "Mumbai"}
 {"internal_user_id": 5296, "warehouse_name": "Mumbai"}
@@ -566,6 +625,13 @@
 {"internal_user_id": 6600, "warehouse_name": "Delhi"}
 {"internal_user_id": 6633, "warehouse_name": "Delhi"}
 {"internal_user_id": 6666, "warehouse_name": "Mumbai"}
+{"internal_user_id": 6699, "warehouse_name": "Bangalore"}
+{"internal_user_id": 6699, "warehouse_name": "Delhi"}
+{"internal_user_id": 6699, "warehouse_name": "Mumbai"}
+{"internal_user_id": 6699, "warehouse_name": "DocPharma"}
+{"internal_user_id": 6699, "warehouse_name": "Lucknow"}
+{"internal_user_id": 6699, "warehouse_name": "Kolkata"}
+{"internal_user_id": 6699, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 6699, "warehouse_name": "Patna WH"}
 {"internal_user_id": 6732, "warehouse_name": "Bangalore"}
 {"internal_user_id": 6799, "warehouse_name": "Bangalore"}
@@ -588,6 +654,13 @@
 {"internal_user_id": 7142, "warehouse_name": "Delhi"}
 {"internal_user_id": 7208, "warehouse_name": "Mumbai"}
 {"internal_user_id": 7241, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 7241, "warehouse_name": "Delhi"}
+{"internal_user_id": 7241, "warehouse_name": "Mumbai"}
+{"internal_user_id": 7241, "warehouse_name": "Lucknow"}
+{"internal_user_id": 7241, "warehouse_name": "Bangalore"}
+{"internal_user_id": 7241, "warehouse_name": "Kolkata"}
+{"internal_user_id": 7241, "warehouse_name": "Patna WH"}
+{"internal_user_id": 7241, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 7274, "warehouse_name": "Mumbai"}
 {"internal_user_id": 7275, "warehouse_name": "Mumbai"}
 {"internal_user_id": 7276, "warehouse_name": "Mumbai"}
@@ -608,6 +681,14 @@
 {"internal_user_id": 7488, "warehouse_name": "Mumbai"}
 {"internal_user_id": 7489, "warehouse_name": "Mumbai"}
 {"internal_user_id": 7557, "warehouse_name": "Bangalore"}
+{"internal_user_id": 7557, "warehouse_name": "Delhi"}
+{"internal_user_id": 7557, "warehouse_name": "Mumbai"}
+{"internal_user_id": 7557, "warehouse_name": "DocPharma"}
+{"internal_user_id": 7557, "warehouse_name": "Lucknow"}
+{"internal_user_id": 7557, "warehouse_name": "Kolkata"}
+{"internal_user_id": 7557, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 7557, "warehouse_name": "Patna WH"}
+{"internal_user_id": 7557, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 7656, "warehouse_name": "Bangalore"}
 {"internal_user_id": 7657, "warehouse_name": "Bangalore"}
 {"internal_user_id": 7658, "warehouse_name": "Bangalore"}
@@ -655,6 +736,7 @@
 {"internal_user_id": 8202, "warehouse_name": "Bangalore"}
 {"internal_user_id": 8271, "warehouse_name": "Lucknow"}
 {"internal_user_id": 8304, "warehouse_name": "Lucknow"}
+{"internal_user_id": 8337, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 8337, "warehouse_name": "Bangalore"}
 {"internal_user_id": 8370, "warehouse_name": "Mumbai"}
 {"internal_user_id": 8469, "warehouse_name": "Lucknow"}
@@ -665,6 +747,7 @@
 {"internal_user_id": 8635, "warehouse_name": "Delhi"}
 {"internal_user_id": 8636, "warehouse_name": "Delhi"}
 {"internal_user_id": 8669, "warehouse_name": "Kolkata"}
+{"internal_user_id": 8702, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 8702, "warehouse_name": "Bangalore"}
 {"internal_user_id": 8735, "warehouse_name": "Lucknow"}
 {"internal_user_id": 8768, "warehouse_name": "Lucknow"}
@@ -743,6 +826,7 @@
 {"internal_user_id": 9884, "warehouse_name": "Kolkata"}
 {"internal_user_id": 9885, "warehouse_name": "Kolkata"}
 {"internal_user_id": 9918, "warehouse_name": "Bangalore"}
+{"internal_user_id": 9919, "warehouse_name": "Bangalore"}
 {"internal_user_id": 9919, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 9952, "warehouse_name": "Kolkata"}
 {"internal_user_id": 9985, "warehouse_name": "Kolkata"}
@@ -794,10 +878,12 @@
 {"internal_user_id": 10770, "warehouse_name": "Mumbai"}
 {"internal_user_id": 10836, "warehouse_name": "Delhi"}
 {"internal_user_id": 10869, "warehouse_name": "Lucknow"}
+{"internal_user_id": 10902, "warehouse_name": "Mumbai"}
 {"internal_user_id": 10902, "warehouse_name": "Patna WH"}
 {"internal_user_id": 10970, "warehouse_name": "Kolkata"}
 {"internal_user_id": 11003, "warehouse_name": "Mumbai"}
 {"internal_user_id": 11039, "warehouse_name": "Delhi"}
+{"internal_user_id": 11039, "warehouse_name": "Patna WH"}
 {"internal_user_id": 11040, "warehouse_name": "Delhi"}
 {"internal_user_id": 11073, "warehouse_name": "Delhi"}
 {"internal_user_id": 11106, "warehouse_name": "Kolkata"}
@@ -843,15 +929,29 @@
 {"internal_user_id": 12623, "warehouse_name": "Delhi"}
 {"internal_user_id": 12656, "warehouse_name": "Delhi"}
 {"internal_user_id": 12689, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 12689, "warehouse_name": "Bangalore"}
+{"internal_user_id": 12689, "warehouse_name": "Delhi"}
+{"internal_user_id": 12689, "warehouse_name": "Mumbai"}
+{"internal_user_id": 12689, "warehouse_name": "Lucknow"}
+{"internal_user_id": 12689, "warehouse_name": "Kolkata"}
 {"internal_user_id": 12722, "warehouse_name": "Delhi"}
+{"internal_user_id": 12755, "warehouse_name": "Bangalore"}
 {"internal_user_id": 12755, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 12788, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 12821, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 12930, "warehouse_name": "Bangalore"}
+{"internal_user_id": 12930, "warehouse_name": "Delhi"}
+{"internal_user_id": 12930, "warehouse_name": "Mumbai"}
+{"internal_user_id": 12930, "warehouse_name": "Lucknow"}
+{"internal_user_id": 12930, "warehouse_name": "Kolkata"}
+{"internal_user_id": 12930, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 12930, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 12930, "warehouse_name": "Patna WH"}
 {"internal_user_id": 12997, "warehouse_name": "Kolkata"}
 {"internal_user_id": 12998, "warehouse_name": "Kolkata"}
 {"internal_user_id": 12999, "warehouse_name": "Kolkata"}
 {"internal_user_id": 13100, "warehouse_name": "Bangalore"}
+{"internal_user_id": 13100, "warehouse_name": "Delhi"}
 {"internal_user_id": 13133, "warehouse_name": "Bangalore"}
 {"internal_user_id": 13334, "warehouse_name": "Mumbai"}
 {"internal_user_id": 13367, "warehouse_name": "Mumbai"}
@@ -873,6 +973,14 @@
 {"internal_user_id": 14094, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 14127, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
 {"internal_user_id": 14162, "warehouse_name": "Bangalore"}
+{"internal_user_id": 14162, "warehouse_name": "Delhi"}
+{"internal_user_id": 14162, "warehouse_name": "DocPharma"}
+{"internal_user_id": 14162, "warehouse_name": "Hyderabad WH"}
+{"internal_user_id": 14162, "warehouse_name": "Kolkata"}
+{"internal_user_id": 14162, "warehouse_name": "Lucknow"}
+{"internal_user_id": 14162, "warehouse_name": "Mumbai"}
+{"internal_user_id": 14162, "warehouse_name": "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED"}
+{"internal_user_id": 14162, "warehouse_name": "Patna WH"}
 {"internal_user_id": 14261, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 14294, "warehouse_name": "Hyderabad WH"}
 {"internal_user_id": 14295, "warehouse_name": "Hyderabad WH"}

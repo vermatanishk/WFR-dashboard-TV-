@@ -1299,15 +1299,13 @@ HERE = Path(__file__).parent
 # order_id -> location, from ClickHouse marketplace_orders join (on order_id,
 # NOT the internal "id" column - see docstring above).
 ORDER_LOCATION = {
-    3766210: "Patna WH", 3650561: "Delhi", 3792169: "Mumbai", 3806211: "Bangalore",
-    3782279: "Lucknow", 3772094: "Bangalore", 3813570: "Delhi", 3789916: "Bangalore",
-    3705636: "Bangalore", 3820762: "Bangalore", 3794178: "Bangalore", 3836378: "Delhi",
-    3820746: "Kolkata", 3811759: "Mumbai", 3810674: "Kolkata", 3812936: "Delhi",
-    3776751: "Mumbai", 3776225: "Lucknow", 3745933: "Kolkata", 3822188: "Bangalore",
-    3705197: "Bangalore", 3753414: "Patna WH", 3804561: "Bangalore", 3810065: "Bangalore",
-    3758601: "Delhi", 3758430: "Mumbai", 3779945: "Lucknow", 3808045: "Delhi",
-    3702676: "Bangalore", 3823950: "Bangalore", 3803074: "Bangalore", 3440471: "Mumbai",
-    3833698: "Mumbai", 3579004: "Mumbai",
+    3819708: "Lucknow", 3824112: "Delhi", 3847522: "Lucknow", 3693873: "Patna WH",
+    3829134: "Delhi", 3843501: "Delhi", 3792169: "Mumbai", 3825475: "Mumbai",
+    3831489: "Lucknow", 3806211: "Bangalore", 3824101: "Lucknow", 3785919: "Lucknow",
+    3822789: "Mumbai", 3712514: "Mumbai", 3803411: "Lucknow", 3846060: "Mumbai",
+    3774854: "Delhi", 3771880: "Mumbai", 3757661: "Bangalore", 3831229: "Lucknow",
+    3846917: "Mumbai", 3769023: "Delhi", 3786777: "Bangalore", 3712309: "Bangalore",
+    3678008: "Kolkata", 3855327: "Bangalore", 3837370: "Mumbai", 3841218: "Delhi",
 }
 
 # Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
