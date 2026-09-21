@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-09-21T06:21:23Z",
+  "generated_at": "2026-09-21T06:28:07Z",
   "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2360 tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 79 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
   "pull_window": "Last 90 days (2026-06-23 to 2026-09-21), exhaustive within that window",
   "tab1": {
     "total_tickets": 2360,
     "total_orders": 2230,
     "total_returns": 2212,
-    "wh_accepted": 370,
-    "bod": 1709,
+    "wh_accepted": 357,
+    "bod": 1722,
     "considered_bod": 133,
     "no_return_record": 148,
-    "accept_pct": 16.6,
+    "accept_pct": 16.0,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
         "total": 1534,
         "pct_of_total": 65.0,
-        "accepted": 250,
-        "accept_pct": 16.3
+        "accepted": 238,
+        "accept_pct": 15.5
       },
       {
         "category": "Wrong Medicines",
         "total": 536,
         "pct_of_total": 22.7,
-        "accepted": 96,
-        "accept_pct": 17.9
+        "accepted": 95,
+        "accept_pct": 17.7
       },
       {
         "category": "Expiry Issue",
@@ -54,20 +54,20 @@
     {
       "location": "Delhi",
       "total": 687,
-      "accepted": 96,
-      "accept_pct": 14.0
+      "accepted": 90,
+      "accept_pct": 13.1
     },
     {
       "location": "Bangalore",
       "total": 569,
-      "accepted": 117,
-      "accept_pct": 20.6
+      "accepted": 115,
+      "accept_pct": 20.2
     },
     {
       "location": "Kolkata",
       "total": 324,
-      "accepted": 68,
-      "accept_pct": 21.0
+      "accepted": 63,
+      "accept_pct": 19.4
     },
     {
       "location": "Mumbai",
