@@ -1,4 +1,4 @@
-WFR Daily Report,2026-09-21T06:13:08Z
+WFR Daily Report,2026-09-21T06:21:23Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 259934,3890668,Missing/Wrong Qty,Bangalore,2026-09-19T07:11:37.000,Considered BOD,return exists but remark is empty and no WH-team Zoho comment found - treated as BOD by default (unconfirmed resolution),-,-
@@ -195,7 +195,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 260105,3926083,Expiry Issue,Bangalore,2026-09-20T07:10:43.000,Considered BOD,return exists but remark is empty and no WH-team Zoho comment found - treated as BOD by default (unconfirmed resolution),-,-
 253878,3477213,Expiry Issue,Delhi,2026-08-19T15:05:28.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""1- 2027 is good expiry medicine""",-,-
 259937,3890564,Expiry Issue,Lucknow,2026-09-19T07:17:11.000,Considered BOD,return exists but remark is empty and no WH-team Zoho comment found - treated as BOD by default (unconfirmed resolution),-,-
-259768,3874637,Expiry Issue,Lucknow,2026-09-18T06:58:57.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have  sent proper medicine but defferent expiry date to CX""",Payal.K_LKO,Shafeeque_lko
+259768,3874637,Expiry Issue,Lucknow,2026-09-18T06:58:57.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have  sent proper medicine but defferent expiry date to CX""",-,-
 255992,3602256,Expiry Issue,Bangalore,2026-08-30T07:12:33.000,BOD,"remark='Validated' - explicit customer-favor/policy resolution, not a WH-fault admission [no Warehouse-team comment verdict available yet - using ClickHouse remark]",-,-
 253264,3209638,Expiry Issue,Bangalore,2026-08-17T05:16:20.000,BOD,"remark='QC completed successfully' - explicit customer-favor/policy resolution, not a WH-fault admission [no Warehouse-team comment verdict available yet - using ClickHouse remark]",-,-
 255097,3573466,Expiry Issue,Delhi,2026-08-26T05:10:22.000,BOD,"remark='BOD Issued to Customer - Benefit of doubt provided, refund  issued.' - explicit customer-favor/policy resolution, not a WH-fault admission [no Warehouse-team comment verdict available yet - using ClickHouse remark]",-,-
@@ -2365,8 +2365,8 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 Summary
 Total tickets raised,2360
 Total refunds/returns issued,2212
-WH Accepted,371
-BOD,1708
+WH Accepted,370
+BOD,1709
 Considered BOD,133
 No return record (excluded from refund total),148
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes

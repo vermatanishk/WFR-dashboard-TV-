@@ -155,6 +155,15 @@ CASES = [
     ("253878", [wh("1- 2027 is good expiry medicine")], "denied"),
     ("209498", [wh("This batch is not available in our inventory")], "unrecognized"),
     ("212263", [wh("No batch available in our inventory")], "unrecognized"),
+
+    # Ticket 259768 (2026-09-21): a denial phrase always wins even when
+    # qualified by a clause that could otherwise read as an admission of the
+    # ticket's specific complaint (this one's an Expiry Issue ticket, and "but
+    # defferent expiry date" concedes the expiry complaint) - user-confirmed
+    # rule: no context-dependent overrides, "proper medicine" (or any denial
+    # phrase) always denies, full stop. Previously miscached as admitted from
+    # the routine's own earlier LLM judgment; this fixture locks the decision.
+    ("259768", [wh("We have  sent proper medicine but defferent expiry date to CX")], "denied"),
 ]
 
 
