@@ -58,16 +58,21 @@ categories via `CATEGORY_MAP` (Missing/Wrong Qty, Wrong Medicines, Expiry
 Issue, Damaged/Defective, Switch Orders). Extend the dict when new free-text
 variants show up.
 
-**Resolution** (per order with a ClickHouse return record):
-- `wh_accepted` — remark matches `WH_FAULT_CONFIRMED_REMARK_PATTERNS`
-  ("incomplete order delivered", "wrong medicine delivered", "wh confirmed",
-  etc.) → warehouse owns the mistake.
-- `bod` — remark matches `NON_WH_FAULT_REMARK_PATTERNS` ("bod issued",
-  "customer changed", "return in transit", etc.) → explicit customer-favor
-  resolution, not a WH fault.
-- `considered_bod` — remark present but ambiguous/unrecognized, and no
-  corroborating WH admission found in the Zoho comment thread → **defaults
-  to BOD but tracked separately** as unconfirmed, not folded into `bod`.
+**Resolution** (per order with a ClickHouse return record) is decided by the
+**Warehouse team's own Zoho comment first**, not the ClickHouse remark. This
+was a major fix (2026-09-21) — see "Warehouse-comment classifier" below for
+why the remark can't be trusted alone. Priority in `classify()`
+([pipeline/build_full_dataset.py](pipeline/build_full_dataset.py)):
+1. If `wh_text_check.json` has a `denied`/`admitted` verdict for this ticket
+   → that decides it outright (`bod`/`wh_accepted`), full stop, regardless
+   of what the ClickHouse remark says.
+2. Otherwise (no cache entry yet, or verdict is `no_wh_comment`/
+   `unrecognized`) → fall back to the ClickHouse remark patterns:
+   - `wh_accepted` — remark matches `WH_FAULT_CONFIRMED_REMARK_PATTERNS`.
+   - `bod` — remark matches `NON_WH_FAULT_REMARK_PATTERNS`.
+   - `considered_bod` — remark ambiguous/empty and no WH-comment verdict
+     available → **defaults to BOD but tracked separately** as unconfirmed,
+     never folded into `bod`.
 - `no_return_record` — no return row at all, excluded from the refund total.
 
 By construction: `wh_accepted + bod + considered_bod == total returns
@@ -75,10 +80,44 @@ issued` — this is checked explicitly (`reconciles` flag in
 `pipeline/build_report.py`). If it's ever `False`, something in the
 classification logic broke — investigate before shipping a refresh.
 
-**Fallback for missing remarks**: `pipeline/zoho_raw90/wh_text_check.json`
-catches the ~10% of cases where ClickHouse's remark is blank/ambiguous but
-the WH team admitted fault directly in the Zoho comment thread. Populated
-incrementally — never re-checks a `ticket_id` already present.
+### Warehouse-comment classifier (the real source of truth)
+
+[pipeline/wh_comment_classifier.py](pipeline/wh_comment_classifier.py) reads
+a ticket's Warehouse-role ("roleName" starting with "Warehouse") Zoho
+comments and returns a verdict: `admitted` (genuine first-person fault
+admission, e.g. "we have sent wrong sku/short qty to Cx"), `denied` (the
+stock-denial template, "We have sent proper medicine to Cx", plus expiry/
+cold-chain/batch variants), `no_wh_comment` (nobody from Warehouse ever
+commented), or `unrecognized` (WH commented but it's neither template —
+footage-not-found, a duplicate-ticket note, etc. — flagged for manual
+review, never guessed). Test fixtures for every known trap case (a request
+for evidence containing an admission-looking substring, a denial-then-
+later-admission thread, batch-disclaim notes, etc.) live in
+[pipeline/test_wh_comment_classifier.py](pipeline/test_wh_comment_classifier.py)
+— run it after touching either phrase table; every fixture must pass.
+
+**Why this exists**: investigating a user report on 2026-09-21, live-
+checking real `wh_accepted` tickets that had never been manually
+spot-checked found ~80% were actually explicit Warehouse denials (several
+with the support L2 agent's own note literally reading "BOD Issued to
+Customer" right below the denial) that the ClickHouse-remark-based logic
+was still crediting to the warehouse. The remark field tracks "was this
+refunded," not "whose fault was it" — it cannot be trusted as sole ground
+truth, ever, for any ticket that hasn't had its actual WH comment read.
+
+**`pipeline/zoho_raw90/wh_text_check.json`** stores the verdict per
+ticket_id: `{"verdict", "evidence", "reason", "order_id", "admitted"}` (the
+last one is a legacy bool kept for older tooling). Grows incrementally —
+never re-checks a `ticket_id` already present. As of 2026-09-21 it covers
+~833 of ~2200 tickets with a return record (backfill is ongoing, same
+incremental pattern as everything else in this pipeline — prioritize
+`wh_accepted` tickets first since a wrong credit to the warehouse is the
+costlier error). **If asked to keep backfilling**: pull the ticket's
+internal Zoho `id` via `searchTickets` (batch `ticketNumber` values, up to
+~15-20 per call — the `ticket_id` in our data is Zoho's short
+`ticketNumber`, NOT the internal `id` `getTicketComments` needs), fetch its
+comments, run `classify_wh_comments()`, append to the cache with the schema
+above. Re-run `build_full_dataset.py` after any batch to pick it up.
 
 **EOD tab** (`pipeline/build_eod.py`) is separate and stricter: T-2 tickets
 only (2-day lag so WH has time to comment), classified purely by whether a
@@ -122,6 +161,13 @@ documents.
 
 ## Known caveats to keep surfacing, not hide
 
+- **`wh_accepted`/`bod` counts are only as reliable as the WH-comment
+  backfill coverage** (~38% as of 2026-09-21, growing incrementally — check
+  `wh_text_check.json`'s entry count against total tickets with a return
+  record before treating a refresh's numbers as fully verified). Any ticket
+  still on the ClickHouse-remark fallback carries the same risk the
+  2026-09-21 fix uncovered — don't assume it's fixed just because the code
+  is; check coverage.
 - `considered_bod` is a default-when-ambiguous bucket, not a confirmed
   classification — always show it as its own line, never merge into `bod`.
 - Personnel leaderboards should stay **rate-based** (errors / total
