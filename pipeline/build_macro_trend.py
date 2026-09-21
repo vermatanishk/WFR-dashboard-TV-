@@ -1,9 +1,11 @@
 """
 Builds pipeline/macro_trend.json for Tab 1's "Everything" macro trend table -
 a filter-free, whole-network view: Delivered Orders, Return Requested (%% of
-delivered), and WH Accepted broken down into the 5 categories that sum to it.
-No date range / category / location filters apply to this table on purpose -
-it's the one place on the dashboard meant to show the unfiltered whole picture.
+delivered), WH Accepted, Total WFR (WH-accepted errors per 1,000 delivered
+orders - highlighted yellow on the dashboard), and WH Accepted broken down
+into the 5 categories that sum to it. No date range / category / location
+filters apply to this table on purpose - it's the one place on the
+dashboard meant to show the unfiltered whole picture.
 
 Columns: 3-month total | last-month total | last-2-weeks total | then one
 column per day, most recent complete day first, going backwards. The current
@@ -51,6 +53,12 @@ def accepted_cell(raised, accepted):
 def rate_cell(raised, denom):
     pct = f"{round(100 * raised / denom, 1)}%" if denom else "–"
     return {"raised": raised, "denom": denom, "pct": pct, "text": f"{raised} | {pct}" if denom else f"{raised} | –"}
+
+
+def wfr_pto_cell(accepted, delivered):
+    # WFR PTO = WH-accepted errors per thousand delivered orders.
+    value = round(1000 * accepted / delivered, 2) if delivered else None
+    return {"accepted": accepted, "delivered": delivered, "value": value, "text": f"{value:.2f}" if value is not None else "–"}
 
 
 def sum_cells(cells):
@@ -119,6 +127,17 @@ def main():
     })
     rows.append({**build_row("Return Requested", "(Total Raised | % of delivered orders)", is_rate_row=True), "kind": "rate"})
     rows.append({**build_row("WH Accepted", "(Total raised | WH accepted (% of raised))", is_rate_row=False), "kind": "accept"})
+
+    def wfr_pto_for(day_list):
+        accepted = sum(accepted_by_day[d] for d in day_list)
+        return wfr_pto_cell(accepted, delivered_sum(day_list))
+
+    rows.append({
+        "label": "Total WFR", "sub": "(WH-accepted errors per 1,000 delivered orders)", "kind": "wfr_pto",
+        "3mo": wfr_pto_for(days), "1mo": wfr_pto_for(window(30)), "2wk": wfr_pto_for(window(14)),
+        "daily": {d: wfr_pto_for([d]) for d in days},
+    })
+
     for cat_key, cat_label in CATEGORY_ORDER:
         rows.append({**build_row(cat_label, "(Raised | Accepted count (Accept %))", is_rate_row=False, cat_key=cat_key), "kind": "accept"})
 

@@ -183,6 +183,7 @@
   table.wfr-macro-table .barrier { border-right: 2px solid var(--baseline); }
   table.wfr-macro-table thead .frozen { z-index: 4; }
   .wfr-macro-sub { font-size: 10.5px; color: var(--text-muted); font-weight: 400; white-space: normal; margin-top: 2px; }
+  table.wfr-macro-table tr.wfr-macro-highlight td { background: color-mix(in srgb, var(--status-warning) 30%, var(--surface-1)); font-weight: 700; }
 
   .wfr-topline { background: linear-gradient(135deg, color-mix(in srgb, var(--series-1) 10%, var(--surface-1)), var(--surface-1)); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; }
   .wfr-topline-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
@@ -1278,7 +1279,7 @@ function renderMacroTrend() {
     const labelHtml = row.sub
       ? `<div>${row.label}</div><div class="wfr-macro-sub">${row.sub}</div>`
       : row.label;
-    return `<tr>
+    return `<tr class="${row.kind === 'wfr_pto' ? 'wfr-macro-highlight' : ''}">
       <td class="frozen frozen-label">${labelHtml}</td>
       <td class="frozen frozen-3mo num">${cellText(row['3mo'])}</td>
       <td class="frozen frozen-1mo num">${cellText(row['1mo'])}</td>
