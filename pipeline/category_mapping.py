@@ -47,13 +47,15 @@ def normalize(sub_disposition: str) -> str | None:
     return CATEGORY_MAP.get(key)
 
 
-# ClickHouse "Accepted" logic (Section 2.2 of the requirements doc).
-# An order is Accepted if it has a marketplace_return_request row where:
-#   - the item-level `reason` matches the category's reason pattern, AND
-#   - the request-level `remark` matches a WH-fault-CONFIRMED pattern
-#     (explicitly excluding policy/BOD/CX-side remarks).
-# This is our own reconstruction (validated against live samples on 2026-07-27) —
-# review with ops before treating as final ground truth.
+# NOTE: resolution (WH-Accepted / BOD / Considered BOD) is decided entirely
+# by the Warehouse-team's own Zoho comment - see classify() in
+# build_full_dataset.py and pipeline/wh_comment_classifier.py. This file
+# used to also carry a ClickHouse-remark-based resolution path
+# (WH_FAULT_CONFIRMED_REMARK_PATTERNS / NON_WH_FAULT_REMARK_PATTERNS /
+# classify_resolution()); it was removed on 2026-09-21 because the remark
+# field tracks "was this refunded," not "whose fault was it," and repeatedly
+# contradicted the Warehouse team's own statement on real tickets. Do not
+# reintroduce a remark-based fallback into the resolution logic.
 
 CATEGORY_REASON_PATTERNS = {
     "Missing/Wrong Qty": ["%incomplete order%", "%missing%", "%short%", "%less quantity%"],
@@ -62,44 +64,3 @@ CATEGORY_REASON_PATTERNS = {
     "Damaged/Defective": ["%damage%", "%defective%", "%spill%", "%spoil%", "%broken%"],
     "Switch Orders": ["%switch%", "%swap%"],
 }
-
-WH_FAULT_CONFIRMED_REMARK_PATTERNS = [
-    "%incomplete order delivered%",
-    "%wrong medicine delivered%",
-    "%damaged medicine%",
-    "%mrp mismatch%",
-    "%wh confirmed%",
-]
-
-# Remarks that look plausible but do NOT confirm WH fault - excluded on purpose.
-NON_WH_FAULT_REMARK_PATTERNS = [
-    "%bod issued%",
-    "%low-value cog%",
-    "%nsz%",
-    "%customer unreachable%",
-    "%customer received correct%",
-    "%customer changed%",
-    "%return in transit%",
-    "%expiry >%month%",
-    "%validated%",  # ambiguous - doesn't explicitly say WH-fault
-    "%qc completed successfully%",  # generic return-QC pass, not a fault admission
-]
-
-# Tab 1 "resolution" bucketing (WH-Accepted vs BOD), operationally simpler than
-# the category-level Accepted logic above: any order WITH a marketplace_return_request
-# row is either WH-Accepted (remark matches WH_FAULT_CONFIRMED_REMARK_PATTERNS) or,
-# for everything else with a return on file (ambiguous remark, null remark, or an
-# explicit customer-favor remark like "BOD Issued"/"Low-Value COG"/"Return In Transit"),
-# bucketed as BOD. This is a deliberate simplification so
-# WH Accepted + BOD == Total refunds/returns issued, always, by construction.
-# Orders with NO return_request row at all are tracked separately as "no_return_record"
-# and excluded from the refund/return total (nothing was actually processed).
-def classify_resolution(reason: str | None, remark: str | None, has_return_record: bool) -> str:
-    if not has_return_record:
-        return "no_return_record"
-    remark_l = (remark or "").lower()
-    for pat in WH_FAULT_CONFIRMED_REMARK_PATTERNS:
-        needle = pat.strip("%")
-        if needle in remark_l:
-            return "wh_accepted"
-    return "bod"

@@ -8,7 +8,6 @@ import json
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from collections import defaultdict
-from category_mapping import WH_FAULT_CONFIRMED_REMARK_PATTERNS, NON_WH_FAULT_REMARK_PATTERNS
 
 HERE = Path(__file__).parent
 
@@ -53,29 +52,21 @@ for r in qc_raw:
 
 
 # Text-confirmed WH admission/denial reads from Zoho ticket comments. Keyed by
-# ticket_id (string). {"admitted": bool, "wh_comment": str|null, "reason": str}.
+# ticket_id (string). {"verdict", "evidence", "reason", "order_id", "admitted"}.
 # Populated incrementally by the scheduled routine (see its instructions) -
 # grows over time, never re-checks a ticket_id already present. Same
 # admission/request-phrase logic as the EOD tab's build_eod.py classify(),
 # applied here to the full 90-day set instead of just T-2.
 #
-# THIS IS NOW CHECKED FOR EVERY TICKET, NOT JUST AMBIGUOUS-REMARK ONES, AND
-# WINS ON CONFLICT WITH THE CLICKHOUSE REMARK (fixed 2026-09-18). Previously
-# this cache was only consulted when the ClickHouse remark itself didn't match
-# a WH_FAULT_CONFIRMED/NON_WH_FAULT pattern - so a definitive remark match
-# short-circuited classify() before it ever looked at what the Warehouse team
-# actually said on the ticket. That produced real, confirmed contradictions in
-# both directions: tickets where WH explicitly wrote "we have sent wrong sku"
-# (a genuine admission) but the ClickHouse remark independently said something
-# BOD-flavored (e.g. "return in transit"), silently classified `bod`; and
-# tickets where WH explicitly wrote "We have sent proper medicine to Cx" (the
-# standard denial) but the remark independently matched a WH-fault pattern,
-# silently classified `wh_accepted`. The remark and the Zoho comment are two
-# independently-typed signals from two different people/systems, and neither
-# one being wrong is rare - what's wrong is trusting the remark unconditionally
-# without ever cross-checking the WH team's own words. The Zoho comment is the
-# more direct, human-confirmed signal (it's the floor team's own statement,
-# not a back-office processing tag), so it wins when both exist and disagree.
+# THIS IS THE ONLY SIGNAL classify() uses (fixed 2026-09-21 - the ClickHouse
+# `marketplace_return_request.remark` field was removed from this function
+# entirely). The remark tracks "was this refunded," not "whose fault was
+# it" - live-checking real tickets found it flatly contradicted the
+# Warehouse team's own Zoho comment often enough (in both directions) that
+# it could not be trusted as a fallback signal, only as a red flag that a
+# ticket needs its actual comment read. A ticket without a confirmed
+# `admitted`/`denied` verdict is `considered_bod` - explicitly unconfirmed,
+# never silently resolved off the remark.
 wh_text_checks = {}
 _wh_text_path = HERE / "zoho_raw90/wh_text_check.json"
 if _wh_text_path.exists():
@@ -90,53 +81,24 @@ def classify(order_id, ticket_id=None):
     locations = {(r["warehouse_name"], r["city"]) for r in rows if r["warehouse_name"]}
     location = ", ".join(n for n, c in locations) if locations else "Unknown"
 
-    remarks = [r["remark"] for r in rows if r["remark"]]
-    remark_l = " | ".join(remarks).lower()
-
-    remark_signal = None
-    remark_detail = None
-    for pat in WH_FAULT_CONFIRMED_REMARK_PATTERNS:
-        needle = pat.strip("%")
-        if needle in remark_l:
-            remark_signal = "wh_accepted"
-            remark_detail = f"remark matches WH-fault-confirmed pattern ('{needle}')"
-            break
-    if remark_signal is None:
-        for pat in NON_WH_FAULT_REMARK_PATTERNS:
-            needle = pat.strip("%")
-            if needle in remark_l:
-                remark_signal = "bod"
-                remark_detail = f"remark='{remarks[0]}' - explicit customer-favor/policy resolution, not a WH-fault admission"
-                break
-
-    # Zoho WH-team comment text (classified by wh_comment_classifier.py, see
-    # backfill_wh_comments.py) - checked first, for every ticket that's been
-    # backfilled. Wins over the ClickHouse remark on conflict (see note above).
-    # 'admitted'/'denied' are the only verdicts that decide resolution outright;
-    # 'no_wh_comment'/'unrecognized' (or no cache entry at all - not yet
-    # backfilled) fall through to the remark-based fallback below.
+    # Warehouse-team Zoho comment verdict (classify_wh_comments(), see
+    # backfill instructions in CLAUDE.md) is the sole signal - only
+    # 'admitted'/'denied' decide resolution outright.
     check = wh_text_checks.get(ticket_id) if ticket_id else None
     verdict = check.get("verdict") if check else None
     if verdict == "admitted":
-        conflict = f" (ClickHouse remark disagreed: {remark_detail})" if remark_signal == "bod" else ""
-        return "wh_accepted", location, f"Warehouse-team Zoho comment is a genuine admission: \"{check.get('evidence')}\"{conflict}"
+        return "wh_accepted", location, f"Warehouse-team Zoho comment is a genuine admission: \"{check.get('evidence')}\""
     if verdict == "denied":
-        conflict = f" (ClickHouse remark disagreed: {remark_detail})" if remark_signal == "wh_accepted" else ""
-        return "bod", location, f"Warehouse-team Zoho comment is a denial/non-admission: \"{check.get('evidence')}\"{conflict}"
+        return "bod", location, f"Warehouse-team Zoho comment is a denial/non-admission: \"{check.get('evidence')}\""
 
-    # No definitive WH-comment verdict yet (not backfilled, no Warehouse
-    # comment on the ticket, or the comment didn't match a known pattern) -
-    # fall back to the ClickHouse remark, but say so explicitly so this is
-    # distinguishable on the dashboard from a real text-confirmed result.
-    fallback_note = " [no Warehouse-team comment verdict available yet - using ClickHouse remark]"
-    if remark_signal == "wh_accepted":
-        return "wh_accepted", location, remark_detail + fallback_note
-    if remark_signal == "bod":
-        return "bod", location, remark_detail + fallback_note
-
-    if remarks:
-        return "considered_bod", location, f"remark='{remarks[0]}' is ambiguous/unrecognized and no WH-team Zoho comment found - treated as BOD by default"
-    return "considered_bod", location, "return exists but remark is empty and no WH-team Zoho comment found - treated as BOD by default (unconfirmed resolution)"
+    # No confirmed WH-comment verdict (not yet backfilled, no Warehouse
+    # comment on the ticket, or the comment matched neither known pattern) -
+    # tracked as unconfirmed, never resolved off the ClickHouse remark.
+    if verdict == "no_wh_comment":
+        return "considered_bod", location, "No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution)"
+    if verdict == "unrecognized":
+        return "considered_bod", location, f"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: \"{check.get('evidence')}\" - treated as BOD by default (unconfirmed resolution)"
+    return "considered_bod", location, "Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution)"
 
 
 def picker_str(order_id):
@@ -231,7 +193,7 @@ data = {
     "sheet_source": "Zoho Desk API (live) via connected MCP - org 60026539570, department Support",
     "clickhouse_service": "PRx Nucleus",
     "pull_window": f"Last 90 days ({_window_start.strftime('%Y-%m-%d')} to {_now.strftime('%Y-%m-%d')}), exhaustive within that window",
-    "sample_note": f"Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - {len(out_tickets)} tickets across 5 categories, not a sample. Location and resolution (WH-Accepted / BOD / Considered BOD) are computed live against ClickHouse for every order. 'Considered BOD' = a return exists but the remark was ambiguous or blank, so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window."
+    "sample_note": f"Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - {len(out_tickets)} tickets across 5 categories, not a sample. Location is computed live against ClickHouse for every order. Resolution (WH-Accepted / BOD / Considered BOD) is decided solely by the Warehouse team's own Zoho comment, never the ClickHouse remark. 'Considered BOD' = no confirmed Warehouse-comment verdict yet (no comment, or the comment matched neither the admission nor denial pattern), so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window."
     + (f" {len(no_order_id_tickets)} tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable)." if no_order_id_tickets else ""),
     "tickets": out_tickets,
 }

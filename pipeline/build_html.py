@@ -16,6 +16,7 @@ files = {
     "__TICKETS_JSON__": "data.json",
     "__PERSONNEL_JSON__": "personnel.json",
     "__TREND_JSON__": "trend.json",
+    "__MACRO_TREND_JSON__": "macro_trend.json",
     "__ORDERS_BY_DAY_JSON__": "orders_by_day.json",
     "__ORDERS_BY_DAY_LOCATION_JSON__": "orders_by_day_location.json",
     "__EOD_JSON__": "data_eod.json",
