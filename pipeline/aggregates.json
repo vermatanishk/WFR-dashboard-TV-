@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-09-23T12:36:41Z",
+  "generated_at": "2026-09-23T12:47:00Z",
   "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2378 tickets across 5 categories, not a sample. Location is computed live against ClickHouse for every order. Resolution (WH-Accepted / BOD / Considered BOD) is decided solely by the Warehouse team's own Zoho comment, never the ClickHouse remark. 'Considered BOD' = no confirmed Warehouse-comment verdict yet (no comment, or the comment matched neither the admission nor denial pattern), so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 82 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
   "pull_window": "Last 90 days (2026-06-25 to 2026-09-23), exhaustive within that window",
   "tab1": {
     "total_tickets": 2378,
     "total_orders": 2241,
-    "total_returns": 2223,
-    "wh_accepted": 265,
-    "bod": 641,
-    "considered_bod": 1317,
-    "no_return_record": 155,
-    "accept_pct": 11.8,
+    "total_returns": 2235,
+    "wh_accepted": 266,
+    "bod": 643,
+    "considered_bod": 1326,
+    "no_return_record": 143,
+    "accept_pct": 11.9,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
         "total": 1551,
         "pct_of_total": 65.2,
-        "accepted": 190,
+        "accepted": 191,
         "accept_pct": 12.3
       },
       {
@@ -53,25 +53,25 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 691,
+      "total": 697,
       "accepted": 59,
       "accept_pct": 8.5
     },
     {
       "location": "Bangalore",
-      "total": 577,
-      "accepted": 96,
-      "accept_pct": 16.6
+      "total": 580,
+      "accepted": 97,
+      "accept_pct": 16.7
     },
     {
       "location": "Kolkata",
-      "total": 325,
+      "total": 327,
       "accepted": 47,
-      "accept_pct": 14.5
+      "accept_pct": 14.4
     },
     {
       "location": "Mumbai",
-      "total": 301,
+      "total": 302,
       "accepted": 38,
       "accept_pct": 12.6
     },
@@ -83,7 +83,7 @@
     },
     {
       "location": "Unknown",
-      "total": 155,
+      "total": 143,
       "accepted": 0,
       "accept_pct": 0.0
     },
