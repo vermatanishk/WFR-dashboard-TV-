@@ -1,4 +1,4 @@
-WFR Daily Report,2026-09-23T12:18:33Z
+WFR Daily Report,2026-09-23T12:36:41Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 259408,3824101,Missing/Wrong Qty,Lucknow,2026-09-16T06:15:51.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
@@ -84,7 +84,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 260001,3911028,Missing/Wrong Qty,Bangalore,2026-09-19T12:21:35.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx Naveen""",-,-
 260013,3938211,Missing/Wrong Qty,Bangalore,2026-09-19T13:03:16.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent Wrong medicine to cx Naveen""",Shivaraj_BLRWH,Shwetha_BLRWH
 259959,3857837,Missing/Wrong Qty,Bangalore,2026-09-19T08:26:46.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx Naveen""",-,-
-260115,3953902,Missing/Wrong Qty,Unknown,2026-09-20T08:08:59.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+260115,3953902,Missing/Wrong Qty,Bangalore,2026-09-20T08:08:59.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to cx""",Pavithra,Asha_BLRWH
 259246,3847579,Missing/Wrong Qty,Delhi,2026-09-15T08:06:02.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 259935,3913678,Missing/Wrong Qty,Bangalore,2026-09-19T07:13:16.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx Naveen""",-,-
 259002,3850442,Missing/Wrong Qty,Bangalore,2026-09-14T05:19:16.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX""",Shwetha1_BLRWH,Asha_BLRWH
@@ -2382,9 +2382,9 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 
 Summary
 Total tickets raised,2378
-Total refunds/returns issued,2222
-WH Accepted,264
+Total refunds/returns issued,2223
+WH Accepted,265
 BOD,641
 Considered BOD,1317
-No return record (excluded from refund total),156
+No return record (excluded from refund total),155
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes

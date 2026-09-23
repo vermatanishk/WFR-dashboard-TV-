@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-23T12:18:33Z",
+  "generated_at": "2026-09-23T12:36:41Z",
   "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2378 tickets across 5 categories, not a sample. Location is computed live against ClickHouse for every order. Resolution (WH-Accepted / BOD / Considered BOD) is decided solely by the Warehouse team's own Zoho comment, never the ClickHouse remark. 'Considered BOD' = no confirmed Warehouse-comment verdict yet (no comment, or the comment matched neither the admission nor denial pattern), so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 82 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
   "pull_window": "Last 90 days (2026-06-25 to 2026-09-23), exhaustive within that window",
   "tab1": {
     "total_tickets": 2378,
     "total_orders": 2241,
-    "total_returns": 2222,
-    "wh_accepted": 264,
+    "total_returns": 2223,
+    "wh_accepted": 265,
     "bod": 641,
     "considered_bod": 1317,
-    "no_return_record": 156,
+    "no_return_record": 155,
     "accept_pct": 11.8,
     "reconciles": true,
     "by_category": [
@@ -17,8 +17,8 @@
         "category": "Missing/Wrong Qty",
         "total": 1551,
         "pct_of_total": 65.2,
-        "accepted": 189,
-        "accept_pct": 12.2
+        "accepted": 190,
+        "accept_pct": 12.3
       },
       {
         "category": "Wrong Medicines",
@@ -59,9 +59,9 @@
     },
     {
       "location": "Bangalore",
-      "total": 576,
-      "accepted": 95,
-      "accept_pct": 16.5
+      "total": 577,
+      "accepted": 96,
+      "accept_pct": 16.6
     },
     {
       "location": "Kolkata",
@@ -83,7 +83,7 @@
     },
     {
       "location": "Unknown",
-      "total": 156,
+      "total": 155,
       "accepted": 0,
       "accept_pct": 0.0
     },
