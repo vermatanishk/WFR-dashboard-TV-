@@ -145,6 +145,30 @@ medicine to Cx"). Read the full comment thread before classifying — the
 file's dated run-notes document real near-misses (denial-looking text that's
 actually neutral, admissions followed by unrelated later BOD notes, etc.).
 
+**Always sync EOD's verdicts into `wh_text_check.json` too** (found missing
+on 2026-09-23, backfilled retroactively for one date as a fix). `data_eod.json`
+is overwritten fresh each run with only that day's T-2 tickets - the WH-comment
+read done for every EOD ticket is real, verified work, but if it's never
+copied into `wh_text_check.json` it (a) never benefits Tab 1's numbers, so a
+ticket can show a confirmed EOD admission while Tab 1 still shows it
+uncached, and (b) gets silently lost the next day when `data_eod.json` is
+overwritten. After running `build_eod.py`, add each of that run's tickets to
+`wh_text_check.json` too (`admitted` if `wh_accepted_text` is true, `denied`
+if it has a comment that isn't an admission, `no_wh_comment` if
+`wh_comment` is null) - skip a `ticket_id` already present, same
+never-recheck rule as everywhere else.
+
+**A confirmed WH admission can still show 0 on Tab 1 if ClickHouse has no
+`marketplace_return_request` row for that order yet** - `classify()`
+returns `no_return_record` as soon as there's no return row, before it ever
+looks at `wh_text_check.json`. This is by design (the `reconciles` invariant
+only covers tickets with an actual return/refund on file), not a bug in the
+WH-comment logic - but it means a same-day admission can lag behind on Tab 1
+by however long ClickHouse takes to ingest the return request, even once
+the ticket is correctly cached. If a user reports "X clearly has a WH
+admission but Tab 1 shows 0/considered_bod", check `no_return_record` here
+before assuming the classifier or cache is wrong.
+
 ## Pipeline execution order
 
 1. Pull/refresh raw data into `pipeline/zoho_raw90/` (Zoho tickets, ClickHouse
