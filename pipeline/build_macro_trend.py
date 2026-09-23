@@ -8,9 +8,22 @@ filters apply to this table on purpose - it's the one place on the
 dashboard meant to show the unfiltered whole picture.
 
 Columns: 3-month total | last-month total | last-2-weeks total | then one
-column per day, most recent complete day first, going backwards. The current
-(partial) day is excluded from every column so a half-finished day never
-drags a rate down - see DELIVERED_PATH note below.
+column per day, most recent complete day first, going backwards.
+
+IMPORTANT: every ticket in data.json is counted here, full stop - the day
+list is the union of every day that has a ticket AND every day that has a
+delivered-orders count, never a truncated/"drop the last day as partial"
+window. An earlier version dropped the most recent day on the theory that
+it's always a partial refresh-day artifact; in practice the daily refresh
+runs in the evening (see CLAUDE.md), so that day is essentially complete,
+and dropping it silently undercounted this table's totals against every
+other widget on the dashboard (which all read data.json directly, with no
+such truncation) - e.g. the "Total issues raised" tile and this table's
+"Return Requested" 3-month total must always be equal; if they ever aren't,
+something in this reconciliation broke. A day with tickets but no matching
+delivered-orders entry yet (ch_delivered_daily.json not refreshed as far
+forward) shows "–" for that day's rate cells rather than dropping the
+tickets themselves.
 
 Delivered-orders counts come from ClickHouse `marketplace_order_status_log`
 (current_status_id = 70, i.e. the order actually reached "delivered" - NOT
@@ -61,24 +74,12 @@ def wfr_pto_cell(accepted, delivered):
     return {"accepted": accepted, "delivered": delivered, "value": value, "text": f"{value:.2f}" if value is not None else "–"}
 
 
-def sum_cells(cells):
-    raised = sum(c["raised"] for c in cells)
-    return raised
-
-
 def main():
     data = json.loads((HERE / "data.json").read_text())
     tickets = data["tickets"]
 
     delivered_path = HERE / "zoho_raw90/ch_delivered_daily.json"
     delivered_daily = json.loads(delivered_path.read_text()) if delivered_path.exists() else {}
-
-    # Delivered-daily's own date range is the source of truth for which days
-    # this table covers (tickets are pulled for the same/a subset window).
-    # Drop the most recent day - it's always partial (today, mid-refresh) -
-    # so a half-finished day never shows up as a cliff/spike that isn't real.
-    days = sorted(delivered_daily.keys())[:-1]
-    days_set = set(days)
 
     raised_by_day = defaultdict(int)
     accepted_by_day = defaultdict(int)
@@ -87,14 +88,16 @@ def main():
 
     for t in tickets:
         day = t["created_time"][:10]
-        if day not in days_set:
-            continue
         cat = t["category"]
         raised_by_day[day] += 1
         raised_cat_by_day[day][cat] += 1
         if t["accepted"]:
             accepted_by_day[day] += 1
             accepted_cat_by_day[day][cat] += 1
+
+    # Union, not intersection: a day must appear if EITHER source has it, so
+    # neither tickets nor delivered-order counts are ever silently dropped.
+    days = sorted(set(delivered_daily.keys()) | set(raised_by_day.keys()))
 
     def window(n):
         return days[-n:] if n else days

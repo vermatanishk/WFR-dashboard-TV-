@@ -134,14 +134,27 @@ _cold_path = HERE / "order_cold_flag.json"
 if _cold_path.exists():
     order_cold_flag = {int(k): v for k, v in json.loads(_cold_path.read_text()).items()}
 
+PLACEHOLDER_ORDER_IDS = {"--", "-", "—", "–", "n/a", "na", "none", "null", "nil", "tbd", "?"}
+
+
 def parse_order_id(raw):
     """Best-effort clean of the raw Zoho 'Order ID' custom-field text.
     Returns an int order_id, or None if the field is missing/unparseable/ambiguous
-    (never guesses between multiple candidate IDs on a single ticket)."""
+    (never guesses between multiple candidate IDs on a single ticket).
+
+    Agents sometimes type a placeholder ("--", "-", "N/A", ...) into the Order
+    ID field when none was captured - these must never be treated as a real
+    order. The digit-only check below already rejects any of these (none of
+    them survive `.lstrip("+-").isdigit()`), but they're also listed
+    explicitly so this is obviously covered rather than an accident of the
+    digit check, and so a new placeholder convention is caught even if it
+    happens to contain a stray digit."""
     if not raw:
         return None
     s = str(raw).strip().rstrip(".")
-    if not s or " " in s or not s.lstrip("+-").isdigit():
+    if not s or s.lower() in PLACEHOLDER_ORDER_IDS:
+        return None
+    if " " in s or not s.lstrip("+-").isdigit():
         return None
     n = int(s)
     if not (10**5 <= n <= 10**9):  # plausible order-id magnitude; filters phone numbers etc.
