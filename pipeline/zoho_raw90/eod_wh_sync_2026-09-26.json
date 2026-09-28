@@ -1,0 +1,142 @@
+{
+  "261253": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse-role stock-denial template, not an admission.",
+    "order_id": 4003577,
+    "admitted": false
+  },
+  "261243": {
+    "verdict": "admitted",
+    "evidence": "We have sent short qty to CX Mahiboob bee",
+    "reason": "Genuine first-person Warehouse admission (\"short qty\").",
+    "order_id": 4015060,
+    "admitted": true
+  },
+  "261244": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse-role stock-denial template, not an admission.",
+    "order_id": 3991437,
+    "admitted": false
+  },
+  "261160": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse-role stock-denial template, not an admission.",
+    "order_id": 4003151,
+    "admitted": false
+  },
+  "261284": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 status note).",
+    "order_id": 4048978,
+    "admitted": false
+  },
+  "261183": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 note, despite lowercase 'wh' in the text).",
+    "order_id": 4014721,
+    "admitted": false
+  },
+  "261177": {
+    "verdict": "denied",
+    "evidence": "Footage not found because it's under maintenance",
+    "reason": "Warehouse-role comment present but neither an admission nor a denial (neutral footage-unavailable note); not counted as an admission.",
+    "order_id": 3941318,
+    "admitted": false
+  },
+  "261250": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "Zero comments on this ticket (confirmed commentCount 0).",
+    "order_id": 4014970,
+    "admitted": false
+  },
+  "261227": {
+    "verdict": "admitted",
+    "evidence": "We have sent deferent batch numbers medicine to CX",
+    "reason": "Genuine first-person Warehouse admission that the shipped item's batch number differs from the invoice (intent-based override, no literal ADMISSION_PHRASES substring).",
+    "order_id": 4045662,
+    "admitted": true
+  },
+  "261222": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only L2/LightAgent notes).",
+    "order_id": 4010049,
+    "admitted": false
+  },
+  "261248": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 note).",
+    "order_id": 3973979,
+    "admitted": false
+  },
+  "261163": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only L2 notes, one cross-referencing ticket #261026).",
+    "order_id": 3853386,
+    "admitted": false
+  },
+  "261242": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "Zero comments on this ticket (confirmed commentCount 0).",
+    "order_id": 3946674,
+    "admitted": false
+  },
+  "261220": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "Zero comments on this ticket (confirmed commentCount 0).",
+    "order_id": 3961946,
+    "admitted": false
+  },
+  "261245": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 note).",
+    "order_id": 3993162,
+    "admitted": false
+  },
+  "261255": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No genuine Warehouse-role comment - both comments are from Rajni Singh (roleName 'L2 Agent'), who @-mentions 'Warehouse All' as a clickable tag inside her own comment, not an actual Warehouse-role reply.",
+    "order_id": 4053772,
+    "admitted": false
+  },
+  "261203": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "Zero comments on this ticket (confirmed commentCount 0).",
+    "order_id": 3750868,
+    "admitted": false
+  },
+  "261231": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 return-status timeline note).",
+    "order_id": 4024693,
+    "admitted": false
+  },
+  "261275": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse-role stock-denial template, not an admission.",
+    "order_id": 4035479,
+    "admitted": false
+  },
+  "261149": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-role comment on this ticket (only an L2 'tagged mani' note).",
+    "order_id": 3802995,
+    "admitted": false
+  }
+}
