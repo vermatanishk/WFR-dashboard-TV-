@@ -1,64 +1,71 @@
 {
-  "week_start": "2026-09-14",
-  "week_end": "2026-09-20",
-  "generated_at": "2026-09-20T13:44:02Z",
+  "week_start": "2026-09-21",
+  "week_end": "2026-09-27",
+  "generated_at": "2026-09-28T11:38:16Z",
   "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Computed directly via ClickHouse (Pipeline B / rfd_base methodology, order-scope-filtered per the 2026-08-31 fix) by the scheduled routine.",
   "by_warehouse": {
     "Delhi": {
-      "eligible_orders": 11064,
-      "overall_breach": 370,
-      "wh_breach": 191,
-      "overall_breach_pct": 3.344,
-      "wh_breach_pct": 1.726
-    },
-    "Bangalore": {
-      "eligible_orders": 7239,
-      "overall_breach": 272,
-      "wh_breach": 53,
-      "overall_breach_pct": 3.757,
-      "wh_breach_pct": 0.732
+      "eligible_orders": 12751,
+      "overall_breach": 202,
+      "wh_breach": 34,
+      "overall_breach_pct": 1.584,
+      "wh_breach_pct": 0.267
     },
     "Kolkata": {
-      "eligible_orders": 7034,
-      "overall_breach": 114,
-      "wh_breach": 12,
-      "overall_breach_pct": 1.621,
-      "wh_breach_pct": 0.171
+      "eligible_orders": 8333,
+      "overall_breach": 94,
+      "wh_breach": 4,
+      "overall_breach_pct": 1.128,
+      "wh_breach_pct": 0.048
+    },
+    "Bangalore": {
+      "eligible_orders": 8214,
+      "overall_breach": 192,
+      "wh_breach": 23,
+      "overall_breach_pct": 2.337,
+      "wh_breach_pct": 0.28
     },
     "Mumbai": {
-      "eligible_orders": 5618,
-      "overall_breach": 183,
-      "wh_breach": 38,
-      "overall_breach_pct": 3.257,
-      "wh_breach_pct": 0.676
+      "eligible_orders": 6283,
+      "overall_breach": 239,
+      "wh_breach": 16,
+      "overall_breach_pct": 3.804,
+      "wh_breach_pct": 0.255
     },
     "Lucknow": {
-      "eligible_orders": 4112,
-      "overall_breach": 29,
+      "eligible_orders": 4212,
+      "overall_breach": 65,
       "wh_breach": 3,
-      "overall_breach_pct": 0.705,
-      "wh_breach_pct": 0.073
+      "overall_breach_pct": 1.543,
+      "wh_breach_pct": 0.071
     },
     "Hyderabad WH": {
-      "eligible_orders": 3017,
-      "overall_breach": 9,
-      "wh_breach": 6,
-      "overall_breach_pct": 0.298,
-      "wh_breach_pct": 0.199
+      "eligible_orders": 3464,
+      "overall_breach": 16,
+      "wh_breach": 8,
+      "overall_breach_pct": 0.462,
+      "wh_breach_pct": 0.231
     },
     "Patna WH": {
-      "eligible_orders": 2199,
-      "overall_breach": 97,
-      "wh_breach": 87,
-      "overall_breach_pct": 4.411,
-      "wh_breach_pct": 3.956
+      "eligible_orders": 2706,
+      "overall_breach": 11,
+      "wh_breach": 6,
+      "overall_breach_pct": 0.407,
+      "wh_breach_pct": 0.222
     },
     "DocPharma": {
-      "eligible_orders": 147,
-      "overall_breach": 4,
-      "wh_breach": 4,
-      "overall_breach_pct": 2.721,
-      "wh_breach_pct": 2.721
+      "eligible_orders": 157,
+      "overall_breach": 1,
+      "wh_breach": 1,
+      "overall_breach_pct": 0.637,
+      "wh_breach_pct": 0.637
+    },
+    "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED": {
+      "eligible_orders": 74,
+      "overall_breach": 74,
+      "wh_breach": 16,
+      "overall_breach_pct": 100.0,
+      "wh_breach_pct": 21.622
     }
   }
 }
