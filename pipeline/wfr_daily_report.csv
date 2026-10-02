@@ -1,4 +1,4 @@
-WFR Daily Report,2026-10-01T13:58:49Z
+WFR Daily Report,2026-10-02T14:07:07Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 226979,2875098,Missing/Wrong Qty,Kolkata,2026-07-04T04:51:50.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
@@ -399,148 +399,148 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 239205,3035373,Wrong Medicines,Bangalore,2026-07-18T08:41:29.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 239208,3026740,Missing/Wrong Qty,Bangalore,2026-07-18T08:45:23.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 239230,3063486,Damaged/Defective,Delhi,2026-07-18T09:08:14.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
-239290,3044911,Damaged/Defective,Mumbai,2026-07-18T10:44:08.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239299,3066832,Damaged/Defective,Delhi,2026-07-18T10:57:54.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239333,3044640,Missing/Wrong Qty,Delhi,2026-07-18T11:54:41.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239373,3068636,Damaged/Defective,Bangalore,2026-07-18T12:40:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239376,3023793,Wrong Medicines,Mumbai,2026-07-18T12:45:50.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239388,3068271,Damaged/Defective,Bangalore,2026-07-18T13:15:17.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239440,3039342,Damaged/Defective,Delhi,2026-07-18T14:29:56.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239290,3044911,Damaged/Defective,Mumbai,2026-07-18T10:44:08.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+239299,3066832,Damaged/Defective,Delhi,2026-07-18T10:57:54.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+239333,3044640,Missing/Wrong Qty,Delhi,2026-07-18T11:54:41.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+239373,3068636,Damaged/Defective,Bangalore,2026-07-18T12:40:00.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+239376,3023793,Wrong Medicines,Mumbai,2026-07-18T12:45:50.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to CX""",MaheshK_MUM,JayeshW_MUM
+239388,3068271,Damaged/Defective,Bangalore,2026-07-18T13:15:17.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+239440,3039342,Damaged/Defective,Delhi,2026-07-18T14:29:56.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 239696,2972163,Damaged/Defective,Unknown,2026-07-19T05:11:51.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-239699,3066832,Damaged/Defective,Delhi,2026-07-19T05:19:37.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239699,3066832,Damaged/Defective,Delhi,2026-07-19T05:19:37.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 239704,3049880,Wrong Medicines,Unknown,2026-07-19T05:32:05.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-239717,3075113,Damaged/Defective,Delhi,2026-07-19T05:42:26.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239717,3075113,Damaged/Defective,Delhi,2026-07-19T05:42:26.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 239723,3049411,Wrong Medicines,Unknown,2026-07-19T05:51:21.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-239733,3056534,Missing/Wrong Qty,Kolkata,2026-07-19T06:07:08.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239733,3056534,Missing/Wrong Qty,Kolkata,2026-07-19T06:07:08.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 239759,3034199,Wrong Medicines,Delhi,2026-07-19T06:40:35.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 239766,2948206,Wrong Medicines,Delhi,2026-07-19T06:43:56.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX""",Muskan_Del,VANDANA_DEL
-239770,3057718,Wrong Medicines,Kolkata,2026-07-19T06:57:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239774,3041985,Wrong Medicines,Bangalore,2026-07-19T07:02:31.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239775,3027386,Wrong Medicines,Bangalore,2026-07-19T07:04:26.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239778,2875668,Wrong Medicines,Kolkata,2026-07-19T07:06:42.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239770,3057718,Wrong Medicines,Kolkata,2026-07-19T06:57:18.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to CX""",Gopalthakur_KOL,Sourav_KOL
+239774,3041985,Wrong Medicines,Bangalore,2026-07-19T07:02:31.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+239775,3027386,Wrong Medicines,Bangalore,2026-07-19T07:04:26.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to CX""",Ranjini_BLRWH,Asha_BLRWH
+239778,2875668,Wrong Medicines,Kolkata,2026-07-19T07:06:42.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to cx""",Suman_bagani_KOL / nasir_KOL,Sudip_KOL
 239785,3077631,Wrong Medicines,Unknown,2026-07-19T07:25:43.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-239791,3063156,Missing/Wrong Qty,Delhi,2026-07-19T07:33:37.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239791,3063156,Missing/Wrong Qty,Delhi,2026-07-19T07:33:37.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 239796,3053986,Wrong Medicines,Lucknow,2026-07-19T07:40:29.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to CX Mahiboob bee""",Komal.P_LKO,Roshani_LKO
-239800,3040626,Missing/Wrong Qty,Mumbai,2026-07-19T07:43:43.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239800,3040626,Missing/Wrong Qty,Mumbai,2026-07-19T07:43:43.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 239805,3033705,Wrong Medicines,Mumbai,2026-07-19T07:47:53.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to cx""",Fatima_MUM / Pragati_MUM,SakshiH_MUM
 239824,3044649,Damaged/Defective,Mumbai,2026-07-19T08:32:42.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
-239835,3070418,Damaged/Defective,Delhi,2026-07-19T09:21:51.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239848,3058589,Wrong Medicines,Kolkata,2026-07-19T09:39:31.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239835,3070418,Damaged/Defective,Delhi,2026-07-19T09:21:51.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+239848,3058589,Wrong Medicines,Kolkata,2026-07-19T09:39:31.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to CX""",Usmanahmed_KOL / Arpan_KOL,Aditya_KOL
 239849,3042389,Wrong Medicines,Delhi,2026-07-19T09:42:36.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
-239855,3011928,Missing/Wrong Qty,Kolkata,2026-07-19T10:01:12.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239855,3011928,Missing/Wrong Qty,Kolkata,2026-07-19T10:01:12.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 239889,3094280,Missing/Wrong Qty,DocPharma,2026-07-19T11:03:47.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 239893,3038815,Missing/Wrong Qty,Lucknow,2026-07-19T11:19:37.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to cx Mahiboob bee""",Kirti.M_LKO / Shivam.V_LKO,Arti_LKO
 239903,3068465,Missing/Wrong Qty,Kolkata,2026-07-19T11:40:23.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Sonukumar_KOL / Sayankrmoni_KOL,Aditya_KOL
 239908,3031537,Missing/Wrong Qty,Bangalore,2026-07-19T11:46:25.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Pavithra,Tharun_BLRWH
 239909,3031275,Missing/Wrong Qty,Delhi,2026-07-19T11:48:16.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Soni_Del,Vikas-DEL
 239914,3068569,Missing/Wrong Qty,Delhi,2026-07-19T11:55:07.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Kafeel,Shailesh_DEL
-239918,3068566,Missing/Wrong Qty,Bangalore,2026-07-19T11:56:55.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-239964,3075114,Missing/Wrong Qty,Kolkata,2026-07-19T13:28:27.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+239918,3068566,Missing/Wrong Qty,Bangalore,2026-07-19T11:56:55.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+239964,3075114,Missing/Wrong Qty,Kolkata,2026-07-19T13:28:27.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 240213,3083458,Wrong Medicines,Lucknow,2026-07-20T03:30:16.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 240349,3083335,Missing/Wrong Qty,Delhi,2026-07-20T07:24:12.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Roshan_P-DEL,Abhijeet_DEL
-240362,2969740,Missing/Wrong Qty,Delhi,2026-07-20T07:47:53.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-240394,3070884,Wrong Medicines,Delhi,2026-07-20T08:46:24.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-240395,3076348,Missing/Wrong Qty,Mumbai,2026-07-20T08:48:51.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-240396,2991758,Missing/Wrong Qty,Delhi,2026-07-20T08:49:33.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+240362,2969740,Missing/Wrong Qty,Delhi,2026-07-20T07:47:53.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+240394,3070884,Wrong Medicines,Delhi,2026-07-20T08:46:24.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+240395,3076348,Missing/Wrong Qty,Mumbai,2026-07-20T08:48:51.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+240396,2991758,Missing/Wrong Qty,Delhi,2026-07-20T08:49:33.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 240397,2985258,Missing/Wrong Qty,Kolkata,2026-07-20T08:51:52.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to cx""",Sani_KOL,Koushal_KOL
-240398,3082819,Missing/Wrong Qty,Delhi,2026-07-20T08:53:22.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+240398,3082819,Missing/Wrong Qty,Delhi,2026-07-20T08:53:22.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 240405,3011986,Missing/Wrong Qty,Bangalore,2026-07-20T09:03:11.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Siddarth_BLRWH,kannanmuthu_BLRWH
-240468,3076348,Missing/Wrong Qty,Mumbai,2026-07-20T09:35:58.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-240494,3062178,Missing/Wrong Qty,Kolkata,2026-07-20T09:45:02.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+240468,3076348,Missing/Wrong Qty,Mumbai,2026-07-20T09:35:58.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+240494,3062178,Missing/Wrong Qty,Kolkata,2026-07-20T09:45:02.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 240568,3066865,Missing/Wrong Qty,Unknown,2026-07-20T10:01:08.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 240630,3070124,Damaged/Defective,Mumbai,2026-07-20T10:13:25.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Paker didn't removed the medicine out side properly Mahiboob bee"" - treated as BOD by default (unconfirmed resolution)",-,-
-240652,3057369,Wrong Medicines,Lucknow,2026-07-20T10:29:21.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-240672,3044878,Missing/Wrong Qty,Lucknow,2026-07-20T10:57:37.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-240687,3070389,Missing/Wrong Qty,Delhi,2026-07-20T11:31:04.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+240652,3057369,Wrong Medicines,Lucknow,2026-07-20T10:29:21.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+240672,3044878,Missing/Wrong Qty,Lucknow,2026-07-20T10:57:37.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
+240687,3070389,Missing/Wrong Qty,Delhi,2026-07-20T11:31:04.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
 240716,3028140,Wrong Medicines,Lucknow,2026-07-20T12:24:22.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""Paker didn't removed the medicine out side properly""",Shivam.J_LKO / Aniket_LKO,Raj.V_LKO
 240728,3071584,Missing/Wrong Qty,Kolkata,2026-07-20T12:45:47.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Anurag_KOL,Sayanti_KOL
 240730,3061162,Wrong Medicines,Mumbai,2026-07-20T12:49:19.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
-240752,3071485,Missing/Wrong Qty,Delhi,2026-07-20T13:24:07.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+240752,3071485,Missing/Wrong Qty,Delhi,2026-07-20T13:24:07.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
 241051,3095138,Missing/Wrong Qty,DocPharma,2026-07-21T05:16:22.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
-241057,3041040,Missing/Wrong Qty,Mumbai,2026-07-21T05:24:22.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241057,3041040,Missing/Wrong Qty,Mumbai,2026-07-21T05:24:22.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
 241083,3057922,Damaged/Defective,Kolkata,2026-07-21T06:14:00.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
-241092,3061522,Missing/Wrong Qty,Delhi,2026-07-21T06:29:09.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241112,3092242,Wrong Medicines,Lucknow,2026-07-21T07:16:41.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241092,3061522,Missing/Wrong Qty,Delhi,2026-07-21T06:29:09.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
+241112,3092242,Wrong Medicines,Lucknow,2026-07-21T07:16:41.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 241118,3078036,Expiry Issue,Bangalore,2026-07-21T07:23:47.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""None"" - treated as BOD by default (unconfirmed resolution)",-,-
-241122,3084071,Missing/Wrong Qty,Delhi,2026-07-21T07:30:47.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241127,3022372,Wrong Medicines,Delhi,2026-07-21T07:37:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241122,3084071,Missing/Wrong Qty,Delhi,2026-07-21T07:30:47.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
+241127,3022372,Wrong Medicines,Delhi,2026-07-21T07:37:18.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx""",Munender_DEL / Vishek_Del,Babita_DEL
 241128,3078036,Expiry Issue,Bangalore,2026-07-21T07:40:34.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 241130,3076088,Wrong Medicines,Lucknow,2026-07-21T07:41:15.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to cx""",Anshu.S_LKO / Gayatri.M_LKO,Arti_LKO
 241173,3014034,Wrong Medicines,Bangalore,2026-07-21T08:49:40.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent only 1 qty short to Cx Mahiboob bee""",SUMITH / Harshitha1_BLRWH,Tharun_BLRWH
-241202,3093171,Wrong Medicines,Delhi,2026-07-21T09:19:36.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241209,3050085,Missing/Wrong Qty,Kolkata,2026-07-21T09:27:22.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241220,3049482,Missing/Wrong Qty,Kolkata,2026-07-21T09:37:58.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241202,3093171,Wrong Medicines,Delhi,2026-07-21T09:19:36.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+241209,3050085,Missing/Wrong Qty,Kolkata,2026-07-21T09:27:22.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Parker didn't removed the medicine out side properly"" - treated as BOD by default (unconfirmed resolution)",-,-
+241220,3049482,Missing/Wrong Qty,Kolkata,2026-07-21T09:37:58.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 241224,3012181,Wrong Medicines,Bangalore,2026-07-21T09:40:16.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx Mahiboob bee""",Mukund_BLRWH / ChandraKanth,kannanmuthu_BLRWH
-241262,3086463,Missing/Wrong Qty,Bangalore,2026-07-21T09:50:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241262,3086463,Missing/Wrong Qty,Bangalore,2026-07-21T09:50:18.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 241314,3092298,Missing/Wrong Qty,Mumbai,2026-07-21T10:04:11.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",AmishaG_MUM,KritikaD_MUM
 241397,3082131,Wrong Medicines,Delhi,2026-07-21T10:23:30.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 241398,3095363,Missing/Wrong Qty,Delhi,2026-07-21T10:24:23.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Ammina_DEL,Shivani_DEL
-241445,3100155,Wrong Medicines,Delhi,2026-07-21T11:15:11.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241448,2957219,Wrong Medicines,Bangalore,2026-07-21T11:17:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241455,3037431,Wrong Medicines,Lucknow,2026-07-21T11:32:25.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241476,3084562,Missing/Wrong Qty,Delhi,2026-07-21T12:11:36.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241482,3097103,Missing/Wrong Qty,Kolkata,2026-07-21T12:17:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241445,3100155,Wrong Medicines,Delhi,2026-07-21T11:15:11.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241448,2957219,Wrong Medicines,Bangalore,2026-07-21T11:17:18.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx; This batch is not available in our inventory""",-,-
+241455,3037431,Wrong Medicines,Lucknow,2026-07-21T11:32:25.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241476,3084562,Missing/Wrong Qty,Delhi,2026-07-21T12:11:36.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241482,3097103,Missing/Wrong Qty,Kolkata,2026-07-21T12:17:00.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 241487,3072410,Wrong Medicines,Mumbai,2026-07-21T12:22:53.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx""",MaheshK_MUM,ShivamS_MUM
-241488,3085623,Missing/Wrong Qty,Bangalore,2026-07-21T12:24:46.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241488,3085623,Missing/Wrong Qty,Bangalore,2026-07-21T12:24:46.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx""",-,-
 241489,3039275,Missing/Wrong Qty,Kolkata,2026-07-21T12:28:14.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Pratyusha_KOL,Surojit_KOL
-241493,3078748,Missing/Wrong Qty,Kolkata,2026-07-21T12:30:36.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241497,3089257,Missing/Wrong Qty,Mumbai,2026-07-21T12:34:57.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241505,3075994,Wrong Medicines,Lucknow,2026-07-21T12:46:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241493,3078748,Missing/Wrong Qty,Kolkata,2026-07-21T12:30:36.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241497,3089257,Missing/Wrong Qty,Mumbai,2026-07-21T12:34:57.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241505,3075994,Wrong Medicines,Lucknow,2026-07-21T12:46:00.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx""",Anshu.S_LKO,Adiba.F_LKO
 241507,3101183,Missing/Wrong Qty,Bangalore,2026-07-21T12:47:03.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Laxmi_BLRWH,kannanmuthu_BLRWH
 241512,3070818,Missing/Wrong Qty,Delhi,2026-07-21T12:50:48.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Kafeel,Shailesh_DEL
 241516,3028140,Wrong Medicines,Lucknow,2026-07-21T12:55:42.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""Paker didn't removed the medicine out side properly""",Shivam.J_LKO / Aniket_LKO,Raj.V_LKO
-241520,3031581,Missing/Wrong Qty,Delhi,2026-07-21T13:05:59.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241520,3031581,Missing/Wrong Qty,Delhi,2026-07-21T13:05:59.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 241736,1167850,Damaged/Defective,Unknown,2026-07-22T04:18:00.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-241790,3043432,Missing/Wrong Qty,Mumbai,2026-07-22T05:35:58.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241790,3043432,Missing/Wrong Qty,Mumbai,2026-07-22T05:35:58.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 241799,3089629,Missing/Wrong Qty,Lucknow,2026-07-22T05:44:38.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
-241817,3099926,Missing/Wrong Qty,Lucknow,2026-07-22T06:16:06.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241833,2861537,Wrong Medicines,Kolkata,2026-07-22T06:39:25.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241921,3069365,Missing/Wrong Qty,Delhi,2026-07-22T07:37:29.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-241957,3077495,Wrong Medicines,Mumbai,2026-07-22T07:46:51.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242035,2808128,Damaged/Defective,Mumbai,2026-07-22T08:11:45.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242144,3111599,Wrong Medicines,Kolkata,2026-07-22T10:16:20.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242162,3097723,Wrong Medicines,Kolkata,2026-07-22T10:36:08.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+241817,3099926,Missing/Wrong Qty,Lucknow,2026-07-22T06:16:06.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241833,2861537,Wrong Medicines,Kolkata,2026-07-22T06:39:25.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""Footage not found because it is old order; This batch medicine is not in our inventory""",-,-
+241921,3069365,Missing/Wrong Qty,Delhi,2026-07-22T07:37:29.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+241957,3077495,Wrong Medicines,Mumbai,2026-07-22T07:46:51.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx""",Sakshi_MUM / AniketP_MUM,PrathameshD_MUM
+242035,2808128,Damaged/Defective,Mumbai,2026-07-22T08:11:45.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+242144,3111599,Wrong Medicines,Kolkata,2026-07-22T10:16:20.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx""",Pratyusha_KOL / Surajhalder_KOL,Sangita_KOL
+242162,3097723,Wrong Medicines,Kolkata,2026-07-22T10:36:08.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx; This batch is not in our inventory""",-,-
 242173,3110223,Missing/Wrong Qty,Lucknow,2026-07-22T10:42:22.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
-242226,3087999,Missing/Wrong Qty,Lucknow,2026-07-22T11:44:10.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242241,3090646,Missing/Wrong Qty,Mumbai,2026-07-22T12:23:42.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242243,3074481,Missing/Wrong Qty,Mumbai,2026-07-22T12:26:27.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242244,3112314,Wrong Medicines,Mumbai,2026-07-22T12:27:51.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242258,3092502,Missing/Wrong Qty,Mumbai,2026-07-22T12:46:07.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242278,3067267,Missing/Wrong Qty,Kolkata,2026-07-22T13:09:54.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242282,3092666,Missing/Wrong Qty,Bangalore,2026-07-22T13:26:36.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+242226,3087999,Missing/Wrong Qty,Lucknow,2026-07-22T11:44:10.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242241,3090646,Missing/Wrong Qty,Mumbai,2026-07-22T12:23:42.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242243,3074481,Missing/Wrong Qty,Mumbai,2026-07-22T12:26:27.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Paker didn't removed the medicine out side properly"" - treated as BOD by default (unconfirmed resolution)",-,-
+242244,3112314,Wrong Medicines,Mumbai,2026-07-22T12:27:51.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242258,3092502,Missing/Wrong Qty,Mumbai,2026-07-22T12:46:07.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242278,3067267,Missing/Wrong Qty,Kolkata,2026-07-22T13:09:54.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242282,3092666,Missing/Wrong Qty,Bangalore,2026-07-22T13:26:36.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 242285,3085442,Missing/Wrong Qty,Unknown,2026-07-22T13:33:28.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-242301,3127144,Missing/Wrong Qty,DocPharma,2026-07-22T13:50:42.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+242301,3127144,Missing/Wrong Qty,DocPharma,2026-07-22T13:50:42.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 242662,3095379,Wrong Medicines,Mumbai,2026-07-23T04:38:07.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
-242765,3105045,Missing/Wrong Qty,Kolkata,2026-07-23T06:27:21.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242784,3046811,Missing/Wrong Qty,Delhi,2026-07-23T06:54:05.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+242765,3105045,Missing/Wrong Qty,Kolkata,2026-07-23T06:27:21.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242784,3046811,Missing/Wrong Qty,Delhi,2026-07-23T06:54:05.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Paker didn't removed the medicine out side properly"" - treated as BOD by default (unconfirmed resolution)",-,-
 242829,3116396,Missing/Wrong Qty,Unknown,2026-07-23T07:24:47.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-242890,3056529,Missing/Wrong Qty,Delhi,2026-07-23T07:55:38.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-242968,3111832,Missing/Wrong Qty,Delhi,2026-07-23T08:15:16.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243110,2883711,Missing/Wrong Qty,Mumbai,2026-07-23T10:31:43.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243121,3080552,Missing/Wrong Qty,Delhi,2026-07-23T10:42:56.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243123,3114611,Wrong Medicines,Delhi,2026-07-23T10:45:10.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243125,3091444,Missing/Wrong Qty,Delhi,2026-07-23T10:49:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243137,3123811,Missing/Wrong Qty,Delhi,2026-07-23T11:05:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+242890,3056529,Missing/Wrong Qty,Delhi,2026-07-23T07:55:38.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+242968,3111832,Missing/Wrong Qty,Delhi,2026-07-23T08:15:16.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243110,2883711,Missing/Wrong Qty,Mumbai,2026-07-23T10:31:43.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243121,3080552,Missing/Wrong Qty,Delhi,2026-07-23T10:42:56.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243123,3114611,Wrong Medicines,Delhi,2026-07-23T10:45:10.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243125,3091444,Missing/Wrong Qty,Delhi,2026-07-23T10:49:00.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243137,3123811,Missing/Wrong Qty,Delhi,2026-07-23T11:05:18.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243141,3098322,Wrong Medicines,Lucknow,2026-07-23T11:09:42.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 243176,3093545,Missing/Wrong Qty,Bangalore,2026-07-23T11:46:37.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243189,3128190,Wrong Medicines,Mumbai,2026-07-23T11:55:22.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx Mahiboob bee""",-,-
 243191,3120844,Wrong Medicines,Mumbai,2026-07-23T11:58:01.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to Cx Mahiboob bee""",TarunP_MUM,PrathameshD_MUM
 243224,3027919,Missing/Wrong Qty,Kolkata,2026-07-23T12:40:00.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""Paker didn't removed the calciquick d3 outside properly""",Suman_bagani_KOL,Surojit_KOL
-243225,3115230,Missing/Wrong Qty,Kolkata,2026-07-23T12:43:03.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+243225,3115230,Missing/Wrong Qty,Kolkata,2026-07-23T12:43:03.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243232,3094604,Missing/Wrong Qty,Bangalore,2026-07-23T12:55:23.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Tharun_BLRWH,Raksha_BLRWH
-243261,3108781,Missing/Wrong Qty,Delhi,2026-07-23T13:31:59.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243264,3100324,Missing/Wrong Qty,Mumbai,2026-07-23T13:34:53.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243267,3101555,Missing/Wrong Qty,Delhi,2026-07-23T13:36:17.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243315,3124943,Missing/Wrong Qty,Bangalore,2026-07-23T14:40:12.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243599,3127474,Wrong Medicines,Kolkata,2026-07-24T03:06:48.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243615,3109278,Wrong Medicines,Lucknow,2026-07-24T03:43:28.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243653,3063156,Missing/Wrong Qty,Delhi,2026-07-24T04:35:33.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243686,3094405,Missing/Wrong Qty,Delhi,2026-07-24T05:16:36.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-243705,3108397,Missing/Wrong Qty,Bangalore,2026-07-24T05:39:52.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+243261,3108781,Missing/Wrong Qty,Delhi,2026-07-23T13:31:59.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243264,3100324,Missing/Wrong Qty,Mumbai,2026-07-23T13:34:53.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243267,3101555,Missing/Wrong Qty,Delhi,2026-07-23T13:36:17.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243315,3124943,Missing/Wrong Qty,Bangalore,2026-07-23T14:40:12.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243599,3127474,Wrong Medicines,Kolkata,2026-07-24T03:06:48.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+243615,3109278,Wrong Medicines,Lucknow,2026-07-24T03:43:28.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243653,3063156,Missing/Wrong Qty,Delhi,2026-07-24T04:35:33.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243686,3094405,Missing/Wrong Qty,Delhi,2026-07-24T05:16:36.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
+243705,3108397,Missing/Wrong Qty,Bangalore,2026-07-24T05:39:52.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243709,3033409,Missing/Wrong Qty,Delhi,2026-07-24T05:43:10.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx Mahiboob bee""",-,-
-243789,3125583,Wrong Medicines,Delhi,2026-07-24T07:21:03.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+243789,3125583,Wrong Medicines,Delhi,2026-07-24T07:21:03.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 243796,3139737,Missing/Wrong Qty,Bangalore,2026-07-24T07:25:26.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to Cx Mahiboob bee""",Anjana_BLRW / Apsana_BLRWH,Raksha_BLRWH
-243798,3108006,Missing/Wrong Qty,Mumbai,2026-07-24T07:26:27.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+243798,3108006,Missing/Wrong Qty,Mumbai,2026-07-24T07:26:27.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243806,3136057,Missing/Wrong Qty,Delhi,2026-07-24T07:40:32.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243818,3106286,Missing/Wrong Qty,Lucknow,2026-07-24T08:07:01.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
 243832,3115874,Missing/Wrong Qty,Bangalore,2026-07-24T08:22:58.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to Cx""",-,-
@@ -2330,48 +2330,49 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 261791,3993076,Missing/Wrong Qty,Kolkata,2026-09-29T13:30:32.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 261793,4062996,Missing/Wrong Qty,Kolkata,2026-09-29T13:40:33.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 261805,3909727,Wrong Medicines,Patna WH,2026-09-29T14:34:20.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
-261831,4080340,Missing/Wrong Qty,Lucknow,2026-09-30T03:20:16.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261836,4101937,Damaged/Defective,Unknown,2026-09-30T04:22:31.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261838,4082101,Damaged/Defective,Mumbai,2026-09-30T04:28:27.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261831,4080340,Missing/Wrong Qty,Lucknow,2026-09-30T03:20:16.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261836,4101937,Damaged/Defective,Bangalore,2026-09-30T04:22:31.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261838,4082101,Damaged/Defective,Mumbai,2026-09-30T04:28:27.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 261841,4086920,Damaged/Defective,Unknown,2026-09-30T04:44:02.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261843,4073091,Missing/Wrong Qty,Patna WH,2026-09-30T05:03:04.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261844,4048035,Missing/Wrong Qty,Mumbai,2026-09-30T05:05:59.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261845,4031598,Missing/Wrong Qty,Lucknow,2026-09-30T05:09:01.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261848,4034371,Missing/Wrong Qty,Bangalore,2026-09-30T05:19:33.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261849,4028683,Missing/Wrong Qty,Kolkata,2026-09-30T05:21:24.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261850,3996300,Missing/Wrong Qty,Bangalore,2026-09-30T05:25:26.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261851,4047021,Missing/Wrong Qty,Hyderabad WH,2026-09-30T05:26:16.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261856,4002546,Missing/Wrong Qty,Lucknow,2026-09-30T05:45:14.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261867,4014946,Missing/Wrong Qty,Bangalore,2026-09-30T06:17:22.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261868,4066610,Missing/Wrong Qty,Kolkata,2026-09-30T06:22:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261869,4043355,Missing/Wrong Qty,Mumbai,2026-09-30T06:23:37.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261870,4062431,Missing/Wrong Qty,Delhi,2026-09-30T06:24:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261871,4087859,Missing/Wrong Qty,Lucknow,2026-09-30T06:32:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261843,4073091,Missing/Wrong Qty,Patna WH,2026-09-30T05:03:04.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261844,4048035,Missing/Wrong Qty,Mumbai,2026-09-30T05:05:59.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261845,4031598,Missing/Wrong Qty,Lucknow,2026-09-30T05:09:01.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261848,4034371,Missing/Wrong Qty,Bangalore,2026-09-30T05:19:33.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261849,4028683,Missing/Wrong Qty,Kolkata,2026-09-30T05:21:24.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261850,3996300,Missing/Wrong Qty,Bangalore,2026-09-30T05:25:26.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261851,4047021,Missing/Wrong Qty,Hyderabad WH,2026-09-30T05:26:16.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261856,4002546,Missing/Wrong Qty,Lucknow,2026-09-30T05:45:14.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261867,4014946,Missing/Wrong Qty,Bangalore,2026-09-30T06:17:22.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261868,4066610,Missing/Wrong Qty,Kolkata,2026-09-30T06:22:18.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX; This batch medicine is not related to our inventory""",-,-
+261869,4043355,Missing/Wrong Qty,Mumbai,2026-09-30T06:23:37.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261870,4062431,Missing/Wrong Qty,Delhi,2026-09-30T06:24:18.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261871,4087859,Missing/Wrong Qty,Lucknow,2026-09-30T06:32:00.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""Not related to our inventory""",-,-
 261879,4103085,Damaged/Defective,Unknown,2026-09-30T07:05:32.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 261881,4103495,Damaged/Defective,Unknown,2026-09-30T07:07:40.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261883,4072122,Wrong Medicines,Mumbai,2026-09-30T07:10:49.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261885,4077014,Missing/Wrong Qty,Delhi,2026-09-30T07:13:50.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261887,3700487,Missing/Wrong Qty,Delhi,2026-09-30T07:17:06.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261888,4063852,Missing/Wrong Qty,Bangalore,2026-09-30T07:19:56.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261894,4070282,Missing/Wrong Qty,Bangalore,2026-09-30T07:50:48.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261895,3895588,Missing/Wrong Qty,Bangalore,2026-09-30T07:54:02.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261896,4074764,Missing/Wrong Qty,Mumbai,2026-09-30T08:01:06.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261897,4074755,Missing/Wrong Qty,Patna WH,2026-09-30T08:02:53.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261883,4072122,Wrong Medicines,Mumbai,2026-09-30T07:10:49.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261885,4077014,Missing/Wrong Qty,Delhi,2026-09-30T07:13:50.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261887,3700487,Missing/Wrong Qty,Delhi,2026-09-30T07:17:06.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261888,4063852,Missing/Wrong Qty,Bangalore,2026-09-30T07:19:56.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261894,4070282,Missing/Wrong Qty,Bangalore,2026-09-30T07:50:48.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261895,3895588,Missing/Wrong Qty,Bangalore,2026-09-30T07:54:02.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261896,4074764,Missing/Wrong Qty,Mumbai,2026-09-30T08:01:06.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261897,4074755,Missing/Wrong Qty,Patna WH,2026-09-30T08:02:53.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
 261898,4073076,Missing/Wrong Qty,Unknown,2026-09-30T08:17:31.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261901,4091659,Wrong Medicines,Bangalore,2026-09-30T09:05:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261906,4107536,Damaged/Defective,Kolkata,2026-09-30T09:46:51.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261910,4107536,Damaged/Defective,Kolkata,2026-09-30T10:07:39.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261911,4053021,Wrong Medicines,Delhi,2026-09-30T10:07:53.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261920,4112843,Damaged/Defective,Bangalore,2026-09-30T10:29:19.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261901,4091659,Wrong Medicines,Bangalore,2026-09-30T09:05:00.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261906,4107536,Damaged/Defective,Kolkata,2026-09-30T09:46:51.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261910,4107536,Damaged/Defective,Kolkata,2026-09-30T10:07:39.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX""",-,-
+261911,4053021,Wrong Medicines,Delhi,2026-09-30T10:07:53.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261920,4112843,Damaged/Defective,Bangalore,2026-09-30T10:29:19.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 261926,4121880,Wrong Medicines,Unknown,2026-09-30T10:46:29.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 261927,4121880,Wrong Medicines,Unknown,2026-09-30T10:47:02.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261950,4068800,Missing/Wrong Qty,Kolkata,2026-09-30T12:15:54.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261950,4068800,Missing/Wrong Qty,Kolkata,2026-09-30T12:15:54.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Footage not found because it's under maintenance"" - treated as BOD by default (unconfirmed resolution)",-,-
 261954,4055588,Damaged/Defective,Unknown,2026-09-30T12:31:58.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261958,4072039,Damaged/Defective,Bangalore,2026-09-30T12:49:13.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261975,4073741,Wrong Medicines,Kolkata,2026-09-30T14:11:45.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261958,4072039,Damaged/Defective,Bangalore,2026-09-30T12:49:13.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261965,3957891,Missing/Wrong Qty,Delhi,2026-09-30T13:23:37.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Footage not found because it's under maintenance"" - treated as BOD by default (unconfirmed resolution)",-,-
+261975,4073741,Wrong Medicines,Kolkata,2026-09-30T14:11:45.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
 261976,3908817,Damaged/Defective,Unknown,2026-09-30T14:12:59.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-261977,4101842,Damaged/Defective,Delhi,2026-09-30T14:20:10.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-261998,4100582,Wrong Medicines,Bangalore,2026-09-30T22:59:03.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+261977,4101842,Damaged/Defective,Delhi,2026-09-30T14:20:10.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+261998,4100582,Wrong Medicines,Bangalore,2026-09-30T22:59:03.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong sku to CX""",Angel_BLRWH / Shwetha1_BLRWH,Kaveri_BLRWH
 262010,4084243,Wrong Medicines,Kolkata,2026-10-01T03:48:16.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262012,3951197,Wrong Medicines,Unknown,2026-10-01T04:03:42.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 262019,4003577,Missing/Wrong Qty,Kolkata,2026-10-01T04:46:29.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
@@ -2381,6 +2382,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 262047,4078778,Missing/Wrong Qty,Bangalore,2026-10-01T06:24:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262048,4095116,Missing/Wrong Qty,Bangalore,2026-10-01T06:26:27.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262058,4087597,Missing/Wrong Qty,Delhi,2026-10-01T06:52:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262059,4033806,Wrong Medicines,Delhi,2026-10-01T06:53:04.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262063,4117526,Missing/Wrong Qty,Delhi,2026-10-01T07:01:48.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262071,4023907,Missing/Wrong Qty,Kolkata,2026-10-01T07:31:48.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262083,4119790,Wrong Medicines,Unknown,2026-10-01T08:10:07.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
@@ -2393,12 +2395,38 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 262131,4101890,Missing/Wrong Qty,Delhi,2026-10-01T12:15:28.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262142,4098836,Missing/Wrong Qty,Patna WH,2026-10-01T13:01:20.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 262143,4074971,Missing/Wrong Qty,Bangalore,2026-10-01T13:03:10.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262153,4140553,Wrong Medicines,Unknown,2026-10-01T14:11:55.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+262165,4039845,Wrong Medicines,Unknown,2026-10-01T15:42:16.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+262204,4042883,Wrong Medicines,Delhi,2026-10-02T05:23:29.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262234,3985110,Missing/Wrong Qty,Lucknow,2026-10-02T07:31:00.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262235,4132618,Missing/Wrong Qty,Hyderabad WH,2026-10-02T07:32:45.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262237,4118604,Missing/Wrong Qty,Unknown,2026-10-02T07:35:07.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+262242,4101845,Missing/Wrong Qty,Delhi,2026-10-02T07:41:04.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262257,4062431,Missing/Wrong Qty,Delhi,2026-10-02T08:47:59.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262265,4103839,Missing/Wrong Qty,Delhi,2026-10-02T09:45:05.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262266,4135851,Missing/Wrong Qty,Delhi,2026-10-02T09:45:09.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262270,4081259,Missing/Wrong Qty,Bangalore,2026-10-02T09:57:22.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262273,4071644,Missing/Wrong Qty,Patna WH,2026-10-02T10:14:44.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262274,4106656,Missing/Wrong Qty,Delhi,2026-10-02T10:17:12.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262275,4140611,Missing/Wrong Qty,Bangalore,2026-10-02T10:20:44.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262277,4089763,Wrong Medicines,Delhi,2026-10-02T10:23:12.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262278,4124206,Missing/Wrong Qty,Kolkata,2026-10-02T10:25:45.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262280,4103266,Missing/Wrong Qty,Kolkata,2026-10-02T10:30:02.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262284,4056840,Missing/Wrong Qty,Lucknow,2026-10-02T10:50:42.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262285,4089003,Wrong Medicines,Delhi,2026-10-02T10:53:41.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262286,4135984,Missing/Wrong Qty,Kolkata,2026-10-02T10:55:47.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262288,4114533,Missing/Wrong Qty,Bangalore,2026-10-02T10:59:05.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262293,4091668,Missing/Wrong Qty,Delhi,2026-10-02T11:29:32.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262297,4139970,Missing/Wrong Qty,Bangalore,2026-10-02T11:53:19.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262298,4129639,Wrong Medicines,Bangalore,2026-10-02T12:00:23.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262299,4055017,Missing/Wrong Qty,Mumbai,2026-10-02T12:02:23.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+262300,4145347,Missing/Wrong Qty,Delhi,2026-10-02T12:03:37.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 
 Summary
-Total tickets raised,2392
-Total refunds/returns issued,2234
-WH Accepted,247
-BOD,1104
-Considered BOD,883
-No return record (excluded from refund total),158
+Total tickets raised,2420
+Total refunds/returns issued,2260
+WH Accepted,257
+BOD,1189
+Considered BOD,814
+No return record (excluded from refund total),160
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes

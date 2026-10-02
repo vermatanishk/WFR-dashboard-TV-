@@ -1,31 +1,31 @@
 {
-  "generated_at": "2026-10-01T13:58:49Z",
-  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2392 tickets across 5 categories, not a sample. Location is computed live against ClickHouse for every order. Resolution (WH-Accepted / BOD / Considered BOD) is decided solely by the Warehouse team's own Zoho comment, never the ClickHouse remark. 'Considered BOD' = no confirmed Warehouse-comment verdict yet (no comment, or the comment matched neither the admission nor denial pattern), so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 83 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-07-03 to 2026-10-01), exhaustive within that window",
+  "generated_at": "2026-10-02T14:07:07Z",
+  "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2420 tickets across 5 categories, not a sample. Location is computed live against ClickHouse for every order. Resolution (WH-Accepted / BOD / Considered BOD) is decided solely by the Warehouse team's own Zoho comment, never the ClickHouse remark. 'Considered BOD' = no confirmed Warehouse-comment verdict yet (no comment, or the comment matched neither the admission nor denial pattern), so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 83 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
+  "pull_window": "Last 90 days (2026-07-04 to 2026-10-02), exhaustive within that window",
   "tab1": {
-    "total_tickets": 2392,
-    "total_orders": 2242,
-    "total_returns": 2234,
-    "wh_accepted": 247,
-    "bod": 1104,
-    "considered_bod": 883,
-    "no_return_record": 158,
-    "accept_pct": 11.0,
+    "total_tickets": 2420,
+    "total_orders": 2268,
+    "total_returns": 2260,
+    "wh_accepted": 257,
+    "bod": 1189,
+    "considered_bod": 814,
+    "no_return_record": 160,
+    "accept_pct": 11.3,
     "reconciles": true,
     "by_category": [
       {
         "category": "Missing/Wrong Qty",
-        "total": 1518,
-        "pct_of_total": 63.5,
+        "total": 1539,
+        "pct_of_total": 63.6,
         "accepted": 167,
-        "accept_pct": 11.0
+        "accept_pct": 10.9
       },
       {
         "category": "Wrong Medicines",
-        "total": 566,
+        "total": 573,
         "pct_of_total": 23.7,
-        "accepted": 78,
-        "accept_pct": 13.8
+        "accepted": 88,
+        "accept_pct": 15.4
       },
       {
         "category": "Expiry Issue",
@@ -37,7 +37,7 @@
       {
         "category": "Damaged/Defective",
         "total": 263,
-        "pct_of_total": 11.0,
+        "pct_of_total": 10.9,
         "accepted": 2,
         "accept_pct": 0.8
       },
@@ -53,51 +53,51 @@
   "tab2": [
     {
       "location": "Delhi",
-      "total": 692,
-      "accepted": 46,
-      "accept_pct": 6.6
+      "total": 704,
+      "accepted": 47,
+      "accept_pct": 6.7
     },
     {
       "location": "Bangalore",
-      "total": 587,
-      "accepted": 102,
-      "accept_pct": 17.4
+      "total": 593,
+      "accepted": 104,
+      "accept_pct": 17.5
     },
     {
       "location": "Kolkata",
-      "total": 328,
-      "accepted": 35,
-      "accept_pct": 10.7
+      "total": 331,
+      "accepted": 39,
+      "accept_pct": 11.8
     },
     {
       "location": "Mumbai",
-      "total": 293,
-      "accepted": 39,
-      "accept_pct": 13.3
+      "total": 294,
+      "accepted": 41,
+      "accept_pct": 13.9
     },
     {
       "location": "Lucknow",
-      "total": 262,
-      "accepted": 23,
-      "accept_pct": 8.8
+      "total": 264,
+      "accepted": 24,
+      "accept_pct": 9.1
     },
     {
       "location": "Unknown",
-      "total": 158,
+      "total": 160,
       "accepted": 0,
       "accept_pct": 0.0
     },
     {
       "location": "Patna WH",
-      "total": 36,
+      "total": 37,
       "accepted": 1,
-      "accept_pct": 2.8
+      "accept_pct": 2.7
     },
     {
       "location": "Hyderabad WH",
-      "total": 22,
+      "total": 23,
       "accepted": 1,
-      "accept_pct": 4.5
+      "accept_pct": 4.3
     },
     {
       "location": "DocPharma",
