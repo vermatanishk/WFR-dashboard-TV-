@@ -1,71 +1,64 @@
 {
-  "week_start": "2026-09-21",
-  "week_end": "2026-09-27",
-  "generated_at": "2026-09-28T11:38:16Z",
-  "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation) or doctor-approval lag - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Computed directly via ClickHouse (Pipeline B / rfd_base methodology, order-scope-filtered per the 2026-08-31 fix) by the scheduled routine.",
+  "week_start": "2026-09-28",
+  "week_end": "2026-10-04",
+  "generated_at": "2026-10-04T14:20:00Z",
+  "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation, >20min past order creation or never confirmed) or doctor-approval lag (>30min past doctor-pending) - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Computed directly via ClickHouse (Pipeline B / rfd_base methodology: eligibility and breach cohort scoped by first_pickup_at falling in the week window, per the dual-cohort approach documented in RFD_Adherence_Logic_Documentation.md) by the scheduled routine.",
   "by_warehouse": {
     "Delhi": {
-      "eligible_orders": 12751,
-      "overall_breach": 202,
-      "wh_breach": 34,
-      "overall_breach_pct": 1.584,
-      "wh_breach_pct": 0.267
-    },
-    "Kolkata": {
-      "eligible_orders": 8333,
-      "overall_breach": 94,
-      "wh_breach": 4,
-      "overall_breach_pct": 1.128,
-      "wh_breach_pct": 0.048
+      "eligible_orders": 19018,
+      "overall_breach": 404,
+      "wh_breach": 55,
+      "overall_breach_pct": 2.124,
+      "wh_breach_pct": 0.289
     },
     "Bangalore": {
-      "eligible_orders": 8214,
-      "overall_breach": 192,
-      "wh_breach": 23,
-      "overall_breach_pct": 2.337,
-      "wh_breach_pct": 0.28
+      "eligible_orders": 12627,
+      "overall_breach": 853,
+      "wh_breach": 159,
+      "overall_breach_pct": 6.755,
+      "wh_breach_pct": 1.259
+    },
+    "Kolkata": {
+      "eligible_orders": 12097,
+      "overall_breach": 283,
+      "wh_breach": 24,
+      "overall_breach_pct": 2.339,
+      "wh_breach_pct": 0.198
     },
     "Mumbai": {
-      "eligible_orders": 6283,
-      "overall_breach": 239,
-      "wh_breach": 16,
-      "overall_breach_pct": 3.804,
-      "wh_breach_pct": 0.255
+      "eligible_orders": 10916,
+      "overall_breach": 568,
+      "wh_breach": 24,
+      "overall_breach_pct": 5.203,
+      "wh_breach_pct": 0.22
     },
     "Lucknow": {
-      "eligible_orders": 4212,
-      "overall_breach": 65,
-      "wh_breach": 3,
-      "overall_breach_pct": 1.543,
-      "wh_breach_pct": 0.071
+      "eligible_orders": 6352,
+      "overall_breach": 96,
+      "wh_breach": 7,
+      "overall_breach_pct": 1.511,
+      "wh_breach_pct": 0.11
     },
     "Hyderabad WH": {
-      "eligible_orders": 3464,
-      "overall_breach": 16,
-      "wh_breach": 8,
-      "overall_breach_pct": 0.462,
-      "wh_breach_pct": 0.231
+      "eligible_orders": 3876,
+      "overall_breach": 20,
+      "wh_breach": 3,
+      "overall_breach_pct": 0.516,
+      "wh_breach_pct": 0.077
     },
     "Patna WH": {
-      "eligible_orders": 2706,
+      "eligible_orders": 3422,
       "overall_breach": 11,
-      "wh_breach": 6,
-      "overall_breach_pct": 0.407,
-      "wh_breach_pct": 0.222
+      "wh_breach": 5,
+      "overall_breach_pct": 0.321,
+      "wh_breach_pct": 0.146
     },
     "DocPharma": {
-      "eligible_orders": 157,
-      "overall_breach": 1,
-      "wh_breach": 1,
-      "overall_breach_pct": 0.637,
-      "wh_breach_pct": 0.637
-    },
-    "MOTHER WAREHOUSE - AFFOLIFE RETAIL PRIVATE LIMITED": {
-      "eligible_orders": 74,
-      "overall_breach": 74,
-      "wh_breach": 16,
-      "overall_breach_pct": 100.0,
-      "wh_breach_pct": 21.622
+      "eligible_orders": 209,
+      "overall_breach": 4,
+      "wh_breach": 0,
+      "overall_breach_pct": 1.914,
+      "wh_breach_pct": 0.0
     }
   }
 }
