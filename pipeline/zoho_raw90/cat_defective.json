@@ -680,5 +680,49 @@
     "department": "Support",
     "assignee": "Sanjeev Mohan",
     "category": "Damaged/Defective"
+  },
+  {
+    "ticket_id": "262336",
+    "order_id": "4070400",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-10-02T16:11:07.000Z",
+    "status": "In Progress",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Arnab Poddar",
+    "category": "Damaged/Defective"
+  },
+  {
+    "ticket_id": "262385",
+    "order_id": "3996755",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-10-03T06:19:04.000Z",
+    "status": "Waiting on Customer",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Rajni Singh",
+    "category": "Damaged/Defective"
+  },
+  {
+    "ticket_id": "262402",
+    "order_id": "3972296",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-10-03T07:17:57.000Z",
+    "status": "Resolved",
+    "channel": "Web",
+    "department": "Support",
+    "assignee": "Arnab Poddar",
+    "category": "Damaged/Defective"
+  },
+  {
+    "ticket_id": "262500",
+    "order_id": "4132854",
+    "sub_disposition": "Defective or damaged device or accessory",
+    "created_time": "2026-10-03T15:22:57.000Z",
+    "status": "Resolved",
+    "channel": "Email",
+    "department": "Support",
+    "assignee": "Ayushi Kumari",
+    "category": "Damaged/Defective"
   }
 ]
