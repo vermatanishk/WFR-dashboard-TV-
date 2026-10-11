@@ -19571,5 +19571,159 @@
     "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).",
     "order_id": 4011036,
     "admitted": false
+  },
+  "263401": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4119288,
+    "admitted": false
+  },
+  "263529": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4232872,
+    "admitted": false
+  },
+  "263526": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4242158,
+    "admitted": false
+  },
+  "263458": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4176368,
+    "admitted": false
+  },
+  "263451": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4232539,
+    "admitted": false
+  },
+  "263432": {
+    "verdict": "admitted",
+    "evidence": "We have sent short qty to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent short qty to CX Mahiboob bee\" - explicit admission, counted WH-Accepted.",
+    "order_id": 4193838,
+    "admitted": true
+  },
+  "263525": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4220690,
+    "admitted": false
+  },
+  "263523": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4219354,
+    "admitted": false
+  },
+  "263502": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4243238,
+    "admitted": false
+  },
+  "263455": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4230067,
+    "admitted": false
+  },
+  "263442": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4235059,
+    "admitted": false
+  },
+  "263527": {
+    "verdict": "admitted",
+    "evidence": "We have sent short qty to CX",
+    "reason": "Warehouse team comment: \"We have sent short qty to CX\" - explicit admission, counted WH-Accepted.",
+    "order_id": 4159584,
+    "admitted": true
+  },
+  "263412": {
+    "verdict": "unrecognized",
+    "evidence": "We have not sent free item to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have not sent free item to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4070779,
+    "admitted": false
+  },
+  "263507": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4244483,
+    "admitted": false
+  },
+  "263456": {
+    "verdict": "admitted",
+    "evidence": "We have sent short qty to CX",
+    "reason": "Warehouse team comment: \"We have sent short qty to CX\" - explicit admission, counted WH-Accepted.",
+    "order_id": 4199593,
+    "admitted": true
+  },
+  "263430": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4173476,
+    "admitted": false
+  },
+  "263424": {
+    "verdict": "admitted",
+    "evidence": "We have sent short qty to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent short qty to CX Mahiboob bee\" - explicit admission, counted WH-Accepted.",
+    "order_id": 4224568,
+    "admitted": true
+  },
+  "263439": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4157132,
+    "admitted": false
+  },
+  "263408": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).",
+    "order_id": 4242293,
+    "admitted": false
+  },
+  "263440": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-team comment on this ticket - not counted (need an explicit WH admission, not silence).",
+    "order_id": 4251794,
+    "admitted": false
+  },
+  "263419": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4216324,
+    "admitted": false
+  },
+  "263462": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
+    "order_id": 4184525,
+    "admitted": false
   }
 }

@@ -1,4 +1,89 @@
 """
+2026-10-11 run note (for_date 2026-10-09): 22 T-2 tickets pulled (17
+Missing/Wrong Qty, 5 Wrong Medicines, 0 Expiry Issue, 0 Damaged/Defective, 0
+Switch Orders). Full comment threads enumerated for every ticket before
+classifying (commentCount ranged 1-4; no commentCount-0 tickets). Four
+genuine WH admissions this run, all a literal "short qty" ADMISSION_PHRASES
+substring: 263432 (order 4193838, Mumbai, Missing/Wrong Qty, "We have sent
+short qty to CX Mahiboob bee", followed by L2 "claim refund refund will be
+process shortly" / "Refund Processed" - consistent), 263527 (order 4159584,
+Delhi, Missing/Wrong Qty, "We have sent short qty to CX", followed by L2
+"claim accepted / Refund Processed"), 263456 (order 4199593, Lucknow,
+Missing/Wrong Qty, "We have sent short qty to CX", followed by L2 "claim
+accepted / Refund Initiated"), and 263424 (order 4224568, Delhi,
+Missing/Wrong Qty, "We have sent short qty to CX Mahiboob bee", followed by
+L2 "claim accepted / Refund Initiated") - no INTENT_OVERRIDES needed for any
+(all matched a literal substring directly). Notably, order 4193838 also drew
+a genuine short-qty WH admission on the immediately preceding run (ticket
+263377, for_date 2026-10-08) - the same order was raised as a fresh
+mis-shipment ticket two days running, both times a genuine short-qty
+admission; not a dedup bug, two independent tickets on the same order two
+days apart.
+
+15 of the remaining 18 tickets carried the plain stock-denial template "We
+have sent proper medicine to CX Mahiboob bee" (263401, 263529, 263526,
+263458, 263451, 263525, 263523, 263502, 263455, 263442, 263507, 263430,
+263439, 263419, 263462) - correctly False/denied. One ticket, 263401, had an
+earlier L2-Agent comment (Arnab Poddar, @-mentioning "Warehouse All")
+restating the complaint ("Pimapexole... Amantabrook... Incomplete order") -
+read for intent and confirmed NOT a Warehouse-role comment (actual
+commenter roleName "L2 Agent"); the genuine Warehouse-role reply came later
+in the thread (a denial) and is what's recorded. 263419 is worth flagging:
+its single Warehouse-role comment is the plain "proper medicine" denial,
+but the L2 follow-up reads "Return Pickup has bee Initiated" - a phrase
+this file's run notes have previously associated with genuine acceptance -
+here it is NOT, since the only Warehouse-role statement on the thread is an
+explicit denial; the ticket is correctly classified "denied" per
+methodology (the WH team's own text governs, not what happens procedurally
+afterward) - flagged for human review given the mismatched signal.
+
+Two tickets had no genuine Warehouse-role comment at all: 263408 (order
+4242293, Wrong Medicines - description states the customer actually
+received the wrong item because a sales agent mis-keyed the order ["cx
+ordered Injection 1*3ml but sales agent placed order Cartridge of 3ml"], a
+sales/order-entry error rather than a WH fulfilment error; only L2/
+LightAgent comments, including a later note that the customer now wants to
+cancel the return) and 263440 (order 4251794, Wrong Medicines - only an L2/
+LightAgent comment asking to check shared images, roleName "LightAgent") -
+both correctly "no_wh_comment", still counted in the tickets total per
+methodology.
+
+One ticket, 263412 (order 4070779, Missing/Wrong Qty), is a genuinely novel
+phrasing not covered by any existing phrase table: its sole Warehouse-role
+comment reads "We have not sent free item to CX Mahiboob bee" - a
+first-person WH statement, but about a free/bonus item rather than the
+short-qty complaint actually raised, and it matches neither
+ADMISSION_PHRASES nor DENIAL_PHRASES nor NEUTRAL_PHRASES; read for intent
+and confirmed it is not a genuine admission of sending the wrong/short paid
+item, so classify() correctly returns False via the "otherwise" branch -
+synced to wh_text_check.json as "unrecognized", flagged for manual review
+(no fixture added to the phrase tables themselves, per the "document the
+outlier, don't regex-generalize a one-off" precedent set for 257160/259768).
+
+No sentence-reading vs wh_comment_classifier.py disagreement this run -
+cross-checked all 22 tickets' comments programmatically through
+classify_wh_comments() and every verdict (4 admitted, 15 denied, 2
+no_wh_comment, 1 unrecognized) matched the live sentence-reading exactly.
+No instance this run of a genuine WH admission followed by a contradicting
+L2 "BOD Issued"/denial-style note (all 4 admissions' follow-ups were
+claim-accepted/refund notes, consistent with acceptance). No ClickHouse
+"Low-Value COG" remark cross-check was queried (text-only classification
+per methodology).
+
+Location join (single batched query over all 22 unique order_ids, all
+non-null and numeric - 263451's Order ID custom field had a trailing space
+("4232539 "), trimmed before the join) resolved 22/22 to a named warehouse
+(0% Unknown). Fulfilment-chain attribution pulled for all 4 WH-Accepted
+(text) tickets, no null roles and no ties (picker max-pick margins 50v29,
+13v8, 5v4, 6v5): spot-check confirmed the resolved warehouse matches the
+username city suffix in all 4 - 4193838 Mumbai (picker/packer PayalA_MUM,
+qc Mansi-S_MUM, manifester RohitK_MUM, all _MUM), 4159584 Delhi (picker
+Khushbu_DEL, packer Prince_Del, qc Shivani_DEL, manifester Shubham_DEL, all
+_DEL), 4199593 Lucknow (picker Gayatri.M_LKO, packer Anshu.S_LKO, qc
+Raj.V_LKO, manifester Subhashini.Y_LKO, all _LKO), 4224568 Delhi
+(picker/packer Ankit_DEL, qc Janvi_DEL, manifester Ruksana_DEL, all _DEL) -
+join confirmed correct.
+
 2026-10-10 run note (for_date 2026-10-08): 25 T-2 tickets pulled (21
 Missing/Wrong Qty, 3 Wrong Medicines, 0 Expiry Issue, 1 Damaged/Defective, 0
 Switch Orders). Full comment threads enumerated for every ticket before
@@ -2216,12 +2301,12 @@ HERE = Path(__file__).parent
 # order_id -> location, from ClickHouse marketplace_orders join (on order_id,
 # NOT the internal "id" column - see docstring above).
 ORDER_LOCATION = {
-    4216433: "Bangalore", 4209266: "Delhi", 4228169: "Kolkata", 4171427: "Kolkata",
-    4188015: "Kolkata", 4224198: "Delhi", 4201985: "Lucknow", 4199995: "Delhi",
-    4110393: "Lucknow", 4178393: "Kolkata", 4046141: "Lucknow", 4193838: "Mumbai",
-    4238856: "Bangalore", 4214271: "Bangalore", 4154975: "Bangalore", 4177919: "Kolkata",
-    4176292: "Delhi", 4200422: "Lucknow", 4172734: "Bangalore", 4060142: "Kolkata",
-    4230873: "Delhi", 4203563: "Delhi", 4220715: "Kolkata", 4011036: "Mumbai",
+    4119288: "Lucknow", 4232872: "Kolkata", 4242158: "Bangalore", 4176368: "Kolkata",
+    4232539: "Kolkata", 4193838: "Mumbai", 4220690: "Delhi", 4219354: "Bangalore",
+    4243238: "Bangalore", 4230067: "Bangalore", 4235059: "Delhi", 4159584: "Delhi",
+    4070779: "Bangalore", 4244483: "Mumbai", 4199593: "Lucknow", 4173476: "Delhi",
+    4224568: "Delhi", 4157132: "Delhi", 4242293: "Delhi", 4251794: "Lucknow",
+    4216324: "Kolkata", 4184525: "Bangalore",
 }
 
 # Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
@@ -2229,58 +2314,52 @@ ORDER_LOCATION = {
 # no Warehouse-role comment was posted on the ticket (only L2/agent notes, if any) -
 # confirmed by reading the FULL comment list for every ticket, not just the latest.
 WH_COMMENT = {
-    "263287": "We have sent proper medicine to CX Mahiboob bee",
-    "263311": "We have sent proper medicine to CX Mahiboob bee",
-    "263257": "We have sent proper medicine to CX Mahiboob bee",
-    "263362": "We have sent proper medicine to CX Mahiboob bee",
-    "263341": "We have sent proper medicine to CX Mahiboob bee",
-    "263360": "We have sent proper medicine to CX Mahiboob bee",
-    "263329": "We have sent proper medicine to CX Mahiboob bee",
-    "263319": "We have sent proper medicine to CX Mahiboob bee",
-    "263315": "We have sent proper medicine to CX Mahiboob bee",
-    "263252": "We have sent proper medicine to CX Mahiboob bee",
-    "263295": None,
-    "263377": "We already cleared this ticket in the morning and we are accepted short qty",
-    "263345": "We have sent proper medicine to CX Mahiboob bee",
-    "263339": "We have sent proper medicine to CX Mahiboob bee",
-    "263225": None,
-    "263334": "We have sent proper medicine to CX Mahiboob bee",
-    "263325": "We have sent proper medicine to CX Mahiboob bee",
-    "263312": "We have sent proper medicine to CX Mahiboob bee",
-    "263267": "We have sent proper medicine to CX Mahiboob bee",
-    "263264": "We have sent short qty to CX",
-    "263256": "We have sent proper medicine to CX Mahiboob bee",
-    "263352": "We have sent proper medicine to CX Mahiboob bee",
-    "263288": "We have sent wrong sku to CX Mahiboob bee",
-    "263232": "We have sent proper medicine to CX Mahiboob bee",
-    "263244": None,
+    "263401": "We have sent proper medicine to CX Mahiboob bee",
+    "263529": "We have sent proper medicine to CX Mahiboob bee",
+    "263526": "We have sent proper medicine to CX Mahiboob bee",
+    "263458": "We have sent proper medicine to CX Mahiboob bee",
+    "263451": "We have sent proper medicine to CX Mahiboob bee",
+    "263432": "We have sent short qty to CX Mahiboob bee",
+    "263525": "We have sent proper medicine to CX Mahiboob bee",
+    "263523": "We have sent proper medicine to CX Mahiboob bee",
+    "263502": "We have sent proper medicine to CX Mahiboob bee",
+    "263455": "We have sent proper medicine to CX Mahiboob bee",
+    "263442": "We have sent proper medicine to CX Mahiboob bee",
+    "263527": "We have sent short qty to CX",
+    "263412": "We have not sent free item to CX Mahiboob bee",
+    "263507": "We have sent proper medicine to CX Mahiboob bee",
+    "263456": "We have sent short qty to CX",
+    "263430": "We have sent proper medicine to CX Mahiboob bee",
+    "263424": "We have sent short qty to CX Mahiboob bee",
+    "263439": "We have sent proper medicine to CX Mahiboob bee",
+    "263408": None,
+    "263440": None,
+    "263419": "We have sent proper medicine to CX Mahiboob bee",
+    "263462": "We have sent proper medicine to CX Mahiboob bee",
 }
 TICKETS = [
-    {"ticket_id": "263287", "order_id": 4216433, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T07:55:09"},
-    {"ticket_id": "263311", "order_id": 4209266, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T10:07:38"},
-    {"ticket_id": "263257", "order_id": 4228169, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T06:06:57"},
-    {"ticket_id": "263362", "order_id": 4171427, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T13:21:19"},
-    {"ticket_id": "263341", "order_id": 4188015, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T12:05:52"},
-    {"ticket_id": "263360", "order_id": 4224198, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T13:18:57"},
-    {"ticket_id": "263329", "order_id": 4201985, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T11:15:44"},
-    {"ticket_id": "263319", "order_id": 4199995, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T10:38:17"},
-    {"ticket_id": "263315", "order_id": 4110393, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T10:24:04"},
-    {"ticket_id": "263252", "order_id": 4178393, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T05:44:15"},
-    {"ticket_id": "263295", "order_id": 4046141, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T08:36:12"},
-    {"ticket_id": "263377", "order_id": 4193838, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T17:53:26"},
-    {"ticket_id": "263345", "order_id": 4238856, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T12:14:52"},
-    {"ticket_id": "263339", "order_id": 4214271, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T12:01:13"},
-    {"ticket_id": "263225", "order_id": None, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T00:50:27"},
-    {"ticket_id": "263334", "order_id": 4154975, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T11:54:26"},
-    {"ticket_id": "263325", "order_id": 4177919, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T10:52:58"},
-    {"ticket_id": "263312", "order_id": 4176292, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T10:09:12"},
-    {"ticket_id": "263267", "order_id": 4200422, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T06:37:59"},
-    {"ticket_id": "263264", "order_id": 4172734, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T06:32:17"},
-    {"ticket_id": "263256", "order_id": 4060142, "category": "Missing/Wrong Qty", "created_time": "2026-10-08T06:04:29"},
-    {"ticket_id": "263352", "order_id": 4230873, "category": "Wrong Medicines", "created_time": "2026-10-08T12:50:29"},
-    {"ticket_id": "263288", "order_id": 4203563, "category": "Wrong Medicines", "created_time": "2026-10-08T08:00:20"},
-    {"ticket_id": "263232", "order_id": 4220715, "category": "Wrong Medicines", "created_time": "2026-10-08T03:34:09"},
-    {"ticket_id": "263244", "order_id": 4011036, "category": "Damaged/Defective", "created_time": "2026-10-08T04:57:09"},
+    {"ticket_id": "263401", "order_id": 4119288, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T04:35:26"},
+    {"ticket_id": "263529", "order_id": 4232872, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T13:20:27"},
+    {"ticket_id": "263526", "order_id": 4242158, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T13:05:47"},
+    {"ticket_id": "263458", "order_id": 4176368, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T07:59:47"},
+    {"ticket_id": "263451", "order_id": 4232539, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T07:22:17"},
+    {"ticket_id": "263432", "order_id": 4193838, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T06:15:55"},
+    {"ticket_id": "263525", "order_id": 4220690, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T12:57:19"},
+    {"ticket_id": "263523", "order_id": 4219354, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T12:52:40"},
+    {"ticket_id": "263502", "order_id": 4243238, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T10:57:01"},
+    {"ticket_id": "263455", "order_id": 4230067, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T07:42:58"},
+    {"ticket_id": "263442", "order_id": 4235059, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T06:47:08"},
+    {"ticket_id": "263527", "order_id": 4159584, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T13:14:25"},
+    {"ticket_id": "263412", "order_id": 4070779, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T04:57:42"},
+    {"ticket_id": "263507", "order_id": 4244483, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T11:36:28"},
+    {"ticket_id": "263456", "order_id": 4199593, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T07:48:19"},
+    {"ticket_id": "263430", "order_id": 4173476, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T06:14:20"},
+    {"ticket_id": "263424", "order_id": 4224568, "category": "Missing/Wrong Qty", "created_time": "2026-10-09T05:50:18"},
+    {"ticket_id": "263439", "order_id": 4157132, "category": "Wrong Medicines", "created_time": "2026-10-09T06:39:03"},
+    {"ticket_id": "263408", "order_id": 4242293, "category": "Wrong Medicines", "created_time": "2026-10-09T04:46:07"},
+    {"ticket_id": "263440", "order_id": 4251794, "category": "Wrong Medicines", "created_time": "2026-10-09T06:43:05"},
+    {"ticket_id": "263419", "order_id": 4216324, "category": "Wrong Medicines", "created_time": "2026-10-09T05:44:32"},
+    {"ticket_id": "263462", "order_id": 4184525, "category": "Wrong Medicines", "created_time": "2026-10-09T08:16:04"},
 ]
 
 # Genuine admission phrases the WH team uses when they DO own the mistake.
@@ -2315,13 +2394,14 @@ ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
 #   packer     - marketplace_order_status_log, ops_user_name WHERE order_id = ? AND current_status_id = 52 ("pharmacistAccepted") - ops_user_name is already the display name, use directly.
 #   qc (checker) - marketplace_order_status_log, ops_user_name WHERE order_id = ? AND current_status_id = 61 ("packedAndQCed") - same as before, unchanged.
 #   manifester - marketplace_order_status_log, ops_user_name WHERE order_id = ? AND current_status_id = 64 ("manifested") - ops_user_name is the display name, use directly.
-PICKER_QC = {  # for_date 2026-10-08 - 3 WH-Accepted (text) tickets this run
-    # (see run note at top of file); all 3 fulfilment chains resolved with
-    # no null roles and no ties (picker max-pick margin was 13v8, 11v10,
-    # 13v12 respectively).
-    "263377": {"picker": "PayalA_MUM", "packer": "PayalA_MUM", "qc": "Mansi-S_MUM", "manifester": "RohitK_MUM"},
-    "263264": {"picker": "Nagesh", "packer": "Pavithra", "qc": "Shabana_BLRWH", "manifester": "Nagesh"},
-    "263288": {"picker": "Roshni.k_DEL", "packer": "Pammy_DEL", "qc": "Shivani_DEL", "manifester": "Ronu_DEL"},
+PICKER_QC = {  # for_date 2026-10-09 - 4 WH-Accepted (text) tickets this run
+    # (see run note at top of file); all 4 fulfilment chains resolved with
+    # no null roles and no ties (picker max-pick margin was 50v29, 13v8,
+    # 5v4, 6v5 respectively).
+    "263432": {"picker": "PayalA_MUM", "packer": "PayalA_MUM", "qc": "Mansi-S_MUM", "manifester": "RohitK_MUM"},
+    "263527": {"picker": "Khushbu_DEL", "packer": "Prince_Del", "qc": "Shivani_DEL", "manifester": "Shubham_DEL"},
+    "263456": {"picker": "Gayatri.M_LKO", "packer": "Anshu.S_LKO", "qc": "Raj.V_LKO", "manifester": "Subhashini.Y_LKO"},
+    "263424": {"picker": "Ankit_DEL", "packer": "Ankit_DEL", "qc": "Janvi_DEL", "manifester": "Ruksana_DEL"},
 }
 
 
@@ -2514,6 +2594,21 @@ def classify(wh_comment):
 # restates the customer's complaint - read for intent and confirmed this is
 # NOT a Warehouse-role comment; the genuine Warehouse-role reply came later
 # in the thread (a denial) and is what's recorded - no override needed.
+#
+# 2026-10-11 run (for_date 2026-10-09): no override needed - all 4 genuine
+# WH admissions this run (263432, 263527, 263456, 263424, all "We have sent
+# short qty to CX[...]") matched the literal "short qty" ADMISSION_PHRASES
+# substring directly. One ticket this run (263412, "We have not sent free
+# item to CX Mahiboob bee") was read for intent and confirmed as neither a
+# genuine admission nor the standard denial template - classify()'s literal
+# "otherwise -> False" branch already agreed (not an override, since the
+# outcome is the same False either way) - synced to wh_text_check.json as
+# "unrecognized" per the same precedent as 262748/261950/261965's "Footage
+# not found" tickets. 263401's earlier L2-Agent comment (@-mentioning
+# "Warehouse All" while restating the complaint) was read for intent and
+# confirmed NOT a Warehouse-role comment - the genuine Warehouse-role reply
+# came later in the thread (a denial) and is what's recorded - no override
+# needed.
 INTENT_OVERRIDES = {
     "259768": (True, "Warehouse team comment: \"We have sent proper medicine but defferent expiry date to CX\" - a first-person WH admission that the shipped item's expiry date differs from the billed one, matching the customer's own Expiry Issue complaint (bill expiry 5/28 vs printed 12/27) - functionally the same outlier pattern as 257160's \"deferent manufacturer company medicine\" (no literal ADMISSION_PHRASES substring, but a genuine admission on a full-sentence reading). Counted WH-Accepted via override."),
 }
@@ -2539,8 +2634,8 @@ for t in TICKETS:
     })
 
 eod_data = {
-    "generated_at": "2026-10-10T13:10:00Z",
-    "for_date": "2026-10-08",
+    "generated_at": "2026-10-11T13:55:00Z",
+    "for_date": "2026-10-09",
     "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
     "tickets": out_tickets,
 }
