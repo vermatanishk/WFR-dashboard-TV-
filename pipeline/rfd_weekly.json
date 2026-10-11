@@ -1,64 +1,71 @@
 {
-  "week_start": "2026-09-28",
-  "week_end": "2026-10-04",
-  "generated_at": "2026-10-04T14:20:00Z",
+  "week_start": "2026-10-05",
+  "week_end": "2026-10-11",
+  "generated_at": "2026-10-11T00:00:00Z",
   "methodology": "WH breach % = orders where manifesting missed the courier's first pickup, EXCLUDING orders where the delay traces to procurement (SO confirmation, >20min past order creation or never confirmed) or doctor-approval lag (>30min past doctor-pending) - i.e. the portion of RFD/breach attributable to the warehouse's own manifest step. Computed directly via ClickHouse (Pipeline B / rfd_base methodology: eligibility and breach cohort scoped by first_pickup_at falling in the week window, per the dual-cohort approach documented in RFD_Adherence_Logic_Documentation.md) by the scheduled routine.",
   "by_warehouse": {
     "Delhi": {
-      "eligible_orders": 19018,
-      "overall_breach": 404,
-      "wh_breach": 55,
-      "overall_breach_pct": 2.124,
-      "wh_breach_pct": 0.289
-    },
-    "Bangalore": {
-      "eligible_orders": 12627,
-      "overall_breach": 853,
-      "wh_breach": 159,
-      "overall_breach_pct": 6.755,
-      "wh_breach_pct": 1.259
+      "eligible_orders": 12025,
+      "overall_breach": 332,
+      "wh_breach": 161,
+      "overall_breach_pct": 2.761,
+      "wh_breach_pct": 1.339
     },
     "Kolkata": {
-      "eligible_orders": 12097,
-      "overall_breach": 283,
-      "wh_breach": 24,
-      "overall_breach_pct": 2.339,
-      "wh_breach_pct": 0.198
+      "eligible_orders": 7251,
+      "overall_breach": 87,
+      "wh_breach": 14,
+      "overall_breach_pct": 1.2,
+      "wh_breach_pct": 0.193
+    },
+    "Bangalore": {
+      "eligible_orders": 7215,
+      "overall_breach": 132,
+      "wh_breach": 12,
+      "overall_breach_pct": 1.83,
+      "wh_breach_pct": 0.166
     },
     "Mumbai": {
-      "eligible_orders": 10916,
-      "overall_breach": 568,
-      "wh_breach": 24,
-      "overall_breach_pct": 5.203,
-      "wh_breach_pct": 0.22
+      "eligible_orders": 6699,
+      "overall_breach": 279,
+      "wh_breach": 37,
+      "overall_breach_pct": 4.165,
+      "wh_breach_pct": 0.552
     },
     "Lucknow": {
-      "eligible_orders": 6352,
-      "overall_breach": 96,
-      "wh_breach": 7,
-      "overall_breach_pct": 1.511,
-      "wh_breach_pct": 0.11
+      "eligible_orders": 3810,
+      "overall_breach": 61,
+      "wh_breach": 0,
+      "overall_breach_pct": 1.601,
+      "wh_breach_pct": 0.0
     },
     "Hyderabad WH": {
-      "eligible_orders": 3876,
-      "overall_breach": 20,
+      "eligible_orders": 2899,
+      "overall_breach": 14,
       "wh_breach": 3,
-      "overall_breach_pct": 0.516,
-      "wh_breach_pct": 0.077
+      "overall_breach_pct": 0.483,
+      "wh_breach_pct": 0.103
     },
     "Patna WH": {
-      "eligible_orders": 3422,
-      "overall_breach": 11,
-      "wh_breach": 5,
-      "overall_breach_pct": 0.321,
-      "wh_breach_pct": 0.146
+      "eligible_orders": 2437,
+      "overall_breach": 6,
+      "wh_breach": 2,
+      "overall_breach_pct": 0.246,
+      "wh_breach_pct": 0.082
+    },
+    "Guwahati WH": {
+      "eligible_orders": 1003,
+      "overall_breach": 37,
+      "wh_breach": 34,
+      "overall_breach_pct": 3.689,
+      "wh_breach_pct": 3.39
     },
     "DocPharma": {
-      "eligible_orders": 209,
-      "overall_breach": 4,
-      "wh_breach": 0,
-      "overall_breach_pct": 1.914,
-      "wh_breach_pct": 0.0
+      "eligible_orders": 251,
+      "overall_breach": 5,
+      "wh_breach": 5,
+      "overall_breach_pct": 1.992,
+      "wh_breach_pct": 1.992
     }
   }
 }
