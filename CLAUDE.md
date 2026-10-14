@@ -290,7 +290,10 @@ comment, not from the admission/denial evidence (neutral-only threads have none)
 MRP mismatch, missing/not-mentioned free item, packer did not remove medicine outside, expiry/excess/wrong
 free item sent.
 Other branches (`pipeline/build_rca_extra.py` -> `rca_extra.json`, run before `build_rca.py`; inputs saved from
-the ClickHouse MCP): Missing/short qty = ONLY the tree's split (SKU missing vs item missing, from the return item); pick scans are
+the ClickHouse MCP): Missing/short qty = ONLY the tree's split (SKU missing vs item missing); EVERY ticket falls in exactly one leaf:
+return-item quantities first, else the ticket text (`rca_missing_text_kind.json`: empty box / not received / whole line =
+SKU missing; partial qty, accessory or short content = item missing), else a flagged default of item missing
+(`basis` is kept: return_item / ticket_text / default_no_detail); pick scans are
 deliberately NOT used as evidence (owner: a scan can be logged for a pick that never physically happened).
 Damaged = cold flag (`is_cold`) +
 logistics exception (`shipment_events` ndr_count / ofd_count, `shipment_latest.delivery_attempts`;

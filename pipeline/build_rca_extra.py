@@ -60,6 +60,7 @@ def main():
     pick = json.loads((RAW / "rca_pickcheck.json").read_text())
     logi = set(json.loads((RAW / "rca_logistics.json").read_text())["ndr_or_multi_attempt_orders"])
     swap = json.loads((RAW / "rca_swap.json").read_text())["label_order_mismatch"]
+    text_kind = json.loads((RAW / "rca_missing_text_kind.json").read_text()) if (RAW / "rca_missing_text_kind.json").exists() else {}
     out, summ = {}, {"missing": {}, "damaged": {}, "swap": 0}
     for t in data["tickets"]:
         o = str(t["order_id"])
@@ -67,8 +68,17 @@ def main():
         if t["category"] == "Missing/Wrong Qty":
             # Owner rule (2026-10-14): only the tree's split is reported. A pick scan can be recorded for a
             # pick that did not physically happen ("false picking"), so scans are NOT used as evidence.
+            # Every Missing/Wrong Qty ticket falls in exactly one leaf (owner, 2026-10-14): return-item
+            # quantities first; else the ticket text (empty box / not received / whole line = SKU missing;
+            # partial quantity, accessory or short content = item missing); else a flagged default of
+            # item missing. The basis is kept so the weaker calls stay visible.
             k = pick["picked_full"].get(o)
-            x["missing"] = {"kind": "sku_missing" if k == "S" else "item_missing" if k == "I" else None}
+            if k:
+                x["missing"] = {"kind": "sku_missing" if k == "S" else "item_missing", "basis": "return_item"}
+            elif t["ticket_id"] in text_kind:
+                x["missing"] = dict(text_kind[t["ticket_id"]])
+            else:
+                x["missing"] = {"kind": "item_missing", "basis": "default_no_detail"}
         if t["category"] == "Damaged/Defective":
             exc = o in logi
             x["damaged"] = {"cold": bool(t.get("is_cold")), "logistics_exception": exc,
@@ -82,7 +92,7 @@ def main():
             out[t["ticket_id"]] = x
     for r in out.values():
         if "missing" in r:
-            k = r["missing"].get("kind") or "not_classified"
+            k = r["missing"]["kind"] + ":" + r["missing"]["basis"]
             summ["missing"][k] = summ["missing"].get(k, 0) + 1
         if "damaged" in r:
             k = ("cold+" if r["damaged"]["cold"] else "noncold+") + ("logistics" if r["damaged"]["logistics_exception"] else "no_logistics_exc")

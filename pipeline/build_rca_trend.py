@@ -111,7 +111,8 @@ def main():
 
     P["mq"] = cat("Missing/Wrong Qty")
     P["mq_sku"] = lambda r: r["category"] == "Missing/Wrong Qty" and ((r.get("extra") or {}).get("missing") or {}).get("kind") == "sku_missing"
-    P["mq_none"] = lambda r: r["category"] == "Missing/Wrong Qty" and not ((r.get("extra") or {}).get("missing") or {}).get("kind")
+    P["mq_text"] = lambda r: r["category"] == "Missing/Wrong Qty" and ((r.get("extra") or {}).get("missing") or {}).get("basis") == "ticket_text"
+    P["mq_default"] = lambda r: r["category"] == "Missing/Wrong Qty" and ((r.get("extra") or {}).get("missing") or {}).get("basis") == "default_no_detail"
     P["mq_item"] = lambda r: r["category"] == "Missing/Wrong Qty" and ((r.get("extra") or {}).get("missing") or {}).get("kind") == "item_missing"
     P["sw"] = cat("Switch Orders")
     P["mrp"] = cat("MRP/Batch Mismatch")
@@ -162,9 +163,10 @@ def main():
         ("dm_nc_log", "memo: non-cold with a logistics exception", "NDR / repeat attempt - overlaps the rows above, not additive", "dm_nc", 1, False),
 
         ("mq", "Missing / short quantity", "tickets", "raised", 0, True),
-        ("mq_sku", "↳ SKU missing", "whole ordered line", "mq", 1, False),
+        ("mq_sku", "↳ SKU missing", "whole line / empty box / not received - the 2 rows add up to the total", "mq", 1, False),
         ("mq_item", "↳ item missing", "partial quantity", "mq", 1, False),
-        ("mq_none", "↳ not classifiable", "no return item with a quantity to compare", "mq", 1, False),
+        ("mq_text", "memo: classified from the ticket text", "no return item - overlaps the 2 rows above", "mq", 1, False),
+        ("mq_default", "memo: default to item missing", "no return item and no detail in the ticket - overlaps the 2 rows above", "mq", 1, False),
 
         ("sw", "Order swap", "tickets", "raised", 0, True),
         ("mrp", "MRP / batch mismatch", "tickets (new sub-disposition)", "raised", 0, True),

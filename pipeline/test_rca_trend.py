@@ -39,6 +39,6 @@ ok &= chk("expiry photo outcomes", ex + 5, [ex + 7, ex + 8, ex + 9, ex + 10, ex 
 ok &= chk("damaged cold / non-cold", dm, [ix("↳ cold chain"), nc])
 ok &= chk("non-cold read / unread", nc, [ncr, ix("↳ photo not read yet", nc)])
 ok &= chk("non-cold buckets", ncr, list(range(ncr + 2, ncr + 10)))
-ok &= chk("missing qty", mq, [mq + 1, mq + 2, mq + 3])
+ok &= chk("missing qty = SKU missing + item missing", mq, [mq + 1, mq + 2])
 ok &= chk("categories add to raised", 0, [wm, ex, dm, mq, ix("Order swap"), ix("MRP / batch mismatch")])
 raise SystemExit(0 if ok else 1)

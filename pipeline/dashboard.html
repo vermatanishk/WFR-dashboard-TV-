@@ -1316,7 +1316,8 @@ function renderRCA() {
     '<thead><tr><th>Split</th><th class="num">Tickets</th></tr></thead><tbody>' +
     '<tr><td>SKU missing (whole line)</td><td class="num">' + mqc('sku_missing') + '</td></tr>' +
     '<tr><td>Item missing (partial quantity)</td><td class="num">' + mqc('item_missing') + '</td></tr>' +
-    '<tr><td>Not classifiable (no incomplete-order return line)</td><td class="num">' + (mq.length - mqc('sku_missing') - mqc('item_missing')) + '</td></tr></tbody>';
+    '<tr><td><i>memo: of which read from the ticket text</i></td><td class="num">' + mq.filter(r => r.extra.missing.basis === 'ticket_text').length + '</td></tr>' +
+    '<tr><td><i>memo: of which defaulted (no return item, no detail)</i></td><td class="num">' + mq.filter(r => r.extra.missing.basis === 'default_no_detail').length + '</td></tr></tbody>';
 
   // Damaged: 1) cold / non-cold  2) images only for non-cold  3) split of what is happening
   const dg = RCA.rows.filter(r => r.extra && r.extra.damaged);
