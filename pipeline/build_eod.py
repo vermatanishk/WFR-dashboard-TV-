@@ -1,4 +1,647 @@
 """
+2026-10-13 run note (for_date 2026-10-11): 10 T-2 tickets pulled (5
+Missing/Wrong Qty, 3 Wrong Medicines, 0 Expiry Issue, 2 Damaged/Defective, 0
+Switch Orders). Full comment threads enumerated for every ticket before
+classifying. Zero genuine WH admissions this run. Five tickets had a
+genuine Warehouse-role ("Warehouse All", roleName "Warehouse ") comment,
+and all five were the plain stock-denial template "We have sent proper
+medicine to CX Mahiboob bee" - correctly False, no override needed: 263763
+and 263764 (both order 4220755 - two separate tickets raised for the same
+order, each got its own copy of the denial), 263778, 263792, and 263817.
+The other five tickets had no genuine Warehouse-role comment anywhere in
+their thread (only L2/LightAgent/Logistics notes) - 263746 (order 4235059,
+4 comments all from Sanjeev Mohan/L2 Agent, including one restating an
+unrelated prior ticket's WH-footage denial as his own L2 note, not a
+Warehouse-role comment), 263743 (order 4219151, single LightAgent comment
+requesting an invoice photo), 263802 (order 4219635, 5 comments - a blank
+LightAgent attachment note, two L2 RVP-progress notes, and an unrelated
+Logistics-role AWB-creation blocker note; no Warehouse-role reply), 263781
+(order 4278055, 2 L2 comments: "called cx but RNR" and automated return-
+status notes), and 263782 (order IDs "4035479, 4269417" - a dual-order-id
+ticket, both orders resolve to the same Kolkata warehouse so this did not
+affect the location join; 7 comments, all Arnab Poddar/L2 Agent: status
+notes, a Google Chat link, two RNR call-attempt notes, and a refund-details
+card; no Warehouse-role reply on either order). Note ticket 263792's one
+L2 comment (Arnab Poddar) @-mentions "Warehouse All" via a tag at the top
+of the comment body while restating the customer's complaint - this is
+still Arnab Poddar's own L2 comment (an @-mention, not a separate
+Warehouse-role post), same pattern as prior runs' notes on this quirk; the
+ticket's one genuine Warehouse-role comment (the denial template) is what
+decided its classification.
+2026-10-12 run note (for_date 2026-10-10): 27 T-2 tickets pulled (22
+Missing/Wrong Qty, 5 Wrong Medicines, 0 Expiry Issue, 0 Damaged/Defective, 0
+Switch Orders). Full comment threads enumerated for every ticket before
+classifying (263605 had commentCount 0 in the search response - confirmed
+zero comments via the search result itself, no getTicketComments call
+needed, order_id null). Zero genuine WH admissions this run - a notable
+change from the last several runs' 1-4 admissions each. All 22 genuine
+Warehouse-role comments on this run's 27 tickets were non-admissions: 20
+carried the plain stock-denial template "We have sent proper medicine to
+CX Mahiboob bee" in its usual signer-name variants (263561, 263580, 263593,
+263598, 263602, 263609, 263618, 263621, 263630, 263654, 263655, 263657,
+263659, 263660, 263664, 263671, 263672, 263679, 263681, 263561 again via
+262607 for Part 2's 4164933) - correctly False. One (263625) had the same
+denial with a stray double-space typo ("We  have sent proper medicine to CX
+Mahiboob bee") - read for intent, still the same denial, no override
+needed. One (263678) had the "with proof of footage" denial variant ("We
+have sent proper medicine to CX With proof of footage Mahiboob bee"),
+preceded by two L2 (Daud Ahmed) requests for package footage/photo and
+followed by a Logistics-role "Noted - checking this issue" - the genuine
+Warehouse-role statement is still the denial, correctly False. One (263682)
+had the batch/inventory-denial template "Not related to our inventory" (no
+"proper medicine" wording at all) - read for intent and confirmed as the
+same batch-variant denial per the classifier's established definition (same
+pattern as 261868/261871's "Not related to our inventory") - correctly
+False, no override needed. Five tickets had no genuine Warehouse-role
+comment at all: 263546 (order 4028683, single L2 comment from Shaik Furquan
+referencing sibling ticket #263605, part of the same order-4028683 CCTV-
+footage complaint cluster as 263683 below - no Warehouse-role reply ever
+posted), 263584 (order 3887409, single L2 comment from Arnab Poddar that is
+just an internal Google Chat room link, no Warehouse-role text), 263605
+(order_id null, zero comments on the ticket - confirmed via the search
+result's commentCount:0, not fetched), 263675 (order 4246678, single L2
+comment from Daud Ahmed, "called cx and informed to initiated return
+request through the app" - no Warehouse-role reply), and 263683 (order
+4028683 again - the same order as 263546, raised as a separate ticket two
+days later - single L2 comment from Daud Ahmed restating that WH footage
+was already shared elsewhere and the package was damaged, roleName "L2
+Agent", not a Warehouse-role statement on THIS ticket's own thread) - all
+five correctly "no_wh_comment", still counted in the tickets total per
+methodology. Order 4028683 drawing two independent tickets (263546, 263683)
+four days apart, neither with a genuine Warehouse-role reply, is worth
+flagging for human review - the customer's CCTV-footage request for a
+missing-item claim on this order appears to be going unanswered by the
+Warehouse team across two separate tickets. No instance this run of a
+genuine WH admission followed by a contradicting L2 "BOD Issued"/denial-
+style note (there were zero admissions to begin with, so the question
+doesn't arise); several denials this run were themselves followed by an L2
+"BOD need to be initiated"/"BOD/Refund Processed"/"BOD/Refund Initiated"
+note (263561, 263580, 263598, 263602, 263609, 263618, 263621, 263654,
+263659, 263672, 263679, 263681) - consistent with the file's established
+reading that a WH denial followed by a BOD note is the normal "benefit of
+doubt given despite denial" flow, not a contradiction, since classify()
+correctly keys off the WH team's own statement, not what support does
+afterward. Location join (single batched query over the 25 unique non-null
+order_ids - 263605 has no order_id to join, and 4028683 is shared by
+263546/263683 so counts once) resolved 25/25 to a named warehouse (0%
+Unknown). Spot-checked against the description's own warehouse shorthand
+for 7 of the 25 orders: 4171474 "mb wh" -> Mumbai, 4197484 "kt wh" ->
+Kolkata, 4181646 "blr wh" -> Bangalore, 4193595 "lk wh" -> Lucknow, 4247793
+"pt wh" -> Patna WH, 4236067 "hyd wh" -> Hyderabad WH, 4240481 "dl wh" ->
+Delhi - all 7 matched, join confirmed correct (order_id, not the internal
+"id" column). Since exactly 0 tickets were WH-Accepted (text) this run,
+PICKER_QC is empty and no fulfilment-chain attribution (step 5b) was
+needed - same as the 2026-10-06 run note's zero-admission run. Synced into
+wh_text_check.json: all 27 of this run's T-2 tickets (5 as "no_wh_comment",
+22 as "denied") plus ticket 262607 (Step 2c's one independent fresh check,
+also "denied" on order 4164933, the standard "proper medicine" denial after
+an L2-Agent restatement of the customer's wrong-item complaint that was
+correctly read as NOT a Warehouse-role comment) - 28 new entries total (file
+grew from 2690 to 2718), none of them pre-existing (checked before writing,
+per the never-recheck rule).
+
+2026-10-11 run note (for_date 2026-10-09): 22 T-2 tickets pulled (17
+Missing/Wrong Qty, 5 Wrong Medicines, 0 Expiry Issue, 0 Damaged/Defective, 0
+Switch Orders). Full comment threads enumerated for every ticket before
+classifying (commentCount ranged 1-4; no commentCount-0 tickets). Four
+genuine WH admissions this run, all a literal "short qty" ADMISSION_PHRASES
+substring: 263432 (order 4193838, Mumbai, Missing/Wrong Qty, "We have sent
+short qty to CX Mahiboob bee", followed by L2 "claim refund refund will be
+process shortly" / "Refund Processed" - consistent), 263527 (order 4159584,
+Delhi, Missing/Wrong Qty, "We have sent short qty to CX", followed by L2
+"claim accepted / Refund Processed"), 263456 (order 4199593, Lucknow,
+Missing/Wrong Qty, "We have sent short qty to CX", followed by L2 "claim
+accepted / Refund Initiated"), and 263424 (order 4224568, Delhi,
+Missing/Wrong Qty, "We have sent short qty to CX Mahiboob bee", followed by
+L2 "claim accepted / Refund Initiated") - no INTENT_OVERRIDES needed for any
+(all matched a literal substring directly). Notably, order 4193838 also drew
+a genuine short-qty WH admission on the immediately preceding run (ticket
+263377, for_date 2026-10-08) - the same order was raised as a fresh
+mis-shipment ticket two days running, both times a genuine short-qty
+admission; not a dedup bug, two independent tickets on the same order two
+days apart.
+
+15 of the remaining 18 tickets carried the plain stock-denial template "We
+have sent proper medicine to CX Mahiboob bee" (263401, 263529, 263526,
+263458, 263451, 263525, 263523, 263502, 263455, 263442, 263507, 263430,
+263439, 263419, 263462) - correctly False/denied. One ticket, 263401, had an
+earlier L2-Agent comment (Arnab Poddar, @-mentioning "Warehouse All")
+restating the complaint ("Pimapexole... Amantabrook... Incomplete order") -
+read for intent and confirmed NOT a Warehouse-role comment (actual
+commenter roleName "L2 Agent"); the genuine Warehouse-role reply came later
+in the thread (a denial) and is what's recorded. 263419 is worth flagging:
+its single Warehouse-role comment is the plain "proper medicine" denial,
+but the L2 follow-up reads "Return Pickup has bee Initiated" - a phrase
+this file's run notes have previously associated with genuine acceptance -
+here it is NOT, since the only Warehouse-role statement on the thread is an
+explicit denial; the ticket is correctly classified "denied" per
+methodology (the WH team's own text governs, not what happens procedurally
+afterward) - flagged for human review given the mismatched signal.
+
+Two tickets had no genuine Warehouse-role comment at all: 263408 (order
+4242293, Wrong Medicines - description states the customer actually
+received the wrong item because a sales agent mis-keyed the order ["cx
+ordered Injection 1*3ml but sales agent placed order Cartridge of 3ml"], a
+sales/order-entry error rather than a WH fulfilment error; only L2/
+LightAgent comments, including a later note that the customer now wants to
+cancel the return) and 263440 (order 4251794, Wrong Medicines - only an L2/
+LightAgent comment asking to check shared images, roleName "LightAgent") -
+both correctly "no_wh_comment", still counted in the tickets total per
+methodology.
+
+One ticket, 263412 (order 4070779, Missing/Wrong Qty), is a genuinely novel
+phrasing not covered by any existing phrase table: its sole Warehouse-role
+comment reads "We have not sent free item to CX Mahiboob bee" - a
+first-person WH statement, but about a free/bonus item rather than the
+short-qty complaint actually raised, and it matches neither
+ADMISSION_PHRASES nor DENIAL_PHRASES nor NEUTRAL_PHRASES; read for intent
+and confirmed it is not a genuine admission of sending the wrong/short paid
+item, so classify() correctly returns False via the "otherwise" branch -
+synced to wh_text_check.json as "unrecognized", flagged for manual review
+(no fixture added to the phrase tables themselves, per the "document the
+outlier, don't regex-generalize a one-off" precedent set for 257160/259768).
+
+No sentence-reading vs wh_comment_classifier.py disagreement this run -
+cross-checked all 22 tickets' comments programmatically through
+classify_wh_comments() and every verdict (4 admitted, 15 denied, 2
+no_wh_comment, 1 unrecognized) matched the live sentence-reading exactly.
+No instance this run of a genuine WH admission followed by a contradicting
+L2 "BOD Issued"/denial-style note (all 4 admissions' follow-ups were
+claim-accepted/refund notes, consistent with acceptance). No ClickHouse
+"Low-Value COG" remark cross-check was queried (text-only classification
+per methodology).
+
+Location join (single batched query over all 22 unique order_ids, all
+non-null and numeric - 263451's Order ID custom field had a trailing space
+("4232539 "), trimmed before the join) resolved 22/22 to a named warehouse
+(0% Unknown). Fulfilment-chain attribution pulled for all 4 WH-Accepted
+(text) tickets, no null roles and no ties (picker max-pick margins 50v29,
+13v8, 5v4, 6v5): spot-check confirmed the resolved warehouse matches the
+username city suffix in all 4 - 4193838 Mumbai (picker/packer PayalA_MUM,
+qc Mansi-S_MUM, manifester RohitK_MUM, all _MUM), 4159584 Delhi (picker
+Khushbu_DEL, packer Prince_Del, qc Shivani_DEL, manifester Shubham_DEL, all
+_DEL), 4199593 Lucknow (picker Gayatri.M_LKO, packer Anshu.S_LKO, qc
+Raj.V_LKO, manifester Subhashini.Y_LKO, all _LKO), 4224568 Delhi
+(picker/packer Ankit_DEL, qc Janvi_DEL, manifester Ruksana_DEL, all _DEL) -
+join confirmed correct.
+
+2026-10-10 run note (for_date 2026-10-08): 25 T-2 tickets pulled (21
+Missing/Wrong Qty, 3 Wrong Medicines, 0 Expiry Issue, 1 Damaged/Defective, 0
+Switch Orders). Full comment threads enumerated for every ticket before
+classifying (none had commentCount 0). Three genuine WH admissions this run:
+263377 (order 4193838, Mumbai, Missing/Wrong Qty, "We already cleared this
+ticket in the morning and we are accepted short qty" - literal "short qty"
+substring), 263264 (order 4172734, Bangalore, Missing/Wrong Qty, "We have
+sent short qty to CX" - literal "short qty"/"sent short", followed by L2
+"claim accepted"), and 263288 (order 4203563, Delhi, Wrong Medicines, "We
+have sent wrong sku to CX Mahiboob bee" - literal "wrong sku", followed by
+L2 "claim accepted / Return Pickup Initiated") - no INTENT_OVERRIDES needed
+for any. 19 of the remaining 22 tickets carried the stock denial "We have
+sent proper medicine to CX Mahiboob bee" in its usual form. Three tickets
+had no genuine Warehouse-role comment at all: 263295 (order 4046141, only an
+L2 comment containing a Google Chat link), 263225 (Order ID custom field was
+"N/A" - unresolvable order, only an L2 "Not Delivered: Returned To
+Warehouse" status note), and 263244 (order 4011036, only an L2 comment from
+Ayushi Kumari) - all correctly "no WH comment", still counted in the tickets
+total per methodology. One ticket (263232, order 4220715) had an earlier
+L2-Agent comment (Kirti Sharma) restating the complaint ("kt warehouse cx
+received wrong order") - read for intent and confirmed NOT a Warehouse-role
+comment; the genuine Warehouse-role reply came later in the thread (a
+denial) and is what's recorded. Location join (single batched query over
+the 24 resolvable unique order_ids - 263225 has no order_id to join)
+resolved 24/24 to a named warehouse (0% Unknown). Fulfilment-chain
+attribution pulled for all 3 WH-Accepted tickets (picker/packer/qc/
+manifester, no null roles, no ties): spot-check confirmed the resolved
+warehouse matches the username city suffix in 2 of 3 (4193838 Mumbai with
+qc "Mansi-S_MUM"/manifester "RohitK_MUM"; 4203563 Delhi with all four roles
+"_DEL"); the third (4172734, Bangalore) checks out via qc "Shabana_BLRWH"
+even though the picker/packer/manifester usernames for that order
+(Nagesh/Pavithra) carry no city suffix at all - consistent with
+user_names.json, not a join error. Synced into wh_text_check.json: all 3
+admissions as "admitted", 19 denials as "denied", 3 no-WH-comment tickets
+(263295, 263225, 263244) as "no_wh_comment" - 25 new entries total (file
+grew from 2643 to 2668), ticket 263225 added with order_id null since its
+Order ID custom field was "N/A".
+
+2026-10-09 run note (for_date 2026-10-07): 29 T-2 tickets pulled (19
+Missing/Wrong Qty, 9 Wrong Medicines, 0 Expiry Issue, 1 Damaged/Defective).
+Full comment threads enumerated for every ticket before classifying (one,
+263125/order 4102670, had commentCount 0 in the search response - confirmed
+zero comments, no getTicketComments call needed). Only 1 genuine WH
+admission this run: 263118 (order 4204348, Delhi, Wrong Medicines, "We have
+sent wrong sku to CX Mahiboob bee" - literal "wrong sku" ADMISSION_PHRASES
+substring, followed by L2 "Return Pickup has been Initiated" - consistent
+with acceptance) - no INTENT_OVERRIDES needed. The overwhelming majority of
+Warehouse-role comments this run (25 of 28 tickets with a WH comment)
+carried the stock denial "We have sent proper medicine to CX Mahiboob bee"
+in its usual variants; two of those (263191/order 4150820, 263115/order
+4190658) had a batch/inventory-denial follow-up ("Not related to our
+inventory") after an L2 request to check the batch/medicine name against
+inventory - still denials per the classifier's batch-variant definition,
+the WH team's final genuine statement on each thread. One ticket (263142,
+order 4203149) had the recurring "Footage not found because it's old
+order" non-admission/non-denial pattern, correctly False by the "otherwise
+-> False" branch. Two tickets (263196/order 4220392, 263182/order 4191307)
+had no genuine Warehouse-role comment at all (single L2-only call-outcome
+notes) - correctly "no WH comment". Several tickets this run (263105,
+263178, 263081, 263153, 263117, 263138) had an earlier L2-Agent comment
+that @-mentions or restates "Warehouse All"/the complaint in warehouse
+shorthand (e.g. "blr warehouse cx recieved different order", "mb warehouse
+cx received missing qt of medicine") - read for intent and confirmed these
+are NOT Warehouse-role comments (actual commenter roleName "L2 Agent"); the
+genuine Warehouse-role reply came later in each thread (always a denial)
+and is what's recorded. One ticket (263204, order 4046141) had no
+Warehouse-role comment at all - both comments were from L2 Agent Sanjeev
+Mohan (a parent-ticket reference and a claim-rejected note) - correctly
+"no WH comment". Two tickets share order 4051401 (263174, 263138, raised
+~2.5 hours apart) - both independently denied, no impact on WH-Accepted
+count either way. No instance this run of a genuine WH admission followed
+by a contradicting L2 "BOD Issued"/denial-style note (263118's only
+follow-up was "Return Pickup has been Initiated", consistent with
+acceptance). No ClickHouse "Low-Value COG" remark cross-check was queried
+this run (text-only classification per methodology). Location join (single
+batched query over all 28 unique order_ids) resolved 28/28 to a named
+warehouse (0% Unknown); spot-checked against the fulfilment-chain
+ops_user_name city suffixes for the 1 WH-Accepted order: 4204348 -> Delhi
+(picker Priya_DEL, packer Priya_DEL, qc Vikas-DEL, manifester Kishan_DEL,
+all _DEL suffix) - matched, join confirmed correct. Since exactly 1 ticket
+was WH-Accepted, PICKER_QC has a single entry - full fulfilment-chain
+attribution resolved for that order: picker Priya_DEL (17469, 6 picks vs 4
+for status-35 cross-check user KAJAL_DEL/8634, no tie), packer Priya_DEL
+(same user, status 52), qc Vikas-DEL (status 61), manifester Kishan_DEL
+(status 64) - all four roles resolved, no nulls.
+
+2026-10-07 run note (for_date 2026-10-05): 42 T-2 tickets pulled (31
+Missing/Wrong Qty, 11 Wrong Medicines, 0 Expiry Issue, 0 Damaged/Defective) -
+a sharp jump from the prior run's 4. Full comment threads enumerated for
+every ticket before classifying (none were pre-read elsewhere this run).
+Only 2 genuine WH admissions: 262777 (order 4169545, Mumbai, Wrong
+Medicines, "We have sent wrong sku to CX Mahiboob bee" - literal "wrong sku"
+ADMISSION_PHRASES substring, immediately followed by L2 "Return Pickup has
+been Initiated / claim accepted" - consistent) and 262683 (order 4142031,
+Delhi, Wrong Medicines, "We have sent wrong medicine to cx" - literal
+"wrong medicine" substring, followed by L2 "Return Pickup has been
+Initiated" - consistent). No INTENT_OVERRIDES needed - both matched a
+literal ADMISSION_PHRASES substring directly.
+
+Missing/Wrong Qty (31 tickets) was overwhelmingly denials: 30 of 31 carried
+the plain stock-denial template ("We have sent proper medicine to CX
+Mahiboob bee" / "...to cx Naveen" / "...to cx" with no name, all the same
+denial, just different signer-name variants) - correctly False. Several of
+these (262760, 262771) also had an earlier L2-Agent comment ("mb/lk/kt
+warehouse cx received incomplete order/medicine") that restates the
+customer's complaint - read for intent and confirmed these are NOT
+Warehouse-role comments (actual commenter roleName "L2 Agent", name Kirti
+Sharma); the genuine Warehouse-role reply came later in each thread (a
+denial) and is what's recorded. The remaining ticket, 262748 (order
+4125637, Patna WH), has a single Warehouse-role comment, "Footage not
+found" - the recurring non-admission/non-denial pattern from prior runs -
+correctly False by the "otherwise -> False" branch (synced to
+wh_text_check.json as "unrecognized", flagged for manual review).
+
+Wrong Medicines (11 tickets): besides the 2 admissions above, 4 tickets
+carried the same stock-denial template (262687, 262749, 262788, 262715) -
+two of those (262788, 262715) also had an earlier L2-Agent comment ("dl/blr
+warehouse cx received wrong item delivered/medicine") restating the
+complaint, read for intent and confirmed not Warehouse-role (roleName "L2
+Agent", Kirti Sharma again) - correctly excluded, genuine WH denial came
+later. The remaining 5 tickets (262665, 262667, 262772, 262741, 262703) had
+no Warehouse-role comment at all - correctly "no WH comment": 262667 had
+zero comments on the ticket; 262665 had only an L2 "cx still waiting"
+follow-up; 262772 and 262741 had only L2/Logistics-role pickup-delay notes
+(roleName "Logistics ", not "Warehouse "); 262703 had only an L2 note
+referencing parent ticket #261868 as a duplicate.
+
+Location join (single batched query over all 42 unique order_ids, all
+non-null) resolved 42/42 to a named warehouse (0% Unknown). Spot-checked
+against fulfilment-chain ops_user_name city/location suffixes for both
+WH-Accepted orders: 4169545 -> Mumbai (picker AnshuG_MUM, packer
+PrathmeshP_MUM, qc JayeshW_MUM, manifester RohitK_MUM - all _MUM suffix) and
+4142031 -> Delhi (picker tie Soni_Del/Sonali_DEL, packer Soni_Del, qc
+Pooja-DEL, manifester Shubham_DEL - all _DEL/-DEL suffix) - both matched,
+join confirmed correct. Since exactly 2 tickets were WH-Accepted, PICKER_QC
+has two entries: 4142031's picker was a genuine tie (561 "Soni_Del" vs 2867
+"Sonali_DEL", both 3 picks) -> "Soni_Del / Sonali_DEL" per the standard
+tie-join rule; 4169545's picker (13844 "AnshuG_MUM", 3 picks) had no tie
+(runner-up 6532 "PrathmeshP_MUM" at 2 picks).
+
+2026-10-06 run note (for_date 2026-10-04): only 4 T-2 tickets pulled - the
+lowest volume on record for this tab (2 Missing/Wrong Qty, 2 Wrong Medicines,
+0 Expiry Issue, 0 Damaged/Defective). Verified against a broader
+Dispositions:"Return and Pickup" search over the same window (19 tickets
+total across all sub-dispositions, including non-mis-shipment ones like
+"No longer needed", "Pickup delayed or refused by courier",
+"Damaged packaging or container", "Issue not listed", "MRP/Batch Mismatch")
+- the 5 target sub-dispositions genuinely returned only these 4, confirming
+this is a real low-volume day, not a query miss. Zero genuine WH admissions
+this run - no comment in any of the 4 threads matched an ADMISSION_PHRASES
+substring or read as a first-person WH admission on intent, so PICKER_QC is
+empty and no fulfilment-chain attribution (step 5b) was needed; no
+INTENT_OVERRIDES entry was needed either (nothing ambiguous to override).
+Full comment threads enumerated for every ticket before classifying: 262530
+(order 4098471, Missing/Wrong Qty) has an L2 Agent (Kirti Sharma) note
+("lk warehouse cx received incomplete order" - not a Warehouse-role comment,
+roleName "L2 Agent") followed by the genuine Warehouse-role ("Warehouse All",
+roleName "Warehouse ") stock denial "We have sent proper medicine to CX
+Mahiboob bee" - correctly False; this ticket's own description also
+references ticket #262268 ("in reference to ticket ID #262268... customer
+has shared the invoice to initiate a return request") - #262268 is the same
+order 4098471 from the 2026-10-02 run (for_date 2026-09-30), which had no
+Warehouse-role comment at all then - the same order has now been raised
+twice across two different T-2 windows, this time drawing an explicit WH
+denial. 262553 (order 4149822, Missing/Wrong Qty) has an L2 Agent (Sanjeev
+Mohan) note ("Item missing") followed by the same Warehouse All stock denial
+template - correctly False. 262516 (order 4072122, Wrong Medicines) has a
+single comment, an L2 Agent (Ayushi Kumari) note flagging it as a duplicate
+of ticket #261883 ("duplicate ref #261883") - no Warehouse-role comment
+anywhere in the thread - correctly "no WH comment" (not a denial, not an
+admission). 262520 (order 4100045, Wrong Medicines) has 3 comments, all from
+the same L2 Agent (Sanjeev Mohan) - two call-outcome notes (customer wants to
+share photos via WhatsApp instead of email; customer later declined to
+return at all, "Leave it i don't want to return it") plus one photo
+attachment with no text - no Warehouse-role comment at all - correctly
+"no WH comment". No commentCount-0 tickets this run (all 4 had
+commentCount >= 1) and no null-Order-ID tickets (all 4 carried an Order ID).
+No @-mention/restatement traps this run - neither L2 note name-drops or
+restates on behalf of "Warehouse All". No instance of a genuine WH admission
+later contradicted by an L2 "BOD Given"/"BOD Issued" note, and no
+ClickHouse "Low-Value COG" remark coexisting with an admission - neither
+pattern applies since there were zero admissions this run to begin with.
+Location join (single batched query against all 4 order_ids, all non-null)
+resolved 4/4 to a named warehouse (0% Unknown): 4098471 -> Lucknow, 4149822
+-> Mumbai, 4072122 -> Mumbai, 4100045 -> Kolkata. No fulfilment-chain
+attribution exists this run to spot-check the location join against (zero
+WH-Accepted (text) tickets, so PICKER_QC is empty) - same reason the
+2026-09-11 run note (for_date 2026-09-09) gives for skipping that
+cross-check; the join itself is unchanged from every prior run (order_id,
+not the internal "id" column) and a 0% Unknown rate on only 4 rows is not by
+itself strong evidence either way, so this should get a proper spot-check
+against fulfilment-chain names on the next run that has a WH-Accepted
+ticket.
+
+2026-10-02 run note (for_date 2026-09-30): 44 T-2 tickets pulled (25
+Missing/Wrong Qty, 7 Wrong Medicines, 12 Damaged/Defective, 0 Expiry Issue).
+Only 1 genuine WH admission this run: 261998 (order 4100582, Bangalore,
+Wrong Medicines, "We have sent wrong sku to CX Mahiboob bee" - literal
+"wrong sku" ADMISSION_PHRASES substring, immediately followed by L2 "claim
+accepted / refund will be process shortly" - consistent with the
+admission) - no INTENT_OVERRIDES needed. Full comment threads enumerated
+for every ticket before classifying (32 of 44 had already been live-read
+during this same run's Tab-1 considered_bod backfill since they fell
+inside the 2-day-old eligibility window; the other 12 needed a fresh
+getTicketComments call here). The overwhelming majority of Warehouse-role
+comments this run (31/44 tickets) carried the stock denial "We have sent
+proper medicine to CX Mahiboob bee"; two of those (261868, 261871) had a
+batch/inventory-denial follow-up or primary statement ("This batch
+medicine is not related to our inventory" / "Not related to our
+inventory") - still denials per the classifier's expiry/batch-variant
+definition. Two tickets (261950, 261965) carried the recurring "Footage
+not found because it's under maintenance" non-admission/non-denial
+pattern - correctly False by the "otherwise -> False" branch (synced to
+wh_text_check.json as "unrecognized", flagged for manual review). Nine
+tickets had no genuine Warehouse-role comment at all: 261836 (only an L2
+parent-ticket reference), 261838 (only L2 images/system return notes),
+261839 (only an L2 refund note), 261887 (only an L2 return-cancellation
+system note), 261901 (only an L2 "Refund Processed" note), 261906 (only an
+L2 note that its parent ticket #261910 was already resolved there - that
+parent WAS a genuine denial, but this child ticket's own thread carries no
+direct Warehouse-role comment), 261911 (only L2 request-for-evidence/
+system notes), 261920 (zero comments on the ticket, confirmed via the
+search result), and three tickets (261926, 261927 - the same order
+4121880 raised twice - and no others) whose only commenter was the
+"Logistics L2"/"Logistics " role, not "Warehouse " - a Logistics-role
+comment is never read as a Warehouse-team verdict regardless of content;
+261954, 261975, 261976, 261977 likewise had only L2/Logistics notes - all
+correctly "no_wh_comment". No instance this run of a genuine WH admission
+followed by a contradicting L2 "BOD Issued"/denial-style note, and no
+ClickHouse "Low-Value COG" remark cross-check was queried (text-only
+classification per methodology). Since exactly 1 ticket was WH-Accepted,
+PICKER_QC has a single entry - full fulfilment-chain attribution resolved
+for that order: 4100582 - picker tie between Angel_BLRWH and
+Shwetha1_BLRWH (7 picks each, joined with " / " per the tie rule), packer
+Shwetha1_BLRWH (same user as one of the tied pickers), qc Kaveri_BLRWH,
+manifester Vasantha - all four roles resolved, no nulls. Location join
+(single batched query against the 41 order_ids that had one - 261839 had
+no Order ID on the ticket at all, left "Unknown") resolved 41/41 to a
+named warehouse (0% Unknown); spot-checked against the fulfilment-chain
+names for the 1 WH-Accepted order plus two others: 4100582 -> Bangalore
+(_BLRWH suffix on picker/qc, manifester "Vasantha" carries no suffix - the
+recurring no-suffix-but-Bangalore pattern seen on many earlier runs),
+3700487 -> Delhi (_DEL suffix on all three fulfilment roles), and
+4047021 -> Hyderabad WH (_HYD suffix on all three roles) - all three
+matched, join confirmed correct.
+
+2026-10-01 run note (for_date 2026-09-29): 43 T-2 tickets pulled (31
+Missing/Wrong Qty, 10 Wrong Medicines, 2 Damaged/Defective, 0 Expiry Issue).
+2 genuine WH admissions this run: 261651 (order 4041950, Mumbai, Wrong
+Medicines, "We have sent wrong sku to CX Mahiboob bee" - literal "wrong
+sku" ADMISSION_PHRASES substring) and 261714 (order 4002407, Bangalore,
+Missing/Wrong Qty, "We have sent short qty to CX Mahiboob bee" - literal
+"short qty" substring) - no INTENT_OVERRIDES needed. Full comment threads
+enumerated for every ticket before classifying. The overwhelming majority
+of Warehouse-role comments this run (35/43 tickets) carried the stock
+denial "We have sent proper medicine to CX Mahiboob bee". One ticket
+(261805) opened with an ambiguous WH comment ("Still stock is not
+received at warehouse") that was later superseded, on the same thread,
+by the genuine denial template from the same "Warehouse All" account -
+per the "use the latest genuine Warehouse-role statement" rule, classified
+on that later denial, not the earlier ambiguous one. Two tickets (261703,
+261772) carried the recurring "Footage not found because it's under
+maintenance" / "...because it's old order" non-admission/non-denial
+pattern - correctly False by the "otherwise -> False" branch (synced to
+wh_text_check.json as "unrecognized", flagged for manual review). Four
+tickets had no genuine Warehouse-role verdict at all: 261662 and 261745
+had commentCount 0 (confirmed zero comments via the ticket search result,
+no getTicketComments call needed); 261661's only comment was an L2 Agent
+refund note (roleName "L2 Agent", not "Warehouse "); 261775's only
+comments were from L2 Agent Arnab Poddar (image, refund details, "called
+cx but RNR") with no Warehouse-role comment anywhere in the thread - all
+four correctly "no_wh_comment". No instance this run of a genuine WH
+admission followed by a contradicting L2 "BOD Issued"/denial-style note.
+Since exactly 2 tickets were WH-Accepted, PICKER_QC has two entries - full
+fulfilment-chain attribution resolved for both orders: 4041950 - picker
+tie between Paurnima-M_MUM and AniketP_MUM (18 picks each, joined with
+" / " per the tie rule), packer AniketP_MUM (same user as one of the tied
+pickers), qc Salman-K_MUM, manifester RohitK_MUM; 4002407 - picker tie
+between Chandana_BLRWH and Tejas_BLRWH (4 picks each), packer Tejas_BLRWH
+(same user as one of the tied pickers), qc kannanmuthu_BLRWH, manifester
+Roopa_BLRWH - all four roles resolved for both orders, no nulls. Location
+join (single batched query against the 42 order_ids that had one - 261662
+had no Order ID on the ticket at all, left "Unknown") resolved 42/42 to a
+named warehouse; spot-checked against the fulfilment-chain names for both
+WH-Accepted orders: 4041950 -> Mumbai (_MUM suffix on all four roles) and
+4002407 -> Bangalore (_BLRWH suffix on picker/qc/manifester, packer
+Tejas_BLRWH carries no suffix - the recurring no-suffix-but-still-Bangalore
+pattern seen on earlier runs) - both matched, join confirmed correct.
+
+2026-09-29 run note (for_date 2026-09-27): 21 T-2 tickets pulled (15
+Missing/Wrong Qty, 1 Wrong Medicines, 5 Damaged/Defective, 0 Expiry Issue).
+Only 1 genuine WH admission this run: 261336 (order 4007596, Bangalore,
+Missing/Wrong Qty, "We have sent short qty to CX Mahiboob bee" - literal
+"short qty" ADMISSION_PHRASES substring) - no INTENT_OVERRIDES needed. Full
+comment threads enumerated for every ticket before classifying; 16 of the
+21 tickets were already live-checked this same run during the Tab-1
+considered_bod backfill (which happened to cover most of this T-2 date's
+tickets since they fell inside the 2-day-old eligibility window - the
+other 5 (261301, 261308, 261324, 261362, 261401) had no ClickHouse return
+record yet at backfill time, so they were outside that pass's eligibility
+and needed a fresh getTicketComments call here). The overwhelming majority
+of Warehouse-role comments this run (14/21 tickets) carried the stock
+denial "We have sent proper medicine to CX Mahiboob bee". Two tickets
+(261347, 261355) carried the batch-variant denial "We have sent deferent
+batch number of medicine to CX" - per the classifier's denial-variant
+definition (expiry/cold-chain/batch variants are denials, not admissions),
+correctly False. One ticket (261373) had the recurring "Footage not found
+because it's under maintenance" non-admission/non-denial pattern, one
+(261322) had the recurring ambiguous "Still stock not receive at
+warehouse" non-admission/non-denial phrasing seen on earlier tickets -
+both correctly False by the "otherwise -> False" branch (synced to
+wh_text_check.json as "unrecognized", flagged for manual review, not
+silently merged into denied). Four tickets (261308, 261321, 261324,
+261362) had no genuine Warehouse-role comment at all (only L2/Maxicus/
+Logistics notes) - correctly False via "no WH comment". No instance this
+run of a genuine WH admission followed by a contradicting L2 "BOD Issued"/
+denial-style note: 261336 had no follow-up comment at all at pull time.
+No ClickHouse "Low-Value COG" remark cross-check was queried this run
+(text-only classification per methodology). Since exactly 1 ticket was
+WH-Accepted, PICKER_QC has a single entry - full fulfilment-chain
+attribution resolved for that order: 4007596 - picker Angel_BLRWH (13
+picks vs 12 for runner-up Mahantaya, no tie), packer Mahantaya, qc
+Shabana_BLRWH, manifester Vasantha - all four roles resolved, no nulls.
+Location join (single batched query, plus 5 order_ids re-resolved directly
+against marketplace_orders since they had no ClickHouse return record yet)
+resolved 0/20 unique order_ids to Unknown; spot-checked against the
+fulfilment-chain names for the 1 WH-Accepted order: 4007596 -> Bangalore
+(qc/manifester carry no _BLR suffix on manifester "Vasantha", the
+recurring no-suffix-but-Bangalore pattern seen in many earlier runs;
+picker/qc carry _BLRWH/_BLR suffixes) - matched, join confirmed correct.
+
+2026-09-24 run note (for_date 2026-09-22): 37 T-2 tickets pulled (25
+Missing/Wrong Qty, 6 Wrong Medicines, 1 Expiry Issue, 5 Damaged/Defective).
+3 genuine WH admissions this run: 260412 (order 3979083, Bangalore, Wrong
+Medicines, "We have sent wrong medicine to Naveen" - literal "wrong
+medicine" ADMISSION_PHRASES substring), 260455 (order 3942334, Mumbai,
+Missing/Wrong Qty, "We have sent short qty to cx Naveen" - literal "short
+qty" substring), and 260518 (order 3978301, Bangalore, Missing/Wrong Qty,
+"We have sent short qty to cx Naveen" - same substring) - no
+INTENT_OVERRIDES needed. Full comment threads enumerated for every ticket
+before classifying (34 of the 37 were already live-checked this same run
+during the Tab-1 considered_bod backfill, which happened to cover almost
+all of this T-2 date's tickets since they fell inside the 2-day-old
+eligibility window; only 260392, 260398 and 260555 needed a fresh
+getTicketComments call here). 260392 had commentCount 0 (confirmed zero
+comments, no WH comment). 260398 had two Warehouse-role comments - an
+early factual note ("This is pox health we handover the stock in ziplock
+cover. paking is managed by them", neither admission nor denial) followed
+by the standard stock denial ("We have sent proper medicine to CX Mahiboob
+bee") - combined into WH_COMMENT with " | ", correctly False by both
+readings (no ADMISSION_PHRASES substring in either). 260555 has a null
+Order ID in Zoho (only a single L2 "Refund Initiated" status note, no
+Warehouse-role comment) - excluded from the location join and
+fulfilment-chain attribution but still counts in the tickets total. The
+overwhelming majority of Warehouse-role comments this run (18/37 tickets)
+carried the stock denial "We have sent proper medicine to Cx/CX/cx".
+Five tickets (260414, 260428, 260461, 260508, 260516, 260553 - six
+actually) had the recurring "Footage not found because it's under
+maintenance" non-admission/non-denial pattern, correctly False. 260526's
+Warehouse comment, "Stock still not received at warehouse", is the same
+ambiguous non-admission/non-denial phrasing seen on earlier tickets
+(253369/254459/260097) - correctly False by the "otherwise -> False"
+branch. Seven tickets (260418, 260440, 260467, 260514, 260515, 260523,
+260551) had no genuine Warehouse-role comment at all (260440's only
+comments were from the Logistics role, not Warehouse; the rest were
+L2-only or zero comments) - correctly False via "no WH comment". 260514
+and 260515 share order 3886156 (two different-category tickets on the
+same order, filed one minute apart) - neither carries a Warehouse-role
+comment, no impact on WH-Accepted count either way. No instance this run
+of a genuine WH admission followed by a contradicting L2 "BOD Issued"/
+denial-style note: 260412 and 260518 each had no follow-up comment at all
+(admission was the most recent comment at pull time), and 260455's
+follow-up was "claim accepted / refund will be process shortly", consistent
+with acceptance. No ClickHouse "Low-Value COG" remark cross-check was
+queried this run (text-only classification per methodology). Since exactly
+3 tickets were WH-Accepted, PICKER_QC has three entries - full
+fulfilment-chain attribution resolved for all three orders: 3979083 -
+picker tie Prabhu_BLRWH/Nahila_BLRW at 1 pick each (joined with " / " per
+the tie rule), packer Supritha, qc Sumathi_BLR, manifester Roopa_BLRWH (no
+suffix on packer/qc is the recurring no-suffix-but-Bangalore pattern seen
+in many earlier runs); 3942334 - picker tie PranjalG_MUM/JayeshW_MUM at 4
+picks each, packer PranjalG_MUM, qc MayuriK_MUM, manifester RohitK_MUM -
+all four roles carry the _MUM suffix; 3978301 - picker Nagesh (6 picks vs
+5 for runner-up user_id 9208, no tie), packer Nagesh, qc Fardeen_BLRWH,
+manifester Roopa_BLRWH - qc/manifester carry the _BLRWH suffix, packer
+"Nagesh" is the same no-suffix-but-Bangalore pattern. Location join (single
+batched query over all 35 unique non-null order_ids) resolved 0/35 to
+Unknown; spot-checked against the fulfilment-chain names for all 3
+WH-Accepted orders: 3979083 -> Bangalore, 3942334 -> Mumbai (all four roles
+_MUM), 3978301 -> Bangalore - all matched, join confirmed correct.
+
+2026-09-23 run note (for_date 2026-09-21): 37 T-2 tickets pulled (20
+Missing/Wrong Qty, 10 Wrong Medicines, 4 Expiry Issue, 3 Damaged/Defective
+split 2 Spilled/broken/spoiled + 1 Defective device sub-disposition) -
+comfortably above the 2026-09-22 run's 11-ticket low. 2 genuine WH
+admissions this run: 260241 (order 3957513, Kolkata, Missing/Wrong Qty,
+"We have sent short qty to cx" - literal "short qty" ADMISSION_PHRASES
+substring) and 260236 (order 3947368, Bangalore, Wrong Medicines, "We
+have sent wrong medicine to cx" - literal "wrong medicine" ADMISSION_PHRASES
+substring), neither needing an override. Full comment threads enumerated for every
+ticket with a nonzero commentCount before classifying (per the standing
+251580/254519 lesson); this run's live getTicketComments reads also caught
+one stale search-metadata mismatch worth flagging: tickets 260299 and
+260186 both showed a nonzero commentCount in the searchTickets response
+(2 and 1 respectively) but a live getTicketComments call returned 0 real
+comments for 260299 and only a single non-Warehouse L2 comment ("tagged
+soumen", commenter Arnab Poddar, roleName "L2 Agent") for 260186 - both
+correctly classified False via the "no WH comment" branch off the live
+read, not the stale count. One @-mention/restatement trap this run:
+260236's thread was read for the genuine Warehouse-role admission ("We
+have sent wrong medicine to cx", commenter "Warehouse All", roleName
+"Warehouse "), the only comment on that ticket - no trap actually present,
+noted only because it was this run's sole admission. The overwhelming
+majority of Warehouse-role comments this run (24 of 37 tickets) carried
+the stock denial "We have sent proper medicine to Cx/CX/cx" in its usual
+case-insensitive variants. Four tickets (260226, 260350, 260231, 260242)
+had the recurring "Footage not found because it's under maintenance" /
+"Footage not found because cctv under Maintenance" non-admission/
+non-denial pattern, correctly False by the "otherwise -> False" branch.
+Ticket 260343's Warehouse comment was truncated mid-template ("We have
+sent proper medicine to") but still unambiguously the denial template,
+correctly False. Six tickets (260372, 260292, 260348, 260235, 260193,
+260287) had no genuine Warehouse-role comment at all (L2-only notes, or
+literally zero comments), correctly False via "no WH comment". Four
+tickets (260199, 260215, 260235, 260374/260376's shared contact) had a
+null/N/A/missing Order ID in Zoho and are excluded from the location join
+and fulfilment-chain attribution but still count in the tickets total;
+260374 and 260376 (same contact, order 3955706, ~8 minutes apart) are a
+same-day duplicate-ticket pair, neither with a Warehouse-role comment.
+260306 and 260353 share order 3980220 (both "wrong item" complaints from
+different contacts on the same order, filed ~1h48m apart) - both carry
+the "Footage not found because it's under maintenance" WH comment
+independently, correctly False for both per the per-ticket methodology.
+No instance this run of a genuine WH admission followed by a contradicting
+L2 "BOD Issued"/denial-style note: both 260241 and 260236 had no follow-up
+comment at all (each admission was the most recent and only comment on its
+ticket at pull time). No ClickHouse "Low-Value COG" remark cross-check was
+queried this run (text-only classification per methodology). Since exactly
+2 tickets were WH-Accepted, PICKER_QC has two entries - full
+fulfilment-chain attribution resolved for both orders: 3957513 - picker
+Trishna_KOL (10 picks vs 7 for runner-up Srayosree_KOL, no tie; Srayosree_KOL
+is also the status-35 cross-check name), packer also Trishna_KOL (status 52),
+qc Sayanti_KOL (status 61), manifester "Akashmondal@gmail.com" (status 64, an
+email-format username, the recurring no-suffix-but-Kolkata-consistent
+outlier seen in earlier runs e.g. 2026-09-22's for order 3945269); 3947368 -
+picker Niveditha_BLRW (8 picks vs 6 for runner-up Shivaraj_BLRWH, no tie),
+packer Shivaraj_BLRWH (status 52), qc Kaveri_BLRWH (status 61), manifester
+Vasantha (status 64, the recurring no-suffix-but-Bangalore-consistent name
+seen in many earlier runs). Location join (single batched query over all 32
+unique non-null order_ids) resolved 0/32 to Unknown; spot-checked against
+the fulfilment-chain names for both WH-Accepted orders: 3957513 -> Kolkata
+(picker/packer Trishna_KOL, qc Sayanti_KOL, all _KOL suffix; manifester's
+Gmail-format username is the known Kolkata-consistent outlier) and 3947368
+-> Bangalore (picker Niveditha_BLRW, packer Shivaraj_BLRWH, qc Kaveri_BLRWH,
+all _BLRW/_BLRWH suffix; manifester Vasantha, the recurring
+no-suffix-but-Bangalore name) - both matched, join confirmed correct.
+
 2026-09-22 run note (for_date 2026-09-20): only 11 T-2 tickets pulled (2
 Missing/Wrong Qty, 4 Wrong Medicines, 1 Expiry Issue, 4 Damaged/Defective
 split 2 Spilled/broken/spoiled + 2 Defective device sub-disposition) - by far
@@ -1640,6 +2283,56 @@ pattern: 3677843 (ticket 258281, no WH comment) -> "Patna WH", 3807819
 (ticket 258442, WH denial) -> "Patna WH", and 3805153 (ticket 258329, WH
 denial) -> "Patna WH" - all legitimate, not join failures.
 
+2026-10-04 run note (for_date 2026-10-02): 33 T-2 tickets pulled (24
+Missing/Wrong Qty, 5 Wrong Medicines, 0 Expiry Issue, 2 Damaged/Defective
+[Spilled or broken or spoiled contents], 2 Damaged/Defective [Defective or
+damaged device or accessory]). Full comment threads enumerated for every
+ticket (most were already read moments earlier in the same session's
+step-2c WH-text backfill batch, since this run's T-2 window largely
+overlaps that backfill's "closest to the 2-day boundary" candidates -
+re-verified against the full thread rather than assumed). Only 2 genuine
+WH admissions this run: 262275 (order 4140611, Missing/Wrong Qty, "We have
+sent short qty to CX Mahiboob bee") and 262298 (order 4129639, Wrong
+Medicines, "We have sent wrong sku to CX Mahiboob bee") - both matched a
+literal ADMISSION_PHRASES substring directly, no override needed. The
+overwhelming majority (24/33) carried the stock denial "We have sent proper
+medicine to CX Mahiboob bee" (verbatim, no typos this run). One ticket
+(262278, order 4124206) had the recurring "Footage not found because it's
+under maintenance" non-admission/non-denial pattern, correctly False via
+the "otherwise -> False" branch. Six tickets had no Warehouse-role comment
+at all: 262322 (order 4137345, a duplicate pointing at parent ticket
+262317 - only an L2 "closing this, resolution shared in parent" note),
+262268 (order 4098471, commentCount 0 - literally no comments yet),
+262289 (order 4034371, only LightAgent/L2 batch-check and refund notes,
+no WH reply), 262204 (order 4042883, only an L2 "parent ticket #262095"
+duplicate note), 262311 (order 4144544, only an L2 "Raised in category
+team" note), 262192 (order 4130872, only L2/Manager order-tracking-timeline
+comments), and 262336 (order 4070400, only L2 Agent "called cx but RNR" /
+"Tagged category" notes) - all seven correctly False via the "no WH
+comment" branch (262322 and 262268 counted twice in this tally by mistake
+in an early draft of this note - the correct count of no-WH-comment
+tickets this run is seven: 262322, 262268, 262289, 262204, 262311, 262192,
+262336). Ticket 262199 (order 4110026, Defective device) had an L2 comment
+from Arnab Poddar that @-mentions "Warehouse All" while restating the
+customer's complaint ("Dr Morepen MT 110 Digital Thermometer was not
+working properly") - read for intent and confirmed this is NOT a
+Warehouse-role comment (actual commenter roleName is "L2 Agent"); the
+genuine Warehouse-role reply came later in the same thread ("We have sent
+proper medicine to CX Mahiboob bee") and is what's recorded here - correctly
+False via the denial. Since exactly 2 tickets were WH-Accepted, PICKER_QC
+has two entries - full fulfilment-chain attribution resolved for both
+orders (no null roles, no ties): 4129639 (picker user_id 1594
+"Salmabanu_BLRWH", 7 picks vs 6 for runner-up user_id 8702 "Shivaraj_BLRWH"
+- no tie; packer Shivaraj_BLRWH, qc Sumathi_BLR, manifester Vasantha) and
+4140611 (picker user_id 7658 "Shwetha1_BLRWH", 8 picks vs 7 for runner-up
+user_id 18398 "Chandana_BLRWH" - no tie; packer Shwetha1_BLRWH, qc
+Shwetha_BLRWH, manifester Vasantha). Location join (single batched query
+over all 32 unique non-null order_ids) found 0/32 Unknown locations - join
+confirmed correct, no spot-check anomalies; one order (4132618, ticket
+262235, WH denial) resolved to "Hyderabad WH" and one (4071644, ticket
+262273, WH denial) to "Patna WH" - both legitimate non-city warehouse_names
+consistent with prior runs' pattern, not join failures.
+
 2026-09-13 run note (for_date 2026-09-11): 38 T-2 tickets pulled (28
 Missing/Wrong Qty, 7 Wrong Medicines, 0 Expiry Issue, 3 Damaged/Defective,
 0 Defective device sub-disposition). Only 2 genuine WH admissions this run,
@@ -1709,18 +2402,9 @@ HERE = Path(__file__).parent
 # order_id -> location, from ClickHouse marketplace_orders join (on order_id,
 # NOT the internal "id" column - see docstring above).
 ORDER_LOCATION = {
-    3946215: "Mumbai", 3953902: "Bangalore", 3940469: "Mumbai", 3964239: "Delhi",
-    3958670: "Kolkata", 3645980: "Mumbai", 3926083: "Bangalore", 3961638: "Delhi",
-    3940282: "Bangalore", 3554613: "Bangalore", 3939766: "Bangalore",
-    3399391: "Delhi", 3488220: "Delhi", 3855574: "Kolkata", 3921455: "Bangalore",
-    3613999: "Delhi", 3891899: "Lucknow", 3898135: "Delhi", 3913678: "Bangalore",
-    3919496: "Delhi", 3920000: "Delhi", 3921095: "Delhi", 3930344: "Kolkata",
-    3933698: "Delhi", 3938606: "Delhi", 3940380: "Delhi", 3952361: "Mumbai",
-    3807738: "Bangalore", 3857837: "Bangalore", 3911028: "Bangalore", 3919768: "Delhi",
-    3934866: "Delhi", 3938211: "Bangalore", 3823344: "Kolkata", 3890668: "Bangalore",
-    3894873: "Bangalore", 3913381: "Mumbai", 3914089: "Kolkata", 3943931: "Lucknow",
-    3945269: "Kolkata", 3960057: "Bangalore", 3890564: "Lucknow", 3909354: "Lucknow",
-    3865188: "Kolkata", 3910085: "Bangalore",
+    4235059: "Delhi", 4220755: "Patna WH", 4253914: "Mumbai", 4277968: "Bangalore",
+    4219151: "Guwahati WH", 4219635: "Guwahati WH", 4264564: "Bangalore",
+    4278055: "Kolkata", 4035479: "Kolkata", 4269417: "Kolkata",
 }
 
 # Per ticket: the actual Warehouse-team ("roleName": "Warehouse ") comment text,
@@ -1728,30 +2412,28 @@ ORDER_LOCATION = {
 # no Warehouse-role comment was posted on the ticket (only L2/agent notes, if any) -
 # confirmed by reading the FULL comment list for every ticket, not just the latest.
 WH_COMMENT = {
-    "260161": "We have sent proper medicine to cx",
-    "260115": "We have sent short qty to cx",
-    "260097": "Still not received the wh",
-    "260181": None,
-    "260098": "We have sent proper clod storage to cx",
-    "260160": None,
-    "260105": None,
-    "260108": None,
-    "260075": None,
-    "260121": "Received damage medicine footage attached on dto tool",
-    "260107": None,
+    "263743": None,
+    "263746": None,
+    "263763": "We have sent proper medicine to CX Mahiboob bee",
+    "263764": "We have sent proper medicine to CX Mahiboob bee",
+    "263778": "We have sent proper medicine to CX Mahiboob bee",
+    "263781": None,
+    "263782": None,
+    "263792": "We have sent proper medicine to CX Mahiboob bee",
+    "263802": None,
+    "263817": "We have sent proper medicine to CX Mahiboob bee",
 }
 TICKETS = [
-    {"ticket_id": "260161", "order_id": 3946215, "category": "Missing/Wrong Qty", "created_time": "2026-09-20T13:31:52"},
-    {"ticket_id": "260115", "order_id": 3953902, "category": "Missing/Wrong Qty", "created_time": "2026-09-20T08:08:59"},
-    {"ticket_id": "260097", "order_id": 3940469, "category": "Wrong Medicines", "created_time": "2026-09-20T06:55:41"},
-    {"ticket_id": "260181", "order_id": 3964239, "category": "Wrong Medicines", "created_time": "2026-09-20T17:29:57"},
-    {"ticket_id": "260098", "order_id": 3958670, "category": "Wrong Medicines", "created_time": "2026-09-20T06:57:15"},
-    {"ticket_id": "260160", "order_id": 3645980, "category": "Wrong Medicines", "created_time": "2026-09-20T13:27:19"},
-    {"ticket_id": "260105", "order_id": 3926083, "category": "Expiry Issue", "created_time": "2026-09-20T07:10:43"},
-    {"ticket_id": "260108", "order_id": 3961638, "category": "Damaged/Defective", "created_time": "2026-09-20T07:16:40"},
-    {"ticket_id": "260075", "order_id": 3940282, "category": "Damaged/Defective", "created_time": "2026-09-20T05:38:28"},
-    {"ticket_id": "260121", "order_id": 3554613, "category": "Damaged/Defective", "created_time": "2026-09-20T08:42:27"},
-    {"ticket_id": "260107", "order_id": 3939766, "category": "Damaged/Defective", "created_time": "2026-09-20T07:11:16"},
+    {"ticket_id": "263743", "order_id": 4219151, "category": "Wrong Medicines", "created_time": "2026-10-11T03:34:26"},
+    {"ticket_id": "263746", "order_id": 4235059, "category": "Missing/Wrong Qty", "created_time": "2026-10-11T04:10:58"},
+    {"ticket_id": "263763", "order_id": 4220755, "category": "Missing/Wrong Qty", "created_time": "2026-10-11T05:59:17"},
+    {"ticket_id": "263764", "order_id": 4220755, "category": "Missing/Wrong Qty", "created_time": "2026-10-11T06:00:13"},
+    {"ticket_id": "263778", "order_id": 4253914, "category": "Missing/Wrong Qty", "created_time": "2026-10-11T06:50:38"},
+    {"ticket_id": "263781", "order_id": 4278055, "category": "Damaged/Defective", "created_time": "2026-10-11T07:25:41"},
+    {"ticket_id": "263782", "order_id": 4035479, "category": "Damaged/Defective", "created_time": "2026-10-11T07:30:38"},
+    {"ticket_id": "263792", "order_id": 4277968, "category": "Missing/Wrong Qty", "created_time": "2026-10-11T08:16:06"},
+    {"ticket_id": "263802", "order_id": 4219635, "category": "Wrong Medicines", "created_time": "2026-10-11T09:04:51"},
+    {"ticket_id": "263817", "order_id": 4264564, "category": "Wrong Medicines", "created_time": "2026-10-11T10:16:42"},
 ]
 
 # Genuine admission phrases the WH team uses when they DO own the mistake.
@@ -1786,14 +2468,9 @@ ADMISSION_PHRASES = ["wrong sku", "wrong item", "wrong qty", "wrong medicine",
 #   packer     - marketplace_order_status_log, ops_user_name WHERE order_id = ? AND current_status_id = 52 ("pharmacistAccepted") - ops_user_name is already the display name, use directly.
 #   qc (checker) - marketplace_order_status_log, ops_user_name WHERE order_id = ? AND current_status_id = 61 ("packedAndQCed") - same as before, unchanged.
 #   manifester - marketplace_order_status_log, ops_user_name WHERE order_id = ? AND current_status_id = 64 ("manifested") - ops_user_name is the display name, use directly.
-PICKER_QC = {
-    "260115": {"picker": "Pavithra", "packer": "Pavithra", "qc": "Asha_BLRWH", "manifester": "Vasantha"},
-}  # for_date 2026-09-20 - only 1 WH-Accepted (text) ticket this run (see run
-   # note at top of module docstring). Full fulfilment-chain attribution
-   # resolved for order 3953902: picker and packer both resolve to user_id
-   # 184 ("Pavithra") - picker via max-picks (10 vs 7 for runner-up user_id
-   # 1594/"Salmabanu_BLRWH", no tie), packer via status_id 52 ops_user_name -
-   # no null roles.
+PICKER_QC = {}  # for_date 2026-10-11 - 0 WH-Accepted (text) tickets this run
+# (see run note at top of file) - zero genuine WH admissions, so no
+# fulfilment-chain attribution (step 5b) was needed this run.
 
 
 # Request-for-evidence phrasing that can contain admission-sounding words
@@ -1897,6 +2574,124 @@ def classify(wh_comment):
 # 2026-09-22 run (for_date 2026-09-20): no override needed - the single
 # genuine WH admission this run (260115, "We have sent short qty to cx")
 # matched the literal "short qty" ADMISSION_PHRASES substring directly.
+#
+# 2026-09-29 run (for_date 2026-09-27): no override needed - the single
+# genuine WH admission this run (261336, "We have sent short qty to CX
+# Mahiboob bee") matched the literal "short qty" ADMISSION_PHRASES
+# substring directly. The two batch-variant denials this run (261347,
+# 261355, "We have sent deferent batch number of medicine to CX") were
+# read for intent and confirmed as denial variants (per the classifier's
+# expiry/cold-chain/batch-variant-denial definition), not admissions - no
+# override needed for those either.
+#
+# 2026-10-01 run (for_date 2026-09-29): no override needed - both genuine
+# WH admissions this run (261651 "We have sent wrong sku to CX Mahiboob
+# bee", 261714 "We have sent short qty to CX Mahiboob bee") matched a
+# literal ADMISSION_PHRASES substring ("wrong sku" / "short qty") directly.
+# The two "Footage not found..." non-admission/non-denial comments this
+# run (261703, 261772) were read for intent and confirmed as neither
+# admission nor denial - classify()'s literal "otherwise -> False" branch
+# already agreed, so no override was needed for those either. 261805's
+# earlier ambiguous WH comment ("Still stock is not received at
+# warehouse") was superseded on the same thread by a later genuine denial
+# from the same account, so the ticket was classified on that later
+# statement per the "latest genuine Warehouse-role statement wins" rule -
+# not an override, since classify() applied to the correct (final) comment
+# already returns False.
+# 2026-10-02 run (for_date 2026-09-30): no override needed - the single
+# genuine WH admission this run (261998 "We have sent wrong sku to CX
+# Mahiboob bee") matched the literal "wrong sku" ADMISSION_PHRASES
+# substring directly. The two "Footage not found because it's under
+# maintenance" non-admission/non-denial comments this run (261950, 261965)
+# were read for intent and confirmed as neither admission nor denial -
+# classify()'s literal "otherwise -> False" branch already agreed, so no
+# override was needed for those either. The two batch/inventory-denial
+# comments this run (261868's follow-up, 261871's primary statement, both
+# "...not related to our inventory") were read for intent and confirmed as
+# denial variants, not admissions - no override needed.
+#
+# 2026-10-04 run (for_date 2026-10-02): no override needed - both genuine
+# WH admissions this run (262275 "We have sent short qty to CX Mahiboob
+# bee", 262298 "We have sent wrong sku to CX Mahiboob bee") matched a
+# literal ADMISSION_PHRASES substring ("short qty" / "wrong sku") directly.
+# The single "Footage not found because it's under maintenance" non-
+# admission/non-denial comment this run (262278) was read for intent and
+# confirmed as neither admission nor denial - classify()'s literal
+# "otherwise -> False" branch already agreed. Ticket 262199's earlier L2
+# comment merely @-mentions "Warehouse All" while restating the customer's
+# complaint - read for intent and confirmed this is NOT a Warehouse-role
+# comment (actual commenter roleName "L2 Agent"); the genuine Warehouse-
+# role reply came later in the thread (a denial) and is what's recorded -
+# no override needed.
+#
+# 2026-10-06 run (for_date 2026-10-04): no override needed - there were zero
+# genuine WH admissions this run at all (only 4 T-2 tickets total; see run
+# note). Both Warehouse-role comments this run were the plain stock denial
+# "We have sent proper medicine to CX Mahiboob bee" (262530, 262553), and
+# the other two tickets (262516, 262520) had no Warehouse-role comment at
+# all - nothing ambiguous to override.
+#
+# 2026-10-09 run (for_date 2026-10-07): no override needed - the single
+# genuine WH admission this run (263118 "We have sent wrong sku to CX
+# Mahiboob bee") matched the literal "wrong sku" ADMISSION_PHRASES
+# substring directly. The two batch/inventory-denial comments this run
+# (263191, 263115, both "Not related to our inventory") were read for
+# intent and confirmed as denial variants, not admissions - no override
+# needed for those either.
+#
+# 2026-10-08 run (for_date 2026-10-05): no override needed - both genuine WH
+# admissions this run (262777 "We have sent wrong sku to CX Mahiboob bee",
+# 262683 "We have sent wrong medicine to cx") matched a literal
+# ADMISSION_PHRASES substring ("wrong sku" / "wrong medicine") directly. The
+# single "Footage not found" non-admission/non-denial comment this run
+# (262748) was read for intent and confirmed as neither admission nor
+# denial - classify()'s literal "otherwise -> False" branch already
+# agreed. Several tickets this run (262760, 262771, 262788, 262715) had an
+# earlier L2-Agent comment restating the customer's complaint in warehouse
+# shorthand ("mb/lk/kt/dl/blr warehouse cx received ...") - read for intent
+# and confirmed these are NOT Warehouse-role comments (actual commenter
+# roleName "L2 Agent", Kirti Sharma); the genuine Warehouse-role comment
+# came later in each thread and is what's recorded - no override needed.
+#
+# 2026-10-10 run (for_date 2026-10-08): no override needed - all 3 genuine
+# WH admissions this run (263377 "...we are accepted short qty", 263264
+# "We have sent short qty to CX", 263288 "We have sent wrong sku to CX
+# Mahiboob bee") matched a literal ADMISSION_PHRASES substring ("short qty"
+# / "wrong sku") directly. Ticket 263232 had an earlier L2-Agent comment
+# ("kt warehouse cx received wrong order", commenter Kirti Sharma) that
+# restates the customer's complaint - read for intent and confirmed this is
+# NOT a Warehouse-role comment; the genuine Warehouse-role reply came later
+# in the thread (a denial) and is what's recorded - no override needed.
+#
+# 2026-10-11 run (for_date 2026-10-09): no override needed - all 4 genuine
+# WH admissions this run (263432, 263527, 263456, 263424, all "We have sent
+# short qty to CX[...]") matched the literal "short qty" ADMISSION_PHRASES
+# substring directly. One ticket this run (263412, "We have not sent free
+# item to CX Mahiboob bee") was read for intent and confirmed as neither a
+# genuine admission nor the standard denial template - classify()'s literal
+# "otherwise -> False" branch already agreed (not an override, since the
+# outcome is the same False either way) - synced to wh_text_check.json as
+# "unrecognized" per the same precedent as 262748/261950/261965's "Footage
+# not found" tickets. 263401's earlier L2-Agent comment (@-mentioning
+# "Warehouse All" while restating the complaint) was read for intent and
+# confirmed NOT a Warehouse-role comment - the genuine Warehouse-role reply
+# came later in the thread (a denial) and is what's recorded - no override
+# needed.
+#
+# 2026-10-12 run (for_date 2026-10-10): no override needed - there were zero
+# genuine WH admissions this run at all (see run note). All 22 genuine
+# Warehouse-role comments were non-admissions: the plain "proper medicine"
+# denial (20 tickets, including 263625's stray-double-space typo variant),
+# the "with proof of footage" denial variant (263678), and the batch/
+# inventory-denial "Not related to our inventory" (263682, no "proper
+# medicine" wording at all but still read for intent as the same denial
+# family) - classify()'s literal branches already agreed with every
+# sentence-level reading, so nothing needed overriding.
+# 2026-10-13 run (for_date 2026-10-11): no override needed - zero genuine WH
+# admissions this run. All 5 genuine Warehouse-role comments matched the
+# plain "proper medicine" denial template directly, and all 5 no-Warehouse-
+# comment tickets were confirmed by enumerating every comment in the thread
+# (see run note).
 INTENT_OVERRIDES = {
     "259768": (True, "Warehouse team comment: \"We have sent proper medicine but defferent expiry date to CX\" - a first-person WH admission that the shipped item's expiry date differs from the billed one, matching the customer's own Expiry Issue complaint (bill expiry 5/28 vs printed 12/27) - functionally the same outlier pattern as 257160's \"deferent manufacturer company medicine\" (no literal ADMISSION_PHRASES substring, but a genuine admission on a full-sentence reading). Counted WH-Accepted via override."),
 }
@@ -1922,8 +2717,8 @@ for t in TICKETS:
     })
 
 eod_data = {
-    "generated_at": "2026-09-22T13:40:42Z",
-    "for_date": "2026-09-20",
+    "generated_at": "2026-10-13T13:45:00Z",
+    "for_date": "2026-10-11",
     "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
     "tickets": out_tickets,
 }
