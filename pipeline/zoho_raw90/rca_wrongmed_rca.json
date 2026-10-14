@@ -1,0 +1,152 @@
+{
+ "3761359|1012481": {
+  "candidate": "Difizma 63/173/160mcg Capsule 10s",
+  "ordered_loc": "I-14-1-3",
+  "candidate_loc": "I-14-5-2",
+  "bin_relation": "picking_error_nearby",
+  "bin_why": "same zone I and shelf column 14, rack 1 vs 5",
+  "bin_strength": "weak",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3792224|1195252": {
+  "candidate": "Cefasyn 250mg Tablet 4s",
+  "ordered_loc": "E1-8-5-4",
+  "candidate_loc": "E1-8-3-1",
+  "bin_relation": "picking_error_nearby",
+  "bin_why": "same zone E1 and shelf column 8, rack 5 vs 3",
+  "bin_strength": "weak",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3691779|1845276": {
+  "candidate": "Episoft AC SPF 30 Cream 75gm",
+  "ordered_loc": "I-3-5-4",
+  "candidate_loc": "F-9-2-3",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 16,
+  "note": "Ordered batch EA5039 also appears on the received SKU in 16 orders: same batch number shared by both SKUs"
+ },
+ "3750149|1110108": {
+  "candidate": "Easylax L 10gm Oral Solution Lemon 100ml",
+  "ordered_loc": "A1-3-1-1",
+  "candidate_loc": "A1-14-2-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "same zone A1 only",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3750149|1300909": {
+  "candidate": "Easylax L 10gm Oral Solution Lemon 100ml",
+  "ordered_loc": "A1-2-1-1",
+  "candidate_loc": "A1-14-2-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "same zone A1 only",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3750149|1833068": {
+  "candidate": "Easylax L 10gm Oral Solution Lemon 100ml",
+  "ordered_loc": "D1-18-4-3",
+  "candidate_loc": "A1-14-2-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3793407|1305802": {
+  "candidate": "Tretiheal 0.05% Cream 20gm",
+  "ordered_loc": "E1-13-3-2",
+  "candidate_loc": "E1-6-1-4",
+  "bin_relation": "no_bin_link",
+  "bin_why": "same zone E1 only (vertical 13 vs 6)",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": "Same molecule (tretinoin), different brand/strength/form"
+ },
+ "3796170|1865094": {
+  "candidate": "Tranexaheal 500mg Tablet 10s",
+  "ordered_loc": "G-17-4-2",
+  "candidate_loc": "D-6-3-3",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3844032|1089192": {
+  "candidate": "Ticavue 90mg Tablet 14s",
+  "ordered_loc": "C1-8-4-1",
+  "candidate_loc": "A1-14-5-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3844032|1423743": {
+  "candidate": "Ticavue 90mg Tablet 14s",
+  "ordered_loc": "E1-5-3-4",
+  "candidate_loc": "A1-14-5-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3730360|1390247": {
+  "candidate": "Mygesteron 400mg Capsule 10s",
+  "ordered_loc": "B2-6-2-2",
+  "candidate_loc": "E1-2-2-2",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3678008|1500060": {
+  "candidate": "Rosugard 10mg Tablet 10s",
+  "ordered_loc": "C-2-6-1",
+  "candidate_loc": "A-1-6-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3678008|1914352": {
+  "candidate": "Rosugard 10mg Tablet 10s",
+  "ordered_loc": "J-23-4-2",
+  "candidate_loc": "A-1-6-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "different zone",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3940087|1390437": {
+  "candidate": "Cetirizine 10mg Tablet 10s",
+  "ordered_loc": "H1-2-5-3",
+  "candidate_loc": "H1-10-4-1",
+  "bin_relation": "no_bin_link",
+  "bin_why": "same zone H1 only (vertical 2 vs 10)",
+  "bin_strength": "",
+  "batch_shared_orders": 0,
+  "note": ""
+ },
+ "3729706|1840117": {
+  "candidate": "Oflofine 50mg Oral Suspension 30ml (catalog match)",
+  "ordered_loc": "K-8-5-1",
+  "candidate_loc": null,
+  "bin_relation": "unknown",
+  "bin_why": "received SKU has no bin location at this warehouse",
+  "bin_strength": "",
+  "batch_shared_orders": null,
+  "note": ""
+ }
+}

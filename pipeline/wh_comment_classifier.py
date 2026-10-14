@@ -32,6 +32,15 @@ ADMISSION_PHRASES = [
     "wrong sku", "wrong item", "wrong qty", "wrong medicine",
     "short qty", "qty short", "less qty", "sent short", "sent wrong",
     "missing qty", "agreed on short", "have agreed on", "sent damaged",
+    # Owner-confirmed 2026-10-14 (real WH wording found in no-decision tickets):
+    # an MRP mismatch, a missing free item and a packer slip are all genuine admissions.
+    "mrp mismatch",
+    "not sent free item", "have not sent free", "have not free", "free item is not mentioned",
+    "free item not mentioned",
+    "didn't removed", "didn't remove", "didnt removed", "didnt remove", "not removed the medicine",
+    # found in the same review: expiry / excess / wrong free item sent
+    "sent expriy", "sent expiry", "sent expired", "expriy medicine", "expired medicine to",
+    "free item wrong", "excess medicine", "sent excess",
 ]
 
 # Denials were previously handled only implicitly ("no admission phrase
@@ -50,6 +59,7 @@ REQUEST_PHRASES = [
     "share the photo", "share photo", "send the image", "send image",
     "send the photo", "send photo", "provide image", "provide photo",
     "helpfull to find", "helpful to find",
+    "send me the proper order id", "send me the order id",
     "kindly share the order id", "share the order id", "kindly share the order",
 ]
 
@@ -59,6 +69,7 @@ NEUTRAL_PHRASES = [
     "footage not found", "not related to our inventory",
     "is not cold storage medicine", "not reached at warehouse",
     "containce only", "not in warehouse", "under maintenance",
+    "return scanned at warehouse", "return request is approved",
     "not available in our inventory", "no batch available",
 ]
 
@@ -90,7 +101,7 @@ def strip_html(raw: str | None) -> str:
 def classify_one_comment(text: str) -> str:
     """Returns 'request' | 'neutral' | 'denied' | 'admitted' | 'unrecognized'
     for a single (already HTML-stripped) Warehouse-role comment body."""
-    low = text.lower()
+    low = text.lower().replace("\u2019", "'").replace("\u2018", "'")
     if any(p in low for p in INTENT_OVERRIDE_ADMISSIONS):
         return "admitted"
     if any(p in low for p in REQUEST_PHRASES):
@@ -151,3 +162,49 @@ def classify_wh_comments(comments: list[dict]) -> dict:
                 "reason": f"Warehouse commented but it matched no known admission/denial pattern - needs manual review: \"{winning_text}\""}
     return {"verdict": "unrecognized", "evidence": None,
             "reason": "Every Warehouse comment was a request-for-evidence or neutral/factual note - no admission or denial found."}
+
+
+# ---- Investigation sub-reasons (added 2026-10-14 for the RCA funnel) ----------
+#
+# WHY a ticket was not investigated to an accepted/rejected outcome. Purely
+# additive: classify_wh_comments() verdicts are untouched. Phrases are the
+# real wording found in wh_text_check.json's `unrecognized` evidence (78 rows,
+# 2026-10-14 survey) - extend this table AND SUBTYPE_CASES in
+# test_wh_comment_classifier.py together. First matching subtype wins, in the
+# order listed (most specific first). Anything WH wrote that matches none of
+# these stays None -> reported as `not_investigated:other`, never guessed.
+INVESTIGATION_SUBTYPES = [
+    ("footage_missing", [
+        "footage not found", "footage not available", "footage is not available",
+        "no footage", "cctv is under", "camera backup", "cctv not",
+    ]),
+    ("cx_image_unclear", [
+        "image not clear", "image is not clear", "photo not clear",
+        "photo is not clear", "image unclear", "not visible", "unable to see",
+    ]),
+    ("batch_not_in_inventory", [
+        "cannot find the batch", "can not find the batch", "batch not available",
+        "no batch available", "not related to our inventory",
+        "not available in our inventory", "not in our inventory", "code not available",
+        "batch is not", "batch not found",
+    ]),
+    ("return_not_received_at_wh", [
+        "not received the wh", "not received this stock", "not received at warehouse",
+        "not reached at warehouse", "still not received",
+    ]),
+]
+
+
+def investigation_subtype(text: str | None) -> str | None:
+    """Maps one Warehouse comment's text (already HTML-stripped) to why the
+    ticket could not be investigated, or None if it is not one of the known
+    reasons. Request-for-evidence text is never a subtype."""
+    if not text:
+        return None
+    low = text.lower()
+    if any(p in low for p in REQUEST_PHRASES):
+        return None
+    for name, phrases in INVESTIGATION_SUBTYPES:
+        if any(p in low for p in phrases):
+            return name
+    return None

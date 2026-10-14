@@ -10,20 +10,32 @@ dashboard meant to show the unfiltered whole picture.
 Columns: 3-month total | last-month total | last-2-weeks total | then one
 column per day, most recent complete day first, going backwards.
 
-IMPORTANT: every ticket in data.json is counted here, full stop - the day
+T-2 CAP (added 2026-10-09): the table stops at T-2, i.e. the IST calendar
+date of the data pull (data.json `generated_at`) minus 2 days - the same
+convention as the Zoho EOD tab (a run on the 22nd shows the 20th). The
+Warehouse team needs time to investigate and comment on a ticket before it
+can be called accepted or denied; in the last 2 days WH Accepted is
+structurally understated (and worse, a ticket read before WH has commented
+gets cached as `no_wh_comment` - see CLAUDE.md), so those days are held back
+rather than shown as a misleadingly low number. The anchor is the pull time,
+not the wall clock, so re-building from an old pull doesn't silently pull
+the cut-off forward. The tiles/charts/ticket list elsewhere on Tab 1 are NOT
+capped, so their totals can exceed this table's by the last-2-days tickets;
+`excluded_tickets` below records exactly how many.
+
+Apart from that cap, every ticket in data.json is counted here - the day
 list is the union of every day that has a ticket AND every day that has a
-delivered-orders count, never a truncated/"drop the last day as partial"
-window. An earlier version dropped the most recent day on the theory that
-it's always a partial refresh-day artifact; in practice the daily refresh
-runs in the evening (see CLAUDE.md), so that day is essentially complete,
-and dropping it silently undercounted this table's totals against every
-other widget on the dashboard (which all read data.json directly, with no
-such truncation) - e.g. the "Total issues raised" tile and this table's
-"Return Requested" 3-month total must always be equal; if they ever aren't,
-something in this reconciliation broke. A day with tickets but no matching
-delivered-orders entry yet (ch_delivered_daily.json not refreshed as far
-forward) shows "–" for that day's rate cells rather than dropping the
-tickets themselves.
+delivered-orders count, never a "drop the last day as partial" window. An
+earlier version dropped the most recent day on the theory that it's always a
+partial refresh-day artifact; in practice the daily refresh runs in the
+evening (see CLAUDE.md), so that day is essentially complete, and dropping it
+silently undercounted this table's totals against the rest of the dashboard.
+Without the T-2 cap, the "Total issues raised" tile and this table's "Return
+Requested" 3-month total must be equal; with it they differ by exactly
+`excluded_tickets` - if they differ by more, something in this reconciliation
+broke. A day with tickets but no matching delivered-orders entry yet
+(ch_delivered_daily.json not refreshed as far forward) shows "–" for that
+day's rate cells rather than dropping the tickets themselves.
 
 Delivered-orders counts come from ClickHouse `marketplace_order_status_log`
 (current_status_id = 70, i.e. the order actually reached "delivered" - NOT
@@ -37,10 +49,20 @@ saved to zoho_raw90/ch_delivered_daily.json:
 Re-run this query and overwrite the file when refreshing past its date range.
 """
 import json
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from collections import defaultdict
 
 HERE = Path(__file__).parent
+
+IST = timezone(timedelta(hours=5, minutes=30))
+T_MINUS_DAYS = 2  # same lag as the Zoho EOD tab - see the T-2 CAP note in the docstring
+
+
+def pull_date_ist(generated_at):
+    """IST calendar date of the data pull ('2026-09-23T12:47:00Z' -> date(2026, 9, 23))."""
+    pulled = datetime.strptime(generated_at, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    return pulled.astimezone(IST).date()
 
 CATEGORY_ORDER = [
     ("Missing/Wrong Qty", "Missing or Short Qty"),
@@ -97,7 +119,14 @@ def main():
 
     # Union, not intersection: a day must appear if EITHER source has it, so
     # neither tickets nor delivered-order counts are ever silently dropped.
-    days = sorted(set(delivered_daily.keys()) | set(raised_by_day.keys()))
+    all_days = sorted(set(delivered_daily.keys()) | set(raised_by_day.keys()))
+
+    # T-2 cap: hold back the last 2 days, where WH hasn't had time to comment yet.
+    as_of = pull_date_ist(data["generated_at"])
+    cutoff = (as_of - timedelta(days=T_MINUS_DAYS)).isoformat()
+    days = [d for d in all_days if d <= cutoff]
+    excluded_days = [d for d in all_days if d > cutoff]
+    excluded_tickets = sum(raised_by_day[d] for d in excluded_days)
 
     def window(n):
         return days[-n:] if n else days
@@ -148,9 +177,14 @@ def main():
         "days": days,  # ascending; oldest first
         "day_labels": {d: day_label(d) for d in days},
         "rows": rows,
+        "as_of": as_of.isoformat(),
+        "t2_cutoff": cutoff,
+        "excluded_days": excluded_days,
+        "excluded_tickets": excluded_tickets,
     }
     (HERE / "macro_trend.json").write_text(json.dumps(out))
-    print(f"Wrote macro_trend.json: {len(days)} days, {len(rows)} rows")
+    print(f"Wrote macro_trend.json: {len(days)} days (through {cutoff} = T-{T_MINUS_DAYS} as of pull {as_of}), "
+          f"{len(rows)} rows; held back {excluded_tickets} tickets from {excluded_days}")
 
 
 if __name__ == "__main__":

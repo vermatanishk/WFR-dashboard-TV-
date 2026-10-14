@@ -368,6 +368,7 @@
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t3">3 · Personnel</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t4">4 · Zoho EOD</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t5">5 · Monthly Leaderboard</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t6">6 · RCA</button>
     </div>
 
     <div class="wfr-toolbar">
@@ -389,7 +390,7 @@
         <div class="wfr-card-head">
           <h3>Macro trend — delivered orders vs. issues raised vs. accepted</h3>
         </div>
-        <div class="wfr-footnote" style="margin-top:0; margin-bottom:10px;">Whole-network view, not affected by any filter on this page (date range, category, location) — delivered orders (not created), total issues raised, and WH Accepted broken into the 5 categories that sum to it. The frozen columns on the left are aggregate totals; the day-by-day columns scroll sideways, most recent complete day first. The current (partial) day is excluded everywhere on this table.</div>
+        <div class="wfr-footnote" style="margin-top:0; margin-bottom:10px;">Whole-network view, not affected by any filter on this page (date range, category, location) — delivered orders (not created), total issues raised, and WH Accepted broken into the 5 categories that sum to it. The frozen columns on the left are aggregate totals; the day-by-day columns scroll sideways, most recent complete day first. <b>Shows complete days up to T-2 only</b><span id="macro-t2-note"></span> — the Warehouse team needs ~2 days to investigate and comment, so WH Accepted for anything newer would be understated. The tiles, charts and ticket list on this tab are not capped, so their totals can be higher than this table's by the held-back tickets.</div>
         <div class="wfr-macro-scroll">
           <table class="wfr-macro-table" id="macro-trend-table">
             <thead><tr id="macro-trend-head"></tr></thead>
@@ -553,6 +554,59 @@
       </div>
     </div>
 
+    <!-- TAB 6: RCA -->
+    <div class="wfr-panel" id="t6">
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Investigation funnel - Accepted / Rejected / No decision</div>
+        <div class="wfr-footnote" id="rca-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-funnel"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">No decision - where the return request stands</div>
+        <div class="wfr-footnote" style="margin:6px 0 12px">Return request <b>not raised</b> = no return row exists in ClickHouse for the order; <b>cancelled</b> = every return request on the order is cancelled (cancelledReturn / returnPickupCancelled); <b>raised</b> = in progress or completed. Split by the no-decision reason.</div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-nd-ret"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Dependency set by support (informational)</div>
+        <div class="wfr-footnote" style="margin:6px 0 12px">Support agents edit this field after the fact, so it is shown for reference only and does not drive the funnel above.</div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-disagree"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Wrong medicine - received SKU (read off the customer photo) vs ordered</div>
+        <div class="wfr-footnote" id="rca-wm-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-wm"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Different medicine received - examples and why (RCA kept separate from the relation)</div>
+        <div class="wfr-footnote" id="rca-dm-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-dm"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Missing / short quantity - was it short-picked?</div>
+        <div class="wfr-footnote" id="rca-mq-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-mq"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Damaged - cold chain and logistics signals</div>
+        <div class="wfr-footnote" id="rca-dmg-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-dmg"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">MRP / Batch mismatch - pack vs system (sample of recent tickets)</div>
+        <div class="wfr-footnote" id="rca-mrp-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-mrp"></table></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Order swap</div>
+        <div class="wfr-footnote" id="rca-flag-note" style="margin:6px 0 12px"></div>
+      </div>
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Expiry issues - shelf life at delivery</div>
+        <div class="wfr-footnote" id="rca-expiry-note" style="margin:6px 0 12px"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="rca-expiry"></table></div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -568,6 +622,7 @@ const ORDERS_BY_DAY = __ORDERS_BY_DAY_JSON__;
 const ORDERS_BY_DAY_LOC = __ORDERS_BY_DAY_LOCATION_JSON__;
 const EOD = __EOD_JSON__;
 const RFD_WEEKLY = __RFD_WEEKLY_JSON__;
+const RCA = __RCA_JSON__;
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -1136,6 +1191,184 @@ function renderWeeklyLeaderboard() {
 }
 renderWeeklyLeaderboard();
 
+// ---- Tab 6: RCA --------------------------------------------------------------
+// Data: rca.json (pipeline/build_rca.py). T-2 capped like the macro table; the
+// funnel reconciles to Raised (checked in Python, shown below). Dependency is
+// NOT a funnel stage (agents remove it later): the funnel is by outcome of the
+// Warehouse-team comment, and "No decision" is broken down by reason.
+function renderRCA() {
+  if (!RCA || !RCA.rows) return;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const rows = RCA.rows.filter(r => r.in_t2);
+  const ND = [
+    ['footage_missing', 'Footage not available'],
+    ['batch_not_in_inventory', 'Batch not from our inventory (claim)'],
+    ['cx_image_unclear', 'CX image not clear'],
+    ['dependency_not_marked', 'Dependency not marked'],
+    ['docpharma', 'DocPharma order (no WH comment)'],
+    ['cogs_lt_100', 'COGS < 100 (no WH comment)'],
+    ['agent_mistake', 'Agent mistake (WH marked, no WH comment)'],
+    ['return_not_received_at_wh', 'Return not received at WH'],
+    ['other_wh_note', 'Other WH note'],
+  ];
+  const cats = ['All'].concat([...new Set(rows.map(r => r.category))].sort());
+  const cell = (n, tot) => n ? n + ' <span style="color:var(--text-muted)">(' + (100 * n / tot).toFixed(0) + '%)</span>' : '–';
+  let h = '<thead><tr><th>Category</th><th class="num">Raised</th><th class="num">Accepted</th><th class="num">Rejected</th><th class="num">No decision</th>' +
+          ND.map(d => '<th class="num" style="font-weight:500">↳ ' + d[1] + '</th>').join('') + '<th class="num">Not yet read</th></tr></thead><tbody>';
+  cats.forEach(c => {
+    const rs = c === 'All' ? rows : rows.filter(r => r.category === c);
+    const n = rs.length; if (!n) return;
+    const cnt = k => rs.filter(r => r.decision === k).length;
+    const nd = k => rs.filter(r => r.decision === 'no_decision' && r.no_decision_reason === k).length;
+    h += '<tr' + (c === 'All' ? ' style="font-weight:700"' : '') + '><td>' + esc(c) + '</td><td class="num">' + n + '</td><td class="num">' + cell(cnt('accepted'), n) +
+         '</td><td class="num">' + cell(cnt('rejected'), n) + '</td><td class="num">' + cell(cnt('no_decision'), n) + '</td>' +
+         ND.map(d => '<td class="num">' + (nd(d[0]) || '–') + '</td>').join('') + '<td class="num">' + cell(cnt('not_yet_read'), n) + '</td></tr>';
+  });
+  document.getElementById('rca-funnel').innerHTML = h + '</tbody>';
+  const unread = rows.filter(r => r.decision === 'not_yet_read').length;
+  document.getElementById('rca-note').innerHTML =
+    'Raised tickets up to <b>' + esc(RCA.t2_cap_date) + '</b> (T-2; ' + RCA.excluded_tickets + ' newer held back). Funnel ' +
+    (RCA.reconciles ? 'reconciles to Raised.' : '<b>DOES NOT RECONCILE</b>') + ' ' +
+    '<b>Accepted / Rejected</b> come from the Warehouse team\'s own Zoho comment. <b>No decision</b> = WH commented but could not decide, or support marked no warehouse dependency; the lines under it are the reasons ' +
+    '(first match wins: footage, batch claim, CX image not clear, dependency not marked, ...). <b>Not yet read = ' + unread + '</b> tickets have no Warehouse-comment verdict cached yet, so Accepted/Rejected are a floor, not the final split.';
+
+  const ndRows = rows.filter(r => r.decision === 'no_decision');
+  const RS = [['not_raised', 'Return request not raised'], ['cancelled', 'Return cancelled'], ['raised', 'Return raised (in progress / completed)']];
+  document.getElementById('rca-nd-ret').innerHTML =
+    '<thead><tr><th>No-decision reason</th><th class="num">Tickets</th>' + RS.map(x => '<th class="num">' + x[1] + '</th>').join('') + '</tr></thead><tbody>' +
+    ND.map(d => { const rs = ndRows.filter(r => r.no_decision_reason === d[0]); if (!rs.length) return '';
+      return '<tr><td>' + d[1] + '</td><td class="num">' + rs.length + '</td>' + RS.map(x => '<td class="num">' + (rs.filter(r => r.return_state === x[0]).length || '–') + '</td>').join('') + '</tr>'; }).join('') +
+    '<tr style="font-weight:700"><td>All no decision</td><td class="num">' + ndRows.length + '</td>' + RS.map(x => '<td class="num">' + ndRows.filter(r => r.return_state === x[0]).length + '</td>').join('') + '</tr></tbody>';
+
+  // Dependency (informational only - it is edited after the fact, so it is not a funnel stage)
+  const dep = {}; rows.forEach(r => dep[r.dependency] = (dep[r.dependency] || 0) + 1);
+  document.getElementById('rca-disagree').innerHTML =
+    '<thead><tr><th>Dependency set by support (informational)</th><th class="num">Tickets</th><th class="num">of which Accepted by WH</th></tr></thead><tbody>' +
+    Object.keys(dep).sort((a, b) => dep[b] - dep[a]).map(k => '<tr><td>' + esc(k) + '</td><td class="num">' + dep[k] + '</td><td class="num">' +
+      (rows.filter(r => r.dependency === k && r.decision === 'accepted').length || '–') + '</td></tr>').join('') + '</tbody>';
+
+  // Wrong medicine: only the received SKU NAME is needed (batch/expiry are a bonus)
+  const wm = RCA.rows.filter(r => r.wrong_med && r.wrong_med.length);
+  const RT = {same_sku_consistent: 'Photo shows the ordered product (complaint not supported by the photo)',
+              same_brand_variant: 'Same brand, different strength / pack / form',
+              same_product_diff_packaging: 'Same product, different packaging',
+              different_medicine: 'Different medicine',
+              unknown: 'SKU name not readable'};
+  const BR = {picking_error: 'Same bin / same rack - picking error', picking_error_nearby: 'Same zone and shelf column, different rack - picking error (weak)',
+              no_bin_link: 'No bin link', candidate_unverified: 'Catalog SKU not verified from the name read - bin not assessed',
+              unknown: 'Bin location missing for one SKU'};
+  const rt = {}, br = {};
+  wm.forEach(r => { const e = r.wrong_med.slice().sort((a, b) => (a.relation_type > b.relation_type) - (a.relation_type < b.relation_type))[0];
+    rt[e.relation_type] = (rt[e.relation_type] || 0) + 1;
+    if (e.bin_relation) br[e.bin_relation] = (br[e.bin_relation] || 0) + 1; });
+  const unreadable = RCA.rows.filter(r => r.category === 'Wrong Medicines' && r.image_status === 'unclear').length;
+  document.getElementById('rca-wm-note').innerHTML =
+    'Wrong-medicine tickets with a received SKU read from the photo: <b>' + wm.length + '</b>. Only the SKU <i>name</i> is required; batch/expiry from the back of the pack are used when present. ' +
+    'Tickets where no SKU name could be read are shown as <b>CX image not clear</b> (' + unreadable + '). Bin links are attributed as picking errors only; image-derived results are capped at <b>likely</b>.';
+  document.getElementById('rca-wm').innerHTML =
+    '<thead><tr><th>Relation to the ordered SKU</th><th class="num">Tickets</th></tr></thead><tbody>' +
+    Object.keys(RT).filter(k => rt[k]).map(k => '<tr><td>' + RT[k] + '</td><td class="num">' + rt[k] + '</td></tr>').join('') +
+    '</tbody><thead><tr><th>Bin relation (variant / different-medicine cases)</th><th class="num">Tickets</th></tr></thead><tbody>' +
+    Object.keys(BR).filter(k => br[k]).map(k => '<tr><td>' + BR[k] + '</td><td class="num">' + br[k] + '</td></tr>').join('') + '</tbody>';
+
+  // Different-medicine examples with the RCA shown separately
+  const dm = [];
+  RCA.rows.forEach(r => (r.wrong_med || []).forEach(e => { if (e.relation_type === 'different_medicine') dm.push([r, e]); }));
+  const withRca = dm.filter(([r, e]) => e.bin_relation && e.bin_relation !== 'candidate_unverified').length;
+  document.getElementById('rca-dm-note').innerHTML =
+    '<b>' + dm.length + '</b> ticket lines where a different medicine was received. The root-cause columns are independent of that classification: ' +
+    '<b>Bin</b> compares the ordered SKU\'s bin with the received SKU\'s bin at that warehouse (picking error only), and <b>Batch sharing</b> checks whether the ordered line\'s batch number also appears on the received SKU. ' +
+    'Both need the received SKU to be a verified catalog entry (' + withRca + ' of ' + dm.length + '); otherwise they are shown as not assessed. "No structural link" is a valid outcome - it means a recognition/picking slip with no bin or batch cause.';
+  const BRL = {picking_error: 'Picking error (same bin / rack)', picking_error_nearby: 'Picking error, weak (same zone and shelf column)',
+               no_bin_link: 'No bin link', unknown: 'Not assessed (bin missing)', candidate_unverified: 'Not assessed (SKU not verified)'};
+  document.getElementById('rca-dm').innerHTML =
+    '<thead><tr><th>Ticket</th><th>Ordered</th><th>Received instead</th><th>Bin (ordered → received)</th><th>Batch sharing</th><th>WH outcome</th></tr></thead><tbody>' +
+    dm.slice(0, 60).map(([r, e]) => '<tr><td>' + r.ticket_id + '</td><td>' + esc(e.ordered_name || '') + '</td><td>' + esc((e.received || '').slice(0, 70)) + '</td><td>' +
+      (e.bin_relation ? esc(BRL[e.bin_relation] || e.bin_relation) + (e.ordered_loc && e.candidate_loc ? '<br><span style="color:var(--text-muted)">' + esc(e.ordered_loc) + ' → ' + esc(e.candidate_loc) + '</span>' : '') : 'Not assessed') +
+      '</td><td>' + (e.batch_shared_orders === undefined || e.batch_shared_orders === null ? 'Not assessed' : (e.batch_shared_orders > 1 ? '<b>Shared</b> (' + e.batch_shared_orders + ' orders)' : 'No')) +
+      '</td><td>' + esc(r.decision) + '</td></tr>').join('') + '</tbody>';
+
+  // Missing / short quantity - only the tree's split (SKU missing vs item missing)
+  const mq = RCA.rows.filter(r => r.extra && r.extra.missing);
+  const mqc = k => mq.filter(r => r.extra.missing.kind === k).length;
+  document.getElementById('rca-mq-note').innerHTML =
+    'Per the RCA tree this is reported as <b>SKU missing</b> (the complained quantity is the whole ordered line) vs <b>item missing</b> (a partial quantity), from the return item. ' +
+    'Pick-scan records are deliberately not used: a scan can be logged for a pick that never physically happened.';
+  document.getElementById('rca-mq').innerHTML =
+    '<thead><tr><th>Split</th><th class="num">Tickets</th></tr></thead><tbody>' +
+    '<tr><td>SKU missing (whole line)</td><td class="num">' + mqc('sku_missing') + '</td></tr>' +
+    '<tr><td>Item missing (partial quantity)</td><td class="num">' + mqc('item_missing') + '</td></tr>' +
+    '<tr><td>Not classifiable (no incomplete-order return line)</td><td class="num">' + (mq.length - mqc('sku_missing') - mqc('item_missing')) + '</td></tr></tbody>';
+
+  // Damaged: 1) cold / non-cold  2) images only for non-cold  3) split of what is happening
+  const dg = RCA.rows.filter(r => r.extra && r.extra.damaged);
+  const coldN = dg.filter(r => r.extra.damaged.cold).length, ncN = dg.length - coldN;
+  const n = (c, l) => dg.filter(r => r.extra.damaged.cold === c && r.extra.damaged.logistics_exception === l).length;
+  const dn = RCA.damaged_noncold || {lines: [], counts: {}};
+  const K = {outer_shipper_damaged: ['Courier / outer shipper damaged (crushed, torn); product inside intact', 'Transit handling'],
+    carton_damaged: ['Individual carton crushed, torn or water-soaked; product intact', 'Packing / handling'],
+    primary_pack_breached: ['Primary pack breached: blister punctured or burst, sachet torn, strip crushed', 'Packing / handling'],
+    leak_spill: ['Liquid / gel leaked or spilled', 'Closure / seal + packing'],
+    label_closure_defect: ['Vial label peeled off / flip-off cap loose', 'Manufacturer pack'],
+    product_quality: ['Product itself looks defective (split tablet, lumpy formula, inhaler dose)', 'Manufacturer / supplier'],
+    no_visible_damage: ['Photo shows the product intact - no visible damage', 'Not supported by the photo'],
+    image_not_relevant: ['Image not relevant (only the app logo, or a photo of a different product)', 'No usable evidence']};
+  const tot = dn.lines.length;
+  document.getElementById('rca-dmg-note').innerHTML =
+    '<b>Step 1 - cold / non-cold:</b> ' + coldN + ' cold-chain vs ' + ncN + ' non-cold of ' + dg.length + ' damaged tickets. <b>Step 2 - images only for non-cold:</b> a cold-chain complaint is about temperature, which a photo cannot show (and 73% of cold photos are only the app logo), so no images were read for it. ' +
+    '<b>Step 3 - what is happening in the non-cold cases:</b> ' + tot + ' complained product lines across ' + (dn.orders_read || 0) + ' orders (' + (dn.tickets_with_read_lines || 0) + ' of ' + ncN + ' non-cold tickets have a damage-type return line with photos). ' +
+    'Each line is in exactly one row. Where the damage is in the chain is inferred from the photo, never from named staff.';
+  const dcnt = dn.counts || {};
+  document.getElementById('rca-dmg').innerHTML =
+    '<thead><tr><th>Branch</th><th class="num">Tickets</th></tr></thead><tbody>' +
+    '<tr><td><b>Cold-chain item</b> - temperature complaint, not photographed</td><td class="num">' + coldN + '</td></tr>' +
+    '<tr><td>&nbsp;&nbsp;↳ logistics exception recorded (NDR / repeat attempt)</td><td class="num">' + n(true, true) + '</td></tr>' +
+    '<tr><td><b>Non-cold item</b></td><td class="num">' + ncN + '</td></tr>' +
+    '<tr><td>&nbsp;&nbsp;↳ logistics exception recorded</td><td class="num">' + n(false, true) + '</td></tr></tbody>' +
+    '<thead><tr><th>Non-cold: what the photos show</th><th>Where in the chain</th><th class="num">Lines</th><th class="num">Share</th></tr></thead><tbody>' +
+    Object.keys(K).filter(k => dcnt[k]).sort((a, b) => dcnt[b] - dcnt[a]).map(k => '<tr><td>' + K[k][0] + '</td><td>' + K[k][1] + '</td><td class="num">' + dcnt[k] + '</td><td class="num">' + Math.round(100 * dcnt[k] / tot) + '%</td></tr>').join('') +
+    '<tr style="font-weight:700"><td>All read lines</td><td></td><td class="num">' + tot + '</td><td class="num">100%</td></tr></tbody>';
+
+  // MRP / Batch sample
+  const ms = RCA.mrp_sample || [];
+  const REL = {system_higher_than_pack: 'System MRP above pack', pack_higher_than_system: 'Pack MRP above system', equal: 'Equal', unknown: 'Unknown'};
+  document.getElementById('rca-mrp-note').innerHTML =
+    'The new sub-disposition is now mapped (<code>MRP/Batch Mismatch</code>, plus the free-text <code>MRP Mismatch</code>), but the ticket pull stops on 22 Sep, so this is a <b>sample of ' + ms.length + ' recent tickets</b> read from the photos. ' +
+    'In ' + ms.filter(m => m.mrp_relation === 'system_higher_than_pack').length + ' of ' + ms.length + ' the pack\'s printed MRP is <b>lower</b> than the allocated batch\'s MRP in the system (customer billed above print); in ' +
+    ms.filter(m => m.batch_relation !== 'match' && m.batch_relation !== 'unknown').length + ' the printed batch differs from the allocated batch. ' +
+    (RCA.mrp_gaps ? RCA.mrp_gaps.complaints_without_allocation_row + ' of ' + RCA.mrp_gaps.of + ' MRP complaints had no allocation row at all (nothing to compare).' : '');
+  document.getElementById('rca-mrp').innerHTML =
+    '<thead><tr><th>Ticket</th><th>SKU</th><th class="num">System MRP</th><th class="num">Pack MRP</th><th>MRP</th><th>Batch (system → pack)</th></tr></thead><tbody>' +
+    ms.map(m => '<tr><td>' + m.ticket_id + '</td><td>' + esc(m.sku) + '</td><td class="num">' + m.system.mrp + '</td><td class="num">' + m.printed.mrp + '</td><td>' + (REL[m.mrp_relation] || m.mrp_relation) +
+      '</td><td>' + esc(m.system.batch) + ' → ' + esc(m.printed.batch) + ' (' + m.batch_relation.replace('_', ' ') + ')</td></tr>').join('') + '</tbody>';
+
+  // Order swap
+  const sw = RCA.rows.filter(r => r.extra && r.extra.swap);
+  document.getElementById('rca-flag-note').innerHTML =
+    '<b>' + sw.length + '</b> ticket(s) where the courier label on the received parcel is another order of the same warehouse (' + sw.map(r => r.ticket_id).join(', ') + '); no shared AWB across 134 swap-reason orders, so swaps look like packing/label mix-ups.';
+
+  // Expiry: allocation vs what the customer's photos show
+  const ex = RCA.rows.filter(r => r.expiry && r.expiry.items && r.expiry.items.length);
+  const IV = {received_item_expired: 'Received item already expired (printed expiry before delivery)',
+              received_near_expiry_lt_3m: 'Received item near expiry (<3 months at delivery)',
+              received_item_ok: 'Received item has ≥3 months (photo supports the allocation)',
+              batch_only_no_expiry_read: 'Batch read but expiry not legible',
+              cx_image_unclear: 'CX image not clear (nothing legible)',
+              no_images_read: 'No complaint images for this order',
+              undetermined: 'Undetermined (no return item / delivery date)'};
+  const cnt = {}; ex.forEach(r => { const k = (r.expiry.image_check || {}).image_verdict || 'undetermined'; cnt[k] = (cnt[k] || 0) + 1; });
+  const diff = ex.filter(r => (r.expiry.image_check || {}).batch_differs_from_allocation).length;
+  const sameBatchExp = ex.filter(r => (r.expiry.image_check || {}).same_batch_different_expiry).length;
+  document.getElementById('rca-expiry-note').innerHTML =
+    'Shelf life at delivery from the allocated batch\'s expiry, then compared with the batch/expiry printed on the customer\'s photos (read by Claude, capped at <b>likely</b>). A day-1 expiry is read to the end of that month. ' +
+    'In <b>' + diff + '</b> orders the printed batch differs from the allocated batch, and in <b>' + sameBatchExp + '</b> the batch matches but the expiry differs from the stored one.';
+  document.getElementById('rca-expiry').innerHTML =
+    '<thead><tr><th>Result</th><th class="num">Expiry tickets</th></tr></thead><tbody>' +
+    Object.keys(IV).filter(k => cnt[k]).map(k => '<tr><td>' + IV[k] + '</td><td class="num">' + cnt[k] + '</td></tr>').join('') +
+    '<tr style="font-weight:700"><td>All expiry tickets</td><td class="num">' + ex.length + '</td></tr></tbody>';
+}
+renderRCA();
+
 // Tabs
 document.querySelectorAll('.wfr-tab').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -1264,6 +1497,14 @@ function renderMacroTrend() {
   const body = document.getElementById('macro-trend-body');
   if (!head || !body || !MACRO_TREND || !MACRO_TREND.rows) return;
   const days = MACRO_TREND.days.slice().reverse(); // most recent first
+
+  // T-2 cap note: which day the table stops at, and how many newer tickets are held back.
+  const t2Note = document.getElementById('macro-t2-note');
+  if (t2Note && MACRO_TREND.t2_cutoff) {
+    const held = MACRO_TREND.excluded_tickets || 0;
+    t2Note.textContent = ` (through ${MACRO_TREND.day_labels[MACRO_TREND.t2_cutoff] || MACRO_TREND.t2_cutoff}`
+      + (held ? `; ${held} newer ticket${held === 1 ? '' : 's'} held back)` : ')');
+  }
 
   head.innerHTML = `<th class="frozen frozen-label">Metric</th>
     <th class="frozen frozen-3mo num">3 month total</th>

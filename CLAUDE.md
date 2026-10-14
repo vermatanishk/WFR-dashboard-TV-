@@ -158,6 +158,34 @@ if it has a comment that isn't an admission, `no_wh_comment` if
 `wh_comment` is null) - skip a `ticket_id` already present, same
 never-recheck rule as everywhere else.
 
+**Backfill pitfalls (found 2026-10-09 reconciling Tab 1 against 54 days of
+EOD history from git; each checked against live Zoho threads):**
+- **`no_wh_comment` and `unrecognized` are provisional, not final.** A ticket
+  read before WH commented is cached `no_wh_comment` and the "never re-check"
+  rule then freezes it. In the EOD overlap, EOD's read disagreed with 33 of
+  246 cached `no_wh_comment` verdicts (13%); the 7 where EOD saw an admission
+  were re-read in Zoho - 6 real admissions, 1 EOD error (251554). Only `admitted` and
+  `denied` are safe to skip on later runs; re-read the other two until the
+  ticket is past T-2, and never cache a verdict for a ticket younger than T-2.
+- **Pair comments to tickets by `ticketNumber`, never by position.**
+  `searchTickets` does NOT return rows in the order of the `ticketNumber`
+  list you pass. The 2026-08-17 batch attached evidence text to the wrong
+  tickets (253162 and 255197 cached as `admitted` with 253385's admission;
+  253385 cached `denied`; 253278 and 257980/257982 also crossed). The EOD
+  history has the same failure (253278, 251554 recorded a WH comment that
+  doesn't exist on the ticket). A cheap audit: any cached `evidence` that
+  differs from the same ticket's EOD `wh_comment` is suspect.
+- **Sync EOD verdicts for every run, not one date** (the 2026-09-23 sync only
+  covered one date; ~450 EOD-read tickets from 26 Jul - 20 Sep are still
+  uncached). Spot-check EOD admissions against the thread before syncing.
+- **Tickets with a multi-order or placeholder Order ID never reach Tab 1.**
+  `parse_order_id()` drops 82 of 2,460 pulled tickets (e.g. `'3534357 ,
+  3781006'`, `N/A`, empty); EOD counts them. Known, deliberate, but it means
+  Tab 1 can sit a few admissions below EOD.
+- **Day buckets differ:** Tab 1 / macro table bucket by UTC date of
+  `created_time`; EOD uses the IST calendar day. A ticket created after
+  18:30 UTC lands on different days in the two tabs.
+
 **A confirmed WH admission can still show 0 on Tab 1 if ClickHouse has no
 `marketplace_return_request` row for that order yet** - `classify()`
 returns `no_return_record` as soon as there's no return row, before it ever
@@ -182,7 +210,11 @@ before assuming the classifier or cache is wrong.
 4. `pipeline/build_eod.py` — separate T-2 text-admission tab → `data_eod.json`.
 5. `pipeline/build_macro_trend.py` — Tab 1's unfiltered macro trend table
    (Delivered Orders / Return Requested / WH Accepted by category) →
-   `macro_trend.json`. Reads delivered-order counts from
+   `macro_trend.json`. **Capped at T-2** (IST date of `data.json`
+   `generated_at` minus 2 days, same as the EOD tab) because WH needs ~2 days
+   to comment - newer days would show a structurally low WH Accepted. The rest
+   of Tab 1 (tiles, charts, ticket list) is not capped, so those totals can
+   exceed this table's by `excluded_tickets` (stored in the JSON). Reads delivered-order counts from
    `pipeline/zoho_raw90/ch_delivered_daily.json` (a ClickHouse
    `marketplace_order_status_log` pull, `current_status_id = 70` — see the
    query in the script's docstring) — re-run that query and overwrite the
@@ -192,6 +224,84 @@ before assuming the classifier or cache is wrong.
    `pipeline/dashboard.html`'s `__X_JSON__` placeholders, writes
    `pipeline/dashboard_built.html`, copies it to repo-root `index.html`.
 8. Commit + push.
+
+## RCA layer (added 2026-10-14) — Tab 6 "RCA"
+
+Per raised ticket: *how the warehouse investigated* (funnel) and *why it happened* (RCA).
+Run after step 2, before `build_html.py`:
+1. `python3 pipeline/pull_dependency.py` — Zoho `Dependency` custom field (`cf_dependency`) per
+   ticket → `zoho_raw90/ticket_dependency.json`. Auth is `pipeline/zoho_auth.py`: credentials in
+   `pipeline/.zoho.env` (gitignored; Vercel auto-deploys this repo so secrets must never be committed),
+   the 1h access token auto-refreshes into `pipeline/.zoho_token.json`. **Fallback**: if the REST path
+   fails, use the Zoho Desk MCP (`searchTickets` by ticketNumber → `cf.cf_dependency`) and write the same
+   cache. Incremental; nulls re-fetched until the ticket is 3 days old. `Attribution` is NOT an outcome.
+2. Save ClickHouse pulls via MCP (`order_id` never `id`, CDC-dedupe `LIMIT 1 BY id`, drop
+   `_peerdb_is_deleted`; do NOT filter `is_active`, it is 0): `rca_expiry_raw.jsonl` (query in the
+   `build_rca_inputs.py` docstring) and `rca_return_images_raw.jsonl` (return items, skip reason `RTO`;
+   `image_urls` are public `cdn.platinumrx.in` URLs, 1-3 per return item; return-item `drug_code` is the
+   ORDERED SKU).
+3. `python3 pipeline/rca_images.py` downloads/dedupes images (gitignored `rca_images/`) and writes
+   `rca_image_pending.json`. **Read every pending image with vision** (a montage of 2 per sheet works) and
+   append to `rca_image_check.json` (schema in the script docstring: unreadable = null, never inferred;
+   personal data on invoices/labels is never stored). Key results by the exact `hash` from the pending list.
+4. Wrong medicine: save `rca_wrongmed_raw.jsonl` via the ClickHouse MCP (ordered name + bin from
+   `mdm_drug_warehouse_locations` at the order's warehouse, best catalog candidate for each received brand;
+   query shape in `build_rca_wrongmed.py` docstring), then `python3 pipeline/build_rca_wrongmed.py`. Only the
+   received SKU NAME is required; the catalog candidate must be verified from the name read before a bin
+   relation is computed (else `candidate_unverified`).
+5. `python3 pipeline/build_rca_inputs.py` → `rca_expiry.json`; `python3 pipeline/build_rca.py` → `rca.json`
+   (fails loudly if the funnel does not reconcile; T-2 capped).
+Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons) and `test_rca.py`.
+
+Rules decided with the owner: the funnel is by OUTCOME — Accepted / Rejected / No decision (+ "Not yet
+read" = no WH verdict cached, a coverage gap kept separate). `Dependency` is NOT a funnel stage (agents
+remove it later; shown informationally). No decision is broken down first-match-wins: footage not
+available, batch-not-from-our-inventory claim, CX image not clear (WH said so OR every image on the
+return was unreadable to us), dependency not marked (Dependency != Warehouse), then return-not-received,
+other WH note, no WH comment. Bin links are attributed as **picking error only** (same bin = strong, same
+rack = supporting, same zone+vertical = weak; no "layout error" label; zone `UN` is never a bin). Expiry:
+shelf life at **delivery** (status 70), day-1 expiry = end of that month, `<3m` vs `>=3m`; where the
+allocation has ≥3 months the next check is the image batch/expiry vs invoice. Image-derived verdicts are
+capped at `likely`; no per-field accuracy figure exists yet.
+
+Findings worth knowing (first full read, 2026-10-14, 39 expiry tickets with images): 15 show a received
+item whose printed expiry is already before delivery although the allocation looked fine; in 10 the
+printed batch differs from the allocated batch and in 7 the batch matches but the stored expiry differs
+from the print (stored data vs print). 13 had nothing legible (logo placeholder, corrupted/truncated
+uploads, blur). Courier labels in several photos carry a different order id than the ticket.
+No-WH-comment tickets (no decision): not agent-markable as Warehouse when another dependency applies,
+order COGS < 100 (allocated qty x `zoho_inward_items.rate`, `rca_order_meta.json`), or DocPharma
+(warehouse_id 4); otherwise `agent_mistake`.
+Owner-confirmed labels live in `pipeline/zoho_raw90/rca_manual_labels.json` (keyed by order_id) and override
+the image classifier in `build_rca_wrongmed.py`; owner rule: judge only the SKU in concern (the ordered
+return-item SKU), other products in the photo are out of scope. These are the ground truth for any accuracy
+measurement of the image reads.
+**Re-read provisional WH verdicts every refresh** (`python3 pipeline/recheck_wh_comments.py`): cached
+`no_wh_comment` / `unrecognized` are re-read live (and uncached tickets read) before `build_full_dataset.py`;
+`admitted`/`denied` are final. Found 2026-10-14: 1,135 of 1,412 provisional/uncached verdicts changed,
+e.g. 233123 (admission) and 250676 (denial) were stuck as no_wh_comment. The script stores `subtype`
+(footage / batch / image reason) and `wh_texts` per ticket - the no-decision sub-reason is read from EVERY WH
+comment, not from the admission/denial evidence (neutral-only threads have none). Owner-confirmed admissions:
+MRP mismatch, missing/not-mentioned free item, packer did not remove medicine outside, expiry/excess/wrong
+free item sent.
+Other branches (`pipeline/build_rca_extra.py` -> `rca_extra.json`, run before `build_rca.py`; inputs saved from
+the ClickHouse MCP): Missing/short qty = ONLY the tree's split (SKU missing vs item missing, from the return item); pick scans are
+deliberately NOT used as evidence (owner: a scan can be logged for a pick that never physically happened).
+Damaged = cold flag (`is_cold`) +
+logistics exception (`shipment_events` ndr_count / ofd_count, `shipment_latest.delivery_attempts`;
+`rca_logistics.json`); no logistics exception stays *undetermined*, never WH. Swap = courier label order id
+mismatch (image) - no shared AWBs found (`rca_swap.json`). "Order not placed by customer" is deliberately OUT of
+scope (owner, 2026-10-14: low volume, not a WFR aspect). MRP/Batch Mismatch is mapped in
+`CATEGORY_MAP` ("MRP/Batch Mismatch", "MRP Mismatch"); tickets only exist after the next ticket pull - until then
+`rca_mrp_sample_reads.json` holds a hand-read sample. Return status codes: `marketplace_status_master`
+(280 cancelledReturn, 231 returnPickupCancelled, 250 ItemQualityCheckAtOurFacility).
+Damaged flow (owner, 2026-10-14): 1) cold / non-cold from the drug flag, 2) images are read ONLY for non-cold
+(cold = temperature complaint, never image-read; also note drug flag vs complaint reason can disagree - 3 "Issue
+with cold storage" tickets sit on drugs flagged non-cold), 3) each complained line gets exactly one classifier
+bucket from `pipeline/damaged_buckets.py` (8 buckets; wrong-item-in-photo and logo-only fold into "Image not
+relevant"). Read results: `zoho_raw90/rca_damaged_noncold.json`.
+Known gaps: ~45% of tickets are "Not yet read"; no structured received-SKU/batch field in Zoho
+(`Incorrect Batch received` etc. are always empty); damaged/short-qty/order-swap RCA not built.
 
 ## RFD (Rate of First Dispatch) adherence — separate sub-project
 

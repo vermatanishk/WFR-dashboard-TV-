@@ -4,3 +4,6 @@ __pycache__/
 pipeline/zoho_sample.csv
 pipeline/zoho_raw90/_pages/
 pipeline/zoho_raw90/_*
+pipeline/.zoho.env
+pipeline/zoho_raw90/rca_images/
+pipeline/.zoho_token.json

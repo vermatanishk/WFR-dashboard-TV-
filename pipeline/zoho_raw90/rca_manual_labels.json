@@ -1,0 +1,38 @@
+{
+ "3660644": {
+  "relation_type": "same_product_diff_packaging",
+  "received": "Medkin Shampoo Hairfall Control 200 ml (Mediste)",
+  "note": "Same product, different packaging than the catalog listing.",
+  "source": "owner",
+  "labelled_on": "2026-10-14"
+ },
+ "3728825": {
+  "relation_type": "unknown",
+  "image_unreadable": true,
+  "received": null,
+  "note": "Image not readable (strip print / strengths cannot be read).",
+  "source": "owner",
+  "labelled_on": "2026-10-14"
+ },
+ "3729706": {
+  "relation_type": "different_medicine",
+  "received": "Oflofine-M (ofloxacin + metronidazole suspension)",
+  "note": "A different suspension bottle was received instead of the ordered Trichospire serum.",
+  "source": "owner",
+  "labelled_on": "2026-10-14"
+ },
+ "3755580": {
+  "relation_type": "same_sku_consistent",
+  "received": "Ramipen 5 (ramipril 5 mg)",
+  "note": "Evaluate only the SKU in concern (Ramipen); other strips in the photo are out of scope.",
+  "source": "owner",
+  "labelled_on": "2026-10-14"
+ },
+ "3761359": {
+  "relation_type": "different_medicine",
+  "received": "Difizma",
+  "note": "Difizma is the wrong SKU (ordered Formoflo G).",
+  "source": "owner",
+  "labelled_on": "2026-10-14"
+ }
+}

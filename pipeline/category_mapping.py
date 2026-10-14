@@ -29,6 +29,13 @@ CATEGORY_MAP = {
     "defective device or accessory": "Damaged/Defective",
     "defective or damaged device or accessory": "Damaged/Defective",
 
+    # MRP / Batch mismatch (new sub-disposition, first seen mid-Sep 2026; "MRP Mismatch" was the
+    # free-text precursor, "MRP/Batch Mismatch" the dropdown value from ~3 Oct)
+    "mrp/batch mismatch": "MRP/Batch Mismatch",
+    "mrp mismatch": "MRP/Batch Mismatch",
+    "batch and mrp mismatch": "MRP/Batch Mismatch",
+    "batch mismatch": "MRP/Batch Mismatch",
+
     # Switch Orders
     "order switch": "Switch Orders",
     "order swap": "Switch Orders",
@@ -63,4 +70,5 @@ CATEGORY_REASON_PATTERNS = {
     "Expiry Issue": ["%expir%"],
     "Damaged/Defective": ["%damage%", "%defective%", "%spill%", "%spoil%", "%broken%"],
     "Switch Orders": ["%switch%", "%swap%"],
+    "MRP/Batch Mismatch": ["%mrp%", "%batch%"],
 }

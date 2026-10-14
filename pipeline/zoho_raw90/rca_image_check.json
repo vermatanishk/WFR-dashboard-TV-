@@ -1,0 +1,4559 @@
+{
+"9b100f3ef47d9b15": {
+"order_id": 4129639,
+"drug_code_ordered": 1305281,
+"image_type": "strip",
+"brand": "Ecosprin 75",
+"strength": "75 mg",
+"pack": "14 tablets",
+"maker": "USV Private Limited",
+"batch": null,
+"mfg": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Aspirin gastro-resistant tablets IP 75 mg; front face of strip, no batch on this face. Matches manual RCA (received Ecosprin 75, ordered Amlip AT 5/50).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"be2d8406efa24b24": {
+"order_id": 4129639,
+"drug_code_ordered": 1305281,
+"image_type": "strip",
+"brand": null,
+"strength": null,
+"pack": null,
+"maker": "USV Pvt Ltd (mfd at Remidex Pharma, Bangalore)",
+"batch": "04011724",
+"mfg": "11/2025",
+"expiry": "10/2027",
+"mrp": "5.29 per tablet (partially legible)",
+"legibility": {
+"brand": "none",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Reverse face of the same USV strip: no drug name printed on this face, so it is not used to identify the drug.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c64ea5e47f9d7c18": {
+"order_id": 4169545,
+"drug_code_ordered": 1204010,
+"image_type": "bottle",
+"brand": "Protinules",
+"strength": null,
+"pack": "jar x2",
+"maker": "Alembic",
+"batch": null,
+"mfg": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"variant": "Butterscotch",
+"notes": "Two jars labelled Butterscotch; an invoice is visible in the frame (not read, may contain personal data). Matches manual RCA (ordered Chocolate).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8b2a18f461cc4a3f": {
+"order_id": 4142031,
+"drug_code_ordered": 1377088,
+"image_type": "carton",
+"brand": "Femoston",
+"strength": "1mg and 1mg + 10 mg",
+"pack": "28 tablets",
+"maker": "Abbott",
+"batch": null,
+"mfg": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"variant": "Combipack (estradiol & estradiol+dydrogesterone) - not the Conti pack",
+"notes": "Plain combipack carton. Catalog code NOT determined: close Femoston variants exist, so this is ambiguous until matched against the candidate SKU set.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0bd26aa242a5fe64": {
+"order_id": 2686583,
+"drug_code_ordered": 1110595,
+"image_type": "bottle",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Spray bottle; stamped batch/expiry blurred (partial digits '2508/2025').",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bc8b0935b1649863": {
+"order_id": 2733590,
+"drug_code_ordered": 1845090,
+"image_type": "ampoule",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Ampoule strip in blister; labels too small/blurred to read batch or expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"883511611c1c59c4": {
+"order_id": 2774646,
+"drug_code_ordered": 1500120,
+"image_type": "strip",
+"brand": "Diovaal 80H",
+"batch": "T40818A",
+"expiry": "08/2026",
+"mrp": "133.00 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG 09/2024. Printed batch and expiry match allocation (T40818A, 08/2026).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a6309ee59bff966d": {
+"order_id": 2807581,
+"drug_code_ordered": 1301548,
+"image_type": "bottle",
+"brand": null,
+"batch": "XKXY",
+"expiry": "08/2024",
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Inhaler/bottle label: LOT XKXY, MADE 09-2022, EXP 08-2024. Printed expiry is before delivery (2026-06); allocation says XMXZ 2027-05. Courier label with order number visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"dbad00343b3a4377": {
+"order_id": 2807581,
+"drug_code_ordered": 1301548,
+"image_type": "bottle",
+"brand": null,
+"batch": "XKXY",
+"expiry": "08/2024",
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Same bottle, close-up: LOT XKXY MADE 09-2022 EXP 08-2024.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"41598549c1c069ce": {
+"order_id": 2811361,
+"drug_code_ordered": 1838164,
+"image_type": "carton",
+"brand": "Trigliclaglaze 30",
+"batch": "SIBP24212",
+"expiry": "04/2026",
+"mrp": "125.00 (15 tabs)",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG 05/2024. Printed batch SIBP24212 differs from allocation SIBP25570 (exp 2027-07); printed expiry 04/2026 is before delivery 2026-06-29.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"645b2a5750b301e3": {
+"order_id": 2811361,
+"drug_code_ordered": 1838164,
+"image_type": "strip",
+"brand": "Trigliclaglaze 30",
+"batch": "SIBP24212",
+"expiry": "04/2026",
+"mrp": "125.00 per 15 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Strip of same pack; batch SIBP24212, MFG 05/2024, EXP 04/2026.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a89f165d13a6e997": {
+"order_id": 2848748,
+"drug_code_ordered": 1500373,
+"image_type": "invoice",
+"brand": "Calcimax 500mg 30s",
+"batch": "258DB2422",
+"expiry": "01/07/2026",
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Customer's invoice with the expiry highlighted. Invoice prints 01/07/2026 (day-1 of the month) - stored value is month-granular; the pack would read 07/2026. Invoice contains personal data: not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3333056e6d22dfa0": {
+"order_id": 2883406,
+"drug_code_ordered": 1842934,
+"image_type": "strip",
+"brand": "Atovastatin EZ 20/10",
+"batch": "JRSIG401",
+"expiry": "06/2026",
+"mrp": "185.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "Strip + box + invoice in frame. Printed batch JRSIG401 (MFG 07/24, EXP 06/26) differs from allocation/invoice batch JRSIB601 (exp 2028-01).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e02e193f6ec8c306": {
+"order_id": 2883406,
+"drug_code_ordered": 1842934,
+"image_type": "carton",
+"brand": "Atovastrin EZ 20/10",
+"batch": "JRSIG401",
+"expiry": "06/26",
+"mrp": "185.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Box: JRSIG401, 07/24, 06/26, MRP 185. Invoice shows JRSIB601 / 01/01/2028 for this line.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1983709b1ca1bb95": {
+"order_id": 2898522,
+"drug_code_ordered": 1844796,
+"image_type": "tube",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Tube with embossed digits partially visible ('...72147', '2026', '2023'); not enough to read batch or expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1973fd786a109a1f": {
+"order_id": 2931531,
+"drug_code_ordered": 1302111,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx logo image, not a product photo - nothing to read.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4a6a7fa3e4c9d586": {
+"order_id": 2932138,
+"drug_code_ordered": 1423673,
+"image_type": "strip",
+"brand": "Bosentime 62.5 (Bosentan 62.5 mg)",
+"batch": "T241735",
+"expiry": "08/2026",
+"mrp": "784.00 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG 09/2024. Printed batch T241735 differs from the allocated batch T25131 (exp 2027-04).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bd12d9cd1251a0c9": {
+"order_id": 2932138,
+"drug_code_ordered": 1423673,
+"image_type": "strip",
+"brand": "Bosentime 62.5",
+"batch": "T241735 and T25131",
+"expiry": "08/2026 (T241735)",
+"mrp": "784.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Two strips from the order: top T241735 (MFG 09/2024, EXP 08/2026), bottom reads T25131 (the allocated batch). Customer received more than one batch.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a3d443eb780895d9": {
+"order_id": 3078036,
+"drug_code_ordered": 1299019,
+"image_type": "screenshot",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Screenshot of the order page (items list), not a product photo. Contains a phone number: not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ea011d43a5daa54f": {
+"order_id": 3078036,
+"drug_code_ordered": 1299019,
+"image_type": "carton",
+"brand": "Nevlon Caloe lotion 60 ml",
+"batch": "None visible",
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of carton (KLM); no batch/expiry on this face.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"39bbd536b2414622": {
+"order_id": 3078036,
+"drug_code_ordered": 1299019,
+"image_type": "carton",
+"brand": "Nevlon Caloe lotion 60 ml",
+"batch": "CU405",
+"expiry": null,
+"mrp": "190.00",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "low"
+},
+"notes": "Back of carton: CU405, 04/2024, MRP 190.00. 04/2024 is the manufacturing month (allocation says CU405 expires 2026-10); expiry not printed legibly here. Printed batch matches allocation. (04/2024 recorded as MFG, not expiry.)",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e9ccc3907d34a555": {
+"order_id": 3136802,
+"drug_code_ordered": 1188097,
+"image_type": "can",
+"brand": "Aerosol can (batch FUN22002)",
+"batch": "FUN22002",
+"expiry": "03/2024",
+"mrp": "175.00",
+"legibility": {
+"brand": "low",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Can base: FUN22002, 04/2022, 03/2024, Rs 175.00. Allocation says FUN25002 exp 2027-09; printed expiry 03/2024 is long before delivery (2026-07-30).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"d96d0ef417514b69": {
+"order_id": 3209638,
+"drug_code_ordered": 1419778,
+"image_type": "carton",
+"brand": "Cefyz-O Forte dry syrup",
+"batch": "DC-241216",
+"expiry": "05/2026",
+"mrp": "80.30",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 12/2024, EXP 05/2026, MRP 80.30. Batch field on the carton is faint; printed value differs from allocated D250700 (exp 2027-10). Expiry is before delivery (2026-07-30).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"482c73cbf9592f6b": {
+"order_id": 3259192,
+"drug_code_ordered": 1838844,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip and invoice photographed at a distance; nothing legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c85455bee4fb55a0": {
+"order_id": 3259192,
+"drug_code_ordered": 1838844,
+"image_type": "strip",
+"brand": null,
+"batch": "SIBP25?? (partial)",
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Strip + invoice; batch partially visible ('SIBP25..'), allocation is SIBP26204. Not legible enough to compare.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"db3811034c8d200f": {
+"order_id": 3321497,
+"drug_code_ordered": 1500095,
+"image_type": "strip",
+"brand": "Lymecycle 408 capsules",
+"batch": "LGP05/270/03",
+"expiry": "07/2026",
+"mrp": "465.00 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG MAY 2025. Printed batch differs from allocated LGP12/072/01 (exp 2027-02). Printed expiry Jul 2026 precedes delivery 2026-08-06.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a0a861d2fbec5c90": {
+"order_id": 3322180,
+"drug_code_ordered": 1013661,
+"image_type": "strip",
+"brand": "FericipXT (ferrous ascorbate + folic acid)",
+"batch": "GF014019",
+"expiry": "02/2026",
+"mrp": "122.65 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG MAR 24, EXPIRY FEB 26. Allocation says GF016021A exp 2028-02. Printed expiry precedes delivery (2026-08-10).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"70ac27b6fbf2d624": {
+"order_id": 3381040,
+"drug_code_ordered": 1376319,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Tablet face of several green blisters; no printed text legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c35c9b20c6619717": {
+"order_id": 3381040,
+"drug_code_ordered": 1376319,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Back of several blisters; print too small to read.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"09b3771f89271c29": {
+"order_id": 3381040,
+"drug_code_ordered": 1376319,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Photo of customer invoice at an angle; line items not legible. Contains personal data: not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5af97aa42982ce5e": {
+"order_id": 3442014,
+"drug_code_ordered": 1832717,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx logo image, not a product photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"cad901af089f669b": {
+"order_id": 3468459,
+"drug_code_ordered": 1833758,
+"image_type": "strip",
+"brand": "Pirfenoid 400 (pirfenidone 400 mg)",
+"batch": "T240820",
+"expiry": "05/2026",
+"mrp": "439.00 per 15 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 06/2024. Allocation says T251206 exp 2027-03; printed expiry precedes delivery 2026-08-17.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"53c0221f80fe394d": {
+"order_id": 3501056,
+"drug_code_ordered": 1500240,
+"image_type": "strip",
+"brand": null,
+"batch": "ST-24301",
+"expiry": "05/2026",
+"mrp": "139.00",
+"legibility": {
+"brand": "none",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 05/2024. Printed batch close to but not equal to allocated ST-241601 (exp 2026-12); printed expiry 05/2026 precedes delivery 2026-08-21.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"453e33a05dfdd0ed": {
+"order_id": 3573466,
+"drug_code_ordered": 1110445,
+"image_type": "strip",
+"brand": "Ovabless",
+"batch": "5AAIX035 (approx.)",
+"expiry": "03/2026",
+"mrp": "107.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 10/2024. Three strips. Allocation 5AAIZ019 exp 2027-10; printed expiry 03/2026 precedes delivery 2026-08-25.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8c4726641238a92c": {
+"order_id": 3573466,
+"drug_code_ordered": 1110445,
+"image_type": "strip",
+"brand": "Ovabless",
+"batch": "5AAIX035 (approx.)",
+"expiry": "03/2026",
+"mrp": "107.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Close-up of the same Ovabless strips.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a60441e3e124e43b": {
+"order_id": 3573466,
+"drug_code_ordered": 1110445,
+"image_type": "strip",
+"brand": "Ovabless",
+"batch": "5AAIX035 (approx.)",
+"expiry": "03/2026",
+"mrp": "107.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Second view of the same strips.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ecc15a47b26306a9": {
+"order_id": 3580066,
+"drug_code_ordered": 1304386,
+"image_type": "carton",
+"brand": "Emolene propylene glycol cream 100g",
+"batch": "D430724",
+"expiry": "06/2026",
+"mrp": "346.00",
+"legibility": {
+"brand": "medium",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Mfd JUL 24, Exp JUN 26. Printed batch is neither allocated batch (D080326 / D771225); expiry precedes delivery 2026-08-26.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1548624ee6f25bdb": {
+"order_id": 3580066,
+"drug_code_ordered": 1304386,
+"image_type": "carton",
+"brand": "Emolene propylene glycol cream 100g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of carton; no batch/expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"24918dfd0594602a": {
+"order_id": 3580066,
+"drug_code_ordered": 1304386,
+"image_type": "tube",
+"brand": "Emolene propylene glycol cream 100g",
+"batch": "D430724",
+"expiry": "06/2026",
+"mrp": "346.00",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Tube crimp: B.No D430724, Mfd JUL 24, Exp JUN 26, MRP 346.00.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0c19912acb73c729": {
+"order_id": 3807738,
+"drug_code_ordered": 1840583,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Pile of strips and a printed invoice; nothing legible. Invoice has personal data: not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"02de8ecd08298e32": {
+"order_id": 3807738,
+"drug_code_ordered": 1840583,
+"image_type": "strip",
+"brand": "Glimikem-M (metformin SR combination)",
+"batch": "25440287",
+"expiry": "12/2026",
+"mrp": "235.50 per 15 tabs",
+"legibility": {
+"brand": "medium",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG JAN 2025, EXP DEC 2026. Printed batch and expiry match allocation (25440287, 2026-12): the item was near expiry (~3 months at delivery), as allocated.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"7aa83418339f3e3b": {
+"order_id": 3866075,
+"drug_code_ordered": 1301635,
+"image_type": "carton",
+"brand": "Sunscreen gel 30 g (Ipca marketed)",
+"batch": "H0E2603",
+"expiry": "05/2026",
+"mrp": "375.00",
+"legibility": {
+"brand": "low",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Mfg 05/2024, Use before 05/2026, MRP 375.00. Printed batch close to but not equal to allocated H062608/H062609 (exp 2027-11); printed expiry precedes delivery 2026-09-13.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4cad72fbf866758d": {
+"order_id": 3866075,
+"drug_code_ordered": 1841530,
+"image_type": "bottle",
+"brand": "P&G Health gummies 30s",
+"batch": "S101E8S501 (read as 6101E68501?)",
+"expiry": "04/2026 (10/APR/2026)",
+"mrp": "599.00",
+"legibility": {
+"brand": "medium",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Mfg 11/APR/2024, expiry 10/APR/2026. Batch looks the same as allocated 6101E68501 but allocation stores expiry 2028-04-30: SAME BATCH, DIFFERENT EXPIRY (stored data vs print).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c85e139048fa8b07": {
+"order_id": 3926083,
+"drug_code_ordered": 1757012,
+"image_type": "carton",
+"brand": "Nusoft soap 75g",
+"batch": "NSTN144",
+"expiry": "08/2026",
+"mrp": "192.00",
+"legibility": {
+"brand": "medium",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Mfg AUG-2025, Use before AUG-2026, MRP 192.00. Printed batch matches allocation NSTN144 but allocation stores expiry 2029-04: same batch, different expiry (printed 08/2026, delivered 2026-09-17).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6fec9c1d4f03fdd4": {
+"order_id": 3926083,
+"drug_code_ordered": 1757012,
+"image_type": "carton",
+"brand": "Nusoft soap 75g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Opened shipper with three cartons; no batch in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f7e5b300e800dcaa": {
+"order_id": 3953304,
+"drug_code_ordered": 1092334,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx logo image, not a product photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"b3642d0c799555b0": {
+"order_id": 2910663,
+"drug_code_ordered": 1012171,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Photo of ~12 tablet strips (tablet side); no printed text legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"98111e1e87a68d81": {
+"order_id": 2910663,
+"drug_code_ordered": 1012171,
+"image_type": "invoice",
+"brand": null,
+"batch": "SPA252475 (line item)",
+"expiry": "31/10/2026",
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data, not stored); line items small, only batch SPA252475 / 31/10/2026 partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a5234f19306a2b0a": {
+"order_id": 3017846,
+"drug_code_ordered": 1111146,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Blister with several empty/blackened cells and pink oval tablets; no printed text visible - visual defect only.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a3105ae3e624f74c": {
+"order_id": 3161097,
+"drug_code_ordered": 1012903,
+"image_type": "strip",
+"brand": "Risdone-Plus (risperidone + trihexyphenidyl)",
+"batch": "M2600652? (approx.)",
+"expiry": "01/2029 (EXP JAN.2029)",
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "Two strips; MFD FEB.2026. Allocation for this drug is N2600452 exp 2029-01.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e834aae705cb2b0c": {
+"order_id": 3218105,
+"drug_code_ordered": 1844892,
+"image_type": "tube",
+"brand": "Azecil-20% (azelaic acid gel 15 g)",
+"batch": "25-0299",
+"expiry": "07/2027",
+"mrp": "279.00",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Box + tube: Batch 25-0299, MFG AUG-2025, EXP JULY-2027. Matches allocation 25-0299 (2027-07).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4e7be36bb56d0c44": {
+"order_id": 3218105,
+"drug_code_ordered": 1844892,
+"image_type": "tube",
+"brand": "Azecil-20% (azelaic acid gel 15 g)",
+"batch": "25-0299",
+"expiry": "07/2027",
+"mrp": "279.00",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Same box/tube, second view.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"cd38bea699006304": {
+"order_id": 3218105,
+"drug_code_ordered": 1844892,
+"image_type": "carton",
+"brand": "Azecil-20% (azelaic acid gel)",
+"batch": "25-0299",
+"expiry": "07/2027",
+"mrp": "279.00",
+"legibility": {
+"brand": "low",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Side panel of the box: 25-0299, AUG-2025, JULY-2027.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"cf4f2a8cccdd2741": {
+"order_id": 3477213,
+"drug_code_ordered": 1839695,
+"image_type": "carton",
+"brand": "Kidicare Junior 200 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of carton.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0f4f5599df534186": {
+"order_id": 3477213,
+"drug_code_ordered": 1839695,
+"image_type": "carton",
+"brand": "Kidicare Junior 200 ml",
+"batch": "959P2509F",
+"expiry": "07/2027",
+"mrp": "195.00",
+"legibility": {
+"brand": "medium",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFD 08/2025, USE BY 07/2027, MRP 195.00. Allocation 959P2510F exp 2027-05.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4f1c46b534a1766a": {
+"order_id": 3477213,
+"drug_code_ordered": 1839695,
+"image_type": "invoice",
+"brand": null,
+"batch": "959P251..",
+"expiry": "05/27",
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Rotated invoice with personal data: not stored; line shows batch 959P251x and 05/27.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"81e872cd2e48810f": {
+"order_id": 3487410,
+"drug_code_ordered": 1838931,
+"image_type": "strip",
+"brand": "Rosufine-10 F (rosuvastatin + fenofibrate)",
+"batch": "E6C0336",
+"expiry": "02/2028",
+"mrp": "197.50 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG MAR 2026, EXP FEB 2028.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"9ba56afb452804bd": {
+"order_id": 3569746,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": "Maxmoist Ultra eye drops 10 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of carton (Ajanta); no batch/expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e705dbd771c6125f": {
+"order_id": 3569746,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": "Maxmoist Ultra eye drops",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Back/side panel, blurred; only M.L. number readable.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"de2e1005293d49b7": {
+"order_id": 3569746,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Very blurred panel - not readable.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2d29833b734d64a0": {
+"order_id": 3602256,
+"drug_code_ordered": 1390373,
+"image_type": "carton",
+"brand": "Liverich syrup (Dr. Morepen) + Ketokem soap",
+"batch": "DL602005",
+"expiry": "01/2027? (illegible digits)",
+"mrp": "146.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "low"
+},
+"notes": "Carton side panel: Batch DL602005, Mfg 02/202x, Exp 01/202x (year partly illegible), MRP 146.00.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1dea59d0f3389b74": {
+"order_id": 3602256,
+"drug_code_ordered": 1296353,
+"image_type": "carton",
+"brand": "Liverich syrup (Dr. Morepen) + Ketokem soap",
+"batch": "DL602005",
+"expiry": null,
+"mrp": "146.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "low"
+},
+"notes": "Second view of the same cartons; expiry year not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ab4cbcba2a1b69e9": {
+"order_id": 3605729,
+"drug_code_ordered": 1915053,
+"image_type": "cartridge",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Cartridges in blister packs (two kinds: orange and clear/white); labels blurred.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e3a76d03acb53f75": {
+"order_id": 3605729,
+"drug_code_ordered": 1915053,
+"image_type": "cartridge",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Same cartridge packs, blurred.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"60969ae65975fc35": {
+"order_id": 3605729,
+"drug_code_ordered": 1915053,
+"image_type": "cartridge",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Single cartridge in blister, label unreadable.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"10435667b6c2419e": {
+"order_id": 3629184,
+"drug_code_ordered": 1199178,
+"image_type": "carton",
+"brand": "LCD 125 (levodopa + carbidopa tablets IP, 30 x 10)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Outer carton with inner box; no batch/expiry in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"d48fb3cc97b5f339": {
+"order_id": 3629184,
+"drug_code_ordered": 1199178,
+"image_type": "carton",
+"brand": "LCD 125 (levodopa + carbidopa tablets IP, 30 x 10)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Outer carton with inner box; no batch/expiry in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"297fa07c93f222d5": {
+"order_id": 3629184,
+"drug_code_ordered": 1199178,
+"image_type": "carton",
+"brand": "LCD 125 (levodopa + carbidopa tablets IP, 30 x 10)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Outer carton with inner box; no batch/expiry in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"515cc6374f637ee6": {
+"order_id": 3629184,
+"drug_code_ordered": 1199178,
+"image_type": "carton",
+"brand": "LCD 125 (levodopa + carbidopa tablets IP, 30 x 10)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Outer carton with inner box; no batch/expiry in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"161252f36595e5ab": {
+"order_id": 3629184,
+"drug_code_ordered": 1199178,
+"image_type": "carton",
+"brand": "LCD 125 (levodopa + carbidopa tablets IP, 30 x 10)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Outer carton with inner box; no batch/expiry in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6068a572126678ac": {
+"order_id": 3629184,
+"drug_code_ordered": 1199178,
+"image_type": "carton",
+"brand": "LCD 125 (levodopa + carbidopa)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Out-of-focus view of the same carton.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5c0e7f12ea91d0f6": {
+"order_id": 3629184,
+"drug_code_ordered": 1012231,
+"image_type": "strip",
+"brand": "Parkitidin-129 (amantadine ER tablets)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip front on a rug; batch/expiry not in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"dbc83326908a0606": {
+"order_id": 3629184,
+"drug_code_ordered": 1012231,
+"image_type": "strip",
+"brand": "Parkitidin-129 (amantadine ER tablets)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip front on a rug; batch/expiry not in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"942f6b1914cad8e1": {
+"order_id": 3629184,
+"drug_code_ordered": 1012231,
+"image_type": "strip",
+"brand": "Parkitidin-129 (amantadine ER tablets)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip front on a rug; batch/expiry not in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"7b3dbe487d5fe504": {
+"order_id": 3629184,
+"drug_code_ordered": 1207579,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip photographed from far away; print not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"86c6e0ae81ee4a6d": {
+"order_id": 3629184,
+"drug_code_ordered": 1207579,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip photographed from far away; print not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5004361f09ed6b3f": {
+"order_id": 3629184,
+"drug_code_ordered": 1207579,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip photographed from far away; print not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3fc6dfbb22af63a9": {
+"order_id": 3629184,
+"drug_code_ordered": 1207579,
+"image_type": "strip",
+"brand": "Xafinact 50 (safinamide tablets)",
+"batch": "GTH0259A (approx.)",
+"expiry": null,
+"mrp": "187.20 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Batch/MFG/EXP lines at the right edge are only partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a37ceae12a0b29d8": {
+"order_id": 3629184,
+"drug_code_ordered": 1207579,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Pink tablet blister, no printed text visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"10fab1aa5e13c505": {
+"order_id": 3629184,
+"drug_code_ordered": 1207579,
+"image_type": "strip",
+"brand": "Xafinact 50 (safinamide tablets)",
+"batch": "GTH0259A (approx.)",
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Hand-held strip; batch/mfg/exp lines partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"b29835e484a73368": {
+"order_id": 3647328,
+"drug_code_ordered": 1090776,
+"image_type": "strip",
+"brand": "Levocetirizine-10 (Leeford)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Several strips with QR stickers; batch/exp lines at the edge not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a8e670f5477e67a1": {
+"order_id": 3647328,
+"drug_code_ordered": 1090776,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Brown tablet strips (tablet side), no text legible; a Levocetrizen strip at the corner.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f1c637da9b6b75bf": {
+"order_id": 3647328,
+"drug_code_ordered": 1090776,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Photo of the customer invoice (contains personal data: not stored); only one line item partly readable.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"7f0ff1798e7865c4": {
+"order_id": 3649562,
+"drug_code_ordered": 1200229,
+"image_type": "bottle",
+"brand": "ALPS Goodness Rosemary Water (hair), 100 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Cosmetic bottle; not a medicine.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"dd8595dd14d20b1b": {
+"order_id": 3649562,
+"drug_code_ordered": 1200229,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Courier carton with shipping label and handwritten address (personal data); no product photographed.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8d76a7a582aa2d22": {
+"order_id": 3650846,
+"drug_code_ordered": 1423654,
+"image_type": "carton",
+"brand": "Accu-Chek Instant 50 test strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Box front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a9b00221b9386a13": {
+"order_id": 3650846,
+"drug_code_ordered": 1423654,
+"image_type": "carton",
+"brand": "Accu-Chek Instant 50 test strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Box on PlatinumRx shipper; MRP sticker 115.00.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"166c8d2e7240193f": {
+"order_id": 3650846,
+"drug_code_ordered": 1423654,
+"image_type": "carton",
+"brand": "Accu-Chek Instant 50 test strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Box in the opened shipper.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3b5670a8787cd7bb": {
+"order_id": 3660644,
+"drug_code_ordered": 1206917,
+"image_type": "carton",
+"brand": "Medkin Shampoo Hairfall Control 200 ml (Mediste)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Sealed carton; not a medicine strip.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"808dea91ee9fda57": {
+"order_id": 3664920,
+"drug_code_ordered": 1296245,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Image is truncated: only a cloth surface at the top and black below - corrupted upload.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"89d6dcdb256405fd": {
+"order_id": 3664920,
+"drug_code_ordered": 1296245,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Image is truncated: cloth + black below - corrupted upload.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"235950e8816e5dfe": {
+"order_id": 3664920,
+"drug_code_ordered": 1296245,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Truncated image; a label edge reading 'Recombinant Human Epidermal...' is cut off.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"77de49a70dab6ace": {
+"order_id": 3671393,
+"drug_code_ordered": 1833876,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Stack of silver strips (back side) - no print visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"503ec3a22a2eedad": {
+"order_id": 3673360,
+"drug_code_ordered": 1842451,
+"image_type": "carton",
+"brand": "Megafem-1000 (omega-3 softgels, Femura)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"213aa71c5f435eb9": {
+"order_id": 3673360,
+"drug_code_ordered": 1842451,
+"image_type": "carton",
+"brand": "Megafem-1000 (omega-3 softgels)",
+"batch": "FSG-529",
+"expiry": "12/2027",
+"mrp": "204.00 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG 07-2026, EXP 12-2027.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4f2b1d6886ff54de": {
+"order_id": 3673856,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": null,
+"batch": "GT13056 (approx.)",
+"expiry": "04/2028",
+"mrp": "535.00",
+"legibility": {
+"brand": "none",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "Dark side panel: B.No GT13056?, MFD 05/2026, EXP 04/2028, MRP 535.00; brand not visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"cd19ba04a1ecb101": {
+"order_id": 3673856,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": "Maxmoist eye drops 10 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Very dark photo; front of carton only.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"67911d46ee3b239a": {
+"order_id": 3673856,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Very dark photo; carton too small/dark to read.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4dd62c3c59ef89b3": {
+"order_id": 3678008,
+"drug_code_ordered": 1914352,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": "AMQ13BTB",
+"expiry": "05/2028",
+"mrp": "210.44 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "MFG JUN-26, EXPIRY MAY-28 (print slightly blurred).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bc0465bac7037a61": {
+"order_id": 3678008,
+"drug_code_ordered": 1914352,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": "AMQ13BTB",
+"expiry": "05/2028",
+"mrp": "210.44 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "MFG JUN-26, EXPIRY MAY-28 (print slightly blurred).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"375196ea844b5cd3": {
+"order_id": 3678008,
+"drug_code_ordered": 1500060,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": "AMQ13BTB",
+"expiry": "05/2028",
+"mrp": "210.44 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "MFG JUN-26, EXPIRY MAY-28 (print slightly blurred).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"df09e0266ddb9a61": {
+"order_id": 3678008,
+"drug_code_ordered": 1500060,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": "AMQ13BTB",
+"expiry": "05/2028",
+"mrp": "210.44 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "MFG JUN-26, EXPIRY MAY-28 (print slightly blurred).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"9c21969a0c9bc12e": {
+"order_id": 3678008,
+"drug_code_ordered": 1500060,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": "AMQ13BTB",
+"expiry": "05/2028",
+"mrp": "210.44 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "MFG JUN-26, EXPIRY MAY-28 (print slightly blurred).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e5902114d00874f4": {
+"order_id": 3678066,
+"drug_code_ordered": 1423622,
+"image_type": "strip",
+"brand": "Digene antacid tablets (Abbott)",
+"batch": "2201D7 (approx.)",
+"expiry": "12/2028",
+"mrp": "11.00 (approx.)",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "medium"
+},
+"notes": "Lemon/mixed fruit flavour strip; batch/MFD partly legible (MFD 01/2026, EXP 12/2028).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ab02dc54f436437e": {
+"order_id": 3678071,
+"drug_code_ordered": 1378862,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice photo; contains personal data (not stored); lines not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2fade82468a13e76": {
+"order_id": 3684613,
+"drug_code_ordered": 1836238,
+"image_type": "carton",
+"brand": "Minoil Baby Bar 75 g (Nemus)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"754e78d845d8d059": {
+"order_id": 3684613,
+"drug_code_ordered": 1836238,
+"image_type": "carton",
+"brand": "Minoil Baby Bar 75 g (Nemus)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton top face.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c8391a484be35653": {
+"order_id": 3684613,
+"drug_code_ordered": 1836238,
+"image_type": "carton",
+"brand": "Minoil Baby Bar 75 g (Nemus)",
+"batch": "MNBB-26F03",
+"expiry": "05/2029",
+"mrp": "225.00",
+"legibility": {
+"brand": "medium",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Mfg JUN-2026, Exp MAY-2029, MRP 225.00, USP 3.00/g.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"b17a829f07d449e7": {
+"order_id": 3687299,
+"drug_code_ordered": 1838552,
+"image_type": "carton",
+"brand": "Salbair-1 inhaler (levosalbutamol + ipratropium 50+20 mcg), 200 doses",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Three inhaler cartons next to the printed invoice (personal data not stored); no batch in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"608f53b9d74a5948": {
+"order_id": 3687299,
+"drug_code_ordered": 1838552,
+"image_type": "carton",
+"brand": "Salbair-1 inhaler (levosalbutamol + ipratropium 50+20 mcg), 200 doses",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Three inhaler cartons next to the printed invoice (personal data not stored); no batch in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bb5d69ac392baaee": {
+"order_id": 3691075,
+"drug_code_ordered": 1110835,
+"image_type": "other",
+"brand": "Dot & Key Vitamin C+E Super Bright Sunscreen SPF 50",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Courier label reads 'Ordered through Flipkart' (Ekart), not a PlatinumRx shipment; product box below. Label personal data not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8528ded62326c8de": {
+"order_id": 3691075,
+"drug_code_ordered": 1110835,
+"image_type": "bottle",
+"brand": "Dot & Key Vitamin C+E Super Bright Sunscreen SPF 50, 50 g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Product bottle; shipment appears to be a Flipkart order, not PlatinumRx.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"93804560512a9b8c": {
+"order_id": 3691075,
+"drug_code_ordered": 1110835,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Ekart/Flipkart shipping label on a box next to a Dot & Key carton (personal data not stored).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"309efe65692d1868": {
+"order_id": 3691779,
+"drug_code_ordered": 1845276,
+"image_type": "carton",
+"brand": "Episoft AC moisturiser with sunscreen, 75 g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3139c5472824d6c0": {
+"order_id": 3697774,
+"drug_code_ordered": 1841856,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Courier label: ELASTICRUN, order id 3698494 / invoice 3698494 - differs from the ticket's order 3697774. No product photographed.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"7c1fffebb9dca3f0": {
+"order_id": 3697774,
+"drug_code_ordered": 1088604,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Courier label: ELASTICRUN, order id 3698494 / invoice 3698494 - differs from the ticket's order 3697774. No product photographed.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"aedecf201502e898": {
+"order_id": 3697774,
+"drug_code_ordered": 1832765,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Courier label: ELASTICRUN, order id 3698494 / invoice 3698494 - differs from the ticket's order 3697774. No product photographed.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0465dfdee967a023": {
+"order_id": 3702676,
+"drug_code_ordered": 1127893,
+"image_type": "carton",
+"brand": "Omnident gel; Azeflo nasal spray (azelastine + fluticasone); Xylefio nasal drops; SHY-NM; two tablet strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Several products laid out; brand names legible, no batch/expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2b158b881e93e5d4": {
+"order_id": 3702676,
+"drug_code_ordered": 1390223,
+"image_type": "carton",
+"brand": "Omnident gel; Azeflo nasal spray (azelastine + fluticasone); Xylefio nasal drops; SHY-NM; two tablet strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Several products laid out; brand names legible, no batch/expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"50b1898c4591a2d4": {
+"order_id": 3702824,
+"drug_code_ordered": 1770865,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice photo (personal data not stored); one ointment line item barely legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5c1eb870390aad9c": {
+"order_id": 3705809,
+"drug_code_ordered": 1835294,
+"image_type": "carton",
+"brand": "Gino's COD Liver Oil softgel capsules, 100 caps",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front. Photo overlay shows 09/04/2026 15:50 (date format ambiguous).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5d1de130595328cf": {
+"order_id": 3705809,
+"drug_code_ordered": 1835294,
+"image_type": "carton",
+"brand": "Gino's COD Liver Oil softgel capsules, 100 caps",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton inside the shipper.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5396b9883d0e2aa0": {
+"order_id": 3705809,
+"drug_code_ordered": 1835294,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Opened shipper with label (personal data not stored); no product.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"cdfcb855558df9d5": {
+"order_id": 3712230,
+"drug_code_ordered": 1062679,
+"image_type": "strip",
+"brand": "Valembic 80 H (valsartan 80 mg + HCTZ 12.5 mg, Alembic)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Macro of the strip front: composition legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"20f4cb1ec609c753": {
+"order_id": 3712230,
+"drug_code_ordered": 1062679,
+"image_type": "strip",
+"brand": "Valembic 80 H (Alembic)",
+"batch": "T5729002 (approx.)",
+"expiry": "07/2027",
+"mrp": "206.45 (approx.)",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "medium"
+},
+"notes": "MFG AUG/2025, EXPIRY JUL/2027; batch line partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"92d692d604ea8597": {
+"order_id": 3712230,
+"drug_code_ordered": 1062679,
+"image_type": "strip",
+"brand": "Valembic 80 H (Alembic)",
+"batch": "CT5729002 (approx.)",
+"expiry": "07/2027",
+"mrp": "206.05 (approx.)",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "high"
+},
+"notes": "MFG AUG/2025, EXPIRY JUL/2027.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3b3edcf713b82294": {
+"order_id": 3713096,
+"drug_code_ordered": 1834178,
+"image_type": "carton",
+"brand": "Aptamil Premium 1 (infant formula, stage 1) tin",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Tin shows stage '1'. Customer's invoice for this order lists Aptamil Premium 3 (12-18 months).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"7431b8941f541d54": {
+"order_id": 3713096,
+"drug_code_ordered": 1834178,
+"image_type": "invoice",
+"brand": "Aptamil Premium 3 (12 to 18 months) powder 400 g (invoice line)",
+"batch": "2601277901 (invoice)",
+"expiry": "04/27",
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "Customer's invoice (personal data not stored): ordered Aptamil Premium 3; the tin photographed in the other image is stage 1.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"852e33cea11c966e": {
+"order_id": 3714062,
+"drug_code_ordered": 1305721,
+"image_type": "bottle",
+"brand": "Kindly Pleaser delay spray (lidocaine 10% topical spray)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of spray bottle.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"811e1eb9f33eb5df": {
+"order_id": 3714062,
+"drug_code_ordered": 1305721,
+"image_type": "bottle",
+"brand": "Kindly Pleaser delay spray (lidocaine)",
+"batch": "P2604010 (approx.)",
+"expiry": "04/2026 (MFG?)",
+"mrp": "399.00",
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Sticker with MRP 399.00 and a date '04/2026' (likely MFG); expiry not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5cb721f83e06ab7d": {
+"order_id": 3714062,
+"drug_code_ordered": 1305721,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx shipper label: order id 3714062 (matches the ticket), COD; no product.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"73dd15443710b194": {
+"order_id": 3718013,
+"drug_code_ordered": 1839355,
+"image_type": "carton",
+"brand": "CCQ 25 Kit (clomifene combi kit, BSV)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Kit carton; the batch sticker on the back is not fully legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4c433511d67f2716": {
+"order_id": 3718013,
+"drug_code_ordered": 1839355,
+"image_type": "carton",
+"brand": "CCQ 25 Kit (clomifene combi kit, BSV)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Kit carton; the batch sticker on the back is not fully legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"985516a79ba73f5c": {
+"order_id": 3718013,
+"drug_code_ordered": 1839355,
+"image_type": "carton",
+"brand": "CCQ 25 Kit (clomifene combi kit, BSV)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Kit carton; the batch sticker on the back is not fully legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6770736f195d776e": {
+"order_id": 3728825,
+"drug_code_ordered": 1251789,
+"image_type": "carton",
+"brand": "Telkonol-TRIO (telmisartan + chlorthalidone + cilnidipine) with three strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Box and three strips; strip print not legible at this scale.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"89fd5ab0efc1e40f": {
+"order_id": 3728825,
+"drug_code_ordered": 1251789,
+"image_type": "carton",
+"brand": "Telkonol-TRIO (telmisartan + chlorthalidone + cilnidipine) with three strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Box and three strips; strip print not legible at this scale.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e002872f2a2c43aa": {
+"order_id": 3728825,
+"drug_code_ordered": 1251789,
+"image_type": "carton",
+"brand": "Telkonol-TRIO (telmisartan + chlorthalidone + cilnidipine) with three strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Box and three strips; strip print not legible at this scale.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a581679f463a8d75": {
+"order_id": 3729706,
+"drug_code_ordered": 1840117,
+"image_type": "carton",
+"brand": "Trichospire hair growth serum 60 ml; Ofloxacin + metronidazole suspension",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Cosmetic serum cartons and a paediatric suspension in the same photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"eaa43e2bdb4f7269": {
+"order_id": 3729706,
+"drug_code_ordered": 1840117,
+"image_type": "bottle",
+"brand": "Oflofine-M (ofloxacin + metronidazole suspension)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bottle label; no batch visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ab46908d868b4f45": {
+"order_id": 3730360,
+"drug_code_ordered": 1390247,
+"image_type": "carton",
+"brand": "Mygesteron 400 (progesterone soft gelatin capsules 400 mg, Prevego)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front, 1x10 softgels.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"870fd69227431941": {
+"order_id": 3730360,
+"drug_code_ordered": 1390247,
+"image_type": "carton",
+"brand": "Mygesteron 400 (progesterone soft gelatin capsules 400 mg, Prevego)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front, 1x10 softgels.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c5c3aaf425ce2a89": {
+"order_id": 3730360,
+"drug_code_ordered": 1390247,
+"image_type": "carton",
+"brand": "Mygesteron 400 (progesterone 400 mg softgels, Prevego)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3e65fd97804ee25e": {
+"order_id": 3733993,
+"drug_code_ordered": 1713765,
+"image_type": "strip",
+"brand": "Lomostep (loperamide capsules IP 2 mg)",
+"batch": "unreadable",
+"expiry": "04/2026",
+"mrp": "MRP unreadable",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "high"
+},
+"notes": "MFD 05/2024, EXP 04/2026 (printed), per 10 caps. Printed expiry precedes the order period.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"34c1224150e87a81": {
+"order_id": 3733993,
+"drug_code_ordered": 1713765,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Red capsules in clear blister held in hand; no printed text visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3b33ac57797d2c88": {
+"order_id": 3735893,
+"drug_code_ordered": 1423656,
+"image_type": "strip",
+"brand": "Miragron ER 25 (mirabegron 25 mg, Steris)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Two yellow strips in a bag; batch/expiry not in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"65f12ff9ae45bce0": {
+"order_id": 3735893,
+"drug_code_ordered": 1423656,
+"image_type": "strip",
+"brand": "Miragron ER 25 (mirabegron 25 mg) + other tablet strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Pile of strips; print not legible at this scale.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3c9e0a0a50744b19": {
+"order_id": 3735893,
+"drug_code_ordered": 1423656,
+"image_type": "strip",
+"brand": "Miragron ER 25 (mirabegron 25 mg)",
+"batch": "25002 (partial)",
+"expiry": "07/2027",
+"mrp": "229.00 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "high"
+},
+"notes": "MFG AUG.2025, EXPIRY JUL.2027; batch prefix cut off.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8448f285b7dcb2ae": {
+"order_id": 3743532,
+"drug_code_ordered": 1866096,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored): line shows Himalaya Tagara tablets 60s.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4868ef741764e354": {
+"order_id": 3743532,
+"drug_code_ordered": 1866096,
+"image_type": "carton",
+"brand": "Himalaya Tagara (valerian) 60 tablets",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Product in the opened shipper; consistent with the invoice line.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2b7272b0d847765c": {
+"order_id": 3746530,
+"drug_code_ordered": 1013050,
+"image_type": "strip",
+"brand": "Gabaneuron NT",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Tablet side of the blister; batch/expiry not in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"fce7707fcb2cf136": {
+"order_id": 3746530,
+"drug_code_ordered": 1013050,
+"image_type": "strip",
+"brand": "Gabaneuron NT 300 (gabapentin 300 + nortriptyline 10)",
+"batch": "2510034AB (approx.)",
+"expiry": "06/2028 (approx.)",
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "MFG OCT.2025; batch and expiry lines on the edge are partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f3b23b301724e286": {
+"order_id": 3748891,
+"drug_code_ordered": 1833877,
+"image_type": "carton",
+"brand": "Cipdapla M 10/1000 (dapagliflozin + metformin ER, Cipla), three cartons",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Three cartons; batch/expiry not in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2d1eae41fba6bd7b": {
+"order_id": 3748891,
+"drug_code_ordered": 1390450,
+"image_type": "strip",
+"brand": "Pantosec D SR (pantoprazole + domperidone SR) strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Strips with a Cipla carton at the edge; batch lines too small.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bf071010a0548be4": {
+"order_id": 3748891,
+"drug_code_ordered": 1832707,
+"image_type": "strip",
+"brand": "Sitagliptin-GM2 1000 (glimepiride + sitagliptin + metformin, Knoll)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Three strips; batch/expiry too small to read.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0078fb68180d0d2f": {
+"order_id": 3748949,
+"drug_code_ordered": 1202885,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); line items too small to read reliably.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"93c7596b6c44f0e4": {
+"order_id": 3750149,
+"drug_code_ordered": 1833068,
+"image_type": "bottle",
+"brand": "Easylax L (lactulose solution 100 ml, Cipla)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bottle (lemon flavour); batch/expiry are on the neck and not visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"12f080a007a7589b": {
+"order_id": 3750149,
+"drug_code_ordered": 1833068,
+"image_type": "bottle",
+"brand": "Easylax L (lactulose solution 100 ml, Cipla)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bottle (lemon flavour); batch/expiry are on the neck and not visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"49d37a950748a7f6": {
+"order_id": 3750149,
+"drug_code_ordered": 1833068,
+"image_type": "invoice",
+"brand": "Easylax L 100 ml lemon (invoice line)",
+"batch": "EAL2600.. (partial)",
+"expiry": "02/28",
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "medium"
+},
+"notes": "Customer invoice for the order (personal data not stored); batch partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bb0f1ceeda533814": {
+"order_id": 3750149,
+"drug_code_ordered": 1300909,
+"image_type": "invoice",
+"brand": "Easylax L 100 ml lemon (invoice line)",
+"batch": "EAL2600.. (partial)",
+"expiry": "02/28",
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "medium"
+},
+"notes": "Customer invoice for the order (personal data not stored); batch partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6a262f478eaa4c6f": {
+"order_id": 3750149,
+"drug_code_ordered": 1110108,
+"image_type": "invoice",
+"brand": "Easylax L 100 ml lemon (invoice line)",
+"batch": "EAL2600.. (partial)",
+"expiry": "02/28",
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "medium"
+},
+"notes": "Customer invoice for the order (personal data not stored); batch partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3499ee3baa7771c7": {
+"order_id": 3750149,
+"drug_code_ordered": 1300909,
+"image_type": "bottle",
+"brand": "Easylax L lactulose solution 100 ml (Cipla)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bottle front; batch/expiry on neck not visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6bc4db1b8001c21f": {
+"order_id": 3750149,
+"drug_code_ordered": 1300909,
+"image_type": "bottle",
+"brand": "Easylax L lactulose solution 100 ml (Cipla)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bottle back (dosage panel); batch/expiry on neck not visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6c0b654b214685a9": {
+"order_id": 3750149,
+"drug_code_ordered": 1110108,
+"image_type": "bottle",
+"brand": "Easylax L lactulose solution 100 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bottle front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"dcfc47bec1683b30": {
+"order_id": 3750149,
+"drug_code_ordered": 1110108,
+"image_type": "bottle",
+"brand": "Easylax L lactulose solution 100 ml (Tirupati Medicare)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Composition panel (manufacturer Tirupati Medicare); batch/expiry not visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"92ecc41b4b6b3f49": {
+"order_id": 3753420,
+"drug_code_ordered": 1105466,
+"image_type": "carton",
+"brand": "Sitason-100 (sitagliptin 100 mg, Unison)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Two cartons.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"b5bed743dd7807db": {
+"order_id": 3753420,
+"drug_code_ordered": 1105466,
+"image_type": "strip",
+"brand": "Glimda 3 (glimepiride, Cipla) + a silver strip",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Several strips; batch/expiry not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2e15875a6b88628b": {
+"order_id": 3753420,
+"drug_code_ordered": 1105466,
+"image_type": "strip",
+"brand": "Glimda 3 (glimepiride, Cipla), Sitason-100 cartons, shipper",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Items photographed with the opened PlatinumRx shipper.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"b4b8496670f3c92e": {
+"order_id": 3753420,
+"drug_code_ordered": 1109865,
+"image_type": "strip",
+"brand": "Glimda 3 (glimepiride, Cipla), Sitason-100 cartons, shipper",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Same items, second view.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c5666c78c5f13f20": {
+"order_id": 3755580,
+"drug_code_ordered": 1314999,
+"image_type": "strip",
+"brand": "Ramipen 5 (ramipril 5 mg) and D Venafax 50 (desvenlafaxine ER 50 mg)",
+"batch": "AMN01.. (partial)",
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Three strips; batch/mfg/expiry lines partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f40eae46f7902cbf": {
+"order_id": 3755580,
+"drug_code_ordered": 1314999,
+"image_type": "strip",
+"brand": "D Venafax 50 (desvenlafaxine ER 50 mg)",
+"batch": "AMN0..(partial)",
+"expiry": null,
+"mrp": "117.55 (approx.)",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Strip reflective; batch and expiry lines partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0caecca6edf6428b": {
+"order_id": 3755580,
+"drug_code_ordered": 1314999,
+"image_type": "strip",
+"brand": "Ramipen 5 + D Venafax 50",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Glare over the batch lines.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"d3282c2f40907cd9": {
+"order_id": 3757143,
+"drug_code_ordered": 1336181,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "White oblong tablets in a foil-front blister, no print visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"329b26798ec99fc0": {
+"order_id": 3757143,
+"drug_code_ordered": 1336181,
+"image_type": "strip",
+"brand": "Cipcal-500 (calcium + vitamin D3, Cipla)",
+"batch": "CPL24C03",
+"expiry": "10/2026",
+"mrp": "104.66 per 15 tabs",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG NOV.24, EXPIRY OCT.26 - about a month of shelf life around the order date.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5f50adfc2d3fed25": {
+"order_id": 3757143,
+"drug_code_ordered": 1336181,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); a terbinafine 250 mg tablet line is barely legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1ef15590c6084352": {
+"order_id": 3760392,
+"drug_code_ordered": 1915068,
+"image_type": "carton",
+"brand": "Maxmoist Ultra eye drops 10 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"68af3656bf9a3028": {
+"order_id": 3760392,
+"drug_code_ordered": 1915068,
+"image_type": "carton",
+"brand": "Maxmoist eye drops (side panel)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Composition panel; no batch/expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"872601310b7903bd": {
+"order_id": 3761359,
+"drug_code_ordered": 1012481,
+"image_type": "carton",
+"brand": "Formoflo-G and Difizma cartons",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton backs; batch/expiry not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"43538823f3309bdc": {
+"order_id": 3770976,
+"drug_code_ordered": 1397725,
+"image_type": "strip",
+"brand": "Atovastrin Gold 40 (atorvastatin 40 + clopidogrel 75 + aspirin 75 capsules, Steris)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Crumpled foil strip, dark photo; batch/expiry not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6627e5f03dfd79a7": {
+"order_id": 3770976,
+"drug_code_ordered": 1397725,
+"image_type": "strip",
+"brand": "Atovastrin Gold 40 (atorvastatin 40 + clopidogrel 75 + aspirin 75 capsules, Steris)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Crumpled foil strip, dark photo; batch/expiry not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4cc44f91571f35ee": {
+"order_id": 3784221,
+"drug_code_ordered": 1839355,
+"image_type": "carton",
+"brand": "CCQ 25 Kit (clomifene combi kit, BSV)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of kit carton.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"283b25cc31ab240f": {
+"order_id": 3784221,
+"drug_code_ordered": 1839355,
+"image_type": "carton",
+"brand": "CCQ 25 Kit (clomifene combi kit, BSV)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Back of carton; the batch sticker is too small to read.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f37333c5394c175d": {
+"order_id": 3784221,
+"drug_code_ordered": 1839355,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Calendar-style kit blister in a foil pouch; no print legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bff7887cef0ea7ae": {
+"order_id": 3785413,
+"drug_code_ordered": 1834027,
+"image_type": "strip",
+"brand": "Acitrom 3.5 (nicoumalone, Abbott)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strip front; no batch/expiry in frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f6c58687456fc17b": {
+"order_id": 3785667,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": "Maxmoist eye drops 10 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1cf6580607a450e2": {
+"order_id": 3785667,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": "Maxmoist eye drops (side panel)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Composition panel; no batch/expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5e761d0f092c02e5": {
+"order_id": 3785667,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": null,
+"batch": "GT17726",
+"expiry": "06/2028",
+"mrp": "535.00",
+"legibility": {
+"brand": "none",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Carton end flap: B.No GT17726, MFD 07/2026, EXP 06/2028, MRP 535.00; the brand is not on this face.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f8d866e5937c5ee7": {
+"order_id": 3792224,
+"drug_code_ordered": 1195252,
+"image_type": "carton",
+"brand": "Cefasyn 250 (cefuroxime axetil 250 mg, Cipla), 4 tablets",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5ab58547bd5bf672": {
+"order_id": 3792224,
+"drug_code_ordered": 1195252,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); lines too small.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ad2dcc285ddc511d": {
+"order_id": 3792224,
+"drug_code_ordered": 1195252,
+"image_type": "carton",
+"brand": "Cefasyn 250 (cefuroxime axetil 250 mg, Cipla), 4 tablets",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8ef945936871eb6d": {
+"order_id": 3793407,
+"drug_code_ordered": 1305802,
+"image_type": "tube",
+"brand": "Tretiheal tretinoin cream USP 0.05% 20 g (Healing Pharma)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Tube front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c66ea519a73d94c6": {
+"order_id": 3793407,
+"drug_code_ordered": 1305802,
+"image_type": "tube",
+"brand": "Tretiheal tretinoin cream 0.05% (Healing Pharma)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Tube back: 'See carton for batch no., mfg., exp. date & MRP'; only a crimp code is stamped.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e02cfdef739c7a7b": {
+"order_id": 3793407,
+"drug_code_ordered": 1305802,
+"image_type": "tube",
+"brand": "Tretiheal tretinoin cream (Healing Pharma)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Crimp code reads roughly '088 03 26' - not a labelled batch/expiry.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"d9ae31c90389b388": {
+"order_id": 3795927,
+"drug_code_ordered": 1843008,
+"image_type": "strip",
+"brand": "Vildasmart Trio (dapagliflozin 10 + vildagliptin SR 100 + metformin SR 500, Healing Pharma)",
+"batch": "2653GTA235 (approx.)",
+"expiry": "01/2028",
+"mrp": "154.00 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 02/2026, EXPIRY 01/2028. A PlatinumRx sticker with QR is stuck on the strip.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f122ffb5ea97a8fb": {
+"order_id": 3795927,
+"drug_code_ordered": 1843008,
+"image_type": "strip",
+"brand": "Vildasmart Trio (Healing Pharma)",
+"batch": "2653GTA235 (approx.)",
+"expiry": "01/2028",
+"mrp": "154.00 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Same strip; PlatinumRx sticker labelled 'PRX - Vildasmart Trio Ta' is on the foil.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"b8fb141d49fbc3cc": {
+"order_id": 3795927,
+"drug_code_ordered": 1843008,
+"image_type": "strip",
+"brand": "Vildasmart Trio (Healing Pharma)",
+"batch": "2653GTA235 (approx.)",
+"expiry": "01/2028",
+"mrp": "154.00 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Same strip; PlatinumRx sticker labelled 'PRX - Vildasmart Trio Ta' is on the foil.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"91f21cd2e140d7b5": {
+"order_id": 3796170,
+"drug_code_ordered": 1865094,
+"image_type": "strip",
+"brand": "Tranexaheal 500 (tranexamic acid 500 mg, Healing Pharma)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Batch/expiry at the top edge only partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"42e87204ccbd107b": {
+"order_id": 3803074,
+"drug_code_ordered": 1110322,
+"image_type": "strip",
+"brand": "Evitamin-200 (vitamin E 200 softgels, Prevego)",
+"batch": "ADL-0771",
+"expiry": null,
+"mrp": "21.00 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "none"
+},
+"notes": "MFG MAR-2025; expiry not printed on this face.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ebb5c7ee8d64dbd6": {
+"order_id": 3803074,
+"drug_code_ordered": 1110322,
+"image_type": "carton",
+"brand": "Vitamin E 200 softgel capsules (Prevego)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton inside the shipper.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8cafb3ac28133f20": {
+"order_id": 3803074,
+"drug_code_ordered": 1110322,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Bluedart label: order date 2026-09-08, invoice 3803074 (matches the ticket order); carton visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c68d71c5dbf693bf": {
+"order_id": 3808045,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Extend Total (multivitamin/multimineral/antioxidant, KLM)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Crumpled foil strips; no batch or expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a55a8e698a6188e2": {
+"order_id": 3808045,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Extend Total (multivitamin/multimineral/antioxidant, KLM)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Crumpled foil strips; no batch or expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f11f448c1f10d171": {
+"order_id": 3808045,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Extend Total (multivitamin/multimineral/antioxidant, KLM)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Crumpled foil strips; no batch or expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c8fef5c042b77af5": {
+"order_id": 3808045,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Extend Total (multivitamin/multimineral/antioxidant, KLM)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Crumpled foil strips; no batch or expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f5f8b3d9b91616e0": {
+"order_id": 3823950,
+"drug_code_ordered": 1390411,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); two line items barely legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ce014bb65ca8434a": {
+"order_id": 3831229,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Rabzex-DSR (rabeprazole + domperidone SR caps) with an Extend Hair carton",
+"batch": "6G3050F (approx.)",
+"expiry": "02/2028",
+"mrp": "125.00 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "medium"
+},
+"notes": "MFG 03/2026?, EXP 02/2028; batch line partly legible. Extend Hair (KLM) carton also in the frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a8597d3f59411728": {
+"order_id": 3831229,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Rabzex-DSR (rabeprazole sodium + domperidone SR capsules)",
+"batch": "CG03050F (approx.)",
+"expiry": "02/2028",
+"mrp": "125.00 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 03/2026, EXP 02/2028. Extend Hair (KLM) carton also in the frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"87e468c5917baef2": {
+"order_id": 3831229,
+"drug_code_ordered": 1207517,
+"image_type": "strip",
+"brand": "Rabzex-DSR (rabeprazole sodium + domperidone SR capsules)",
+"batch": "CG03050F (approx.)",
+"expiry": "02/2028",
+"mrp": "125.00 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "MFG 03/2026, EXP 02/2028. Extend Hair (KLM) carton also in the frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"82aeedad775d61e8": {
+"order_id": 3839208,
+"drug_code_ordered": 1207282,
+"image_type": "carton",
+"brand": "Kojic depigmenting cream 25 g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton side and front; no batch.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"224675e1a66ecc9c": {
+"order_id": 3839208,
+"drug_code_ordered": 1207282,
+"image_type": "carton",
+"brand": "Kojic depigmenting cream",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton close-up, blurred.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"9c9f10ab4b0b5540": {
+"order_id": 3839208,
+"drug_code_ordered": 1207282,
+"image_type": "carton",
+"brand": "Kojic depigmenting cream (back panel)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Batch/mfg/exp lines are printed but unreadable at this resolution.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"59583a33253c2742": {
+"order_id": 3844032,
+"drug_code_ordered": 1089192,
+"image_type": "carton",
+"brand": "Ticavue 90 (ticagrelor 90 mg, Dr. Morepen), 1x14",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton inside the opened shipper.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ffa69db0d164ade2": {
+"order_id": 3844032,
+"drug_code_ordered": 1089192,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); 12 line items not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f8743ada09dc7f41": {
+"order_id": 3847315,
+"drug_code_ordered": 1107310,
+"image_type": "bottle",
+"brand": "Lactoarv lactulose solution IP 100 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Bottle neck/label partly visible; batch not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"954908d304e7b234": {
+"order_id": 3852242,
+"drug_code_ordered": 1667341,
+"image_type": "bottle",
+"brand": "Dr. Ortho Oil bottle",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Dark photo, bottle front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2978c584a6e89098": {
+"order_id": 3856625,
+"drug_code_ordered": 1293974,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "The only image uploaded is the PlatinumRx logo (a placeholder), not a product photo - nothing to investigate from.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ee9cbeef24c58838": {
+"order_id": 3857038,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": "Maxmoist Ultra eye drops 10 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"bcd095cdd844c812": {
+"order_id": 3857038,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": null,
+"batch": "GT13066",
+"expiry": "05/2028",
+"mrp": "535.00",
+"legibility": {
+"brand": "none",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Carton flap: B.No GT13066, MFD 06/2026, EXP 05/2028, MRP 535.00; brand is not on this face (same photo set as a Maxmoist Ultra carton).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6910819c70c83fea": {
+"order_id": 3857038,
+"drug_code_ordered": 1013805,
+"image_type": "carton",
+"brand": null,
+"batch": "GT13066",
+"expiry": "05/2028",
+"mrp": "535.00",
+"legibility": {
+"brand": "none",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Carton flap: B.No GT13066, MFD 06/2026, EXP 05/2028, MRP 535.00; brand is not on this face (same photo set as a Maxmoist Ultra carton).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"660f15140eb9cd32": {
+"order_id": 3857310,
+"drug_code_ordered": 1838701,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Courier label: order id / invoice 3863501, order date 2026-09-12 - differs from the ticket's order 3857310. No product photographed.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6bba301f33f4f209": {
+"order_id": 3857310,
+"drug_code_ordered": 1838701,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Opened box with strips in bubble wrap, photographed in the dark; nothing legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1860f2f6e926ac40": {
+"order_id": 3857310,
+"drug_code_ordered": 1838701,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice, rotated (personal data not stored); 12 lines not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"4403ddf4540f44bd": {
+"order_id": 3858324,
+"drug_code_ordered": 1221124,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); one rosuvastatin line barely legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"d8be3f0281c182a0": {
+"order_id": 3858380,
+"drug_code_ordered": 1500060,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": "AMQ13BTB",
+"expiry": "05/2028",
+"mrp": "210.44 per 10 tabs",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG JUN-26, EXPIRY MAY-28; photo overlay date 30/08/2026.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e337690d4da419f8": {
+"order_id": 3859354,
+"drug_code_ordered": 1840307,
+"image_type": "strip",
+"brand": "Dapaking-GM2 XR (dapagliflozin + glimepiride + metformin ER, Alkem)",
+"batch": "MT261484 (approx.)",
+"expiry": "2027 (month illegible)",
+"mrp": "139.20 (approx.)",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "low"
+},
+"notes": "Vertical print at the right edge partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"cb3369abe6846796": {
+"order_id": 3865188,
+"drug_code_ordered": 1013585,
+"image_type": "strip",
+"brand": "Agna 10000 (pancreatin DR capsules, Dr. Reddy's)",
+"batch": "GNA251004",
+"expiry": "09/2027",
+"mrp": "351.64 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "MFG OCT.2025, EXP SEP 2027.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"76f81abec11b1a5e": {
+"order_id": 3865188,
+"drug_code_ordered": 1013585,
+"image_type": "strip",
+"brand": "Agna 10000 (pancreatin DR capsules, Dr. Reddy's) with the invoice",
+"batch": "GNA251004",
+"expiry": "09/2027",
+"mrp": "351.64 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Strip next to the order invoice (personal data not stored): B.No GNA251004, MFG OCT.2025, EXP SEP 2027.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3e85036f182ed73b": {
+"order_id": 3865188,
+"drug_code_ordered": 1013585,
+"image_type": "strip",
+"brand": "Agna 10000 (pancreatin DR capsules, Dr. Reddy's) with the invoice",
+"batch": "GNA251004",
+"expiry": "09/2027",
+"mrp": "351.64 per 10 caps",
+"legibility": {
+"brand": "high",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Strip next to the order invoice (personal data not stored): B.No GNA251004, MFG OCT.2025, EXP SEP 2027.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"e978ee5abdc97de8": {
+"order_id": 3869842,
+"drug_code_ordered": 1378547,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx logo image, not a product photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ab35e3e2c44dfa6f": {
+"order_id": 3869842,
+"drug_code_ordered": 1378547,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); a 30-unit line is barely legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0d81294cf66fb2de": {
+"order_id": 3874637,
+"drug_code_ordered": 1010615,
+"image_type": "carton",
+"brand": "Fericet Red (ferric ammonium citrate + folic acid + vitamin B12 syrup, 225 ml)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Strong glare on the carton; no batch/expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8d4522d7ac11ead0": {
+"order_id": 3881972,
+"drug_code_ordered": 1832660,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx logo image, not a product photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"62e9b701a645b775": {
+"order_id": 3884911,
+"drug_code_ordered": 1840321,
+"image_type": "carton",
+"brand": "Accu-Chek Instant S meter kit + Accu-Chek Instant 10 test strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Meter kit box and a 10-strip box; no batch/expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c915b5f030c02434": {
+"order_id": 3884911,
+"drug_code_ordered": 1840321,
+"image_type": "carton",
+"brand": "Accu-Chek Instant S meter kit + Accu-Chek Instant 10 test strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Meter kit box and a 10-strip box; no batch/expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"95c309d09684e9bb": {
+"order_id": 3884911,
+"drug_code_ordered": 1840321,
+"image_type": "carton",
+"brand": "Accu-Chek Instant S meter kit + Accu-Chek Instant 10 test strips",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Meter kit box and a 10-strip box; no batch/expiry visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"7a08604052bd91ca": {
+"order_id": 3890564,
+"drug_code_ordered": 1107551,
+"image_type": "carton",
+"brand": null,
+"batch": "D225173",
+"expiry": "08/2027",
+"mrp": "294.93",
+"legibility": {
+"brand": "none",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Carton end flap: B.No D225173, MFD SEP.25, Expiry AUG.27. Matches the allocated batch D225173 (2027-08).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"2f7bfa954c06e1df": {
+"order_id": 3890564,
+"drug_code_ordered": 1107551,
+"image_type": "carton",
+"brand": null,
+"batch": "D225173",
+"expiry": "08/2027",
+"mrp": "294.93",
+"legibility": {
+"brand": "none",
+"batch": "high",
+"expiry": "high"
+},
+"notes": "Two cartons' end flaps: B.No D225173, MFD SEP.25, Expiry AUG.27. Matches allocation (2027-08).",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"163537421aa9e235": {
+"order_id": 3890564,
+"drug_code_ordered": 1107551,
+"image_type": "carton",
+"brand": "Omnigel 100 g (Cipla Health)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Two tubes' cartons, front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c1e20d98ac7ac758": {
+"order_id": 3913381,
+"drug_code_ordered": 1013004,
+"image_type": "bottle",
+"brand": "Macprot Kesar protein powder 200 g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Jar front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5ae6d9f3903b27ee": {
+"order_id": 3913381,
+"drug_code_ordered": 1013004,
+"image_type": "bottle",
+"brand": "Macprot protein powder jar",
+"batch": "MAC25136 (approx.)",
+"expiry": "04/2027",
+"mrp": "379.95",
+"legibility": {
+"brand": "medium",
+"batch": "medium",
+"expiry": "medium"
+},
+"notes": "Sticker: MFG NOV 2025, EXP APR 2027, MRP 379.95.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"75b7d987de748f7a": {
+"order_id": 3913381,
+"drug_code_ordered": 1013004,
+"image_type": "bottle",
+"brand": "Macprot protein powder jar (nutrition panel)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Nutrition information panel only.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c624e9bc772e69bb": {
+"order_id": 3913754,
+"drug_code_ordered": 1127893,
+"image_type": "other",
+"brand": "Zeroharm 'Back to Teens' men's vitality support tablets (label)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Third-party seller label: Zeroharm Sciences, order id ZH607831, handed over to Elasticrun - not a PlatinumRx invoice/order id (ticket order 3913754). Consignee data not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"a618b5c54b7f35da": {
+"order_id": 3913754,
+"drug_code_ordered": 1127893,
+"image_type": "other",
+"brand": "Zeroharm 'Back to Teens' men's vitality support tablets (label)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Third-party seller label: Zeroharm Sciences, order id ZH607831, handed over to Elasticrun - not a PlatinumRx invoice/order id (ticket order 3913754). Consignee data not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8005ee6a449e6604": {
+"order_id": 3913754,
+"drug_code_ordered": 1695521,
+"image_type": "other",
+"brand": "Zeroharm 'Back to Teens' men's vitality support tablets (label)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Third-party seller label: Zeroharm Sciences, order id ZH607831, handed over to Elasticrun - not a PlatinumRx invoice/order id (ticket order 3913754). Consignee data not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"d626ee7c80f72763": {
+"order_id": 3913754,
+"drug_code_ordered": 1695521,
+"image_type": "other",
+"brand": "Zeroharm 'Back to Teens' men's vitality support tablets (label)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Third-party seller label: Zeroharm Sciences, order id ZH607831, handed over to Elasticrun - not a PlatinumRx invoice/order id (ticket order 3913754). Consignee data not stored.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"9e2e1ceb2a493f17": {
+"order_id": 3913754,
+"drug_code_ordered": 1695521,
+"image_type": "bottle",
+"brand": "Zeroharm Nano Back to Teens (horny goat weed + maca root), 60 tablets",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Amber bottle with blue cap; a different product/seller than a medicine order.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5c6bc43c68398a38": {
+"order_id": 3920507,
+"drug_code_ordered": 1301960,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Shipper with courier label; order id 3920507 matches the ticket. No product.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f99d3003cd2441fd": {
+"order_id": 3920507,
+"drug_code_ordered": 1301960,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Opened shipper with pink/red strips; print not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"c7f6cbcf0edab1f8": {
+"order_id": 3920507,
+"drug_code_ordered": 1301960,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Shipper with consignee label (personal data not stored); no product.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"233745afd73db065": {
+"order_id": 3931620,
+"drug_code_ordered": 1110286,
+"image_type": "carton",
+"brand": "Minokem-N 2% (minoxidil + tretinoin + azelaic acid topical solution, 60 ml)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front, torn flap.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"6bd60c718ba3429e": {
+"order_id": 3958670,
+"drug_code_ordered": 1110317,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx logo image, not a product photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"9481313663eb0656": {
+"order_id": 3940087,
+"drug_code_ordered": 1390437,
+"image_type": "strip",
+"brand": "Cetirizine 10 mg tablets (CitiRin-10 / similar)",
+"batch": "MLT1857 (approx.)",
+"expiry": "09/2028 (approx.)",
+"mrp": "20.65 (approx.)",
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Foil strip at an angle; mfg/expiry digits partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"012e11306d6ceafb": {
+"order_id": 3940087,
+"drug_code_ordered": 1390437,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Pile of tablet strips (tablet side); no print legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"1edc807e1c0eea7b": {
+"order_id": 3940087,
+"drug_code_ordered": 1390437,
+"image_type": "invoice",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored); one tablet line barely legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0eb8a144dd1ee033": {
+"order_id": 3940380,
+"drug_code_ordered": 1375941,
+"image_type": "carton",
+"brand": "Normoz DS (myo-inositol + D-chiro-inositol + vitamin D3 powder, Sun Pharma), 10x5 g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Sachet carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3bee27ffc4e28e69": {
+"order_id": 3940469,
+"drug_code_ordered": 1397104,
+"image_type": "strip",
+"brand": "Rosugard 10 (rosuvastatin 10 mg, Cipla)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "low",
+"expiry": "none"
+},
+"notes": "Strip on a table; batch lines too small.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3695421ae0e0b70a": {
+"order_id": 3947368,
+"drug_code_ordered": 1216226,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Motion-blurred photo of coloured tablet strips; nothing legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"95ac87a905e934bb": {
+"order_id": 3954408,
+"drug_code_ordered": 1208005,
+"image_type": "strip",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Silver-blue oblong tablets (tablet side), no print visible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"f743ce5a4125677e": {
+"order_id": 3954408,
+"drug_code_ordered": 1208005,
+"image_type": "strip",
+"brand": "Strips of a glimepiride/gliclazide + metformin combination (name partly legible)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "low",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Opened shipper and two strips; brand text only partly legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"ca2cc2c03fd40e98": {
+"order_id": 3954408,
+"drug_code_ordered": 1208005,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Torn shipper with a label showing order id 3954408 (matches the ticket); no product legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"09437c17480970d2": {
+"order_id": 3980220,
+"drug_code_ordered": 1836933,
+"image_type": "carton",
+"brand": "Pynomax-Tx Cream SPF 50 (Galcare)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front: CREAM. Invoice for this order (other image) lists 'Pynomax Tx Lotion 100 ml' - same brand, different form.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"62cea440675f14bc": {
+"order_id": 3980220,
+"drug_code_ordered": 1836933,
+"image_type": "carton",
+"brand": "Pynomax-Tx Cream (Galcare), back panel",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Back panel; batch/mfg lines not legible.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"30b50a79f44d504a": {
+"order_id": 3980220,
+"drug_code_ordered": 1836933,
+"image_type": "invoice",
+"brand": "Pynomax Tx Lotion 100 ml (invoice line)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "medium",
+"batch": "low",
+"expiry": "low"
+},
+"notes": "Customer invoice (personal data not stored): ordered Pynomax Tx LOTION; carton photographed is Pynomax-Tx CREAM.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"5fbb5735fc8e3f82": {
+"order_id": 3926083,
+"drug_code_ordered": 1757012,
+"image_type": "carton",
+"brand": "Nusoft soap 75g",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Three Nusoft cartons in hand; batch not visible in this frame.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"8167c12b5098d4af": {
+"order_id": 3697774,
+"drug_code_ordered": 1832765,
+"image_type": "other",
+"brand": null,
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "none",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "PlatinumRx shipper with consignee label (personal data not stored); no product.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"3060790f362dfd99": {
+"order_id": 3852242,
+"drug_code_ordered": 1667341,
+"image_type": "carton",
+"brand": "Dr. Ortho Oil (ayurvedic) 60 ml",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Carton front.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"9b5bfa1feb104b7b": {
+"order_id": 3852242,
+"drug_code_ordered": 1667341,
+"image_type": "carton",
+"brand": "Dr. Ortho Oil 60 ml",
+"batch": "D00643",
+"expiry": "06/2029",
+"mrp": "177.00",
+"legibility": {
+"brand": "high",
+"batch": "medium",
+"expiry": "high"
+},
+"notes": "Back panel: Mfg 07/2026, Exp 06/2029, MRP 177.00.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+},
+"0ef3bb2c64d8c746": {
+"order_id": 3136802,
+"drug_code_ordered": 1188097,
+"image_type": "bottle",
+"brand": "Funtime topical spray (lignocaine)",
+"batch": null,
+"expiry": null,
+"mrp": null,
+"legibility": {
+"brand": "high",
+"batch": "none",
+"expiry": "none"
+},
+"notes": "Front of spray bottle; no batch or expiry visible in this photo.",
+"read_by": "claude-session",
+"read_on": "2026-10-14"
+}
+}

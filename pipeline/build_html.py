@@ -21,6 +21,7 @@ files = {
     "__ORDERS_BY_DAY_LOCATION_JSON__": "orders_by_day_location.json",
     "__EOD_JSON__": "data_eod.json",
     "__RFD_WEEKLY_JSON__": "rfd_weekly.json",
+    "__RCA_JSON__": "rca.json",
 }
 
 out = template

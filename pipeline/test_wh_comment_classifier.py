@@ -9,7 +9,7 @@ run's manual/LLM comment read is already recorded in build_eod.py's history.
 
 Run: python3 pipeline/test_wh_comment_classifier.py
 """
-from wh_comment_classifier import classify_wh_comments
+from wh_comment_classifier import classify_wh_comments, investigation_subtype
 
 
 def wh(text, t="2026-01-01T00:00:00.000Z"):
@@ -164,11 +164,52 @@ CASES = [
     # phrase) always denies, full stop. Previously miscached as admitted from
     # the routine's own earlier LLM judgment; this fixture locks the decision.
     ("259768", [wh("We have  sent proper medicine but defferent expiry date to CX")], "denied"),
+    # --- owner-confirmed admissions (2026-10-14): previously 'unrecognized' ---
+    ("229509", [wh("We have sent MRP mismatch medicine to CX Mahiboob bee")], "admitted"),
+    ("227303", [wh("We have not sent free item")], "admitted"),
+    ("257584", [wh("Free item is not mentioned on the raper")], "admitted"),
+    ("222557", [wh("We have not free bresh")], "admitted"),
+    ("258106", [wh("Paker didn't removed the medicine out side for check")], "admitted"),
+    ("225623", [wh("Paker didn\u2019t removed the medicine out side properly")], "admitted"),
+    ("223584", [wh("we have sent expriy medicine to cx")], "admitted"),
+    ("236722", [wh("We have sent free item wrong to cx")], "admitted"),
+    ("239205", [wh("We have sent Etozox 90mg tablet Excess medicine to CX Mahiboob bee")], "admitted"),
+    ("257358", [wh("Return request is approved from from warehouse")], "unrecognized"),
+    ("221415", [wh("Please send me the proper order ID")], "unrecognized"),
+    # --- two live tickets that were cached as no_wh_comment while the WH comment existed ---
+    ("233123", [wh("We have sent short qty to CX&nbsp;<div>Mahiboob bee&nbsp;</div>")], "admitted"),
+    ("250676", [wh("We have sent proper medicine to Cx&nbsp;<div>Mahiboob bee&nbsp;</div>")], "denied"),
+]
+
+
+# (comment text, expected investigation_subtype) - real wording from the
+# 2026-10-14 survey of wh_text_check.json `unrecognized` evidence.
+SUBTYPE_CASES = [
+    ("Footage not found because it is under maintenance", "footage_missing"),
+    ("This batch medicine is not related to our inventory", "batch_not_in_inventory"),
+    ("This code not available in our inventory", "batch_not_in_inventory"),
+    ("Footage not found because camera backup is 10days only Naveen", "footage_missing"),
+    ("Footage not found because cctv is under Maintenance", "footage_missing"),
+    ("We cannot find the batch pls proper its visible on batch", "batch_not_in_inventory"),
+    ("Still not received the wh", "return_not_received_at_wh"),
+    ("Warehouse not received this stock", "return_not_received_at_wh"),
+    # request for evidence must never be a subtype
+    ("kindly share the image of footage not found", None),
+    # known WH notes that are neither - stay None, never guessed
+    ("Medicine is not cold storage", None),
+    ("Paker didn't removed the medicine out side properly", None),
+    ("We have sent proper medicine to Cx", None),
 ]
 
 
 def run():
     failures = []
+    for text, expected in SUBTYPE_CASES:
+        got = investigation_subtype(text)
+        if got != expected:
+            failures.append((text, expected, got, "subtype"))
+        print(f"[{'OK' if got == expected else 'FAIL'}] subtype {text[:50]!r}: expected={expected} got={got}")
+
     for ticket_id, comments, expected in CASES:
         result = classify_wh_comments(comments)
         got = result["verdict"]
@@ -177,7 +218,7 @@ def run():
             failures.append((ticket_id, expected, got, result["reason"]))
         print(f"[{status}] {ticket_id}: expected={expected} got={got}")
 
-    print(f"\n{len(CASES) - len(failures)}/{len(CASES)} passed")
+    print(f"\n{len(CASES) + len(SUBTYPE_CASES) - len(failures)}/{len(CASES) + len(SUBTYPE_CASES)} passed")
     if failures:
         print("\nFailures:")
         for ticket_id, expected, got, reason in failures:
