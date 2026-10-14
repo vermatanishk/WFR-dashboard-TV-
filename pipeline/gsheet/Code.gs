@@ -1,9 +1,11 @@
 /**
- * WFR RCA live sheet - pulls two JSON files from the public GitHub repo and rebuilds two tabs:
+ * WFR RCA live sheet - pulls JSON from the public GitHub repo and rebuilds two tabs:
  *   "Raw data"  - one row per order (trailing 90 days): order, ticket, issue, investigation buckets,
  *                 raised buckets, evidence.            <- pipeline/rca_export.json
- *   "RCA view"  - the day-wise RCA table of the website's Tab 7.   <- pipeline/rca_trend.json
- * Both files are rebuilt and pushed by the daily refresh session, so the sheet follows git.
+ *   "RCA view"  - the website's Tab 7 day-wise table, COMPUTED HERE FROM THE "Raw data" TAB using the
+ *                 declarative layout in pipeline/rca_view_spec.json (same spec the website uses, so the
+ *                 two cannot drift; pipeline/test_view_js.js checks this evaluator against rca_trend.json).
+ * The files are rebuilt and pushed by the daily refresh session, so the sheet follows git.
  *
  * Setup: see README.md in this folder (paste this file into Extensions > Apps Script, run refreshAll once,
  * then run installDailyTrigger once).
@@ -11,7 +13,7 @@
 
 var BASE = 'https://raw.githubusercontent.com/vermatanishk/WFR-dashboard-TV-/main/pipeline/';
 var EXPORT_URL = BASE + 'rca_export.json';
-var TREND_URL = BASE + 'rca_trend.json';
+var SPEC_URL = BASE + 'rca_view_spec.json';
 var RAW_TAB = 'Raw data';
 var VIEW_TAB = 'RCA view';
 var INFO_TAB = 'Info';
@@ -25,8 +27,11 @@ function onOpen() {
 
 function refreshAll() {
   var exp = fetchJson_(EXPORT_URL);
-  var trend = fetchJson_(TREND_URL);
+  var spec = fetchJson_(SPEC_URL);
   writeRaw_(exp);
+  // Build the view from what is actually in the Raw data tab (so a filtered/edited tab is what you see).
+  var raw = sheet_(RAW_TAB).getDataRange().getValues();
+  var trend = computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at);
   writeView_(trend);
   writeInfo_(exp, trend);
   SpreadsheetApp.getActive().toast('RCA data refreshed (' + exp.rows.length + ' orders)', 'WFR RCA', 5);
@@ -59,8 +64,9 @@ function writeRaw_(exp) {
   sh.clear();
   var cols = exp.columns;
   var values = [cols].concat(exp.rows);
+  var dateCol = cols.indexOf('Created date') + 1;
+  sh.getRange(1, dateCol, values.length, 1).setNumberFormat('@'); // keep ISO dates as text
   sh.getRange(1, 1, values.length, cols.length).setValues(values);
-  // order id and ticket id as plain numbers/text, date as text so it sorts as ISO
   sh.getRange(1, 1, 1, cols.length).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
   sh.setFrozenRows(1);
   sh.setFrozenColumns(2);
@@ -111,4 +117,73 @@ function writeInfo_(exp, trend) {
   sh.getRange(1, 1, info.length, 1).setFontWeight('bold');
   sh.setColumnWidth(1, 360);
   sh.setColumnWidth(2, 640);
+}
+
+/**
+ * Pure evaluator, mirrors pipeline/rca_view_spec.py evaluate(). No Apps Script APIs, so it is unit-tested in
+ * node. columns: header row of Raw data; rows: data rows; layout: rca_view_spec.json layout; cutoff: T-2 date.
+ */
+var MONTHS_ = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function isoDate_(v) {
+  if (v instanceof Date) {
+    var m = v.getMonth() + 1, d = v.getDate();
+    return v.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (d < 10 ? '0' : '') + d;
+  }
+  return String(v);
+}
+
+function computeView_(columns, rows, layout, cutoff, generatedAt) {
+  var col = {};
+  columns.forEach(function (c, i) { col[c] = i; });
+  var dcol = col['Created date'];
+  var kept = rows.filter(function (r) { return isoDate_(r[dcol]) <= cutoff; });
+  var byDay = {};
+  kept.forEach(function (r) {
+    var d = isoDate_(r[dcol]);
+    (byDay[d] = byDay[d] || []).push(r);
+  });
+  var days = Object.keys(byDay).sort();
+  function matches(r, where) {
+    for (var i = 0; i < where.length; i++) {
+      var c = where[i][0], op = where[i][1], vals = where[i][2];
+      var v = String(r[col[c]]);
+      if ((op === 'in') !== (vals.indexOf(v) >= 0)) return false;
+    }
+    return true;
+  }
+  var items = {}, cache = {};
+  layout.forEach(function (it) { items[it.key] = it; });
+  function counts(it) {
+    if (!cache[it.key]) {
+      var o = {};
+      days.forEach(function (d) {
+        o[d] = byDay[d].filter(function (r) { return matches(r, it.where); }).length;
+      });
+      cache[it.key] = o;
+    }
+    return cache[it.key];
+  }
+  function sum(o, ds) { return ds.reduce(function (a, d) { return a + o[d]; }, 0); }
+  function cell(it, ds) {
+    var n = sum(counts(it), ds);
+    if (it.parent === null || it.parent === undefined) return { n: n, text: String(n) };
+    var den = sum(counts(items[it.parent]), ds);
+    // Python rounds half to even; JS Math.round rounds half up - emulate banker's rounding to match.
+    var x = den ? 100 * n / den : 0;
+    var fl = Math.floor(x), diff = x - fl;
+    var r = diff > 0.5 ? fl + 1 : diff < 0.5 ? fl : (fl % 2 === 0 ? fl : fl + 1);
+    var pct = den ? r + '%' : '\u2013';
+    return { n: n, text: n + ' | ' + pct };
+  }
+  var out = layout.map(function (it) {
+    var daily = {};
+    days.forEach(function (d) { daily[d] = cell(it, [d]); });
+    return { label: it.label, sub: it.sub || null, kind: it.head ? 'wfr_pto' : 'plain', indent: it.indent,
+             '3mo': cell(it, days), '1mo': cell(it, days.slice(-30)), '2wk': cell(it, days.slice(-14)), daily: daily };
+  });
+  var labels = {};
+  days.forEach(function (d) { labels[d] = parseInt(d.slice(8, 10), 10) + ' ' + MONTHS_[parseInt(d.slice(5, 7), 10) - 1]; });
+  return { days: days, day_labels: labels, rows: out, as_of: String(generatedAt).slice(0, 10), t2_cutoff: cutoff,
+           excluded_tickets: rows.length - kept.length };
 }

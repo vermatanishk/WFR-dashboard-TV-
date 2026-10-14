@@ -251,14 +251,19 @@ Run after step 2, before `build_html.py`:
    relation is computed (else `candidate_unverified`).
 5. `python3 pipeline/build_rca_inputs.py` → `rca_expiry.json`; `python3 pipeline/build_rca.py` → `rca.json`
    (fails loudly if the funnel does not reconcile; T-2 capped).
-6. `python3 pipeline/build_rca_trend.py` -> `rca_trend.json`: Tab 7 "RCA view", the day-wise table (same pattern and
+6. `python3 pipeline/build_rca_trend.py` -> `rca_trend.json` + `rca_view_spec.json` (run AFTER step 7 below, it reads
+   `rca_export.json`): Tab 7 "RCA view", the day-wise table (same pattern and
    T-2 cap as the Everything tab's macro table; cells are "count | % of parent row"; photo-derived rows count
    only photo-read tickets and carry a coverage row). Run before `build_html.py`.
-7. `python3 pipeline/build_rca_export.py` -> `rca_export.json`: order/ticket-level rows (one per order) for the live
-   Google Sheet. `pipeline/gsheet/Code.gs` (Apps Script, see `gsheet/README.md`) reads `rca_export.json` +
-   `rca_trend.json` from the raw GitHub URL and rebuilds the sheet's "Raw data" and "RCA view" tabs; commit and push
-   both JSONs with the refresh. The repo is public: no names / phones / WH comment text in the export, only IDs.
-Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons), `test_rca.py`, and `test_rca_trend.py`
+7. `python3 pipeline/build_rca_export.py` -> `rca_export.json`: order/ticket-level rows (one per order). **Run it before
+   step 6**: the RCA view is a pure function of this export (declarative layout in `rca_view_spec.py`), evaluated
+   in Python for the website and in Apps Script (`pipeline/gsheet/Code.gs`, see `gsheet/README.md`) for the live
+   Google Sheet, whose "Raw data" tab it reads and whose "RCA view" tab it builds. Commit and push `rca_export.json`,
+   `rca_trend.json`, `rca_view_spec.json` with the refresh. The repo is public: no names / phones / WH comment text
+   in the export, only IDs.
+Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons), `test_rca.py`, `test_rca_trend.py`,
+`check_view_from_export.py` (independent rebuild of every view cell from the export) and `node pipeline/test_view_js.js`
+(Apps Script evaluator vs `rca_trend.json`, every cell). Run all after touching the export or the layout. Original:
 (every parent row = sum of its children in every column). RCA counts are **unique per order, first ticket wins** -
 the same rule as the dashboard's `dedupeByOrder()` / "Total issues raised (unique per order)" tile.
 
