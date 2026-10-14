@@ -76,6 +76,8 @@ def main():
 
     P["wm"] = cat("Wrong Medicines")
     P["wm_read"] = lambda r: r["category"] == "Wrong Medicines" and wm_rel(r) is not None
+    P["wm_unread"] = lambda r: r["category"] == "Wrong Medicines" and wm_rel(r) is None
+    P["wm_undet"] = lambda r: r["category"] == "Wrong Medicines" and wm_rel(r) == "unknown"
     P["wm_same"] = lambda r: r["category"] == "Wrong Medicines" and wm_rel(r) in ("same_sku_consistent", "other_order_line_photographed")
     P["wm_variant"] = lambda r: r["category"] == "Wrong Medicines" and wm_rel(r) in ("same_brand_variant", "same_product_diff_packaging")
     P["wm_diff"] = lambda r: r["category"] == "Wrong Medicines" and wm_rel(r) == "different_medicine"
@@ -88,10 +90,14 @@ def main():
     P["ex_alloc_out"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[0] == "outright_expired"
     P["ex_alloc_near"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[0] == "near_expiry_lt_3m"
     P["ex_alloc_ok"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[0] == "shelf_life_ge_3m"
+    P["ex_alloc_undet"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[0] not in ("outright_expired", "near_expiry_lt_3m", "shelf_life_ge_3m")
+    P["ex_unread"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] in (None, "no_images_read")
+    P["ex_img_ok"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] == "received_item_ok"
+    P["ex_img_batchonly"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] == "batch_only_no_expiry_read"
     P["ex_read"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] not in (None, "no_images_read")
     P["ex_img_expired"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] == "received_item_expired"
     P["ex_img_near"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] == "received_near_expiry_lt_3m"
-    P["ex_img_batch"] = lambda r: r["category"] == "Expiry Issue" and bool(exp_vals(r)[2].get("batch_differs_from_allocation") or exp_vals(r)[2].get("same_batch_different_expiry"))
+    P["ex_diff"] = lambda r: r["category"] == "Expiry Issue" and bool(exp_vals(r)[2].get("batch_differs_from_allocation") or exp_vals(r)[2].get("same_batch_different_expiry"))
     P["ex_img_unclear"] = lambda r: r["category"] == "Expiry Issue" and exp_vals(r)[1] == "cx_image_unclear"
 
     P["dm"] = cat("Damaged/Defective")
@@ -99,11 +105,13 @@ def main():
     P["dm_nc"] = lambda r: r["category"] == "Damaged/Defective" and not (r.get("extra") or {}).get("damaged", {}).get("cold")
     P["dm_nc_log"] = lambda r: P["dm_nc"](r) and bool((r.get("extra") or {}).get("damaged", {}).get("logistics_exception"))
     P["dm_nc_read"] = lambda r: P["dm_nc"](r) and r["order_id"] in nc_by_order
+    P["dm_nc_unread"] = lambda r: P["dm_nc"](r) and r["order_id"] not in nc_by_order
     for k, _l, _w in BUCKETS:
         P["dmb_" + k] = (lambda k: lambda r: P["dm_nc"](r) and nc_by_order.get(r["order_id"]) == k)(k)
 
     P["mq"] = cat("Missing/Wrong Qty")
     P["mq_sku"] = lambda r: r["category"] == "Missing/Wrong Qty" and ((r.get("extra") or {}).get("missing") or {}).get("kind") == "sku_missing"
+    P["mq_none"] = lambda r: r["category"] == "Missing/Wrong Qty" and not ((r.get("extra") or {}).get("missing") or {}).get("kind")
     P["mq_item"] = lambda r: r["category"] == "Missing/Wrong Qty" and ((r.get("extra") or {}).get("missing") or {}).get("kind") == "item_missing"
     P["sw"] = cat("Switch Orders")
     P["mrp"] = cat("MRP/Batch Mismatch")
@@ -122,32 +130,41 @@ def main():
 
         ("wm", "Wrong medicine", "tickets", "raised", 0, True),
         ("wm_read", "↳ photo read", "received SKU name read", "wm", 1, False),
+        ("wm_unread", "↳ photo not read yet", "", "wm", 1, False),
         ("wm_same", "↳ photo shows the ordered SKU", "complaint not supported", "wm_read", 1, False),
         ("wm_variant", "↳ same medicine, different pack form", "same brand, other strength / pack / form", "wm_read", 1, False),
         ("wm_diff", "↳ different medicine", "", "wm_read", 1, False),
+        ("wm_undet", "↳ SKU name not readable", "", "wm_read", 1, False),
         ("wm_bin", "   ↳ bin link (picking error)", "same bin / rack / nearby", "wm_diff", 2, False),
         ("wm_batch", "   ↳ batch shared with ordered line", "", "wm_diff", 2, False),
 
         ("ex", "Expiry", "tickets", "raised", 0, True),
-        ("ex_alloc_out", "↳ outright expired (allocation)", "expiry <= delivery", "ex", 1, False),
+        ("ex_alloc_out", "↳ outright expired (allocation)", "allocation split - these 4 add up to Expiry", "ex", 1, False),
         ("ex_alloc_near", "↳ near expiry <3 months (allocation)", "", "ex", 1, False),
         ("ex_alloc_ok", "↳ >=3 months in allocation", "complaint not supported by allocation", "ex", 1, False),
-        ("ex_read", "↳ photo read", "", "ex", 1, False),
+        ("ex_alloc_undet", "↳ allocation not determinable", "no expiry return line / delivery date", "ex", 1, False),
+        ("ex_read", "↳ photo read", "photo split - read + not read add up to Expiry", "ex", 1, False),
+        ("ex_unread", "↳ photo not read yet", "", "ex", 1, False),
         ("ex_img_expired", "   ↳ received item already expired", "printed expiry before delivery", "ex_read", 2, False),
         ("ex_img_near", "   ↳ received item near expiry <3 months", "", "ex_read", 2, False),
-        ("ex_img_batch", "   ↳ batch / expiry differs from invoice allocation", "", "ex_read", 2, False),
+        ("ex_img_ok", "   ↳ received item has >=3 months", "photo supports the allocation", "ex_read", 2, False),
+        ("ex_img_batchonly", "   ↳ batch read, expiry not legible", "", "ex_read", 2, False),
         ("ex_img_unclear", "   ↳ CX image not clear", "", "ex_read", 2, False),
+        ("ex_diff", "   memo: batch / expiry differs from allocation", "overlaps the rows above - not additive", "ex_read", 2, False),
 
         ("dm", "Damaged", "tickets", "raised", 0, True),
         ("dm_cold", "↳ cold chain", "temperature complaint - photos not read", "dm", 1, False),
         ("dm_nc", "↳ non-cold", "", "dm", 1, False),
-        ("dm_nc_log", "   ↳ logistics exception recorded", "NDR / repeat attempt", "dm_nc", 2, False),
-        ("dm_nc_read", "   ↳ photo read", "", "dm_nc", 2, False),
+        ("dm_nc_read", "   ↳ photo read", "the buckets below add up to this", "dm_nc", 2, False),
+        ("dm_nc_unread", "   ↳ photo not read yet", "", "dm_nc", 2, False),
     ] + [("dmb_" + k, "      ↳ " + lab, wh, "dm_nc_read", 3, False) for k, lab, wh in BUCKETS] + [
+
+        ("dm_nc_log", "memo: non-cold with a logistics exception", "NDR / repeat attempt - overlaps the rows above, not additive", "dm_nc", 1, False),
 
         ("mq", "Missing / short quantity", "tickets", "raised", 0, True),
         ("mq_sku", "↳ SKU missing", "whole ordered line", "mq", 1, False),
         ("mq_item", "↳ item missing", "partial quantity", "mq", 1, False),
+        ("mq_none", "↳ not classifiable", "no return item with a quantity to compare", "mq", 1, False),
 
         ("sw", "Order swap", "tickets", "raised", 0, True),
         ("mrp", "MRP / batch mismatch", "tickets (new sub-disposition)", "raised", 0, True),

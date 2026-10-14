@@ -168,7 +168,14 @@ def main():
     cap = (gen.astimezone(IST) - timedelta(days=T_MINUS_DAYS)).date().isoformat()
 
     rows = []
+    # One row per order, first ticket wins - identical to the dashboard's dedupeByOrder(), so every RCA
+    # count reconciles with the Everything tab's "Total issues raised (unique per order)" tile.
+    seen_orders, dup_dropped = set(), 0
     for t in tickets:
+        if t["order_id"] in seen_orders:
+            dup_dropped += 1
+            continue
+        seen_orders.add(t["order_id"])
         tid = t["ticket_id"]
         state, sub = investigation_state(checks.get(tid))
         dep_raw = deps.get(tid)
@@ -223,6 +230,7 @@ def main():
         "dependency_fetched": sum(1 for r in rows if r["dependency_fetched"]),
         "reconciles": reconciles,
         "no_decision_reasons": NO_DECISION_REASONS,
+        "duplicate_tickets_dropped": dup_dropped,
         "extra_summary": extra.get("summary"),
         "mrp_sample": extra.get("mrp_sample"),
         "damaged_noncold": load("rca_damaged_noncold.json", None),
