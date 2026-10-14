@@ -225,7 +225,7 @@ before assuming the classifier or cache is wrong.
    `pipeline/dashboard_built.html`, copies it to repo-root `index.html`.
 8. Commit + push.
 
-## RCA layer (added 2026-10-14) — Tab 6 "RCA"
+## RCA layer (added 2026-10-14) — Tab 6 "RCA" and Tab 7 "RCA view"
 
 Per raised ticket: *how the warehouse investigated* (funnel) and *why it happened* (RCA).
 Run after step 2, before `build_html.py`:
@@ -251,6 +251,9 @@ Run after step 2, before `build_html.py`:
    relation is computed (else `candidate_unverified`).
 5. `python3 pipeline/build_rca_inputs.py` → `rca_expiry.json`; `python3 pipeline/build_rca.py` → `rca.json`
    (fails loudly if the funnel does not reconcile; T-2 capped).
+6. `python3 pipeline/build_rca_trend.py` -> `rca_trend.json`: Tab 7 "RCA view", the day-wise table (same pattern and
+   T-2 cap as the Everything tab's macro table; cells are "count | % of parent row"; photo-derived rows count
+   only photo-read tickets and carry a coverage row). Run before `build_html.py`.
 Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons) and `test_rca.py`.
 
 Rules decided with the owner: the funnel is by OUTCOME — Accepted / Rejected / No decision (+ "Not yet

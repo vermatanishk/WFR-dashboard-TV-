@@ -183,6 +183,8 @@
   table.wfr-macro-table .barrier { border-right: 2px solid var(--baseline); }
   table.wfr-macro-table thead .frozen { z-index: 4; }
   .wfr-macro-sub { font-size: 10.5px; color: var(--text-muted); font-weight: 400; white-space: normal; margin-top: 2px; }
+  table.wfr-macro-table tr.wfr-macro-head td { font-weight: 700; border-top: 2px solid var(--baseline); }
+  table.wfr-macro-table tr.wfr-macro-head td.frozen { background: var(--surface-1); }
   table.wfr-macro-table tr.wfr-macro-highlight td { background: color-mix(in srgb, var(--status-warning) 30%, var(--surface-1)); font-weight: 700; }
 
   .wfr-topline { background: linear-gradient(135deg, color-mix(in srgb, var(--series-1) 10%, var(--surface-1)), var(--surface-1)); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 20px; }
@@ -369,6 +371,7 @@
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t4">4 · Zoho EOD</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t5">5 · Monthly Leaderboard</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t6">6 · RCA</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t7">7 · RCA view</button>
     </div>
 
     <div class="wfr-toolbar">
@@ -607,6 +610,20 @@
       </div>
     </div>
 
+    <!-- TAB 7: RCA view (day-wise, same pattern as the Everything tab's macro table) -->
+    <div class="wfr-panel" id="t7">
+      <div class="wfr-card">
+        <div class="wfr-lb-title">RCA view - day by day</div>
+        <div class="wfr-footnote" style="margin:6px 0 10px;">Same layout as the Everything tab's day-wise table: frozen aggregate columns on the left, then one column per day, most recent complete day first. Each cell is <b>count | % of its parent row</b> (the row's subtitle says which). <b>Shows complete days up to T-2 only</b><span id="rca-t2-note"></span> - the Warehouse team needs ~2 days to comment. Photo-derived rows (wrong-medicine relation, expiry photo, damaged buckets) count only tickets whose photos have been read; each has a "photo read" coverage row so unread tickets are never folded in. Cold-chain damaged tickets are not photo-read.</div>
+        <div class="wfr-macro-scroll">
+          <table class="wfr-macro-table" id="rca-trend-table">
+            <thead><tr id="rca-trend-head"></tr></thead>
+            <tbody id="rca-trend-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -623,6 +640,7 @@ const ORDERS_BY_DAY_LOC = __ORDERS_BY_DAY_LOCATION_JSON__;
 const EOD = __EOD_JSON__;
 const RFD_WEEKLY = __RFD_WEEKLY_JSON__;
 const RCA = __RCA_JSON__;
+const RCA_TREND = __RCA_TREND_JSON__;
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -1530,4 +1548,35 @@ function renderMacroTrend() {
   }).join('');
 }
 renderMacroTrend();
+// ---- Tab 7: RCA view - day-wise, same pattern as renderMacroTrend() (Tab 1) ----
+// Fully precomputed in build_rca_trend.py; no filters. Cell text is "count | % of parent row".
+function renderRcaTrend() {
+  const head = document.getElementById('rca-trend-head');
+  const body = document.getElementById('rca-trend-body');
+  if (!head || !body || !RCA_TREND || !RCA_TREND.rows) return;
+  const days = RCA_TREND.days.slice().reverse(); // most recent first
+  const note = document.getElementById('rca-t2-note');
+  if (note && RCA_TREND.t2_cutoff) {
+    const held = RCA_TREND.excluded_tickets || 0;
+    note.textContent = ` (through ${RCA_TREND.day_labels[RCA_TREND.t2_cutoff] || RCA_TREND.t2_cutoff}` + (held ? `; ${held} newer ticket${held === 1 ? '' : 's'} held back)` : ')');
+  }
+  head.innerHTML = `<th class="frozen frozen-label">Metric</th>
+    <th class="frozen frozen-3mo num">3 month total</th>
+    <th class="frozen frozen-1mo num">Last month total</th>
+    <th class="frozen frozen-2wk num barrier">Last 2 weeks total</th>
+    ${days.map(d => `<th class="num">${RCA_TREND.day_labels[d]}</th>`).join('')}`;
+  const txt = c => (c ? c.text : '');
+  body.innerHTML = RCA_TREND.rows.map(row => {
+    const pad = (row.indent || 0) * 10;
+    const labelHtml = `<div style="padding-left:${pad}px">${row.label}</div>` + (row.sub ? `<div class="wfr-macro-sub" style="padding-left:${pad}px">${row.sub}</div>` : '');
+    return `<tr class="${row.kind === 'wfr_pto' ? 'wfr-macro-head' : ''}">
+      <td class="frozen frozen-label">${labelHtml}</td>
+      <td class="frozen frozen-3mo num">${txt(row['3mo'])}</td>
+      <td class="frozen frozen-1mo num">${txt(row['1mo'])}</td>
+      <td class="frozen frozen-2wk num barrier">${txt(row['2wk'])}</td>
+      ${days.map(d => `<td class="num">${txt(row.daily[d])}</td>`).join('')}
+    </tr>`;
+  }).join('');
+}
+renderRcaTrend();
 </script>
