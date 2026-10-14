@@ -254,6 +254,10 @@ Run after step 2, before `build_html.py`:
 6. `python3 pipeline/build_rca_trend.py` -> `rca_trend.json`: Tab 7 "RCA view", the day-wise table (same pattern and
    T-2 cap as the Everything tab's macro table; cells are "count | % of parent row"; photo-derived rows count
    only photo-read tickets and carry a coverage row). Run before `build_html.py`.
+7. `python3 pipeline/build_rca_export.py` -> `rca_export.json`: order/ticket-level rows (one per order) for the live
+   Google Sheet. `pipeline/gsheet/Code.gs` (Apps Script, see `gsheet/README.md`) reads `rca_export.json` +
+   `rca_trend.json` from the raw GitHub URL and rebuilds the sheet's "Raw data" and "RCA view" tabs; commit and push
+   both JSONs with the refresh. The repo is public: no names / phones / WH comment text in the export, only IDs.
 Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons), `test_rca.py`, and `test_rca_trend.py`
 (every parent row = sum of its children in every column). RCA counts are **unique per order, first ticket wins** -
 the same rule as the dashboard's `dedupeByOrder()` / "Total issues raised (unique per order)" tile.
