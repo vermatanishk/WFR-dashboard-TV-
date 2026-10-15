@@ -4,7 +4,7 @@ Two tabs, rebuilt from git on every refresh:
 
 | Tab | Source file | What |
 |---|---|---|
-| Raw data | `pipeline/rca_export.json` | One row per **order** (first ticket wins), trailing 90 days: Order ID, Ticket ID, Created date, Warehouse, Issue, Investigation bucket 1 (Accepted / Rejected / No decision), Investigation bucket 2 (no-decision reason), Return request, Dependency, Raised bucket 1-3 (the issue tree), Evidence basis, Confidence, Photos read, In T-2 scope |
+| Raw data | `pipeline/rca_export.json` | One row per **order** (first ticket wins), trailing 60 days: Order ID, Ticket ID, Created date, Warehouse, Issue, Investigation bucket 1 (Accepted / Rejected / No decision), Investigation bucket 2 (no-decision reason), Return request, Dependency, Raised bucket 1-3 (the issue tree), Evidence basis, Confidence, Photos read, In T-2 scope |
 | RCA view | computed in the sheet from the Raw data tab, layout from `pipeline/rca_view_spec.json` | The day-wise table from the website's Tab 7 (3 month / last month / last 2 weeks, then one column per day, T-2 capped). Same spec as the website, verified cell-by-cell |
 | Info | export + view | Data timestamp, T-2 date, row counts, how to read |
 
