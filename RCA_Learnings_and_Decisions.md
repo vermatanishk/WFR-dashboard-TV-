@@ -116,3 +116,7 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
 - Catalog bin candidates (`rca_wrongmed_raw.jsonl`) were pulled for 95 order/brand pairs; where the catalog
   has no candidate with a bin at the order's warehouse the bin link stays "Bin not assessed".
 - Orders created 2026-10-14 are outside T-2 (held back) and still carry unread photos; they enter on the next refresh.
+- **View window = 60 days (fix 2026-10-15):** the export and Tab 7 still carried July 16 - Aug 15 rows whose photos
+  were deliberately not read, so "Photo not read yet" kept showing (214 rows). `build_rca_export.py` now keeps only
+  orders created in the last 60 days (`WINDOW_DAYS`), so the website, the sheet's Raw data tab and every test see
+  the same window. Result: 1,440 orders, 0 unread photos in the T-2 window.

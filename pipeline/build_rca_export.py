@@ -125,6 +125,9 @@ def _raised(r, nc_by_order):
     return (CAT.get(c, c), "", "", "", "", "No")
 
 
+WINDOW_DAYS = 60
+
+
 def main():
     rca = json.loads((HERE / "rca.json").read_text())
     nc = json.loads((RAW / "rca_damaged_noncold.json").read_text())
@@ -135,8 +138,14 @@ def main():
         if int(o) not in nc_by_order or pri[k] < pri[nc_by_order[int(o)]]:
             nc_by_order[int(o)] = k
 
+    # Owner decision 2026-10-15: the RCA view covers the last 60 days only (photo reads are manual,
+    # so older days were deliberately not read). Window starts 60 days before the pull date.
+    from datetime import datetime, timedelta
+    start = (datetime.strptime(rca["generated_at"][:10], "%Y-%m-%d") - timedelta(days=WINDOW_DAYS)).date().isoformat()
     rows = []
     for r in rca["rows"]:
+        if r["date"] < start:
+            continue
         b1, b2, b3, basis, conf, photos = _raised(r, nc_by_order)
         rows.append([
             r["order_id"], r["ticket_id"], r["date"], r["location"], CAT.get(r["category"], r["category"]),
@@ -146,7 +155,7 @@ def main():
             b1, b2, b3, basis, conf, photos, "Yes" if r["in_t2"] else "No (held back, WH not yet commented)",
         ])
     out = {"generated_at": rca["generated_at"], "t2_cap_date": rca["t2_cap_date"], "columns": COLUMNS, "rows": rows,
-           "note": "One row per order (first ticket wins). Trailing 90 days. Built by pipeline/build_rca_export.py"}
+           "note": "One row per order (first ticket wins). Trailing 60 days. Built by pipeline/build_rca_export.py"}
     (HERE / "rca_export.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
     from collections import Counter
     print(f"rca_export.json: {len(rows)} rows x {len(COLUMNS)} columns")

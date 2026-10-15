@@ -1,6 +1,6 @@
 /**
  * WFR RCA live sheet - pulls JSON from the public GitHub repo and rebuilds two tabs:
- *   "Raw data"  - one row per order (trailing 90 days): order, ticket, issue, investigation buckets,
+ *   "Raw data"  - one row per order (trailing 60 days): order, ticket, issue, investigation buckets,
  *                 raised buckets, evidence.            <- pipeline/rca_export.json
  *   "RCA view"  - the website's Tab 7 day-wise table, COMPUTED HERE FROM THE "Raw data" TAB using the
  *                 declarative layout in pipeline/rca_view_spec.json (same spec the website uses, so the
