@@ -137,3 +137,4 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
 - **Naming (owner, 2026-10-15):** the wrong-SKU classes are "Same family medicine" (same brand; strength, pack
   size, drug form or variant word differs - e.g. Aloja 12.5 vs 25, Accu-Chek Active vs Instant, Lotion vs Cream),
   "Different medicine" and "Not readable". "Same family" is not limited to a different pack form.
+- **Cascade rule (owner, 2026-10-15):** every deep dive is placed directly below its parent metric, indented one level per step, no exceptions. Enforced in `rca_view_spec._cascade()` (depth-first order, indent and arrow derived from the parent chain; asserts every row has a known parent). Web indent is 18px per level, the Sheet uses 3 spaces per level.

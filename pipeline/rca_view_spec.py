@@ -111,7 +111,37 @@ def build_layout():
         MQ + [(BASIS, "in", ["Default (no detail)"])])
     add("sw", "Order swap", "tickets", "raised", 0, True, [(ISSUE, "in", ["Order swap"])])
     add("mrp", "MRP / batch mismatch", "tickets (new sub-disposition)", "raised", 0, True, [(ISSUE, "in", ["MRP / batch mismatch"])])
-    return L
+    return _cascade(L)
+
+
+def _cascade(L):
+    """Owner rule: every deep dive sits directly BELOW its parent metric, indented one level per step
+    down the tree - no exceptions. Rows are re-ordered depth-first (siblings keep their declared order),
+    `indent` is derived from the parent chain (top-level metrics = 0) and the label prefix is derived from
+    it too, so nothing depends on hand-typed spaces."""
+    import re
+    by_parent = {}
+    for r in L:
+        by_parent.setdefault(r["parent"], []).append(r)
+    keys = {r["key"] for r in L}
+    assert all(r["parent"] is None or r["parent"] in keys for r in L), "row with unknown parent"
+    out = []
+
+    def walk(parent, depth):
+        for r in by_parent.get(parent, []):
+            out.append(r)
+            r["_depth"] = depth
+            walk(r["key"], depth + 1)
+
+    walk(None, 0)
+    assert len(out) == len(L), "unreachable rows in layout"
+    for r in out:
+        d = r.pop("_depth") - 1          # 'raised' is the root (depth 0); its direct rows are top-level metrics
+        d = max(d, 0)
+        text = re.sub(r"^[\s\u21b3]+", "", r["label"])
+        r["indent"] = d
+        r["label"] = text if d == 0 else "\u21b3 " + text
+    return out
 
 
 def _match(row, col, where):

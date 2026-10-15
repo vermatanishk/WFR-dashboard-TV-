@@ -1582,7 +1582,7 @@ function renderRcaTrend() {
     ${days.map(d => `<th class="num">${RCA_TREND.day_labels[d]}</th>`).join('')}`;
   const txt = c => (c ? c.text : '');
   body.innerHTML = view.rows.map(row => {
-    const pad = (row.indent || 0) * 10;
+    const pad = (row.indent || 0) * 18;
     const labelHtml = `<div style="padding-left:${pad}px">${row.label}</div>` + (row.sub ? `<div class="wfr-macro-sub" style="padding-left:${pad}px">${row.sub}</div>` : '');
     return `<tr class="${row.kind === 'wfr_pto' ? 'wfr-macro-head' : ''}">
       <td class="frozen frozen-label">${labelHtml}</td>

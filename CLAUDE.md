@@ -271,6 +271,7 @@ which works from the Raw data tab + hidden "Spec" tab because simple triggers ca
 that used to sit under "No decision" are gone. Every photo split is read + not read yet + **not available**; "not
 available" = no return request, so no complaint photo exists. Expiry "batch/expiry differs from allocation" splits into
 received item expired / not expired / expiry not legible.
+**Cascade rule (owner, 2026-10-15)**: every deep dive sits directly below its parent metric, indented one level per step; `rca_view_spec._cascade()` re-orders depth-first and derives `indent` + the `↳` prefix from the parent chain - never hand-type spaces or append a child out of order.
 Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons), `test_rca.py`, `test_rca_trend.py` (13 additive
 groups x All + 3 return states; the 3 return states add up to All for every row), `check_view_from_export.py`
 (independent hand-written predicates, every cell of every variant) and `node pipeline/test_view_js.js` (Apps Script
