@@ -195,6 +195,38 @@ def main():
             elif e["ordered_name"] and not photographed_any and e["relation_type"] != "unknown":
                 e["relation_type"] = "other_order_line_photographed"
                 e["basis"] = "ordered SKU not in photo; only other lines of the order"
+    # Bin + batch evidence from the catalog pull (rca_wrongmed_cand_raw.json: up to 6 same-brand catalog
+    # candidates per (order, ordered drug, received brand) with their bin at the order's warehouse and the
+    # number of OTHER orders where that candidate was allocated a batch number that this order's ordered line
+    # also carries). Only candidates that agree with every strength/number read off the pack are used.
+    cp = RAW / "rca_wrongmed_cand_raw.json"
+    if cp.exists():
+        cand = {}
+        for r in json.loads(cp.read_text())["result"]["data"]:
+            cand.setdefault((r["order_id"], r["drug"], r["brand"]), []).append(r)
+        oloc = {(r["order_id"], r["drug_code"]): r["ordered_loc"] for r in rows}
+        rank = {"picking_error": 3, "picking_error_nearby": 2, "no_bin_link": 1, "unknown": 0}
+        for o, es in best.items():
+            for e in es:
+                if e["relation_type"] not in ("different_medicine", "same_brand_variant"):
+                    continue
+                oid, drug = int(o), e["ordered_drug"]
+                prods = e.get("foreign_items") or recv.get(oid, [])
+                bin_best, shared = None, 0
+                for prod in prods:
+                    for c in cand.get((oid, drug, brand_token(prod)), []):
+                        if not candidate_verified(prod, c["cand_name"]):
+                            continue
+                        shared = max(shared, int(c["shared"] or 0))
+                        br = bin_relation(oloc.get((oid, drug)), c["cand_loc"])
+                        if br[0] != "unknown" and (bin_best is None or rank[br[0]] > rank[bin_best[0][0]]):
+                            bin_best = (br, c)
+                if bin_best:
+                    br, c = bin_best
+                    e.update({"candidate": c["cand_name"], "ordered_loc": oloc.get((oid, drug)), "candidate_loc": c["cand_loc"],
+                              "bin_relation": br[0], "bin_why": br[1], "bin_strength": br[2]})
+                e["batch_shared_orders"] = shared
+
     # Owner-confirmed labels override the image classifier (and are the ground truth for any
     # future accuracy measurement). Rule from the owner: evaluate only the SKU in concern -
     # the ordered return-item SKU - other products in the same photo are out of scope.

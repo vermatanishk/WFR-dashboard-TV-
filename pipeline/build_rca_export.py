@@ -76,7 +76,7 @@ def _raised(r, nc_by_order):
         b2 = ""
         if e["relation_type"] in ("different_medicine", "same_brand_variant"):
             br = e.get("bin_relation") or ""
-            batch = (e.get("batch_shared_orders") or 0) > 1
+            batch = (e.get("batch_shared_orders") or 0) >= 1
             if br.startswith("picking_error") and batch:
                 b2 = "Bin link + batch shared"
             elif br.startswith("picking_error"):

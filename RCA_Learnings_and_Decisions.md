@@ -125,3 +125,12 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   issue (batch only) / other (no structural link or not assessable). Most land in "other" today because the
   catalog candidate bin at the order's warehouse was not found/verified for ~114 entries; batch sharing needs
   `rca_wrongmed_rca.json` for the new window. This is an evidence gap, not an absence of the issue.
+- **Bin + batch pull for the 60-day window (2026-10-15):** `rca_wrongmed_cand_raw.json` holds, per (order, ordered
+  drug, received brand), up to 6 same-brand catalog candidates with their bin at the order's warehouse and the
+  count of OTHER orders where that candidate was allocated a batch number also carried by this order's ordered line.
+  `build_rca_wrongmed.py` keeps only candidates that agree with every strength/number read off the pack, takes the
+  strongest bin relation, and records `batch_shared_orders` (>=1 counts as batch sharing; export threshold changed
+  from >1). Result for the window: same-medicine-different-pack 15 bin / 4 batch / 36 other; different medicine
+  5 bin / 3 batch / 85 other (37 confirmed no structural link, 48 not assessable - no verified candidate with a bin).
+  The Apps Script evaluator is layout-driven, so no script change is needed: run `refreshAll` after the push.
+  Re-run this pull each refresh (query shape: see this section; pairs come from the wrongmed entries in the window).
