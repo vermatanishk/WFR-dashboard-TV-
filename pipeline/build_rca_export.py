@@ -35,7 +35,8 @@ ND = {"footage_missing": "Footage not available", "batch_not_in_inventory": "Bat
       "cx_image_unclear": "CX image not clear", "dependency_not_marked": "Dependency not marked",
       "docpharma": "DocPharma order", "cogs_lt_100": "COGS < 100", "agent_mistake": "Agent mistake (WH marked, no WH comment)",
       "return_not_received_at_wh": "Return not received at WH", "other_wh_note": "Other WH note"}
-RET = {"raised": "Raised", "cancelled": "Cancelled", "not_raised": "Not raised"}
+RET = {"accepted_refunded": "Raised - Accepted & refunded", "cancelled": "Raised - Cancelled",
+       "rejected": "Raised - Rejected", "in_progress": "Raised - In progress", "not_raised": "Not raised"}
 CAT = {"Missing/Wrong Qty": "Missing / short quantity", "Wrong Medicines": "Wrong medicine", "Expiry Issue": "Expiry",
        "Damaged/Defective": "Damaged", "Switch Orders": "Order swap", "MRP/Batch Mismatch": "MRP / batch mismatch"}
 BUCKET_LABEL = {k: lab for k, lab, _ in BUCKETS}

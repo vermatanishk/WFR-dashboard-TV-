@@ -23,7 +23,7 @@ ND = ["Footage not available", "Batch not from our inventory", "CX image not cle
 UNREAD = "Photo not read yet"
 NA = "Photo not available (no return request)"
 NOT_READ = [UNREAD, NA]           # photo-split: read = not in this list
-RET_STATES = ["Raised", "Cancelled", "Not raised"]
+RET_STATES = ["Raised - Accepted & refunded", "Raised - Cancelled", "Raised - Rejected", "Raised - In progress", "Not raised"]
 
 
 def _w(*conds):

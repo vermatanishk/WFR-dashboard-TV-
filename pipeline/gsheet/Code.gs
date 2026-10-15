@@ -18,7 +18,7 @@ var RAW_TAB = 'Raw data';
 var VIEW_TAB = 'RCA view';
 var INFO_TAB = 'Info';
 var FILTER_CELL = 'B1';          // "Return request" selector on the RCA view tab
-var RET_OPTIONS = ['All', 'Raised', 'Cancelled', 'Not raised'];
+var RET_OPTIONS = ['All', 'Raised - Accepted & refunded', 'Raised - Cancelled', 'Raised - Rejected', 'Raised - In progress', 'Not raised'];
 var HEADER_ROW = 3;               // RCA view: row 1 = selector, row 3 = column header
 var SPEC_TAB = 'Spec';            // hidden: layout + cutoff saved at refresh so the dropdown works offline
 

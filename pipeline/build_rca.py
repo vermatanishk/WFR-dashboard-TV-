@@ -114,16 +114,30 @@ def image_status(order_id, images_by_order, category=None):
 CANCEL_CODES = {280, 231}   # marketplace_status_master: cancelledReturn, returnPickupCancelled
 
 
-def return_state(resolution, order_id, ret_status):
-    """Where the return request stands. Not raised = no return row at all in ClickHouse;
-    cancelled = every request with a status is cancelled (280 cancelledReturn / 231
-    returnPickupCancelled); otherwise raised (in progress or completed)."""
-    if resolution == "no_return_record":
-        return "not_raised"
-    codes = [c for c in ret_status.get(str(order_id), []) if c]
-    if codes and all(c in CANCEL_CODES for c in codes):
+def return_state(resolution, order_id, ret_status, outcomes=None):
+    """Where the return request stands (owner view, 2026-10-15), from the DTO return request of the order:
+      not_raised        - no customer (DTO) return request (RTO / courier-only returns are not complaints)
+      cancelled         - every request is cancelledReturn (280) or returnPickupCancelled (231)
+      rejected          - the facility QC (250) rejected at least one return item
+      accepted_refunded - facility QC done / refund approved (250, 245, 246, 247), nothing rejected
+      in_progress       - requested, pickup / transit / validation not finished yet
+    `outcomes` = rca_return_outcome_raw.json rows keyed by order_id (statuses, rejected item count)."""
+    x = (outcomes or {}).get(order_id)
+    if x is None:
+        if resolution == "no_return_record":
+            return "not_raised"
+        codes = [c for c in ret_status.get(str(order_id), []) if c]
+        if codes and all(c in CANCEL_CODES for c in codes):
+            return "cancelled"
+        return "in_progress"
+    st = {c for c in x["st"] if c is not None}
+    if st and st <= CANCEL_CODES:
         return "cancelled"
-    return "raised"
+    if 250 in st and (x.get("rej") or 0) > 0:
+        return "rejected"
+    if st & {250, 245, 246, 247}:
+        return "accepted_refunded"
+    return "in_progress"
 
 
 def decide(state, subtype, dependency, img_status, meta=None):
@@ -162,6 +176,7 @@ def main():
     ret_status = load("rca_return_status.json", {})   # order_id -> distinct return_status codes (only orders with a cancel/multi/null state are listed)
     from image_reads import reads_by_order
     images_by_order = reads_by_order()
+    outcomes = {int(r["order_id"]): r for r in (load("rca_return_outcome_raw.json", {}).get("result", {}).get("data") or [])}
     rs_override = load("rca_return_state_override.json", {})   # order -> why: RTO-only returns are not complaint requests
 
     gen = datetime.strptime(data["generated_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
@@ -200,7 +215,7 @@ def main():
             "decision": decision,
             "no_decision_reason": nd_reason,
             "return_state": ("not_raised" if str(t["order_id"]) in rs_override else
-                             return_state(t["resolution"], t["order_id"], ret_status)),
+                             return_state(t["resolution"], t["order_id"], ret_status, outcomes)),
             "agent_mistake_note": agent_mistake_note,
             "extra": extra["tickets"].get(tid),
             "is_cold": t.get("is_cold") if "is_cold" in t else None,

@@ -95,7 +95,7 @@ for k, lab in BK.items():
 
 cut = T["t2_cutoff"]
 bad = miss = cells = 0
-for vname, rs in (("All", None), ("Raised", "Raised"), ("Cancelled", "Cancelled"), ("Not raised", "Not raised")):
+for vname, rs in tuple([("All", None)] + [(x, x) for x in ["Raised - Accepted & refunded", "Raised - Cancelled", "Raised - Rejected", "Raised - In progress", "Not raised"]]):
     view = T if rs is None else T["by_return"][rs]
     rows = [r for r in E["rows"] if r[C["Created date"]] <= cut and (rs is None or g(r, "Return request") == rs)]
     for tr in view["rows"]:

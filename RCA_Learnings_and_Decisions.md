@@ -138,3 +138,17 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   size, drug form or variant word differs - e.g. Aloja 12.5 vs 25, Accu-Chek Active vs Instant, Lotion vs Cream),
   "Different medicine" and "Not readable". "Same family" is not limited to a different pack form.
 - **Cascade rule (owner, 2026-10-15):** every deep dive is placed directly below its parent metric, indented one level per step, no exceptions. Enforced in `rca_view_spec._cascade()` (depth-first order, indent and arrow derived from the parent chain; asserts every row has a known parent). Web indent is 18px per level, the Sheet uses 3 spaces per level.
+
+## 11. Return-request outcome (holistic view, 2026-10-15)
+- The return-request cut now has five outcomes per order (`rca_return_outcome_raw.json`, ClickHouse DTO return
+  requests + items): **Raised - Accepted & refunded** (facility QC 250 / refund approved 245-247, nothing rejected),
+  **Raised - Cancelled** (cancelledReturn 280 / returnPickupCancelled 231), **Raised - Rejected** (QC 250 with at
+  least one rejected item), **Raised - In progress** (requested / pickup / transit / validation) and **Not raised**
+  (no customer DTO request; RTO-only returns are not complaints).
+- Bug fixed: the old Raised/Cancelled/Not raised cut only knew cancel codes for orders pulled earlier, so 181
+  cancelled returns were shown as "Raised". Cancelled is now 213 in the 60-day window (was 30).
+- ClickHouse cannot tell who cancelled (customer vs system): 280 `cancelledReturn` is the only code; labelled
+  "Cancelled", not "customer-initiated".
+- Window mix (1,440 orders): accepted & refunded 984 (68%), cancelled 213 (14%), rejected 57 (4%), in progress
+  72 (5%), not raised 114 (8%). 739 of the 1,020 tickets WH *rejected* were still refunded (BOD) - refund is not
+  evidence of a WH fault.

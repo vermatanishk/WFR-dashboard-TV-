@@ -614,13 +614,15 @@
     <div class="wfr-panel" id="t7">
       <div class="wfr-card">
         <div class="wfr-lb-title">RCA view - day by day</div>
-        <div class="wfr-footnote" style="margin:6px 0 10px;">Same layout as the Everything tab's day-wise table: frozen aggregate columns on the left, then one column per day, most recent complete day first. Each cell is <b>count | % of its parent row</b> (the row's subtitle says which). <b>Shows complete days up to T-2 only</b><span id="rca-t2-note"></span> - the Warehouse team needs ~2 days to comment. Three macro buckets: the <b>investigation funnel</b>, the <b>raised-why tree</b>, and the <b>return request</b> (raised / cancelled / not raised, the selector above). Photo-derived rows count only tickets whose photos have been read; each photo split adds up as read + not read yet + not available. Cold-chain damaged tickets are not photo-read.</div>
+        <div class="wfr-footnote" style="margin:6px 0 10px;">Same layout as the Everything tab's day-wise table: frozen aggregate columns on the left, then one column per day, most recent complete day first. Each cell is <b>count | % of its parent row</b> (the row's subtitle says which). <b>Shows complete days up to T-2 only</b><span id="rca-t2-note"></span> - the Warehouse team needs ~2 days to comment. Three macro buckets: the <b>investigation funnel</b>, the <b>raised-why tree</b>, and the <b>return request</b> (accepted & refunded / cancelled / rejected / in progress / not raised, the selector above). Photo-derived rows count only tickets whose photos have been read; each photo split adds up as read + not read yet + not available. Cold-chain damaged tickets are not photo-read.</div>
         <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
           <label for="rca-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
           <select id="rca-ret-filter" class="wfr-btn" style="padding:5px 8px;">
             <option value="All">All</option>
-            <option value="Raised">Raised</option>
-            <option value="Cancelled">Cancelled</option>
+            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
+            <option value="Raised - Cancelled">Raised - Cancelled</option>
+            <option value="Raised - Rejected">Raised - Rejected</option>
+            <option value="Raised - In progress">Raised - In progress</option>
             <option value="Not raised">Not raised</option>
           </select>
           <span class="wfr-footnote" style="margin:0;">Re-cuts every row. Photo rows: <b>not available</b> = no return request, so no complaint photo exists.</span>
@@ -1261,7 +1263,7 @@ function renderRCA() {
     '(first match wins: footage, batch claim, CX image not clear, dependency not marked, ...). <b>Not yet read = ' + unread + '</b> tickets have no Warehouse-comment verdict cached yet, so Accepted/Rejected are a floor, not the final split.';
 
   const ndRows = rows.filter(r => r.decision === 'no_decision');
-  const RS = [['not_raised', 'Return request not raised'], ['cancelled', 'Return cancelled'], ['raised', 'Return raised (in progress / completed)']];
+  const RS = [['not_raised', 'Not raised'], ['cancelled', 'Raised - Cancelled'], ['rejected', 'Raised - Rejected'], ['in_progress', 'Raised - In progress'], ['accepted_refunded', 'Raised - Accepted & refunded']];
   document.getElementById('rca-nd-ret').innerHTML =
     '<thead><tr><th>No-decision reason</th><th class="num">Tickets</th>' + RS.map(x => '<th class="num">' + x[1] + '</th>').join('') + '</tr></thead><tbody>' +
     ND.map(d => { const rs = ndRows.filter(r => r.no_decision_reason === d[0]); if (!rs.length) return '';
