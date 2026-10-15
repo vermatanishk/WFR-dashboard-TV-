@@ -1,4 +1,4 @@
-WFR Daily Report,2026-10-14T14:03:13Z
+WFR Daily Report,2026-10-15T05:53:16Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 235887,2747567,Missing/Wrong Qty,Unknown,2026-07-16T05:02:19.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
@@ -2353,7 +2353,7 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 263941,4228782,Missing/Wrong Qty,Kolkata,2026-10-12T07:38:39.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 263943,4232601,Missing/Wrong Qty,Bangalore,2026-10-12T07:41:54.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 263945,4271935,Missing/Wrong Qty,Delhi,2026-10-12T07:47:05.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
-263946,4260326,Missing/Wrong Qty,Patna WH,2026-10-12T07:53:26.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""Footage not found because it's under"" - treated as BOD by default (unconfirmed resolution)",-,-
+263946,4260326,Missing/Wrong Qty,Patna WH,2026-10-12T07:53:26.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""None"" - treated as BOD by default (unconfirmed resolution)",-,-
 263947,4280720,Missing/Wrong Qty,Lucknow,2026-10-12T07:59:04.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 263948,4216224,Missing/Wrong Qty,Mumbai,2026-10-12T08:06:49.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 263949,4253494,Missing/Wrong Qty,Bangalore,2026-10-12T08:10:02.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX""",Aravind_BLRWH,Asha_BLRWH
