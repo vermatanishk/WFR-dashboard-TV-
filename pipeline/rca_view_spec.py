@@ -52,15 +52,15 @@ def build_layout():
     add("wm_na", "↳ photo not available", "no return request, so no complaint photo exists", "wm", 1, False, WM + [(B1, "in", [NA])])
     add("wm_same", "↳ photo shows the ordered SKU", "complaint not supported", "wm_read", 1, False,
         WM + [(B1, "in", ["Photo shows the ordered SKU", "Photo shows another line of the order"])])
-    add("wm_variant", "↳ same medicine, different pack form", "same brand, other strength / pack / form", "wm_read", 1, False,
-        WM + [(B1, "in", ["Same medicine, different pack form"])])
+    add("wm_variant", "↳ same family medicine", "same brand, other strength / pack / form", "wm_read", 1, False,
+        WM + [(B1, "in", ["Same family medicine"])])
     add("wm_diff", "↳ different medicine", "", "wm_read", 1, False, WM + [(B1, "in", ["Different medicine"])])
-    add("wm_undet", "↳ SKU name not readable", "", "wm_read", 1, False, WM + [(B1, "in", ["SKU name not readable"])])
+    add("wm_undet", "↳ not readable", "", "wm_read", 1, False, WM + [(B1, "in", ["Not readable"])])
     BINB = ["Bin link (picking error)", "Bin link + batch shared"]
     BATCHB = ["Batch shared with ordered line"]
     # Each wrong-SKU class is split MECE: bin picking issue (incl. bin + batch both) / batch sharing issue only / other
-    for key, lab in (("variant", "same medicine, different pack form"), ("diff", "different medicine"), ("undet", "SKU name not readable")):
-        b1v = {"variant": "Same medicine, different pack form", "diff": "Different medicine", "undet": "SKU name not readable"}[key]
+    for key, lab in (("variant", "same family medicine"), ("diff", "different medicine"), ("undet", "Not readable")):
+        b1v = {"variant": "Same family medicine", "diff": "Different medicine", "undet": "Not readable"}[key]
         base = WM + [(B1, "in", [b1v])]
         add(f"wm_{key}_bin", "   ↳ bin picking issue", "same bin / rack / nearby (also when batch is shared)", f"wm_{key}", 2, False,
             base + [(B2, "in", BINB)])

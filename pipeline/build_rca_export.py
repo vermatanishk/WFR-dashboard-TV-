@@ -40,8 +40,8 @@ CAT = {"Missing/Wrong Qty": "Missing / short quantity", "Wrong Medicines": "Wron
        "Damaged/Defective": "Damaged", "Switch Orders": "Order swap", "MRP/Batch Mismatch": "MRP / batch mismatch"}
 BUCKET_LABEL = {k: lab for k, lab, _ in BUCKETS}
 WM = {"same_sku_consistent": "Photo shows the ordered SKU", "other_order_line_photographed": "Photo shows another line of the order",
-      "same_brand_variant": "Same medicine, different pack form", "same_product_diff_packaging": "Same medicine, different pack form",
-      "different_medicine": "Different medicine", "unknown": "SKU name not readable"}
+      "same_brand_variant": "Same family medicine", "same_product_diff_packaging": "Same family medicine",
+      "different_medicine": "Different medicine", "unknown": "Not readable"}
 EXP_ALLOC = {"outright_expired": "Outright expired", "near_expiry_lt_3m": "Near expiry (<3 months)",
              "shelf_life_ge_3m": ">=3 months in allocation", "undetermined": "Not determinable"}
 EXP_IMG = {"received_item_expired": "Received item already expired", "received_near_expiry_lt_3m": "Received item near expiry (<3 months)",

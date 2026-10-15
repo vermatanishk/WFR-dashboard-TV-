@@ -108,7 +108,7 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   550 image references -> 363 unique files read (identical files are read once; `pipeline/image_reads.py`
   expands a read to every order that carried the file - before this fix a shared file was credited to one order only).
 - Result: **0 "photo not read yet" and 0 WH "not yet read" in the 60-day T-2 window**. Wrong-medicine reads moved
-  from ~50% to complete; remaining unknown-SKU cases are labelled "SKU name not readable" (no brand on the photo).
+  from ~50% to complete; remaining unknown-SKU cases are labelled "Not readable" (no brand on the photo).
 - Reads that show no product name are stored with brand null and the description in `notes`
   (never as a brand - descriptions like "white round tablets" were being treated as received brands).
 - RTO-only returns are not complaint requests: `rca_return_state_override.json` marks them Not raised
@@ -120,8 +120,8 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   were deliberately not read, so "Photo not read yet" kept showing (214 rows). `build_rca_export.py` now keeps only
   orders created in the last 60 days (`WINDOW_DAYS`), so the website, the sheet's Raw data tab and every test see
   the same window. Result: 1,440 orders, 0 unread photos in the T-2 window.
-- **Wrong-SKU classes split MECE (owner, 2026-10-15):** "same medicine, different pack form", "different
-  medicine" and "SKU name not readable" each break into bin picking issue (incl. bin + batch both) / batch sharing
+- **Wrong-SKU classes split MECE (owner, 2026-10-15):** "same family medicine", "different
+  medicine" and "Not readable" each break into bin picking issue (incl. bin + batch both) / batch sharing
   issue (batch only) / other (no structural link or not assessable). Most land in "other" today because the
   catalog candidate bin at the order's warehouse was not found/verified for ~114 entries; batch sharing needs
   `rca_wrongmed_rca.json` for the new window. This is an evidence gap, not an absence of the issue.
@@ -134,3 +134,6 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   5 bin / 3 batch / 85 other (37 confirmed no structural link, 48 not assessable - no verified candidate with a bin).
   The Apps Script evaluator is layout-driven, so no script change is needed: run `refreshAll` after the push.
   Re-run this pull each refresh (query shape: see this section; pairs come from the wrongmed entries in the window).
+- **Naming (owner, 2026-10-15):** the wrong-SKU classes are "Same family medicine" (same brand; strength, pack
+  size, drug form or variant word differs - e.g. Aloja 12.5 vs 25, Accu-Chek Active vs Instant, Lotion vs Cream),
+  "Different medicine" and "Not readable". "Same family" is not limited to a different pack form.

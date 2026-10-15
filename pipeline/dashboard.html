@@ -1278,10 +1278,10 @@ function renderRCA() {
   // Wrong medicine: only the received SKU NAME is needed (batch/expiry are a bonus)
   const wm = RCA.rows.filter(r => r.wrong_med && r.wrong_med.length);
   const RT = {same_sku_consistent: 'Photo shows the ordered product (complaint not supported by the photo)',
-              same_brand_variant: 'Same brand, different strength / pack / form',
+              same_brand_variant: 'Same family medicine (other strength / pack / form)',
               same_product_diff_packaging: 'Same product, different packaging',
               different_medicine: 'Different medicine',
-              unknown: 'SKU name not readable'};
+              unknown: 'Not readable'};
   const BR = {picking_error: 'Same bin / same rack - picking error', picking_error_nearby: 'Same zone and shelf column, different rack - picking error (weak)',
               no_bin_link: 'No bin link', candidate_unverified: 'Catalog SKU not verified from the name read - bin not assessed',
               unknown: 'Bin location missing for one SKU'};
