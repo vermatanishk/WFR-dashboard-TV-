@@ -17,6 +17,10 @@ var SPEC_URL = BASE + 'rca_view_spec.json';
 var RAW_TAB = 'Raw data';
 var VIEW_TAB = 'RCA view';
 var INFO_TAB = 'Info';
+var FILTER_CELL = 'B1';          // "Return request" selector on the RCA view tab
+var RET_OPTIONS = ['All', 'Raised', 'Cancelled', 'Not raised'];
+var HEADER_ROW = 3;               // RCA view: row 1 = selector, row 3 = column header
+var SPEC_TAB = 'Spec';            // hidden: layout + cutoff saved at refresh so the dropdown works offline
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('WFR RCA')
@@ -29,12 +33,52 @@ function refreshAll() {
   var exp = fetchJson_(EXPORT_URL);
   var spec = fetchJson_(SPEC_URL);
   writeRaw_(exp);
+  saveSpec_(spec, exp);
   // Build the view from what is actually in the Raw data tab (so a filtered/edited tab is what you see).
-  var raw = sheet_(RAW_TAB).getDataRange().getValues();
-  var trend = computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at);
+  var trend = buildViewFromRaw_(spec, exp);
   writeView_(trend);
   writeInfo_(exp, trend);
   SpreadsheetApp.getActive().toast('RCA data refreshed (' + exp.rows.length + ' orders)', 'WFR RCA', 5);
+}
+
+function currentReturnFilter_() {
+  var v = sheet_(VIEW_TAB).getRange(FILTER_CELL).getValue();
+  return RET_OPTIONS.indexOf(v) >= 0 ? v : 'All';
+}
+
+function buildViewFromRaw_(spec, exp) {
+  var raw = sheet_(RAW_TAB).getDataRange().getValues();
+  var rs = currentReturnFilter_();
+  return computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs);
+}
+
+/** Save the layout (chunked, one JSON string split across rows) + cutoff in a hidden tab. */
+function saveSpec_(spec, exp) {
+  var sh = sheet_(SPEC_TAB);
+  sh.clear();
+  var txt = JSON.stringify({ layout: spec.layout, t2_cap_date: exp.t2_cap_date, generated_at: exp.generated_at });
+  var rows = [];
+  for (var i = 0; i < txt.length; i += 40000) rows.push([txt.substring(i, i + 40000)]);
+  sh.getRange(1, 1, rows.length, 1).setValues(rows);
+  sh.hideSheet();
+}
+
+function loadSpec_() {
+  var vals = sheet_(SPEC_TAB).getDataRange().getValues();
+  return JSON.parse(vals.map(function (r) { return r[0]; }).join(''));
+}
+
+/**
+ * Changing the Return request dropdown re-cuts the whole view from the Raw data tab. A simple onEdit trigger
+ * cannot call external URLs, so it only uses data already in the sheet (Raw data + the hidden Spec tab).
+ */
+function onEdit(e) {
+  var sh = e && e.range && e.range.getSheet();
+  if (!sh || sh.getName() !== VIEW_TAB || e.range.getA1Notation() !== FILTER_CELL) return;
+  var spec = loadSpec_();
+  var raw = sheet_(RAW_TAB).getDataRange().getValues();
+  var rs = currentReturnFilter_();
+  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, spec.t2_cap_date, spec.generated_at, rs === 'All' ? null : rs));
 }
 
 function installDailyTrigger() {
@@ -77,26 +121,31 @@ function writeRaw_(exp) {
 
 function writeView_(t) {
   var sh = sheet_(VIEW_TAB);
+  var keep = RET_OPTIONS.indexOf(sh.getRange(FILTER_CELL).getValue()) >= 0 ? sh.getRange(FILTER_CELL).getValue() : 'All';
   sh.clear();
+  sh.getRange('A1').setValue('Return request filter (applies to the whole table):').setFontWeight('bold');
+  sh.getRange(FILTER_CELL).setValue(keep).setBackground('#fff3cd').setFontWeight('bold')
+    .setDataValidation(SpreadsheetApp.newDataValidation().requireValueInList(RET_OPTIONS, true).build());
   var days = t.days.slice().reverse(); // most recent first, same as the website
-  var head = ['Metric', '3 month total', 'Last month total', 'Last 2 weeks total'].concat(days.map(function (d) { return t.day_labels[d]; }));
+  var head = ['Metric', '3 month total', 'Last month total', 'Last 2 weeks total']
+    .concat(days.map(function (d) { return t.day_labels[d]; }));
   var rows = t.rows.map(function (r) {
     var label = new Array((r.indent || 0) * 3 + 1).join(' ') + r.label + (r.sub ? '  (' + r.sub + ')' : '');
     return [label, r['3mo'].text, r['1mo'].text, r['2wk'].text].concat(days.map(function (d) { return r.daily[d].text; }));
   });
   var values = [head].concat(rows);
-  sh.getRange(1, 1, values.length, head.length).setValues(values);
-  sh.getRange(1, 1, 1, head.length).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
+  sh.getRange(HEADER_ROW, 1, values.length, head.length).setValues(values);
+  sh.getRange(HEADER_ROW, 1, 1, head.length).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
   t.rows.forEach(function (r, i) {
     if (r.kind === 'wfr_pto') {
-      sh.getRange(i + 2, 1, 1, head.length).setFontWeight('bold').setBackground('#fff3cd');
+      sh.getRange(HEADER_ROW + 1 + i, 1, 1, head.length).setFontWeight('bold').setBackground('#fff3cd');
     }
   });
-  sh.setFrozenRows(1);
+  sh.setFrozenRows(HEADER_ROW);
   sh.setFrozenColumns(4);
   sh.setColumnWidth(1, 420);
-  sh.getRange(1, 2, values.length, head.length - 1).setHorizontalAlignment('right');
-  sh.getRange(2, 1, rows.length, head.length).setFontSize(10);
+  sh.getRange(HEADER_ROW, 2, values.length, head.length - 1).setHorizontalAlignment('right');
+  sh.getRange(HEADER_ROW + 1, 1, rows.length, head.length).setFontSize(10);
 }
 
 function writeInfo_(exp, trend) {
@@ -133,17 +182,26 @@ function isoDate_(v) {
   return String(v);
 }
 
-function computeView_(columns, rows, layout, cutoff, generatedAt) {
+function computeView_(columns, rows, layout, cutoff, generatedAt, returnState, days) {
   var col = {};
   columns.forEach(function (c, i) { col[c] = i; });
   var dcol = col['Created date'];
-  var kept = rows.filter(function (r) { return isoDate_(r[dcol]) <= cutoff; });
+  var rcol = col['Return request'];
+  var kept = rows.filter(function (r) {
+    return isoDate_(r[dcol]) <= cutoff && (!returnState || String(r[rcol]) === returnState);
+  });
   var byDay = {};
   kept.forEach(function (r) {
     var d = isoDate_(r[dcol]);
     (byDay[d] = byDay[d] || []).push(r);
   });
-  var days = Object.keys(byDay).sort();
+  // day columns are always those of the unfiltered view, so the selector never shifts them
+  if (!days) {
+    var all = {};
+    rows.forEach(function (r) { var d = isoDate_(r[dcol]); if (d <= cutoff) all[d] = 1; });
+    days = Object.keys(all).sort();
+  }
+  days.forEach(function (d) { byDay[d] = byDay[d] || []; });
   function matches(r, where) {
     for (var i = 0; i < where.length; i++) {
       var c = where[i][0], op = where[i][1], vals = where[i][2];
@@ -179,11 +237,11 @@ function computeView_(columns, rows, layout, cutoff, generatedAt) {
   var out = layout.map(function (it) {
     var daily = {};
     days.forEach(function (d) { daily[d] = cell(it, [d]); });
-    return { label: it.label, sub: it.sub || null, kind: it.head ? 'wfr_pto' : 'plain', indent: it.indent,
+    return { key: it.key, label: it.label, sub: it.sub || null, kind: it.head ? 'wfr_pto' : 'plain', indent: it.indent,
              '3mo': cell(it, days), '1mo': cell(it, days.slice(-30)), '2wk': cell(it, days.slice(-14)), daily: daily };
   });
   var labels = {};
   days.forEach(function (d) { labels[d] = parseInt(d.slice(8, 10), 10) + ' ' + MONTHS_[parseInt(d.slice(5, 7), 10) - 1]; });
   return { days: days, day_labels: labels, rows: out, as_of: String(generatedAt).slice(0, 10), t2_cutoff: cutoff,
-           excluded_tickets: rows.length - kept.length };
+           excluded_tickets: rows.filter(function (r) { return isoDate_(r[dcol]) > cutoff && (!returnState || String(r[rcol]) === returnState); }).length };
 }

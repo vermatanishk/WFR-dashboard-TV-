@@ -261,10 +261,17 @@ Run after step 2, before `build_html.py`:
    Google Sheet, whose "Raw data" tab it reads and whose "RCA view" tab it builds. Commit and push `rca_export.json`,
    `rca_trend.json`, `rca_view_spec.json` with the refresh. The repo is public: no names / phones / WH comment text
    in the export, only IDs.
-Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons), `test_rca.py`, `test_rca_trend.py`,
-`check_view_from_export.py` (independent rebuild of every view cell from the export) and `node pipeline/test_view_js.js`
-(Apps Script evaluator vs `rca_trend.json`, every cell). Run all after touching the export or the layout. Original:
-(every parent row = sum of its children in every column). RCA counts are **unique per order, first ticket wins** -
+**Three macro buckets (owner, 2026-10-15)**: (1) the investigation funnel, (2) the raised-why tree, (3) the **return
+request** state (Raised / Cancelled / Not raised) - a primary measure per order and a **global selector** on the view
+(`rca_trend.json` = All, `by_return` = one full table per state; Tab 7 dropdown; the sheet's "RCA view" B1 dropdown,
+which works from the Raw data tab + hidden "Spec" tab because simple triggers cannot fetch URLs). The return-state rows
+that used to sit under "No decision" are gone. Every photo split is read + not read yet + **not available**; "not
+available" = no return request, so no complaint photo exists. Expiry "batch/expiry differs from allocation" splits into
+received item expired / not expired / expiry not legible.
+Tests: `test_wh_comment_classifier.py` (incl. investigation sub-reasons), `test_rca.py`, `test_rca_trend.py` (13 additive
+groups x All + 3 return states; the 3 return states add up to All for every row), `check_view_from_export.py`
+(independent hand-written predicates, every cell of every variant) and `node pipeline/test_view_js.js` (Apps Script
+evaluator vs `rca_trend.json`, every cell of every variant). Run all after touching the export or the layout. RCA counts are **unique per order, first ticket wins** -
 the same rule as the dashboard's `dedupeByOrder()` / "Total issues raised (unique per order)" tile.
 
 Rules decided with the owner: the funnel is by OUTCOME — Accepted / Rejected / No decision (+ "Not yet

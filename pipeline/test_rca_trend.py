@@ -1,44 +1,54 @@
-"""Run: python3 pipeline/test_rca_trend.py - every parent row of rca_trend.json must equal the sum of its
-children in EVERY column (3mo / 1mo / 2wk / each day). Added after the first version failed three of these."""
+"""Run: python3 pipeline/test_rca_trend.py
+For All and for each return state, every parent row of rca_trend.json must equal the sum of its children in EVERY
+column (3mo / 1mo / 2wk / each day); and for every row the three return states must add up to All."""
 import json
 from pathlib import Path
 
-R = json.loads((Path(__file__).parent / "rca_trend.json").read_text())
-rows = R["rows"]
-lab = [r["label"].strip() for r in rows]
+T = json.loads((Path(__file__).parent / "rca_trend.json").read_text())
+ND = ["nd_" + n for n in ["Footage not available", "Batch not from our inventory", "CX image not clear", "Dependency not marked",
+      "DocPharma order", "COGS < 100", "Agent mistake (WH marked, no WH comment)", "Return not received at WH", "Other WH note"]]
+BUCKETS = ["dmb_" + k for k in ["primary_pack_breached", "carton_damaged", "outer_shipper_damaged", "leak_spill", "product_quality",
+           "label_closure_defect", "no_visible_damage", "image_not_relevant"]]
+GROUPS = [
+    ("raised = accepted + rejected + no decision + not yet read", "raised", ["accepted", "rejected", "no_decision", "not_yet_read"]),
+    ("no decision reasons", "no_decision", ND),
+    ("wrong medicine: read + not read + not available", "wm", ["wm_read", "wm_unread", "wm_na"]),
+    ("wrong medicine read children", "wm_read", ["wm_same", "wm_variant", "wm_diff", "wm_undet"]),
+    ("expiry allocation split", "ex", ["ex_alloc_out", "ex_alloc_near", "ex_alloc_ok", "ex_alloc_undet"]),
+    ("expiry photo: read + not read + not available", "ex", ["ex_read", "ex_unread", "ex_na"]),
+    ("expiry photo outcomes", "ex_read", ["ex_img_expired", "ex_img_near", "ex_img_ok", "ex_img_batchonly", "ex_img_unclear"]),
+    ("expiry differs: expired + not expired + not legible", "ex_diff", ["ex_diff_exp", "ex_diff_notexp", "ex_diff_unk"]),
+    ("damaged cold / non-cold", "dm", ["dm_cold", "dm_nc"]),
+    ("non-cold: read + not read + not available", "dm_nc", ["dm_nc_read", "dm_nc_unread", "dm_nc_na"]),
+    ("non-cold buckets", "dm_nc_read", BUCKETS),
+    ("missing qty = SKU + item", "mq", ["mq_sku", "mq_item"]),
+    ("categories add to raised", "raised", ["wm", "ex", "dm", "mq", "sw", "mrp"]),
+]
 
 
-def col(i):
-    r = rows[i]
-    return [r["3mo"]["n"], r["1mo"]["n"], r["2wk"]["n"]] + [r["daily"][d]["n"] for d in R["days"]]
-
-
-def ix(l, start=0):
-    return lab.index(l, start)
-
-
-def chk(name, parent, children):
-    P = col(parent)
-    C = [sum(x) for x in zip(*[col(c) for c in children])]
-    bad = [(i, p, c) for i, (p, c) in enumerate(zip(P, C)) if p != c]
-    print(("OK  " if not bad else "FAIL"), name, bad[:3])
-    return not bad
+def cols(rows, key):
+    r = next(x for x in rows if x["key"] == key)
+    return [r["3mo"]["n"], r["1mo"]["n"], r["2wk"]["n"]] + [r["daily"][d]["n"] for d in T["days"]]
 
 
 ok = True
-nd = ix("No decision"); wm = ix("Wrong medicine"); wr = ix("↳ photo read", wm); ex = ix("Expiry")
-dm = ix("Damaged"); nc = ix("↳ non-cold"); ncr = ix("↳ photo read", nc); mq = ix("Missing / short quantity")
-ok &= chk("raised = accepted + rejected + no decision + not yet read", 0, [ix("WH Accepted"), ix("WH Rejected"), nd, ix("Not yet read")])
-ok &= chk("no decision reasons", nd, list(range(nd + 1, nd + 10)))
-ok &= chk("no decision return state", nd, [ix("↳ return raised"), ix("↳ return cancelled"), ix("↳ return request not raised")])
-ok &= chk("wrong medicine read / unread", wm, [wr, ix("↳ photo not read yet", wm)])
-ok &= chk("wrong medicine read children", wr, [ix("↳ photo shows the ordered SKU"), ix("↳ same medicine, different pack form"), ix("↳ different medicine"), ix("↳ SKU name not readable")])
-ok &= chk("expiry allocation split", ex, [ex + 1, ex + 2, ex + 3, ex + 4])
-ok &= chk("expiry photo read / unread", ex, [ex + 5, ex + 6])
-ok &= chk("expiry photo outcomes", ex + 5, [ex + 7, ex + 8, ex + 9, ex + 10, ex + 11])
-ok &= chk("damaged cold / non-cold", dm, [ix("↳ cold chain"), nc])
-ok &= chk("non-cold read / unread", nc, [ncr, ix("↳ photo not read yet", nc)])
-ok &= chk("non-cold buckets", ncr, list(range(ncr + 2, ncr + 10)))
-ok &= chk("missing qty = SKU missing + item missing", mq, [mq + 1, mq + 2])
-ok &= chk("categories add to raised", 0, [wm, ex, dm, mq, ix("Order swap"), ix("MRP / batch mismatch")])
-raise SystemExit(0 if ok else 1)
+variants = {"All": T, **{k: v for k, v in T["by_return"].items()}}
+for vname, v in variants.items():
+    for name, parent, kids in GROUPS:
+        P = cols(v["rows"], parent)
+        C = [sum(x) for x in zip(*[cols(v["rows"], k) for k in kids])]
+        bad = [(i, p, c) for i, (p, c) in enumerate(zip(P, C)) if p != c]
+        if bad:
+            ok = False
+            print("FAIL", vname, name, bad[:3])
+print(("OK  " if ok else "FAIL"), f"{len(GROUPS)} additive groups x {len(variants)} variants")
+n_bad = 0
+for r in T["rows"]:
+    k = r["key"]
+    tot = cols(T["rows"], k)
+    parts = [sum(x) for x in zip(*[cols(T["by_return"][s]["rows"], k) for s in T["by_return"]])]
+    if tot != parts:
+        n_bad += 1
+        print("FAIL return states != All for", k)
+print(("OK  " if not n_bad else "FAIL"), f"return states add up to All for {len(T['rows'])} rows")
+raise SystemExit(0 if (ok and not n_bad) else 1)

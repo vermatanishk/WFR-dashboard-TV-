@@ -49,6 +49,13 @@ EXP_IMG = {"received_item_expired": "Received item already expired", "received_n
            "cx_image_unclear": "CX image not clear", "no_images_read": "Photo not read yet"}
 
 
+UNREAD = "Photo not read yet"
+NA = "Photo not available (no return request)"
+DIFF_EXPIRED = "Differs - received item expired"
+DIFF_NOT_EXPIRED = "Differs - received item not expired"
+DIFF_UNKNOWN = "Differs - expiry not legible"
+
+
 def _raised(r, nc_by_order):
     """-> (bucket1, bucket2, bucket3, evidence basis, confidence, photos_read)"""
     c = r["category"]
@@ -61,7 +68,8 @@ def _raised(r, nc_by_order):
     if c == "Wrong Medicines":
         es = r.get("wrong_med") or []
         if not es:
-            return ("Photo not read yet", "", "", "", "", "No")
+            # no return request -> no complaint photo exists; otherwise it is just not read yet
+            return (NA if r["return_state"] == "not_raised" else UNREAD, "", "", "", "", "No")
         order = ["different_medicine", "same_brand_variant", "same_product_diff_packaging", "same_sku_consistent",
                  "other_order_line_photographed", "unknown"]
         e = sorted(es, key=lambda x: order.index(x["relation_type"]) if x["relation_type"] in order else 9)[0]
@@ -87,8 +95,19 @@ def _raised(r, nc_by_order):
         ic = ex.get("image_check") or {}
         v = ex.get("verdict") or "undetermined"
         iv = ic.get("image_verdict") or "no_images_read"
-        b3 = "Batch/expiry differs from allocation" if (ic.get("batch_differs_from_allocation") or ic.get("same_batch_different_expiry")) else ""
-        return (EXP_ALLOC.get(v, v), EXP_IMG.get(iv, iv), b3, "Allocation expiry vs delivery" + ("; photo read" if iv != "no_images_read" else ""),
+        differs = bool(ic.get("batch_differs_from_allocation") or ic.get("same_batch_different_expiry"))
+        if not differs:
+            b3 = ""
+        elif iv == "received_item_expired":
+            b3 = DIFF_EXPIRED
+        elif iv in ("received_item_ok", "received_near_expiry_lt_3m"):
+            b3 = DIFF_NOT_EXPIRED
+        else:
+            b3 = DIFF_UNKNOWN
+        b2lab = EXP_IMG.get(iv, iv)
+        if iv == "no_images_read":
+            b2lab = NA if r["return_state"] == "not_raised" else UNREAD
+        return (EXP_ALLOC.get(v, v), b2lab, b3, "Allocation expiry vs delivery" + ("; photo read" if iv != "no_images_read" else ""),
                 "Likely" if iv != "no_images_read" else "Allocation only", "Yes" if iv != "no_images_read" else "No")
     if c == "Damaged/Defective":
         d = ((r.get("extra") or {}).get("damaged")) or {}
@@ -97,7 +116,8 @@ def _raised(r, nc_by_order):
         if cold:
             return ("Cold chain", "Not image-read (temperature complaint)", log, "Drug cold flag", "Flag", "No")
         k = nc_by_order.get(r["order_id"])
-        return ("Non-cold", BUCKET_LABEL.get(k, "Photo not read yet") if k else "Photo not read yet", log,
+        unread = NA if r["return_state"] == "not_raised" else UNREAD
+        return ("Non-cold", BUCKET_LABEL.get(k, unread) if k else unread, log,
                 "Photo read" if k else "Drug cold flag", "Likely" if k else "Flag", "Yes" if k else "No")
     if c == "Switch Orders":
         s = ((r.get("extra") or {}).get("swap")) or {}
