@@ -56,11 +56,18 @@ def build_layout():
         WM + [(B1, "in", ["Same medicine, different pack form"])])
     add("wm_diff", "↳ different medicine", "", "wm_read", 1, False, WM + [(B1, "in", ["Different medicine"])])
     add("wm_undet", "↳ SKU name not readable", "", "wm_read", 1, False, WM + [(B1, "in", ["SKU name not readable"])])
-    diff = WM + [(B1, "in", ["Different medicine"])]
-    add("wm_bin", "   ↳ bin link (picking error)", "same bin / rack / nearby", "wm_diff", 2, False,
-        diff + [(B2, "in", ["Bin link (picking error)", "Bin link + batch shared"])])
-    add("wm_batch", "   ↳ batch shared with ordered line", "", "wm_diff", 2, False,
-        diff + [(B2, "in", ["Batch shared with ordered line", "Bin link + batch shared"])])
+    BINB = ["Bin link (picking error)", "Bin link + batch shared"]
+    BATCHB = ["Batch shared with ordered line"]
+    # Each wrong-SKU class is split MECE: bin picking issue (incl. bin + batch both) / batch sharing issue only / other
+    for key, lab in (("variant", "same medicine, different pack form"), ("diff", "different medicine"), ("undet", "SKU name not readable")):
+        b1v = {"variant": "Same medicine, different pack form", "diff": "Different medicine", "undet": "SKU name not readable"}[key]
+        base = WM + [(B1, "in", [b1v])]
+        add(f"wm_{key}_bin", "   ↳ bin picking issue", "same bin / rack / nearby (also when batch is shared)", f"wm_{key}", 2, False,
+            base + [(B2, "in", BINB)])
+        add(f"wm_{key}_batch", "   ↳ batch sharing issue", "ordered line's batch also sits on the received SKU, no bin link", f"wm_{key}", 2, False,
+            base + [(B2, "in", BATCHB)])
+        add(f"wm_{key}_other", "   ↳ other", "no structural link found / not assessable" + (" (SKU unreadable)" if key == "undet" else ""), f"wm_{key}", 2, False,
+            base + [(B2, "not_in", BINB + BATCHB)])
 
     EX = [(ISSUE, "in", ["Expiry"])]
     add("ex", "Expiry", "tickets", "raised", 0, True, EX)

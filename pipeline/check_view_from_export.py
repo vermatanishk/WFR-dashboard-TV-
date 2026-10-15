@@ -40,6 +40,9 @@ BK = {"dmb_primary_pack_breached": "Primary pack breached: blister punctured/bur
       "dmb_no_visible_damage": "Photo shows the product intact - no visible damage",
       "dmb_image_not_relevant": "Image not relevant: only the app logo, or a photo of a different product"}
 
+BIN_B = ["Bin link (picking error)", "Bin link + batch shared"]
+BATCH_B = ["Batch shared with ordered line"]
+
 P = {
     "raised": lambda r: True,
     "accepted": lambda r: i1(r) == "Accepted", "rejected": lambda r: i1(r) == "Rejected", "no_decision": nd,
@@ -49,9 +52,16 @@ P = {
     "wm_same": lambda r: wm(r) and b1(r) in ("Photo shows the ordered SKU", "Photo shows another line of the order"),
     "wm_variant": lambda r: wm(r) and b1(r) == "Same medicine, different pack form",
     "wm_diff": lambda r: wm(r) and b1(r) == "Different medicine",
+    "wm_variant_bin": lambda r: wm(r) and b1(r) == "Same medicine, different pack form" and b2(r) in BIN_B,
+    "wm_variant_batch": lambda r: wm(r) and b1(r) == "Same medicine, different pack form" and b2(r) in BATCH_B,
+    "wm_variant_other": lambda r: wm(r) and b1(r) == "Same medicine, different pack form" and b2(r) not in BIN_B + BATCH_B,
+    "wm_diff_bin": lambda r: wm(r) and b1(r) == "Different medicine" and b2(r) in BIN_B,
+    "wm_diff_batch": lambda r: wm(r) and b1(r) == "Different medicine" and b2(r) in BATCH_B,
+    "wm_diff_other": lambda r: wm(r) and b1(r) == "Different medicine" and b2(r) not in BIN_B + BATCH_B,
+    "wm_undet_bin": lambda r: wm(r) and b1(r) == "SKU name not readable" and b2(r) in BIN_B,
+    "wm_undet_batch": lambda r: wm(r) and b1(r) == "SKU name not readable" and b2(r) in BATCH_B,
+    "wm_undet_other": lambda r: wm(r) and b1(r) == "SKU name not readable" and b2(r) not in BIN_B + BATCH_B,
     "wm_undet": lambda r: wm(r) and b1(r) == "SKU name not readable",
-    "wm_bin": lambda r: wm(r) and b1(r) == "Different medicine" and b2(r) in ("Bin link (picking error)", "Bin link + batch shared"),
-    "wm_batch": lambda r: wm(r) and b1(r) == "Different medicine" and b2(r) in ("Batch shared with ordered line", "Bin link + batch shared"),
     "ex": ex,
     "ex_alloc_out": lambda r: ex(r) and b1(r) == "Outright expired",
     "ex_alloc_near": lambda r: ex(r) and b1(r) == "Near expiry (<3 months)",

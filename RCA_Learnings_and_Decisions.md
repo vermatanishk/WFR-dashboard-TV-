@@ -120,3 +120,8 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   were deliberately not read, so "Photo not read yet" kept showing (214 rows). `build_rca_export.py` now keeps only
   orders created in the last 60 days (`WINDOW_DAYS`), so the website, the sheet's Raw data tab and every test see
   the same window. Result: 1,440 orders, 0 unread photos in the T-2 window.
+- **Wrong-SKU classes split MECE (owner, 2026-10-15):** "same medicine, different pack form", "different
+  medicine" and "SKU name not readable" each break into bin picking issue (incl. bin + batch both) / batch sharing
+  issue (batch only) / other (no structural link or not assessable). Most land in "other" today because the
+  catalog candidate bin at the order's warehouse was not found/verified for ~114 entries; batch sharing needs
+  `rca_wrongmed_rca.json` for the new window. This is an evidence gap, not an absence of the issue.
