@@ -125,7 +125,8 @@ def split_products(read):
 
 
 def main():
-    checks = json.loads((RAW / "rca_image_check.json").read_text())
+    from image_reads import reads_by_order
+    checks = {f"{o}:{i}": r for o, rs in reads_by_order().items() for i, r in enumerate(rs)}
     lines = json.loads((RAW / "rca_order_lines.json").read_text())
     recv = {}
     for r in checks.values():

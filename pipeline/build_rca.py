@@ -160,9 +160,9 @@ def main():
     extra = load("rca_extra.json", {"tickets": {}, "summary": {}, "mrp_sample": []})
     manual_labels = load("rca_manual_labels.json", {})
     ret_status = load("rca_return_status.json", {})   # order_id -> distinct return_status codes (only orders with a cancel/multi/null state are listed)
-    images_by_order = {}
-    for r in load("rca_image_check.json", {}).values():
-        images_by_order.setdefault(r["order_id"], []).append(r)
+    from image_reads import reads_by_order
+    images_by_order = reads_by_order()
+    rs_override = load("rca_return_state_override.json", {})   # order -> why: RTO-only returns are not complaint requests
 
     gen = datetime.strptime(data["generated_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     cap = (gen.astimezone(IST) - timedelta(days=T_MINUS_DAYS)).date().isoformat()
@@ -199,7 +199,8 @@ def main():
             "dependency": dependency,
             "decision": decision,
             "no_decision_reason": nd_reason,
-            "return_state": return_state(t["resolution"], t["order_id"], ret_status),
+            "return_state": ("not_raised" if str(t["order_id"]) in rs_override else
+                             return_state(t["resolution"], t["order_id"], ret_status)),
             "agent_mistake_note": agent_mistake_note,
             "extra": extra["tickets"].get(tid),
             "is_cold": t.get("is_cold") if "is_cold" in t else None,

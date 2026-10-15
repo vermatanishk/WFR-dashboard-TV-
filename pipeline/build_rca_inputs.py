@@ -207,11 +207,8 @@ def main():
             if line.strip():
                 r = json.loads(line)
                 by_order.setdefault(r["order_id"], []).append(r)
-    imgs = {}
-    ip = RAW / "rca_image_check.json"
-    if ip.exists():
-        for r in json.loads(ip.read_text()).values():
-            imgs.setdefault(r["order_id"], []).append(r)
+    from image_reads import reads_by_order
+    imgs = reads_by_order()
     out = {}
     for t in data["tickets"]:
         if t["category"] == "Expiry Issue":

@@ -225,6 +225,9 @@ before assuming the classifier or cache is wrong.
    `pipeline/dashboard_built.html`, copies it to repo-root `index.html`.
 8. Commit + push.
 
+> Decisions, data traps and open items for the RCA layer: [RCA_Learnings_and_Decisions.md](RCA_Learnings_and_Decisions.md).
+> Photo-read scope (owner, 2026-10-15): read ALL images, in monthly batches, last **60 days** only.
+
 ## RCA layer (added 2026-10-14) — Tab 6 "RCA" and Tab 7 "RCA view"
 
 Per raised ticket: *how the warehouse investigated* (funnel) and *why it happened* (RCA).
