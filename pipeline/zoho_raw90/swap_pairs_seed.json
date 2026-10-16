@@ -121,5 +121,11 @@
     4137155
    ]
   ]
+ },
+ "label_mismatch": {
+  "note": "Orders whose own ticket / photo says the box carried the customer's address but a different order's bill and items were inside (packing stage). Read from the ticket text, 2026-10-16.",
+  "orders": [
+   3858324
+  ]
  }
 }

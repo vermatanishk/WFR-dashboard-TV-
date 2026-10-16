@@ -21,6 +21,9 @@ Swap MECE (owner rule, 2026-10-16) - decided per pair, first match wins:
                                                                    -> WH issue / Proximity in packing, separate manifestation
        any other shared handler at any stage                       -> WH issue / Other
   3. not attributable to the warehouse, both delivered the same day-> Logistics issue / Same day diff pincode delivery
+  3b. box addressed to the complainant but another order's bill/items inside (ticket text or photo, `label_mismatch` in
+      the seed; same warehouse)                                    -> WH issue / Other   [checked right after rule 1]
+  3c. same warehouse, pincodes in different 2-digit regions (whole-parcel courier mix-up implausible) -> WH issue / Other (inferred)
   4. anything else                                                 -> Unclassified (no WH link, not same-day delivery)
 Logistics is therefore only "same pincode" or "error not attributable to the warehouse" - courier match is NOT a rule,
 it is kept as a column. Handlers are never exported (public repo): only the derived bucket.
@@ -89,12 +92,15 @@ def select_tickets():
     return keep, pairs
 
 
-def classify_pair(a, b, orders, status):
+def classify_pair(a, b, orders, status, label_mismatch=()):
     oa, ob = orders[str(a)], orders[str(b)]
     sa, sb = status.get(a, {}), status.get(b, {})
     courier = "Same" if oa["courier"] and oa["courier"] == ob["courier"] else ("Different" if oa["courier"] and ob["courier"] else "Unknown")
     if oa["pin"] and oa["pin"] == ob["pin"]:
         return "Logistics issue", "Same pincode delivery", "Same delivery pincode", courier
+    if a in label_mismatch or b in label_mismatch:
+        return ("WH issue", "Other", "Box addressed to one customer, another order's bill / items inside - label and contents separated at packing (ticket text / photo)", courier) if oa["wh"] == ob["wh"] else \
+               ("Unclassified", "", "Label / contents mismatch reported, but the two orders ship from different warehouses", courier)
     if oa["wh"] == ob["wh"]:
         def t(s, k):
             return s[k][1] if k in s else None
@@ -117,6 +123,8 @@ def classify_pair(a, b, orders, status):
     da, db = t_del(sa), t_del(sb)
     if da and db and da == db:
         return "Logistics issue", "Same day diff pincode delivery", "No warehouse link; both delivered on the same day, different pincodes", courier
+    if oa["wh"] == ob["wh"] and oa["pin"][:2] != ob["pin"][:2]:
+        return "WH issue", "Other", "Same warehouse, delivery pincodes in different regions and the customer holds the other order's invoice: a whole-parcel courier mix-up is implausible, so contents were crossed before sealing (inferred)", courier
     return "Unclassified", "", "No warehouse link and not same-day delivery (or delivery not recorded)", courier
 
 
@@ -128,6 +136,7 @@ def main():
     tickets, pairs = select_tickets()
     orders, status = load("swap_orders.json"), parse_status()
     rstat = load("swap_return_status.json")
+    lm = set(load("swap_pairs_seed.json").get("label_mismatch", {}).get("orders", []))
     checks, deps = load("wh_text_check.json"), load("ticket_dependency.json", {})
     rca = load("../rca.json") if False else json.loads((HERE / "rca.json").read_text())
     cap, gen = rca["t2_cap_date"], rca["generated_at"]
@@ -180,7 +189,7 @@ def main():
             print("no order facts for", o)
             continue
         if partner:
-            b1, b2, basis, courier = classify_pair(o, partner, orders, status)
+            b1, b2, basis, courier = classify_pair(o, partner, orders, status, lm)
             conf = "Likely"
             if how.startswith("Return image"):
                 basis = how + "; " + basis
