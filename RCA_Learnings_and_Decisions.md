@@ -185,3 +185,8 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   4 not in the mapping (all pack-qty-confusion tagged: 4 inward unit mismatch, 12 catalog / MDM definition) + 25 orders
   whose SKU could not be identified (kept as item missing, undetermined). Counting error on a single SKU is no longer an
   item-missing bucket; a counting error inside a multipack has no instance yet.
+- **Correction (2026-10-16):** the inward unit-mismatch tag now requires the odd GRN to be dated on or before the
+  order date (`pipeline/build_item_missing_tags.py`). 10 of the 14 first matches had the GRN **after** the order, which
+  cannot explain that shortage. Item missing (41): inward unit mismatch 2, catalog / MDM definition 14, SKU not identified 25.
+  Both remaining inward cases are Electral ORS 5X4.4gm (PO 1, GRN 5): with base pack qty 5 this may be a legitimate
+  pack-to-unit conversion rather than an error - needs the inward team to confirm.

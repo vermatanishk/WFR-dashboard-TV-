@@ -5,7 +5,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3386312,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Calmac Calamine Lotion 120ml
 3392185,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Telgard 40mg Tablet 10s
 3392213,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Lamino GI Cherry Powder 200gm
-3393248,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,No decision,Not raised,Argiheal Granule 10gm
+3393248,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",No decision,Not raised,Argiheal Granule 10gm
 3394168,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Aquaviron 25mg Injection 1s
 3395679,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Rabesec DSR 30/20mg Capsule SR 10s
 3398334,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Calciquick D3 2k Capsule 10s
@@ -18,7 +18,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3436676,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Finabald 2.5mg Tablet 10s
 3437978,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Bisoace 2.5mg Tablet 10s
 3438750,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Cilinimore 10mg Tablet 10s
-3439668,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Concor COR 2.5mg Tablet 10s
+3439668,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Concor COR 2.5mg Tablet 10s
 3450185,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Atro Kid 0.01% Eye Drop 5ml
 3451237,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Revgrey Solution 30ml
 3452160,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Rosugard 20mg Tablet 10s
@@ -46,7 +46,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3486989,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Revilus Soflets 15s
 3487719,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
 3490453,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Respinol 2mg Tablet 10s
-3490462,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Cartilox Granules 10.45gm
+3490462,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Cartilox Granules 10.45gm
 3495905,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,TEL QH 40/12.5mg Tablet 10s; Clindinol TM 10/40mg Tablet 10s
 3498535,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - In progress,New Ultra Omega 3 Plus Softgel Capsule 15s
 3500886,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Zincoresp Tablet 10s
@@ -61,7 +61,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3529249,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Linaliglip Dapamet 500/10/5mg Tablet SR10s
 3529625,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Telgard AM 40/5mg Tablet 10s
 3530010,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Cilosooth 50mg Tablet 10s
-3530486,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Entacom Plus 100mg Tablet 10s
+3530486,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Entacom Plus 100mg Tablet 10s
 3532151,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Atovastrin Gold 75/20/75mg Capsule 15s
 3534357,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Levipil 100mg Syrup 100ml
 3536838,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Minkesh Forte 5% Solution 60ml
@@ -180,7 +180,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3774854,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Rozustat ASP 75/10mg Capsule 10s
 3774935,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Ketonalog Alfa Tablet 10s
 3776225,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Bisocor T 2.5 /40mg Tablet 10s; Acarboz 50mg Tablet 10s
-3776579,Pack (multipack per mapping),mapping changes MDM pack qty | inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Accepted,Raised - Accepted & refunded,Electral ORS Mixed Flavour Powder 5X4.4gm
+3776579,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - Accepted & refunded,Electral ORS Mixed Flavour Powder 5X4.4gm
 3778057,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Rejunex CD3 NF Tablet 10s; Telista CL 10/40mg Tablet 10s
 3780688,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Ferpill Max Capsule 10
 3785919,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Mesalmile OD 1200mg Tablet PR 10s
@@ -247,7 +247,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3898135,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Cancelled,Minkesh Forte 5% Solution 60ml
 3898298,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Defrosia 500mg Tablet DT 10s
 3900573,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Not raised,Himalaya Reosto Tablet 30s
-3903146,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Rosugard 10mg Tablet 10s; Linaworth DP 10/5mg Tablet 10s
+3903146,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Rosugard 10mg Tablet 10s; Linaworth DP 10/5mg Tablet 10s
 3903607,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,AF 150mg Tablet DT 1s
 3904051,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Rejected,Raised - Accepted & refunded,Nicosip 4mg Mint Flavour Sugar Free Chewing Gum 10s
 3904195,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Cancelled,Depimed Ultra Cream 30gm
@@ -255,7 +255,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3906970,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",No decision,Not raised,Bisoace 2.5mg Tablet 10s
 3909354,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Lamino HP Mango Flavour Sachet 30gm
 3911676,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",No decision,Raised - Accepted & refunded,Me Mega Tablet 15s
-3912123,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Glimda 2mg Tablet 10s
+3912123,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Glimda 2mg Tablet 10s
 3916252,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Vegaz Suppository 7s
 3920000,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,PP 26 Plus Tablet 10s
 3920951,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Keraglo Men Tablet 15s
@@ -285,7 +285,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3975924,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",No decision,Raised - Accepted & refunded,Micabal Plus 100mg Capsule 10s
 3977132,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 3979933,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Propysalic Soap 100gm
-3981449,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Onco 4mg Tablet 10s
+3981449,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Onco 4mg Tablet 10s
 3985110,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Vitamin C 500mg Orange Flavour Chewable Tablet 15s
 3988071,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Evinaf Capsule 10s
 3993076,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Ilovator 4mg Tablet 10s
@@ -345,7 +345,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4110039,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Bethnevoid 50mg Tablet 10s
 4110393,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Haemaday Plus Tablet 15s
 4111534,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Terbinadoc 250mg Tablet 7s
-4111539,Pack (multipack per mapping),mapping changes MDM pack qty | inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Accepted,Raised - Accepted & refunded,Electral ORS Mixed Flavour Powder 5X4.4gm
+4111539,Pack (multipack per mapping),mapping changes MDM pack qty | inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Accepted,Raised - Accepted & refunded,Electral ORS Mixed Flavour Powder 5X4.4gm
 4112568,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Omee G Jeera Flavour Powder 5gm
 4114145,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Lactare Capsule 30s
 4119436,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Enterogermina 2B Capsule 4s
@@ -358,11 +358,11 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4140611,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Glimda MV 2/500/0.2mg SR Tablet 10s
 4141089,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Hepaliv DS Syrup 200ml
 4145347,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Telkonol Trio 40mg/10mg/12.5mg Tablet
-4146845,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Olanzprime 10mg Tablet 10s; Zon Plus 3mg/2mg Tablet
+4146845,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Olanzprime 10mg Tablet 10s; Zon Plus 3mg/2mg Tablet
 4148688,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Leucorin 15mg Tablet 10s
 4151301,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Cancelled,Mecofine OD 1500mcg Tablet 10s; Vitamin C 500mg Orange Flavour Chewable Tablet 15s; Clincitop 1% Gel 20gm
 4151532,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Not raised,Onecan 2% Dusting Powder 75gm
-4151539,Single,inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Cancelled,New Heptagon Tablet 10s
+4151539,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Cancelled,New Heptagon Tablet 10s
 4151666,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Sildoheal D 8mg Capsule 10s
 4164997,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Amoxyclav 625mg Tablet 10s
 4165519,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Oraverse M Tablet 15s
@@ -383,7 +383,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4188850,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Biocip FC Cream 15gm
 4189451,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Metolar XR 50mg Capsule 15s
 4192483,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Torseflux 20mg Tablet 10s
-4193838,Pack (multipack per mapping),mapping changes MDM pack qty | inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Accepted,Raised - Accepted & refunded,Electral ORS Mixed Flavour Powder 5X4.4gm
+4193838,Pack (multipack per mapping),mapping changes MDM pack qty | inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Accepted,Raised - Accepted & refunded,Electral ORS Mixed Flavour Powder 5X4.4gm
 4196323,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Gasowel Sachet Orange
 4196626,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Tenepla M 1000/20mg SR Tablet 10s; Paroxit 25mg SR Tablet 10s
 4198803,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Truzadon 35mg MR Tablet 10s
@@ -405,7 +405,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4244483,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Sitasmart GM 1/1000/50mg Tablet 10s
 4246678,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
 4247793,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Valpodium 500mg Tablet CR 10s
-4248500,Pack (multipack per mapping),mapping changes MDM pack qty | inward qty = pack-size x PO qty,Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Airz FB 500/20/25mcg Smartules 5X2ml
+4248500,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Rejected,Raised - Accepted & refunded,Airz FB 500/20/25mcg Smartules 5X2ml
 4253494,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Argimune Sachet 10gm
 4256228,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Accepted & refunded,Sucral Ano Cream 20gm
 4258085,Single,,"Undetermined - single SKU, no pack flag, WH did not accept",Rejected,Raised - Cancelled,Tenepla M 500/20mg SR Tablet 10s
