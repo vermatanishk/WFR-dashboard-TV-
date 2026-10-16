@@ -152,3 +152,12 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
 - Window mix (1,440 orders): accepted & refunded 984 (68%), cancelled 213 (14%), rejected 57 (4%), in progress
   72 (5%), not raised 114 (8%). 739 of the 1,020 tickets WH *rejected* were still refunded (BOD) - refund is not
   evidence of a WH fault.
+
+## 12. Item-missing deep dive - multipack SKUs (2026-10-15)
+- Owner definition (strict): a SKU is a multipack when its catalog name carries an `NxM` or `pack of N` pattern
+  (1x5, 3X10s, 5X2ml, 1*3ml, Pack of 5, Combipack 2X7s). "10s", "10gm", "Sachet 10gm" are single units.
+- Population: all 418 in-T-2 item-missing orders (60 days). Complained SKU taken from the return line
+  (Incomplete Order), else from the ticket text. Result: **19 multipack (4.5%)**, 378 single unit, 21 not identifiable
+  (no return line and no SKU in the ticket text; 3 of those orders contain a multipack line somewhere).
+- The system data cannot separate pack-qty confusion from counting error (pick scans never show a short pick, WH
+  comments and ticket text carry no pack detail); only complaint photos can. See the item-missing proposal in the chat log.
