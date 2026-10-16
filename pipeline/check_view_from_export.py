@@ -84,6 +84,7 @@ P = {
     "dm_nc_log": lambda r: nc(r) and b3(r) == "Logistics exception recorded",
     "mq": mq, "mq_sku": lambda r: mq(r) and b1(r) == "SKU missing", "mq_item": lambda r: mq(r) and b1(r) == "Item missing",
     "mq_text": lambda r: mq(r) and g(r, "Evidence basis") == "Ticket text",
+    "mq_single": lambda r: mq(r) and g(r, "Evidence basis") == "Pack mapping (single SKU)",
     "mq_default": lambda r: mq(r) and g(r, "Evidence basis") == "Default (no detail)",
     "sw": lambda r: iss(r) == "Order swap", "mrp": lambda r: iss(r) == "MRP / batch mismatch",
     "not_available": None,

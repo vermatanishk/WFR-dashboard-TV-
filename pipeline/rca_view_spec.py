@@ -104,9 +104,11 @@ def build_layout():
 
     MQ = [(ISSUE, "in", ["Missing / short quantity"])]
     add("mq", "Missing / short quantity", "tickets", "raised", 0, True, MQ)
-    add("mq_sku", "↳ SKU missing", "whole line / empty box / not received - the 2 rows add up to the total", "mq", 1, False, MQ + [(B1, "in", ["SKU missing"])])
-    add("mq_item", "↳ item missing", "partial quantity", "mq", 1, False, MQ + [(B1, "in", ["Item missing"])])
+    add("mq_sku", "↳ SKU missing", "whole line / empty box / not received / short count on a single SKU - the 2 rows add up to the total", "mq", 1, False, MQ + [(B1, "in", ["SKU missing"])])
+    add("mq_item", "↳ item missing", "short count inside a multipack SKU", "mq", 1, False, MQ + [(B1, "in", ["Item missing"])])
     add("mq_text", "memo: classified from the ticket text", "no return item - overlaps the 2 rows above", "mq", 1, False, MQ + [(BASIS, "in", ["Ticket text"])])
+    add("mq_single", "memo: single SKU, moved from item missing to SKU missing", "pack mapping says the SKU is a single unit - overlaps the SKU missing row", "mq", 1, False,
+        MQ + [(BASIS, "in", ["Pack mapping (single SKU)"])])
     add("mq_default", "memo: default to item missing", "no return item and no detail in the ticket - overlaps the 2 rows above", "mq", 1, False,
         MQ + [(BASIS, "in", ["Default (no detail)"])])
     add("sw", "Order swap", "tickets", "raised", 0, True, [(ISSUE, "in", ["Order swap"])])
