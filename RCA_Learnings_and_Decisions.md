@@ -189,3 +189,14 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   cannot explain that shortage. Item missing (41): inward unit mismatch 2, catalog / MDM definition 14, SKU not identified 25.
   Both remaining inward cases are Electral ORS 5X4.4gm (PO 1, GRN 5): with base pack qty 5 this may be a legitimate
   pack-to-unit conversion rather than an error - needs the inward team to confirm.
+
+## 15. Item-missing split wired into the raw data and the view (2026-10-16)
+- `build_item_missing_tags.py` now reads `rca.json` (no dependency on the export) and runs before `build_rca_export.py`.
+  The export fills Raised bucket 2/3 for item-missing orders (Pack qty confusion / Counting error / SKU not identified /
+  Tags pending; leaf in bucket 3). The layout adds the cascade under "item missing": pack qty confusion -> customer end,
+  WH / system issue -> inward unit mismatch, catalog / MDM pack definition, pack SKU WH accepted short; counting error ->
+  confirmed by WH, by elimination; SKU not identified; tags pending.
+- **Tags pending** is the coverage gap for new orders not yet covered by the pack-mapping / complained-SKU / GRN pulls
+  (same idea as "photo not read yet"). The Apps Script and the website pick the rows up from the spec; run `refreshAll`.
+- 60-day result: item missing 418 = pack qty confusion 23 (inward 3, catalog 20, customer end 0) + counting error 370
+  (confirmed 26, by elimination 344) + SKU not identified 25 + tags pending 0.

@@ -106,6 +106,20 @@ def build_layout():
     add("mq", "Missing / short quantity", "tickets", "raised", 0, True, MQ)
     add("mq_sku", "↳ SKU missing", "whole line / empty box / not received - the 2 rows add up to the total", "mq", 1, False, MQ + [(B1, "in", ["SKU missing"])])
     add("mq_item", "↳ item missing", "partial quantity (some units of the SKU sent) - single or multipack SKU", "mq", 1, False, MQ + [(B1, "in", ["Item missing"])])
+    im = MQ + [(B1, "in", ["Item missing"])]
+    add("mq_im_pack", "↳ pack qty confusion", "item missing: pack-vs-single confusion (owner bucket 1)", "mq_item", 2, False, im + [(B2, "in", ["Pack qty confusion"])])
+    add("mq_im_pack_cust", "↳ customer end", "expected more than the invoice said - not provable from system data", "mq_im_pack", 3, False,
+        im + [(B3, "in", ["Customer end (likely)"])])
+    WHS = ["WH / system: inward unit mismatch", "WH / system: catalog / MDM pack definition", "WH / system: pack SKU, WH accepted short"]
+    add("mq_im_pack_wh", "↳ WH / system issue", "inward, catalog or pack definition", "mq_im_pack", 3, False, im + [(B3, "in", WHS)])
+    add("mq_im_pack_inw", "↳ inward unit mismatch", "GRN qty = pack size x PO qty (or reverse), dated on/before the order", "mq_im_pack_wh", 4, False, im + [(B3, "in", [WHS[0]])])
+    add("mq_im_pack_cat", "↳ catalog / MDM pack definition", "name vs mapping conflict, MDM pack qty changed by the mapping, SKU missing from the mapping", "mq_im_pack_wh", 4, False, im + [(B3, "in", [WHS[1]])])
+    add("mq_im_pack_acc", "↳ pack SKU, WH accepted short", "", "mq_im_pack_wh", 4, False, im + [(B3, "in", [WHS[2]])])
+    add("mq_im_count", "↳ counting error", "item missing: count short at packing (owner bucket 2)", "mq_item", 2, False, im + [(B2, "in", ["Counting error"])])
+    add("mq_im_count_conf", "↳ confirmed by WH", "WH admitted short qty", "mq_im_count", 3, False, im + [(B3, "in", ["Confirmed by WH"])])
+    add("mq_im_count_elim", "↳ by elimination", "no pack flag, WH did not accept - default, not proof", "mq_im_count", 3, False, im + [(B3, "in", ["By elimination (WH did not accept)"])])
+    add("mq_im_unid", "↳ SKU not identified", "no return line and no SKU in the ticket", "mq_item", 2, False, im + [(B2, "in", ["SKU not identified"])])
+    add("mq_im_pend", "↳ tags pending", "new orders not yet covered by the pack-mapping / inward pull", "mq_item", 2, False, im + [(B2, "in", ["Tags pending"])])
     add("mq_text", "memo: classified from the ticket text", "no return item - overlaps the 2 rows above", "mq", 1, False, MQ + [(BASIS, "in", ["Ticket text"])])
     add("mq_default", "memo: default to item missing", "no return item and no detail in the ticket - overlaps the 2 rows above", "mq", 1, False,
         MQ + [(BASIS, "in", ["Default (no detail)"])])

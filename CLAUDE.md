@@ -258,6 +258,7 @@ Run after step 2, before `build_html.py`:
    `rca_export.json`): Tab 7 "RCA view", the day-wise table (same pattern and
    T-2 cap as the Everything tab's macro table; cells are "count | % of parent row"; photo-derived rows count
    only photo-read tickets and carry a coverage row). Run before `build_html.py`.
+6b. `python3 pipeline/build_item_missing_tags.py` (after `build_rca.py`, BEFORE the export): item-missing deep dive (pack qty confusion: inward unit mismatch / catalog-MDM pack definition / customer end; counting error: confirmed / by elimination; SKU not identified). Inputs are manual pulls saved under `zoho_raw90/`: `rca_item_missing_orders.json` (order -> complained SKU code), `rca_item_missing_sku.json` (pack mapping workbook Single/Pack + current MDM pack qty), `rca_item_missing_inward_sig.json` (GRN rows whose qty = pack size x open PO qty, from `mdm_grn_po_deltas`). Orders not covered by the latest pull show as **Tags pending** in the view - re-run the pulls, never guess. Owner rule: partial short quantity = ITEM missing (single or pack SKU); SKU missing = zero units sent.
 7. `python3 pipeline/build_rca_export.py` -> `rca_export.json`: order/ticket-level rows (one per order). **Run it before
    step 6**: the RCA view is a pure function of this export (declarative layout in `rca_view_spec.py`), evaluated
    in Python for the website and in Apps Script (`pipeline/gsheet/Code.gs`, see `gsheet/README.md`) for the live

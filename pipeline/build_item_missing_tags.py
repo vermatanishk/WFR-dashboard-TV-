@@ -22,10 +22,14 @@ def main():
     sig = pd.read_json(RAW / "rca_item_missing_inward_sig.json")
     sig["grn_date"] = sig.grn_date.astype(str).str[:10]
     sku = pd.read_json(RAW / "rca_item_missing_orders.json")
-    e = json.loads((HERE / "rca_export.json").read_text())
-    ex = pd.DataFrame(e["rows"], columns=e["columns"])
-    ex["order_id"] = ex["Order ID"].astype(int)
-    ex = ex.drop_duplicates("order_id").set_index("order_id")
+    # reads rca.json (not the export) so the export can consume these tags without a circular dependency
+    rca = json.loads((HERE / "rca.json").read_text())["rows"]
+    INV = {"accepted": "Accepted", "rejected": "Rejected", "no_decision": "No decision", "not_yet_read": "Not yet read"}
+    RET = {"accepted_refunded": "Raised - Accepted & refunded", "cancelled": "Raised - Cancelled", "rejected": "Raised - Rejected",
+           "in_progress": "Raised - In progress", "not_raised": "Not raised"}
+    ex = pd.DataFrame([{"order_id": r["order_id"], "Investigation bucket 1": INV.get(r["decision"], r["decision"]),
+                        "Created date": r["date"], "Return request": RET.get(r["return_state"], r["return_state"])} for r in rca]
+                      ).drop_duplicates("order_id").set_index("order_id")
     ratio = m[["xl_pack_qty", "cur_pack_qty"]].max(axis=1) / m[["xl_pack_qty", "cur_pack_qty"]].min(axis=1).replace(0, float("nan"))
     m["f_mdm2"] = m.f_mdm.fillna(False) & ((m.base_qty > 1) | (ratio >= 2))
     rows = []

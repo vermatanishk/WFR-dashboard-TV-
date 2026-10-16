@@ -31,6 +31,7 @@ ex = lambda r: iss(r) == "Expiry"
 dm = lambda r: iss(r) == "Damaged"
 nc = lambda r: dm(r) and b1(r) == "Non-cold"
 mq = lambda r: iss(r) == "Missing / short quantity"
+im_ = lambda r: mq(r) and b1(r) == "Item missing"
 BK = {"dmb_primary_pack_breached": "Primary pack breached: blister punctured/burst, sachet torn, strip crushed",
       "dmb_carton_damaged": "Individual carton crushed, torn or water-soaked; product intact",
       "dmb_outer_shipper_damaged": "Courier / outer shipper crushed or torn; product inside intact",
@@ -42,6 +43,8 @@ BK = {"dmb_primary_pack_breached": "Primary pack breached: blister punctured/bur
 
 BIN_B = ["Bin link (picking error)", "Bin link + batch shared"]
 BATCH_B = ["Batch shared with ordered line"]
+
+WHS_ = ["WH / system: inward unit mismatch", "WH / system: catalog / MDM pack definition", "WH / system: pack SKU, WH accepted short"]
 
 P = {
     "raised": lambda r: True,
@@ -84,6 +87,17 @@ P = {
     "dm_nc_log": lambda r: nc(r) and b3(r) == "Logistics exception recorded",
     "mq": mq, "mq_sku": lambda r: mq(r) and b1(r) == "SKU missing", "mq_item": lambda r: mq(r) and b1(r) == "Item missing",
     "mq_text": lambda r: mq(r) and g(r, "Evidence basis") == "Ticket text",
+    "mq_im_pack": lambda r: im_(r) and b2(r) == "Pack qty confusion",
+    "mq_im_pack_cust": lambda r: im_(r) and b3(r) == "Customer end (likely)",
+    "mq_im_pack_wh": lambda r: im_(r) and b3(r) in WHS_,
+    "mq_im_pack_inw": lambda r: im_(r) and b3(r) == WHS_[0],
+    "mq_im_pack_cat": lambda r: im_(r) and b3(r) == WHS_[1],
+    "mq_im_pack_acc": lambda r: im_(r) and b3(r) == WHS_[2],
+    "mq_im_count": lambda r: im_(r) and b2(r) == "Counting error",
+    "mq_im_count_conf": lambda r: im_(r) and b3(r) == "Confirmed by WH",
+    "mq_im_count_elim": lambda r: im_(r) and b3(r) == "By elimination (WH did not accept)",
+    "mq_im_unid": lambda r: im_(r) and b2(r) == "SKU not identified",
+    "mq_im_pend": lambda r: im_(r) and b2(r) == "Tags pending",
     "mq_default": lambda r: mq(r) and g(r, "Evidence basis") == "Default (no detail)",
     "sw": lambda r: iss(r) == "Order swap", "mrp": lambda r: iss(r) == "MRP / batch mismatch",
     "not_available": None,

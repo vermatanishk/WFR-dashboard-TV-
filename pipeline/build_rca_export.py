@@ -57,6 +57,20 @@ DIFF_NOT_EXPIRED = "Differs - received item not expired"
 DIFF_UNKNOWN = "Differs - expiry not legible"
 
 
+# item missing deep dive (owner, 2026-10-16): tag bucket from build_item_missing_tags.py -> (raised bucket 2, raised bucket 3)
+IM_TAG = {
+    "Pack qty confusion - WH inward unit mismatch": ("Pack qty confusion", "WH / system: inward unit mismatch"),
+    "Pack qty confusion - catalog / MDM pack definition": ("Pack qty confusion", "WH / system: catalog / MDM pack definition"),
+    "Pack qty confusion - pack SKU, WH accepted short": ("Pack qty confusion", "WH / system: pack SKU, WH accepted short"),
+    "Pack qty confusion - customer end likely (pack SKU, WH sent as invoiced)": ("Pack qty confusion", "Customer end (likely)"),
+    "Counting error - confirmed by WH": ("Counting error", "Confirmed by WH"),
+    "Counting error - by elimination (no pack flag, WH did not accept)": ("Counting error", "By elimination (WH did not accept)"),
+    "Undetermined - SKU not identified": ("SKU not identified", ""),
+}
+IM_PENDING = ("Tags pending", "")   # new orders not yet covered by the pack-mapping pull (coverage gap, like "photo not read yet")
+IM_TAGS = {}
+
+
 def _raised(r, nc_by_order):
     """-> (bucket1, bucket2, bucket3, evidence basis, confidence, photos_read)"""
     c = r["category"]
@@ -64,8 +78,10 @@ def _raised(r, nc_by_order):
         m = ((r.get("extra") or {}).get("missing")) or {}
         basis = {"return_item": "Return item quantities", "ticket_text": "Ticket text",
                  "default_no_detail": "Default (no detail)"}.get(m.get("basis"), "")
-        return ("SKU missing" if m.get("kind") == "sku_missing" else "Item missing", "", "", basis,
-                "Likely" if m.get("basis") != "default_no_detail" else "Default", "No")
+        if m.get("kind") == "sku_missing":
+            return ("SKU missing", "", "", basis, "Likely" if m.get("basis") != "default_no_detail" else "Default", "No")
+        b2, b3 = IM_TAG.get(IM_TAGS.get(r["order_id"]), IM_PENDING)
+        return ("Item missing", b2, b3, basis, "Likely" if m.get("basis") != "default_no_detail" else "Default", "No")
     if c == "Wrong Medicines":
         es = r.get("wrong_med") or []
         if not es:
@@ -139,6 +155,9 @@ def main():
         if int(o) not in nc_by_order or pri[k] < pri[nc_by_order[int(o)]]:
             nc_by_order[int(o)] = k
 
+    tp = RAW / "rca_item_missing_tags.json"
+    if tp.exists():
+        IM_TAGS.update({int(t["order_id"]): t["bucket"] for t in json.loads(tp.read_text())})
     # Owner decision 2026-10-15: the RCA view covers the last 60 days only (photo reads are manual,
     # so older days were deliberately not read). Window starts 60 days before the pull date.
     from datetime import datetime, timedelta
