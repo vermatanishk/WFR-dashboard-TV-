@@ -20,7 +20,13 @@ var INFO_TAB = 'Info';
 var FILTER_CELL = 'B1';          // "Return request" selector on the RCA view tab
 var RET_OPTIONS = ['All', 'Raised - Accepted & refunded', 'Raised - Cancelled', 'Raised - Rejected', 'Raised - In progress', 'Not raised'];
 var HEADER_ROW = 3;               // RCA view: row 1 = selector, row 3 = column header
-var SPEC_TAB = 'Spec';            // hidden: layout + cutoff saved at refresh so the dropdown works offline
+var SPEC_TAB = 'Spec';
+// Order swap layer (separate tab, own raw data + spec; the RCA tabs above are untouched)
+var SWAP_EXPORT_URL = BASE + 'swap_export.json';
+var SWAP_SPEC_URL = BASE + 'swap_view_spec.json';
+var SWAP_RAW_TAB = 'Swap raw data';
+var SWAP_VIEW_TAB = 'Order Swap';
+var SWAP_SPEC_TAB = 'Swap spec';            // hidden: layout + cutoff saved at refresh so the dropdown works offline
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('WFR RCA')
@@ -38,11 +44,23 @@ function refreshAll() {
   var trend = buildViewFromRaw_(spec, exp);
   writeView_(trend);
   writeInfo_(exp, trend);
+  refreshSwap_();
   SpreadsheetApp.getActive().toast('RCA data refreshed (' + exp.rows.length + ' orders)', 'WFR RCA', 5);
 }
 
-function currentReturnFilter_() {
-  var v = sheet_(VIEW_TAB).getRange(FILTER_CELL).getValue();
+/** Order swap tab: raw cases + view computed from them with the same evaluator as the RCA view. */
+function refreshSwap_() {
+  var exp = fetchJson_(SWAP_EXPORT_URL);
+  var spec = fetchJson_(SWAP_SPEC_URL);
+  writeRaw_(exp, SWAP_RAW_TAB);
+  saveSpec_(spec, exp, SWAP_SPEC_TAB);
+  var raw = sheet_(SWAP_RAW_TAB).getDataRange().getValues();
+  var rs = currentReturnFilter_(SWAP_VIEW_TAB);
+  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), SWAP_VIEW_TAB);
+}
+
+function currentReturnFilter_(tab) {
+  var v = sheet_(tab || VIEW_TAB).getRange(FILTER_CELL).getValue();
   return RET_OPTIONS.indexOf(v) >= 0 ? v : 'All';
 }
 
@@ -53,8 +71,8 @@ function buildViewFromRaw_(spec, exp) {
 }
 
 /** Save the layout (chunked, one JSON string split across rows) + cutoff in a hidden tab. */
-function saveSpec_(spec, exp) {
-  var sh = sheet_(SPEC_TAB);
+function saveSpec_(spec, exp, tab) {
+  var sh = sheet_(tab || SPEC_TAB);
   sh.clear();
   var txt = JSON.stringify({ layout: spec.layout, t2_cap_date: exp.t2_cap_date, generated_at: exp.generated_at });
   var rows = [];
@@ -63,8 +81,8 @@ function saveSpec_(spec, exp) {
   sh.hideSheet();
 }
 
-function loadSpec_() {
-  var vals = sheet_(SPEC_TAB).getDataRange().getValues();
+function loadSpec_(tab) {
+  var vals = sheet_(tab || SPEC_TAB).getDataRange().getValues();
   return JSON.parse(vals.map(function (r) { return r[0]; }).join(''));
 }
 
@@ -74,11 +92,13 @@ function loadSpec_() {
  */
 function onEdit(e) {
   var sh = e && e.range && e.range.getSheet();
-  if (!sh || sh.getName() !== VIEW_TAB || e.range.getA1Notation() !== FILTER_CELL) return;
-  var spec = loadSpec_();
-  var raw = sheet_(RAW_TAB).getDataRange().getValues();
-  var rs = currentReturnFilter_();
-  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, spec.t2_cap_date, spec.generated_at, rs === 'All' ? null : rs));
+  if (!sh || e.range.getA1Notation() !== FILTER_CELL) return;
+  var isSwap = sh.getName() === SWAP_VIEW_TAB;
+  if (!isSwap && sh.getName() !== VIEW_TAB) return;
+  var spec = loadSpec_(isSwap ? SWAP_SPEC_TAB : SPEC_TAB);
+  var raw = sheet_(isSwap ? SWAP_RAW_TAB : RAW_TAB).getDataRange().getValues();
+  var rs = currentReturnFilter_(sh.getName());
+  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, spec.t2_cap_date, spec.generated_at, rs === 'All' ? null : rs), sh.getName());
 }
 
 function installDailyTrigger() {
@@ -103,8 +123,8 @@ function sheet_(name) {
   return ss.getSheetByName(name) || ss.insertSheet(name);
 }
 
-function writeRaw_(exp) {
-  var sh = sheet_(RAW_TAB);
+function writeRaw_(exp, tab) {
+  var sh = sheet_(tab || RAW_TAB);
   sh.clear();
   var cols = exp.columns;
   var values = [cols].concat(exp.rows);
@@ -119,8 +139,8 @@ function writeRaw_(exp) {
   sh.autoResizeColumns(1, cols.length);
 }
 
-function writeView_(t) {
-  var sh = sheet_(VIEW_TAB);
+function writeView_(t, tab) {
+  var sh = sheet_(tab || VIEW_TAB);
   var keep = RET_OPTIONS.indexOf(sh.getRange(FILTER_CELL).getValue()) >= 0 ? sh.getRange(FILTER_CELL).getValue() : 'All';
   sh.clear();
   sh.getRange('A1').setValue('Return request filter (applies to the whole table):').setFontWeight('bold');

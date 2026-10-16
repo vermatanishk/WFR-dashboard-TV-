@@ -3,12 +3,13 @@
 // and compares EVERY cell with rca_trend.json (which Python produced from the same export).
 const fs = require('fs'), path = require('path');
 const dir = __dirname;
+const pre = process.argv[2] === 'swap' ? ['swap_export', 'swap_view_spec', 'swap_trend'] : ['rca_export', 'rca_view_spec', 'rca_trend']; // node test_view_js.js [swap]
 const src = fs.readFileSync(path.join(dir, 'gsheet', 'Code.gs'), 'utf8');
 const sandbox = {};
 new Function('sandbox', src + '\nsandbox.computeView_ = computeView_;')(sandbox);
-const exp = JSON.parse(fs.readFileSync(path.join(dir, 'rca_export.json'), 'utf8'));
-const spec = JSON.parse(fs.readFileSync(path.join(dir, 'rca_view_spec.json'), 'utf8'));
-const trend = JSON.parse(fs.readFileSync(path.join(dir, 'rca_trend.json'), 'utf8'));
+const exp = JSON.parse(fs.readFileSync(path.join(dir, pre[0] + '.json'), 'utf8'));
+const spec = JSON.parse(fs.readFileSync(path.join(dir, pre[1] + '.json'), 'utf8'));
+const trend = JSON.parse(fs.readFileSync(path.join(dir, pre[2] + '.json'), 'utf8'));
 let bad = 0, cells = 0;
 const variants = [[null, trend]].concat(Object.keys(trend.by_return).map(k => [k, trend.by_return[k]]));
 variants.forEach(([rs, want]) => {
@@ -23,5 +24,5 @@ variants.forEach(([rs, want]) => {
   });
   if (got.excluded_tickets !== want.excluded_tickets) { console.log('EXCLUDED', rs, got.excluded_tickets, want.excluded_tickets); bad++; }
 });
-console.log(`JS evaluator vs rca_trend.json: ${cells} cells compared across ${variants.length} variants, ${bad} differences`);
+console.log(`JS evaluator vs ${pre[2]}.json: ${cells} cells compared across ${variants.length} variants, ${bad} differences`);
 process.exit(bad ? 1 : 0);

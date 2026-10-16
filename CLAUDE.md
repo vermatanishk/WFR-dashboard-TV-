@@ -367,3 +367,14 @@ documents.
   stale in places (it lists the warehouse-location mapping and picker/QC
   ledger as unresolved — both are solved in the current code). Treat it as
   historical context, not current status.
+
+## Order-swap layer (added 2026-10-16) - Google Sheet tab "Order Swap"
+Separate from the RCA tabs (which are untouched). Agents filed swaps as Wrong Medicine until the "Order Swap"
+sub-disposition existed, so cases come from a TEXT scan. Run order: `pull_swap_tickets.py` (Zoho REST, 60d, IDs only) ->
+ClickHouse MCP pulls saved to `zoho_raw90/swap_orders.json` (wh/pincode/courier), `swap_status_raw.txt` (invoice /
+carrier-pickup / manifest handler + time, delivered), `swap_return_status.json` -> `read_swap_wh.py` (WH comment verdicts
+into `wh_text_check.json`) -> `build_swap.py` (`swap_export.json`) -> `swap_view_spec.py` (`swap_trend.json`,
+`swap_view_spec.json`) -> `node pipeline/test_view_js.js swap`. Case = pair (or unpaired order); rules and the MECE
+decision order are in the `build_swap.py` docstring. Owner pairs are seeded in `swap_pairs_seed.json`; ticket-text pairs
+are added automatically. Handlers are never exported. Logistics = same pincode OR error not attributable to the warehouse.
+Sheet: `gsheet/Code.gs` adds tabs "Swap raw data", "Order Swap", hidden "Swap spec" (same refresh + dropdown).
