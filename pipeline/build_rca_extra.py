@@ -61,11 +61,6 @@ def main():
     logi = set(json.loads((RAW / "rca_logistics.json").read_text())["ndr_or_multi_attempt_orders"])
     swap = json.loads((RAW / "rca_swap.json").read_text())["label_order_mismatch"]
     text_kind = json.loads((RAW / "rca_missing_text_kind.json").read_text()) if (RAW / "rca_missing_text_kind.json").exists() else {}
-    # Owner rule (2026-10-16): "item missing" = a short count inside a multipack SKU. A short quantity on a
-    # SINGLE SKU (pack mapping: Single) is whole units of the SKU missing = SKU missing. Tags come from
-    # rca_item_missing_tags.json (pack mapping x complained SKU); unidentified SKUs / not-in-mapping stay as classified.
-    tags_p = RAW / "rca_item_missing_tags.json"
-    single_orders = {str(r["order_id"]) for r in json.loads(tags_p.read_text()) if r["structure"] == "Single"} if tags_p.exists() else set()
     out, summ = {}, {"missing": {}, "damaged": {}, "swap": 0}
     for t in data["tickets"]:
         o = str(t["order_id"])
@@ -84,8 +79,6 @@ def main():
                 x["missing"] = dict(text_kind[t["ticket_id"]])
             else:
                 x["missing"] = {"kind": "item_missing", "basis": "default_no_detail"}
-            if x["missing"]["kind"] == "item_missing" and o in single_orders:
-                x["missing"] = {"kind": "sku_missing", "basis": "pack_mapping_single"}
         if t["category"] == "Damaged/Defective":
             exc = o in logi
             x["damaged"] = {"cold": bool(t.get("is_cold")), "logistics_exception": exc,

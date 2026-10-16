@@ -1,0 +1,28 @@
+ticket_id,order_id,date,category,location,why_no_decision,wh_verdict,wh_comments,order_cogs,cogs_unknown
+223502,2802367,2026-06-29,Missing/Wrong Qty,Delhi,agent_mistake,no_wh_comment,,518.5,False
+236895,2972429,2026-07-17,Missing/Wrong Qty,Kolkata,agent_mistake,no_wh_comment,,1732.8,False
+247537,3188673,2026-07-28,Missing/Wrong Qty,Kolkata,agent_mistake,no_wh_comment,,168.7,False
+249481,3213347,2026-07-31,Missing/Wrong Qty,Mumbai,agent_mistake,no_wh_comment,,446.7,False
+251026,3295462,2026-08-05,Wrong Medicines,Delhi,agent_mistake,no_wh_comment,,1427.5,False
+253387,3361056,2026-08-17,Missing/Wrong Qty,Hyderabad WH,agent_mistake,no_wh_comment,,325.2,False
+254526,3507186,2026-08-23,Missing/Wrong Qty,Hyderabad WH,agent_mistake,no_wh_comment,,331.4,False
+254669,3541957,2026-08-24,Missing/Wrong Qty,Hyderabad WH,agent_mistake,no_wh_comment,,202.5,False
+254665,3477504,2026-08-24,Wrong Medicines,Lucknow,agent_mistake,no_wh_comment,,0.0,True
+255231,3582343,2026-08-26,Missing/Wrong Qty,Patna WH,agent_mistake,no_wh_comment,,510.2,False
+256079,3256184,2026-08-30,Missing/Wrong Qty,Delhi,agent_mistake,no_wh_comment,,582.3,False
+255941,3588282,2026-08-30,Wrong Medicines,Patna WH,agent_mistake,no_wh_comment,,444.3,False
+257033,3665224,2026-09-03,Missing/Wrong Qty,Patna WH,agent_mistake,no_wh_comment,,304.5,False
+257142,3695127,2026-09-04,Missing/Wrong Qty,Patna WH,agent_mistake,no_wh_comment,,200.0,False
+258338,3802105,2026-09-10,Missing/Wrong Qty,Bangalore,agent_mistake,no_wh_comment,,0.0,True
+258636,3753414,2026-09-11,Missing/Wrong Qty,Patna WH,agent_mistake,no_wh_comment,,1972.1,False
+258536,3766210,2026-09-11,Missing/Wrong Qty,Patna WH,agent_mistake,no_wh_comment,,555.1,False
+230337,2924438,2026-07-08,Wrong Medicines,Delhi,other_wh_note,unrecognized,Unable to find mg properly,,False
+248136,3183133,2026-07-29,Wrong Medicines,Delhi,other_wh_note,unrecognized,Kindly share the image of wrong medicine Because it helpfull to find,,False
+252636,3395307,2026-08-13,Missing/Wrong Qty,Delhi,other_wh_note,unrecognized,3395307 from this order ticket raised 3 times a day Same issue Mahiboob bee,,False
+254154,3501056,2026-08-21,Expiry Issue,Delhi,other_wh_note,unrecognized,Kindly share the proper image of medicine with batch Mahiboob bee,,False
+256756,3673360,2026-09-02,Wrong Medicines,Bangalore,other_wh_note,unrecognized,"Order created Affan,siddiqui this user pls contect has",,False
+257358,3684695,2026-09-05,Missing/Wrong Qty,Bangalore,other_wh_note,unrecognized,Return request is approved from from warehouse,,False
+259417,3650846,2026-09-16,Wrong Medicines,Bangalore,other_wh_note,unrecognized,Return scanned at warehouse,,False
+246810,2998928,2026-07-27,Wrong Medicines,Bangalore,return_not_received_at_wh,unrecognized,Still not received the wh,,False
+257239,3673856,2026-09-04,Wrong Medicines,Delhi,return_not_received_at_wh,unrecognized,Still order is not reached at warehouse,,False
+259413,3795869,2026-09-16,Damaged/Defective,Bangalore,return_not_received_at_wh,unrecognized,Still stock is not received at warehouse,553.1,False

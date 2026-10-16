@@ -6,7 +6,8 @@ Inputs (saved from the pack mapping workbook + ClickHouse pulls, see RCA_Learnin
   rca_item_missing_inward_sig.json - GRN rows whose qty = pack size x open PO qty (or reciprocal), since 1 Apr
 Rules, first match wins: inward unit mismatch (signature GRN dated ON/BEFORE the order date - a later GRN cannot
 explain an earlier shortage) > catalog / MDM pack definition > customer-end likely (pack SKU, WH did not accept)
-> pack SKU WH accepted > counting error confirmed by WH > undetermined.
+> pack SKU WH accepted > counting error confirmed by WH > counting error by elimination.
+Owner rule (2026-10-16): a partial short quantity is ITEM missing whether the SKU is sold as a single or a pack; SKU missing = zero units sent.
 """
 import json
 from pathlib import Path
@@ -54,14 +55,14 @@ def main():
             b = "Pack qty confusion - customer end likely (pack SKU, WH sent as invoiced)"
         elif structure.startswith("Pack"): b = "Pack qty confusion - pack SKU, WH accepted short"
         elif inv == "Accepted": b = "Counting error - confirmed by WH"
-        else: b = "Undetermined - single SKU, no pack flag, WH did not accept"
+        else: b = "Counting error - by elimination (no pack flag, WH did not accept)"
         rows.append(dict(order_id=o, structure=structure, flag_list=" | ".join(fl), bucket=b, wh=inv, ret=r["Return request"],
                          skus="; ".join(gm.name.dropna().unique())[:110]))
     d = pd.DataFrame(rows)
     d.to_csv(HERE / "rca_item_missing_tags.csv", index=False)
     d[["order_id", "structure", "flag_list", "bucket"]].to_json(RAW / "rca_item_missing_tags.json", orient="records")
     print(d.bucket.value_counts().to_string())
-    print(d[d.structure.eq("Single")].shape[0], "single-SKU orders (SKU missing under the owner rule)")
+    print(pd.crosstab(d.bucket, d.structure).to_string())
 
 
 if __name__ == "__main__":

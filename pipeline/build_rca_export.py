@@ -63,7 +63,7 @@ def _raised(r, nc_by_order):
     if c == "Missing/Wrong Qty":
         m = ((r.get("extra") or {}).get("missing")) or {}
         basis = {"return_item": "Return item quantities", "ticket_text": "Ticket text",
-                 "default_no_detail": "Default (no detail)", "pack_mapping_single": "Pack mapping (single SKU)"}.get(m.get("basis"), "")
+                 "default_no_detail": "Default (no detail)"}.get(m.get("basis"), "")
         return ("SKU missing" if m.get("kind") == "sku_missing" else "Item missing", "", "", basis,
                 "Likely" if m.get("basis") != "default_no_detail" else "Default", "No")
     if c == "Wrong Medicines":

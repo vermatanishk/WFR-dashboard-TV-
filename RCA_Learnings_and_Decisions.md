@@ -176,15 +176,14 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
 - Evidence limits: the inward signature is a candidate flag (PO/GRN units were not independently verified), customer-end
   expectation cannot be proven from system data, and 332 of 418 orders (single SKU, no flag, WH did not accept) remain undetermined.
 
-## 14. Rule: short count on a single SKU = SKU missing (owner, 2026-10-16)
-- "Item missing" now means a short count **inside a multipack SKU** (pack mapping: Pack). A short quantity on a Single
-  SKU is whole units of the SKU missing, so it is **SKU missing**. `build_rca_extra.py` moves item-missing orders whose
-  complained SKU is Single (from `rca_item_missing_tags.json`) to `sku_missing`, basis "Pack mapping (single SKU)"; a
-  memo row in the view shows how many were moved (377 in the 60-day T-2 window).
-- Effect on the 60-day Missing / short quantity tree: SKU missing 928, item missing 41. Item missing = 12 pack SKUs +
-  4 not in the mapping (all pack-qty-confusion tagged: 4 inward unit mismatch, 12 catalog / MDM definition) + 25 orders
-  whose SKU could not be identified (kept as item missing, undetermined). Counting error on a single SKU is no longer an
-  item-missing bucket; a counting error inside a multipack has no instance yet.
+## 14. Rule (owner, 2026-10-16): partial short quantity = ITEM missing, single or pack
+- I first read "if the SKU is single it is SKU missing" as "move single-SKU short counts to SKU missing". That was wrong
+  and was reverted the same day. **SKU missing = zero units of the SKU sent; item missing = some units sent but fewer than
+  ordered, whether the SKU is sold as a single or as a pack.** The tree is back to SKU missing 551 / item missing 418.
+- Pack mapping is therefore used for pack-confusion tagging only, not to move orders between SKU missing and item missing.
+- Final MECE of the 418 item-missing orders (`build_item_missing_tags.py`): pack qty confusion 23 (inward unit
+  mismatch 3, catalog / MDM pack definition 20, customer end 0 - not provable), counting error 370 (confirmed by WH
+  26, by elimination 344), SKU not identified 25.
 - **Correction (2026-10-16):** the inward unit-mismatch tag now requires the odd GRN to be dated on or before the
   order date (`pipeline/build_item_missing_tags.py`). 10 of the 14 first matches had the GRN **after** the order, which
   cannot explain that shortage. Item missing (41): inward unit mismatch 2, catalog / MDM definition 14, SKU not identified 25.
