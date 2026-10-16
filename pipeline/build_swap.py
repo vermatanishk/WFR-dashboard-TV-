@@ -7,8 +7,10 @@ existed, so the swap population is found by a TEXT scan (pull_swap_tickets.py) a
 Case = one swap PAIR (earliest ticket of either order is the case's ticket, "first ticket wins") or, when no second
 order can be established, one unpaired order ("Pair not identified"). Total cases = pairs + unpaired orders.
 
-Pair evidence: ticket text naming the other order, or the owner-confirmed pairs in zoho_raw90/swap_pairs_seed.json
-(playbook 16 Oct 2026). ClickHouse inputs saved from the MCP: swap_orders.json (warehouse, pincode, courier),
+Pair evidence: ticket text naming the other order, the owner-confirmed pairs in zoho_raw90/swap_pairs_seed.json
+(playbook 16 Oct 2026), and - ONLY for cases still unpaired - the order id printed on the invoice / courier label in the
+complainant's own return images (read by the session with vision; `image_pairs` in the seed; images stay out of git,
+unreadable ones are left as Pair not identified). ClickHouse inputs saved from the MCP: swap_orders.json (warehouse, pincode, courier),
 swap_status_raw.txt (invoice / carrier-pickup / manifest agent + time, delivered time), swap_return_status.json.
 
 Swap MECE (owner rule, 2026-10-16) - decided per pair, first match wins:
@@ -137,21 +139,39 @@ def main():
     for a, b in pairs:
         pair_of.setdefault(a, []).append((a, b))
         pair_of.setdefault(b, []).append((a, b))
-    cases, used = [], set()
-    # one case per pair (earliest ticket of either order), then unpaired orders
+    cases, used, used_tickets = [], set(), set()
+    img = load("swap_pairs_seed.json")["image_pairs"]["pairs"]
+    img_basis = {}
+    # one case per pair (earliest unused ticket of either order); a ticket anchors at most one case
     for a, b in sorted(pairs):
-        ts = by_order.get(a, []) + by_order.get(b, [])
+        ts = [t for t in by_order.get(a, []) + by_order.get(b, []) if t["ticket_id"] not in used_tickets]
         if not ts:
             continue
         first = min(ts, key=lambda x: x["created_time"])
         used |= {a, b}
-        cases.append((first, b if first["order_id"] == a else a))
+        used_tickets.add(first["ticket_id"])
+        cases.append((first, b if first["order_id"] == a else a, "Ticket text / owner-confirmed pair"))
+    # pairs read from the complainant's return images: the complaint order's own ticket anchors the case; a mutual
+    # swap (both customers complained) is one case
+    done = set()
+    for a, b in img:
+        key = frozenset((a, b))
+        ts = [t for t in by_order.get(a, []) if t["ticket_id"] not in used_tickets]
+        if key in done or not ts:
+            continue
+        done.add(key)
+        first = ts[0]
+        if b in by_order:      # partner also complained: consume its first ticket as the same swap
+            used_tickets.add(by_order[b][0]["ticket_id"])
+        used |= {a, b}
+        used_tickets.add(first["ticket_id"])
+        cases.append((first, b, "Return image: invoice / label shows order " + str(b)))
     for o, ts in by_order.items():
         if o in used:
             continue
-        cases.append((ts[0], None))
+        cases.append((ts[0], None, ""))
     rows, stats = [], {}
-    for t, partner in sorted(cases, key=lambda c: c[0]["created_time"]):
+    for t, partner, how in sorted(cases, key=lambda c: c[0]["created_time"]):
         if t["created"] < start:
             continue
         o = t["order_id"]
@@ -162,6 +182,8 @@ def main():
         if partner:
             b1, b2, basis, courier = classify_pair(o, partner, orders, status)
             conf = "Likely"
+            if how.startswith("Return image"):
+                basis = how + "; " + basis
         else:
             b1, b2, basis, courier, conf = "Pair not identified", "", "Ticket names no second order", "Unknown", "Default"
         state, sub = investigation_state(checks.get(t["ticket_id"]))

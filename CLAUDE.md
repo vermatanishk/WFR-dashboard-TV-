@@ -377,4 +377,5 @@ into `wh_text_check.json`) -> `build_swap.py` (`swap_export.json`) -> `swap_view
 `swap_view_spec.json`) -> `node pipeline/test_view_js.js swap`. Case = pair (or unpaired order); rules and the MECE
 decision order are in the `build_swap.py` docstring. Owner pairs are seeded in `swap_pairs_seed.json`; ticket-text pairs
 are added automatically. Handlers are never exported. Logistics = same pincode OR error not attributable to the warehouse.
+Unpaired cases are re-checked from the complainant return images (invoice / label order id, `image_pairs` in the seed); unreadable ones stay "Pair not identified".
 Sheet: `gsheet/Code.gs` adds tabs "Swap raw data", "Order Swap", hidden "Swap spec" (same refresh + dropdown).

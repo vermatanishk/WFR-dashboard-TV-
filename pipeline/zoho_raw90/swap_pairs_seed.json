@@ -1,3 +1,113 @@
-{"note": "Pairs confirmed by the owner in the order-swap playbook (16 Oct 2026, sections 10.1-10.2); a second order the ticket text does not name is only known from here. Ticket-text pairs are added by build_swap.py.",
- "pairs": [[3652698,3662423],[3702824,3696984],[3678071,3674367],[3748949,3748891],[3750149,3750098],[3700188,3560376],[3774698,3781433],[3825844,3827727],[3971364,3974437],[4060783,4072601],[3778127,3780223],[4009877,4010028],[4125667,4134585],[3894134,3894202],[4001240,4007640],[4057349,4121880]],
- "exclude_orders": [3571017]}
+{
+ "note": "Pairs confirmed by the owner in the order-swap playbook (16 Oct 2026, sections 10.1-10.2); a second order the ticket text does not name is only known from here. Ticket-text pairs are added by build_swap.py.",
+ "pairs": [
+  [
+   3652698,
+   3662423
+  ],
+  [
+   3702824,
+   3696984
+  ],
+  [
+   3678071,
+   3674367
+  ],
+  [
+   3748949,
+   3748891
+  ],
+  [
+   3750149,
+   3750098
+  ],
+  [
+   3700188,
+   3560376
+  ],
+  [
+   3774698,
+   3781433
+  ],
+  [
+   3825844,
+   3827727
+  ],
+  [
+   3971364,
+   3974437
+  ],
+  [
+   4060783,
+   4072601
+  ],
+  [
+   3778127,
+   3780223
+  ],
+  [
+   4009877,
+   4010028
+  ],
+  [
+   4125667,
+   4134585
+  ],
+  [
+   3894134,
+   3894202
+  ],
+  [
+   4001240,
+   4007640
+  ],
+  [
+   4057349,
+   4121880
+  ]
+ ],
+ "exclude_orders": [
+  3571017
+ ],
+ "image_pairs": {
+  "note": "Pairs read from the complainant's own return images (invoice / courier label order id of another order, 2026-10-16). [anchor order (the complaint), other order]. Unreadable images are left as 'Pair not identified'.",
+  "pairs": [
+   [
+    3826847,
+    3825844
+   ],
+   [
+    3844032,
+    3844008
+   ],
+   [
+    3844092,
+    3844032
+   ],
+   [
+    3857310,
+    3863501
+   ],
+   [
+    3858324,
+    3862840
+   ],
+   [
+    3869842,
+    3857837
+   ],
+   [
+    4123367,
+    4129484
+   ],
+   [
+    4163078,
+    4166070
+   ],
+   [
+    4233223,
+    4232294
+   ]
+  ]
+ }
+}
