@@ -7,7 +7,11 @@ Order (owner, 2026-10-16): Total cases -> Raised funnel (return request) -> Inve
 import json
 from pathlib import Path
 
-from rca_view_spec import ND, RET_STATES, _cascade, evaluate
+from rca_view_spec import ND as _ND, RET_STATES, _cascade, evaluate
+
+NOT_ROUTED = "Not routed to WH: "
+ROUTES = ["No Dependency", "Customer", "Logistics", "Other / not recorded"]
+ND = [n for n in _ND if n != "Dependency not marked"]
 
 HERE = Path(__file__).parent
 I1, I2, RET, S1, S2 = "Investigation bucket 1", "Investigation bucket 2", "Return request", "Swap bucket 1", "Swap bucket 2"
@@ -30,6 +34,10 @@ def build_layout():
     add("rejected", "WH Rejected", "of cases", "cases", False, [(I1, "in", ["Rejected"])])
     nd = [(I1, "in", ["No decision"])]
     add("no_decision", "No decision", "of cases", "cases", False, nd)
+    nr = nd + [(I2, "in", [NOT_ROUTED + r for r in ROUTES])]
+    add("nd_notrouted", "Not routed to WH (Dependency set elsewhere, no WH tag)", "of no decision: the Warehouse was never asked to investigate", "no_decision", False, nr)
+    for r in ROUTES:
+        add("nd_nr_" + r, r, "Dependency field value", "nd_notrouted", False, nd + [(I2, "in", [NOT_ROUTED + r])])
     for n in ND:
         add("nd_" + n, n, "of no decision", "no_decision", False, nd + [(I2, "in", [n])])
     add("not_yet_read", "Not yet read", "held back inside T-2 or no WH verdict cached", "cases", False, [(I1, "in", ["Not yet read"])])

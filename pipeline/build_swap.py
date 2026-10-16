@@ -44,6 +44,7 @@ WH = {1: "Bengaluru", 2: "Delhi", 3: "Mumbai", 4: "DocPharma", 5: "Lucknow", 6: 
 STRONG_WORDS = ("swap", "swipe", "another cx", "other cx", "another customer", "other customer", "different order", "someone else", "any one else", "other person", "mixed up", "label")
 NOT_SWAP_DISPOSITIONS = {"Unprofessional behavior by delivery executive", "Account deletion request", "Refund not credited to account",
                          "Incorrect amount refunded", "Delayed or likely to be delayed", "Wrong item ordered"}
+NOT_ROUTED = "Not routed to WH: "
 WINDOW_DAYS = 60
 
 
@@ -138,6 +139,7 @@ def main():
     rstat = load("swap_return_status.json")
     lm = set(load("swap_pairs_seed.json").get("label_mismatch", {}).get("orders", []))
     checks, deps = load("wh_text_check.json"), load("ticket_dependency.json", {})
+    routing = load("swap_ticket_routing.json", {})
     rca = load("../rca.json") if False else json.loads((HERE / "rca.json").read_text())
     cap, gen = rca["t2_cap_date"], rca["generated_at"]
     start = (datetime.strptime(gen[:10], "%Y-%m-%d") - timedelta(days=WINDOW_DAYS)).date().isoformat()
@@ -195,9 +197,24 @@ def main():
                 basis = how + "; " + basis
         else:
             b1, b2, basis, courier, conf = "Pair not identified", "", "Ticket names no second order", "Unknown", "Default"
-        state, sub = investigation_state(checks.get(t["ticket_id"]))
-        dep = deps.get(t["ticket_id"]) or t["dependency"] or "Not recorded"
-        decision, reason = decide(state, sub, dep if dep != "Not recorded" else None, "not_read", {"warehouse_id": meta["wh"]})
+        # Investigation uses EVERY ticket of the case (both sides of a pair), best verdict wins:
+        # admitted > denied > anything else. Routing: Dependency field, with ticket TAGS (current + ever) as fallback.
+        cts = by_order.get(o, []) + (by_order.get(partner, []) if partner else [])
+        states = [investigation_state(checks.get(c["ticket_id"])) for c in cts]
+        rank = {"accepted": 0, "rejected": 1, "not_investigated": 2, "not_yet_checked": 3}
+        state, sub = min(states, key=lambda x: rank[x[0]])
+        rt = [routing.get(c["ticket_id"]) or {} for c in cts]
+        via_tag = any(re.search(r"\bwh\b|warehouse", tg, re.I) for r in rt for tg in r.get("tags_ever", []))
+        ever_wh = any("Warehouse" in (r.get("dependency_ever") or []) or r.get("dependency") == "Warehouse" for r in rt)
+        anchor_dep = (routing.get(t["ticket_id"]) or {}).get("dependency") or t["dependency"] or "Not recorded"
+        routed_wh = ever_wh or via_tag
+        dep = "Warehouse" if routed_wh else anchor_dep
+        decision, reason = decide(state, sub, "Warehouse" if routed_wh else None, "not_read", {"warehouse_id": meta["wh"]})
+        nd_label = ND.get(reason, "")
+        if reason == "dependency_not_marked":
+            nd_label = NOT_ROUTED + (anchor_dep if anchor_dep in ("No Dependency", "Customer", "Logistics") else "Other / not recorded")
+        if routed_wh and not ever_wh:
+            dep = "Warehouse (by tag)"
         sts = rstat.get(str(o))
         if sts is None:
             rs = "not_raised"
@@ -206,7 +223,7 @@ def main():
             rs = "cancelled" if codes and all(c in (280, 231) for c in codes) else \
                  "accepted_refunded" if 250 in codes else "in_progress"
         rows.append([o, t["ticket_id"], t["created"], WH.get(meta["wh"], str(meta["wh"])), "Order swap",
-                     DECISION.get(decision, decision), ND.get(reason, "") if decision == "no_decision" else "",
+                     DECISION.get(decision, decision), nd_label if decision == "no_decision" else "",
                      RET[rs], dep, b1, b2, str(partner or ""), basis, conf, courier,
                      "Yes" if t["created"] <= cap else "No (held back, WH not yet commented)"])
     cols = COLUMNS[:9] + ["Swap bucket 1", "Swap bucket 2", "Pair order", "Evidence basis", "Confidence", "Courier match", "In T-2 scope"]
