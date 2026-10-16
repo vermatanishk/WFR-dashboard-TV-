@@ -10,9 +10,11 @@ Two views per raised ticket:
    and No decision is broken down, first match wins:
      footage_missing, batch_not_in_inventory (the "not from our inventory"
      claim), cx_image_unclear (WH said so, OR our own reading of every image
-     on the return was unreadable), dependency_not_marked (Zoho Dependency
-     is anything other than "Warehouse", incl. unfilled), return_not_received_at_wh,
-     other_wh_note, no_wh_comment.
+     on the return was unreadable), (only when NOBODY from
+     Warehouse commented) dependency_not_marked (Dependency is not Warehouse now, was never Warehouse in the
+     ticket History and never carried a warehouse tag - ticket_routing.json), return_not_received_at_wh,
+     other_wh_note, no_wh_comment. A Warehouse comment that is neither admission nor denial is always
+     other_wh_note / its sub-reason, whatever the Dependency says.
    "Not yet read" = no Warehouse-comment verdict cached yet; that is a
    coverage gap, deliberately NOT folded into No decision.
 
@@ -153,19 +155,37 @@ def decide(state, subtype, dependency, img_status, meta=None):
         return "no_decision", subtype
     if subtype == "cx_image_unclear" or img_status == "unclear":
         return "no_decision", "cx_image_unclear"
+    # The Warehouse DID comment (neither an admission nor a denial): it was asked, so the Dependency field is
+    # irrelevant - fixed 2026-10-16 (257363: WH replied "order contains only 1 qty" but was bucketed as
+    # "Dependency not marked" because the field said No Dependency).
+    if subtype != "no_wh_comment":
+        if subtype == "return_not_received_at_wh":
+            return "no_decision", subtype
+        return "no_decision", "other_wh_note"
+    # nobody from Warehouse commented
     if dependency != "Warehouse":
         return "no_decision", "dependency_not_marked"
-    if subtype == "return_not_received_at_wh":
-        return "no_decision", subtype
-    if subtype == "no_wh_comment":
-        return ("no_decision",) + (no_wh_comment_reason(dependency, meta)[0],)
-    return "no_decision", "other_wh_note"
+    return ("no_decision",) + (no_wh_comment_reason(dependency, meta)[0],)
+
+
+def routed_to_warehouse(r):
+    """Fallback for the Dependency field (agents change it later): Warehouse now, ever Warehouse in the ticket
+    History, or a warehouse tag (`blr wh`, `hyd wh`, ...) now or ever. -> 'history' | 'tag' | None"""
+    import re
+    if not r:
+        return None
+    if "Warehouse" in (r.get("dependency_ever") or []):
+        return "history"
+    if any(re.search(r"\bwh\b|warehouse", t, re.I) for t in r.get("tags_ever") or []):
+        return "tag"
+    return None
 
 
 def main():
     data = json.loads((HERE / "data.json").read_text())
     tickets = data["tickets"]
     deps = load("ticket_dependency.json", {})
+    routing = load("ticket_routing.json", {})
     checks = load("wh_text_check.json", {})
     expiry = load("rca_expiry.json", {})
     binmap = load("rca_binmap.json", {})
@@ -195,6 +215,10 @@ def main():
         state, sub = investigation_state(checks.get(tid))
         dep_raw = deps.get(tid)
         dependency = dep_raw if dep_raw else "Not recorded"
+        via = routed_to_warehouse(routing.get(tid)) if dependency != "Warehouse" else None
+        dep_label = dependency
+        if via:                       # decisions use the effective dependency, the row keeps the source
+            dep_label, dependency = "Warehouse (" + via + ")", "Warehouse"
         day = t["created_time"][:10]
         img = image_status(t["order_id"], images_by_order, t["category"])
         lab = manual_labels.get(str(t["order_id"])) or {}
@@ -211,7 +235,7 @@ def main():
             "category": t["category"],
             "location": t["location"],
             "resolution": t["resolution"],
-            "dependency": dependency,
+            "dependency": dep_label,
             "decision": decision,
             "no_decision_reason": nd_reason,
             "return_state": ("not_raised" if str(t["order_id"]) in rs_override else

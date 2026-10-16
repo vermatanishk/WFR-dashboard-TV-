@@ -9,37 +9,18 @@ Only labels are stored - no comment text. Run before build_swap.py.
 """
 import json
 from build_swap import HERE, select_tickets
-from zoho_auth import desk_get
 
 OUT = HERE / "zoho_raw90/swap_ticket_routing.json"
 
 
 def main():
+    from pull_ticket_routing import fetch_routing
     tickets, _ = select_tickets()
     out = json.loads(OUT.read_text()) if OUT.exists() else {}
     for tn in sorted(tickets):
-        hit = desk_get("/tickets/search", {"ticketNumber": tn, "limit": 1})["data"]
-        hit = next((h for h in hit if str(h["ticketNumber"]) == tn), None)
-        if not hit:
-            continue
-        tid = hit["id"]
-        tags_now = [t["name"] for t in desk_get(f"/tickets/{tid}/tags").get("tags", [])]
-        deps, tags, frm = [], set(tags_now), 1
-        cur = (hit.get("cf") or {}).get("cf_dependency")
-        while True:
-            page = desk_get(f"/tickets/{tid}/History", {"limit": 50, "from": frm}).get("data", [])
-            for h in page:
-                for p in h.get("eventInfo") or []:
-                    v = p.get("propertyValue")
-                    if p.get("propertyName") == "Dependency" and isinstance(v, dict):
-                        deps += [x for x in (v.get("previousValue"), v.get("updatedValue")) if x]
-                    if p.get("propertyName") == "Tags" and isinstance(v, list):
-                        tags |= set(v)
-            if len(page) < 50:
-                break
-            frm += 50
-        out[tn] = {"dependency": cur, "dependency_ever": sorted(set(deps + ([cur] if cur else []))),
-                   "tags_now": sorted(tags_now), "tags_ever": sorted(tags)}
+        res = fetch_routing(tn)
+        if res:
+            out[tn] = res
     OUT.write_text(json.dumps(out, separators=(",", ":")))
     print(len(out), "tickets")
 
