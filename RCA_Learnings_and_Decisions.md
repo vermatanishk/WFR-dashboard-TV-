@@ -161,3 +161,17 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   (no return line and no SKU in the ticket text; 3 of those orders contain a multipack line somewhere).
 - The system data cannot separate pack-qty confusion from counting error (pick scans never show a short pick, WH
   comments and ticket text carry no pack detail); only complaint photos can. See the item-missing proposal in the chat log.
+
+## 13. Item-missing x pack mapping (2026-10-16)
+- Input: `Pack Quantity & Base Value Changes.xlsx` (467,139 SKUs; 636 flagged Pack = base pack qty > 1, rest Single).
+  Matched the 418 in-T-2 item-missing orders: 436 complained SKU lines, 432 found in the mapping, 25 orders have no
+  identifiable SKU. Only 12 SKU lines are Pack in the mapping (name regex said 19): names with `1X..` (Gluci 1X10ml,
+  Tresiba 1*3ml, Novomix 1*3ml, Lactobrain 1X1gm, Lamino Bcaa 1X10gm, Calciquick 1X5ml) are Single in the mapping.
+- Potential pack-confusion tags per order (`pipeline/rca_item_missing_tags.csv`, `zoho_raw90/rca_item_missing_tags.json`):
+  catalog conflict (name pack pattern vs mapping base qty, e.g. Nistami 3X10s is base 1), mapping changes current MDM
+  pack qty (pack SKUs and >=2x changes: e.g. Peptidase 14X25gm 350 -> 25, Budevin 5X2ml 10 -> 2), SKU missing from the
+  mapping (Salkem 5X2.5ml etc.), and inward unit mismatch = a GRN since 1 Apr whose qty is exactly pack size (or its
+  reciprocal) x the open PO qty (e.g. Onco 4mg: PO 10, GRN 100; Glimda 2mg: PO 10, GRN 100) - the signature of
+  singles inwarded as packs or the reverse, which inflates system stock and later shows up as short supply.
+- Evidence limits: the inward signature is a candidate flag (PO/GRN units were not independently verified), customer-end
+  expectation cannot be proven from system data, and 332 of 418 orders (single SKU, no flag, WH did not accept) remain undetermined.
