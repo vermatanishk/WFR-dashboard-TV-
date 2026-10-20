@@ -200,3 +200,12 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   (same idea as "photo not read yet"). The Apps Script and the website pick the rows up from the spec; run `refreshAll`.
 - 60-day result: item missing 418 = pack qty confusion 23 (inward 3, catalog 20, customer end 0) + counting error 370
   (confirmed 26, by elimination 344) + SKU not identified 25 + tags pending 0.
+
+## 16. September returns vs WFR reporting (2026-10-20)
+- ClickHouse: 5,316 orders / 5,953 customer (DTO) return requests created in Sept 2026 (8,510 items); 5,227 orders have a
+  return status (closest to the owner's 5,221). By primary reason (orders): no longer needed 2,417, prescription changed 743,
+  incomplete order 514, damaged / defective 442, received wrong medicines 337, allergic 240, substitutes not needed 238, free
+  text 246, duplicate 76, expired 63.
+- WFR-type reasons (incomplete, wrong medicine, damaged, expired) = 1,356 orders; only 591 (44%) have a Zoho WFR ticket,
+  **765 have none** (damaged 419, wrong medicine 229, incomplete 62, expired 55) so they never reach WFR reporting. IDs:
+  `pipeline/sept_wfr_reason_returns_without_ticket.csv`. Customer-selected reason, not verified.
