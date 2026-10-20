@@ -209,3 +209,7 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
 - WFR-type reasons (incomplete, wrong medicine, damaged, expired) = 1,356 orders; only 591 (44%) have a Zoho WFR ticket,
   **765 have none** (damaged 419, wrong medicine 229, incomplete 62, expired 55) so they never reach WFR reporting. IDs:
   `pipeline/sept_wfr_reason_returns_without_ticket.csv`. Customer-selected reason, not verified.
+- **Live Zoho check of the 765 (2026-10-20, search by cf_order_id):** 652 truly have no ticket (damaged 364, wrong medicine
+  198, expired 45, incomplete 45); 113 DO have a ticket that our dataset does not count (sub-dispositions such as "Issue not
+  listed", "Damaged packaging or container", "Pickup delayed or refused by courier", "Order Swap" under Return and Pickup /
+  Payments and Refunds, or empty) - a category-mapping gap, not a missing ticket.
