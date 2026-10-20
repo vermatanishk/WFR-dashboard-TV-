@@ -42,3 +42,6 @@
 {"order_id": 3976184, "drug_code": 1846324, "reason": "Expired or Near Expiry Medicines", "batches": ["T241236|2028-07-01"], "delivered_at": "2026-09-21 14:43:22.477820"}
 {"order_id": 3955706, "drug_code": 1844912, "reason": "Damaged or Defective Packaging", "batches": ["25-0072|2027-01-01"], "delivered_at": "2026-09-21 08:26:49.490701"}
 {"order_id": 4053772, "drug_code": 1012981, "reason": "different batch no ", "batches": ["ATT39ACB|2028-05-31", "ATT33ACB|2028-02-29"], "delivered_at": "2026-09-26 12:22:47.610076"}
+{"order_id": 4217020, "drug_code": 1305921, "reason": "Expired or Near Expiry Medicines", "batches": ["MFL0745|2027-10-31"], "delivered_at": "2026-10-10 09:05:29.064235"}
+{"order_id": 4322193, "drug_code": 1798223, "reason": "Expired or Near Expiry Medicines", "batches": ["4CSIS4004|2027-05-01"], "delivered_at": "2026-10-16 07:28:54.932798"}
+{"order_id": 4129235, "drug_code": 1083761, "reason": "Expired or Near Expiry Medicines", "batches": ["ATI2505|2027-08-01", "ATE2609|2028-04-01"], "delivered_at": "2026-10-02 07:12:20.276569"}

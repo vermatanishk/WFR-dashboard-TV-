@@ -332,6 +332,16 @@ relevant"). Read results: `zoho_raw90/rca_damaged_noncold.json`.
 Known gaps: ~45% of tickets are "Not yet read"; no structured received-SKU/batch field in Zoho
 (`Incorrect Batch received` etc. are always empty); damaged/short-qty/order-swap RCA not built.
 
+
+### RCA daily refresh checklist (added 2026-10-20 - the RCA tabs were stuck at 13 Oct because this was not part of the data refresh)
+The data refresh (steps 1-7 above) does NOT rebuild the RCA layer. After it, run IN THIS ORDER, then rebuild `build_html.py`, run the four tests, commit, fetch/merge, push:
+1. `pull_dependency.py`, `recheck_wh_comments.py`, `pull_ticket_routing.py` (Zoho REST).
+2. ClickHouse MCP pulls for NEW orders only (window = last 60 days, T-2 cap = pull date - 2): return outcomes (`rca_return_outcome_raw.json`, re-pull since 10 Aug, statuses move), return-item lines (`rca_missing_items_raw.json`) then `update_pickcheck.py`, image URLs (`rca_return_images_raw.jsonl`), expiry rows, wrong-medicine ordered name/bin/order lines (`rca_wrongmed_raw.jsonl`, `rca_order_lines.json`) + catalog candidates, order meta/COGS for agent-mistake orders (`rca_order_meta.json`).
+3. `rca_images.py`, then READ every pending image (contact sheets, `merge_reads.py`), classify non-cold damaged lines into `rca_damaged_noncold.json`.
+4. Item-missing tags: complained SKU + pack mapping + GRN signature rows -> `rca_item_missing_*.json`; orders not covered show as **Tags pending**.
+5. `build_rca_wrongmed.py`, `build_rca_inputs.py`, `build_rca_extra.py`, `build_rca.py`, `build_item_missing_tags.py`, `build_rca_export.py`, `build_rca_trend.py`.
+Check `rca_trend.json` `t2_cutoff` equals pull date - 2; photo-not-read and tags-pending must be 0 in the T-2 window.
+
 ## RFD (Rate of First Dispatch) adherence — separate sub-project
 
 Full detail: [RFD_Adherence_Logic_Documentation.md](RFD_Adherence_Logic_Documentation.md).

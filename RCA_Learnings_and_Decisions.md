@@ -213,3 +213,12 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
   198, expired 45, incomplete 45); 113 DO have a ticket that our dataset does not count (sub-dispositions such as "Issue not
   listed", "Damaged packaging or container", "Pickup delayed or refused by courier", "Order Swap" under Return and Pickup /
   Payments and Refunds, or empty) - a category-mapping gap, not a missing ticket.
+
+## 17. RCA refresh 2026-10-20
+- The RCA view was stuck at T-2 = 13 Oct because the daily data refresh does not run the RCA layer. Rebuilt to T-2 = 17 Oct
+  (window 20 Aug - 17 Oct, 1,406 raised): 64 new unique images read, return outcomes re-pulled (statuses move), item-missing
+  tags extended (60 pending orders: 24 with a return line tagged, 34 without a return line are "SKU not identified"),
+  COGS meta for 17 agent-mistake orders, expiry / wrong-medicine inputs for the new orders.
+- A refresh checklist is now in CLAUDE.md so the RCA layer is rebuilt with every data refresh.
+- Caveats: SKU not identified rose to 59 (orders with no return line); 17 new catalog-candidate rows were added by hand for
+  brands with a bin at the warehouse, the rest stay "Bin not assessed".
