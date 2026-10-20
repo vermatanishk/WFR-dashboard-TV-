@@ -222,3 +222,19 @@ table), and a live Google Sheet (Raw data + RCA view) fed from `rca_export.json`
 - A refresh checklist is now in CLAUDE.md so the RCA layer is rebuilt with every data refresh.
 - Caveats: SKU not identified rose to 59 (orders with no return line); 17 new catalog-candidate rows were added by hand for
   brands with a bin at the warehouse, the rest stay "Bin not assessed".
+
+## 18. Damage deep dive (2026-10-20, customer returns created 20 Sep - 19 Oct)
+
+Script: `pipeline/build_damage30.py` (inputs `zoho_raw90/damage30_*.json`; output `damage30_orders.json`).
+
+**Why the dashboard under-reports damage.** 553 orders had a damage-type customer return (446 "Damaged or Defective
+Packaging", 104 cold-storage, 3 free text). The dashboard is ticket-based and only pulls four Damaged sub-dispositions:
+only 40 of the 553 sit in a Damaged ticket. 382 have no Zoho ticket at all (customer returned via the app); 118 have a
+ticket under sub-dispositions the pull does not map ("Cold storage item delivered warm" 51, "Damaged packaging or
+container" 39, "Issue not listed" 12, courier pickup 11). Fix options: map those into CATEGORY_MAP and count app-only returns.
+
+**Split of the 553 orders** (photo-read by hand, all 793 images; order bucket priority P>L>O>C>Q>D>N>X):
+no visible damage 151 (27%), cold chain 109 (20%, not photo-read), primary pack breached 104 (19%), leak/spill 58,
+carton damaged 32, product quality 30, label/closure/device 28, image not relevant 22, no photo on file 10, outer shipper 9.
+Refund value Rs 7.47 lakh. NDR>0 on 72 orders, OFD>1 on 38 (courier handling is a minority driver).
+Distributions by carrier / region / state / warehouse / SKU come from the script output. Rates need delivered-order denominators (not pulled).
