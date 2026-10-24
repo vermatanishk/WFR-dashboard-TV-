@@ -26372,5 +26372,124 @@
     "reason": "Warehouse team comment: \"We have sent proper medicine to CX Mahiboob bee\" - this is a denial or non-admission (does not state WH sent the wrong/short item), not an admission. Not counted.",
     "order_id": 4373126,
     "admitted": false
+  },
+  "265035": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4289746,
+    "admitted": false
+  },
+  "265046": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-team comment on this ticket.",
+    "order_id": 4266389,
+    "admitted": false
+  },
+  "265089": {
+    "verdict": "no_wh_comment",
+    "evidence": null,
+    "reason": "No Warehouse-team comment on this ticket.",
+    "order_id": 4018508,
+    "admitted": false
+  },
+  "265099": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4326306,
+    "admitted": false
+  },
+  "265033": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4341615,
+    "admitted": false
+  },
+  "265031": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4302964,
+    "admitted": false
+  },
+  "265107": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4274112,
+    "admitted": false
+  },
+  "265103": {
+    "verdict": "admitted",
+    "evidence": "We have sent short qty to CX Mahiboob bee",
+    "reason": "Genuine first-person Warehouse admission: \"We have sent short qty to CX Mahiboob bee\"",
+    "order_id": 4338735,
+    "admitted": true
+  },
+  "265062": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4339244,
+    "admitted": false
+  },
+  "265060": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4282738,
+    "admitted": false
+  },
+  "265032": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4344346,
+    "admitted": false
+  },
+  "265102": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4183369,
+    "admitted": false
+  },
+  "265025": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4331803,
+    "admitted": false
+  },
+  "265101": {
+    "verdict": "unrecognized",
+    "evidence": null,
+    "reason": "Every Warehouse comment was a request-for-evidence or neutral/factual note - no admission or denial found.",
+    "order_id": 4217020,
+    "admitted": false
+  },
+  "265086": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4322213,
+    "admitted": false
+  },
+  "265084": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4331295,
+    "admitted": false
+  },
+  "265074": {
+    "verdict": "denied",
+    "evidence": "We have sent proper medicine to CX Mahiboob bee",
+    "reason": "Warehouse denial (stock/proper-item template): \"We have sent proper medicine to CX Mahiboob bee\"",
+    "order_id": 4360243,
+    "admitted": false
   }
 }
