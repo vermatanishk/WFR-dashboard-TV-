@@ -36,8 +36,8 @@ var CMP_VIEWS = [
 ];
 var SUMMARY_URL = BASE + 'cmp_summary.json';
 var SUMMARY_TAB = 'Summary';
-var VIEW_TAB_COLOR = '#ffe699';      // light yellow: the dashboard (view) tabs - raw-data tabs stay uncoloured
-var SUMMARY_TAB_COLOR = '#f4b6b6';   // light red: the Summary tab
+var VIEW_TAB_COLOR = '#c0392b';      // dark red: the dashboard (view) tabs - raw-data tabs stay uncoloured
+var SUMMARY_TAB_COLOR = '#7f1d1d';   // darkest red: the Summary tab
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('WFR RCA')
