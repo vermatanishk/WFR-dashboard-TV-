@@ -27,6 +27,12 @@ files = {
     "__CMP_DAMAGE_JSON__": "cmp_damage_trend.json",
     "__SWAP_TREND_JSON__": "swap_trend.json",
     "__CMP_SUMMARY_JSON__": "cmp_summary.json",
+    "__CMP_WFR_EXPORT_JSON__": "cmp_wfr_export.json",
+    "__CMP_DAMAGE_EXPORT_JSON__": "cmp_damage_export.json",
+    "__SWAP_EXPORT_JSON__": "swap_export.json",
+    "__CMP_WFR_SPEC_JSON__": "cmp_wfr_view_spec.json",
+    "__CMP_DAMAGE_SPEC_JSON__": "cmp_damage_view_spec.json",
+    "__SWAP_SPEC_JSON__": "swap_view_spec.json",
 }
 
 out = template

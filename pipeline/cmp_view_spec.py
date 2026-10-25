@@ -16,7 +16,7 @@ the same global "Return request" selector works. Rows inside the Warehouse T-2 w
 import json
 from pathlib import Path
 
-from build_complaints import (COLUMNS, DMG, DMG_PHYS, DMG_TEMP, EXP, MQ, MRP, P_NA, P_NOFILE, P_TEMP, P_UNREAD, R_ACC, R_CAN, R_NONE,
+from build_complaints import (COLUMNS, DMG, DMG_PHYS, DMG_TEMP, EXP, MQ, MRP, P_NA, P_NOFILE, P_OTHER, P_TEMP, P_UNREAD, R_ACC, R_CAN, R_NONE,
                               R_REJ, SRC_BOTH, SRC_RET, SRC_TKT, T_MATCH, T_NONCMP, T_NONE, T_OTHER, TYPES, WFR_TYPES, WH_ACC,
                               WH_DEN, WH_DUE, WH_GAP, WH_NONE, WH_OTH, WM)
 from damaged_buckets import BUCKETS
@@ -149,6 +149,7 @@ def damage_layout():
     add("ph_vis_n", "No investigation ticket", "real damage nobody investigated", "ph_vis", False, P + [(PB, "in", VISIBLE), (RAISED, "in", ["No"])])
     add("ph_unread", P_UNREAD, "return raised, photo still to be read - must be 0 for a final view", "phys", False, P + [(PB, "in", [P_UNREAD])])
     add("ph_nofile", P_NOFILE, "return raised but no photo uploaded", "phys", False, P + [(PB, "in", [P_NOFILE])])
+    add("ph_other", P_OTHER, "ticket-only complaint; the item was returned under a non-damage reason - its photo is not read here", "phys", False, P + [(PB, "in", [P_OTHER])])
     add("ph_na", P_NA, "no return request, so no complaint photo exists", "phys", False, P + [(PB, "in", [P_NA])])
     return _cascade(L)
 

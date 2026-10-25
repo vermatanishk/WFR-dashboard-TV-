@@ -271,3 +271,8 @@ and each complaint type gets the same trickle-down as Order damage (ticketed -> 
 and the no-decision reasons now live INSIDE the WFR funnel tab - joined on (order, complaint type) from rca_export.json (columns "RCA ..." in the complaint export;
 "Root-cause analysis pending" = ticket newer than the RCA export). The old RCA tab / RCA view stay until the owner confirms parity; the damaged and swap branches of
 the RCA view are superseded by the Order damage / Order swap tabs.
+
+**Audit 2026-10-26 (logic + data):** 14/14 random return-side rows re-checked against ClickHouse (final reason + state) and 48/48 against live Zoho; a ticket
+that explains a return of ANOTHER complaint type is attached to at most one row (19 damage rows carry a missing-qty / wrong-item ticket - an assumption, visible in the
+"Ticket sub-disposition" column); ticket-only damage whose item came back under another reason is no longer labelled "no photo exists" (new row "return filed under another
+reason"); drill-down: clicking any number on the WFR funnel / Order swap / Order damage tabs lists the complaints behind it (checked: 828 cells, 0 count mismatches vs the table).

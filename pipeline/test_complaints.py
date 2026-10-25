@@ -116,8 +116,8 @@ for k in types:
 dm = json.loads((HERE / "cmp_damage_trend.json").read_text())
 d = {r["key"]: r["3mo"]["n"] for r in dm["rows"]}
 check("damage: temperature + physical = in scope", d["temp"] + d["phys"] == d["scope"])
-check("damage: physical = photo read + not read + no file + not available",
-      d["phys"] == d["ph_read"] + d["ph_unread"] + d["ph_nofile"] + d["ph_na"])
+check("damage: physical = photo read + not read + no file + not available + other-reason return",
+      d["phys"] == d["ph_read"] + d["ph_unread"] + d["ph_nofile"] + d["ph_na"] + d["ph_other"])
 check("damage: photo buckets add up to photo read", d["ph_read"] == sum(d[f"pb{i}"] for i in range(8)))
 check("damage: no unread photos left", d["ph_unread"] <= 3, str(d["ph_unread"]))
 # 5b. hand-written predicates over the per-tab exports must equal the engine's counts (independent of the layout spec)

@@ -63,6 +63,7 @@ SRC_BOTH, SRC_RET, SRC_TKT = "Return request + ticket", "Return request only", "
 WH_ACC, WH_DEN, WH_OTH, WH_NONE, WH_DUE, WH_GAP, WH_NA = ("WH accepted", "WH denied", "WH other note", "No WH comment",
                                                           "Not due yet (T-2)", "Verdict not read (gap)", "No ticket")
 DMG_TEMP, DMG_PHYS = "Temperature complaint (cold chain)", "Physical damage"
+P_OTHER = "Return filed under another reason (photo not checked)"
 P_NA, P_UNREAD, P_NOFILE, P_TEMP = ("Photo not available (no return request)", "Photo not read yet", "No photo on file",
                                     "Not photo-read (temperature complaint)")
 
@@ -244,7 +245,7 @@ def main():
             if temp:
                 pb = P_TEMP
             elif not lines:
-                pb = P_NA
+                pb = P_NA if state == R_NONE else P_OTHER      # the customer did return it, just under another reason
             elif oid in photo:
                 pb = photo[oid]
             elif universe.get(oid) == "No photo on file":

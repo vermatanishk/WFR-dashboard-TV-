@@ -288,6 +288,8 @@
     #t5 table.wfr-lb-table thead { display: table-header-group; }
     #t5 .wfr-lb-poster { max-width: 320px; page-break-before: always; break-before: page; box-shadow: none; }
   }
+  td.cmp-click { cursor: pointer; }
+  td.cmp-click:hover { background: rgba(42,120,214,0.10); text-decoration: underline; }
 </style>
 
 <div class="wfr-root">
@@ -652,6 +654,8 @@
             <tbody id="cmp-wfr-body"></tbody>
           </table>
         </div>
+        <div class="wfr-footnote" style="margin:10px 0 6px;"><b>Click any number</b> in the table to list the complaints behind it (same filter, same count) - order, ticket, what the customer said, what the warehouse said.</div>
+        <div id="cmp-wfr-detail"></div>
       </div>
     </div>
 
@@ -678,6 +682,8 @@
             <tbody id="cmp-swap-body"></tbody>
           </table>
         </div>
+        <div class="wfr-footnote" style="margin:10px 0 6px;"><b>Click any number</b> in the table to list the complaints behind it (same filter, same count) - order, ticket, what the customer said, what the warehouse said.</div>
+        <div id="cmp-swap-detail"></div>
       </div>
     </div>
 
@@ -704,6 +710,8 @@
             <tbody id="cmp-dmg-body"></tbody>
           </table>
         </div>
+        <div class="wfr-footnote" style="margin:10px 0 6px;"><b>Click any number</b> in the table to list the complaints behind it (same filter, same count) - order, ticket, what the customer said, what the warehouse said.</div>
+        <div id="cmp-dmg-detail"></div>
       </div>
     </div>
 
@@ -738,6 +746,8 @@ const CMP_WFR = __CMP_WFR_JSON__;
 const CMP_DMG = __CMP_DAMAGE_JSON__;
 const CMP_SWAP = __SWAP_TREND_JSON__;
 const CMP_SUM = __CMP_SUMMARY_JSON__;
+const CMP_EXP = { 'cmp-wfr': __CMP_WFR_EXPORT_JSON__, 'cmp-dmg': __CMP_DAMAGE_EXPORT_JSON__, 'cmp-swap': __SWAP_EXPORT_JSON__ };
+const CMP_SPEC = { 'cmp-wfr': __CMP_WFR_SPEC_JSON__, 'cmp-dmg': __CMP_DAMAGE_SPEC_JSON__, 'cmp-swap': __SWAP_SPEC_JSON__ };
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -1685,6 +1695,40 @@ if (rcaRetSel) rcaRetSel.addEventListener('change', renderRcaTrend);
 renderRcaTrend();
 
 // ---- Tabs 8-11: complaint baseline (union of return requests + Zoho tickets) - built by build_complaints.py / cmp_view_spec.py ----
+const CMP_DETAIL_COLS = {
+  'cmp-wfr': ['Created date', 'Order ID', 'Complaint type', 'Source', 'Return request', 'Return reason (final)', 'Ticket ID', 'Ticket sub-disposition', 'WH input', 'RCA investigation', 'RCA no-decision reason', 'RCA bucket 1', 'RCA bucket 2', 'Warehouse'],
+  'cmp-dmg': ['Created date', 'Order ID', 'Source', 'Return request', 'Return reason (final)', 'Ticket ID', 'Ticket sub-disposition', 'WH input', 'Damage type', 'Photo bucket', 'Cold item', 'Warehouse'],
+  'cmp-swap': null
+};
+function cmpMatch(row, col, where) {
+  for (const [c, op, vals] of where) { if ((op === 'in') !== vals.includes(String(row[col[c]]))) return false; }
+  return true;
+}
+function showCmpDetail(pre, T, key, span) {
+  const box = document.getElementById(pre + '-detail'), EXP = CMP_EXP[pre], SPEC = CMP_SPEC[pre];
+  if (!box || !EXP || !SPEC) return;
+  const item = SPEC.layout.find(r => r.key === key); if (!item) return;
+  const sel = document.getElementById(pre + '-ret-filter'), choice = sel ? sel.value : 'All';
+  const col = {}; EXP.columns.forEach((c, i) => col[c] = i);
+  const days = span === '3mo' ? T.days : span === '1mo' ? T.days.slice(-30) : span === '2wk' ? T.days.slice(-14) : [span];
+  const ds = new Set(days);
+  const rows = EXP.rows.filter(r => ds.has(String(r[col['Created date']])) && (choice === 'All' || r[col['Return request']] === choice) && cmpMatch(r, col, item.where));
+  const spanLabel = ['3mo', '1mo', '2wk'].includes(span) ? { '3mo': 'last 60 days', '1mo': 'last 30 days', '2wk': 'last 14 days' }[span] : (T.day_labels[span] || span);
+  let cols = CMP_DETAIL_COLS[pre] || EXP.columns; cols = cols.filter(c => c in col);
+  const esc = v => String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const CAP = 300;
+  box.innerHTML = `<div class="wfr-card" style="margin-top:6px"><div class="wfr-lb-title" style="font-size:13px">${esc(item.label.replace(/^[\s\u21b3]+/, ''))} - ${esc(spanLabel)}: <b>${rows.length}</b> complaint${rows.length === 1 ? '' : 's'}</div>
+    <div class="wfr-footnote" style="margin:4px 0 8px">${esc(item.sub || '')}${rows.length > CAP ? ' Showing the first ' + CAP + '; download for all.' : ''} <a href="#" id="${pre}-dl">Download CSV</a></div>
+    <div class="wfr-scroll"><table class="wfr-table"><thead><tr>${cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>
+    ${rows.slice(0, CAP).map(r => `<tr>${cols.map(c => `<td>${esc(r[col[c]])}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`;
+  document.getElementById(pre + '-dl').addEventListener('click', ev => {
+    ev.preventDefault();
+    const q = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
+    const csv = [EXP.columns.map(q).join(',')].concat(rows.map(r => r.map(q).join(','))).join('\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = pre + '-' + key + '.csv'; a.click();
+  });
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 function renderCmpTrend(pre, T) {
   const head = document.getElementById(pre + '-head'), body = document.getElementById(pre + '-body');
   if (!head || !body || !T || !T.rows) return;
@@ -1703,14 +1747,21 @@ function renderCmpTrend(pre, T) {
   body.innerHTML = view.rows.map(row => {
     const pad = (row.indent || 0) * 18;
     const labelHtml = `<div style="padding-left:${pad}px">${row.label}</div>` + (row.sub ? `<div class="wfr-macro-sub" style="padding-left:${pad}px">${row.sub}</div>` : '');
-    return `<tr class="${row.kind === 'wfr_pto' ? 'wfr-macro-head' : ''}">
+    return `<tr class="${row.kind === 'wfr_pto' ? 'wfr-macro-head' : ''}" data-key="${row.key}">
       <td class="frozen frozen-label">${labelHtml}</td>
-      <td class="frozen frozen-3mo num">${txt(row['3mo'])}</td>
-      <td class="frozen frozen-1mo num">${txt(row['1mo'])}</td>
-      <td class="frozen frozen-2wk num barrier">${txt(row['2wk'])}</td>
-      ${days.map(d => `<td class="num">${txt(row.daily[d])}</td>`).join('')}
+      <td class="frozen frozen-3mo num cmp-click" data-span="3mo">${txt(row['3mo'])}</td>
+      <td class="frozen frozen-1mo num cmp-click" data-span="1mo">${txt(row['1mo'])}</td>
+      <td class="frozen frozen-2wk num barrier cmp-click" data-span="2wk">${txt(row['2wk'])}</td>
+      ${days.map(d => `<td class="num cmp-click" data-span="${d}">${txt(row.daily[d])}</td>`).join('')}
     </tr>`;
   }).join('');
+  if (!body.dataset.bound) {
+    body.dataset.bound = '1';
+    body.addEventListener('click', ev => {
+      const td = ev.target.closest('td.cmp-click'); if (!td) return;
+      showCmpDetail(pre, T, td.parentElement.dataset.key, td.dataset.span);
+    });
+  }
 }
 [['cmp-wfr', CMP_WFR], ['cmp-swap', CMP_SWAP], ['cmp-dmg', CMP_DMG]].forEach(([pre, T]) => {
   const el = document.getElementById(pre + '-ret-filter');
