@@ -260,3 +260,9 @@ order swap leave the WFR funnel (own tabs); a Summary tab shows macro numbers on
 MRP/batch 55%, Order swap 58%, Expiry 17%, Damage 28% (physical damage with a photo showing real damage: ~7% ticketed).
 Verification: test_complaints.py (structure, independent recount from raw, dead-draft orders, view sums, hand predicates), JS evaluator vs Python (0 diffs on
 4 views), live Zoho spot checks (no-ticket rows, ticket-only rows, no-WH-comment rows, WH-accepted rows: 48/48).
+
+**Follow-up 2026-10-26:** (1) Bug: a view's "last 30 / 14 days" used the last 30 days THAT HAD ROWS, so a sparse view (Order swap: 27 active days over 58) showed the
+same number for the 60-day and 30-day columns. `evaluate()` / `computeView_` now use contiguous calendar days, trailing 60 (WINDOW_DAYS), ending at the cutoff;
+columns are "Last 60 / 30 / 14 days" on the RCA view, Order swap, WFR funnel and Order damage tabs (Tab 1's macro table is unchanged, 3 months).
+(2) Reporting scope = 60 days. (3) WFR funnel has no Return-request filter: the return outcome is rows (refunded / in progress / no request + the two exclusions),
+and each complaint type gets the same trickle-down as Order damage (ticketed -> WH accepted / denied / other / no comment / not due; no ticket -> already refunded).

@@ -14,7 +14,7 @@ const trend = JSON.parse(fs.readFileSync(path.join(dir, pre[2] + '.json'), 'utf8
 let bad = 0, cells = 0;
 const variants = [[null, trend]].concat(Object.keys(trend.by_return).map(k => [k, trend.by_return[k]]));
 variants.forEach(([rs, want]) => {
-  const got = sandbox.computeView_(exp.columns, exp.rows, spec.layout, exp.t2_cap_date, exp.generated_at, rs, trend.days);
+  const got = sandbox.computeView_(exp.columns, exp.rows, spec.layout, exp.t2_cap_date, exp.generated_at, rs, rs === null ? undefined : trend.days);
   if (JSON.stringify(got.days) !== JSON.stringify(want.days)) { console.log('DAYS DIFFER', rs); bad++; }
   if (got.rows.length !== want.rows.length) { console.log('ROW COUNT DIFFERS', rs); bad++; }
   want.rows.forEach((w, i) => {

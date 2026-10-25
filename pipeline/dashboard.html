@@ -645,18 +645,7 @@
       <div class="wfr-card">
         <div class="wfr-lb-title">WFR funnel - wrong medicine, missing / short qty, expiry, MRP / batch</div>
         <div class="wfr-footnote" style="margin:6px 0 10px;">Each cell is <b>count | % of its parent row</b>. A complaint is one <b>order x complaint type</b>. The baseline is the <b>union</b> of ClickHouse return requests (final reason per item - a customer's first, abandoned pick is ignored) and Zoho Desk tickets (every disposition). "No investigation ticket" = the customer complained but nobody opened a ticket. Cancelled / rejected-at-QC returns are excluded from the funnel. Warehouse input: raised in the last 2 days = "Not due yet (T-2)". Damage and order swap are on their own tabs.</div>
-        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
-          <label for="cmp-wfr-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
-          <select id="cmp-wfr-ret-filter" class="wfr-btn" style="padding:5px 8px;">
-            <option value="All">All</option>
-            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
-            <option value="Raised - Cancelled">Raised - Cancelled</option>
-            <option value="Raised - Rejected">Raised - Rejected</option>
-            <option value="Raised - In progress">Raised - In progress</option>
-            <option value="Not raised">Not raised</option>
-          </select>
-          <span class="wfr-footnote" style="margin:0;" id="cmp-wfr-t2-note"></span>
-        </div>
+        <div class="wfr-footnote" style="margin:0 0 10px;" id="cmp-wfr-t2-note"></div>
         <div class="wfr-macro-scroll">
           <table class="wfr-macro-table" id="cmp-wfr-table">
             <thead><tr id="cmp-wfr-head"></tr></thead>
@@ -1674,9 +1663,9 @@ function renderRcaTrend() {
     note.textContent = ` (through ${RCA_TREND.day_labels[RCA_TREND.t2_cutoff] || RCA_TREND.t2_cutoff}` + (held ? `; ${held} newer ticket${held === 1 ? '' : 's'} held back)` : ')');
   }
   head.innerHTML = `<th class="frozen frozen-label">Metric</th>
-    <th class="frozen frozen-3mo num">3 month total</th>
-    <th class="frozen frozen-1mo num">Last month total</th>
-    <th class="frozen frozen-2wk num barrier">Last 2 weeks total</th>
+    <th class="frozen frozen-3mo num">Last 60 days total</th>
+    <th class="frozen frozen-1mo num">Last 30 days total</th>
+    <th class="frozen frozen-2wk num barrier">Last 14 days total</th>
     ${days.map(d => `<th class="num">${RCA_TREND.day_labels[d]}</th>`).join('')}`;
   const txt = c => (c ? c.text : '');
   body.innerHTML = view.rows.map(row => {
@@ -1706,9 +1695,9 @@ function renderCmpTrend(pre, T) {
   const note = document.getElementById(pre + '-t2-note');
   if (note && T.t2_cutoff) note.textContent = 'Through ' + (T.day_labels[T.t2_cutoff] || T.t2_cutoff) + (view.excluded_tickets ? '; ' + view.excluded_tickets + ' newer held back' : '') + '.';
   head.innerHTML = `<th class="frozen frozen-label">Metric</th>
-    <th class="frozen frozen-3mo num">Total (window)</th>
-    <th class="frozen frozen-1mo num">Last month</th>
-    <th class="frozen frozen-2wk num barrier">Last 2 weeks</th>
+    <th class="frozen frozen-3mo num">Last 60 days</th>
+    <th class="frozen frozen-1mo num">Last 30 days</th>
+    <th class="frozen frozen-2wk num barrier">Last 14 days</th>
     ${days.map(d => `<th class="num">${T.day_labels[d]}</th>`).join('')}`;
   const txt = c => (c ? c.text : '');
   body.innerHTML = view.rows.map(row => {

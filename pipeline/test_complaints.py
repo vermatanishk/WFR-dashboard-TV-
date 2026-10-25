@@ -92,17 +92,27 @@ for name in ("wfr", "damage"):
     check(f"{name}: in scope = ticketed + non-complaint ticket + no ticket", n["scope"] == n["t_yes"] + n["t_non"] + n["t_none"])
     check(f"{name}: ticketed = matched + other type", n["t_yes"] == n["t_match"] + n["t_other"])
     check(f"{name}: WH input rows add up to ticketed", n["t_yes"] == sum(n[k] for k in ("wh_acc", "wh_den", "wh_oth", "wh_none", "wh_due", "wh_gap")))
-    for r in t["rows"]:
+    for r in (t["rows"] if t["by_return"] else []):
         for per in ("3mo", "1mo", "2wk"):
             tot = sum(t["by_return"][s]["rows"][[x["key"] for x in t["rows"]].index(r["key"])][per]["n"] for s in t["by_return"])
             if tot != r[per]["n"]:
                 check(f"{name}: return states add up to All ({r['key']} {per})", False, f"{tot} vs {r[per]['n']}")
                 break
-    check(f"{name}: return states add up to All, every row", True)
+    if t["by_return"]:
+        check(f"{name}: return states add up to All, every row", True)
+    else:
+        rs = sum(v for k, v in n.items() if k.startswith("rs_")) + n["ex_can"] + n["ex_rej"]
+        check(f"{name}: return-request rows add up to complaints", rs == n["all"], f"{rs} vs {n['all']}")
+    check(f"{name}: view covers at most 60 calendar days and days are contiguous",
+          len(t["days"]) <= 60 and all((__import__("datetime").date.fromisoformat(b) - __import__("datetime").date.fromisoformat(a)).days == 1 for a, b in zip(t["days"], t["days"][1:])))
 wfr = json.loads((HERE / "cmp_wfr_trend.json").read_text())
 n = {r["key"]: r["3mo"]["n"] for r in wfr["rows"]}
 types = [k for k in n if k.startswith("ty_") and not k.endswith(("_y", "_n", "_nr"))]
-check("wfr: per-type in-scope rows add up to in scope", sum(n[k] for k in types) == n["scope"])
+types = [k for k in n if k.startswith("ty_") and k.count("_") == 1]
+check("wfr: per-type in-scope rows add up to in scope", sum(n[k] for k in types) == n["scope"], str(types))
+for k in types:
+    check(f"wfr: {k} ticketed + no ticket (+ non-complaint ticket) = in scope of type", n[k] >= n[k + "_y"] + n[k + "_n"] - 0 and n[k + "_y"] + n[k + "_n"] == n[k])
+    check(f"wfr: {k} WH rows add up to ticketed", n[k + "_y"] == sum(n[f"{k}_{x}"] for x in ("acc", "den", "oth", "none", "due")))
 dm = json.loads((HERE / "cmp_damage_trend.json").read_text())
 d = {r["key"]: r["3mo"]["n"] for r in dm["rows"]}
 check("damage: temperature + physical = in scope", d["temp"] + d["phys"] == d["scope"])

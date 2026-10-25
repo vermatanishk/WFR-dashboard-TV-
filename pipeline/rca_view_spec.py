@@ -23,6 +23,7 @@ ND = ["Footage not available", "Batch not from our inventory", "CX image not cle
 UNREAD = "Photo not read yet"
 NA = "Photo not available (no return request)"
 NOT_READ = [UNREAD, NA]           # photo-split: read = not in this list
+WINDOW_DAYS = 60                  # reporting scope (owner, 2026-10-26): trailing 60 days = 2 months
 RET_STATES = ["Raised - Accepted & refunded", "Raised - Cancelled", "Raised - Rejected", "Raised - In progress", "Not raised"]
 
 
@@ -175,7 +176,15 @@ def evaluate(export, layout, return_state=None, days=None):
     rows = [r for r in export["rows"] if r[dcol] <= cutoff]
     if return_state:
         rows = [r for r in rows if r[col[RET]] == return_state]
-    days = days or sorted({r[dcol] for r in rows})   # variants reuse All's day columns so the selector never shifts them
+    if not days:
+        # calendar days (never just the days that have rows - a sparse view would make "last 30 days" cover more than 30 days),
+        # trailing WINDOW_DAYS ending at the cutoff
+        from datetime import date, timedelta
+        last = date.fromisoformat(cutoff)
+        first = max(date.fromisoformat(min(r[dcol] for r in rows)), last - timedelta(days=WINDOW_DAYS - 1)) if rows else last
+        days = [(first + timedelta(days=i)).isoformat() for i in range((last - first).days + 1)]
+        rows = [r for r in rows if r[dcol] >= days[0]]
+    # variants reuse All's day columns so the selector never shifts them
     by_day = {}
     for r in rows:
         by_day.setdefault(r[dcol], []).append(r)

@@ -31,7 +31,7 @@ var SWAP_SPEC_TAB = 'Swap spec';            // hidden: layout + cutoff saved at 
 // Complaint baseline layer (2026-10-25): union of ClickHouse return requests + Zoho tickets -> WFR funnel, Order damage, Summary.
 // Each view has its own raw tab + hidden spec tab and the same Return request dropdown (B1) as the RCA tabs.
 var CMP_VIEWS = [
-  { exp: BASE + 'cmp_wfr_export.json', spec: BASE + 'cmp_wfr_view_spec.json', raw: 'WFR raw data', view: 'WFR funnel', specTab: 'WFR spec' },
+  { exp: BASE + 'cmp_wfr_export.json', spec: BASE + 'cmp_wfr_view_spec.json', raw: 'WFR raw data', view: 'WFR funnel', specTab: 'WFR spec', noFilter: true },
   { exp: BASE + 'cmp_damage_export.json', spec: BASE + 'cmp_damage_view_spec.json', raw: 'Damage raw data', view: 'Order damage', specTab: 'Damage spec' }
 ];
 var SUMMARY_URL = BASE + 'cmp_summary.json';
@@ -77,8 +77,8 @@ function refreshCmp_() {
     writeRaw_(exp, c.raw);
     saveSpec_(spec, exp, c.specTab);
     var raw = sheet_(c.raw).getDataRange().getValues();
-    var rs = currentReturnFilter_(c.view);
-    writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), c.view);
+    var rs = c.noFilter ? 'All' : currentReturnFilter_(c.view);
+    writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), c.view, c.noFilter);
   });
   writeSummary_(fetchJson_(SUMMARY_URL));
 }
@@ -183,15 +183,19 @@ function writeRaw_(exp, tab) {
   sh.autoResizeColumns(1, cols.length);
 }
 
-function writeView_(t, tab) {
+function writeView_(t, tab, noFilter) {
   var sh = sheet_(tab || VIEW_TAB);
   var keep = RET_OPTIONS.indexOf(sh.getRange(FILTER_CELL).getValue()) >= 0 ? sh.getRange(FILTER_CELL).getValue() : 'All';
   sh.clear();
-  sh.getRange('A1').setValue('Return request filter (applies to the whole table):').setFontWeight('bold');
-  sh.getRange(FILTER_CELL).setValue(keep).setBackground('#fff3cd').setFontWeight('bold')
-    .setDataValidation(SpreadsheetApp.newDataValidation().requireValueInList(RET_OPTIONS, true).build());
+  if (noFilter) {
+    sh.getRange('A1').setValue('No filter - the return-request outcome is shown as rows. Window: last 60 days.').setFontStyle('italic');
+  } else {
+    sh.getRange('A1').setValue('Return request filter (applies to the whole table):').setFontWeight('bold');
+    sh.getRange(FILTER_CELL).setValue(keep).setBackground('#fff3cd').setFontWeight('bold')
+      .setDataValidation(SpreadsheetApp.newDataValidation().requireValueInList(RET_OPTIONS, true).build());
+  }
   var days = t.days.slice().reverse(); // most recent first, same as the website
-  var head = ['Metric', '3 month total', 'Last month total', 'Last 2 weeks total']
+  var head = ['Metric', 'Last 60 days total', 'Last 30 days total', 'Last 14 days total']
     .concat(days.map(function (d) { return t.day_labels[d]; }));
   var rows = t.rows.map(function (r) {
     var label = new Array((r.indent || 0) * 3 + 1).join(' ') + r.label + (r.sub ? '  (' + r.sub + ')' : '');
@@ -236,6 +240,7 @@ function writeInfo_(exp, trend) {
  * Pure evaluator, mirrors pipeline/rca_view_spec.py evaluate(). No Apps Script APIs, so it is unit-tested in
  * node. columns: header row of Raw data; rows: data rows; layout: rca_view_spec.json layout; cutoff: T-2 date.
  */
+var WINDOW_DAYS_ = 60;
 var MONTHS_ = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 function isoDate_(v) {
@@ -261,9 +266,16 @@ function computeView_(columns, rows, layout, cutoff, generatedAt, returnState, d
   });
   // day columns are always those of the unfiltered view, so the selector never shifts them
   if (!days) {
-    var all = {};
-    rows.forEach(function (r) { var d = isoDate_(r[dcol]); if (d <= cutoff) all[d] = 1; });
-    days = Object.keys(all).sort();
+    // calendar days, trailing WINDOW_DAYS_ ending at the cutoff (mirrors rca_view_spec.evaluate)
+    var mn = null;
+    rows.forEach(function (r) { var d = isoDate_(r[dcol]); if (d <= cutoff && (mn === null || d < mn)) mn = d; });
+    var end = new Date(cutoff + 'T00:00:00Z');
+    var start = new Date(end.getTime() - (WINDOW_DAYS_ - 1) * 86400000);
+    var first = mn !== null && new Date(mn + 'T00:00:00Z') > start ? new Date(mn + 'T00:00:00Z') : start;
+    days = [];
+    for (var t = first.getTime(); t <= end.getTime(); t += 86400000) days.push(new Date(t).toISOString().slice(0, 10));
+    byDay = {};
+    kept.forEach(function (r) { var d = isoDate_(r[dcol]); if (d >= days[0]) (byDay[d] = byDay[d] || []).push(r); });
   }
   days.forEach(function (d) { byDay[d] = byDay[d] || []; });
   function matches(r, where) {

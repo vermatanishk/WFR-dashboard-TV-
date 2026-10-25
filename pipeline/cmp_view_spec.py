@@ -59,6 +59,8 @@ def _wh(add, S, parent="t_yes"):
 
 
 def wfr_layout():
+    """WFR funnel: one clean trickle-down, no filter. Complaints -> where the return request stands -> in scope -> ticket hygiene ->
+    Warehouse input, then the same trickle-down for each complaint type."""
     L = []
 
     def add(key, label, sub, parent, head, where):
@@ -66,14 +68,23 @@ def wfr_layout():
 
     S = _common(L, add, WFR_TYPES, "Complaints (return requests + Zoho tickets)")
     _wh(add, S)
-    # by complaint type: where do tickets go missing
+    T = [(TYPE, "in", WFR_TYPES)]
+    for st, lab in ((R_ACC, "Return accepted & refunded"), ("Raised - In progress", "Return in progress"), (R_NONE, "No return request (ticket only)")):
+        add("rs_" + st, lab, "of complaints (with the two exclusions below, the return outcome adds up to 100%)", "all", False, T + [(RET, "in", [st])])
+    rs = [r for r in L if r["key"].startswith("rs_")]
+    L[:] = [r for r in L if not r["key"].startswith("rs_")]
+    at = next(i for i, r in enumerate(L) if r["key"] == "ex_can")
+    L[at:at] = rs
     for t in WFR_TYPES:
         k = "ty_" + t
-        add(k, t, "in-scope complaints", "scope", True, [(TYPE, "in", [t]), (SCOPE, "in", ["Yes"])])
-        add(k + "_y", "Zoho ticket raised", "of " + t, k, False, [(TYPE, "in", [t]), (SCOPE, "in", ["Yes"]), (RAISED, "in", ["Yes"])])
-        add(k + "_n", "No investigation ticket", "of " + t, k, False, [(TYPE, "in", [t]), (SCOPE, "in", ["Yes"]), (RAISED, "in", ["No"])])
-        add(k + "_nr", "Already refunded without any ticket", "of " + t + " with no ticket", k + "_n", False,
-            [(TYPE, "in", [t]), (SCOPE, "in", ["Yes"]), (RAISED, "in", ["No"]), (RET, "in", [R_ACC])])
+        TS = [(TYPE, "in", [t]), (SCOPE, "in", ["Yes"])]
+        add(k, t, "in-scope complaints of this type", "scope", True, TS)
+        add(k + "_y", "Zoho ticket raised", "of " + t, k, False, TS + [(RAISED, "in", ["Yes"])])
+        for wk, lab, val in (("acc", "WH accepted", WH_ACC), ("den", "WH denied", WH_DEN), ("oth", "WH other note", WH_OTH),
+                             ("none", "No WH comment", WH_NONE), ("due", "Not due yet (T-2)", WH_DUE)):
+            add(f"{k}_{wk}", lab, "of ticketed", k + "_y", False, TS + [(RAISED, "in", ["Yes"]), (WH, "in", [val])])
+        add(k + "_n", "No investigation ticket", "of " + t, k, False, TS + [(RAISED, "in", ["No"])])
+        add(k + "_nr", "Already refunded with no ticket", "of no ticket", k + "_n", False, TS + [(RAISED, "in", ["No"]), (RET, "in", [R_ACC])])
     return _cascade(L)
 
 
@@ -111,7 +122,8 @@ def build():
     for name, layout in (("wfr", wfr_layout()), ("damage", damage_layout())):
         exp = json.loads((HERE / f"cmp_{name}_export.json").read_text())
         trend = evaluate(exp, layout)
-        trend["by_return"] = {s: evaluate(exp, layout, s, days=trend["days"]) for s in RET_STATES}
+        # the WFR funnel has no filter (owner, 2026-10-26): the return-request outcome is shown as rows instead
+        trend["by_return"] = {} if name == "wfr" else {s: evaluate(exp, layout, s, days=trend["days"]) for s in RET_STATES}
         (HERE / f"cmp_{name}_trend.json").write_text(json.dumps(trend))
         (HERE / f"cmp_{name}_view_spec.json").write_text(json.dumps(
             {"layout": layout, "return_states": RET_STATES, "t2_cap_date": exp["t2_cap_date"], "generated_at": exp["generated_at"]},
