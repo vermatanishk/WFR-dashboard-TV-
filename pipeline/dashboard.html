@@ -373,11 +373,10 @@
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t4">4 · Zoho EOD</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t5">5 · Monthly Leaderboard</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t6">6 · RCA</button>
-      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t7">7 · RCA view</button>
-      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t8">8 · WFR funnel</button>
-      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t9">9 · Order swap</button>
-      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t10">10 · Order damage</button>
-      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t11">11 · Summary</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t8">7 · WFR funnel</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t9">8 · Order swap</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t10">9 · Order damage</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t11">10 · Summary</button>
     </div>
 
     <div class="wfr-toolbar">
@@ -616,21 +615,6 @@
       </div>
     </div>
 
-    <!-- TAB 7: RCA view (day-wise, same pattern as the Everything tab's macro table) -->
-    <div class="wfr-panel" id="t7">
-      <div class="wfr-card">
-        <div class="wfr-lb-title">RCA view - day by day</div>
-        <div class="wfr-footnote" style="margin:6px 0 10px;">Same layout as the Everything tab's day-wise table: frozen aggregate columns on the left, then one column per day, most recent complete day first. Each cell is <b>count | % of its parent row</b> (the row's subtitle says which). <b>Shows complete days up to T-2 only</b><span id="rca-t2-note"></span> - the Warehouse team needs ~2 days to comment. Two macro buckets: the <b>investigation funnel</b> and the <b>raised-why tree</b>; the return-request outcome is on the WFR funnel tab. Photo-derived rows count only tickets whose photos have been read; each photo split adds up as read + not read yet + not available. Cold-chain damaged tickets are not photo-read.</div>
-        <div class="wfr-footnote-wrap"><span class="wfr-footnote" style="margin:0 0 10px;">Re-cuts every row. Photo rows: <b>not available</b> = no return request, so no complaint photo exists.</span></div>
-        <div class="wfr-macro-scroll">
-          <table class="wfr-macro-table" id="rca-trend-table">
-            <thead><tr id="rca-trend-head"></tr></thead>
-            <tbody id="rca-trend-body"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
     <!-- TAB t8: WFR funnel - wrong medicine, missing / short qty, expiry, MRP / batch -->
     <div class="wfr-panel" id="t8">
       <div class="wfr-card">
@@ -708,7 +692,7 @@ const ORDERS_BY_DAY_LOC = __ORDERS_BY_DAY_LOCATION_JSON__;
 const EOD = __EOD_JSON__;
 const RFD_WEEKLY = __RFD_WEEKLY_JSON__;
 const RCA = __RCA_JSON__;
-const RCA_TREND = __RCA_TREND_JSON__;
+const RCA_TREND = null;   // the RCA view tab was merged into the WFR funnel (2026-10-26)
 const CMP_WFR = __CMP_WFR_JSON__;
 const CMP_DMG = __CMP_DAMAGE_JSON__;
 const CMP_SWAP = __SWAP_TREND_JSON__;

@@ -420,3 +420,7 @@ Pipeline (run after the normal refresh; ClickHouse pulls are saved from the MCP 
 -> `recheck_wh_comments.py --extra ...` -> `build_complaints.py` again -> damage photos (`damage_images.py`) -> `cmp_view_spec.py` (trends, specs, summary)
 -> `build_html.py`. Tests (all must pass): `test_complaints.py`, `node pipeline/test_view_js.js wfr|damage|swap`, and live `check_complaints_live.py`.
 Google Sheet: `gsheet/Code.gs` adds tabs "WFR funnel", "Order damage", "Summary" (+ raw/spec tabs); re-paste Code.gs once.
+
+**2026-10-26 - one view:** the stand-alone "RCA view" (website Tab 7, sheet tabs "RCA view" / "Raw data" / "Spec") is retired; its root-cause sub-trees live inside the
+WFR funnel tab (RCA columns of `complaints_export.json`, fed by `rca_export.json` - keep running the RCA refresh steps so those columns stay current). Website tabs are now
+7 WFR funnel | 8 Order swap | 9 Order damage | 10 Summary (Tab 6 "RCA" = ticket-level detail tables, unchanged). There is no Return-request filter anywhere.

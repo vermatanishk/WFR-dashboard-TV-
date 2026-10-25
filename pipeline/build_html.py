@@ -22,7 +22,6 @@ files = {
     "__EOD_JSON__": "data_eod.json",
     "__RFD_WEEKLY_JSON__": "rfd_weekly.json",
     "__RCA_JSON__": "rca.json",
-    "__RCA_TREND_JSON__": "rca_trend.json",
     "__CMP_WFR_JSON__": "cmp_wfr_trend.json",
     "__CMP_DAMAGE_JSON__": "cmp_damage_trend.json",
     "__SWAP_TREND_JSON__": "swap_trend.json",
@@ -43,7 +42,7 @@ for placeholder, fname in files.items():
     payload = json.loads(fpath.read_text()) if fpath.exists() else {}
     if placeholder == "__TICKETS_JSON__":
         payload = payload["tickets"]
-    if placeholder in ("__RCA_TREND_JSON__", "__SWAP_TREND_JSON__", "__CMP_WFR_JSON__", "__CMP_DAMAGE_JSON__") and isinstance(payload, dict):
+    if placeholder in ("__SWAP_TREND_JSON__", "__CMP_WFR_JSON__", "__CMP_DAMAGE_JSON__") and isinstance(payload, dict):
         payload = {k: v for k, v in payload.items() if k != "by_return"}   # no Return-request filter in the UI (owner, 2026-10-26)
     marker_count = out.count(placeholder)
     if marker_count != 1:

@@ -47,17 +47,19 @@ function onOpen() {
 }
 
 function refreshAll() {
-  var exp = fetchJson_(EXPORT_URL);
-  var spec = fetchJson_(SPEC_URL);
-  writeRaw_(exp);
-  saveSpec_(spec, exp);
-  // Build the view from what is actually in the Raw data tab (so a filtered/edited tab is what you see).
-  var trend = buildViewFromRaw_(spec, exp);
-  writeView_(trend);
-  writeInfo_(exp, trend);
-  refreshSwap_();
-  refreshCmp_();
-  SpreadsheetApp.getActive().toast('RCA data refreshed (' + exp.rows.length + ' orders)', 'WFR RCA', 5);
+  refreshCmp_();      // WFR funnel (with the root-cause RCA cascade) + Order damage + Summary
+  refreshSwap_();     // Order swap
+  retireOldTabs_();
+  writeInfo_(fetchJson_(BASE + 'cmp_wfr_export.json'));
+  SpreadsheetApp.getActive().toast('Complaint views refreshed', 'WFR', 5);
+}
+
+/** The stand-alone RCA view was merged into the WFR funnel (2026-10-26); drop its generated tabs (they are rebuilt from git, nothing is lost). */
+function retireOldTabs_() {
+  ['RCA view', 'Raw data', 'Spec'].forEach(function (n) {
+    var sh = SpreadsheetApp.getActive().getSheetByName(n);
+    if (sh && SpreadsheetApp.getActive().getSheets().length > 1) SpreadsheetApp.getActive().deleteSheet(sh);
+  });
 }
 
 /** Order swap tab: raw cases + view computed from them with the same evaluator as the RCA view. */
@@ -208,19 +210,19 @@ function writeView_(t, tab) {
   sh.getRange(HEADER_ROW + 1, 1, rows.length, head.length).setFontSize(10);
 }
 
-function writeInfo_(exp, trend) {
+function writeInfo_(exp) {
   var sh = sheet_(INFO_TAB);
   sh.clear();
   var info = [
     ['Data generated (UTC)', exp.generated_at],
-    ['T-2 cap date (last complete day in the RCA view)', trend.t2_cutoff],
-    ['Newer tickets held back from the view', trend.excluded_tickets],
-    ['Orders in Raw data', exp.rows.length],
+    ['Last complete day', exp.t2_cap_date],
+    ['Warehouse-comment cap (T-2)', exp.wh_t2_cap],
+    ['Complaints in WFR raw data', exp.rows.length],
     ['Sheet refreshed', new Date()],
-    ['Source', EXPORT_URL],
+    ['Source', BASE],
     ['', ''],
-    ['How to read', 'Raw data = one row per order, first ticket wins (same rule as the website tile). RCA view cells are "count | % of parent row".'],
-    ['Evidence', 'Photo-derived buckets are capped at "Likely"; accuracy builds over time. Cold-chain damaged tickets are not photo-read.']
+    ['How to read', 'A complaint = one order x complaint type, from the UNION of ClickHouse return requests and Zoho tickets. Cells are "count | % of parent row". Window: last 60 days.'],
+    ['Evidence', 'Photo-derived buckets are hand-read from customer photos (capped at "likely"). Cold-chain damage is not photo-read. Raw-data tabs hold one row per complaint - filter them to drill down.']
   ];
   sh.getRange(1, 1, info.length, 2).setValues(info);
   sh.getRange(1, 1, info.length, 1).setFontWeight('bold');
