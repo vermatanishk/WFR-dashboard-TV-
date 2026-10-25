@@ -54,7 +54,8 @@ R_ACC, R_CAN, R_REJ, R_PROG, R_NONE = ("Raised - Accepted & refunded", "Raised -
 
 COLUMNS = ["Order ID", "Created date", "Complaint type", "Source", "Return request", "Return reason (final)", "In scope",
            "Ticket relation", "Ticket raised", "Ticket ID", "Ticket sub-disposition", "WH input", "Damage type", "Cold item",
-           "Photo bucket", "Warehouse"]
+           "Photo bucket", "Warehouse",
+           "RCA read", "RCA investigation", "RCA no-decision reason", "RCA bucket 1", "RCA bucket 2", "RCA bucket 3", "RCA evidence basis"]
 
 T_MATCH, T_OTHER, T_NONCMP, T_NONE = ("Filed under this complaint type", "Filed under another complaint type",
                                       "Filed as non-complaint (e.g. No longer needed)", "No ticket")
@@ -193,6 +194,16 @@ def main():
     for o, c in bk.items():
         photo[int(o)] = code_label[c]
 
+    # root-cause columns from the RCA export (one row per order, issue = ticket's category); joined on (order, complaint type)
+    rca_issue = {"Missing / short quantity": MQ, "Wrong medicine": WM, "Expiry": EXP, "Damaged": DMG}
+    rca_exp = json.loads((HERE / "rca_export.json").read_text())
+    RC = {c: i for i, c in enumerate(rca_exp["columns"])}
+    rca = {}
+    for r in rca_exp["rows"]:
+        t = rca_issue.get(r[RC["Issue"]])
+        if t:
+            rca[(r[RC["Order ID"]], t)] = r
+    rca_cols = ["Investigation bucket 1", "Investigation bucket 2", "Raised bucket 1", "Raised bucket 2", "Raised bucket 3", "Evidence basis"]
     rank = {"admitted": 3, "denied": 2, "unrecognized": 1, "no_wh_comment": 0}
 
     def day_shift(d, n):
@@ -241,10 +252,12 @@ def main():
             else:
                 pb = P_UNREAD
         ws = whid.get(oid)
+        rr = rca.get((oid, typ)) if raised == "Yes" else None
+        rca_vals = ["Yes"] + [rr[RC[c]] or "" for c in rca_cols] if rr else ["No"] + [""] * len(rca_cols)
         return [oid, created, typ, src, state, reason, in_scope, rel, raised,
                 chosen[0]["ticket_id"] if chosen else "", (chosen[0]["sub_disposition"] or "") if chosen else "",
                 wh, dmg_type, "Yes" if any(x["cold"] for x in lines) else "No", pb,
-                wh_name.get(ws, f"WH {ws}" if ws is not None else "Unknown")]
+                wh_name.get(ws, f"WH {ws}" if ws is not None else "Unknown")] + rca_vals
 
     # One real complaint must be ONE row: a ticket explains at most one return complaint, and a ticket that explains a
     # return complaint never also becomes a "ticket only" complaint.

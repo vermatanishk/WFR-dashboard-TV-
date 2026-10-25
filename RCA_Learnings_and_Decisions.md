@@ -266,3 +266,8 @@ same number for the 60-day and 30-day columns. `evaluate()` / `computeView_` now
 columns are "Last 60 / 30 / 14 days" on the RCA view, Order swap, WFR funnel and Order damage tabs (Tab 1's macro table is unchanged, 3 months).
 (2) Reporting scope = 60 days. (3) WFR funnel has no Return-request filter: the return outcome is rows (refunded / in progress / no request + the two exclusions),
 and each complaint type gets the same trickle-down as Order damage (ticketed -> WH accepted / denied / other / no comment / not due; no ticket -> already refunded).
+
+**Follow-up 2026-10-26 (one view):** the RCA root-cause sub-trees (wrong-medicine bin / batch / photo, expiry shelf life, item-missing pack confusion / counting error)
+and the no-decision reasons now live INSIDE the WFR funnel tab - joined on (order, complaint type) from rca_export.json (columns "RCA ..." in the complaint export;
+"Root-cause analysis pending" = ticket newer than the RCA export). The old RCA tab / RCA view stay until the owner confirms parity; the damaged and swap branches of
+the RCA view are superseded by the Order damage / Order swap tabs.

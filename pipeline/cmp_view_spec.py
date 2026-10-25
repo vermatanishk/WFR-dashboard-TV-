@@ -20,6 +20,7 @@ from build_complaints import (COLUMNS, DMG, DMG_PHYS, DMG_TEMP, EXP, MQ, MRP, P_
                               R_REJ, SRC_BOTH, SRC_RET, SRC_TKT, T_MATCH, T_NONCMP, T_NONE, T_OTHER, TYPES, WFR_TYPES, WH_ACC,
                               WH_DEN, WH_DUE, WH_GAP, WH_NONE, WH_OTH, WM)
 from damaged_buckets import BUCKETS
+import rca_view_spec as R
 from rca_view_spec import RET_STATES, _cascade, evaluate
 
 HERE = Path(__file__).parent
@@ -58,9 +59,33 @@ def _wh(add, S, parent="t_yes"):
     add("wh_gap", "Verdict not read (gap)", "of ticketed: comments not read yet - must be 0", parent, False, Y + [(WH, "in", [WH_GAP])])
 
 
+# Root-cause ("why") sub-trees from the RCA view, re-used under each complaint type of the WFR funnel so there is ONE view.
+RCA_COL = {R.I1: "RCA investigation", R.I2: "RCA no-decision reason", R.B1: "RCA bucket 1", R.B2: "RCA bucket 2", R.B3: "RCA bucket 3",
+           R.BASIS: "RCA evidence basis"}
+RCA_PREFIX = {WM: "wm", EXP: "ex", MQ: "mq"}        # RCA key prefix per complaint type (damage and swap have their own tabs)
+RCA_ROOT = {WM: "wm", EXP: "ex", MQ: "mq"}
+RCA_READ = "RCA read"
+
+
+def _rca_rows(add_row, typ, base, parent):
+    """Copy the RCA layout rows of one issue under `parent`; `base` = where-conditions that define the RCA population."""
+    pre, root = RCA_PREFIX[typ], RCA_ROOT[typ]
+    key = lambda k: f"rca_{typ}_{k}"
+    for r in R.build_layout():
+        k = r["key"]
+        if not (k == root or k.startswith(pre + "_")):
+            continue
+        if k == root:
+            continue
+        where = [list(c) for c in r["where"] if c[0] != R.ISSUE]
+        where = [[RCA_COL.get(c[0], c[0]), c[1], c[2]] for c in where]
+        par = parent if r["parent"] == root else key(r["parent"])
+        add_row(key(k), r["label"], r["sub"], par, False, [tuple(c) for c in base] + [tuple(c) for c in where])
+
+
 def wfr_layout():
-    """WFR funnel: one clean trickle-down, no filter. Complaints -> where the return request stands -> in scope -> ticket hygiene ->
-    Warehouse input, then the same trickle-down for each complaint type."""
+    """WFR funnel: ONE clean trickle-down, no filter. Complaints -> return outcome -> in scope -> ticket hygiene -> Warehouse input,
+    then per complaint type the same trickle-down plus the root-cause ("why") sub-trees of the RCA view (so no separate RCA tab)."""
     L = []
 
     def add(key, label, sub, parent, head, where):
@@ -75,6 +100,13 @@ def wfr_layout():
     L[:] = [r for r in L if not r["key"].startswith("rs_")]
     at = next(i for i, r in enumerate(L) if r["key"] == "ex_can")
     L[at:at] = rs
+    # Warehouse investigation outcome across all types (RCA): why there was no decision
+    Y = S + [(RAISED, "in", ["Yes"]), (RCA_READ, "in", ["Yes"])]
+    add("rca_nd", "Investigation: no decision (RCA)", "of ticketed + analysed: why the Warehouse could not decide", "t_yes", False, Y + [("RCA investigation", "in", ["No decision"])])
+    for n in R.ND:
+        add("rca_nd_" + n, n, "of no decision", "rca_nd", False, Y + [("RCA investigation", "in", ["No decision"]), ("RCA no-decision reason", "in", [n])])
+    add("rca_pend", "Root-cause analysis pending", "ticket newer than the RCA export / not yet analysed", "t_yes", False,
+        S + [(RAISED, "in", ["Yes"]), (RCA_READ, "in", ["No"]), (TYPE, "in", [WM, MQ, EXP])])
     for t in WFR_TYPES:
         k = "ty_" + t
         TS = [(TYPE, "in", [t]), (SCOPE, "in", ["Yes"])]
@@ -83,6 +115,10 @@ def wfr_layout():
         for wk, lab, val in (("acc", "WH accepted", WH_ACC), ("den", "WH denied", WH_DEN), ("oth", "WH other note", WH_OTH),
                              ("none", "No WH comment", WH_NONE), ("due", "Not due yet (T-2)", WH_DUE)):
             add(f"{k}_{wk}", lab, "of ticketed", k + "_y", False, TS + [(RAISED, "in", ["Yes"]), (WH, "in", [val])])
+        if t in RCA_PREFIX:
+            base = TS + [(RAISED, "in", ["Yes"]), (RCA_READ, "in", ["Yes"])]
+            add(k + "_rca", "Root cause analysed (RCA)", "of ticketed: sub-trees below are the 'why'", k + "_y", False, base)
+            _rca_rows(add, t, base, k + "_rca")
         add(k + "_n", "No investigation ticket", "of " + t, k, False, TS + [(RAISED, "in", ["No"])])
         add(k + "_nr", "Already refunded with no ticket", "of no ticket", k + "_n", False, TS + [(RAISED, "in", ["No"]), (RET, "in", [R_ACC])])
     return _cascade(L)

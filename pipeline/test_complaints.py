@@ -145,3 +145,22 @@ for i, rw in enumerate(sm["raw"]):
 
 print("\n%d failure(s)" % len(fails))
 sys.exit(1 if fails else 0)
+
+# 7. merged RCA sub-trees must agree with the RCA export they come from (same orders, same buckets)
+rexp = json.loads((HERE / "rca_export.json").read_text())
+RC = {c: i for i, c in enumerate(rexp["columns"])}
+mp = {"Missing / short quantity": "Missing / short qty", "Wrong medicine": "Wrong medicine", "Expiry": "Expiry"}
+mine = {(r[C["Order ID"]], r[C["Complaint type"]]): r for r in rows if r[C["RCA read"]] == "Yes"}
+bad = 0
+for r in rexp["rows"]:
+    t = mp.get(r[RC["Issue"]])
+    m = mine.get((r[RC["Order ID"]], t)) if t else None
+    if m and (m[C["RCA bucket 1"]] != (r[RC["Raised bucket 1"]] or "") or m[C["RCA bucket 2"]] != (r[RC["Raised bucket 2"]] or "")
+              or m[C["RCA investigation"]] != (r[RC["Investigation bucket 1"]] or "")):
+        bad += 1
+check("merged RCA columns equal the RCA export for every joined order", bad == 0, f"{bad} differ")
+joined = len(mine)
+share = joined / max(1, sum(1 for r in rows if r[C["Ticket raised"]] == "Yes" and r[C["Complaint type"]] in ("Wrong medicine", "Missing / short qty", "Expiry")))
+check("RCA covers >= 85% of ticketed wrong-medicine / missing / expiry complaints", share >= 0.85, f"{share:.0%}")
+print("\n%d failure(s) (incl. RCA parity)" % len(fails))
+sys.exit(1 if fails else 0)
