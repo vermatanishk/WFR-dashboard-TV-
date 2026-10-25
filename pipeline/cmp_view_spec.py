@@ -132,6 +132,13 @@ def damage_layout():
 
     S = _common(L, add, [DMG], "Damage complaints (return requests + Zoho tickets)")
     _wh(add, S)
+    T = [(TYPE, "in", [DMG])]
+    for st, lab in ((R_ACC, "Return accepted & refunded"), ("Raised - In progress", "Return in progress"), (R_NONE, "No return request (ticket only)")):
+        add("rs_" + st, lab, "of complaints (with the two exclusions below, the return outcome adds up to 100%)", "all", False, T + [(RET, "in", [st])])
+    rs = [r for r in L if r["key"].startswith("rs_")]
+    L[:] = [r for r in L if not r["key"].startswith("rs_")]
+    at = next(i for i, r in enumerate(L) if r["key"] == "ex_can")
+    L[at:at] = rs
     for k, v, sub in (("temp", DMG_TEMP, "customer says the cold item arrived warm - not photo-read"),
                       ("phys", DMG_PHYS, "pack / product physically damaged (incl. cold items)")):
         add(k, v, "of in scope", "scope", True, S + [(DT, "in", [v])])
@@ -160,7 +167,7 @@ def build():
         exp = json.loads((HERE / f"cmp_{name}_export.json").read_text())
         trend = evaluate(exp, layout)
         # the WFR funnel has no filter (owner, 2026-10-26): the return-request outcome is shown as rows instead
-        trend["by_return"] = {} if name == "wfr" else {s: evaluate(exp, layout, s, days=trend["days"]) for s in RET_STATES}
+        trend["by_return"] = {}     # no Return-request filter anywhere (owner, 2026-10-26): the return outcome is shown as rows
         (HERE / f"cmp_{name}_trend.json").write_text(json.dumps(trend))
         (HERE / f"cmp_{name}_view_spec.json").write_text(json.dumps(
             {"layout": layout, "return_states": RET_STATES, "t2_cap_date": exp["t2_cap_date"], "generated_at": exp["generated_at"]},

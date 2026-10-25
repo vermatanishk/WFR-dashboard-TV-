@@ -276,3 +276,6 @@ the RCA view are superseded by the Order damage / Order swap tabs.
 that explains a return of ANOTHER complaint type is attached to at most one row (19 damage rows carry a missing-qty / wrong-item ticket - an assumption, visible in the
 "Ticket sub-disposition" column); ticket-only damage whose item came back under another reason is no longer labelled "no photo exists" (new row "return filed under another
 reason"); drill-down: clicking any number on the WFR funnel / Order swap / Order damage tabs lists the complaints behind it (checked: 828 cells, 0 count mismatches vs the table).
+
+**2026-10-26: Return-request filter removed everywhere** (RCA view, Order swap, WFR funnel, Order damage; website and Google Sheet). The return outcome is rows
+(refunded / in progress / no request + cancelled + rejected) on the WFR funnel, Order damage and Order swap tabs. `by_return` is still produced for the tests but no longer shipped to the page.

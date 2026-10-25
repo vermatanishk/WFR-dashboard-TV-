@@ -620,19 +620,8 @@
     <div class="wfr-panel" id="t7">
       <div class="wfr-card">
         <div class="wfr-lb-title">RCA view - day by day</div>
-        <div class="wfr-footnote" style="margin:6px 0 10px;">Same layout as the Everything tab's day-wise table: frozen aggregate columns on the left, then one column per day, most recent complete day first. Each cell is <b>count | % of its parent row</b> (the row's subtitle says which). <b>Shows complete days up to T-2 only</b><span id="rca-t2-note"></span> - the Warehouse team needs ~2 days to comment. Three macro buckets: the <b>investigation funnel</b>, the <b>raised-why tree</b>, and the <b>return request</b> (accepted & refunded / cancelled / rejected / in progress / not raised, the selector above). Photo-derived rows count only tickets whose photos have been read; each photo split adds up as read + not read yet + not available. Cold-chain damaged tickets are not photo-read.</div>
-        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
-          <label for="rca-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
-          <select id="rca-ret-filter" class="wfr-btn" style="padding:5px 8px;">
-            <option value="All">All</option>
-            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
-            <option value="Raised - Cancelled">Raised - Cancelled</option>
-            <option value="Raised - Rejected">Raised - Rejected</option>
-            <option value="Raised - In progress">Raised - In progress</option>
-            <option value="Not raised">Not raised</option>
-          </select>
-          <span class="wfr-footnote" style="margin:0;">Re-cuts every row. Photo rows: <b>not available</b> = no return request, so no complaint photo exists.</span>
-        </div>
+        <div class="wfr-footnote" style="margin:6px 0 10px;">Same layout as the Everything tab's day-wise table: frozen aggregate columns on the left, then one column per day, most recent complete day first. Each cell is <b>count | % of its parent row</b> (the row's subtitle says which). <b>Shows complete days up to T-2 only</b><span id="rca-t2-note"></span> - the Warehouse team needs ~2 days to comment. Two macro buckets: the <b>investigation funnel</b> and the <b>raised-why tree</b>; the return-request outcome is on the WFR funnel tab. Photo-derived rows count only tickets whose photos have been read; each photo split adds up as read + not read yet + not available. Cold-chain damaged tickets are not photo-read.</div>
+        <div class="wfr-footnote-wrap"><span class="wfr-footnote" style="margin:0 0 10px;">Re-cuts every row. Photo rows: <b>not available</b> = no return request, so no complaint photo exists.</span></div>
         <div class="wfr-macro-scroll">
           <table class="wfr-macro-table" id="rca-trend-table">
             <thead><tr id="rca-trend-head"></tr></thead>
@@ -664,18 +653,7 @@
       <div class="wfr-card">
         <div class="wfr-lb-title">Order swap (cases - unchanged from the Google Sheet tab)</div>
         <div class="wfr-footnote" style="margin:6px 0 10px;">Swap cases found by the ticket-text scan (a swap pair counts once; unpaired orders count once). Same layout as the Google Sheet tab <b>Order Swap</b>.</div>
-        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
-          <label for="cmp-swap-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
-          <select id="cmp-swap-ret-filter" class="wfr-btn" style="padding:5px 8px;">
-            <option value="All">All</option>
-            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
-            <option value="Raised - Cancelled">Raised - Cancelled</option>
-            <option value="Raised - Rejected">Raised - Rejected</option>
-            <option value="Raised - In progress">Raised - In progress</option>
-            <option value="Not raised">Not raised</option>
-          </select>
-          <span class="wfr-footnote" style="margin:0;" id="cmp-swap-t2-note"></span>
-        </div>
+        <div class="wfr-footnote-wrap"><span class="wfr-footnote" style="margin:0 0 10px;" id="cmp-swap-t2-note"></span></div>
         <div class="wfr-macro-scroll">
           <table class="wfr-macro-table" id="cmp-swap-table">
             <thead><tr id="cmp-swap-head"></tr></thead>
@@ -692,18 +670,7 @@
       <div class="wfr-card">
         <div class="wfr-lb-title">Order damage - complaints, tickets and what the photos show</div>
         <div class="wfr-footnote" style="margin:6px 0 10px;">Each cell is <b>count | % of its parent row</b>. A complaint is one <b>order x complaint type</b>. The baseline is the <b>union</b> of ClickHouse return requests (final reason per item - a customer's first, abandoned pick is ignored) and Zoho Desk tickets (every disposition). "No investigation ticket" = the customer complained but nobody opened a ticket. Cancelled / rejected-at-QC returns are excluded from the funnel. Warehouse input: raised in the last 2 days = "Not due yet (T-2)". Physical damage is split by what the customer photo shows (hand-read); temperature complaints (cold chain) are not photo-read.</div>
-        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
-          <label for="cmp-dmg-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
-          <select id="cmp-dmg-ret-filter" class="wfr-btn" style="padding:5px 8px;">
-            <option value="All">All</option>
-            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
-            <option value="Raised - Cancelled">Raised - Cancelled</option>
-            <option value="Raised - Rejected">Raised - Rejected</option>
-            <option value="Raised - In progress">Raised - In progress</option>
-            <option value="Not raised">Not raised</option>
-          </select>
-          <span class="wfr-footnote" style="margin:0;" id="cmp-dmg-t2-note"></span>
-        </div>
+        <div class="wfr-footnote-wrap"><span class="wfr-footnote" style="margin:0 0 10px;" id="cmp-dmg-t2-note"></span></div>
         <div class="wfr-macro-scroll">
           <table class="wfr-macro-table" id="cmp-dmg-table">
             <thead><tr id="cmp-dmg-head"></tr></thead>

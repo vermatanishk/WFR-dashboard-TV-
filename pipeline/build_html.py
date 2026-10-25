@@ -43,6 +43,8 @@ for placeholder, fname in files.items():
     payload = json.loads(fpath.read_text()) if fpath.exists() else {}
     if placeholder == "__TICKETS_JSON__":
         payload = payload["tickets"]
+    if placeholder in ("__RCA_TREND_JSON__", "__SWAP_TREND_JSON__", "__CMP_WFR_JSON__", "__CMP_DAMAGE_JSON__") and isinstance(payload, dict):
+        payload = {k: v for k, v in payload.items() if k != "by_return"}   # no Return-request filter in the UI (owner, 2026-10-26)
     marker_count = out.count(placeholder)
     if marker_count != 1:
         raise SystemExit(f"Expected exactly 1 occurrence of {placeholder}, found {marker_count}")

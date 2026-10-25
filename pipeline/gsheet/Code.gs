@@ -107,6 +107,9 @@ function viewConfigs_() {
 }
 
 function currentReturnFilter_(tab) {
+  return 'All';   // the Return request filter was removed (owner, 2026-10-26); kept as a stub for old call sites
+}
+function currentReturnFilterLegacy_(tab) {
   var v = sheet_(tab || VIEW_TAB).getRange(FILTER_CELL).getValue();
   return RET_OPTIONS.indexOf(v) >= 0 ? v : 'All';
 }
@@ -137,16 +140,8 @@ function loadSpec_(tab) {
  * Changing the Return request dropdown re-cuts the whole view from the Raw data tab. A simple onEdit trigger
  * cannot call external URLs, so it only uses data already in the sheet (Raw data + the hidden Spec tab).
  */
-function onEdit(e) {
-  var sh = e && e.range && e.range.getSheet();
-  if (!sh || e.range.getA1Notation() !== FILTER_CELL) return;
-  var cfg = viewConfigs_().filter(function (c) { return c.view === sh.getName(); })[0];
-  if (!cfg) return;
-  var spec = loadSpec_(cfg.specTab);
-  var raw = sheet_(cfg.raw).getDataRange().getValues();
-  var rs = currentReturnFilter_(sh.getName());
-  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, spec.t2_cap_date, spec.generated_at, rs === 'All' ? null : rs), sh.getName());
-}
+/** The Return request dropdown was removed, so there is nothing to react to on edit. */
+function onEdit(e) {}
 
 function installDailyTrigger() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
@@ -186,18 +181,11 @@ function writeRaw_(exp, tab) {
   sh.autoResizeColumns(1, cols.length);
 }
 
-function writeView_(t, tab, noFilter) {
+function writeView_(t, tab) {
   var sh = sheet_(tab || VIEW_TAB);
   sh.setTabColor(VIEW_TAB_COLOR);
-  var keep = RET_OPTIONS.indexOf(sh.getRange(FILTER_CELL).getValue()) >= 0 ? sh.getRange(FILTER_CELL).getValue() : 'All';
   sh.clear();
-  if (noFilter) {
-    sh.getRange('A1').setValue('No filter - the return-request outcome is shown as rows. Window: last 60 days.').setFontStyle('italic');
-  } else {
-    sh.getRange('A1').setValue('Return request filter (applies to the whole table):').setFontWeight('bold');
-    sh.getRange(FILTER_CELL).setValue(keep).setBackground('#fff3cd').setFontWeight('bold')
-      .setDataValidation(SpreadsheetApp.newDataValidation().requireValueInList(RET_OPTIONS, true).build());
-  }
+  sh.getRange('A1').setValue('Window: last 60 days. Click-through detail: filter the matching raw-data tab.').setFontStyle('italic');
   var days = t.days.slice().reverse(); // most recent first, same as the website
   var head = ['Metric', 'Last 60 days total', 'Last 30 days total', 'Last 14 days total']
     .concat(days.map(function (d) { return t.day_labels[d]; }));
