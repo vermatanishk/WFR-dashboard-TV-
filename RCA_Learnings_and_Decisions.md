@@ -238,3 +238,25 @@ no visible damage 151 (27%), cold chain 109 (20%, not photo-read), primary pack 
 carton damaged 32, product quality 30, label/closure/device 28, image not relevant 22, no photo on file 10, outer shipper 9.
 Refund value Rs 7.47 lakh. NDR>0 on 72 orders, OFD>1 on 38 (courier handling is a minority driver).
 Distributions by carrier / region / state / warehouse / SKU come from the script output. Rates need delivered-order denominators (not pulled).
+
+
+## 19. Complaint baseline (union of return requests + Zoho tickets) - 2026-10-25
+
+**Decision (owner):** WFR reporting must not be Zoho-ticket-based. Baseline = every complaint raised by the customer (ClickHouse DTO return requests,
+via the app or with an agent) UNION every Zoho ticket; then measure how many got a ticket, how many reached the Warehouse, and why not. Damage and
+order swap leave the WFR funnel (own tabs); a Summary tab shows macro numbers only (8 x 3).
+
+**Traps found while building it**
+- The first/any reason of an order is wrong: customers submit a draft ("Received Wrong Medicines") and re-submit the same item a minute later under
+  another reason. Final reason per item = latest request. This removed ~2/3 of the apparent wrong-medicine complaints.
+- A ticket must not be counted twice: as the answer for a return complaint AND as a "ticket only" complaint of another type. Claim order: exact type,
+  then one other-type ticket, then leftovers become ticket-only rows. After this, 0 tickets are unattached.
+- Return-request state for a ticket-only complaint comes from the order's other return lines (often "No longer needed").
+- 160 complaint-type tickets have no usable Order ID (placeholder / several orders / free text) - invisible to any join, surfaced as a hygiene number.
+- Zoho free-text Order ID can hold names / phones: never persisted (`order_raw` = digits or "unparseable").
+- Warehouse comments exist on only ~75% of ticketed in-scope complaints past T-2; the rest of the tickets never had a Warehouse comment.
+
+**Numbers at build time (2026-08-26..2026-10-24, 2,933 complaints, 2,890 orders):** ticket rate of in-scope complaints - Missing qty 95%, Wrong medicine 73%,
+MRP/batch 55%, Order swap 58%, Expiry 17%, Damage 28% (physical damage with a photo showing real damage: ~7% ticketed).
+Verification: test_complaints.py (structure, independent recount from raw, dead-draft orders, view sums, hand predicates), JS evaluator vs Python (0 diffs on
+4 views), live Zoho spot checks (no-ticket rows, ticket-only rows, no-WH-comment rows, WH-accepted rows: 48/48).

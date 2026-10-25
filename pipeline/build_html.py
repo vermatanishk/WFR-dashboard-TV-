@@ -23,6 +23,10 @@ files = {
     "__RFD_WEEKLY_JSON__": "rfd_weekly.json",
     "__RCA_JSON__": "rca.json",
     "__RCA_TREND_JSON__": "rca_trend.json",
+    "__CMP_WFR_JSON__": "cmp_wfr_trend.json",
+    "__CMP_DAMAGE_JSON__": "cmp_damage_trend.json",
+    "__SWAP_TREND_JSON__": "swap_trend.json",
+    "__CMP_SUMMARY_JSON__": "cmp_summary.json",
 }
 
 out = template

@@ -28,6 +28,15 @@ var SWAP_RAW_TAB = 'Swap raw data';
 var SWAP_VIEW_TAB = 'Order Swap';
 var SWAP_SPEC_TAB = 'Swap spec';            // hidden: layout + cutoff saved at refresh so the dropdown works offline
 
+// Complaint baseline layer (2026-10-25): union of ClickHouse return requests + Zoho tickets -> WFR funnel, Order damage, Summary.
+// Each view has its own raw tab + hidden spec tab and the same Return request dropdown (B1) as the RCA tabs.
+var CMP_VIEWS = [
+  { exp: BASE + 'cmp_wfr_export.json', spec: BASE + 'cmp_wfr_view_spec.json', raw: 'WFR raw data', view: 'WFR funnel', specTab: 'WFR spec' },
+  { exp: BASE + 'cmp_damage_export.json', spec: BASE + 'cmp_damage_view_spec.json', raw: 'Damage raw data', view: 'Order damage', specTab: 'Damage spec' }
+];
+var SUMMARY_URL = BASE + 'cmp_summary.json';
+var SUMMARY_TAB = 'Summary';
+
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('WFR RCA')
     .addItem('Refresh now', 'refreshAll')
@@ -45,6 +54,7 @@ function refreshAll() {
   writeView_(trend);
   writeInfo_(exp, trend);
   refreshSwap_();
+  refreshCmp_();
   SpreadsheetApp.getActive().toast('RCA data refreshed (' + exp.rows.length + ' orders)', 'WFR RCA', 5);
 }
 
@@ -57,6 +67,40 @@ function refreshSwap_() {
   var raw = sheet_(SWAP_RAW_TAB).getDataRange().getValues();
   var rs = currentReturnFilter_(SWAP_VIEW_TAB);
   writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), SWAP_VIEW_TAB);
+}
+
+/** Complaint-baseline tabs: raw cases + view computed from them (same evaluator), then the static Summary tab. */
+function refreshCmp_() {
+  CMP_VIEWS.forEach(function (c) {
+    var exp = fetchJson_(c.exp);
+    var spec = fetchJson_(c.spec);
+    writeRaw_(exp, c.raw);
+    saveSpec_(spec, exp, c.specTab);
+    var raw = sheet_(c.raw).getDataRange().getValues();
+    var rs = currentReturnFilter_(c.view);
+    writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), c.view);
+  });
+  writeSummary_(fetchJson_(SUMMARY_URL));
+}
+
+/** Summary: at most 8 rows x 3 columns, macro numbers only. */
+function writeSummary_(s) {
+  var sh = sheet_(SUMMARY_TAB);
+  sh.clear();
+  var head = ['Metric'].concat(s.columns);
+  var vals = [head].concat(s.rows.map(function (r) { return [r.label + '  (' + r.sub + ')'].concat(r.values); }));
+  sh.getRange(1, 1, 1, 1).setValue('Complaints raised ' + s.window[0] + ' to ' + s.window[1] + ' (last 30 days). Cells: count | % of the row named in brackets.').setFontStyle('italic');
+  sh.getRange(3, 1, vals.length, head.length).setValues(vals);
+  sh.getRange(3, 1, 1, head.length).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
+  sh.getRange(3, 2, vals.length, head.length - 1).setHorizontalAlignment('right');
+  (s.footnotes || []).forEach(function (t, i) { sh.getRange(3 + vals.length + 1 + i, 1).setValue(t).setFontColor('#52514e'); });
+  sh.setColumnWidth(1, 520);
+  for (var c = 2; c <= head.length; c++) sh.setColumnWidth(c, 130);
+}
+
+function viewConfigs_() {
+  return [{ raw: RAW_TAB, view: VIEW_TAB, specTab: SPEC_TAB }, { raw: SWAP_RAW_TAB, view: SWAP_VIEW_TAB, specTab: SWAP_SPEC_TAB }]
+    .concat(CMP_VIEWS);
 }
 
 function currentReturnFilter_(tab) {
@@ -93,10 +137,10 @@ function loadSpec_(tab) {
 function onEdit(e) {
   var sh = e && e.range && e.range.getSheet();
   if (!sh || e.range.getA1Notation() !== FILTER_CELL) return;
-  var isSwap = sh.getName() === SWAP_VIEW_TAB;
-  if (!isSwap && sh.getName() !== VIEW_TAB) return;
-  var spec = loadSpec_(isSwap ? SWAP_SPEC_TAB : SPEC_TAB);
-  var raw = sheet_(isSwap ? SWAP_RAW_TAB : RAW_TAB).getDataRange().getValues();
+  var cfg = viewConfigs_().filter(function (c) { return c.view === sh.getName(); })[0];
+  if (!cfg) return;
+  var spec = loadSpec_(cfg.specTab);
+  var raw = sheet_(cfg.raw).getDataRange().getValues();
   var rs = currentReturnFilter_(sh.getName());
   writeView_(computeView_(raw[0], raw.slice(1), spec.layout, spec.t2_cap_date, spec.generated_at, rs === 'All' ? null : rs), sh.getName());
 }

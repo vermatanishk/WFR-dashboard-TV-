@@ -372,6 +372,10 @@
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t5">5 · Monthly Leaderboard</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t6">6 · RCA</button>
       <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t7">7 · RCA view</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t8">8 · WFR funnel</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t9">9 · Order swap</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t10">10 · Order damage</button>
+      <button class="wfr-tab" role="tab" aria-selected="false" data-tab="t11">11 · Summary</button>
     </div>
 
     <div class="wfr-toolbar">
@@ -636,6 +640,94 @@
       </div>
     </div>
 
+    <!-- TAB t8: WFR funnel - wrong medicine, missing / short qty, expiry, MRP / batch -->
+    <div class="wfr-panel" id="t8">
+      <div class="wfr-card">
+        <div class="wfr-lb-title">WFR funnel - wrong medicine, missing / short qty, expiry, MRP / batch</div>
+        <div class="wfr-footnote" style="margin:6px 0 10px;">Each cell is <b>count | % of its parent row</b>. A complaint is one <b>order x complaint type</b>. The baseline is the <b>union</b> of ClickHouse return requests (final reason per item - a customer's first, abandoned pick is ignored) and Zoho Desk tickets (every disposition). "No investigation ticket" = the customer complained but nobody opened a ticket. Cancelled / rejected-at-QC returns are excluded from the funnel. Warehouse input: raised in the last 2 days = "Not due yet (T-2)". Damage and order swap are on their own tabs.</div>
+        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
+          <label for="cmp-wfr-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
+          <select id="cmp-wfr-ret-filter" class="wfr-btn" style="padding:5px 8px;">
+            <option value="All">All</option>
+            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
+            <option value="Raised - Cancelled">Raised - Cancelled</option>
+            <option value="Raised - Rejected">Raised - Rejected</option>
+            <option value="Raised - In progress">Raised - In progress</option>
+            <option value="Not raised">Not raised</option>
+          </select>
+          <span class="wfr-footnote" style="margin:0;" id="cmp-wfr-t2-note"></span>
+        </div>
+        <div class="wfr-macro-scroll">
+          <table class="wfr-macro-table" id="cmp-wfr-table">
+            <thead><tr id="cmp-wfr-head"></tr></thead>
+            <tbody id="cmp-wfr-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB t9: Order swap (cases - unchanged from the Google Sheet tab) -->
+    <div class="wfr-panel" id="t9">
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Order swap (cases - unchanged from the Google Sheet tab)</div>
+        <div class="wfr-footnote" style="margin:6px 0 10px;">Swap cases found by the ticket-text scan (a swap pair counts once; unpaired orders count once). Same layout as the Google Sheet tab <b>Order Swap</b>.</div>
+        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
+          <label for="cmp-swap-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
+          <select id="cmp-swap-ret-filter" class="wfr-btn" style="padding:5px 8px;">
+            <option value="All">All</option>
+            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
+            <option value="Raised - Cancelled">Raised - Cancelled</option>
+            <option value="Raised - Rejected">Raised - Rejected</option>
+            <option value="Raised - In progress">Raised - In progress</option>
+            <option value="Not raised">Not raised</option>
+          </select>
+          <span class="wfr-footnote" style="margin:0;" id="cmp-swap-t2-note"></span>
+        </div>
+        <div class="wfr-macro-scroll">
+          <table class="wfr-macro-table" id="cmp-swap-table">
+            <thead><tr id="cmp-swap-head"></tr></thead>
+            <tbody id="cmp-swap-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB t10: Order damage - complaints, tickets and what the photos show -->
+    <div class="wfr-panel" id="t10">
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Order damage - complaints, tickets and what the photos show</div>
+        <div class="wfr-footnote" style="margin:6px 0 10px;">Each cell is <b>count | % of its parent row</b>. A complaint is one <b>order x complaint type</b>. The baseline is the <b>union</b> of ClickHouse return requests (final reason per item - a customer's first, abandoned pick is ignored) and Zoho Desk tickets (every disposition). "No investigation ticket" = the customer complained but nobody opened a ticket. Cancelled / rejected-at-QC returns are excluded from the funnel. Warehouse input: raised in the last 2 days = "Not due yet (T-2)". Physical damage is split by what the customer photo shows (hand-read); temperature complaints (cold chain) are not photo-read.</div>
+        <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;">
+          <label for="cmp-dmg-ret-filter" style="font-size:12px; font-weight:600;">Return request:</label>
+          <select id="cmp-dmg-ret-filter" class="wfr-btn" style="padding:5px 8px;">
+            <option value="All">All</option>
+            <option value="Raised - Accepted &amp; refunded">Raised - Accepted &amp; refunded</option>
+            <option value="Raised - Cancelled">Raised - Cancelled</option>
+            <option value="Raised - Rejected">Raised - Rejected</option>
+            <option value="Raised - In progress">Raised - In progress</option>
+            <option value="Not raised">Not raised</option>
+          </select>
+          <span class="wfr-footnote" style="margin:0;" id="cmp-dmg-t2-note"></span>
+        </div>
+        <div class="wfr-macro-scroll">
+          <table class="wfr-macro-table" id="cmp-dmg-table">
+            <thead><tr id="cmp-dmg-head"></tr></thead>
+            <tbody id="cmp-dmg-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 11: Summary -->
+    <div class="wfr-panel" id="t11">
+      <div class="wfr-card">
+        <div class="wfr-lb-title">Summary - complaints, tickets and Warehouse input</div>
+        <div class="wfr-footnote" id="cmp-sum-note" style="margin:6px 0 10px;"></div>
+        <div class="wfr-scroll"><table class="wfr-table" id="cmp-sum-table"></table></div>
+        <div class="wfr-footnote" id="cmp-sum-foot" style="margin:10px 0 0;"></div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -653,6 +745,10 @@ const EOD = __EOD_JSON__;
 const RFD_WEEKLY = __RFD_WEEKLY_JSON__;
 const RCA = __RCA_JSON__;
 const RCA_TREND = __RCA_TREND_JSON__;
+const CMP_WFR = __CMP_WFR_JSON__;
+const CMP_DMG = __CMP_DAMAGE_JSON__;
+const CMP_SWAP = __SWAP_TREND_JSON__;
+const CMP_SUM = __CMP_SUMMARY_JSON__;
 const CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"];
 const RESOLUTION_LABEL = { wh_accepted: 'WH Accepted', bod: 'BOD', considered_bod: 'Considered BOD', no_return_record: 'No return record' };
 const RESOLUTION_PILL_CLASS = { wh_accepted: 'yes', bod: 'bod', considered_bod: 'cbod', no_return_record: 'none' };
@@ -1598,4 +1694,47 @@ function renderRcaTrend() {
 const rcaRetSel = document.getElementById('rca-ret-filter');
 if (rcaRetSel) rcaRetSel.addEventListener('change', renderRcaTrend);
 renderRcaTrend();
+
+// ---- Tabs 8-11: complaint baseline (union of return requests + Zoho tickets) - built by build_complaints.py / cmp_view_spec.py ----
+function renderCmpTrend(pre, T) {
+  const head = document.getElementById(pre + '-head'), body = document.getElementById(pre + '-body');
+  if (!head || !body || !T || !T.rows) return;
+  const sel = document.getElementById(pre + '-ret-filter');
+  const choice = sel ? sel.value : 'All';
+  const view = (choice !== 'All' && T.by_return && T.by_return[choice]) ? T.by_return[choice] : T;
+  const days = T.days.slice().reverse();
+  const note = document.getElementById(pre + '-t2-note');
+  if (note && T.t2_cutoff) note.textContent = 'Through ' + (T.day_labels[T.t2_cutoff] || T.t2_cutoff) + (view.excluded_tickets ? '; ' + view.excluded_tickets + ' newer held back' : '') + '.';
+  head.innerHTML = `<th class="frozen frozen-label">Metric</th>
+    <th class="frozen frozen-3mo num">Total (window)</th>
+    <th class="frozen frozen-1mo num">Last month</th>
+    <th class="frozen frozen-2wk num barrier">Last 2 weeks</th>
+    ${days.map(d => `<th class="num">${T.day_labels[d]}</th>`).join('')}`;
+  const txt = c => (c ? c.text : '');
+  body.innerHTML = view.rows.map(row => {
+    const pad = (row.indent || 0) * 18;
+    const labelHtml = `<div style="padding-left:${pad}px">${row.label}</div>` + (row.sub ? `<div class="wfr-macro-sub" style="padding-left:${pad}px">${row.sub}</div>` : '');
+    return `<tr class="${row.kind === 'wfr_pto' ? 'wfr-macro-head' : ''}">
+      <td class="frozen frozen-label">${labelHtml}</td>
+      <td class="frozen frozen-3mo num">${txt(row['3mo'])}</td>
+      <td class="frozen frozen-1mo num">${txt(row['1mo'])}</td>
+      <td class="frozen frozen-2wk num barrier">${txt(row['2wk'])}</td>
+      ${days.map(d => `<td class="num">${txt(row.daily[d])}</td>`).join('')}
+    </tr>`;
+  }).join('');
+}
+[['cmp-wfr', CMP_WFR], ['cmp-swap', CMP_SWAP], ['cmp-dmg', CMP_DMG]].forEach(([pre, T]) => {
+  const el = document.getElementById(pre + '-ret-filter');
+  if (el) el.addEventListener('change', () => renderCmpTrend(pre, T));
+  renderCmpTrend(pre, T);
+});
+(function renderCmpSummary() {
+  const t = document.getElementById('cmp-sum-table');
+  if (!t || !CMP_SUM || !CMP_SUM.rows) return;
+  document.getElementById('cmp-sum-note').textContent = `Complaints raised ${CMP_SUM.window[0]} to ${CMP_SUM.window[1]} (last 30 days). Cells: count | % of the row above it as labelled.`;
+  t.innerHTML = `<thead><tr><th>Metric</th>${CMP_SUM.columns.map(c => `<th class="num">${c}</th>`).join('')}</tr></thead><tbody>` +
+    CMP_SUM.rows.map(r => `<tr><td>${r.label}<div class="wfr-macro-sub">${r.sub}</div></td>${r.values.map(v => `<td class="num">${v}</td>`).join('')}</tr>`).join('') + '</tbody>';
+  const f = document.getElementById('cmp-sum-foot');
+  if (f && CMP_SUM.footnotes) f.innerHTML = CMP_SUM.footnotes.join('<br>');
+})();
 </script>

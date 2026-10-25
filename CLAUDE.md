@@ -392,3 +392,31 @@ Routing (`pull_swap_routing.py` -> `swap_ticket_routing.json`, run before `build
 Sheet: `gsheet/Code.gs` adds tabs "Swap raw data", "Order Swap", hidden "Swap spec" (same refresh + dropdown).
 
 **Routing fix (2026-10-16, RCA funnel):** `build_rca.decide()` now checks whether the Warehouse commented BEFORE looking at Dependency (a non-admission, non-denial WH comment is `other_wh_note`/its sub-reason, never "Dependency not marked" - e.g. 257363). "Dependency not marked" needs NO WH comment AND Dependency never Warehouse in the ticket History AND no warehouse tag (`pull_ticket_routing.py` -> `zoho_raw90/ticket_routing.json`; run it after `recheck_wh_comments.py`, before `build_rca.py`). Effect on the 60-day view: 194 -> 170, agent mistake 12 -> 29, other WH note 4 -> 10.
+
+## Complaint baseline layer (added 2026-10-25) - tabs "WFR funnel", "Order swap", "Order damage", "Summary"
+**Why:** the old WFR base was Zoho tickets only, which hid every complaint nobody ticketed (Oct 1-18: ~88% of return requests had no ticket;
+~500 damage complaints in 30 days vs ~25 tickets). The baseline is now the UNION of the two sources and every complaint is classified
+by whether it got a ticket, whether the Warehouse was asked, and what it was about. Full write-up: RCA_Learnings_and_Decisions.md section 19.
+Definitions (do not change without the owner):
+- **Complaint = (order, complaint type)**, types: Wrong medicine | Missing/short qty | Expiry | Damage | Order swap | MRP/batch. Non-mis-shipment return
+  reasons (No longer needed, Prescription changed, Allergic reaction, Substitutes not needed, Duplicate order ...) are not complaints.
+- **Return side = ClickHouse DTO return requests, FINAL reason per (order, drug_code)** - the latest request wins. A customer's first pick
+  ("Received Wrong Medicines") is often an abandoned draft re-submitted a minute later as "No longer needed" (orders 4264424, 4305606 ...); using
+  any/first reason overstated wrong medicine ~3x.
+- **Zoho side = every ticket of every disposition** (`pull_complaint_tickets.py`); sub-disposition -> type via CATEGORY_MAP + the damage variants the
+  dashboard never pulled ("Cold storage item delivered warm", "Damaged packaging or container"). Tickets with an unusable Order ID cannot be joined
+  (reported, not guessed). Free-text Order ID values are never stored (public repo).
+- **One real complaint = one row**: an exact-type ticket (created -30..+60 days of the request) claims the row; otherwise one unclaimed ticket of
+  another type may explain it ("filed under another type"); a ticket that explains a request never also becomes a "ticket only" row.
+- Cancelled (280/231) and QC-rejected (250 + rejected_for_*) returns are out of scope, shown as their own rows.
+- **WH input** per ticketed complaint: accepted / denied / other note / no WH comment / not due (T-2) / gap (must be 0). Verdicts come from
+  `wh_text_check.json`; `recheck_wh_comments.py --extra zoho_raw90/cmp_tickets_to_read.json` reads the baseline's tickets that are not in data.json.
+- **Order damage tab**: temperature complaints (cold chain, not photo-read) vs physical damage; physical damage is split by the hand-read photo bucket
+  (`damage_images.py`: sheets -> read -> merge; window from 2026-09-20; "Photo not read yet" must be ~0). The damage and swap types are NOT in the WFR funnel tab.
+- **Summary**: max 8 rows x 3 columns (WFR | Damage | Swap), last 30 days. Swap column = return reason / swap sub-disposition; the Order swap tab itself is
+  the unchanged ticket-text-scan case view.
+Pipeline (run after the normal refresh; ClickHouse pulls are saved from the MCP as `zoho_raw90/cmp_returns_c0..c3.json`, 15-day chunks, query in the
+`build_complaints.py` docstring): `pull_complaint_tickets.py` -> `build_complaints.py` (writes complaints_export.json + cmp_{wfr,damage,swap_baseline}_export.json)
+-> `recheck_wh_comments.py --extra ...` -> `build_complaints.py` again -> damage photos (`damage_images.py`) -> `cmp_view_spec.py` (trends, specs, summary)
+-> `build_html.py`. Tests (all must pass): `test_complaints.py`, `node pipeline/test_view_js.js wfr|damage|swap`, and live `check_complaints_live.py`.
+Google Sheet: `gsheet/Code.gs` adds tabs "WFR funnel", "Order damage", "Summary" (+ raw/spec tabs); re-paste Code.gs once.

@@ -3,7 +3,8 @@
 // and compares EVERY cell with rca_trend.json (which Python produced from the same export).
 const fs = require('fs'), path = require('path');
 const dir = __dirname;
-const pre = process.argv[2] === 'swap' ? ['swap_export', 'swap_view_spec', 'swap_trend'] : ['rca_export', 'rca_view_spec', 'rca_trend']; // node test_view_js.js [swap]
+const PRE = { swap: ['swap_export', 'swap_view_spec', 'swap_trend'], wfr: ['cmp_wfr_export', 'cmp_wfr_view_spec', 'cmp_wfr_trend'], damage: ['cmp_damage_export', 'cmp_damage_view_spec', 'cmp_damage_trend'] };
+const pre = PRE[process.argv[2]] || ['rca_export', 'rca_view_spec', 'rca_trend']; // node test_view_js.js [swap|wfr|damage]
 const src = fs.readFileSync(path.join(dir, 'gsheet', 'Code.gs'), 'utf8');
 const sandbox = {};
 new Function('sandbox', src + '\nsandbox.computeView_ = computeView_;')(sandbox);

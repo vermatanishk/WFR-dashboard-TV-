@@ -10,7 +10,7 @@ left alone (WH has not had time to comment; never cache a verdict for them).
 Pairing is by ticketNumber from searchTickets (one ticket per call), never by position.
 Auth: pipeline/zoho_auth.py (REST); fall back to the Zoho Desk MCP getTicketComments if it fails.
 
-Run: python3 pipeline/recheck_wh_comments.py [--limit N]
+Run: python3 pipeline/recheck_wh_comments.py [--limit N] [--extra zoho_raw90/cmp_tickets_to_read.json]
 """
 import json
 import sys
@@ -61,6 +61,16 @@ def main():
             continue
         if tid not in cache or cache[tid].get("verdict") in ("no_wh_comment", "unrecognized"):
             todo.append(t)
+    if "--extra" in sys.argv:        # complaint-baseline tickets outside data.json (build_complaints.py -> cmp_tickets_to_read.json)
+        seen = {t["ticket_id"] for t in todo}
+        cap = (datetime.now(IST) - timedelta(days=2)).date().isoformat()     # baseline tickets are read against TODAY's T-2, not data.json's
+        for t in json.loads(Path(sys.argv[sys.argv.index("--extra") + 1]).read_text()):
+            tid = t["ticket_id"]
+            if tid in seen or t["created_time"][:10] > cap:
+                continue
+            if tid not in cache or cache[tid].get("verdict") in ("no_wh_comment", "unrecognized"):
+                todo.append(t)
+                seen.add(tid)
     if limit:
         todo = todo[:limit]
     print(f"{len(todo)} tickets to (re)read; T-2 cap {cap}")
