@@ -36,6 +36,8 @@ var CMP_VIEWS = [
 ];
 var SUMMARY_URL = BASE + 'cmp_summary.json';
 var SUMMARY_TAB = 'Summary';
+var VIEW_TAB_COLOR = '#ffe699';      // light yellow: the dashboard (view) tabs - raw-data tabs stay uncoloured
+var SUMMARY_TAB_COLOR = '#f4b6b6';   // light red: the Summary tab
 
 function onOpen() {
   SpreadsheetApp.getUi().createMenu('WFR RCA')
@@ -86,6 +88,7 @@ function refreshCmp_() {
 /** Summary: at most 8 rows x 3 columns, macro numbers only. */
 function writeSummary_(s) {
   var sh = sheet_(SUMMARY_TAB);
+  sh.setTabColor(SUMMARY_TAB_COLOR);
   sh.clear();
   var head = ['Metric'].concat(s.columns);
   var vals = [head].concat(s.rows.map(function (r) { return [r.label + '  (' + r.sub + ')'].concat(r.values); }));
@@ -185,6 +188,7 @@ function writeRaw_(exp, tab) {
 
 function writeView_(t, tab, noFilter) {
   var sh = sheet_(tab || VIEW_TAB);
+  sh.setTabColor(VIEW_TAB_COLOR);
   var keep = RET_OPTIONS.indexOf(sh.getRange(FILTER_CELL).getValue()) >= 0 ? sh.getRange(FILTER_CELL).getValue() : 'All';
   sh.clear();
   if (noFilter) {
