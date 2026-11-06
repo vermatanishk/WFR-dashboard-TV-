@@ -69,6 +69,9 @@ IM_TAG = {
 }
 IM_PENDING = ("Tags pending", "")   # new orders not yet covered by the pack-mapping pull (coverage gap, like "photo not read yet")
 IM_TAGS = {}
+# orders whose only return is an RTO (courier-only): no customer complaint photo exists, so photo coverage is "not available", never "not read yet"
+_rp = Path(__file__).parent / "zoho_raw90" / "rca_rto_only_orders.json"
+RTO_ONLY = set(json.loads(_rp.read_text())) if _rp.exists() else set()
 
 
 def _raised(r, nc_by_order):
@@ -86,7 +89,7 @@ def _raised(r, nc_by_order):
         es = r.get("wrong_med") or []
         if not es:
             # no return request -> no complaint photo exists; otherwise it is just not read yet
-            return (NA if r["return_state"] == "not_raised" else UNREAD, "", "", "", "", "No")
+            return (NA if (r["return_state"] == "not_raised" or r["order_id"] in RTO_ONLY) else UNREAD, "", "", "", "", "No")
         order = ["different_medicine", "same_brand_variant", "same_product_diff_packaging", "same_sku_consistent",
                  "other_order_line_photographed", "unknown"]
         e = sorted(es, key=lambda x: order.index(x["relation_type"]) if x["relation_type"] in order else 9)[0]
