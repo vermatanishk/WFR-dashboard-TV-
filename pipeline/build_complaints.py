@@ -10,14 +10,15 @@ Return reasons that are not mis-shipments (No longer needed, Prescription change
 needed, Duplicate order ...) are NOT complaints and never enter the baseline (they are only counted in the sanity block).
 
 Inputs (zoho_raw90/):
-  cmp_returns_c0..c3.json  ClickHouse, one row per (order, drug_code) with the FINAL reason (latest request wins:
+  cmp_returns_YYYYMMDD_YYYYMMDD.json  ClickHouse (request created_at in [start, end)); ranges may overlap (re-pulls refresh statuses),
+                           gaps and staleness are fatal. One row per (order, drug_code), one row per (order, drug_code) with the FINAL reason (latest request wins:
                            a customer first picks "Received Wrong Medicines" and re-submits the same item as "No longer
                            needed" a minute later - the first request is a dead draft). Query shape below.
   cmp_zoho_tickets.json    pull_complaint_tickets.py (all dispositions, IDs only)
   wh_text_check.json       Warehouse comment verdicts per ticket (recheck_wh_comments.py --extra cmp_tickets_to_read.json)
   damage30_image_buckets.json / damage30_orders.json   hand-read photo buckets for damage (see damage_images.py)
 
-ClickHouse query (per 15-day chunk, saved by the session as cmp_returns_cN.json; DTO only, drop _peerdb_is_deleted):
+ClickHouse query (7-day chunks - the MCP rejects results over ~390 KB - saved as cmp_returns_<A>_<B>.json; DTO only, drop _peerdb_is_deleted):
   WITH rr AS (SELECT * FROM marketplace_return_request WHERE _peerdb_is_deleted=0 AND type='DTO' AND created_at >= A AND created_at < B
               ORDER BY _peerdb_version DESC LIMIT 1 BY id),
        ri AS (SELECT * FROM marketplace_return_items WHERE _peerdb_is_deleted=0 ORDER BY _peerdb_version DESC LIMIT 1 BY id),
@@ -32,6 +33,7 @@ Output: complaints_export.json  {columns, rows, t2_cap_date, generated_at, windo
 Run: python3 pipeline/build_complaints.py
 """
 import json
+import os
 import re
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
@@ -117,16 +119,60 @@ def sub_type(sub):
     return _CAT_TO_TYPE.get(cat)
 
 
+RET_FILE = re.compile(r"cmp_returns_(\d{8})_(\d{8})\.json$")
+
+
+def return_files():
+    """[(start, end_exclusive, mtime, path)] for every weekly/ad-hoc ClickHouse return pull, ordered by start."""
+    out = []
+    for p in RAW.glob("cmp_returns_*.json"):
+        m = RET_FILE.search(p.name)
+        if not m:
+            raise SystemExit(f"bad return-pull file name {p.name}: expected cmp_returns_YYYYMMDD_YYYYMMDD.json (start, end exclusive)")
+        f = lambda x: f"{x[:4]}-{x[4:6]}-{x[6:]}"
+        out.append((f(m.group(1)), f(m.group(2)), p.stat().st_mtime, p))
+    return sorted(out)
+
+
+def coverage(files):
+    """(first_day, end_exclusive, gaps) of the union of the pulled ranges."""
+    cur, gaps, first = None, [], files[0][0]
+    for a, b, _, _ in files:
+        if cur is not None and a > cur:
+            gaps.append((cur, a))
+        cur = b if cur is None else max(cur, b)
+    return first, cur, gaps
+
+
 def load_returns():
-    items = {}
-    for p in sorted(RAW.glob("cmp_returns_c*.json")):
+    """One row per (order, drug_code). Files are request-created-date ranges and may overlap (a re-pull of the last weeks refreshes
+    statuses): a row from a newer file supersedes older rows whose request date lies inside the newer file's range; across ranges the
+    LATEST range holds the item's final request (final reason / status), and the earliest holds its first-request date."""
+    files = return_files()
+    if not files:
+        raise SystemExit("no cmp_returns_*.json pulled")
+    first, end, gaps = coverage(files)
+    if gaps:
+        raise SystemExit(f"return pulls have gaps (re-pull these ranges): {gaps}")
+    today = datetime.now(IST).date().isoformat()
+    if end < today and not os.environ.get("ALLOW_STALE"):
+        raise SystemExit(f"STALE: return-request pulls cover only up to {end} (exclusive); today is {today}. Pull the missing days "
+                         f"(pipeline/refresh_all.py plan) or set ALLOW_STALE=1 for an offline rebuild.")
+    slices = []
+    for a, b, mt, p in files:
         for r in json.loads(p.read_text())["result"]["data"]:
-            k = (r["order_id"], r["drug_code"])
-            if k in items:                                  # item straddles a chunk boundary: the later request is the final one
-                old = items[k]
-                new, prev = (r, old) if r["created"] >= old["created"] else (old, r)
-                r = {**new, "created": min(old["created"], r["created"]), "n_req": old["n_req"] + r["n_req"]}
-            items[k] = r
+            slices.append((a, b, mt, r))
+    keep = []
+    for a, b, mt, r in slices:
+        d = r["created"][:10]
+        if any(mt2 > mt and a2 <= d < b2 for a2, b2, mt2, _ in files):
+            continue                                             # superseded by a newer pull of the same dates
+        keep.append((a, mt, r))
+    items = {}
+    for a, mt, r in sorted(keep, key=lambda x: (x[0], x[1])):
+        k = (r["order_id"], r["drug_code"])
+        old = items.get(k)
+        items[k] = {**r, "created": min(r["created"], old["created"]), "n_req": r["n_req"] + old["n_req"]} if old else r
     return list(items.values())
 
 

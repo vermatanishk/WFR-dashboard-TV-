@@ -31,6 +31,24 @@ re-pull the data, re-run the pipeline (see order below), rebuild the HTML,
 commit incrementally, push. Check git log for the most recent refresh commit
 to know how stale the current data is before starting.
 
+## DAILY 7 pm REFRESH = EVERY LAYER (owner, 2026-11-06 - never stop at the old tabs)
+The refresh is not done until `python3 pipeline/refresh_all.py gates` prints "all gates green". Gates cover: core data, ClickHouse return pull
+(through yesterday, no gaps), Zoho complaint tickets, complaint export / views / Summary (same last day), Warehouse verdict gaps = 0,
+damage photos read (last 30 days), Order swap export, RCA export, index.html. Everything is INCREMENTAL:
+1. `python3 pipeline/refresh_all.py plan` -> prints the ClickHouse chunks to pull today (7-day files, trailing 28 days + anything not yet
+   covered; the whole 60-day window on Sundays) and the gate status. Pull each chunk with the query in the `build_complaints.py` docstring
+   (ClickHouse MCP, results >100k chars are auto-saved to a file - copy it to `pipeline/zoho_raw90/cmp_returns_<A>_<B>.json`; the MCP rejects
+   results over ~390 KB, hence 7-day chunks; today is never pulled).
+2. Core steps (the numbered pipeline below, steps 1-7) as before.
+3. `python3 pipeline/refresh_all.py build` -> Zoho complaint tickets (last 3 days), complaint baseline, Warehouse comments, views / specs / Summary,
+   build_html, all tests. Stops on the first failure.
+4. Session-only steps the script cannot do: (a) damage photos - orders listed by `refresh_all.py gates` as "Photo not read yet": pull their return-item
+   image URLs (ClickHouse), `damage_images.py sheets`, READ every sheet, `damage_images.py merge`, rebuild; (b) Order swap: `pull_swap_tickets.py`,
+   `pull_swap_routing.py`, ClickHouse swap pulls, `read_swap_wh.py`, `build_swap.py`, `swap_view_spec.py`; (c) RCA columns of the WFR funnel: the RCA
+   daily refresh checklist below (`build_rca_export.py` must be re-run so `rca_export.json` reaches yesterday - 2).
+5. `python3 pipeline/refresh_all.py gates` must be green, then commit + `git fetch && git merge origin/main && git push` (Vercel redeploys; the
+   Google Sheet reads the exports from GitHub raw at 07:00 IST and on Refresh). If a gate cannot be made green, say which in the commit message - do not push silently stale tabs.
+
 ## Data sources (via MCP)
 
 1. **Zoho Desk** — ticket-level: `Ticket Id`, `Order ID`, `Created Time`,
@@ -415,7 +433,7 @@ Definitions (do not change without the owner):
   (`damage_images.py`: sheets -> read -> merge; window from 2026-09-20; "Photo not read yet" must be ~0). The damage and swap types are NOT in the WFR funnel tab.
 - **Summary**: max 8 rows x 3 columns (WFR | Damage | Swap), last 30 days. Swap column = return reason / swap sub-disposition; the Order swap tab itself is
   the unchanged ticket-text-scan case view.
-Pipeline (run after the normal refresh; ClickHouse pulls are saved from the MCP as `zoho_raw90/cmp_returns_c0..c3.json`, 15-day chunks, query in the
+Pipeline (driven by `refresh_all.py`; ClickHouse pulls are saved from the MCP as `zoho_raw90/cmp_returns_<A>_<B>.json`, 7-day chunks, query in the
 `build_complaints.py` docstring): `pull_complaint_tickets.py` -> `build_complaints.py` (writes complaints_export.json + cmp_{wfr,damage,swap_baseline}_export.json)
 -> `recheck_wh_comments.py --extra ...` -> `build_complaints.py` again -> damage photos (`damage_images.py`) -> `cmp_view_spec.py` (trends, specs, summary)
 -> `build_html.py`. Tests (all must pass): `test_complaints.py`, `node pipeline/test_view_js.js wfr|damage|swap`, and live `check_complaints_live.py`.
