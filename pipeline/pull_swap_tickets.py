@@ -9,7 +9,7 @@ Per ticket: ticket_id, created (UTC date), own order (cf_order_id), other_orders
 sub_disposition, disposition, dependency, signals (list of matched patterns), noise flag.
 Playbook: order-swap playbook (section 3). "wrong cx received wrong medicine instead of X" = single-item mix-up = noise.
 
-Run: python3 pipeline/pull_swap_tickets.py [days=60]
+Run: python3 pipeline/pull_swap_tickets.py [days=60]   (daily: days=14 - merges into the existing file)
 """
 import json
 import re
@@ -78,6 +78,12 @@ def main():
         out.append({"ticket_id": tn, "created": t["createdTime"][:10], "created_time": t["createdTime"], "order_id": own,
                     "other_orders": [x for x in ids if x != own], "sub_disposition": sub, "disposition": cf.get("cf_dispositions"),
                     "dependency": cf.get("cf_dependency"), "signals": sig, "order_swap_disposition": is_swap_disp, "noise": noise})
+    # INCREMENTAL: keep tickets from earlier pulls (older than this pull's start), replace the re-scanned range, keep the last 60 days
+    if OUT.exists():
+        old = json.loads(OUT.read_text())["tickets"]
+        keep_from = (end - timedelta(days=60)).isoformat()
+        fresh = {x["ticket_id"] for x in out}
+        out += [x for x in old if x["ticket_id"] not in fresh and x["created"] < start.isoformat() and x["created"] >= keep_from]
     OUT.write_text(json.dumps({"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "start": start.isoformat(),
                                "end": end.isoformat(), "tickets": sorted(out, key=lambda x: x["ticket_id"])}, separators=(",", ":")))
     print("tickets", len(out), "with other order", sum(1 for x in out if x["other_orders"]), "swap disp", sum(x["order_swap_disposition"] for x in out))
