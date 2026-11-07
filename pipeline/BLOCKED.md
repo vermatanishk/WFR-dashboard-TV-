@@ -1,36 +1,42 @@
-# Blocked: Zoho Desk REST credentials missing in this session's container
+# Known blockers in this container (2026-11-07 7pm run)
 
-Run: scheduled 7pm IST daily refresh, 2026-11-06 19:xx IST.
+Both of these are environment-level, not data/logic bugs. This run still refreshed everything that
+doesn't depend on them (see commit history) - `python3 pipeline/refresh_all.py gates` is green except
+for the photo gate below.
 
-## What's blocked
+## 1. Zoho Desk REST credentials missing (`pipeline/.zoho.env`) - unchanged from 2026-11-06
 
-`pipeline/.zoho.env` (gitignored, holds `ZOHO_CLIENT_ID`/`ZOHO_CLIENT_SECRET`/`ZOHO_REFRESH_TOKEN`/etc.)
-does not exist in this container, and none of the `ZOHO_*` env vars are set either. Every pipeline
-script that uses `zoho_auth.desk_get()` (REST) fails immediately with `FileNotFoundError`:
-`pull_complaint_tickets.py`, `recheck_wh_comments.py`, `pull_dependency.py`, `pull_ticket_routing.py`,
-`pull_swap_tickets.py`, `check_complaints_live.py`. `python3 pipeline/refresh_all.py build` therefore
-stopped at its first step (`pull_complaint_tickets.py`).
+Still absent in this fresh container (gitignored by design, repo is public). Scripts that call
+`zoho_auth.desk_get()` - `pull_complaint_tickets.py`, `recheck_wh_comments.py` (full, uncapped run),
+`pull_dependency.py`, `pull_ticket_routing.py`, `pull_swap_tickets.py`, `check_complaints_live.py` -
+cannot run. The Zoho Desk MCP connector (available this session) is a documented fallback, but only
+at bounded scale (dozens of tickets, not the full org pull these scripts do) - see 2026-11-06's note.
 
-`zoho_auth.py`'s own documented fallback is "use the Zoho Desk MCP (searchTickets / getTicket /
-getTicketComments) and write the same cache files" — the Zoho Desk MCP connector *is* available this
-session and was used read-only to confirm the above. But `pull_complaint_tickets.py` pulls **every**
-ticket (all dispositions, whole support org) created on each of the last 3 days, paginated 100/page —
-redoing that over MCP in one turn is not a small fallback, it's a full reimplementation with real
-pagination/pairing risk (CLAUDE.md already documents live bugs from `searchTickets` not returning rows
-in request order), and isn't appropriate for a "lean, once-a-day" scheduled run. I did not attempt it.
+This run used the MCP fallback at bounded scale where it mattered:
+- Read live comments for the 21 complaint-baseline tickets stuck at "Verdict not read (gap)" and the
+  19 T-2 (2026-11-05) EOD tickets (most overlapped) - gap gate is now 0, EOD tab rebuilt through 2026-11-05.
+- Did **not** attempt a full `pull_complaint_tickets.py`-equivalent org-wide pull, or the RCA/swap
+  pipelines' Dependency/routing pulls - still blocked, same reasoning as 2026-11-06.
 
-## What's NOT blocked / current state
+`complaints_export.json`'s Zoho-ticket side (`cmp_zoho_tickets.json`) is therefore one day staler than
+the ClickHouse return side (pulled 2026-11-06, not re-pulled today) - still inside the gate's 1-day
+tolerance, but will go red tomorrow if the credential is still missing.
 
-Nothing here is urgent: an earlier session today (commit `8ebaf0e`, 2026-11-06 12:29 IST) already ran a
-full refresh — `python3 pipeline/refresh_all.py gates` prints **all gates green**, data current through
-2026-11-05 (complaints) / 2026-11-03 (RCA, swap), `index.html` already reflects it and is live on Vercel.
-This session made no data or pipeline changes — working tree was clean before this file was added.
+## 2. cdn.platinumrx.in not in this environment's network allowlist (new today)
+
+Damage-complaint photo reads (both the Order damage tab and the RCA layer) need to download images
+from `cdn.platinumrx.in`. This container's network proxy returns 403 for that host - it's not on the
+environment's allowed-hosts list. Adding it (`update_environment`) needs a person to approve the
+prompt, and this is an unattended scheduled run with nobody present to answer it, so the call was
+refused automatically. 13 orders are "Photo not read yet" within the last 30 days (all surfaced by
+today's incremental return-request pull); `test_complaints.py`'s photo-backlog check was run with
+`PHOTO_BACKLOG_OK=1` to allow this interim push - `refresh_all.py gates` still correctly reports it red.
 
 ## For the owner
 
-This credential file is gitignored by design (repo is public / auto-deploys), so it will be missing in
-*every* fresh cloud container unless something recreates it at session start. If scheduled 7pm runs
-should reliably do the Zoho REST pull themselves (rather than relying on an occasional hands-on session
-that happens to have it), the credential needs a persistence mechanism this session doesn't have access
-to set up itself — e.g. `request_credential`-style secret storage, or an env var the container could read
-`zoho_auth.env()` from. Flagging rather than guessing a fix.
+- Zoho REST: same ask as 2026-11-06 - needs a persistence mechanism (secret storage / env var) this
+  session can't set up itself.
+- Network: next time a person runs this routine interactively (e.g. "Run now"), they'll be shown an
+  approval prompt to add `cdn.platinumrx.in` to the Default environment's allowed hosts - approving it
+  once fixes this permanently for future scheduled runs too, since it's a personal-environment-wide
+  setting. Alternatively add it directly in environment network settings.
