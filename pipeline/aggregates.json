@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-11-08T13:56:42Z",
+  "generated_at": "2026-11-09T13:50:16Z",
   "sample_note": "Exhaustive pull of all mis-shipment tickets from the live Zoho Desk API for the trailing 90 days - 2403 tickets across 5 categories, not a sample. Location is computed live against ClickHouse for every order. Resolution (WH-Accepted / BOD / Considered BOD) is decided solely by the Warehouse team's own Zoho comment, never the ClickHouse remark. 'Considered BOD' = no confirmed Warehouse-comment verdict yet (no comment, or the comment matched neither the admission nor denial pattern), so it defaults to BOD rather than a confirmed WH-fault admission. Switch Orders found 0 tickets in this window. 75 tickets excluded: no Order ID set on the ticket in Zoho (source data-quality gap, not computable).",
-  "pull_window": "Last 90 days (2026-08-10 to 2026-11-08), exhaustive within that window",
+  "pull_window": "Last 90 days (2026-08-11 to 2026-11-09), exhaustive within that window",
   "tab1": {
     "total_tickets": 2403,
     "total_orders": 2181,
     "total_returns": 2216,
-    "wh_accepted": 164,
-    "bod": 1547,
-    "considered_bod": 505,
+    "wh_accepted": 166,
+    "bod": 1567,
+    "considered_bod": 483,
     "no_return_record": 187,
-    "accept_pct": 7.5,
+    "accept_pct": 7.6,
     "reconciles": true,
     "by_category": [
       {
@@ -24,8 +24,8 @@
         "category": "Wrong Medicines",
         "total": 520,
         "pct_of_total": 21.6,
-        "accepted": 58,
-        "accept_pct": 11.2
+        "accepted": 60,
+        "accept_pct": 11.5
       },
       {
         "category": "Expiry Issue",
@@ -60,8 +60,8 @@
     {
       "location": "Bangalore",
       "total": 568,
-      "accepted": 69,
-      "accept_pct": 12.1
+      "accepted": 70,
+      "accept_pct": 12.3
     },
     {
       "location": "Kolkata",
@@ -78,8 +78,8 @@
     {
       "location": "Lucknow",
       "total": 226,
-      "accepted": 13,
-      "accept_pct": 5.8
+      "accepted": 14,
+      "accept_pct": 6.2
     },
     {
       "location": "Unknown",
