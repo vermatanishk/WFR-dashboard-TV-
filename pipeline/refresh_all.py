@@ -48,6 +48,18 @@ def gates():
     d = js("data.json")
     gen = datetime.strptime(d["generated_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc).astimezone(IST).date()
     chk("core data.json", (t - gen).days <= 1, f"generated {gen}")
+    # WH verdict coverage of the core dataset (2026-11-11: unattended runs without Zoho REST creds left every new ticket uncached ->
+    # considered_bod -> WH accepted showed 0 for days). Tickets older than T-2 must have a read verdict; provisional ones must be re-read.
+    wh = js("zoho_raw90/wh_text_check.json")
+    cap = (t - timedelta(days=2)).isoformat()
+    unread = [x["ticket_id"] for x in d["tickets"] if x["created_time"][:10] <= cap and x["ticket_id"] not in wh]
+    chk("core WH verdicts read (tickets past T-2)", not unread, f"{len(unread)} tickets past T-2 with no cached verdict")
+    recent = {x["ticket_id"] for x in d["tickets"] if x["created_time"][:10] >= (t - timedelta(days=14)).isoformat()}
+    stale_prov = [k for k in recent if (wh.get(k) or {}).get("verdict") in ("no_wh_comment", "unrecognized")
+                  and (wh[k].get("rechecked_on") or "0") < (t - timedelta(days=1)).isoformat()]
+    chk("core provisional verdicts re-read (last 14 days)", not stale_prov, f"{len(stale_prov)} provisional verdicts not re-read since yesterday")
+    eod = js("data_eod.json")
+    chk("EOD tab date = T-2", eod["for_date"] >= cap, f"for_date {eod['for_date']} (want {cap}); run build_eod_auto.py")
     # complaint layer
     try:
         sys.path.insert(0, str(HERE))
