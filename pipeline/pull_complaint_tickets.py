@@ -6,7 +6,7 @@ sub-disposition is in CATEGORY_MAP, which hid e.g. "Cold storage item delivered 
 
 Per ticket: ticket_id, created_time (UTC), order_raw (cf_order_id text), disposition, sub_disposition, dependency, status, channel.
 Order id is parsed later (build_full_dataset.parse_order_id). Idempotent: days already stored are skipped unless they are the
-last 3 days (tickets still being edited) - delete the file to force a full pull.
+last 3 days (tickets still being edited) or were pulled less than 2 days after the day ended - delete the file to force a full pull.
 
 Run: python3 pipeline/pull_complaint_tickets.py [start=2026-08-20]
 """
@@ -58,11 +58,16 @@ def main():
     d = start
     while d <= today:
         k = d.isoformat()
-        if k not in store["days"] or (today - d).days <= 3:
+        # a day is final only if it was pulled at least 2 days AFTER it ended (fixes 2026-11-11: a day pulled mid-day and then
+        # never revisited after a gap between sessions stayed partial, e.g. 2026-11-06 held 60 of ~170 tickets)
+        pulled = (store.get("day_pulled") or {}).get(k)
+        final = pulled is not None and (datetime.strptime(pulled, "%Y-%m-%d").date() - d).days >= 2
+        if k not in store["days"] or (today - d).days <= 3 or not final:
             rows = day_tickets(k)
             store["days"][k] = [{"ticket_id": t["ticketNumber"], "created_time": t["createdTime"], "order_raw": _clean_order((t.get("cf") or {}).get("cf_order_id")),
                                  "disposition": (t.get("cf") or {}).get("cf_dispositions"), "sub_disposition": (t.get("cf") or {}).get("cf_sub_disposition"),
                                  "dependency": (t.get("cf") or {}).get("cf_dependency"), "status": t.get("status"), "channel": t.get("channel")} for t in rows]
+            store.setdefault("day_pulled", {})[k] = today.isoformat()
             print(k, len(rows), flush=True)
         d += timedelta(days=1)
     store["pulled_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

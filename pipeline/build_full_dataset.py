@@ -23,15 +23,23 @@ tickets = json.loads((HERE / "zoho_raw90/consolidated.json").read_text())
 returns = []
 pickers_raw = []
 qc_raw = []
-for i in range(4):
-    returns += load_jsonl(HERE / f"zoho_raw90/ch_returns_c{i}.jsonl")
-    pickers_raw += load_jsonl(HERE / f"zoho_raw90/ch_pickers_c{i}.jsonl")
+# chunks c0-c3 are the original 90-day pull; c4 (and any later c5...) are INCREMENTAL re-pulls for recent
+# orders (returns arrive late): rows of an order present in a later chunk replace that order's earlier rows.
+_chunks = sorted(int(p.stem.split("_c")[-1]) for p in (HERE / "zoho_raw90").glob("ch_returns_c*.jsonl"))
+for i in _chunks:
+    _r = load_jsonl(HERE / f"zoho_raw90/ch_returns_c{i}.jsonl")
+    _p = load_jsonl(HERE / f"zoho_raw90/ch_pickers_c{i}.jsonl")
     qc_file_jsonl = HERE / f"zoho_raw90/ch_qc_c{i}.jsonl"
     qc_file_json = HERE / f"zoho_raw90/ch_qc_c{i}.json"
-    if qc_file_json.exists():
-        qc_raw += json.loads(qc_file_json.read_text())
-    else:
-        qc_raw += load_jsonl(qc_file_jsonl)
+    _q = json.loads(qc_file_json.read_text()) if qc_file_json.exists() else load_jsonl(qc_file_jsonl)
+    if i >= 4:   # incremental chunk: drop earlier rows of the orders it re-pulled
+        _o = {x["order_id"] for x in _r} | {x["order_id"] for x in _p} | {x["order_id"] for x in _q}
+        returns = [x for x in returns if x["order_id"] not in _o]
+        pickers_raw = [x for x in pickers_raw if x["order_id"] not in _o]
+        qc_raw = [x for x in qc_raw if x["order_id"] not in _o]
+    returns += _r
+    pickers_raw += _p
+    qc_raw += _q
 
 print(f"returns={len(returns)} pickers_raw={len(pickers_raw)} qc_raw={len(qc_raw)}")
 
