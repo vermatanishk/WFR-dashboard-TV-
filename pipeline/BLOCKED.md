@@ -1,6 +1,30 @@
-# Known blockers in this container (2026-11-12 7pm scheduled run)
+# Known blockers in this container (2026-11-13 7pm scheduled run)
 
-Both blockers are unchanged from prior runs (2026-11-06 through 2026-11-11) - still
+## 0. THIS RUN: every MCP connector failed to connect - no data pulled, no refresh attempted
+
+Checked connectors first per the daily-refresh instructions, as always. This run, BOTH required
+connectors (ClickHouse MCP, Zoho Desk MCP) failed to connect, confirmed on 3 separate `ToolSearch`
+attempts a few minutes apart (ruling out a one-off transient blip):
+- `ClickHouse`: `CONNECT_TIMEOUT` - "SdkError dialing .../mcp (REQUEST_TIMEOUT)"
+- `Zoho_Desk`: `503` - "SdkHttpError dialing .../mcp (CLIENT_HTTP_NOT_IMPLEMENTED)"
+
+Notably, every OTHER configured MCP connector in this container also failed the same way this run
+(`Google_Drive` 503, `Vercel` CONNECT_TIMEOUT, `Whimsical` CONNECT_TIMEOUT) - none of them are used
+by this pipeline, but their simultaneous failure indicates this is a container/infra-level MCP
+connectivity problem tonight, not these two connectors specifically being removed or misconfigured.
+
+**No pipeline step was run.** No ticket pull, no ClickHouse query, no file write, no commit of data
+changes - there is nothing to back out since nothing was touched. This is a pure connectivity
+failure a human needs to retry/fix (restart the session or its MCP connections); it cannot be
+resolved from inside this unattended run. `index.html` and all `pipeline/*.json` files remain exactly
+as of the last successful refresh (6bb7d5e, "Refresh 2026-11-12 19:xx IST - 11/14 gates green") -
+one day stale, not corrupted or regressed.
+
+## Blockers unchanged from prior runs (2026-11-06 through 2026-11-12, still open, not this run's cause)
+
+These are documented below as-is from the 2026-11-12 run for continuity - they are still open asks
+for the owner, but are NOT why this run (2026-11-13) produced nothing; today's run never got past
+the connector check, so it never reached the point where these would even apply. Both are
 environment-level, not data/logic bugs, and still require a person to act (neither can be
 resolved from inside an unattended session).
 
