@@ -1,6 +1,80 @@
-# Known blockers in this container (2026-11-14 7pm scheduled run)
+# Known blockers in this container (2026-11-15 7pm scheduled run)
 
-## 0. THIS RUN (2026-11-14): both connectors worked - core layer refreshed, complaints/damage-photos/swap/RCA still blocked
+## 0. THIS RUN (2026-11-15): both connectors worked - core layer refreshed, complaints/damage-photos/swap/RCA still blocked
+
+Checked connectors first per the daily-refresh instructions: both worked (`ClickHouse` and `Zoho_Desk` MCP confirmed live).
+`pipeline/.zoho.env` is still absent, so the REST-only scripts (`pull_complaint_tickets.py`, `pull_dependency.py`,
+`pull_ticket_routing.py`, `pull_swap_tickets.py`, `recheck_wh_comments.py`'s bulk path) remain unusable - unchanged
+structural blocker, now 9 scheduled runs. Did real incremental work on the CORE layer (tabs 1-5) via the two working
+MCP connectors only:
+- **WH-verdict backfill (correctness-critical, step 2c)**: all 37 tickets past T-2 with no cached verdict (all created
+  2026-11-13) plus all 24 stale `no_wh_comment`/`unrecognized` provisional verdicts from the last 14 days - 61 tickets
+  total, every comment thread read live via the Zoho Desk MCP (`searchTickets` batched by `ticketNumber` to resolve
+  internal ids, paired by the `ticketNumber` field never by position per the known trap; `getTicketComments` per
+  ticket), classified with the real `classify_wh_comments()`/`investigation_subtype()` functions (imported, not
+  hand-guessed). Result: 28 denials, 1 genuine admission (269182/order 4720100, "We have sent short qty to Cx"), 7
+  confirmed `no_wh_comment`, 1 `unrecognized` (269197/order 4743462: WH wrote "We have sent deferent batch number of
+  medicine to Cx" - a real first-person fault admission in substance, but it matches no phrase in `ADMISSION_PHRASES`
+  or `INTENT_OVERRIDE_ADMISSIONS` as currently written, so it correctly fell through to `unrecognized` rather than being
+  hand-overridden; flagging for the owner to consider adding a "deferent/different batch number" admission phrase +
+  test fixture, same pattern as the existing "deferent manufacturer company" override). Closed both core WH-verdict
+  gates (0 unread past T-2, 0 stale provisional).
+- Pulled the 5 new Zoho tickets created since the last pull (2026-11-14T13:24:40Z through now) across the 5 WFR
+  sub-dispositions, merged into `consolidated.json` with category via `category_mapping.normalize()`.
+- ClickHouse joins for those 5 new orders (`ch_returns_c6.jsonl`/`ch_pickers_c6.jsonl`/`ch_qc_c6.jsonl`): only 1 of 5
+  (order 4320982) had a `marketplace_return_request` row yet - the other 4 are `no_return_record` this run, expected
+  ClickHouse-ingestion lag, not a bug. Cold-chain flags for all 5 orders added to `order_cold_flag.json` (1 cold: order
+  4573993). All picker/QC user_ids already had cached names in `user_names.json`.
+- `orders_by_day.json` / `orders_by_day_location.json` / `zoho_raw90/ch_delivered_daily.json` extended through
+  2026-11-14 with the exact queries in CLAUDE.md step 4 (join on `order_id`, not `id`).
+- Ran `build_full_dataset.py` (2561 tickets, `reconciles` holds), `build_eod_auto.py` (for_date 2026-11-13 = T-2, 37
+  tickets, 1 accepted - pulled packer/manifester for its order via ClickHouse and cached into `zoho_raw90/eod_chain.json`
+  since the script listed it missing), `build_report.py` (`tab1.reconciles: true`), `build_macro_trend.py` (T-2 cutoff
+  2026-11-13), and `build_html.py`.
+- Sanity-checked per CLAUDE.md step 8: `aggregates.json`/`orders_by_day*.json` are dicts and non-empty;
+  `order_cold_flag.json`/`user_names.json`/`wh_text_check.json` grew and are non-empty; the 1 accepted EOD ticket has a
+  complete picker/packer/qc/manifester chain. EOD location is 13.5% Unknown (5/37 tickets) - verified this is NOT the
+  backwards-join bug (spot-checked: all 5 are legitimately `no_return_record` in `data.json`, i.e. no ClickHouse return
+  row exists yet for those orders - the `location` field is only ever populated from `returns_by_order`, so
+  `no_return_record` always means `Unknown` location by construction) - just a touch over the ~10% rule-of-thumb this
+  run because of a particularly lagged batch, not a join-direction regression.
+- `python3 pipeline/refresh_all.py gates` after this run: 11 of 17 green (up from 8/17 at the start of this run) -
+  every gate achievable without the two structural blockers below is now green, including both WH-verdict gates and
+  the EOD date gate. Red: returns pull for the complaint baseline (skipped - same reasoning as every prior run, no
+  standalone value while the Zoho-ticket side is REST-blocked), zoho complaint tickets / complaints_export.json /
+  order swap export / RCA export (all REST-blocked), damage photos (network-blocked, unchanged).
+
+## Blockers unchanged from the 2026-11-14 run (and before), still open
+
+These remain open asks for the owner; this run did not attempt to work around them, per CLAUDE.md
+("Do NOT attempt workarounds... report the blocker and stop, a human will resolve it").
+
+### 1. Zoho Desk REST credentials missing (`pipeline/.zoho.env`) - now 9 scheduled runs
+
+Re-confirmed this run: `ls pipeline/.zoho.env` -> No such file. Same gap as every prior run - blocks
+`pull_complaint_tickets.py`, `pull_dependency.py`, `pull_ticket_routing.py`, `pull_swap_tickets.py`, and
+`recheck_wh_comments.py`'s bulk REST path. The Zoho Desk MCP connector is unaffected and was used extensively above.
+
+### 2. cdn.platinumrx.in not in this environment's network allowlist - unchanged
+
+Not re-tested this run (already correctly refused on multiple prior scheduled runs; nobody is present to approve on an
+unattended run). Blocks every damage-photo / RCA-image / swap-image read - 18+ orders waiting.
+
+## For the owner
+
+Same two asks as every prior run this week, now compounding further (complaints baseline Zoho-ticket side 4 days
+stale; order swap / RCA exports 12 days stale):
+1. **Zoho REST**: `pipeline/.zoho.env` needs a persistence mechanism this unattended session can't set up itself (a
+   3-legged OAuth refresh token, not a single API key `request_credential` can inject).
+2. **Network**: approving the `cdn.platinumrx.in` allowlist prompt once (from an interactive "Run now") fixes the
+   photo-read backlog permanently for scheduled runs too.
+Both fixes are one-time, few-minute actions in an interactive session.
+
+---
+
+# Prior run (2026-11-14 7pm scheduled run)
+
+## 0. THAT RUN (2026-11-14): both connectors worked - core layer refreshed, complaints/damage-photos/swap/RCA still blocked
 
 Checked connectors first per the daily-refresh instructions. Unlike the 2026-11-13 run below, both
 required connectors worked this time, confirmed live: `mcp__ClickHouse__get_organizations` /
