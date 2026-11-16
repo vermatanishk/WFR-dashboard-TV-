@@ -1,4 +1,87 @@
-# Known blockers in this container (2026-11-15 7pm scheduled run)
+# Known blockers in this container (2026-11-16 7pm scheduled run)
+
+## 0. THIS RUN (2026-11-16): both connectors worked - core layer refreshed, complaints/damage-photos/swap/RCA still blocked
+
+Checked connectors first per the daily-refresh instructions: both worked (`mcp__ClickHouse__get_organizations` resolved
+org `PlatinumRx` / service `PRx Nucleus`; `mcp__Zoho_Desk__searchTickets` returned a real ticket on the first call).
+`pipeline/.zoho.env` is still absent (`ls` -> No such file) and `cdn.platinumrx.in` is still refused by the agent proxy
+(403 Tunnel connection failed, re-tested directly) - both unchanged structural blockers, now 10 scheduled runs. Did real
+incremental work on the CORE layer (tabs 1-5) via the two working MCP connectors only:
+- Pulled 29 new Zoho tickets (5 WFR sub-dispositions, since the last pull) via the Zoho Desk MCP, merged into
+  `zoho_raw90/consolidated.json` with category via `category_mapping.normalize()`.
+- ClickHouse joins for those 29 new orders as `ch_returns_c7.jsonl` / `ch_pickers_c7.jsonl` / `ch_qc_c7.jsonl` (19 of 29
+  had a `marketplace_return_request` row yet - the other 10 are `no_return_record` this run, expected ClickHouse-ingestion
+  lag). Cold-chain flags for all 29 orders added to `order_cold_flag.json` (1 cold: order 4763708). All picker/QC
+  user_ids already had cached names in `user_names.json`.
+- **WH-verdict backfill (correctness-critical, step 2c)**: all 17 tickets past T-2 with no cached verdict plus 43 stale
+  `no_wh_comment`/`unrecognized` provisional verdicts from the last 14 days - 60 tickets total, every comment thread
+  read live via the Zoho Desk MCP (`searchTickets` batched by `ticketNumber` to resolve internal ids, paired by the
+  `ticketNumber` field never by position per the known trap; `getTicketComments` per ticket), classified with the real
+  `classify_wh_comments()` function (imported logic applied, not hand-guessed). Result: 10 denials, 1 genuine admission
+  (269408 / order 4676574, "we have sent short qty to Cx Mahiboob bee"), 44 confirmed `no_wh_comment`, 4 `unrecognized`
+  (268493/268701/268920/268419 - all the same Warehouse neutral note "Not related to our inventory", which the
+  classifier correctly treats as neither admission nor denial; tagged `subtype: batch_not_in_inventory`). Closed both
+  core WH-verdict gates (0 unread past T-2, 0 stale provisional).
+- Orders-volume denominators (`orders_by_day.json`, `orders_by_day_location.json`) and `ch_delivered_daily.json`
+  extended through 2026-11-15 with the exact queries in CLAUDE.md step 4 (JOIN on `order_id`, not `id`).
+- Ran `build_full_dataset.py` (2590 tickets; `reconciles` invariant holds: wh_accepted 176 + bod 1686 + considered_bod
+  514 + no_return_record 214), `build_eod_auto.py` (for_date 2026-11-14, T-2, 17 tickets, 1 accepted - pulled
+  packer/manifester for its order via ClickHouse and cached into `zoho_raw90/eod_chain.json` since the script listed it
+  missing; re-ran `build_eod_auto.py` a second time after `build_full_dataset.py` so the accepted ticket's picker/qc -
+  already present in `data.json` from an older ClickHouse chunk - made it into `data_eod.json` too, since the first EOD
+  run had used the previous day's stale `data.json`), `build_report.py` (`tab1.reconciles: true`), `build_macro_trend.py`
+  (T-2 cutoff 2026-11-14), and `build_html.py` (run twice, after each `data_eod.json` version).
+- Sanity-checked per CLAUDE.md step 8: `aggregates.json`/`orders_by_day*.json` are dicts and non-empty;
+  `order_cold_flag.json`/`user_names.json`/`wh_text_check.json` grew and are non-empty; the 1 accepted EOD ticket has a
+  complete picker/packer/qc/manifester chain. EOD location is 11.8% Unknown (2/17 tickets) - verified this is NOT the
+  backwards-join bug (spot-checked: both are legitimately `no_return_record` in `data.json`, i.e. no ClickHouse return
+  row exists yet for those orders - the `location` field is only ever populated from `returns_by_order`, so
+  `no_return_record` always means `Unknown` location by construction) - just a touch over the ~10% rule-of-thumb this
+  run with a small (17-ticket) T-2 day, not a join-direction regression.
+- `test_wh_comment_classifier.py`: 89/89 fixtures pass (run after touching `wh_text_check.json`, not the phrase tables -
+  no code change this run, but re-ran it anyway to confirm no regression).
+- Deliberately skipped (same reasoning as every prior run): the complaint baseline's 4 outstanding `cmp_returns_*.json`
+  ClickHouse chunks (`refresh_all.py plan` lists `20261019_20261026` .. `20261109_20261116`) - pure ClickHouse MCP pull,
+  no REST needed, but no standalone value while the Zoho-ticket side of the baseline stays REST-blocked regardless, and
+  the exact output schema (cold/warehouse-id columns joined into the per-row aggregate) is only partially specified in
+  `build_complaints.py`'s docstring (truncated with "...") - safer to leave the existing baseline stale than guess at a
+  query shape I can't fully verify and risk writing a wrongly-shaped `cmp_returns_*.json` into the pipeline.
+- `python3 pipeline/refresh_all.py gates` after this run: 9 of 15 green - every gate achievable without the two
+  structural blockers below is now green, including both WH-verdict gates and the EOD date gate. Red: returns pull for
+  the complaint baseline (skipped, see above), zoho complaint tickets / complaints_export.json / order swap export /
+  RCA export (all REST-blocked), damage photos (network-blocked, unchanged).
+
+## Blockers unchanged from the 2026-11-15 run (and before), still open
+
+These remain open asks for the owner; this run did not attempt to work around them, per CLAUDE.md
+("Do NOT attempt workarounds... report the blocker and stop, a human will resolve it").
+
+### 1. Zoho Desk REST credentials missing (`pipeline/.zoho.env`) - now 10 scheduled runs
+
+Re-confirmed this run: `ls pipeline/.zoho.env` -> No such file. Same gap as every prior run - blocks
+`pull_complaint_tickets.py`, `pull_dependency.py`, `pull_ticket_routing.py`, `pull_swap_tickets.py`, and
+`recheck_wh_comments.py`'s bulk REST path. The Zoho Desk MCP connector is unaffected and was used extensively above.
+
+### 2. cdn.platinumrx.in not in this environment's network allowlist - unchanged
+
+Re-confirmed this run with a direct HTTPS request: `Tunnel connection failed: 403 Forbidden` / agent-proxy
+`connect_rejected`. Did not re-attempt `update_environment` to add it - already correctly refused on multiple prior
+scheduled runs (needs a person's approval; nobody is present on an unattended scheduled run). Blocks every
+damage-photo / RCA-image / swap-image read.
+
+## For the owner
+
+Same two asks as every prior run this week, now compounding further (complaints baseline Zoho-ticket side 5 days
+stale; order swap / RCA exports 13 days stale):
+1. **Zoho REST**: `pipeline/.zoho.env` needs a persistence mechanism this unattended session can't set up itself (a
+   3-legged OAuth refresh token, not a single API key `request_credential` can inject).
+2. **Network**: approving the `cdn.platinumrx.in` allowlist prompt once (from an interactive "Run now") fixes the
+   photo-read backlog permanently for scheduled runs too.
+Both fixes are one-time, few-minute actions in an interactive session.
+
+---
+
+# Prior run (2026-11-15 7pm scheduled run)
 
 ## 0. THIS RUN (2026-11-15): both connectors worked - core layer refreshed, complaints/damage-photos/swap/RCA still blocked
 
