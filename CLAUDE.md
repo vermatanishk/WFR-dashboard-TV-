@@ -456,3 +456,29 @@ WFR funnel tab (RCA columns of `complaints_export.json`, fed by `rca_export.json
 - **EOD tab is automated:** `python3 pipeline/build_eod_auto.py` (for_date = IST today - 2; verdicts from `wh_text_check.json`; packer/manifester cached in `zoho_raw90/eod_chain.json`, the script prints orders it needs). `build_eod.py` (hand-fed) is legacy.
 - `pull_complaint_tickets.py` re-pulls any day that was pulled less than 2 days after it ended (a day pulled mid-day and never revisited stayed partial, e.g. 2026-11-06 held 60 of 158 tickets).
 - Core raw data: incremental re-pulls go into `ch_returns_c4.jsonl` / `ch_pickers_c4.jsonl` / `ch_qc_c4.jsonl` (rows of an order present in c4 replace its older rows in c0..c3; `build_full_dataset.py` loads every chunk). `consolidated.json` can be extended from `cmp_zoho_tickets.json` (REST) for any ticket the MCP pull missed (skip Switch Orders / MRP categories, same as before).
+
+### 2026-11-20 - sanity check, archive, live sheet (owner: "sheet not reflecting live values - sanity check everything up to T-2; never lose old data")
+**7 pm routine additions (all wired into `refresh_all.py build` / `gates`):**
+1. `python3 pipeline/archive_exports.py` - append-only archive `pipeline/archive/<export>_archive.json` of every row of complaints / WFR / damage / swap-baseline / swap / RCA exports
+   (upsert by key, never deletes, new columns appended). The exports show 60 days; the archive keeps everything. Gate "archive intact" fails if it shrinks or misses an export row.
+   All raw inputs (`zoho_raw90/*`, `ch_*_c*.jsonl`, `cmp_returns_*`, `wh_text_check.json`, `eod_history.json`) are cumulative and committed - never overwrite, only add chunks.
+2. `python3 pipeline/sanity_check.py [--soft]` - recounts every number vs T-2 and writes `sanity_report.json` (shown on the sheet's Info tab). Sections: total cases (union),
+   WH accepted (verdict cache vs EOD history vs baseline vs macro table), swap attribution, damage photos tagged, freshness + archive. Gate "sanity_check.py" must be green.
+3. New gates: damage photos read for the whole **60-day** window (was 30), swap cases attributed (no "Pair not identified"/"Unclassified"), archive intact, **Zoho Desk access**
+   (a revoked/creds-less run goes red instead of shipping zeros), sanity check.
+**Union integrity fix:** the Zoho REST search skipped tickets that the dashboard pull (data.json) holds (e.g. 268555, an admitted wrong-SKU ticket). `build_complaints.py` adds back every
+dashboard ticket inside the REST window that the REST pull lacks (`supplement: True`), so the baseline never has fewer tickets than the dashboard. `test_complaints.py` mirrors this.
+**Classifier / audit (accepted = subjective read of an explicit admission):** new phrases (different/deferent batch, price mismatch, without ice pack, did not remove ... ADMISSION; proper
+ice pack / packing ... DENIAL; many procedural NEUTRAL phrases) with fixtures in `test_wh_comment_classifier.py` (99/99). `recheck_wh_comments.py` re-reads `denied` for 7 days (a later
+admission on the same thread wins) and never downgrades `admitted`; `audit_admitted.py [--fix]` re-reads every admitted verdict of the last 60 days live (found 262892, 264893 were
+mis-paired MCP batches). Always pair comments to tickets by `ticketNumber`.
+**EOD:** `build_eod_auto.py` also appends each day to `eod_history.json` (kept forever, 60 days backfilled).
+**Photo reading recipe (works, ~350 images in one session):** pending orders = complaint rows with `Photo bucket == "Photo not read yet"` in the window -> `zoho_raw90/damage_pending_orders.json`;
+ClickHouse (return items join request; `ri.reason != 'RTO'`; add `repeat('x',3000) AS pad`) -> `python3 pipeline/save_ch_result.py <tool-results file> damage_images_raw.json`;
+`python3 pipeline/damage_images.py sheets pipeline/damage_sheets` (gitignored, customer photos); read every `sNNN.jpg` and write `IDX CODE` lines to `damage_sheets/codes.txt`
+(P primary pack, L leak, O outer shipper, C carton, Q quality, D label/closure/device, N none, X not relevant); `damage_images.py merge damage_sheets/codes.txt`; copy codes.txt to
+`zoho_raw90/damage_read_codes_<date>.txt`. 2026-11-20: all 122 orders of the last 30 days read, no new category needed (seal-torn / cap-broken fold into D, wet-stained shipper into O/L).
+**Google Sheet** (`gsheet/Code.gs`, README there): tab order Summary > WFR funnel > Order damage > Order Swap > raw tabs > Info; raw tabs are upsert-only caches (archive U export); views
+show "Data through D" and turn red STALE when >2 days behind; triggers 07:00 and 21:00 IST; other tabs (e.g. "sreeniketh") are never touched. The user must re-paste Code.gs after changes.
+**KNOWN BLOCKER (2026-11-20):** Zoho Desk REST and MCP both return `USER_NOT_IN_ORG` for org 60026539570 (the refresh token now only sees org 60071308330 = empty FREE org). Until the
+self-client is re-authorised by an org admin, ticket pulls, WH-comment reads, `pull_dependency`, swap/RCA refresh cannot run; gates show Zoho access / swap / RCA / verdict gaps RED.

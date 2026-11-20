@@ -1,34 +1,36 @@
-# WFR RCA live Google Sheet
+# WFR live Google Sheet ("WFR Breakdown")
 
-Two tabs, rebuilt from git on every refresh:
+Rebuilt from git (public repo, no token) twice a day. **Nothing is ever deleted** - raw tabs are an append/upsert cache.
 
-| Tab | Source file | What |
-|---|---|---|
-| Raw data | `pipeline/rca_export.json` | One row per **order** (first ticket wins), trailing 60 days: Order ID, Ticket ID, Created date, Warehouse, Issue, Investigation bucket 1 (Accepted / Rejected / No decision), Investigation bucket 2 (no-decision reason), Return request, Dependency, Raised bucket 1-3 (the issue tree), Evidence basis, Confidence, Photos read, In T-2 scope |
-| RCA view | computed in the sheet from the Raw data tab, layout from `pipeline/rca_view_spec.json` | The day-wise table from the website's Tab 7 (3 month / last month / last 2 weeks, then one column per day, T-2 capped). Same spec as the website, verified cell-by-cell |
-| Info | export + view | Data timestamp, T-2 date, row counts, how to read |
+| # | Tab | Source (`pipeline/`) | What |
+|---|---|---|---|
+| 1 | Summary | `cmp_summary.json` | max 8 rows x 3 columns (WFR / Damage / Swap), last 30 days |
+| 2 | WFR funnel | `cmp_wfr_export.json` + `cmp_wfr_view_spec.json` | complaints = UNION of ClickHouse return requests and Zoho tickets, day-wise 60 days, with the root-cause cascade |
+| 3 | Order damage | `cmp_damage_export.json` + spec | physical damage by photo bucket, temperature complaints separate |
+| 4 | Order Swap | `swap_export.json` + spec | swap cases attributed Warehouse vs Logistics |
+| 5-7 | WFR raw data / Damage raw data / Swap raw data | the exports + `archive/*_archive.json` | the detailed breakdown: one row per complaint (order x type) / swap case |
+| 8 | Info | all | data-through date per layer (red = stale), refresh errors, latest `sanity_report.json` |
 
-## One-time setup (about 2 minutes)
+Hidden `... spec` tabs hold the layouts. **Any other tab (e.g. `sreeniketh`) is never touched** and stays after these.
 
-1. Create a new Google Sheet.
-2. **Extensions > Apps Script**, delete the default `Code.gs` content and paste `pipeline/gsheet/Code.gs`.
-3. Save, then select **`refreshAll`** and press Run. Approve the permissions
-   (it needs "connect to an external service" to read the GitHub raw URL, and edit access to this sheet).
-4. Select **`installDailyTrigger`** and Run once. The sheet then refreshes itself daily at 07:00 IST.
-5. A **WFR RCA** menu appears in the sheet ("Refresh now") after reload.
+## One-time setup (re-paste after every change of `Code.gs`)
 
-The repo is public, so no token is needed. If the repo is ever made private, switch `BASE` in `Code.gs` to a
-raw URL with a read-only token, or serve the two JSONs from the Vercel domain instead.
+1. Open the sheet > **Extensions > Apps Script**, replace all of `Code.gs` with `pipeline/gsheet/Code.gs`, Save.
+2. Run **`refreshAll`** once (approve "connect to an external service" + sheet edit).
+3. Run **`installDailyTrigger`** once: two daily refreshes, **07:00 and 21:00 IST** (the 7 pm routine pushes about 20:00 IST).
+4. A **WFR** menu appears after reload (Refresh now / Install daily refresh / Re-order tabs).
 
-## Keeping it live
+## How old data is kept
 
-`build_rca_export.py` and `build_rca_trend.py` run in the daily refresh session (see CLAUDE.md, RCA layer);
-pushing to `main` updates the two JSON files, and the sheet picks them up on its next refresh.
-`raw.githubusercontent.com` caches for about 5 minutes, so "Refresh now" immediately after a push can show the
-previous version.
+* Raw tabs = what is already in the tab U `archive/<export>_archive.json` (rows added only if missing) U the latest export (rows refreshed in place by key). Keys: `Order ID + Complaint type` (WFR, damage), `Order ID + Ticket ID` (swap). Rows leaving the 60-day window stay; new columns are appended at the right.
+* The same rows live in git (`pipeline/archive_exports.py`, append-only), so the sheet can always be rebuilt and `refresh_all.py gates` fails if the archive ever shrinks.
+* Views are recomputed from the whole raw tab but only show the trailing 60 days (same evaluator as the website, checked cell-by-cell by `node pipeline/test_view_js.js wfr|damage|swap`).
+
+## Staleness is visible, never silent
+
+Row 1 of every view (and the Summary) says "Data through D" and turns red **STALE** when D is more than 2 days behind today (IST). The Info tab lists every layer plus the failing items of the last sanity check and any refresh error (a failing layer never stops the others).
 
 ## Notes
 
-- **Public data.** The repo is public, so the order and ticket IDs in `rca_export.json` are world-readable.
-  The export has no names, phones, addresses or WH comment text - only IDs, dates, warehouse and bucket labels.
-- Column meanings and the bucket vocabulary are documented in the header of `build_rca_export.py`.
+* **Public data.** The repo is public: the exports hold only IDs, dates, warehouse and bucket labels - no names, phones, addresses or WH comment text.
+* `raw.githubusercontent.com` caches ~5 minutes, so "Refresh now" right after a push can show the previous version.

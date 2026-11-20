@@ -80,13 +80,37 @@ def gates():
     gaps = [r for r in e["rows"] if r[e["columns"].index("WH input")] == "Verdict not read (gap)"]
     chk("warehouse verdict gaps = 0", not gaps, f"{len(gaps)} tickets past T-2 without a read verdict")
     unread = sum(1 for r in e["rows"] if r[e["columns"].index("Photo bucket")] == "Photo not read yet"
-                 and r[e["columns"].index("Created date")] >= (t - timedelta(days=30)).isoformat())
-    chk("damage photos read (last 30 days)", unread == 0, f"{unread} orders still 'Photo not read yet'")
+                 and r[e["columns"].index("Created date")] >= (t - timedelta(days=60)).isoformat())
+    chk("damage photos read (last 60 days)", unread == 0, f"{unread} complaint rows still 'Photo not read yet'")
     # swap + rca feeds
     sw = js("swap_export.json")
     chk("order swap export", sw["t2_cap_date"] >= (t - timedelta(days=4)).isoformat(), f"through {sw['t2_cap_date']}")
     rc = js("rca_export.json")
     chk("RCA export (root-cause columns)", rc["t2_cap_date"] >= (t - timedelta(days=4)).isoformat(), f"through {rc['t2_cap_date']}")
+    # swap: every case attributed Warehouse vs Logistics, every swap complaint of the window covered by a case
+    sc = sw["columns"]
+    un = [r for r in sw["rows"] if r[sc.index("Swap bucket 1")] in ("Pair not identified", "Unclassified")]
+    chk("swap cases attributed (WH vs Logistics)", not un, f"{len(un)} cases 'Pair not identified' / 'Unclassified'")
+    # archive: nothing ever leaves the git history of rows (owner 2026-11-20)
+    try:
+        from archive_exports import check as _archive_check
+        bad = _archive_check()
+        chk("archive intact (old rows kept)", not bad, "; ".join(bad))
+    except Exception as ex:
+        chk("archive intact (old rows kept)", False, str(ex))
+    # Zoho Desk access: a creds-less / revoked run must go red instead of shipping zeros
+    try:
+        from zoho_auth import desk_get
+        desk_get("/tickets", {"limit": 1})
+        chk("Zoho Desk access", True, "ok")
+    except Exception as ex:
+        chk("Zoho Desk access", False, str(ex)[:120] + " - ticket pulls / WH-comment reads cannot run")
+    sr = HERE / "sanity_report.json"
+    if sr.exists():
+        rep = json.loads(sr.read_text())
+        chk("sanity_check.py (all values vs T-2)", rep["fail"] == 0 and rep["cap"] >= cap, f"{rep['fail']} failing checks, cap {rep['cap']}")
+    else:
+        chk("sanity_check.py (all values vs T-2)", False, "never run")
     html = (HERE.parent / "index.html").read_text()
     chk("index.html contains the latest complaint day", f'"t2_cutoff": "{e["t2_cap_date"]}"' in html or e["t2_cap_date"] in html, "rebuild with build_html.py")
     return out
@@ -132,6 +156,8 @@ STEPS = [
     ("warehouse comments for new / provisional tickets", ["python3", "recheck_wh_comments.py", "--extra", "zoho_raw90/cmp_tickets_to_read.json"]),
     ("complaint baseline (pass 2, with verdicts)", ["python3", "build_complaints.py"]),
     ("views, specs, summary", ["python3", "cmp_view_spec.py"]),
+    ("archive (append-only, old rows never dropped)", ["python3", "archive_exports.py"]),
+    ("sanity check vs T-2 (informational; gates make it binding)", ["python3", "sanity_check.py", "--soft"]),
     ("website", ["python3", "build_html.py"]),
     ("tests: complaints", ["python3", "test_complaints.py"]),
     ("tests: JS evaluator wfr", ["node", "test_view_js.js", "wfr"]),

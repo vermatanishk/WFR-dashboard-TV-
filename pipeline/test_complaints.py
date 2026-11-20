@@ -75,6 +75,11 @@ for o in (4264424, 4305606, 4322556, 4323303):
 # 4. independent recount of the Zoho side ------------------------------------------------------------------------------
 store = json.loads((RAW / "cmp_zoho_tickets.json").read_text())
 tk = {t["ticket_id"]: t for d in store["days"].values() for t in d}
+# tickets the dashboard's own Zoho pull holds but the REST search skipped are added back by build_complaints (union integrity, 2026-11-20)
+_first = min(store["days"])
+for _t in json.loads((HERE / "data.json").read_text())["tickets"]:
+    if str(_t["ticket_id"]) not in tk and _t["created_time"][:10] >= _first:
+        tk[str(_t["ticket_id"])] = {"ticket_id": str(_t["ticket_id"]), "order_raw": str(_t["order_id"]), "created_time": _t["created_time"][:19] + ".000Z"}
 tid_in_rows = {r[C["Ticket ID"]] for r in rows if r[C["Ticket ID"]]}
 check("every ticket id in the export exists in the Zoho pull", all(t in tk for t in tid_in_rows))
 check("ticket ids in the export are unique per row set", len(tid_in_rows) <= len(rows))

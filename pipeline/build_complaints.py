@@ -193,6 +193,23 @@ def main():
     cap = (gen.astimezone(IST) - timedelta(days=2)).date().isoformat()          # T-2 for Warehouse comments
     store = json.loads((RAW / "cmp_zoho_tickets.json").read_text())
     tickets = [t for day in store["days"].values() for t in day]
+    # UNION INTEGRITY (2026-11-20): the Zoho REST search silently skipped a few tickets (e.g. 268555, an admitted wrong-SKU ticket) that the
+    # dashboard's own Zoho pull (consolidated.json -> data.json) holds. Every dashboard ticket inside the REST pull window that the REST pull
+    # lacks is added back with a sub-disposition that maps to the same complaint type, so the baseline never has fewer tickets than the dashboard.
+    have = {str(t["ticket_id"]) for t in tickets}
+    first_day = min(store["days"])
+    cat_sub = {}
+    for k, v in CATEGORY_MAP.items():
+        cat_sub.setdefault(v, k)
+    supp = 0
+    for tk in json.loads((HERE / "data.json").read_text())["tickets"]:
+        if str(tk["ticket_id"]) in have or tk["created_time"][:10] < first_day or tk["category"] not in cat_sub:
+            continue
+        tickets.append({"ticket_id": str(tk["ticket_id"]), "created_time": tk["created_time"][:19] + ".000Z", "order_raw": str(tk["order_id"]),
+                        "disposition": "Return and Pickup", "sub_disposition": cat_sub[tk["category"]], "dependency": None, "status": None,
+                        "channel": None, "supplement": True})
+        supp += 1
+    print(f"tickets added back from the dashboard pull (absent from the REST search): {supp}")
     wh_cache = json.loads((RAW / "wh_text_check.json").read_text())
 
     # ---------- return side: (order, type) -> lines

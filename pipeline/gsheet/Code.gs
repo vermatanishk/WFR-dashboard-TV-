@@ -1,90 +1,85 @@
 /**
- * WFR RCA live sheet - pulls JSON from the public GitHub repo and rebuilds two tabs:
- *   "Raw data"  - one row per order (trailing 60 days): order, ticket, issue, investigation buckets,
- *                 raised buckets, evidence.            <- pipeline/rca_export.json
- *   "RCA view"  - the website's Tab 7 day-wise table, COMPUTED HERE FROM THE "Raw data" TAB using the
- *                 declarative layout in pipeline/rca_view_spec.json (same spec the website uses, so the
- *                 two cannot drift; pipeline/test_view_js.js checks this evaluator against rca_trend.json).
- * The files are rebuilt and pushed by the daily refresh session, so the sheet follows git.
+ * WFR live sheet - follows git. Rebuilds from the public GitHub repo (the 7 pm refresh session pushes it):
  *
- * Setup: see README.md in this folder (paste this file into Extensions > Apps Script, run refreshAll once,
- * then run installDailyTrigger once).
+ *   Tab order (always enforced after a refresh):
+ *     1 Summary        max 8 rows x 3 columns (WFR | Damage | Swap), last 30 days
+ *     2 WFR funnel     complaint baseline (return requests U Zoho tickets) with the root-cause cascade, 60 days, day-wise
+ *     3 Order damage   same, physical damage by photo bucket
+ *     4 Order Swap     swap cases attributed Warehouse vs Logistics
+ *     5 WFR raw data / Damage raw data / Swap raw data   one row per complaint / case (the detailed breakdown of each view)
+ *     then Info, hidden spec tabs, and any other tab (e.g. "sreeniketh") - those are NEVER touched.
+ *
+ *   NOTHING IS EVER DELETED (owner, 2026-11-20): raw-data tabs are a cache = archive U latest export, upserted by key
+ *   (Order ID + Complaint type, or Order ID + Ticket ID). Rows that leave the 60-day window stay; existing rows are refreshed in place;
+ *   new rows are appended; new columns are appended at the right. The views are re-computed from the raw tabs (window = trailing 60 days).
+ *   The git side keeps the same rows in pipeline/archive/*_archive.json (pipeline/archive_exports.py), so the sheet can always be rebuilt.
+ *
+ *   Daily: two triggers, 07:00 and 21:00 IST (the 7 pm routine pushes around 20:00 IST). Every view tab and the Info tab show
+ *   "Data through <date>" and turn red (STALE) when a layer is more than 2 days behind - a silently stale tab is a bug.
+ *
+ * Setup: see README.md (paste this file into Extensions > Apps Script, run refreshAll once, then installDailyTrigger once).
  */
 
 var BASE = 'https://raw.githubusercontent.com/vermatanishk/WFR-dashboard-TV-/main/pipeline/';
-var EXPORT_URL = BASE + 'rca_export.json';
-var SPEC_URL = BASE + 'rca_view_spec.json';
-var RAW_TAB = 'Raw data';
-var VIEW_TAB = 'RCA view';
+var ARCH_BASE = BASE + 'archive/';
 var INFO_TAB = 'Info';
-var FILTER_CELL = 'B1';          // "Return request" selector on the RCA view tab
-var RET_OPTIONS = ['All', 'Raised - Accepted & refunded', 'Raised - Cancelled', 'Raised - Rejected', 'Raised - In progress', 'Not raised'];
-var HEADER_ROW = 3;               // RCA view: row 1 = selector, row 3 = column header
-var SPEC_TAB = 'Spec';
-// Order swap layer (separate tab, own raw data + spec; the RCA tabs above are untouched)
-var SWAP_EXPORT_URL = BASE + 'swap_export.json';
-var SWAP_SPEC_URL = BASE + 'swap_view_spec.json';
-var SWAP_RAW_TAB = 'Swap raw data';
-var SWAP_VIEW_TAB = 'Order Swap';
-var SWAP_SPEC_TAB = 'Swap spec';            // hidden: layout + cutoff saved at refresh so the dropdown works offline
+var HEADER_ROW = 3;               // view tabs: row 1 = status banner, row 3 = column header
 
-// Complaint baseline layer (2026-10-25): union of ClickHouse return requests + Zoho tickets -> WFR funnel, Order damage, Summary.
-// Each view has its own raw tab + hidden spec tab and the same Return request dropdown (B1) as the RCA tabs.
+// Order swap layer (own raw data + spec)
+var SWAP = { exp: BASE + 'swap_export.json', spec: BASE + 'swap_view_spec.json', arch: ARCH_BASE + 'swap_export_archive.json',
+             raw: 'Swap raw data', view: 'Order Swap', specTab: 'Swap spec', keys: ['Order ID', 'Ticket ID'], name: 'Order swap' };
+
+// Complaint baseline layer: union of ClickHouse return requests + Zoho tickets -> WFR funnel, Order damage, Summary.
 var CMP_VIEWS = [
-  { exp: BASE + 'cmp_wfr_export.json', spec: BASE + 'cmp_wfr_view_spec.json', raw: 'WFR raw data', view: 'WFR funnel', specTab: 'WFR spec', noFilter: true },
-  { exp: BASE + 'cmp_damage_export.json', spec: BASE + 'cmp_damage_view_spec.json', raw: 'Damage raw data', view: 'Order damage', specTab: 'Damage spec' }
+  { exp: BASE + 'cmp_wfr_export.json', spec: BASE + 'cmp_wfr_view_spec.json', arch: ARCH_BASE + 'cmp_wfr_export_archive.json',
+    raw: 'WFR raw data', view: 'WFR funnel', specTab: 'WFR spec', keys: ['Order ID', 'Complaint type'], name: 'WFR funnel' },
+  { exp: BASE + 'cmp_damage_export.json', spec: BASE + 'cmp_damage_view_spec.json', arch: ARCH_BASE + 'cmp_damage_export_archive.json',
+    raw: 'Damage raw data', view: 'Order damage', specTab: 'Damage spec', keys: ['Order ID', 'Complaint type'], name: 'Order damage' }
 ];
+var RCA_EXPORT_URL = BASE + 'rca_export.json';          // freshness of the root-cause columns (shown on Info)
+var SANITY_URL = BASE + 'sanity_report.json';
 var SUMMARY_URL = BASE + 'cmp_summary.json';
 var SUMMARY_TAB = 'Summary';
 var VIEW_TAB_COLOR = '#c0392b';      // dark red: the dashboard (view) tabs - raw-data tabs stay uncoloured
 var SUMMARY_TAB_COLOR = '#7f1d1d';   // darkest red: the Summary tab
+var STALE_DAYS = 2;                  // a layer more than this many days behind today (IST) is flagged STALE
+var TAB_ORDER = ['Summary', 'WFR funnel', 'Order damage', 'Order Swap', 'WFR raw data', 'Damage raw data', 'Swap raw data', 'Info'];
 
 function onOpen() {
-  SpreadsheetApp.getUi().createMenu('WFR RCA')
+  SpreadsheetApp.getUi().createMenu('WFR')
     .addItem('Refresh now', 'refreshAll')
-    .addItem('Install daily refresh (07:00 IST)', 'installDailyTrigger')
+    .addItem('Install daily refresh (07:00 + 21:00 IST)', 'installDailyTrigger')
+    .addItem('Re-order tabs', 'orderTabs_')
     .addToUi();
 }
 
+/** Refresh every layer. A failing layer never stops the others; its error is written to the Info tab and the tab is flagged. */
 function refreshAll() {
-  refreshCmp_();      // WFR funnel (with the root-cause RCA cascade) + Order damage + Summary
-  refreshSwap_();     // Order swap
-  retireOldTabs_();
-  writeInfo_(fetchJson_(BASE + 'cmp_wfr_export.json'));
-  SpreadsheetApp.getActive().toast('Complaint views refreshed', 'WFR', 5);
+  var errors = [];
+  var status = {};
+  function run(label, fn) {
+    try { fn(); } catch (e) { errors.push(label + ': ' + e.message); }
+  }
+  CMP_VIEWS.forEach(function (c) { run(c.name, function () { status[c.name] = refreshView_(c); }); });
+  run('Summary', function () { writeSummary_(fetchJson_(SUMMARY_URL)); });
+  run('Order swap', function () { status[SWAP.name] = refreshView_(SWAP); });
+  run('Info', function () { writeInfo_(status, errors); });
+  run('Tabs', orderTabs_);
+  SpreadsheetApp.getActive().toast(errors.length ? 'Refreshed with ' + errors.length + ' error(s) - see Info' : 'All views refreshed', 'WFR', 5);
 }
 
-/** The stand-alone RCA view was merged into the WFR funnel (2026-10-26); drop its generated tabs (they are rebuilt from git, nothing is lost). */
-function retireOldTabs_() {
-  ['RCA view', 'Raw data', 'Spec'].forEach(function (n) {
-    var sh = SpreadsheetApp.getActive().getSheetByName(n);
-    if (sh && SpreadsheetApp.getActive().getSheets().length > 1) SpreadsheetApp.getActive().deleteSheet(sh);
-  });
-}
-
-/** Order swap tab: raw cases + view computed from them with the same evaluator as the RCA view. */
-function refreshSwap_() {
-  var exp = fetchJson_(SWAP_EXPORT_URL);
-  var spec = fetchJson_(SWAP_SPEC_URL);
-  writeRaw_(exp, SWAP_RAW_TAB);
-  saveSpec_(spec, exp, SWAP_SPEC_TAB);
-  var raw = sheet_(SWAP_RAW_TAB).getDataRange().getValues();
-  var rs = currentReturnFilter_(SWAP_VIEW_TAB);
-  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), SWAP_VIEW_TAB);
-}
-
-/** Complaint-baseline tabs: raw cases + view computed from them (same evaluator), then the static Summary tab. */
-function refreshCmp_() {
-  CMP_VIEWS.forEach(function (c) {
-    var exp = fetchJson_(c.exp);
-    var spec = fetchJson_(c.spec);
-    writeRaw_(exp, c.raw);
-    saveSpec_(spec, exp, c.specTab);
-    var raw = sheet_(c.raw).getDataRange().getValues();
-    var rs = c.noFilter ? 'All' : currentReturnFilter_(c.view);
-    writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs), c.view, c.noFilter);
-  });
-  writeSummary_(fetchJson_(SUMMARY_URL));
+/** Raw tab (upsert, never delete) + hidden spec + the view computed from the whole raw tab. Returns {through, generated}. */
+function refreshView_(c) {
+  var exp = fetchJson_(c.exp);
+  var spec = fetchJson_(c.spec);
+  var arch = null;
+  try { arch = fetchJson_(c.arch); } catch (e) { arch = null; }   // archive is optional until the first push that contains it
+  var n = upsertRaw_(c.raw, exp, arch, c.keys);
+  saveSpec_(spec, exp, c.specTab);
+  var raw = sheet_(c.raw).getDataRange().getValues();
+  var st = statusText_(exp.t2_cap_date, exp.generated_at);
+  writeView_(computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, null), c.view, st);
+  return { through: exp.t2_cap_date, generated: exp.generated_at, rawRows: n, stale: st.stale };
 }
 
 /** Summary: at most 8 rows x 3 columns, macro numbers only. */
@@ -95,6 +90,8 @@ function writeSummary_(s) {
   var head = ['Metric'].concat(s.columns);
   var vals = [head].concat(s.rows.map(function (r) { return [r.label + '  (' + r.sub + ')'].concat(r.values); }));
   sh.getRange(1, 1, 1, 1).setValue('Complaints raised ' + s.window[0] + ' to ' + s.window[1] + ' (last 30 days). Cells: count | % of the row named in brackets.').setFontStyle('italic');
+  var st = statusText_(s.window[1], s.generated_at || '');
+  sh.getRange(2, 1).setValue(st.text).setFontColor(st.stale ? '#b91c1c' : '#15803d').setFontWeight('bold');
   sh.getRange(3, 1, vals.length, head.length).setValues(vals);
   sh.getRange(3, 1, 1, head.length).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
   sh.getRange(3, 2, vals.length, head.length - 1).setHorizontalAlignment('right');
@@ -103,28 +100,19 @@ function writeSummary_(s) {
   for (var c = 2; c <= head.length; c++) sh.setColumnWidth(c, 130);
 }
 
-function viewConfigs_() {
-  return [{ raw: RAW_TAB, view: VIEW_TAB, specTab: SPEC_TAB }, { raw: SWAP_RAW_TAB, view: SWAP_VIEW_TAB, specTab: SWAP_SPEC_TAB }]
-    .concat(CMP_VIEWS);
+/** "Data through D" banner; STALE when D is more than STALE_DAYS behind today (IST). Pure string logic. */
+function statusText_(through, generated) {
+  var today = Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyy-MM-dd');
+  var lag = Math.round((new Date(today + 'T00:00:00Z') - new Date(String(through) + 'T00:00:00Z')) / 86400000);
+  var stale = !(lag <= STALE_DAYS);
+  var txt = (stale ? '⚠ STALE - data only through ' : 'Data through ') + through + (generated ? ' (built ' + String(generated).slice(0, 16).replace('T', ' ') + ' UTC)' : '') +
+            (stale ? ' - today is ' + today + '; the daily routine has not delivered newer data (see Info).' : '');
+  return { text: txt, stale: stale, lag: lag };
 }
 
-function currentReturnFilter_(tab) {
-  return 'All';   // the Return request filter was removed (owner, 2026-10-26); kept as a stub for old call sites
-}
-function currentReturnFilterLegacy_(tab) {
-  var v = sheet_(tab || VIEW_TAB).getRange(FILTER_CELL).getValue();
-  return RET_OPTIONS.indexOf(v) >= 0 ? v : 'All';
-}
-
-function buildViewFromRaw_(spec, exp) {
-  var raw = sheet_(RAW_TAB).getDataRange().getValues();
-  var rs = currentReturnFilter_();
-  return computeView_(raw[0], raw.slice(1), spec.layout, exp.t2_cap_date, exp.generated_at, rs === 'All' ? null : rs);
-}
-
-/** Save the layout (chunked, one JSON string split across rows) + cutoff in a hidden tab. */
+/** Save the layout (chunked, one JSON string split across rows) + cutoff in a hidden tab (derived from git, safe to rewrite). */
 function saveSpec_(spec, exp, tab) {
-  var sh = sheet_(tab || SPEC_TAB);
+  var sh = sheet_(tab);
   sh.clear();
   var txt = JSON.stringify({ layout: spec.layout, t2_cap_date: exp.t2_cap_date, generated_at: exp.generated_at });
   var rows = [];
@@ -133,25 +121,16 @@ function saveSpec_(spec, exp, tab) {
   sh.hideSheet();
 }
 
-function loadSpec_(tab) {
-  var vals = sheet_(tab || SPEC_TAB).getDataRange().getValues();
-  return JSON.parse(vals.map(function (r) { return r[0]; }).join(''));
-}
-
-/**
- * Changing the Return request dropdown re-cuts the whole view from the Raw data tab. A simple onEdit trigger
- * cannot call external URLs, so it only uses data already in the sheet (Raw data + the hidden Spec tab).
- */
-/** The Return request dropdown was removed, so there is nothing to react to on edit. */
 function onEdit(e) {}
 
+/** Two daily refreshes: 07:00 IST and 21:00 IST (after the 7 pm routine has pushed). raw.githubusercontent caches ~5 minutes. */
 function installDailyTrigger() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
     if (t.getHandlerFunction() === 'refreshAll') ScriptApp.deleteTrigger(t);
   });
-  // The refresh session pushes in the evening IST; a morning pull picks it up. raw.githubusercontent
-  // caches for ~5 minutes, so a manual refresh right after a push may show the previous version.
-  ScriptApp.newTrigger('refreshAll').timeBased().everyDays(1).atHour(7).inTimezone('Asia/Kolkata').create();
+  [7, 21].forEach(function (h) {
+    ScriptApp.newTrigger('refreshAll').timeBased().everyDays(1).atHour(h).inTimezone('Asia/Kolkata').create();
+  });
 }
 
 function fetchJson_(url) {
@@ -167,27 +146,70 @@ function sheet_(name) {
   return ss.getSheetByName(name) || ss.insertSheet(name);
 }
 
-function writeRaw_(exp, tab) {
-  var sh = sheet_(tab || RAW_TAB);
-  sh.clear();
-  var cols = exp.columns;
-  var values = [cols].concat(exp.rows);
-  var dateCol = cols.indexOf('Created date') + 1;
-  sh.getRange(1, dateCol, values.length, 1).setNumberFormat('@'); // keep ISO dates as text
-  sh.getRange(1, 1, values.length, cols.length).setValues(values);
-  sh.getRange(1, 1, 1, cols.length).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
+/**
+ * NON-DESTRUCTIVE raw tab. Result = every row already in the tab U archive rows (added if missing) U latest export rows (upsert).
+ * Key = the key columns joined; an export value replaces the cell unless it is blank; unknown columns are appended at the right;
+ * rows are never removed. Sorted newest day first for readability (a sort is a re-order, not a delete). Returns the row count.
+ */
+function upsertRaw_(tab, exp, arch, keyCols) {
+  var sh = sheet_(tab);
+  var existing = sh.getLastRow() > 0 ? sh.getDataRange().getValues() : [];
+  var header = existing.length ? existing[0].map(String) : [];
+  [arch, exp].forEach(function (src) {
+    if (!src) return;
+    src.columns.forEach(function (c) { if (header.indexOf(c) < 0) header.push(c); });
+  });
+  var W = header.length;
+  var rows = existing.slice(1).map(function (r) { var o = r.slice(0, W); while (o.length < W) o.push(''); return o; });
+  var kix = keyCols.map(function (k) { return header.indexOf(k); });
+  function keyOf(r) { return kix.map(function (i) { return String(r[i]); }).join('|'); }
+  var index = {};
+  rows.forEach(function (r, i) { index[keyOf(r)] = i; });
+  function toRow(src, row) {
+    var o = new Array(W);
+    for (var i = 0; i < W; i++) o[i] = '';
+    src.columns.forEach(function (c, j) { o[header.indexOf(c)] = row[j]; });
+    return o;
+  }
+  if (arch) {          // archive: only fills rows the sheet does not hold yet (the sheet's own copy is at least as new)
+    arch.rows.forEach(function (r) {
+      var o = toRow(arch, r), k = keyOf(o);
+      if (!(k in index)) { index[k] = rows.length; rows.push(o); }
+    });
+  }
+  exp.rows.forEach(function (r) {   // latest export: refresh in place or append
+    var o = toRow(exp, r), k = keyOf(o);
+    if (k in index) {
+      var old = rows[index[k]];
+      for (var i = 0; i < W; i++) if (o[i] !== '' && o[i] !== null) old[i] = o[i];
+    } else { index[k] = rows.length; rows.push(o); }
+  });
+  var dcol = header.indexOf('Created date');
+  rows.sort(function (a, b) {
+    var x = isoDate_(a[dcol]), y = isoDate_(b[dcol]);
+    if (x !== y) return x < y ? 1 : -1;
+    var p = String(a[0]), q = String(b[0]);
+    return p === q ? 0 : (p < q ? 1 : -1);
+  });
+  var values = [header].concat(rows);
+  if (sh.getMaxColumns() < W) sh.insertColumnsAfter(sh.getMaxColumns(), W - sh.getMaxColumns());
+  if (sh.getMaxRows() < values.length) sh.insertRowsAfter(sh.getMaxRows(), values.length - sh.getMaxRows());
+  sh.getRange(1, dcol + 1, values.length, 1).setNumberFormat('@');          // keep ISO dates as text
+  sh.getRange(1, 1, values.length, W).setValues(values);
+  sh.getRange(1, 1, 1, W).setFontWeight('bold').setBackground('#1f2937').setFontColor('#ffffff');
   sh.setFrozenRows(1);
   sh.setFrozenColumns(2);
   if (sh.getFilter()) sh.getFilter().remove();
-  sh.getRange(1, 1, values.length, cols.length).createFilter();
-  sh.autoResizeColumns(1, cols.length);
+  sh.getRange(1, 1, values.length, W).createFilter();
+  return rows.length;
 }
 
-function writeView_(t, tab) {
-  var sh = sheet_(tab || VIEW_TAB);
+function writeView_(t, tab, st) {
+  var sh = sheet_(tab);
   sh.setTabColor(VIEW_TAB_COLOR);
   sh.clear();
-  sh.getRange('A1').setValue('Window: last 60 days. Click-through detail: filter the matching raw-data tab.').setFontStyle('italic');
+  sh.getRange('A1').setValue((st ? st.text + '   |   ' : '') + 'Window: last 60 days. Detail: filter the matching raw-data tab (it also holds older rows).')
+    .setFontStyle('italic').setFontColor(st && st.stale ? '#b91c1c' : '#374151').setFontWeight(st && st.stale ? 'bold' : 'normal');
   var days = t.days.slice().reverse(); // most recent first, same as the website
   var head = ['Metric', 'Last 60 days total', 'Last 30 days total', 'Last 14 days total']
     .concat(days.map(function (d) { return t.day_labels[d]; }));
@@ -210,24 +232,47 @@ function writeView_(t, tab) {
   sh.getRange(HEADER_ROW + 1, 1, rows.length, head.length).setFontSize(10);
 }
 
-function writeInfo_(exp) {
+/** Info: per-layer data-through dates (red when stale), the last refresh errors and the latest sanity-check result. */
+function writeInfo_(status, errors) {
   var sh = sheet_(INFO_TAB);
   sh.clear();
-  var info = [
-    ['Data generated (UTC)', exp.generated_at],
-    ['Last complete day', exp.t2_cap_date],
-    ['Warehouse-comment cap (T-2)', exp.wh_t2_cap],
-    ['Complaints in WFR raw data', exp.rows.length],
-    ['Sheet refreshed', new Date()],
-    ['Source', BASE],
-    ['', ''],
-    ['How to read', 'A complaint = one order x complaint type, from the UNION of ClickHouse return requests and Zoho tickets. Cells are "count | % of parent row". Window: last 60 days.'],
-    ['Evidence', 'Photo-derived buckets are hand-read from customer photos (capped at "likely"). Cold-chain damage is not photo-read. Raw-data tabs hold one row per complaint - filter them to drill down.']
-  ];
+  var rca = null, sanity = null;
+  try { rca = fetchJson_(RCA_EXPORT_URL); } catch (e) { rca = null; }
+  try { sanity = fetchJson_(SANITY_URL); } catch (e) { sanity = null; }
+  var info = [['Sheet refreshed', new Date()], ['Source', BASE], ['Cache', 'Raw-data tabs are append/upsert only - rows are never deleted; archive in git: pipeline/archive/']];
+  var flags = [];
+  Object.keys(status).forEach(function (k) {
+    var s = status[k]; var st = statusText_(s.through, s.generated);
+    info.push(['Layer: ' + k, st.text + '  | raw rows kept: ' + s.rawRows]); flags.push(st.stale);
+  });
+  if (rca) { var sr = statusText_(rca.t2_cap_date, rca.generated_at); info.push(['Layer: root-cause (RCA) columns', sr.text]); flags.push(sr.stale); }
+  if (sanity) {
+    info.push(['Sanity check (values vs T-2)', sanity.pass + ' pass, ' + sanity.fail + ' fail - cap ' + sanity.cap + ' - ' + sanity.generated_at]);
+    flags.push(sanity.fail > 0);
+    sanity.checks.forEach(function (c) { if (c.status === 'FAIL' || c.status === 'WARN') { info.push(['  ' + c.status + ' [' + c.section + ']', c.text]); flags.push(c.status === 'FAIL'); } });
+  }
+  errors.forEach(function (e) { info.push(['REFRESH ERROR', e]); flags.push(true); });
+  info.push(['', ''], ['How to read', 'A complaint = one order x complaint type, from the UNION of ClickHouse return requests and Zoho tickets. Cells are "count | % of parent row". Views cover the last 60 days; raw tabs hold everything ever pulled.'],
+            ['Evidence', 'Photo-derived buckets are hand-read from customer photos. Cold-chain damage is not photo-read. Warehouse accepted = explicit admission read from the Warehouse comment thread.']);
   sh.getRange(1, 1, info.length, 2).setValues(info);
   sh.getRange(1, 1, info.length, 1).setFontWeight('bold');
+  flags.forEach(function (bad, i) { sh.getRange(4 + i, 2).setFontColor(bad ? '#b91c1c' : '#15803d'); });
   sh.setColumnWidth(1, 360);
-  sh.setColumnWidth(2, 640);
+  sh.setColumnWidth(2, 900);
+}
+
+/** Summary, WFR funnel, Order damage, Order Swap, then the three raw tabs, then Info. Every other tab (hidden specs, user tabs) is left where it is. */
+function orderTabs_() {
+  var ss = SpreadsheetApp.getActive();
+  var pos = 1;
+  TAB_ORDER.forEach(function (n) {
+    var sh = ss.getSheetByName(n);
+    if (!sh || sh.isSheetHidden()) return;
+    ss.setActiveSheet(sh);
+    ss.moveActiveSheet(pos++);
+  });
+  var first = ss.getSheetByName('Summary');
+  if (first) ss.setActiveSheet(first);
 }
 
 /**
