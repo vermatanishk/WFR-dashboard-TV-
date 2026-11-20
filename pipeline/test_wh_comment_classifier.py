@@ -24,6 +24,17 @@ def l2(text, t="2026-01-01T00:00:00.000Z"):
 
 # (ticket_id, comments, expected_verdict) - comments listed in chronological order
 CASES = [
+    # --- 2026-11-20 subjective read of the 'unrecognized' backlog (real WH wording) ---
+    ("sub-1", [wh("We have sent deferent batch number of medicine to CX Mahiboob bee")], "admitted"),
+    ("sub-2", [wh("We have sent mismatch batch number of medicine to Cx")], "admitted"),
+    ("sub-3", [wh("We have sent price mismatch medicine to CX Mahiboob bee")], "admitted"),
+    ("sub-4", [wh("We have sent without ice pack")], "admitted"),
+    ("sub-5", [wh("Packer did not remove the medicine so we did not verify this")], "admitted"),
+    ("sub-6", [wh("We have sent with proper ice pack to cx Naveen")], "denied"),
+    ("sub-7", [wh("We have sent proper box packing to cx Naveen")], "denied"),
+    ("sub-8", [wh("Still not received the wh")], "unrecognized"),
+    ("sub-9", [wh("Footage not clear to check batch number on medicine Mahiboob bee")], "unrecognized"),
+    ("sub-10", [wh("Cold chain handle by phox team")], "unrecognized"),
     # --- Denials found live, most followed by an L2 BOD/refund note that
     # confirms the denial is what actually happened (the L2 note never
     # overrides - it's just corroboration for the fixture, not the input) ---

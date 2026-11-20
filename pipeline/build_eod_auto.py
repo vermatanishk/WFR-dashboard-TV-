@@ -59,6 +59,13 @@ for t in data["tickets"]:
 eod = {"generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "for_date": for_date,
        "methodology": json.loads((HERE / "data_eod.json").read_text())["methodology"], "tickets": out}
 (HERE / "data_eod.json").write_text(json.dumps(eod, indent=2))
+# History (never delete old data): one compact record per EOD day, kept forever in eod_history.json (re-derivable, but cached so it survives
+# later verdict / data changes only when you pass --history-refresh).
+hist_p = HERE / "eod_history.json"
+hist = json.loads(hist_p.read_text()) if hist_p.exists() else {}
+hist[for_date] = {"total": len(out), "accepted": sum(1 for x in out if x["wh_accepted_text"]), "by_category": dict(Counter(x["category"] for x in out)),
+                  "accepted_tickets": [{k: x[k] for k in ("ticket_id", "order_id", "category", "location", "picker", "packer", "qc", "manifester")} for x in out if x["wh_accepted_text"]]}
+hist_p.write_text(json.dumps(dict(sorted(hist.items())), indent=1))
 acc = sum(1 for x in out if x["wh_accepted_text"])
 print(f"for_date {for_date}: {len(out)} tickets, WH-Accepted (text) {acc}; verdicts", dict(Counter((wh.get(x['ticket_id']) or {}).get('verdict') for x in out)))
 if need:

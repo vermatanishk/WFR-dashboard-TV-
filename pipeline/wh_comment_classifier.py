@@ -41,6 +41,10 @@ ADMISSION_PHRASES = [
     # found in the same review: expiry / excess / wrong free item sent
     "sent expriy", "sent expiry", "sent expired", "expriy medicine", "expired medicine to",
     "free item wrong", "excess medicine", "sent excess",
+    # Subjective read of every 'unrecognized' Warehouse comment, 2026-11-20 (first-person statements of what WH sent / did):
+    "deferent batch", "different batch", "mismatch batch", "price mismatch",      # we sent a different batch / mismatched price
+    "without ice pack", "without icepack",                                         # cold item dispatched without ice packs
+    "did not remove", "didn't remove",                                             # packer slip (owner-confirmed 2026-10-14)
 ]
 
 # Denials were previously handled only implicitly ("no admission phrase
@@ -50,6 +54,7 @@ DENIAL_PHRASES = [
     "proper medicine", "correct medicine", "correct item",
     "right qty", "right item", "complete order", "complete qty",
     "with ice packs", "good expiry",
+    "proper ice pack", "proper box packing", "proper packing", "proper paking",    # packaging / cold-pack denials (2026-11-20)
 ]
 
 # Request for evidence - never an admission or denial, even if it contains
@@ -71,6 +76,10 @@ NEUTRAL_PHRASES = [
     "containce only", "not in warehouse", "under maintenance",
     "return scanned at warehouse", "return request is approved",
     "not available in our inventory", "no batch available",
+    # 2026-11-20 subjective read: procedural / logistics / courier statements, never an admission or denial
+    "not received at warehouse", "not received the wh", "stock not received", "still not received", "not received this stock",
+    "footage not clear", "cn created", "cold chain handl", "not cold chain", "not cold storage", "reject for damage",
+    "pls mention", "order created", "ticket raised 3 times", "handover the stock", "received damage medicine",
 ]
 
 # Genuinely non-literal admissions found in practice, kept as an explicit,

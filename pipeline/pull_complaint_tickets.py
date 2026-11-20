@@ -32,14 +32,14 @@ def _clean_order(v):
 def day_tickets(day):
     rows, frm = [], 1
     while True:
-        for i in range(5):
+        for i in range(8):
             try:
                 r = desk_get("/tickets/search", {"createdTimeRange": f"{day}T00:00:00.000Z,{day}T23:59:59.000Z", "limit": 100, "from": frm})
                 break
             except Exception as ex:
                 if "204" in str(ex) or "No Content" in str(ex):
                     return rows
-                time.sleep(2 * (i + 1))
+                time.sleep(3 * (i + 1))
         else:
             raise RuntimeError(f"zoho search failed for {day} from {frm}")
         data = (r or {}).get("data") or []

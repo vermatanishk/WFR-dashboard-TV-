@@ -61,6 +61,12 @@ def main():
             continue
         if tid not in cache or cache[tid].get("verdict") in ("no_wh_comment", "unrecognized"):
             todo.append(t)
+        # 'denied' can flip to 'admitted' later on the same thread (WH denies, then admits once shown evidence - 251580/254519/257160/269829).
+        # So a denial stays open for 7 days (always re-read), and --audit-denied re-reads every denial of the last 60 days once.
+        elif cache[tid].get("verdict") == "denied":
+            age = (datetime.now(IST).date() - datetime.strptime(t["created_time"][:10], "%Y-%m-%d").date()).days
+            if age <= 7 or ("--audit-denied" in sys.argv and age <= 60):
+                todo.append(t)
     if "--extra" in sys.argv:        # complaint-baseline tickets outside data.json (build_complaints.py -> cmp_tickets_to_read.json)
         seen = {t["ticket_id"] for t in todo}
         cap = (datetime.now(IST) - timedelta(days=2)).date().isoformat()     # baseline tickets are read against TODAY's T-2, not data.json's
@@ -71,6 +77,11 @@ def main():
             if tid not in cache or cache[tid].get("verdict") in ("no_wh_comment", "unrecognized"):
                 todo.append(t)
                 seen.add(tid)
+            elif cache[tid].get("verdict") == "denied":
+                age = (datetime.now(IST).date() - datetime.strptime(t["created_time"][:10], "%Y-%m-%d").date()).days
+                if age <= 7 or ("--audit-denied" in sys.argv and age <= 60):
+                    todo.append(t)
+                    seen.add(tid)
     if limit:
         todo = todo[:limit]
     print(f"{len(todo)} tickets to (re)read; T-2 cap {cap}")
@@ -95,6 +106,8 @@ def main():
             subs = [investigation_subtype(x) for x in texts]
             sub = next((x for x in reversed(subs) if x), None)
             old = cache.get(t["ticket_id"], {}).get("verdict")
+            if old == "admitted" and res["verdict"] != "admitted":      # an admission is never overwritten by a re-read
+                continue
             if res["verdict"] != old:
                 changed += 1
             cache[t["ticket_id"]] = {

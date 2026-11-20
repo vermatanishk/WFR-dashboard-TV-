@@ -1,0 +1,363 @@
+sku,orders,cold_item,bucket_mix
+Calciquick D3 60K Nano Solution Lychee Flavour 1X5ml,18,False,"{'N': 18, 'D': 1}"
+Melafane Cream 15gm,11,False,"{'L': 8, 'N': 2, 'D': 1, 'C': 1}"
+Minkesh F Grow 5% Solution 60ml,9,False,"{'N': 2, 'C': 1, 'L': 7, 'D': 1}"
+Pantosec DSR 30/40mg Capsule PR 15s,8,False,"{'P': 9, 'N': 1, 'O': 2}"
+Minkesh Forte 5% Solution 60ml,7,False,"{'C': 2, 'L': 2, 'D': 1, 'Q': 1, 'N': 1}"
+Bethanevoid 25mg Tablet 10s,7,False,{'P': 8}
+Mygesteron 400mg Capsule 10s,7,False,"{'N': 6, 'Q': 3}"
+Vitamin C 500mg Orange Flavour Chewable Tablet 15s,6,False,{'P': 7}
+Dr Morepen MT 110 Digital Thermometer,6,False,"{'N': 2, 'Q': 1, 'X': 3}"
+Crampiscon Oral Suspension 150ml,5,False,"{'D': 3, 'L': 3}"
+Dr Morepen BP 14 Blood Pressure Monitor 1s,5,False,"{'X': 3, 'N': 1, '-': 1}"
+Doxypen 100mg Capsule 10s,5,False,{'Q': 6}
+Super Lash 0.03% Ophthalmic Eye Drop 3ml,5,False,"{'D': 2, 'N': 2, '-': 1}"
+Mecofine OD 1500mcg Injection 1ml,4,False,"{'P': 3, 'L': 1}"
+Saslic Salicylic Acid Foaming Face Wash 60ml,3,False,"{'X': 1, 'N': 3}"
+Dr Morepen Gluco One BG 03 Blood Glucose Test Strip 50s,3,False,"{'L': 1, 'Q': 1, 'C': 1}"
+Esopen DSR 30/40mg Capsule 10s (Morepen),3,False,{'N': 3}
+Nano Leo Total Granules 3gm,3,False,"{'N': 1, 'P': 1, '-': 1}"
+Folirange Capsule 30s,3,False,"{'X': 1, 'L': 1, 'N': 1}"
+Clocip 1% Dusting Powder 100gm,3,False,"{'N': 1, 'L': 1, 'D': 1}"
+Chemogest 200mg Tablet SR 10s,3,False,"{'P': 2, 'L': 1}"
+IntaRub Balm 25ml,3,False,"{'L': 2, 'N': 1}"
+Similac Neosure DHA Powder 400gm,2,False,"{'-': 2, 'N': 1}"
+ST Gliptin M 100/500mg Tablet SR 15s,2,False,"{'P': 1, 'Q': 1}"
+Lmwx 40mg Injection 0.4ml,2,False,"{'-': 2, 'Q': 1}"
+Cuticapil Stem Advance Serum 60ml,2,False,{'N': 2}
+Cetaphil Gentle Skin Cleanser Gel 1000ml,2,False,"{'D': 1, 'L': 1}"
+Lactodex 1 (0 to 6 months) Starter Formula Powder 1kg,2,False,"{'C': 1, 'L': 1}"
+LxyFiber Sugar Free Orange Flavour Granules Jar 90gm,2,False,"{'N': 1, 'D': 1}"
+Cognibiotic Sachet 1gm,2,False,"{'N': 1, 'L': 1}"
+Similac Plus Stage 1 (0 to 6 months) Infant Formula Powder Powder 400gm,2,False,"{'N': 1, 'D': 1}"
+Similac Total Comfort Infant Formula Tin Powder 350gm,2,False,"{'L': 1, 'O': 2}"
+Accu Chek Active Test Strip (Only Strips) 100s,2,False,"{'X': 1, 'C': 1}"
+Miconol 2% Gel 15gm,2,False,"{'N': 1, 'L': 1}"
+Dapasmart Trio Forte 10/1000/100mg Tablet ER 10s,2,False,{'P': 2}
+Alendeos 70mg Tablet 4s,2,False,{'P': 2}
+Gabaco NT 100/10mg Tablet 15s,2,False,{'N': 2}
+Skin Fine ISO 20mg Capsule 10s,2,False,{'N': 2}
+Cipcal XT Tablet 15s,2,False,"{'Q': 1, 'N': 2}"
+Hairmax Forte Solution 60ml,2,False,{'L': 2}
+Follicule X Hair Serum 60ml,2,False,{'N': 2}
+Sitaneed DM ER 10/500/100mg Tablet 10s,2,False,{'P': 2}
+Prograf 1mg Hard Capsule 10s,2,False,"{'O': 1, 'N': 1}"
+Bethanevoid SR 75mg Tablet 10s,2,False,{'P': 2}
+Tinfal 10F Solution 60ml,2,False,"{'N': 1, 'L': 2}"
+Leekuf Ginger & Lemon Lozenges 8s,2,False,"{'P': 1, 'N': 1}"
+Enerzal Powder Orange 100gm,2,False,"{'N': 1, 'L': 1}"
+Okamet GM 502 Tablet PR 15s,2,False,"{'Q': 1, 'P': 1}"
+Leemol Activ 50mg/650mg Tablet,2,False,"{'P': 1, 'C': 1}"
+Travision Eye Drop 3ml,2,False,"{'X': 1, 'C': 1}"
+Alkof DX 4/10mg Syrup 100ml,2,False,"{'N': 1, 'X': 1}"
+Nibal 1500mcg/100/100mg Injection 2ml,2,False,"{'P': 1, 'L': 1}"
+Ketonalog Alfa Tablet 10s,2,False,{'P': 2}
+Minozure 3% Solution 60ml,1,False,{'L': 1}
+Siloright D 0.5/8mg Tablet 10s,1,False,{'P': 1}
+Accu Chek Active Test Strip (Only Strips) 10s,1,False,{'Q': 1}
+Ketorotide 10mg DT Tablet 15s,1,False,{'P': 1}
+Mentatime 10mg Tablet 10s,1,False,{'L': 1}
+Levetafine 750mg Tablet 10s,1,False,{'N': 3}
+Dexolac Special Care Powder 400gm,1,False,{'X': 1}
+Benizep 200mg Capsule SR 10s,1,False,{'P': 1}
+Himalaya Pilex Forte Ointment 30gm,1,False,{'C': 1}
+Loy Ctn 2.6mg Tablet 30s,1,False,{'N': 1}
+Cefredrox CV Duo 100/62.5mg Dry Syrup 30ml,1,False,{'N': 1}
+Vitreon Sachet 4gm,1,False,{'Q': 1}
+Nexpro L 40/75mg Capsule ER 10s,1,False,{'P': 1}
+Dynapar QPS Plus Pain Relief Spray 15ml,1,False,{'P': 1}
+Volini Maxx for instant relief from severe pain Spray 55gm,1,False,{'N': 1}
+Himalaya Tentex Forte Tablet 10s,1,False,{'P': 3}
+Fericip XT 100/1.5mg Tablet 10s,1,False,{'P': 1}
+Ahaglow S Foaming Face Wash 100ml,1,False,{'N': 1}
+Doxykem LB 100mg Capsule 10s,1,False,{'-': 2}
+Trigaine Forte Solution 30ml,1,False,{'L': 1}
+Depiwhite Advanced Cream 15ml,1,False,{'L': 1}
+Amoxyclav 625mg Tablet 10s,1,False,{'P': 1}
+Clomipill 50 Tablet 10s,1,False,{'N': 1}
+Biosert 50mg Tablet 10s,1,False,{'N': 1}
+Pro PL Protein Chocolate Flavour Powder 500gm,1,False,{'P': 1}
+Lacosmile 100mg Tablet 10s,1,False,{'P': 1}
+Glyrase 12% Cream 30gm,1,False,{'L': 1}
+Dabur Hajmola Anardana Flavour Supports Digestive Health Tablet 120s,1,False,{'Q': 1}
+Dr Morepen Gluco One BG 03 Blood Glucose Test Strip 25s,1,False,{'N': 1}
+Vetadew Intense Moisturizing Lotion 400ml,1,False,{'P': 1}
+Sensur Oil 10ml,1,False,{'N': 1}
+Calciquick Super Tablet 15s,1,False,{'P': 2}
+Provironum 25mg Tablet 10s,1,False,{'O': 1}
+Melitane Altris 5 Solution Spray 60ml,1,False,{'D': 1}
+Canthex Capsule 10s,1,False,{'D': 1}
+Mypen 2 Pen 1s,1,False,{'D': 1}
+Evion Forte Capsule 15s,1,False,{'P': 1}
+Levera 750mg Tablet 10s,1,False,{'N': 1}
+Omron Digital Thermometer 1s,1,False,{'X': 1}
+Avamys Nasal Spray 10gm,1,False,{'N': 1}
+Lactihep 66.67% Syrup 200ml,1,False,{'N': 1}
+Ultra Pre Q Capsule 15s,1,False,{'X': 1}
+Ovafol Sachet 5gm,1,False,{'P': 1}
+Photon Hydra 360 SPF 50+ PA +++ Sunscreen Fluid Cream 50ml,1,False,{'D': 1}
+Imxia XL Serum 60ml,1,False,{'L': 1}
+Glimda MV 2/500/0.2mg SR Tablet 10s,1,False,{'Q': 1}
+Dr Morepen BG 03 Gluco One Blood Glucose Monitoring System 1s,1,False,{'N': 1}
+Piosteris 7.5mg Tablet 10s,1,False,{'N': 1}
+Hexilak Ultra Gel 15gm,1,False,{'N': 1}
+Esmostrum IT 40/150mg Capsule SR 10s,1,False,{'P': 1}
+QT Pine 25mg Tablet 10s,1,False,{'P': 1}
+Chymokem Forte 100000AU Tablet 20s,1,False,{'P': 1}
+Carvismart 3.125mg Tablet 10s,1,False,{'P': 1}
+Uriride D 0.5/0.4mg Capsule PR 15s,1,False,{'P': 2}
+Folirich Hair Serum 60ml,1,False,{'N': 1}
+Cetaphil Daily Exfoliating Cleanser 178ml,1,False,{'D': 1}
+Upadoz 30mg Tablet ER 10s,1,False,{'N': 1}
+Melaglow Prime Depigmenting Cream 20gm,1,False,{'C': 1}
+Nindacap 100mg Capsule 10s,1,False,{'P': 1}
+Tynor E 11 Elbow Support Small 1s,1,False,{'N': 1}
+Zostum O 200mg Tablet 10s,1,False,{'N': 1}
+Faroultra 300mg ER Tablet 6s,1,False,{'P': 1}
+Cos3 Syrup 200ml,1,False,{'O': 1}
+Moktel Drops 30ml,1,False,{'P': 1}
+Celevida Liv Chocolate Powder 390gm,1,False,{'Q': 1}
+Calmac Calamine Lotion 120ml,1,False,{'P': 1}
+Rabesec DSR 30/20mg Capsule SR 10s,1,False,{'P': 1}
+Venusia Acne Control Moisturizing Gel 60gm,1,False,{'N': 1}
+D Protin Chocolate Powder 500gm,1,False,{'P': 1}
+Aquasoft Day Spf 50+ Cream 75gm,1,False,{'N': 1}
+Physiogel AI Body Lotion 100ml,1,False,{'C': 1}
+Delivate Plus Capsule 10s,1,False,{'D': 1}
+Bestform M Tablet 10s,1,False,{'X': 2}
+Mounjaro 7.5mg KwikPen 0.6ml,1,True,{'X': 1}
+Hamdard Safi Natural Blood Purifier Syrup 500ml,1,False,{'N': 1}
+Xygrel 90mg Tablet 14s,1,False,{'P': 1}
+Himalaya Oil Clear Lemon Face Wash 100ml,1,False,{'N': 1}
+Lulibet Shampoo 100ml,1,False,{'D': 1}
+Ketafung 2% Lotion 100ml,1,False,{'D': 1}
+Hyde 3% Cream 30gm,1,False,{'L': 1}
+Follideep Hair Serum 60ml,1,False,{'N': 1}
+Logocaine P 25/25mg Cream 30gm,1,False,{'C': 1}
+Profulvin 500 Tablet 10s,1,False,{'N': 1}
+Arachitol Nano Daily 2K IU Sugar Free Oral Solution 150ml,1,False,{'L': 1}
+Biovac A Vaccine 0.5ml,1,True,{'-': 1}
+Ubiqbionol Active 100mg Capsule 10s,1,False,{'-': 1}
+Ovazoa M Sachet 16gm,1,False,{'Q': 1}
+Flosooth 0.05% Nasal Spray 10ml,1,False,{'D': 1}
+Levetafine 500mg Tablet 10s,1,False,{'P': 2}
+Cadomer 0.9% Ointment 20gm,1,False,{'N': 1}
+Paxonil 25mg Tablet PR 15s,1,False,{'P': 1}
+Vitreon Tablet 30s,1,False,{'Q': 1}
+Melactis Pigment Corrector Serum 30ml,1,False,{'L': 1}
+Clohex ADS Mint Sugar Free Mouth Wash 200ml,1,False,{'N': 1}
+Testoheal 1% Gel 5gm,1,False,{'N': 1}
+Cilamin 250mg Capsule 10s,1,False,{'N': 1}
+Richglow Gel 50gm,1,False,{'N': 1}
+Recofast 5/0.625mg Syrup 60ml,1,False,{'L': 1}
+X Fresh Hylo Eye Drops 10ml,1,False,{'L': 1}
+Bisocor AM 5/5mg Tablet 10s,1,False,{'P': 1}
+Lipidator A 20/75mg Capsule 10s,1,False,{'P': 1}
+Zandu Pancharishta Ayurvedic Digestive Tonic 450ml,1,False,{'N': 2}
+Wanish Skin Lotion 100ml,1,False,{'L': 1}
+Mintop Pro Plus Hair Regrowth Serum 50ml,1,False,{'D': 2}
+Similac Isomil Tin Powder 400gm,1,False,{'D': 1}
+Himalaya Baby Powder 400gm,1,False,{'N': 1}
+"Hepaglide 0.25mg Injection (1 Multi-dose Disposable Pen, 4 Needle, 4 Alcohol Swab)",1,True,{'N': 1}
+A To Z CV Capsule 10s,1,False,{'N': 1}
+Gestone 100mg Injection 2ml,1,False,{'N': 1}
+X Fresh Ultra Eye Drop 10ml,1,False,{'N': 1}
+Glypen 40mg Tablet 10s,1,False,{'P': 1}
+Omee Mint Chewable Tablet 12s,1,False,{'P': 1}
+Levoquin 250mg Tablet 5s,1,False,{'P': 1}
+Levodoc 750mg Tablet 10s,1,False,{'P': 1}
+Gelusil MPS Mint Chewable Tablet 15s,1,False,{'P': 1}
+Etodel TP 400/150mg Tablet 10s,1,False,{'P': 1}
+Dapaquest M 10/500mg Tablet ER 10s,1,False,{'P': 1}
+Cof Q D 5/2/10mg Syrup 100ml,1,False,{'P': 2}
+Blemguard Face Serum 30ml,1,False,{'N': 1}
+Ambisooth Blue Syrup 100ml,1,False,{'C': 1}
+Contour Plus Blood Glucose Test Strip 50s,1,False,{'X': 1}
+Centrum Men Multivitamin Tablet 30s,1,False,{'N': 1}
+Tresiba (100 IU/ml) Cartridge / Injection 1*3ml,1,True,{'N': 1}
+Dandrofine 2% Shampoo 100ml,1,False,{'C': 1}
+Mycospray Topical Solution 100ml,1,False,{'C': 1}
+Enshiner Dark Spot Correcting Cream 15gm,1,False,{'N': 1}
+Recalmin D3 Max Capsule 10s,1,False,{'N': 1}
+Johnson's Baby Shampoo 200ml,1,False,{'L': 1}
+Mometadoc 0.1% Cream 10gm,1,False,{'L': 1}
+Sitayes DP 100/10mg Tablet 10s,1,False,{'P': 1}
+Duphalac Lemon Flavour Oral Solution 250ml,1,False,{'N': 1}
+Himalaya Natural Glow Kesar Face Wash 50ml,1,False,{'L': 1}
+Thermoseal Dental Floss 1s,1,False,{'Q': 1}
+Brain Iq Syrup 150ml,1,False,{'L': 2}
+Berbeshine Tablet 10s,1,False,{'N': 1}
+Semasize Pro Pen 1/1.7/2.4mg (Reusable Pen) 1s,1,False,{'N': 1}
+Nutracne Fem Tablet 10s,1,False,{'N': 1}
+Morr F 5% Solution 60ml,1,False,{'C': 1}
+Aveeno Baby Daily Moisturising Bath 354ml,1,False,{'-': 1}
+Supradyn Daily Multivitamin With Minerals Tablet 15s,1,False,{'P': 1}
+Nuhenz Capsule 15s,1,False,{'P': 1}
+Ketoknol Tablet 10s,1,False,{'P': 1}
+Softovac SF Bowel Regulator Eases Constipation Powder 450gm,1,False,{'D': 1}
+Acitros 25mg Capsule 15s,1,False,{'P': 1}
+Insupen Pro Green Pen (Only Pen) 1s,1,False,{'X': 1}
+Xgain Hair Shampoo 200ml,1,False,{'N': 1}
+Calciquick CCD Tablet 40s,1,False,{'N': 1}
+Trigaine Solution 60ml,1,False,{'C': 1}
+Manocit 20mg Tablet 10s,1,False,{'Q': 1}
+3M 1530 1 Micropore Adhesive Tape 1X1inch,1,False,{'X': 1}
+3M 1527 1 Transpore Hypoallergenic Tape 1X1inch,1,False,{'X': 1}
+Himalaya Refreshing Baby Soap 125gm,1,False,{'C': 1}
+Valpodium 200mg Tablet 10s,1,False,{'P': 2}
+Mecofine OD 1500mcg Tablet 10s,1,False,{'P': 1}
+Cipcal D3 60000IU Capsule 4s,1,False,{'P': 1}
+Calcidoc D3 6L Injection 1ml,1,False,{'P': 1}
+Hepaniche HMB Sachet 5gm,1,False,{'Q': 1}
+Kojimed Ultra Cream 20gm,1,False,{'D': 1}
+Naso B12 Nasal Spray 1s,1,False,{'L': 3}
+Sensodent K Plus Toothpaste 100gm,1,False,{'C': 1}
+Azobril 15% Cream 20gm,1,False,{'N': 1}
+Toustar Reusable Insulin Pen (Only Pen) 1s,1,False,{'N': 1}
+BIQ Plus Syrup 150ml,1,False,{'L': 1}
+Glimda 1mg Tablet 10s,1,False,{'P': 1}
+Telgard AM 40/5mg Tablet 10s,1,False,{'P': 1}
+Hydralipz Spf 15 Balm 4gm,1,False,{'N': 1}
+Melaclock 5mg Tablet 10s,1,False,{'N': 1}
+Fostera 20/5mg Tablet 10s,1,False,{'N': 2}
+Cilinimore 10mg Tablet 10s,1,False,{'N': 1}
+Telmistrum MT 50/40mg Tablet ER 15s,1,False,{'P': 1}
+Tyrodin FSR 500mg Tablet 10s,1,False,{'P': 3}
+Dexavac 4mg Tablet 10s,1,False,{'N': 2}
+ORS Orange Flavour Powder 21.8gm,1,False,{'N': 1}
+Physiomer Hypertonic Nasal Spray 135ml,1,False,{'N': 1}
+TEL QH 40/12.5mg Tablet 10s,1,False,{'Q': 1}
+Paracip 650mg Tablet 10s,1,False,{'P': 1}
+Podowart Paint 10ml,1,False,{'L': 1}
+C Cal DS Tablet 15s,1,False,{'P': 1}
+Ekran MS Mineral Sunscreen SPF 50 Gel 50gm,1,False,{'L': 1}
+Dabur Babool Toothpaste Big Saver Pack (2 x 175gm),1,False,{'C': 1}
+Budepress 6/400mcg Inhaler 120MDI,1,False,{'X': 1}
+Flutiheal AZ NF 140/50mcg Nasal Spray 7ml,1,False,{'C': 1}
+Qutidin 100mg Tablet 10s,1,False,{'X': 1}
+Episoft Ac Sunscreen SPF 30 125ml,1,False,{'N': 2}
+Benadon 40mg Tablet 15s,1,False,{'P': 1}
+Cartniwel Plus 500/1500/1.5mg Tablet 10s,1,False,{'P': 1}
+Phosgood 800mg Tablet 10s,1,False,{'P': 1}
+Movexx Plus 100/325mg Tablet 10s,1,False,{'N': 1}
+Tendomac Forte Tablet 15s,1,False,{'Q': 1}
+Senstone Tablet 60s,1,False,{'D': 1}
+Kety GZ Medicated Soap 75gm,1,False,{'Q': 1}
+Azaquest 50mg Tablet 10s,1,False,{'L': 1}
+Accu Chek Instant Test Strip (Only Strip) 10s,1,False,{'N': 1}
+Melasure Skin Lightening Gel 20gm,1,False,{'C': 1}
+Amyron Iron Supplement for Men & Women & Improve Hemoglobin Levels Syrup 200ml,1,False,{'L': 1}
+Ticavue 90mg Tablet 14s,1,False,{'Q': 2}
+3M 1530 2 Micropore Adhesive Tape 1X2inch,1,False,{'N': 1}
+OneTouch Select Plus Test Strip Green 50s,1,False,{'O': 1}
+Prostaceum 100mg Tablet 10s,1,False,{'P': 1}
+Ivernol Shampoo 30ml,1,False,{'C': 1}
+Timovac Eye Drops 5ml,1,False,{'N': 1}
+Telgard 40mg Tablet 10s,1,False,{'P': 1}
+Nexpro junior 10mg Sachet 1gm,1,False,{'P': 1}
+Airflow 100/50mcg Capsule 30s,1,False,{'X': 1}
+Glycoheal PG 2/500/15mg Tablet SR 10s,1,False,{'N': 1}
+Cutiyt G12 Lotion 50ml,1,False,{'C': 2}
+Biosilk Moisturizing Cream 100gm,1,False,{'N': 1}
+Glutone Serum 30ml,1,False,{'N': 1}
+New Cosglo Cream 30gm,1,False,{'N': 1}
+Vaginorm Vaginal Suppository 10s,1,False,{'P': 1}
+Amlip 5mg Tablet 10s,1,False,{'P': 1}
+Rosu HDL 5mg Tablet 10s,1,False,{'P': 1}
+Tasmuline 0.4mg Tablet PR 10s,1,False,{'P': 1}
+Flugran Plus 40mg/10mg Tablet,1,False,{'N': 1}
+Sebowash 0.01% Shampoo 125ml,1,False,{'N': 1}
+Midoright 5mg Tablet 10s,1,False,{'N': 1}
+Augmed DDS 400/57mg Oral Suspension 30ml,1,False,{'C': 1}
+Gluci 50/87.5mg Injection 1X10ml,1,False,{'N': 1}
+Resteclin 500mg Capsule 10s,1,False,{'N': 1}
+Bimat LS 0.01% Eye Drop 3ml,1,False,{'-': 1}
+Mazetol SR 400mg Tablet ER 15s,1,False,{'O': 1}
+Ketoscalp Shampoo 100ml,1,False,{'C': 1}
+Isordil 10mg Tablet 10s,1,False,{'N': 1}
+Atovastrin Gold 75/20/75mg Capsule 15s,1,False,{'Q': 1}
+Mounjaro 12.5mg KwikPen 2.4ml,1,True,{'C': 1}
+Eligolux 150mg Tablet 10s,1,False,{'P': 1}
+Airflow 125mcg Inhaler 120MDI,1,False,{'N': 1}
+Maxirich Daily Multivitamin Capsule 10s,1,False,{'P': 1}
+Lubikem Eye Drops 10ml,1,False,{'N': 1}
+Folinext D Capsule 15s,1,False,{'P': 1}
+Potklor 1.5mg Cherry Sugar Free Oral Solution 200ml,1,False,{'D': 1}
+Leotoin 50mg Injection 2ml,1,False,{'N': 1}
+Intafresh Mouthwash 150ml,1,False,{'N': 1}
+Fertisure Fem Tablet 10s,1,False,{'P': 1}
+Erythego 5mg Gel 15gm,1,False,{'D': 1}
+Brilante Intense Brightening Serum 50ml,1,False,{'C': 2}
+Sper Sunscreen Lotion 100ml,1,False,{'N': 1}
+Mpower 5% Solution 60ml,1,False,{'N': 1}
+Nicomnol 1mg Tablet 10s,1,False,{'O': 1}
+Ecosprin 75mg Tablet 14s,1,False,{'O': 1}
+Nicomnol 2mg Tablet 10s,1,False,{'O': 1}
+Moximax D Eye Drop 10ml,1,False,{'L': 1}
+Famonext 20mg Tablet 14s,1,False,{'L': 1}
+Vonostrum 10mg Tablet 10s,1,False,{'P': 1}
+Fungicros 5% Nail Lacquer 1s,1,False,{'N': 1}
+Evizone NF 400mg Capsule 10s,1,False,{'N': 1}
+Desvenlaz 50mg Tablet 10s,1,False,{'N': 1}
+Lipvas 20mg Tablet 10s,1,False,{'P': 2}
+Fexinol M 10/120mg Tablet 10s,1,False,{'P': 4}
+Dydrosmart 20mg ER Tablet 10s,1,False,{'P': 1}
+Etodonol 300mg Tablet 10s,1,False,{'L': 1}
+X Fresh 0.5% Eye Drop 10ml,1,False,{'L': 1}
+Anasure 2% Solution 60ml,1,False,{'C': 2}
+Difizma 63/173/160mcg Capsule 10s,1,False,{'P': 1}
+Meroprotect 1gm Injection 20ml,1,False,{'X': 1}
+Amflor Oral Rinse with Active Remineralisation Fluoride 250ml,1,False,{'O': 1}
+Cephadex 500mg Capsule 10s,1,False,{'Q': 1}
+Dexorange Syrup 200ml,1,False,{'L': 1}
+Picodoc 5mg Syrup 100ml,1,False,{'C': 1}
+Minozure 12.5% Solution 60ml,1,False,{'L': 1}
+Melaquick 3mg Tablet 10s,1,False,{'N': 1}
+Selcyl 2% Face Wash 60ml,1,False,{'N': 1}
+Kerofa Combi Kit 1s,1,False,{'C': 1}
+Neosporin H 3400/10000IU Ear Drop 5ml,1,False,{'N': 1}
+Liverheal DS Tablet 60s,1,False,{'D': 1}
+Sodatab DS 1000mg Tablet 10s,1,False,{'P': 1}
+Zindervit NF Tablet 15s,1,False,{'P': 1}
+Diprobate Plus Lotion 50ml,1,False,{'N': 1}
+Rosugard 10mg Tablet 10s,1,False,{'N': 1}
+Almetfor 1000mg SR Tablet 15s,1,False,{'N': 1}
+Zincovit Multivitamins Tablet 15s,1,False,{'N': 1}
+Prohance HP Vanilla Flavour Powder 400gm,1,False,{'N': 1}
+Urinfen 0.4mg Capsule 15s,1,False,{'P': 2}
+Propen Depot 500mg Injection 2ml,1,False,{'L': 1}
+Nurokind Fast 1500mcg Disintegrating Strip 1s,1,False,{'N': 1}
+CoQ Man Tablet 10s,1,False,{'P': 1}
+Monticope 5/10mg Tablet 10s,1,False,{'O': 2}
+Florita LL Capsule 10s,1,True,{'O': 1}
+Cetaphil Baby Daily Lotion 400ml,1,False,{'O': 2}
+Calpol 250mg Paediatric Oral Suspension 60ml (1110842),1,False,{'O': 2}
+Tedibar Spoo Gentle Baby Shampoo 125ml,1,False,{'O': 2}
+Foracort 200/6mcg Inhaler 120MDI,1,False,{'O': 2}
+MCBM L Tablet 15s,1,False,{'O': 2}
+Lipvas 10mg Tablet 10s,1,False,{'N': 1}
+Coldmine 1/125/5mg Oral Drop 15ml,1,False,{'N': 1}
+Astyfer XT Tablet 15s,1,False,{'N': 1}
+Salactin Paint 10ml,1,False,{'N': 1}
+Hydrourea 500mg Capsule 10s,1,False,{'-': 1}
+Regaliz Truderma i Luxe Under Eye Gel 15ml,1,False,{'N': 1}
+Saridon Head & Body Tablet 10s,1,False,{'P': 1}
+Cipcal 500mg/250IU Tablet 15s,1,False,{'P': 1}
+Candid TV Suspension 75ml,1,False,{'L': 1}
+Clindinol TM 10/40mg Tablet 10s,1,False,{'P': 1}
+Astymin 3 Injection 20ml,1,False,{'N': 2}
+Lukoskin For Skin Health Liquid 100ml,1,False,{'N': 1}
+Remune AL Sachet 1X1gm,1,False,{'O': 1}
+Thiodoc Ace 100/4mg Tablet 10s,1,False,{'N': 2}
+Potbrook MB6 Syrup 200ml,1,False,{'L': 1}
+Intiwash New Feminine Hygiene Wash 100ml,1,False,{'D': 1}
+Stimuliv Syrup 200ml,1,False,{'C': 1}
+Peptac 150mg Tablet 10s,1,False,{'P': 1}
+Emglinol Duo 12.5/500mg Tablet 10s,1,False,{'P': 1}
+Pan Rft Oral Suspension 200ml,1,False,{'N': 1}
+Tendobrace Forte 500/200mg Tablet 10s,1,False,{'P': 1}
+Cetaphil Oily Skin Cleanser 125ml,1,False,{'N': 1}
+Roko 2mg Capsule 10s,1,False,{'N': 1}
+Geomax D3 Max Capsule 10s,1,False,{'Q': 1}
+Sodac 8.4% Injection 25ml,1,False,{'C': 1}
+Dexolac Stage 1 (Upto 6 Months) Baby Formula Powder 400gm,1,False,{'N': 1}
