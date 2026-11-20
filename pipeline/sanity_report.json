@@ -4,7 +4,7 @@
   "2026-09-20",
   "2026-11-18"
  ],
- "generated_at": "2026-11-20T12:52:10Z",
+ "generated_at": "2026-11-20T13:45:10Z",
  "checks": [
   {
    "status": "INFO",
@@ -57,9 +57,9 @@
    "text": "macro table 'WH Accepted' (T-2 capped) sums to 91 in the window; complaint baseline shows 114; EOD 98"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "2 WH accepted",
-   "text": "3 tickets past T-2 with no read verdict ['270126', '270140', '270133']"
+   "text": "0 tickets past T-2 with no read verdict []"
   },
   {
    "status": "PASS",
@@ -132,6 +132,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 6,
- "pass": 14
+ "fail": 5,
+ "pass": 15
 }
