@@ -163,6 +163,8 @@ STEPS = [
     ("tests: JS evaluator wfr", ["node", "test_view_js.js", "wfr"]),
     ("tests: JS evaluator damage", ["node", "test_view_js.js", "damage"]),
     ("tests: JS evaluator swap", ["node", "test_view_js.js", "swap"]),
+    ("tests: Google-Sheet upsert never deletes rows", ["node", "test_gsheet_upsert.js"]),
+    ("tests: warehouse-comment classifier", ["python3", "test_wh_comment_classifier.py"]),
 ]
 
 
