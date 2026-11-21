@@ -1632,5 +1632,36 @@
     "manifester": "Mounika_HYD"
    }
   ]
+ },
+ "2026-11-19": {
+  "total": 20,
+  "accepted": 2,
+  "by_category": {
+   "Wrong Medicines": 8,
+   "Missing/Wrong Qty": 10,
+   "Expiry Issue": 2
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "270206",
+    "order_id": 4823554,
+    "category": "Wrong Medicines",
+    "location": "Lucknow",
+    "picker": "Gayatri.M_LKO",
+    "packer": "Shivam.J_LKO",
+    "qc": "Akanksha_LKO",
+    "manifester": "Shakti_LKO"
+   },
+   {
+    "ticket_id": "270208",
+    "order_id": 4798417,
+    "category": "Missing/Wrong Qty",
+    "location": "Mumbai",
+    "picker": "Sanika-k_MUM",
+    "packer": "MayuriK_MUM",
+    "qc": "SuchitaJ_MUM",
+    "manifester": "Vijay-P_MUM"
+   }
+  ]
  }
 }
