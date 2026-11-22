@@ -4,7 +4,7 @@
   "2026-09-22",
   "2026-11-20"
  ],
- "generated_at": "2026-11-22T08:00:56Z",
+ "generated_at": "2026-11-22T08:15:14Z",
  "checks": [
   {
    "status": "INFO",
@@ -127,9 +127,9 @@
    "text": "EOD tab date 2026-11-20"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "5 fresh",
-   "text": "RCA columns with unfinished inputs in the window: {'Photo not read yet': 67, 'Tags pending': 238} (photo reads / item-missing tags)"
+   "text": "RCA columns with unfinished inputs in the window: none (photo reads / item-missing tags)"
   },
   {
    "status": "PASS",
@@ -137,6 +137,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 3,
- "pass": 17
+ "fail": 2,
+ "pass": 18
 }

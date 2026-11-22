@@ -537,23 +537,29 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4451989,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Gliclaglaze 30mg MR Tablet 10s
 4455062,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Mesalmile 1gm Pellet Sachet 1s
 4455770,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Rabesec LS 75/20mg Capsule SR 10s
+4459590,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Cilinimore 10mg Tablet 10s
 4460285,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Midoright 5mg Tablet 10s
 4460898,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
 4462271,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Endovaas 200/1.5gm Granules 4gm
 4462880,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
 4463424,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - In progress,Telgard 40mg Tablet 10s
+4468632,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Alsita M 100/500mg Tablet ER 10s; Glimicure M 4/500mg Tablet 15s; Fourts B Tablet 15s; Volicure Trio 3/500/0.3
 4468728,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,TEL QH 40/12.5mg Tablet 10s
 4470733,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - Accepted & refunded,Spasmonil 20/325mg Tablet 10s
 4477444,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - Accepted & refunded,Imiquad 12.5mg Cream Sachet 3X0.25gm
 4478140,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Slimgal 120mg Capsule 21s
+4479650,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Rejected,Raised - In progress,
 4481029,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Reclide XR 60mg Tablet ER 15s
 4481059,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
+4482293,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Hirepa 2mg Tablet 10s
 4482477,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Lodoz 5/6.25mg Tablet 10s
 4482635,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,No decision,Raised - Accepted & refunded,BD Glide with TBL Ultra Fine Needle Insulin Syringes U40 (31g x 6mm) 10s
 4483825,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4485687,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Finaworth 1mg Tablet 10s
 4485728,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Eslizen 600mg Tablet 10s
 4490059,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Pirfeheal 200mg Tablet 10s
 4492105,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Pilomax 5mg Tablet 10s
+4493863,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
 4495897,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4497431,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4500671,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
@@ -561,6 +567,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4501583,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
 4502045,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Admol 1g Tablet SR 10s
 4502445,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Cinaselect 30mg Tablet 10s
+4503013,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Itone Eye Drop 10ml; Boroline SX Antiseptic Ayurvedic Cream 19gm; Lubic Lubricating Gel 20gm; Omnigel For Fast
 4504816,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Clotop S Oinment 30gm
 4506845,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Cancelled,Zenoxa 450mg Tablet 15s
 4507878,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Bempidoc EZ 180/10mg Tablet 10s
@@ -583,20 +590,29 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4536705,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Mesalmile OD 1200mg Tablet PR 10s
 4541018,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Pantosec 40mg Tablet 15s
 4543635,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
+4544675,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Cancelled,Dydrovue 10mg Tablet 10s
 4550597,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
+4552952,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Cipcal D3 60000IU Capsule 4s
 4554166,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Cipcal 500mg/250IU Tablet 15s
+4554410,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Moxonol 0.3mg Tablet 10s
 4554666,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4555953,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Terbinadoc M Cream 10gm
 4556429,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Atovastrin EZ F Tablet 10s
 4556483,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4558030,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Foracort 200/6mcg Inhaler 120MDI; Brio B 0.2/1% Eye Drop 5ml; Itracip 200mg Capsule 10s; Podocip 200mg Tablet 
 4558831,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - Accepted & refunded,Zon Plus 3mg/2mg Tablet
 4560686,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4561107,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Cilinimore 10mg Tablet 10s
 4561501,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
 4563413,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Lipidator A 40/75mg Capsule 10s
+4563419,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Lumacip Glo Tablet 15s
 4563446,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
 4563940,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4564366,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Minoxytop 2.5mg Tablet 10s
 4566429,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Telgard 40mg Tablet 10s; Rosugard 20mg Tablet 10s; Fexinol M 10/120mg Tablet 10s; Cilinimore 10mg Tablet 10s; 
+4566903,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Metol 25mg Tablet XL 10s; Biosert 50mg Tablet 10s; Baclonol 10mg Tablet 10s
 4568014,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
+4569001,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - In progress,Imiquad 12.5mg Cream Sachet 3X0.25gm
 4569218,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
 4573251,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4577093,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
@@ -604,22 +620,244 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4577228,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Bethnevoid 50mg Tablet 10s
 4578594,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
 4579732,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Provironum 25mg Tablet 10s
+4581885,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Cardivas 3.125mg Tablet 15s; Ondero 5mg Tablet 15s
 4584967,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4585621,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Ticavue 90mg Tablet 14s
 4585764,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Bisocor T 2.5 /40mg Tablet 10s
 4587971,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4590111,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
+4590435,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Atovastrin Gold 75/40/75mg Capsule 15s
 4590780,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Easylax Plus Oral Emulsion Peppermint Syrup 170ml
 4591626,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4591821,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4592391,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Fertisure M Tablet 10s
+4592714,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Lukotas HD 75/5/10mg Tablet SR 10s; Prothiaden 25mg Tablet 15s
+4592837,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Kofclear LS 30/50/1mg Cough Syrup 100ml; Spasmonil 10/40mg Drop 10ml; Flexib 100/162.5mg Oral Suspension 60ml;
+4593556,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4593868,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Rosugard 20mg Tablet 10s
 4594579,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4594700,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Keraglo Men Tablet 15s
+4596814,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Linaworth DP 10/5mg Tablet 10s
+4598283,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Argigold 1gm Tablet 10s; Recharj Omega 120/180mg Capsule 30s
 4599874,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Cipcal HD 12 Tablet 15s
+4600818,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Kemorose ASP 10/75mg Capsule 10s
+4601002,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Melano TX Cream 15gm
 4601105,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4601692,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,SV Card 100mg Tablet 14s
+4602132,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Cipcal XT Tablet 15s
 4602444,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4603361,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Telmistrum NEBI 40/5mg Tablet 10s
+4605065,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Glycoheal PG 2/500/15mg Tablet SR 10s; Micabal Plus 100mg Capsule 10s; Sitaneed DM ER 10/500/100mg Tablet 10s
+4605227,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Johnson's Baby Milk + Rice For Baby's Healthy Skin Cream 100gm
+4605344,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Pdostigamin 60mg Tablet 10s
 4605727,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4605754,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Lokelma Sachet 5gm
+4606822,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Ubiqbionol Active 100mg Capsule 10s
+4608433,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Podocip CV 200/125mg Tablet 10s
+4609582,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Cancelled,New Ketokem 2% Anti Dandruff Shampoo 110ml
+4613352,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Mycoace MMF 500mg Tablet 10s
+4613952,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Truzadon 35mg MR Tablet 10s
 4614792,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4616827,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Alpha Ketonavag Ds Tablet 10s
+4619592,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Pantosec DSR 30/40mg Capsule PR 15s
+4619816,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Clindinol TM 10/40mg Tablet 10s
+4620044,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Similac Classic Follow Up Formula Stage 4 (From 18 to 24 months) Powder 400gm
+4620466,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Ventab Dxt 50mg Tablet ER 10s
+4620924,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Cipcal XT Tablet 15s
+4621092,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Rytstat 50mg Tablet 6s; Ketorenal Preprob 45B Capsule 10s
 4621519,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
+4623935,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,AB Fine Muco N 100/600mg Tablet 10s
 4625945,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
+4626214,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Prucalopride 2mg Tablet 10s
+4627285,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Rosave 40mg Tablet 10s
+4628131,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Lipaglyn 4mg Tablet 10s
+4628237,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Maglyci D3 Tablet 10s; Udidoc 300mg Tablet 15s
+4628367,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Diataal Cal Tablet 10s
+4628906,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Vildaquest 100mg Tablet 10s
+4630898,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Umetrio Capsule 10s
+4630961,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Mecofol Plus D3 Tablet 10s
 4632411,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4634034,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Monotag 5mg Tablet 10s
+4634820,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Rejected,Raised - In progress,
+4635237,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
+4638752,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Gabaco MCB 300/500mcg Tablet 10s
+4640647,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Allyrenol 5mg Tablet 10s
+4643059,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Derma Co Sali Cinamide Anti Acne Facewash 80ml
+4644490,Not identified,,Undetermined - SKU not identified,No decision,Raised - In progress,
+4645357,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Eqoq 0.5/250mg Tablet 10s
+4645370,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Levetafine 750mg Tablet 10s; Brivaquest 50mg Tablet 10s
+4645416,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4646545,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Constichek Orange Powder 17.5gm
+4649641,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Hydrozolin ISDN 20/37.5mg Tablet 10s
+4652317,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Bethnevoid 50mg Tablet 10s
+4652549,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Keraglo Men Tablet 15s
+4654831,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Dermadew Shampoo 80ml
+4655928,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Galact Elaichi Flavour Granule 400gm
+4656224,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Mycoace MMF 500mg Tablet 10s
+4656645,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Lithosun SR 400mg Tablet 10s
+4658050,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Nurokind Fast 1500mcg Disintegrating Strip 1s
+4659081,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Vildaquest DP 10/100mg Tablet SR 10s
+4659405,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Veltam 0.2mg Tablet MR 10s
+4661359,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Evion Forte Capsule 15s
+4661805,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Omecip 20mg Capsule 15s
+4663437,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Telmikind AMH 80/12.5/5mg Tablet 10s
+4663952,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Hd Quest 300mg Tablet 15s
+4664415,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Not raised,Derbeau 6% Cream 30gm
+4664645,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Emodel Cleansing Lotion 125ml
+4664960,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Physiogel Ai Cream 50gm
+4665931,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Bethanevoid 25mg Tablet 10s
+4666503,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Revital Men Capsule 10s
+4667501,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Gabatop 600mg Tablet 10s
+4667589,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Levetafine 500mg Tablet 10s
+4672142,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Kemorose Gold 20mg Capsule 10s
+4672500,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
+4674159,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Efnine 13.9% Cream 15gm
+4675208,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Cosart 25mg Tablet 10s; S Lactone 25mg Tablet 10s; Torsevue 10mg Tablet 10s; Clopicard 75mg Tablet 15s; Ranori
+4675802,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Minkesh Forte 5% Solution 60ml
+4676043,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Vorinz 200mg Tablet 4s
+4676434,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Prucalopride 2mg Tablet 10s
+4676574,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Vitcofol Capsule 30s
+4677050,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Cosart H 50/12.5mg Tablet 10s
+4677094,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Sulfasalaz 1000mg Tablet 15s; Tofasooth 5mg Tablet 10s
+4677673,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
+4677727,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Femozer Plus Tablet 10s
+4678725,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Deanxify Capsule 10s
+4678807,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Phosgood 400mg Tablet 10s
+4680086,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Calciquick D3 2k Capsule 10s
+4681453,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Zolbend Plus 6/400mg Tablet 1s
+4682610,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Telmaheal Trio 40/10/6.25 Tablet 10s
+4684246,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Glycoheal G 1000/2mg Tablet PR 10s
+4686826,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Flaveheal OD 80mg Capsule CR 10s; SV Card 50mg Tablet 14s
+4690034,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4690111,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - In progress,
+4690410,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Optineuron Injection 3ml
+4691788,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Ferrogen Z Tablet 10s; Hermin Forte Capsule 10s; Ecosprin 150mg Tablet 14s; Argigold 1gm Tablet 10s
+4691852,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Tamsufine D ER 0.5/0.4mg Tablet 10s
+4693724,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Gliclavac M 60/500mg Tablet ER 10s
+4694575,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Ketonalog Alfa Tablet 10s
+4695132,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Mecofine OD 1500mcg Tablet 10s
+4696395,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Clopica RV 10/75mg Tablet 10s
+4697015,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Pantube 25000 Capsule 10s
+4697760,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Apiedge 2.5mg Tablet 10s
+4698549,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Adakem 0.1% Gel 15gm
+4698930,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Prevegos Ginkgo Biloba 40mg Tablet 10s
+4699342,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Calciquick D3 60K Nano Solution Lychee Flavour 1X5ml
+4699357,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Calciquick D3 60K Nano Solution Lychee Flavour 1X5ml; Olmistrum AM 40/5mg Tablet 15s
+4700074,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,UV Doux Silicone Sunscreen SPF 50 Gel 100gm
+4703010,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Baga GRS 300mg Tablet 15s
+4704895,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Audiovit Z Capsule 10s; Pircetam 800mg Tablet 10s
+4708313,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,TLS 80mg Tablet 10s; Amipulside 50mg Tablet 10s
+4711331,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Amlip 2.5mg Tablet 10s
+4711567,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Atorvafine 5mg Tablet 10s
+4713133,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Skin Fine ISO 20mg Capsule 10s; Deflafine 6mg Tablet 10s
+4714309,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Glutazene Sachet 1X0.67gm
+4714877,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Prostaceum 100mg Tablet 10s
+4716511,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Iverheal 12mg Tablet 10s
+4716967,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Evion L 5000mg Capsule 15s
+4717288,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Pirox DT 20mg Tablet DT 10s
+4717883,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Linasmart 5mg Tablet 10s
+4718560,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Electral ORS Pineapple Flavour Powder 4.4gm
+4718761,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Finaworth 1mg Tablet 10s
+4720100,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Accepted,Raised - In progress,Sitasmart 50 Tablet
+4720362,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Nifedules RT 30mg Tablet ER 15s
+4720974,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Supracal XT Tablet 15s
+4721554,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Dapaquest 5mg Tablet 10s
+4722516,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4722660,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Drive 40 Tablet
+4723306,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Lifanta 5% Eye Drops 3ml
+4723370,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
+4727057,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Amrocad 0.25% Cream 30gm
+4727294,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Atorfit CV 20/75mg Capsule 15s
+4727453,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Dapasmart Trio Forte 10/1000/100mg Tablet ER 10s
+4727592,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Walcobal 2500mcg Injection 1ml
+4727847,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Alergin L 5mg Tablet 10s
+4728817,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Sanosan Baby Care Lotion 200ml
+4730096,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Lovax 600mg Tablet 15s; Oxaquest 450mg Tablet 10s
+4733211,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Knoll Hungry Syurp 200ml; Calcijoint Suspension 200ml
+4733514,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Melalite Forte 4% Cream 30gm
+4738821,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Evion 400mg Capsule 20s
+4739918,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Doxocip 400mg Tablet 10s
+4741005,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Argipreg 3gm/75mg Granules 6.5gm
+4741981,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Glimda MV 2/500/0.2mg SR Tablet 10s
+4742120,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Atomoxet 40mg Tablet 10s
+4742309,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Telgard AM 40/5mg Tablet 10s
+4743422,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,SodaTab 500mg (White) Tablet 10s
+4744376,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,New Ketokem 2% Anti Dandruff Shampoo 110ml; Udidoc 300mg Tablet 15s
+4744828,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Haem Up XT Plus Tablet 15s
+4745643,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4745892,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Rabidoc 20mg Tablet 10s
+4749889,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Nexluma 42mg Capsule 10s
+4750400,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Peglec Pineapple Orange Flavour Powder 137.15gm
+4752397,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Zindervit NF Tablet 15s
+4752439,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Rejected,Not raised,Cetaphil Cleansing & Moisturising Syndet Bar 4X100gm
+4752647,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Linofit 600mg Tablet 10s; Amoxyclav 250/125mg Tablet 10s
+4752709,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - In progress,Ecosooth Vanilla Flavour Sugar Free Powder Sachet 1gm
+4753227,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Lactorin 100gm Capsule 10s
+4753436,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,BVM Gold 75mg Tablet 14s; Pilomax 5mg Tablet 10s
+4753948,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Not raised,Dr Morepen BG 03 Gluco One Blood Glucose Monitoring System 1s
+4754206,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Levolin 50mcg Inhaler 200MDI
+4754443,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Nivea Body Milk Lotion 400ml
+4755075,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
+4755391,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Melaquick 3mg Tablet 10s
+4755426,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Deflafine 6mg Tablet 10s
+4759853,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Glimda 2mg Tablet 10s
+4761185,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Mecofine OD 1500mcg Tablet 10s
+4762311,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Midoright 10mg Tablet 10s
+4763122,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Nurewire Capsule 10s
+4763145,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Citrosoda Uti Sachet 5gm; Profine SR 200mg Tablet 10s
+4765555,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Salisia Se AD Shampoo 100ml
+4765612,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Carsiva Forte Tablet 10s; Duzela 30mg Capsule DR 10s
+4766219,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Telgard 40mg Tablet 10s
+4766402,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Healvital Soft Gelatin Capsule 10s
+4767517,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Movexx SP 100/325/15mg Tablet 10s
+4767865,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Tiacard 120mg Tablet SR 10s
+4768737,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Oxemia 100mg Tablet 6s; Phosgood 800mg Tablet 10s; Ketorenal Preprob 45B Capsule 10s
+4768891,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Astrigum Gum Paint 15ml
+4770676,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Accu Chek Guide Test Strips 50s
+4770758,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Esopen 40mg Tablet 10s; Rosugard 20mg Tablet 10s
+4772519,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Rejected,Raised - In progress,
+4773177,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Tenepla 20mg Tablet 10s
+4775035,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Syzodep 200 Tablet
+4777334,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Mometasooth 50mcg Nasal Spray 10ml
+4779783,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Mecofine OD 1500mcg Tablet 10s
+4781613,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Voglimore 0.3mg Tablet 10s
+4781667,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4781688,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - In progress,Vitamin C 500mg Orange Flavour Chewable Tablet 15s
+4782915,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Gemer 0.5/500mg Tablet PR 10s
+4784230,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4785183,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4785708,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Metol 25mg Tablet XL 10s
+4786503,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Stemamore MD 5mg Tablet 10s; Alergin L 5mg Tablet 10s
+4789341,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4791120,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Oxemia 100mg Tablet 6s
+4791308,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Clopicard 75mg Tablet 15s
+4791536,Single,,Counting error - confirmed by WH,Accepted,Not raised,Lactare Capsule 30s
+4797507,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Rosugard 10mg Tablet 10s
+4798327,Single,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Rejected,Raised - In progress,Becovac Capsule 20s; ThiroAce 100mcg Tablet 100s
+4798417,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Acarboz 50mg Tablet 10s
+4800064,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Itroll Novo 100mg Capsule 10s
+4800163,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Zincomac 50mg Tablet 14s; Nicip Cold & Flu 30mg Tablet 10s; Azicip 500mg Tablet 3s
+4800537,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Acne OC Sebum Regulating Moisturizer 75gm; UV Doux Silicone Sunscreen SPF 50 Gel 100gm
+4801067,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Magnibest 136/500mg Tablet 10s
+4801114,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
+4804128,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Walyte ORS for Instant Hydration Orange Flavour Sachet 4.4gm
+4804917,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Depiwhite Eye Gel 15ml
+4805448,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Demelan LSA Cream 40gm
+4805521,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Enshiner Dark Spot Correcting Cream 15gm; Follihair A Tablet 30s; Paracip 500mg Tablet 10s; Centrum Men Multiv
+4806086,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Clobedoc 0.05% Cream 15gm
+4811035,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Accepted,Raised - In progress,"Hepaglide 1mg Injection (1 Multi-dose Disposable Pen, 4 Needle, 4 Alcohol Swab)"
+4811655,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Tamsuheal 0.4mg Tablet MR 10s
+4812621,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,SV Card 50mg Tablet 14s
+4815073,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Acampure 333mg Tablet 6s
+4815542,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Gabatop 600mg Tablet 10s
+4818352,Single,mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - In progress,Enlarge Forte Granules 10gm
+4821181,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Dydrovue 10mg Tablet 10s
+4821358,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - In progress,
+4829639,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Rejected,Raised - In progress,Thyronorm 50mcg Tablet 120s; Pdostigamin 60mg Tablet 10s; Mycoace MMF 500mg Tablet 10s
+4834674,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Not raised,New A to Z Gold Capsule 15s
+4837454,Pack (multipack per mapping),mapping changes MDM pack qty,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - In progress,Movicol Paediatric 6.85gm Sachet Pack of 6X6.86gm
+4845020,Single,,Counting error - confirmed by WH,Accepted,Raised - In progress,Sensidew Hgf Capsule 30s
+4846666,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Metolar XR 50mg Capsule 15s
+4847521,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Citiace Plus 500/400mg Tablet 10s
+4848687,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,OA King Tablet 10s
+4853328,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Brivaquest 50mg Tablet 10s

@@ -48,3 +48,21 @@
 {"order_id": 4450538, "drug_code": 1378513, "reason": "Expired or Near Expiry Medicines", "batches": ["PLCAE250401|2027-04-01"], "delivered_at": "2026-10-26 09:05:40Z"}
 {"order_id": 4576665, "drug_code": 1500028, "reason": "Expired or Near Expiry Medicines", "batches": ["MUSIL501|2027-11-30"], "delivered_at": "2026-10-31 15:49:19Z"}
 {"order_id": 4441809, "drug_code": 1840557, "reason": "Expired or Near Expiry Medicines", "batches": ["26443465|2028-02-01", "26441561|2027-09-01"], "delivered_at": "2026-10-25 10:59:31Z"}
+{"order_id": 4403951, "drug_code": 1378795, "reason": "No Longer Needed", "batches": ["STS-128|2028-10-01"], "delivered_at": "2026-10-22 06:47:54Z"}
+{"order_id": 4480399, "drug_code": 1838870, "reason": "No Longer Needed", "batches": ["26S3GTB016|2028-05-01"], "delivered_at": "2026-10-31 12:01:04Z"}
+{"order_id": 4587524, "drug_code": 1833642, "reason": "Expired or Near Expiry Medicines", "batches": ["ADS25004ED|2027-10-28", "ADS25001ED|2026-07-18"], "delivered_at": "2026-11-06 13:11:02Z"}
+{"order_id": 4597586, "drug_code": 1034394, "reason": "No Longer Needed", "batches": ["SPA252599|2027-10-01", "SPA251906|2027-08-31"], "delivered_at": "2026-11-02 04:40:30Z"}
+{"order_id": 4616042, "drug_code": 1834091, "reason": "cx received defective product / category issue", "batches": ["2513EBA773|2027-06-29"], "delivered_at": "2026-11-05 08:45:02Z"}
+{"order_id": 4637531, "drug_code": 1423654, "reason": "Expired or Near Expiry Medicines", "batches": ["29534532|2027-07-30"], "delivered_at": "2026-11-09 09:54:41Z"}
+{"order_id": 4638433, "drug_code": 1423714, "reason": "Expired or Near Expiry Medicines", "batches": ["25TK0905|2027-11-01", "26TK0362|2028-03-01"], "delivered_at": "2026-11-06 08:06:20Z"}
+{"order_id": 4651700, "drug_code": 1832649, "reason": "Damaged or Defective Packaging", "batches": ["S5K005|2027-10-28", "BSH260046B|2028-03-01"], "delivered_at": "2026-11-10 06:45:30Z"}
+{"order_id": 4661228, "drug_code": 1713326, "reason": "Expired or Near Expiry Medicines", "batches": ["106260512|2028-04-01"], "delivered_at": "2026-11-10 08:34:16Z"}
+{"order_id": 4680462, "drug_code": 1839176, "reason": "Expired or Near Expiry Medicines", "batches": ["OMO26008CP|2028-04-30"], "delivered_at": "2026-11-11 09:55:30Z"}
+{"order_id": 4715917, "drug_code": 1500117, "reason": "Expired or Near Expiry Medicines", "batches": ["BVE26001|2027-06-28"], "delivered_at": "2026-11-12 11:21:34Z"}
+{"order_id": 4761918, "drug_code": 1500028, "reason": "Expired or Near Expiry Medicines", "batches": ["MUSIL501|2027-11-30"], "delivered_at": "2026-11-15 08:08:08Z"}
+{"order_id": 4790598, "drug_code": 1012891, "reason": "Expired or Near Expiry Medicines", "batches": ["FX0226001|2029-05-01"], "delivered_at": "2026-11-19 13:34:59Z"}
+{"order_id": 4790598, "drug_code": 1866096, "reason": "Damaged or Defective Packaging", "batches": ["G6445053|2027-07-30"], "delivered_at": "2026-11-19 13:34:59Z"}
+{"order_id": 4790598, "drug_code": 1208490, "reason": "Expired or Near Expiry Medicines", "batches": ["EL88|2029-02-28"], "delivered_at": "2026-11-19 13:34:59Z"}
+{"order_id": 4790598, "drug_code": 1423718, "reason": "Expired or Near Expiry Medicines", "batches": ["C225004|2027-11-30"], "delivered_at": "2026-11-19 13:34:59Z"}
+{"order_id": 4803235, "drug_code": 1070217, "reason": "Expired or Near Expiry Medicines", "batches": ["6056C85001|2028-04-01"], "delivered_at": "2026-11-19 06:34:42Z"}
+{"order_id": 4827842, "drug_code": 1839457, "reason": "diff batch and exp date ", "batches": ["085G067|2027-06-01"], "delivered_at": "2026-11-19 06:51:39Z"}
