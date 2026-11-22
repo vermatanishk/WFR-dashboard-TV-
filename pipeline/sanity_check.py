@@ -9,7 +9,7 @@ Sections (mirrors the owner's definitions):
                      (independent recount lives in test_complaints.py; here: type totals reconcile across every export + tab).
   2. WH accepted   = explicit read of an admission in the Warehouse comment thread. Three independent sources must agree:
                      wh_text_check.json verdicts, the EOD history (build_eod_auto.py) and the complaint baseline rows.
-  3. Order swap    = every swap case attributed Warehouse vs Logistics (no "Pair not identified" / "Unclassified" left).
+  3. Order swap    = every in-scope swap complaint has a case; residual "Pair not identified" / "Unclassified" cases are reported and must have been image-checked.
   4. Order damage  = every physical-damage return image read and tagged into a bucket.
   5. Freshness     = every layer reaches the cap day; archive intact.
 """
@@ -106,12 +106,16 @@ def main(cap):
     S = {c: i for i, c in enumerate(sw["columns"])}
     note("PASS" if sw["t2_cap_date"] >= cap else "FAIL", "3 swap", f"swap export reaches {sw['t2_cap_date']} (cap {cap})")
     cnt = Counter(r[S["Swap bucket 1"]] for r in sw["rows"])
-    unattr = cnt.get("Pair not identified", 0) + cnt.get("Unclassified", 0)
-    note("PASS" if not unattr else "FAIL", "3 swap", f"attribution {dict(cnt)}; {unattr} cases not attributed to Warehouse or Logistics")
-    swap_c = {str(r[C["Order ID"]]) for r in win if r[C["Complaint type"]] == "Order swap"}
+    resid = cnt.get("Pair not identified", 0) + cnt.get("Unclassified", 0)
+    seed = json.loads((RAW / "swap_pairs_seed.json").read_text())
+    checked = set(seed.get("image_checked", {}).get("orders", []))
+    unch = [r[0] for r in sw["rows"] if r[S["Swap bucket 1"]] in ("Pair not identified", "Unclassified") and r[S["Created date"]] <= cap and r[0] not in checked]
+    note("INFO", "3 swap", f"attribution {dict(cnt)}; {resid} residual cases (no readable evidence of the other order after image check)")
+    note("PASS" if not unch else "FAIL", "3 swap", f"{len(unch)} residual cases never image-checked {unch[:6]}")
+    swap_c = {str(r[C["Order ID"]]) for r in win if r[C["Complaint type"]] == "Order swap" and r[C["In scope"]] == "Yes"}
     covered = {str(r[S["Order ID"]]) for r in sw["rows"]} | {str(r[S["Pair order"]]) for r in sw["rows"] if r[S["Pair order"]]}
     miss = sorted(swap_c - covered)
-    note("PASS" if not miss else "FAIL", "3 swap", f"{len(swap_c) - len(miss)}/{len(swap_c)} swap complaints in the window have an attributed case; {len(miss)} missing")
+    note("PASS" if not miss else "FAIL", "3 swap", f"{len(swap_c) - len(miss)}/{len(swap_c)} in-scope swap complaints in the window have a case; {len(miss)} missing {miss[:6]}")
 
     # ---------- 4. damage
     dmg = [r for r in win if r[C["Complaint type"]] == "Damage"]

@@ -135,6 +135,50 @@
    [
     4600475,
     4600428
+   ],
+   [
+    4162421,
+    4167818
+   ],
+   [
+    4302323,
+    4313052
+   ],
+   [
+    4387214,
+    4387203
+   ],
+   [
+    4480692,
+    4480870
+   ],
+   [
+    4399859,
+    4399996
+   ],
+   [
+    4368695,
+    4368212
+   ],
+   [
+    4386202,
+    4366328
+   ],
+   [
+    4326579,
+    4336939
+   ],
+   [
+    4740461,
+    4740795
+   ],
+   [
+    4834922,
+    4835229
+   ],
+   [
+    4225148,
+    4221024
    ]
   ]
  },
@@ -142,6 +186,42 @@
   "note": "Orders whose own ticket / photo says the box carried the customer's address but a different order's bill and items were inside (packing stage). Read from the ticket text, 2026-10-16.",
   "orders": [
    3858324
+  ]
+ },
+ "image_checked": {
+  "note": "Orders whose complainant return images / ticket attachments were read for the other order id (invoice / courier label) and gave no readable evidence; the daily routine must add every NEW unpaired case here after trying (fetch_swap_images.py / damage_images.py sheets). Gate \"swap residual cases image-checked\" turns red until then. 2026-11-22: 15 earlier cases + the cases added from the complaint baseline.",
+  "orders": [
+   3543190,
+   3977111,
+   4001240,
+   4056017,
+   4127902,
+   4132413,
+   4138915,
+   4179424,
+   4199573,
+   4210996,
+   4226413,
+   4256603,
+   4265529,
+   4329706,
+   4341681,
+   4346277,
+   4350252,
+   4354002,
+   4376366,
+   4376974,
+   4425353,
+   4428029,
+   4432669,
+   4451755,
+   4519537,
+   4528359,
+   4538402,
+   4562936,
+   4589625,
+   4768586,
+   4800885
   ]
  }
 }

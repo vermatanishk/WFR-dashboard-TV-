@@ -3,6 +3,7 @@ ONE entry point for the daily 7 pm refresh of EVERYTHING (owner, 2026-11-06: the
 
   python3 pipeline/refresh_all.py plan     what to pull from ClickHouse today (incremental ranges) + which gates are red
   python3 pipeline/refresh_all.py build    run every deterministic step in order (Zoho REST + builds + tests) and stop on the first failure
+  python3 pipeline/refresh_all.py pending  the incremental SESSION work lists (RCA photos / item-missing tags / damage photos / swap residual image check)
   python3 pipeline/refresh_all.py gates    freshness gates only (exit 1 if any layer is stale) - run this before every push
 
 Incremental by design
@@ -14,6 +15,7 @@ Incremental by design
 Steps that need the Claude session itself (ClickHouse MCP pulls, reading photos) are listed by `plan`; `gates` proves they were done.
 """
 import json
+from collections import Counter
 import subprocess
 import sys
 from datetime import date, datetime, timedelta, timezone
@@ -87,10 +89,25 @@ def gates():
     chk("order swap export", sw["t2_cap_date"] >= (t - timedelta(days=4)).isoformat(), f"through {sw['t2_cap_date']}")
     rc = js("rca_export.json")
     chk("RCA export (root-cause columns)", rc["t2_cap_date"] >= (t - timedelta(days=4)).isoformat(), f"through {rc['t2_cap_date']}")
-    # swap: every case attributed Warehouse vs Logistics, every swap complaint of the window covered by a case
+    rcols = rc["columns"]; rcap = (t - timedelta(days=2)).isoformat()
+    rp = Counter(x for row in rc["rows"] if row[rcols.index("Created date")] <= rcap for x in row if x in ("Photo not read yet", "Tags pending"))
+    chk("RCA photos read (T-2 window)", not rp.get("Photo not read yet"), f"{rp.get('Photo not read yet', 0)} orders 'Photo not read yet' - run `refresh_all.py pending`")
+    chk("RCA item-missing tags (T-2 window)", not rp.get("Tags pending"), f"{rp.get('Tags pending', 0)} orders 'Tags pending' - run `refresh_all.py pending`")
+    # swap (owner 2026-11-22): (1) every in-scope swap complaint of the window is covered by a case; (2) every case the evidence can attribute is attributed
+    # Warehouse vs Logistics; the residue ("Pair not identified" / "Unclassified") is a reported bucket, but only once image evidence was TRIED for it
+    # (swap_pairs_seed.json image_checked) - a new unpaired case therefore turns the gate red until the session has read its photos.
     sc = sw["columns"]
-    un = [r for r in sw["rows"] if r[sc.index("Swap bucket 1")] in ("Pair not identified", "Unclassified")]
-    chk("swap cases attributed (WH vs Logistics)", not un, f"{len(un)} cases 'Pair not identified' / 'Unclassified'")
+    seed = json.loads((RAW / "swap_pairs_seed.json").read_text())
+    checked = set(seed.get("image_checked", {}).get("orders", []))
+    un = [r for r in sw["rows"] if r[sc.index("Swap bucket 1")] in ("Pair not identified", "Unclassified")
+          and r[sc.index("Created date")] <= cap and r[0] not in checked]
+    chk("swap residual cases image-checked", not un, f"{len(un)} unpaired / unclassified swap cases not yet image-checked {[r[0] for r in un][:6]} "
+        "(fetch_swap_images.py / damage_images.py sheets, read invoice + label order ids, add pairs to swap_pairs_seed.json, else add order to image_checked)")
+    cov = {str(r[0]) for r in sw["rows"]} | {str(r[sc.index("Pair order")]) for r in sw["rows"] if r[sc.index("Pair order")]}
+    ec = js("complaints_export.json"); ci = {c: i for i, c in enumerate(ec["columns"])}
+    miss = sorted({str(x[ci["Order ID"]]) for x in ec["rows"] if x[ci["Complaint type"]] == "Order swap" and x[ci["In scope"]] == "Yes"
+                   and (t - timedelta(days=60)).isoformat() <= x[ci["Created date"]] <= cap and str(x[ci["Order ID"]]) not in cov})
+    chk("swap complaints all covered by a case", not miss, f"{len(miss)} in-scope swap complaints without a case {miss[:6]}")
     # archive: nothing ever leaves the git history of rows (owner 2026-11-20)
     try:
         from archive_exports import check as _archive_check
@@ -145,13 +162,66 @@ def plan():
     for a, b in rng:
         print(f"   {a.replace('-', '')}_{b.replace('-', '')}   created_at >= '{a}' AND created_at < '{b}'")
     print("query shape: see the docstring of build_complaints.py (ClickHouse MCP, serviceId 790ddad5-a6ff-4b03-b135-9292547ed6b6)")
-    print("\nother session-only steps: damage photos (damage_images.py sheets/merge), swap + RCA pulls (CLAUDE.md checklists)\n")
+    print("\nsession-only incremental steps (photo reads, RCA tags, swap pairs): run `python3 pipeline/refresh_all.py pending` after the pulls\n")
     print_gates(gates())
+
+
+# ------------------------------------------------------------------------------------------------ pending
+def pending():
+    """The incremental SESSION steps (photo reads, tags, swap pairs), as explicit work lists. Run after the REST/ClickHouse core steps and `build`
+    (owner 2026-11-22: these are part of the daily routine, never skipped). Writes the order lists under zoho_raw90/ and prints the recipe."""
+    t = today()
+    cap = (t - timedelta(days=2)).isoformat()
+    rc = js("rca_export.json"); c = rc["columns"]
+    by = {"Photo not read yet": [], "Tags pending": []}
+    for row in rc["rows"]:
+        if row[c.index("Created date")] <= cap:
+            for k in by:
+                if k in row:
+                    by[k].append(row[0])
+    ph, tg = sorted(set(by["Photo not read yet"])), sorted(set(by["Tags pending"]))
+    (RAW / "rca_photo_pending_orders.json").write_text(json.dumps(ph))
+    (RAW / "rca_tags_pending_orders.json").write_text(json.dumps(tg))
+    e = js("complaints_export.json"); ec = e["columns"]
+    dm = sorted({r[0] for r in e["rows"] if r[ec.index("Photo bucket")] == "Photo not read yet" and r[ec.index("Created date")] >= (t - timedelta(days=60)).isoformat()})
+    (RAW / "damage_pending_orders.json").write_text(json.dumps(dm))
+    sw = js("swap_export.json"); sc = sw["columns"]
+    seed = json.loads((RAW / "swap_pairs_seed.json").read_text())
+    chk = set(seed.get("image_checked", {}).get("orders", []))
+    un = sorted({r[0] for r in sw["rows"] if r[sc.index("Swap bucket 1")] in ("Pair not identified", "Unclassified") and r[sc.index("Created date")] <= cap and r[0] not in chk})
+    (RAW / "swap_unpaired_orders.json").write_text(json.dumps(un))
+    print(f"T-2 cap {cap}")
+    print(f"1. RCA photos not read: {len(ph)} orders -> zoho_raw90/rca_photo_pending_orders.json   (rca_images.py, READ every sheet, merge_reads.py; CLAUDE.md photo recipe)")
+    print(f"2. RCA item-missing tags pending: {len(tg)} orders -> zoho_raw90/rca_tags_pending_orders.json")
+    print("     pull return lines (ClickHouse; columns quantity, order_quantity, missing_quantity, final_approved_number; reason != 'RTO'), map SKUs with the pack workbook")
+    print("     (~/Downloads 'Pack Quantity & Base Value Changes*.xlsx - Sheet1.csv', header row 7), GRN signature rows (mdm_grn_po_deltas grn_qty = pack x open_po_qty);")
+    print("     UNION new rows into rca_item_missing_orders / _sku / _inward_sig.json (never overwrite), then build_item_missing_tags.py -> build_rca_export.py -> build_rca_trend.py")
+    print(f"3. Damage photos not read: {len(dm)} orders -> zoho_raw90/damage_pending_orders.json   (damage_images.py sheets/merge)")
+    print(f"4. Swap residual cases not image-checked: {len(un)} orders -> zoho_raw90/swap_unpaired_orders.json")
+    print("     ClickHouse return-item image_urls (save_ch_result.py -> swap_unpaired_images_raw.json), `damage_images.py sheets swap_sheets swap_unpaired_images_raw.json swap_unpaired_orders.json`,")
+    print("     read every sheet, CROP + enlarge each invoice / courier label to read its Order ID; a different id = pair -> swap_pairs_seed.json image_pairs.pairs;")
+    print("     pull swap_orders / swap_status_raw / swap_return_status for the partner orders; then add every order you tried to image_checked.orders; build_swap.py, swap_view_spec.py")
+    print("     (orders with no return request: fetch_swap_images.py <ticketNumber> pulls the Zoho ticket attachments)")
 
 
 # ------------------------------------------------------------------------------------------------ build
 STEPS = [
     ("Zoho complaint tickets (incremental, last 3 days)", ["python3", "pull_complaint_tickets.py"]),
+    ("RCA: Zoho Dependency field (incremental)", ["python3", "pull_dependency.py"]),
+    ("RCA: provisional WH verdicts re-read", ["python3", "recheck_wh_comments.py"]),
+    ("RCA: ticket routing history", ["python3", "pull_ticket_routing.py"]),
+    ("RCA: wrong-medicine layer", ["python3", "build_rca_wrongmed.py"]),
+    ("RCA: expiry inputs", ["python3", "build_rca_inputs.py"]),
+    ("RCA: damaged / missing / swap extra branches", ["python3", "build_rca_extra.py"]),
+    ("RCA: funnel", ["python3", "build_rca.py"]),
+    ("RCA: item-missing tags", ["python3", "build_item_missing_tags.py"]),
+    ("RCA: export (order-level rows)", ["python3", "build_rca_export.py"]),
+    ("RCA: trend", ["python3", "build_rca_trend.py"]),
+    ("swap: ticket scan (never drops old tickets)", ["python3", "pull_swap_tickets.py"]),
+    ("swap: ticket routing", ["python3", "pull_swap_routing.py"]),
+    ("swap: warehouse verdicts of the swap tickets", ["python3", "read_swap_wh.py"]),
+    ("swap: cases", ["python3", "build_swap.py"]),
+    ("swap: view spec", ["python3", "swap_view_spec.py"]),
     ("complaint baseline (pass 1)", ["python3", "build_complaints.py"]),
     ("warehouse comments for new / provisional tickets", ["python3", "recheck_wh_comments.py", "--extra", "zoho_raw90/cmp_tickets_to_read.json"]),
     ("complaint baseline (pass 2, with verdicts)", ["python3", "build_complaints.py"]),
@@ -165,6 +235,9 @@ STEPS = [
     ("tests: JS evaluator swap", ["node", "test_view_js.js", "swap"]),
     ("tests: Google-Sheet upsert never deletes rows", ["node", "test_gsheet_upsert.js"]),
     ("tests: warehouse-comment classifier", ["python3", "test_wh_comment_classifier.py"]),
+    ("tests: RCA", ["python3", "test_rca.py"]),
+    ("tests: RCA trend", ["python3", "test_rca_trend.py"]),
+    ("tests: RCA view vs export", ["python3", "check_view_from_export.py"]),
 ]
 
 
@@ -184,6 +257,8 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "plan"
     if cmd == "plan":
         plan()
+    elif cmd == "pending":
+        pending()
     elif cmd == "build":
         build()
     elif cmd == "gates":

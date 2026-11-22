@@ -25,15 +25,15 @@ RAW = HERE / "zoho_raw90"
 PRIO = "PLOCQDNX"
 
 
-def sheets(out):
+def sheets(out, raw_name="damage_images_raw.json", pend_name="damage_pending_orders.json"):
     from PIL import Image, ImageDraw
     out = Path(out); out.mkdir(parents=True, exist_ok=True)
     idx_p = RAW / "rca_image_index.json"
     index = json.loads(idx_p.read_text()) if idx_p.exists() else {}
     img_dir = RAW / "rca_images"; img_dir.mkdir(exist_ok=True)
-    pend = set(json.loads((RAW / "damage_pending_orders.json").read_text()))
+    pend = set(json.loads((RAW / pend_name).read_text()))
     sel, seen = [], set()
-    for r in json.loads((RAW / "damage_images_raw.json").read_text())["result"]["data"]:
+    for r in json.loads((RAW / raw_name).read_text())["result"]["data"]:
         if r["order_id"] not in pend:
             continue
         for u in json.loads(r["image_urls"] or "[]"):
@@ -87,6 +87,6 @@ def merge(codes_file):
 
 if __name__ == "__main__":
     if sys.argv[1] == "sheets":
-        sheets(sys.argv[2] if len(sys.argv) > 2 else str(HERE / "damage_sheets"))
+        sheets(sys.argv[2] if len(sys.argv) > 2 else str(HERE / "damage_sheets"), *sys.argv[3:5])
     else:
         merge(sys.argv[2])

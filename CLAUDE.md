@@ -492,3 +492,26 @@ When `zoho_auth` REST fails but the Zoho Desk MCP works (check `getOrganizations
   non-Warehouse-dependency tickets had Warehouse comments (270126, 270140, 270331, 270250).
 - Core chunk for new dashboard tickets: 4 ClickHouse pulls -> `save_ch_result.py` -> `add_core_chunk.py <N>` (c10 on 2026-11-22), then `build_full_dataset.py`, `build_report.py`, `build_eod_auto.py`, `build_macro_trend.py`.
 - Provisional re-reads: the gate window is now 7 days (14 days of re-reads cost ~100k tokens for 0 admissions found in the 2026-11-22 run).
+
+### 2026-11-22 - REST restored, RCA / swap / damage incremental steps are now part of EVERY daily run (owner: "updated without fail")
+**Zoho access:** REST works again with a new self-client. To renew: Self Client at https://api-console.zoho.in (logged in as a user inside org 60026539570) -> Generate Code (scopes
+`Desk.tickets.READ,Desk.basic.READ,Desk.search.READ`) -> put `ZOHO_CLIENT_ID/SECRET` in the gitignored `pipeline/.zoho.env` -> `python3 pipeline/zoho_exchange_code.py <code>`. The MCP recipe above stays the fallback.
+**Order of a daily run** (all of it, in this order; `refresh_all.py gates` must be green before the push):
+1. `refresh_all.py plan` -> ClickHouse return pulls for the listed ranges (+ core c-chunk, cold flags, EOD chain as in the numbered pipeline).
+2. `refresh_all.py build` -> now also runs the deterministic RCA chain (pull_dependency, recheck_wh_comments, pull_ticket_routing, build_rca_wrongmed / inputs / extra / build_rca / item-missing tags / export / trend),
+   the swap chain (pull_swap_tickets - never drops old tickets, pull_swap_routing, read_swap_wh - also reads the baseline swap tickets, build_swap, swap_view_spec), complaints, views, archive, sanity, html and ALL tests.
+3. `refresh_all.py pending` -> writes and prints the four session work lists (every one must reach 0 before the push):
+   a. **RCA photos not read** -> `rca_images.py`, read every contact sheet, `rca_reads_add.py` (guarantees 10 fields) + `merge_reads.py`.
+   b. **RCA item-missing tags pending** -> pull return lines for the listed orders (ClickHouse `marketplace_return_items`: `quantity` = claimed qty, `order_quantity`, `missing_quantity`, `final_approved_number`; reason != 'RTO'; join
+      `mdm_master_drug_data` name / pack_form / pack_quantity_value_decimal), map SKUs with the pack workbook (`~/Downloads/Pack Quantity & Base Value Changes.xlsx - Sheet1.csv`, header row 7: code, name, new pack qty, base qty,
+      Single/Pack; codes missing from it are legitimate "SKU missing from pack mapping"), GRN signature rows (`mdm_grn_po_deltas`: grn_qty = pack size x open_po_qty or reciprocal, since 1 Apr). UNION the new rows into
+      `rca_item_missing_orders.json` / `_sku.json` / `_inward_sig.json` (keys: order+code, order+code, code+grn+po+date; never overwrite), orders with no return line = `src: 'not identified'` row. Then build_item_missing_tags -> build_rca_export -> build_rca_trend.
+   c. **Damage photos not read** -> `damage_images.py sheets|merge` (codes P/L/O/C/Q/D/N/X).
+   d. **Swap residual cases not image-checked** -> `damage_images.py sheets swap_sheets swap_unpaired_images_raw.json swap_unpaired_orders.json` (generalised: raw file + order list are arguments) after saving the ClickHouse return-item
+      `image_urls` of the listed orders; READ every sheet, then CROP + enlarge each invoice / courier label (`rca_images/<hash>.jpeg`, header region) to read its Order ID - sheets are too small to read ids. A different id = the other order of
+      the swap: add `[a, b]` to `swap_pairs_seed.json` `image_pairs.pairs`, pull `swap_orders.json` (wh/pincode/courier), `swap_status_raw.txt` (stages; 'Backed System User' -> SYS) for BOTH orders, `build_swap.py`.
+      Orders with no return request: `fetch_swap_images.py <ticketNumber>` (Zoho ticket attachments). Whatever you tried goes into `image_checked.orders` of the seed (illegible digits are never guessed).
+4. `refresh_all.py gates`, commit, `git fetch && git merge origin/main && git push origin main`.
+**Swap definition change (2026-11-22):** the Order Swap case list is no longer only the ticket-text scan - every in-scope swap complaint of the complaint baseline (return reason "order swap" / ticket typed Order swap) without a case is added
+(`build_swap.py`, "baseline swap complaints"), ticketless ones with an empty Ticket ID. Gates: "swap complaints all covered by a case" (100%) and "swap residual cases image-checked". "Pair not identified" / "Unclassified" stay visible
+buckets (no readable evidence of the other order after image check) - they are reported, never forced into Warehouse or Logistics.

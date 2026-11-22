@@ -12,6 +12,13 @@ from wh_comment_classifier import classify_wh_comments, investigation_subtype, s
 tickets, _ = select_tickets()
 cap = json.loads((HERE / "rca.json").read_text())["t2_cap_date"]
 cache = json.loads(CACHE.read_text())
+# baseline swap complaints (return reason "order swap" / ticket typed Order swap) that the text scan did not select (2026-11-22)
+_ce = json.loads((HERE / "complaints_export.json").read_text())
+_C = {c: i for i, c in enumerate(_ce["columns"])}
+for _r in _ce["rows"]:
+    _tid = str(_r[_C["Ticket ID"]] or "")
+    if _r[_C["Complaint type"]] == "Order swap" and _tid and _tid not in tickets:
+        tickets[_tid] = {"ticket_id": _tid, "order_id": _r[_C["Order ID"]], "created": _r[_C["Created date"]]}
 todo = [t for t in tickets.values() if t["created"] <= cap and cache.get(t["ticket_id"], {}).get("verdict") not in ("admitted", "denied")]
 print(len(todo), "to read")
 today = datetime.now(IST).date().isoformat()

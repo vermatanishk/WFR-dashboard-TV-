@@ -152,6 +152,7 @@ def main():
         pair_of.setdefault(b, []).append((a, b))
     cases, used, used_tickets = [], set(), set()
     img = load("swap_pairs_seed.json")["image_pairs"]["pairs"]
+    pseudo = {}
     img_basis = {}
     # one case per pair (earliest unused ticket of either order); a ticket anchors at most one case
     for a, b in sorted(pairs):
@@ -162,6 +163,27 @@ def main():
         used |= {a, b}
         used_tickets.add(first["ticket_id"])
         cases.append((first, b if first["order_id"] == a else a, "Ticket text / owner-confirmed pair"))
+    # Baseline swap complaints the text scan never saw (2026-11-22, owner: close every swap complaint): a customer return request
+    # with reason "order swap" and/or a ticket typed Order swap that the text scan missed. Each becomes an unpaired case
+    # ("Pair not identified" unless an image pair / ticket names the partner) so total cases = every in-scope swap complaint.
+    ce = load("../complaints_export.json")
+    CI = {c: i for i, c in enumerate(ce["columns"])}
+    WHID = {"Bangalore": 1, "Bengaluru": 1, "Delhi": 2, "Mumbai": 3, "DocPharma": 4, "Lucknow": 5, "Kolkata": 6, "Mother Warehouse": 7,
+            "Patna": 8, "Hyderabad WH": 9, "Guwahati WH": 10}
+    covered = set(by_order) | used
+    swap_day = {}
+    for r in ce["rows"]:
+        if r[CI["Complaint type"]] == "Order swap" and r[CI["In scope"]] == "Yes":
+            swap_day[int(r[CI["Order ID"]])] = max(swap_day.get(int(r[CI["Order ID"]]), ""), r[CI["Created date"]])
+    for r in sorted(ce["rows"], key=lambda r: r[CI["Created date"]]):
+        o = int(r[CI["Order ID"]])
+        if r[CI["Complaint type"]] != "Order swap" or r[CI["In scope"]] != "Yes" or o in covered or o in pseudo:
+            continue
+        tid = str(r[CI["Ticket ID"]] or "")
+        d = r[CI["Created date"]]
+        pseudo[o] = {"wh": WHID.get(r[CI["Warehouse"]], 0), "ret": r[CI["Return request"]]}
+        by_order.setdefault(o, []).append({"ticket_id": tid or f"o{o}", "order_id": o, "created": d, "created_time": d + "T00:00:00.000Z",
+                                           "dependency": (deps.get(tid) or {}).get("dependency") if isinstance(deps.get(tid), dict) else deps.get(tid)})
     # pairs read from the complainant's return images: the complaint order's own ticket anchors the case; a mutual
     # swap (both customers complained) is one case
     done = set()
@@ -182,13 +204,21 @@ def main():
             continue
         cases.append((ts[0], None, ""))
     rows, stats = [], {}
+    facts_missing = set()
     for t, partner, how in sorted(cases, key=lambda c: c[0]["created_time"]):
-        if t["created"] < start:
-            continue
+        if t["created"] < start and not any(swap_day.get(x, "") >= start for x in (o, partner)):
+            continue        # a pair whose anchor ticket is older than the window still counts when the other order's complaint is inside it
         o = t["order_id"]
-        meta = orders.get(str(o))
+        if (partner and str(partner) not in orders) or (partner and str(partner) not in status and False):
+            facts_missing.add(partner)
+        meta = orders.get(str(o)) or ({"wh": pseudo[o]["wh"]} if o in pseudo else None)
         if meta is None:
             print("no order facts for", o)
+            facts_missing.add(o)
+            continue
+        if partner and str(partner) not in orders:
+            print("no order facts for partner", partner, "of", o)
+            facts_missing.add(partner)
             continue
         if partner:
             b1, b2, basis, courier = classify_pair(o, partner, orders, status, lm)
@@ -200,7 +230,9 @@ def main():
         # Investigation uses EVERY ticket of the case (both sides of a pair), best verdict wins:
         # admitted > denied > anything else. Routing: Dependency field, with ticket TAGS (current + ever) as fallback.
         cts = by_order.get(o, []) + (by_order.get(partner, []) if partner else [])
-        states = [investigation_state(checks.get(c["ticket_id"])) for c in cts]
+        # a complaint with no ticket: the Warehouse was never asked (state not_investigated / no WH comment)
+        states = [("not_investigated", "no_wh_comment") if c["ticket_id"].startswith("o") else investigation_state(checks.get(c["ticket_id"])) for c in cts] \
+            or [("not_investigated", "no_wh_comment")]
         rank = {"accepted": 0, "rejected": 1, "not_investigated": 2, "not_yet_checked": 3}
         state, sub = min(states, key=lambda x: rank[x[0]])
         rt = [routing.get(c["ticket_id"]) or {} for c in cts]
@@ -216,16 +248,19 @@ def main():
         if routed_wh and not ever_wh:
             dep = "Warehouse (by tag)"
         sts = rstat.get(str(o))
-        if sts is None:
+        if o in pseudo:
+            rs = None
+        elif sts is None:
             rs = "not_raised"
         else:
             codes = [c for c in sts if c]
             rs = "cancelled" if codes and all(c in (280, 231) for c in codes) else \
                  "accepted_refunded" if 250 in codes else "in_progress"
-        rows.append([o, t["ticket_id"], t["created"], WH.get(meta["wh"], str(meta["wh"])), "Order swap",
+        rows.append([o, "" if t["ticket_id"].startswith("o") else t["ticket_id"], t["created"], WH.get(meta["wh"], "Unknown"), "Order swap",
                      DECISION.get(decision, decision), nd_label if decision == "no_decision" else "",
-                     RET[rs], dep, b1, b2, str(partner or ""), basis, conf, courier,
+                     pseudo[o]["ret"] if o in pseudo else RET[rs], dep, b1, b2, str(partner or ""), basis, conf, courier,
                      "Yes" if t["created"] <= cap else "No (held back, WH not yet commented)"])
+    (RAW / "swap_facts_missing.json").write_text(json.dumps(sorted(facts_missing)))
     cols = COLUMNS[:9] + ["Swap bucket 1", "Swap bucket 2", "Pair order", "Evidence basis", "Confidence", "Courier match", "In T-2 scope"]
     out = {"generated_at": gen, "t2_cap_date": cap, "columns": cols, "rows": rows,
            "note": "One row per swap CASE (a pair counts once; unpaired orders count once). Built by pipeline/build_swap.py"}

@@ -4,22 +4,22 @@
   "2026-09-22",
   "2026-11-20"
  ],
- "generated_at": "2026-11-22T08:15:14Z",
+ "generated_at": "2026-11-22T09:27:52Z",
  "checks": [
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "window 2026-09-22..2026-11-20: 2746 complaints (order x type) = {'Damage': 1038, 'Missing / short qty': 1002, 'Expiry': 149, 'Wrong medicine': 398, 'MRP / batch mismatch': 79, 'Order swap': 80}"
+   "text": "window 2026-09-22..2026-11-20: 2747 complaints (order x type) = {'Damage': 1038, 'Missing / short qty': 1002, 'Expiry': 150, 'Wrong medicine': 398, 'MRP / batch mismatch': 79, 'Order swap': 80}"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "source split (return request vs ticket): {'Zoho ticket only': 330, 'Return request only': 1101, 'Return request + ticket': 1315}"
+   "text": "source split (return request vs ticket): {'Zoho ticket only': 330, 'Return request only': 1101, 'Return request + ticket': 1316}"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_wfr_export.json: 1628 rows in window vs 1628 in complaints_export"
+   "text": "cmp_wfr_export.json: 1629 rows in window vs 1629 in complaints_export"
   },
   {
    "status": "PASS",
@@ -72,14 +72,19 @@
    "text": "swap export reaches 2026-11-20 (cap 2026-11-20)"
   },
   {
-   "status": "FAIL",
+   "status": "INFO",
    "section": "3 swap",
-   "text": "attribution {'WH issue': 27, 'Pair not identified': 15, 'Logistics issue': 8, 'Unclassified': 2}; 17 cases not attributed to Warehouse or Logistics"
+   "text": "attribution {'Pair not identified': 25, 'Logistics issue': 10, 'WH issue': 41, 'Unclassified': 3}; 28 residual cases (no readable evidence of the other order after image check)"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "3 swap",
-   "text": "48/80 swap complaints in the window have an attributed case; 32 missing"
+   "text": "0 residual cases never image-checked []"
+  },
+  {
+   "status": "PASS",
+   "section": "3 swap",
+   "text": "69/69 in-scope swap complaints in the window have a case; 0 missing []"
   },
   {
    "status": "PASS",
@@ -137,6 +142,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 2,
- "pass": 18
+ "fail": 0,
+ "pass": 20
 }
