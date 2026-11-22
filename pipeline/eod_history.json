@@ -1632,5 +1632,46 @@
     "manifester": "Mounika_HYD"
    }
   ]
+ },
+ "2026-11-20": {
+  "total": 20,
+  "accepted": 3,
+  "by_category": {
+   "Expiry Issue": 4,
+   "Missing/Wrong Qty": 14,
+   "Damaged/Defective": 2
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "270414",
+    "order_id": 4818352,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": null,
+    "packer": "Supritha",
+    "qc": null,
+    "manifester": "Roopa_BLRWH"
+   },
+   {
+    "ticket_id": "270416",
+    "order_id": 4845020,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": null,
+    "packer": "Shwetha1_BLRWH",
+    "qc": null,
+    "manifester": "Vasantha"
+   },
+   {
+    "ticket_id": "270429",
+    "order_id": 4837454,
+    "category": "Missing/Wrong Qty",
+    "location": "Delhi",
+    "picker": null,
+    "packer": "Ankit_DEL",
+    "qc": null,
+    "manifester": "Ronu_DEL"
+   }
+  ]
  }
 }

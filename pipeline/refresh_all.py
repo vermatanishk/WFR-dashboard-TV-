@@ -54,10 +54,10 @@ def gates():
     cap = (t - timedelta(days=2)).isoformat()
     unread = [x["ticket_id"] for x in d["tickets"] if x["created_time"][:10] <= cap and x["ticket_id"] not in wh]
     chk("core WH verdicts read (tickets past T-2)", not unread, f"{len(unread)} tickets past T-2 with no cached verdict")
-    recent = {x["ticket_id"] for x in d["tickets"] if x["created_time"][:10] >= (t - timedelta(days=14)).isoformat()}
+    recent = {x["ticket_id"] for x in d["tickets"] if x["created_time"][:10] >= (t - timedelta(days=7)).isoformat()}
     stale_prov = [k for k in recent if (wh.get(k) or {}).get("verdict") in ("no_wh_comment", "unrecognized")
                   and (wh[k].get("rechecked_on") or "0") < (t - timedelta(days=1)).isoformat()]
-    chk("core provisional verdicts re-read (last 14 days)", not stale_prov, f"{len(stale_prov)} provisional verdicts not re-read since yesterday")
+    chk("core provisional verdicts re-read (last 7 days)", not stale_prov, f"{len(stale_prov)} provisional verdicts not re-read since yesterday")
     eod = js("data_eod.json")
     chk("EOD tab date = T-2", eod["for_date"] >= cap, f"for_date {eod['for_date']} (want {cap}); run build_eod_auto.py")
     # complaint layer

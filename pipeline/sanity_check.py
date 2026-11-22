@@ -98,8 +98,8 @@ def main(cap):
     prov = [t for t, v in wh.items() if v.get("verdict") in ("no_wh_comment", "unrecognized") and t in d_tick
             and lo <= d_tick[t]["created_time"][:10] <= (datetime.strptime(cap, "%Y-%m-%d").date() - timedelta(days=0)).isoformat()
             and (v.get("rechecked_on") or "0") < (ist_today() - timedelta(days=1)).isoformat()
-            and d_tick[t]["created_time"][:10] >= (ist_today() - timedelta(days=14)).isoformat()]
-    note("PASS" if not prov else "FAIL", "2 WH accepted", f"{len(prov)} provisional verdicts (last 14 days) not re-read since yesterday")
+            and d_tick[t]["created_time"][:10] >= (ist_today() - timedelta(days=7)).isoformat()]
+    note("PASS" if not prov else "FAIL", "2 WH accepted", f"{len(prov)} provisional verdicts (last 7 days) not re-read since yesterday")
 
     # ---------- 3. swap
     sw = js("swap_export.json")

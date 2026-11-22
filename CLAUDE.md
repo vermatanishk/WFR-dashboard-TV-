@@ -482,3 +482,13 @@ ClickHouse (return items join request; `ri.reason != 'RTO'`; add `repeat('x',300
 show "Data through D" and turn red STALE when >2 days behind; triggers 07:00 and 21:00 IST; other tabs (e.g. "sreeniketh") are never touched. The user must re-paste Code.gs after changes.
 **KNOWN BLOCKER (2026-11-20):** Zoho Desk REST and MCP both return `USER_NOT_IN_ORG` for org 60026539570 (the refresh token now only sees org 60071308330 = empty FREE org). Until the
 self-client is re-authorised by an org admin, ticket pulls, WH-comment reads, `pull_dependency`, swap/RCA refresh cannot run; gates show Zoho access / swap / RCA / verdict gaps RED.
+
+### 2026-11-22 - Zoho Desk MCP fallback while REST is revoked (connector worked again, REST still 403)
+When `zoho_auth` REST fails but the Zoho Desk MCP works (check `getOrganizations`/`searchTickets` with orgId 60026539570), run the same steps by hand with these helpers:
+- Tickets: `searchTickets` with `createdTimeRange`, `fields="ticketNumber,createdTime,cf_order_id,cf_sub_disposition,cf_dependency"`, `customField1="cf_dispositions:Return and Pickup"` (99% of complaint
+  tickets), one UTC day per call; write `num|HH:MM:SS|order|sub-disposition` lines and run `python3 pipeline/ingest_tickets.py <YYYY-MM-DD> <file>`; then `extend_consolidated.py <since>`.
+- Warehouse verdicts: `searchTickets` by `ticketNumber` list (<= 14 per call, `fields="ticketNumber"` returns the internal id) then `getTicketComments(ticketId)`; put only the Warehouse-role comment
+  texts into a JSON `{ticket: [[iso, text], ...]}` (`[]` = read, none) and run `python3 pipeline/ingest_wh.py <json>` - it uses the real classifier. NEVER shortcut by Dependency: 4 of 14
+  non-Warehouse-dependency tickets had Warehouse comments (270126, 270140, 270331, 270250).
+- Core chunk for new dashboard tickets: 4 ClickHouse pulls -> `save_ch_result.py` -> `add_core_chunk.py <N>` (c10 on 2026-11-22), then `build_full_dataset.py`, `build_report.py`, `build_eod_auto.py`, `build_macro_trend.py`.
+- Provisional re-reads: the gate window is now 7 days (14 days of re-reads cost ~100k tokens for 0 admissions found in the 2026-11-22 run).
