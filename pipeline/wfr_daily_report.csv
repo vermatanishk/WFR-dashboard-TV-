@@ -1,4 +1,4 @@
-WFR Daily Report,2026-11-22T07:24:44Z
+WFR Daily Report,2026-11-22T07:29:44Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 251426,3324045,Wrong Medicines,Lucknow,2026-08-07T14:32:23.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
@@ -2682,14 +2682,14 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 270396,4803235,Expiry Issue,Bangalore,2026-11-20T10:26:23.000,Considered BOD,"Warehouse-team Zoho comment matched no known admission/denial pattern - needs manual review: ""None"" - treated as BOD by default (unconfirmed resolution)",-,-
 270403,4821181,Missing/Wrong Qty,Bangalore,2026-11-20T10:55:15.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
 270408,4660069,Damaged/Defective,Unknown,2026-11-20T11:11:38.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
-270411,4759556,Damaged/Defective,Delhi,2026-11-20T11:56:27.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270414,4818352,Missing/Wrong Qty,Bangalore,2026-11-20T12:22:30.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270415,4853328,Missing/Wrong Qty,Bangalore,2026-11-20T12:23:15.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270416,4845020,Missing/Wrong Qty,Bangalore,2026-11-20T12:25:18.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270418,4815542,Missing/Wrong Qty,Delhi,2026-11-20T12:27:40.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270421,4847521,Missing/Wrong Qty,Bangalore,2026-11-20T12:37:10.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270425,4829639,Missing/Wrong Qty,Kolkata,2026-11-20T13:05:33.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
-270429,4837454,Missing/Wrong Qty,Delhi,2026-11-20T13:23:47.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
+270411,4759556,Damaged/Defective,Delhi,2026-11-20T11:56:27.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
+270414,4818352,Missing/Wrong Qty,Bangalore,2026-11-20T12:22:30.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Supritha / Salmabanu_BLRWH,Kaveri_BLRWH
+270415,4853328,Missing/Wrong Qty,Bangalore,2026-11-20T12:23:15.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
+270416,4845020,Missing/Wrong Qty,Bangalore,2026-11-20T12:25:18.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Shwetha1_BLRWH,Asha_BLRWH
+270418,4815542,Missing/Wrong Qty,Delhi,2026-11-20T12:27:40.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
+270421,4847521,Missing/Wrong Qty,Bangalore,2026-11-20T12:37:10.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
+270425,4829639,Missing/Wrong Qty,Kolkata,2026-11-20T13:05:33.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to CX Mahiboob bee""",-,-
+270429,4837454,Missing/Wrong Qty,Delhi,2026-11-20T13:23:47.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX Mahiboob bee""",Shailesh_DEL / Ankit_DEL,Shivani_DEL
 270473,4838953,Missing/Wrong Qty,Delhi,2026-11-21T03:45:15.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 270475,4841623,Missing/Wrong Qty,Delhi,2026-11-21T03:47:46.000,Considered BOD,Not yet checked against a Warehouse-team Zoho comment - treated as BOD by default (unconfirmed resolution),-,-
 270476,4809480,Expiry Issue,Unknown,2026-11-21T03:56:53.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
@@ -2730,8 +2730,8 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 Summary
 Total tickets raised,2725
 Total refunds/returns issued,2491
-WH Accepted,184
-BOD,1745
-Considered BOD,562
+WH Accepted,187
+BOD,1750
+Considered BOD,554
 No return record (excluded from refund total),234
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes

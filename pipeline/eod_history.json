@@ -1633,6 +1633,37 @@
    }
   ]
  },
+ "2026-11-19": {
+  "total": 20,
+  "accepted": 2,
+  "by_category": {
+   "Wrong Medicines": 8,
+   "Missing/Wrong Qty": 10,
+   "Expiry Issue": 2
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "270206",
+    "order_id": 4823554,
+    "category": "Wrong Medicines",
+    "location": "Lucknow",
+    "picker": "Gayatri.M_LKO",
+    "packer": "Shivam.J_LKO",
+    "qc": "Akanksha_LKO",
+    "manifester": "Shakti_LKO"
+   },
+   {
+    "ticket_id": "270208",
+    "order_id": 4798417,
+    "category": "Missing/Wrong Qty",
+    "location": "Mumbai",
+    "picker": "Sanika-k_MUM",
+    "packer": "MayuriK_MUM",
+    "qc": "SuchitaJ_MUM",
+    "manifester": "Vijay-P_MUM"
+   }
+  ]
+ },
  "2026-11-20": {
   "total": 20,
   "accepted": 3,
@@ -1647,9 +1678,9 @@
     "order_id": 4818352,
     "category": "Missing/Wrong Qty",
     "location": "Bangalore",
-    "picker": null,
+    "picker": "Supritha / Salmabanu_BLRWH",
     "packer": "Supritha",
-    "qc": null,
+    "qc": "Kaveri_BLRWH",
     "manifester": "Roopa_BLRWH"
    },
    {
@@ -1657,9 +1688,9 @@
     "order_id": 4845020,
     "category": "Missing/Wrong Qty",
     "location": "Bangalore",
-    "picker": null,
+    "picker": "Shwetha1_BLRWH",
     "packer": "Shwetha1_BLRWH",
-    "qc": null,
+    "qc": "Asha_BLRWH",
     "manifester": "Vasantha"
    },
    {
@@ -1667,9 +1698,9 @@
     "order_id": 4837454,
     "category": "Missing/Wrong Qty",
     "location": "Delhi",
-    "picker": null,
+    "picker": "Shailesh_DEL / Ankit_DEL",
     "packer": "Ankit_DEL",
-    "qc": null,
+    "qc": "Shivani_DEL",
     "manifester": "Ronu_DEL"
    }
   ]

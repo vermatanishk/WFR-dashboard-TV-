@@ -4,22 +4,22 @@
   "2026-09-22",
   "2026-11-20"
  ],
- "generated_at": "2026-11-22T07:29:01Z",
+ "generated_at": "2026-11-22T07:29:47Z",
  "checks": [
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "window 2026-09-22..2026-11-20: 2745 complaints (order x type) = {'Damage': 1038, 'Missing / short qty': 1001, 'Expiry': 150, 'Wrong medicine': 397, 'MRP / batch mismatch': 79, 'Order swap': 80}"
+   "text": "window 2026-09-22..2026-11-20: 2747 complaints (order x type) = {'Damage': 1038, 'Missing / short qty': 1002, 'Expiry': 150, 'Wrong medicine': 398, 'MRP / batch mismatch': 79, 'Order swap': 80}"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "source split (return request vs ticket): {'Zoho ticket only': 329, 'Return request only': 1100, 'Return request + ticket': 1316}"
+   "text": "source split (return request vs ticket): {'Zoho ticket only': 330, 'Return request only': 1101, 'Return request + ticket': 1316}"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_wfr_export.json: 1627 rows in window vs 1627 in complaints_export"
+   "text": "cmp_wfr_export.json: 1629 rows in window vs 1629 in complaints_export"
   },
   {
    "status": "PASS",
@@ -34,7 +34,7 @@
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "329 complaints exist only as a Zoho ticket (no return request) and are counted"
+   "text": "330 complaints exist only as a Zoho ticket (no return request) and are counted"
   },
   {
    "status": "PASS",
@@ -44,7 +44,7 @@
   {
    "status": "PASS",
    "section": "2 WH accepted",
-   "text": "EOD history: 98 admissions across 59 days; 0 not in the verdict cache []"
+   "text": "EOD history: 100 admissions across 60 days; 0 not in the verdict cache []"
   },
   {
    "status": "WARN",
@@ -54,7 +54,7 @@
   {
    "status": "INFO",
    "section": "2 WH accepted",
-   "text": "macro table 'WH Accepted' (T-2 capped) sums to 90 in the window; complaint baseline shows 115; EOD 98"
+   "text": "macro table 'WH Accepted' (T-2 capped) sums to 93 in the window; complaint baseline shows 115; EOD 100"
   },
   {
    "status": "PASS",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T07:27:59Z",
+  "generated_at": "2026-11-22T07:29:45Z",
   "for_date": "2026-11-20",
   "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
   "tickets": [
@@ -194,9 +194,9 @@
       "wh_comment": "We have sent short qty to CX Mahiboob bee",
       "wh_accepted_text": true,
       "reason": "Warehouse team comment is a genuine admission: \"We have sent short qty to CX Mahiboob bee\"",
-      "picker": null,
+      "picker": "Supritha / Salmabanu_BLRWH",
       "packer": "Supritha",
-      "qc": null,
+      "qc": "Kaveri_BLRWH",
       "manifester": "Roopa_BLRWH"
     },
     {
@@ -222,9 +222,9 @@
       "wh_comment": "We have sent short qty to CX Mahiboob bee",
       "wh_accepted_text": true,
       "reason": "Warehouse team comment is a genuine admission: \"We have sent short qty to CX Mahiboob bee\"",
-      "picker": null,
+      "picker": "Shwetha1_BLRWH",
       "packer": "Shwetha1_BLRWH",
-      "qc": null,
+      "qc": "Asha_BLRWH",
       "manifester": "Vasantha"
     },
     {
@@ -278,9 +278,9 @@
       "wh_comment": "We have sent short qty to CX Mahiboob bee",
       "wh_accepted_text": true,
       "reason": "Warehouse team comment is a genuine admission: \"We have sent short qty to CX Mahiboob bee\"",
-      "picker": null,
+      "picker": "Shailesh_DEL / Ankit_DEL",
       "packer": "Ankit_DEL",
-      "qc": null,
+      "qc": "Shivani_DEL",
       "manifester": "Ronu_DEL"
     }
   ]
