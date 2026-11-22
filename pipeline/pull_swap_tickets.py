@@ -81,9 +81,8 @@ def main():
     # INCREMENTAL: keep tickets from earlier pulls (older than this pull's start), replace the re-scanned range, keep the last 60 days
     if OUT.exists():
         old = json.loads(OUT.read_text())["tickets"]
-        keep_from = (end - timedelta(days=60)).isoformat()
         fresh = {x["ticket_id"] for x in out}
-        out += [x for x in old if x["ticket_id"] not in fresh and x["created"] < start.isoformat() and x["created"] >= keep_from]
+        out += [x for x in old if x["ticket_id"] not in fresh and x["created"] < start.isoformat()]   # never drop old tickets (owner 2026-11-20)
     OUT.write_text(json.dumps({"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "start": start.isoformat(),
                                "end": end.isoformat(), "tickets": sorted(out, key=lambda x: x["ticket_id"])}, separators=(",", ":")))
     print("tickets", len(out), "with other order", sum(1 for x in out if x["other_orders"]), "swap disp", sum(x["order_swap_disposition"] for x in out))

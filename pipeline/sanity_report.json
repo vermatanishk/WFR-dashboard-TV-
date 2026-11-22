@@ -4,7 +4,7 @@
   "2026-09-22",
   "2026-11-20"
  ],
- "generated_at": "2026-11-22T07:51:48Z",
+ "generated_at": "2026-11-22T08:00:56Z",
  "checks": [
   {
    "status": "INFO",
@@ -67,19 +67,19 @@
    "text": "0 provisional verdicts (last 7 days) not re-read since yesterday"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "3 swap",
-   "text": "swap export reaches 2026-11-03 (cap 2026-11-20)"
+   "text": "swap export reaches 2026-11-20 (cap 2026-11-20)"
   },
   {
    "status": "FAIL",
    "section": "3 swap",
-   "text": "attribution {'Logistics issue': 10, 'Pair not identified': 13, 'WH issue': 24, 'Unclassified': 2}; 15 cases not attributed to Warehouse or Logistics"
+   "text": "attribution {'WH issue': 27, 'Pair not identified': 15, 'Logistics issue': 8, 'Unclassified': 2}; 17 cases not attributed to Warehouse or Logistics"
   },
   {
    "status": "FAIL",
    "section": "3 swap",
-   "text": "33/80 swap complaints in the window have an attributed case; 47 missing"
+   "text": "48/80 swap complaints in the window have an attributed case; 32 missing"
   },
   {
    "status": "PASS",
@@ -112,9 +112,9 @@
    "text": "cmp_swap_baseline_export reaches 2026-11-21"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "5 fresh",
-   "text": "swap_export reaches 2026-11-03"
+   "text": "swap_export reaches 2026-11-20"
   },
   {
    "status": "PASS",
@@ -137,6 +137,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 5,
- "pass": 15
+ "fail": 3,
+ "pass": 17
 }

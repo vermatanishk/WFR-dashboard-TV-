@@ -70,7 +70,7 @@
   3571017
  ],
  "image_pairs": {
-  "note": "Pairs read from the complainant's own return images (invoice / courier label order id of another order, 2026-10-16). [anchor order (the complaint), other order]. Unreadable images are left as 'Pair not identified'. Images come from ClickHouse return items and, for tickets without a return request, from the Zoho ticket thread attachments (WhatsApp uploads).",
+  "note": "Pairs read from the complainant's own return images (invoice / courier label order id of another order, 2026-10-16). [anchor order (the complaint), other order]. Unreadable images are left as 'Pair not identified'. Images come from ClickHouse return items and, for tickets without a return request, from the Zoho ticket thread attachments (WhatsApp uploads). 2026-11-22: +4 pairs read from the complainant's invoice order id (265949, 269980, 270021, 268514).",
   "pairs": [
    [
     3826847,
@@ -119,6 +119,22 @@
    [
     4137142,
     4137155
+   ],
+   [
+    4350252,
+    4398843
+   ],
+   [
+    4803418,
+    4803862
+   ],
+   [
+    4779105,
+    4795063
+   ],
+   [
+    4600475,
+    4600428
    ]
   ]
  },

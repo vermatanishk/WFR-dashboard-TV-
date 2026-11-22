@@ -9,3 +9,5 @@ pipeline/zoho_raw90/rca_images/
 pipeline/.zoho_token.json
 pipeline/damage_sheets/
 pipeline/damage_bucket_samples/
+pipeline/zoho_raw90/swap_images/
+pipeline/swap_sheets/
