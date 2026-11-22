@@ -4,22 +4,22 @@
   "2026-09-22",
   "2026-11-20"
  ],
- "generated_at": "2026-11-22T07:29:47Z",
+ "generated_at": "2026-11-22T07:51:48Z",
  "checks": [
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "window 2026-09-22..2026-11-20: 2747 complaints (order x type) = {'Damage': 1038, 'Missing / short qty': 1002, 'Expiry': 150, 'Wrong medicine': 398, 'MRP / batch mismatch': 79, 'Order swap': 80}"
+   "text": "window 2026-09-22..2026-11-20: 2746 complaints (order x type) = {'Damage': 1038, 'Missing / short qty': 1002, 'Expiry': 149, 'Wrong medicine': 398, 'MRP / batch mismatch': 79, 'Order swap': 80}"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "source split (return request vs ticket): {'Zoho ticket only': 330, 'Return request only': 1101, 'Return request + ticket': 1316}"
+   "text": "source split (return request vs ticket): {'Zoho ticket only': 330, 'Return request only': 1101, 'Return request + ticket': 1315}"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_wfr_export.json: 1629 rows in window vs 1629 in complaints_export"
+   "text": "cmp_wfr_export.json: 1628 rows in window vs 1628 in complaints_export"
   },
   {
    "status": "PASS",
@@ -117,14 +117,19 @@
    "text": "swap_export reaches 2026-11-03"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "5 fresh",
-   "text": "rca_export reaches 2026-11-03"
+   "text": "rca_export reaches 2026-11-20"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
    "text": "EOD tab date 2026-11-20"
+  },
+  {
+   "status": "FAIL",
+   "section": "5 fresh",
+   "text": "RCA columns with unfinished inputs in the window: {'Photo not read yet': 67, 'Tags pending': 238} (photo reads / item-missing tags)"
   },
   {
    "status": "PASS",
@@ -133,5 +138,5 @@
   }
  ],
  "fail": 5,
- "pass": 14
+ "pass": 15
 }

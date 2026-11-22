@@ -263,7 +263,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3924771,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Mesalmile OD 1200mg Tablet PR 10s
 3930344,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Ferronomic Plus Tablet 15s
 3933698,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Lipaglyn 4mg Tablet 10s
-3941318,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Linasmart M 2.5/500mg Tablet 10s
+3941318,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - Accepted & refunded,Linasmart M 2.5/500mg Tablet 10s
 3942334,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - Accepted & refunded,
 3945195,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - Accepted & refunded,Ibrunitime 25mg Tablet 10s
 3947058,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Mucofibro Capsule 10s
@@ -380,7 +380,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4177581,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Ketoscalp Shampoo 100ml
 4177919,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Cancelled,Ketonalog Alfa Tablet 10s
 4180769,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
-4181536,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Viganext 500mg Powder For Oral Solution 1s
+4181536,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",No decision,Raised - In progress,Viganext 500mg Powder For Oral Solution 1s
 4183981,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Oxetol 150mg Tablet 10s
 4188850,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Biocip FC Cream 15gm
 4189451,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Metolar XR 50mg Capsule 15s
@@ -596,10 +596,10 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4563446,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
 4563940,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4566429,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Telgard 40mg Tablet 10s; Rosugard 20mg Tablet 10s; Fexinol M 10/120mg Tablet 10s; Cilinimore 10mg Tablet 10s; 
-4568014,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
-4569218,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - In progress,
+4568014,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
+4569218,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
 4573251,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
-4577093,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Cancelled,
+4577093,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
 4577217,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Cancelled,Udidoc 300mg Tablet 15s
 4577228,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Bethnevoid 50mg Tablet 10s
 4578594,Not identified,,Undetermined - SKU not identified,Rejected,Raised - In progress,
@@ -607,19 +607,19 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4584967,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4585621,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Ticavue 90mg Tablet 14s
 4585764,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Bisocor T 2.5 /40mg Tablet 10s
-4587971,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Accepted & refunded,
-4590111,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Cancelled,
+4587971,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4590111,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
 4590780,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Easylax Plus Oral Emulsion Peppermint Syrup 170ml
-4591626,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Accepted & refunded,
-4591821,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Accepted & refunded,
+4591626,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
+4591821,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4593868,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Rosugard 20mg Tablet 10s
 4594579,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4599874,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Cipcal HD 12 Tablet 15s
-4601105,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Accepted & refunded,
+4601105,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4601692,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,SV Card 100mg Tablet 14s
-4602444,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Accepted & refunded,
+4602444,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4605727,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Accepted & refunded,
 4614792,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
-4621519,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Cancelled,
-4625945,Not identified,,Undetermined - SKU not identified,Not yet read,Raised - Cancelled,
-4632411,Not identified,,Undetermined - SKU not identified,Not yet read,Not raised,
+4621519,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
+4625945,Not identified,,Undetermined - SKU not identified,Rejected,Raised - Cancelled,
+4632411,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,

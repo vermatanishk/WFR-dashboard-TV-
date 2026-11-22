@@ -125,6 +125,9 @@ def main(cap):
         e = js(f + ".json")
         note("PASS" if e["t2_cap_date"] >= cap else "FAIL", "5 fresh", f"{f} reaches {e['t2_cap_date']}")
     note("PASS" if js("data_eod.json")["for_date"] >= cap else "FAIL", "5 fresh", f"EOD tab date {js('data_eod.json')['for_date']}")
+    rc = js("rca_export.json")
+    pend = Counter(x for r in rc["rows"] if r[rc["columns"].index("Created date")] <= cap for x in r if x in ("Photo not read yet", "Tags pending"))
+    note("PASS" if not pend else "FAIL", "5 fresh", f"RCA columns with unfinished inputs in the window: {dict(pend) or 'none'} (photo reads / item-missing tags)")
     from archive_exports import check as archive_check
     bad = archive_check()
     note("PASS" if not bad else "FAIL", "5 fresh", "archive intact" if not bad else "; ".join(bad))
