@@ -37,8 +37,8 @@ check("cancelled / rejected <=> out of scope", all((r[C["In scope"]] == "No") ==
 
 # 2. independent recount of the return side from the raw ClickHouse chunks -------------------------------------------
 items = {}
-for p in sorted(RAW.glob("cmp_returns_*.json"), key=lambda q: (q.name.split("_")[2], q.stat().st_mtime)):
-    for r in json.loads(p.read_text())["result"]["data"]:      # naive: newest range / newest pull wins
+for p in sorted(RAW.glob("cmp_returns_*.json"), key=lambda q: q.stat().st_mtime):
+    for r in json.loads(p.read_text())["result"]["data"]:      # naive: most-recently-PULLED file wins (same precedence as build_complaints.load_returns)
         items[(r["order_id"], r["drug_code"])] = r
 
 

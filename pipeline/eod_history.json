@@ -1704,5 +1704,46 @@
     "manifester": "Ronu_DEL"
    }
   ]
+ },
+ "2026-11-21": {
+  "total": 36,
+  "accepted": 3,
+  "by_category": {
+   "Missing/Wrong Qty": 31,
+   "Expiry Issue": 2,
+   "Damaged/Defective": 3
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "270524",
+    "order_id": 4868500,
+    "category": "Missing/Wrong Qty",
+    "location": "Mumbai",
+    "picker": null,
+    "packer": "Dipak-M-MUM",
+    "qc": null,
+    "manifester": "Vijay-P_MUM"
+   },
+   {
+    "ticket_id": "270532",
+    "order_id": 4869300,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": null,
+    "packer": "Pavithra",
+    "qc": null,
+    "manifester": "Vasantha"
+   },
+   {
+    "ticket_id": "270599",
+    "order_id": 4825063,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": null,
+    "packer": "Pavithra",
+    "qc": null,
+    "manifester": "Vasantha"
+   }
+  ]
  }
 }

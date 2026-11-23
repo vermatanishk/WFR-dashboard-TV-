@@ -70,8 +70,12 @@
   3571017
  ],
  "image_pairs": {
-  "note": "Pairs read from the complainant's own return images (invoice / courier label order id of another order, 2026-10-16). [anchor order (the complaint), other order]. Unreadable images are left as 'Pair not identified'. Images come from ClickHouse return items and, for tickets without a return request, from the Zoho ticket thread attachments (WhatsApp uploads). 2026-11-22: +4 pairs read from the complainant's invoice order id (265949, 269980, 270021, 268514).",
+  "note": "Pairs read from the complainant's own return images (invoice / courier label order id of another order, 2026-10-16). [anchor order (the complaint), other order]. Unreadable images are left as 'Pair not identified'. Images come from ClickHouse return items and, for tickets without a return request, from the Zoho ticket thread attachments (WhatsApp uploads). 2026-11-22: +4 pairs read from the complainant's invoice order id (265949, 269980, 270021, 268514). 2026-11-23: +[4807460,4842987] - this pair's evidence is textual, not an image: ticket 270588's own agent comment names the partner order directly (\"cx name - NareshLahane... received the order is 4807460\"), confirmed by ClickHouse (both orders share pincode 431001, warehouse 3/Mumbai, courier ELASTICRUN label path). Order 4807460 is a complaint-baseline-only swap (no entry in the ticket-text-scan universe swap_tickets.json), so it only reaches the pairing step here, not the top-level `pairs` list.",
   "pairs": [
+   [
+    4807460,
+    4842987
+   ],
    [
     3826847,
     3825844
@@ -189,8 +193,9 @@
   ]
  },
  "image_checked": {
-  "note": "Orders whose complainant return images / ticket attachments were read for the other order id (invoice / courier label) and gave no readable evidence; the daily routine must add every NEW unpaired case here after trying (fetch_swap_images.py / damage_images.py sheets). Gate \"swap residual cases image-checked\" turns red until then. 2026-11-22: 15 earlier cases + the cases added from the complaint baseline.",
+  "note": "Orders whose complainant return images / ticket attachments were read for the other order id (invoice / courier label) and gave no readable evidence; the daily routine must add every NEW unpaired case here after trying (fetch_swap_images.py / damage_images.py sheets). Gate \"swap residual cases image-checked\" turns red until then. 2026-11-22: 15 earlier cases + the cases added from the complaint baseline. 2026-11-23: +4800814 - no Zoho ticket at all (empty Ticket ID) so there is no thread to read, and cdn.platinumrx.in was blocked by this container's network policy this run (403, update_environment refused with nobody present to approve) so its return-item images could not be fetched either; nothing else to try.",
   "orders": [
+   4800814,
    3543190,
    3977111,
    4001240,
