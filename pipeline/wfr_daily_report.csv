@@ -1,4 +1,4 @@
-WFR Daily Report,2026-11-24T13:45:41Z
+WFR Daily Report,2026-11-25T06:46:03Z
 
 Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Checker
 251426,3324045,Wrong Medicines,Lucknow,2026-08-07T14:32:23.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
@@ -2728,12 +2728,60 @@ Ticket ID,Order ID,Category,Location,Created Time,Resolution,Reason,Picker,QC Ch
 270599,4825063,Missing/Wrong Qty,Bangalore,2026-11-21T12:56:11.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to CX""",Uzma1_BLRWH / Pavithra,Shabana_BLRWH
 270604,4859611,Missing/Wrong Qty,Mumbai,2026-11-21T13:24:53.000,BOD,"Warehouse-team Zoho comment is a denial/non-admission: ""We have sent proper medicine to cx Naveen""",-,-
 270660,4636715,Damaged/Defective,Unknown,2026-11-22T04:07:45.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270703,4836594,Damaged/Defective,Unknown,2026-11-22T08:05:37.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270710,4834342,Missing/Wrong Qty,Unknown,2026-11-22T08:27:00.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270741,4860041,Missing/Wrong Qty,Unknown,2026-11-22T11:10:36.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270749,4835869,Wrong Medicines,Unknown,2026-11-22T12:07:01.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270789,4856633,Missing/Wrong Qty,Unknown,2026-11-23T01:59:47.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270790,4856633,Missing/Wrong Qty,Unknown,2026-11-23T02:02:31.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270808,4841521,Missing/Wrong Qty,Unknown,2026-11-23T04:59:08.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270812,4823442,Missing/Wrong Qty,Unknown,2026-11-23T05:13:52.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270813,4810212,Missing/Wrong Qty,Unknown,2026-11-23T05:22:11.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270821,4818545,Missing/Wrong Qty,Unknown,2026-11-23T05:46:16.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270822,4872451,Missing/Wrong Qty,Unknown,2026-11-23T05:47:03.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270827,4849577,Wrong Medicines,Unknown,2026-11-23T05:56:51.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270828,4869082,Missing/Wrong Qty,Unknown,2026-11-23T06:01:31.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270831,4878269,Missing/Wrong Qty,Unknown,2026-11-23T06:08:13.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270836,4869551,Missing/Wrong Qty,Unknown,2026-11-23T06:25:28.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270837,4827906,Missing/Wrong Qty,Unknown,2026-11-23T06:29:33.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270840,4861339,Missing/Wrong Qty,Unknown,2026-11-23T06:51:53.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270842,4854728,Missing/Wrong Qty,Bangalore,2026-11-23T06:56:56.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent short qty to cx""",Veena_BLRWH,Shabana_BLRWH
+270843,4856598,Missing/Wrong Qty,Unknown,2026-11-23T07:01:19.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270853,4893280,Expiry Issue,Unknown,2026-11-23T07:38:16.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270856,4869792,Missing/Wrong Qty,Bangalore,2026-11-23T07:43:27.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent 3 qty short to cx""",Salmabanu_BLRWH,Asha_BLRWH
+270857,4822954,Missing/Wrong Qty,Unknown,2026-11-23T07:45:23.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270863,4856685,Missing/Wrong Qty,Unknown,2026-11-23T08:08:25.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270867,4859317,Wrong Medicines,Unknown,2026-11-23T08:18:35.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270872,4808127,Wrong Medicines,Unknown,2026-11-23T08:31:10.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270874,4732652,Missing/Wrong Qty,Unknown,2026-11-23T08:40:54.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270877,4816763,Missing/Wrong Qty,Unknown,2026-11-23T08:48:26.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270879,4812922,Missing/Wrong Qty,Unknown,2026-11-23T08:53:50.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270881,4890220,Wrong Medicines,Unknown,2026-11-23T09:09:06.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270887,4809158,Missing/Wrong Qty,Unknown,2026-11-23T09:29:29.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270890,4884191,Missing/Wrong Qty,Unknown,2026-11-23T09:57:07.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270894,4896299,Missing/Wrong Qty,Unknown,2026-11-23T10:09:53.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270895,4850373,Wrong Medicines,Unknown,2026-11-23T10:14:57.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270896,4865719,Missing/Wrong Qty,Unknown,2026-11-23T10:27:29.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270898,4891706,Missing/Wrong Qty,Unknown,2026-11-23T10:33:15.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270906,4875724,Missing/Wrong Qty,Unknown,2026-11-23T10:58:31.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270908,4898612,Missing/Wrong Qty,Unknown,2026-11-23T11:01:36.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270915,4811668,Wrong Medicines,Delhi,2026-11-23T11:24:07.000,WH Accepted,"Warehouse-team Zoho comment is a genuine admission: ""We have sent wrong medicine to cx""",Roshan_P-DEL / Kuldeep_Del,Harsh_DEL
+270917,4834342,Missing/Wrong Qty,Unknown,2026-11-23T11:29:13.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270921,4859697,Missing/Wrong Qty,Unknown,2026-11-23T12:10:40.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270922,4880910,Missing/Wrong Qty,Unknown,2026-11-23T12:13:10.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270923,4821785,Missing/Wrong Qty,Unknown,2026-11-23T12:16:01.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270927,4867198,Wrong Medicines,Unknown,2026-11-23T12:27:42.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270929,4829639,Missing/Wrong Qty,Kolkata,2026-11-23T12:33:48.000,Considered BOD,No Warehouse-team Zoho comment on this ticket - treated as BOD by default (unconfirmed resolution),-,-
+270931,4860652,Damaged/Defective,Unknown,2026-11-23T12:37:18.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270934,4841831,Missing/Wrong Qty,Unknown,2026-11-23T12:46:18.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270943,4754862,Missing/Wrong Qty,Unknown,2026-11-23T13:27:14.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
+270961,4834342,Missing/Wrong Qty,Unknown,2026-11-23T17:29:48.000,No return record,No matching marketplace_return_request row found in ClickHouse for this order,-,-
 
 Summary
-Total tickets raised,2727
-Total refunds/returns issued,2492
-WH Accepted,190
+Total tickets raised,2775
+Total refunds/returns issued,2496
+WH Accepted,193
 BOD,1776
-Considered BOD,526
-No return record (excluded from refund total),235
+Considered BOD,527
+No return record (excluded from refund total),279
 Reconciles (WH Accepted + BOD + Considered BOD == Total refunds/returns),Yes

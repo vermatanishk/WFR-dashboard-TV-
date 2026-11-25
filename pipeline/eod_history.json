@@ -1753,5 +1753,47 @@
    "Damaged/Defective": 1
   },
   "accepted_tickets": []
+ },
+ "2026-11-23": {
+  "total": 44,
+  "accepted": 3,
+  "by_category": {
+   "Missing/Wrong Qty": 35,
+   "Wrong Medicines": 7,
+   "Expiry Issue": 1,
+   "Damaged/Defective": 1
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "270842",
+    "order_id": 4854728,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": "Veena_BLRWH",
+    "packer": "Saraswathi_BLRWH",
+    "qc": "Shabana_BLRWH",
+    "manifester": "Vasantha"
+   },
+   {
+    "ticket_id": "270856",
+    "order_id": 4869792,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": "Salmabanu_BLRWH",
+    "packer": "Shrusti_BLRWH",
+    "qc": "Asha_BLRWH",
+    "manifester": "Roopa_BLRWH"
+   },
+   {
+    "ticket_id": "270915",
+    "order_id": 4811668,
+    "category": "Wrong Medicines",
+    "location": "Delhi",
+    "picker": "Roshan_P-DEL / Kuldeep_Del",
+    "packer": "Kuldeep_Del",
+    "qc": "Harsh_DEL",
+    "manifester": "Ronu_DEL"
+   }
+  ]
  }
 }
