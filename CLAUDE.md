@@ -522,3 +522,16 @@ buckets (no readable evidence of the other order after image check) - they are r
 - **Definitions used by the Sheet's Summary and the monthly table:** "WH accepted" = in-scope complaints only (cancelled-by-customer and QC-rejected returns excluded); the unfiltered count is 2-7 higher per 30/60 days.
 - **Delivered orders** (`ch_delivered_daily.json`, `build_macro_trend.py`): status-log event 70 counted ONCE per order on its FIRST delivery day, minus orders with a later cancel / lost / fake-delivered / RTO / refund event, minus test accounts (`auth_users.is_test_user`). Old logic counted distinct orders per day (an order delivered on two days counted twice) and kept later-RTO/lost/test orders.
 - `refresh_all.py build` still runs the whole chain; `pending` lists the session work; `swap_facts_missing.json` lists swap orders whose facts must be pulled (build_swap skips such cases instead of crashing).
+
+### 2026-11-27 - WFR funnel root cause now covers EVERY in-scope complaint (owner)
+The old RCA sub-trees of the WFR funnel only covered ticketed complaints. `pipeline/wfr_rca.py` (inputs + rules: `pipeline/WFR_RCA_inputs.md`) now analyses every in-scope
+wrong-medicine / missing-qty / expiry complaint of the last 60 days (return requests + Zoho tickets) and `build_complaints.py::add_wfr_cuts` writes columns `WFR cut 1/2/detail/basis`.
+Funnel tab: per type "Root cause (every in-scope complaint)" = cut 1 -> cut 2, each node with WH accepted / WH rejected / No WH comment / not asked-or-other (`cmp_view_spec._cut_rows`;
+nodes empty over the whole window are pruned).
+- Wrong medicine: intended (ordered return-item SKU) vs actual (photo read): LASA / same family (same brand or salt) / completely different (+ photo shows ordered SKU / not legible / no photo);
+  cut 2 bin sharing > batch overlap > other.
+- Missing qty: SKU missing vs item missing; cut 2 pack quantity confusion (GRN qty = pack x PO qty before the complaint, catalog/MDM pack conflict) > single-vs-pack (multipack SKU; ticket text via
+  `scan_pack_text.py`) > counting issue. Orders with no return line = "Not determinable".
+- Expiry: expired / near expiry (<= 6 months) / allocation correct, at ALLOCATION time; cut 2 = batch has multiple expiry year-months in warehouse inventory.
+- Rows older than 60 days read "Older than the 60-day RCA window"; unpulled inputs read "Inputs pending" (gate `WFR root-cause inputs complete`, `refresh_all.py pending` item 5 ->
+  `zoho_raw90/wfr_rca_pending.json`). After pulling, append the orders / brands to `zoho_raw90/wfr_inputs_done.json`. Test: `python3 pipeline/test_wfr_rca.py`.

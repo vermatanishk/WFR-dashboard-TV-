@@ -84,6 +84,10 @@ def gates():
     unread = sum(1 for r in e["rows"] if r[e["columns"].index("Photo bucket")] == "Photo not read yet"
                  and r[e["columns"].index("Created date")] >= (t - timedelta(days=60)).isoformat())
     chk("damage photos read (last 60 days)", unread == 0, f"{unread} complaint rows still 'Photo not read yet'")
+    # WFR root-cause cuts (owner 2026-11-27): every in-scope wrong-medicine / missing-qty / expiry complaint of the 60-day window analysed
+    ci_ = e["columns"]
+    pend_w = sorted({r[0] for r in e["rows"] if r[ci_.index("Created date")] >= (t - timedelta(days=61)).isoformat() and "Inputs pending" in (r[ci_.index("WFR cut 1")], r[ci_.index("WFR cut 2")])})
+    chk("WFR root-cause inputs complete (60 days)", not pend_w, f"{len(pend_w)} complaints 'Inputs pending' {pend_w[:6]} - run `refresh_all.py pending` (item 5)")
     # swap + rca feeds
     sw = js("swap_export.json")
     chk("order swap export", sw["t2_cap_date"] >= (t - timedelta(days=4)).isoformat(), f"through {sw['t2_cap_date']}")
@@ -190,6 +194,12 @@ def pending():
     chk = set(seed.get("image_checked", {}).get("orders", []))
     un = sorted({r[0] for r in sw["rows"] if r[sc.index("Swap bucket 1")] in ("Pair not identified", "Unclassified") and r[sc.index("Created date")] <= cap and r[0] not in chk})
     (RAW / "swap_unpaired_orders.json").write_text(json.dumps(un))
+    ci = e["columns"]
+    wp = {}
+    for r in e["rows"]:
+        if "Inputs pending" in (r[ci.index("WFR cut 1")], r[ci.index("WFR cut 2")]):
+            wp.setdefault(r[ci.index("Complaint type")], []).append((r[0], r[ci.index("WFR cut detail")]))
+    (RAW / "wfr_rca_pending.json").write_text(json.dumps(wp))
     print(f"T-2 cap {cap}")
     print(f"1. RCA photos not read: {len(ph)} orders -> zoho_raw90/rca_photo_pending_orders.json   (rca_images.py, READ every sheet, merge_reads.py; CLAUDE.md photo recipe)")
     print(f"2. RCA item-missing tags pending: {len(tg)} orders -> zoho_raw90/rca_tags_pending_orders.json")
@@ -202,6 +212,10 @@ def pending():
     print("     read every sheet, CROP + enlarge each invoice / courier label to read its Order ID; a different id = pair -> swap_pairs_seed.json image_pairs.pairs;")
     print("     pull swap_orders / swap_status_raw / swap_return_status for the partner orders; then add every order you tried to image_checked.orders; build_swap.py, swap_view_spec.py")
     print("     (orders with no return request: fetch_swap_images.py <ticketNumber> pulls the Zoho ticket attachments)")
+    n5 = sum(len(v) for v in wp.values())
+    print(f"5. WFR root-cause inputs pending: {n5} complaints -> zoho_raw90/wfr_rca_pending.json  (by type; detail says what is missing)")
+    print("     pull the inputs named in wfr_rca.py's docstring / WFR_RCA_inputs.md (ClickHouse MCP, repeat('x',N) pad + save_ch_result.py), UNION into the wfr_*.json files, append the orders to")
+    print("     zoho_raw90/wfr_inputs_done.json (wm / mq / exp / wm_brands), read new complaint photos (rca_images.py + merge_reads.py), run scan_pack_text.py, then build_complaints.py + cmp_view_spec.py")
 
 
 # ------------------------------------------------------------------------------------------------ build
@@ -222,6 +236,7 @@ STEPS = [
     ("swap: warehouse verdicts of the swap tickets", ["python3", "read_swap_wh.py"]),
     ("swap: cases", ["python3", "build_swap.py"]),
     ("swap: view spec", ["python3", "swap_view_spec.py"]),
+    ("WFR root cause: pack-pattern ticket scan (incremental)", ["python3", "scan_pack_text.py", "10"]),
     ("complaint baseline (pass 1)", ["python3", "build_complaints.py"]),
     ("warehouse comments for new / provisional tickets", ["python3", "recheck_wh_comments.py", "--extra", "zoho_raw90/cmp_tickets_to_read.json"]),
     ("complaint baseline (pass 2, with verdicts)", ["python3", "build_complaints.py"]),
@@ -230,6 +245,7 @@ STEPS = [
     ("sanity check vs T-2 (informational; gates make it binding)", ["python3", "sanity_check.py", "--soft"]),
     ("website", ["python3", "build_html.py"]),
     ("tests: complaints", ["python3", "test_complaints.py"]),
+    ("tests: WFR root cause", ["python3", "test_wfr_rca.py"]),
     ("tests: JS evaluator wfr", ["node", "test_view_js.js", "wfr"]),
     ("tests: JS evaluator damage", ["node", "test_view_js.js", "damage"]),
     ("tests: JS evaluator swap", ["node", "test_view_js.js", "swap"]),

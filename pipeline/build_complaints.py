@@ -57,7 +57,8 @@ R_ACC, R_CAN, R_REJ, R_PROG, R_NONE = ("Raised - Accepted & refunded", "Raised -
 COLUMNS = ["Order ID", "Created date", "Complaint type", "Source", "Return request", "Return reason (final)", "In scope",
            "Ticket relation", "Ticket raised", "Ticket ID", "Ticket sub-disposition", "WH input", "Damage type", "Cold item",
            "Photo bucket", "Warehouse",
-           "RCA read", "RCA investigation", "RCA no-decision reason", "RCA bucket 1", "RCA bucket 2", "RCA bucket 3", "RCA evidence basis"]
+           "RCA read", "RCA investigation", "RCA no-decision reason", "RCA bucket 1", "RCA bucket 2", "RCA bucket 3", "RCA evidence basis",
+           "WFR cut 1", "WFR cut 2", "WFR cut detail", "WFR cut basis"]
 
 T_MATCH, T_OTHER, T_NONCMP, T_NONE = ("Filed under this complaint type", "Filed under another complaint type",
                                       "Filed as non-complaint (e.g. No longer needed)", "No ticket")
@@ -321,7 +322,7 @@ def main():
         return [oid, created, typ, src, state, reason, in_scope, rel, raised,
                 chosen[0]["ticket_id"] if chosen else "", (chosen[0]["sub_disposition"] or "") if chosen else "",
                 wh, dmg_type, "Yes" if any(x["cold"] for x in lines) else "No", pb,
-                wh_name.get(ws, f"WH {ws}" if ws is not None else "Unknown")] + rca_vals
+                wh_name.get(ws, f"WH {ws}" if ws is not None else "Unknown")] + rca_vals + [""] * 4
 
     # One real complaint must be ONE row: a ticket explains at most one return complaint, and a ticket that explains a
     # return complaint never also becomes a "ticket only" complaint.
@@ -373,6 +374,7 @@ def main():
     end_day = max(x["created"][:10] for x in items)                      # last day the return pull covers completely
     rows = [r for r in rows if win_start <= r[1] <= end_day]
     rows.sort(key=lambda r: (r[1], r[0], r[2]))
+    add_wfr_cuts(rows, ret)
     latest = max(r[1] for r in rows)
     in_win = [t for t in tickets if (t["created_time"][:10] >= win_start) and sub_type(t["sub_disposition"]) and parse_order_id(t["order_raw"]) is not None]
     unaccounted = [t["ticket_id"] for t in in_win if t["ticket_id"] not in accounted]
@@ -394,6 +396,24 @@ def main():
     print(f"tickets for Warehouse-comment read (baseline orders, complaint types): {len(toread)} -> zoho_raw90/cmp_tickets_to_read.json")
     print(f"complaint-type tickets with no usable order id (cannot be joined): {len(unl)}")
     print(f"complaint-type tickets in window not attached to any complaint row: {len(unaccounted)} {unaccounted[:8]}")
+
+
+def add_wfr_cuts(rows, ret):
+    """Root-cause cuts for EVERY wrong-medicine / missing-qty / expiry complaint (owner, 2026-11-27) - see wfr_rca.py."""
+    import wfr_rca
+    C = {c: i for i, c in enumerate(COLUMNS)}
+    todo = [r for r in rows if r[C["Complaint type"]] in (WM, MQ, EXP) and r[C["In scope"]] == "Yes"]   # cancelled / QC-rejected are excluded rows
+    cs = [{"order": r[0], "type": r[C["Complaint type"]], "date": r[1], "ticket": r[C["Ticket ID"]] or None, "wh": r[C["WH input"]],
+           "has_return": r[C["Source"]] != SRC_TKT,
+           "drugs": sorted({x["drug_code"] for x in ret.get((r[0], r[C["Complaint type"]]), []) if x.get("drug_code")})} for r in todo]
+    res = wfr_rca.analyse(cs)
+    i0 = C["WFR cut 1"]
+    first = (datetime.strptime(max(r[1] for r in rows), "%Y-%m-%d") - timedelta(days=wfr_rca.WINDOW_DAYS - 1)).strftime("%Y-%m-%d")
+    for r in todo:
+        v = res[(r[0], r[C["Complaint type"]])]
+        if r[1] < first:
+            v = [wfr_rca.OLD, "", "inputs are pulled for the last 60 days only", "none"]
+        r[i0:i0 + 4] = [v[0], v[1], v[2], v[3]]
 
 
 def tab_exports(out):

@@ -18,9 +18,10 @@ from pathlib import Path
 
 from build_complaints import (COLUMNS, DMG, DMG_PHYS, DMG_TEMP, EXP, MQ, MRP, P_NA, P_NOFILE, P_OTHER, P_TEMP, P_UNREAD, R_ACC, R_CAN, R_NONE,
                               R_REJ, SRC_BOTH, SRC_RET, SRC_TKT, T_MATCH, T_NONCMP, T_NONE, T_OTHER, TYPES, WFR_TYPES, WH_ACC,
-                              WH_DEN, WH_DUE, WH_GAP, WH_NONE, WH_OTH, WM)
+                              WH_DEN, WH_DUE, WH_GAP, WH_NA, WH_NONE, WH_OTH, WM)
 from damaged_buckets import BUCKETS
 import rca_view_spec as R
+import wfr_rca
 from rca_view_spec import RET_STATES, _cascade, evaluate
 
 HERE = Path(__file__).parent
@@ -82,6 +83,32 @@ def _rca_rows(add_row, typ, base, parent):
         add_row(key(k), r["label"], r["sub"], par, False, [tuple(c) for c in base] + [tuple(c) for c in where])
 
 
+C1, C2 = "WFR cut 1", "WFR cut 2"
+
+
+def _wh_split(add, key, parent_label, W):
+    """Accepted / rejected / no comment / not asked-or-other: MECE over WH input (so accept-vs-reject pattern shows at every node)."""
+    add(key + "_wa", "WH accepted", "of " + parent_label, key, False, W + [(WH, "in", [WH_ACC])])
+    add(key + "_wd", "WH rejected (denied)", "of " + parent_label, key, False, W + [(WH, "in", [WH_DEN])])
+    add(key + "_wn", "No WH comment", "ticketed, past T-2, Warehouse silent", key, False, W + [(WH, "in", [WH_NONE])])
+    add(key + "_wo", "WH not asked / other note / not due", "no ticket, other note, T-2 window or unread", key, False,
+        W + [(WH, "in", [WH_OTH, WH_DUE, WH_GAP, WH_NA])])
+
+
+def _cut_rows(add, t, TS, k):
+    """Root cause for EVERY in-scope complaint of the type (return requests + tickets): first cut, then reason, each with the WH split."""
+    root = k + "_rc"
+    add(root, "Root cause (every in-scope complaint)", "return requests + Zoho tickets: first cut, then reason", k, False, TS)
+    for i, (c1, c2s) in enumerate(wfr_rca.TREE[t]):
+        k1, W1 = f"{root}{i}", TS + [(C1, "in", [c1])]
+        add(k1, c1, "of " + t, root, False, W1)
+        _wh_split(add, k1, c1, W1)
+        for j, c2 in enumerate(c2s):
+            k2, W2 = f"{k1}_{j}", W1 + [(C2, "in", [c2])]
+            add(k2, c2, "of " + c1, k1, False, W2)
+            _wh_split(add, k2, c2, W2)
+
+
 def wfr_layout():
     """WFR funnel: ONE clean trickle-down, no filter. Complaints -> return outcome -> in scope -> ticket hygiene -> Warehouse input,
     then per complaint type the same trickle-down plus the root-cause ("why") sub-trees of the RCA view (so no separate RCA tab)."""
@@ -114,10 +141,8 @@ def wfr_layout():
         for wk, lab, val in (("acc", "WH accepted", WH_ACC), ("den", "WH denied", WH_DEN), ("oth", "WH other note", WH_OTH),
                              ("none", "No WH comment", WH_NONE), ("due", "Not due yet (T-2)", WH_DUE)):
             add(f"{k}_{wk}", lab, "of ticketed", k + "_y", False, TS + [(RAISED, "in", ["Yes"]), (WH, "in", [val])])
-        if t in RCA_PREFIX:
-            base = TS + [(RAISED, "in", ["Yes"]), (RCA_READ, "in", ["Yes"])]
-            add(k + "_rca", "Root cause analysed (RCA)", "of ticketed: sub-trees below are the 'why'", k + "_y", False, base)
-            _rca_rows(add, t, base, k + "_rca")
+        if t in wfr_rca.TREE:
+            _cut_rows(add, t, TS, k)
         add(k + "_n", "No investigation ticket", "of " + t, k, False, TS + [(RAISED, "in", ["No"])])
         add(k + "_nr", "Already refunded with no ticket", "of no ticket", k + "_n", False, TS + [(RAISED, "in", ["No"]), (RET, "in", [R_ACC])])
     return _cascade(L)
@@ -162,6 +187,10 @@ def build():
     for name, layout in (("wfr", wfr_layout()), ("damage", damage_layout())):
         exp = json.loads((HERE / f"cmp_{name}_export.json").read_text())
         trend = evaluate(exp, layout)
+        if name == "wfr":     # root-cause nodes that are empty over the whole 60-day window are not shown (their WH children are empty too)
+            empty = {r["key"] for r in trend["rows"] if "_rc" in r["key"] and r["3mo"]["n"] == 0}
+            layout = [it for it in layout if it["key"] not in empty]
+            trend = evaluate(exp, layout)
         # the WFR funnel has no filter (owner, 2026-10-26): the return-request outcome is shown as rows instead
         trend["by_return"] = {}     # no Return-request filter anywhere (owner, 2026-10-26): the return outcome is shown as rows
         (HERE / f"cmp_{name}_trend.json").write_text(json.dumps(trend))
