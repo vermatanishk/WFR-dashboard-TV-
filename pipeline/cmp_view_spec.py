@@ -27,7 +27,6 @@ HERE = Path(__file__).parent
 TYPE, SRC, RET, SCOPE, REL, RAISED, WH, DT, PB = ("Complaint type", "Source", "Return request", "In scope", "Ticket relation",
                                                    "Ticket raised", "WH input", "Damage type", "Photo bucket")
 LABELS = [b[1] for b in BUCKETS]
-VISIBLE = LABELS[:6]            # photo shows real damage (primary pack, carton, outer shipper, leak, product quality, label/closure)
 
 
 def _common(L, add, types, root_label):
@@ -151,9 +150,6 @@ def damage_layout():
         add(k, lab.split(":")[0].split(" - ")[0][:80], "of photos read", "ph_read", False, P + [(PB, "in", [lab])])
         add(k + "_y", "Zoho ticket raised", "", k, False, P + [(PB, "in", [lab]), (RAISED, "in", ["Yes"])])
         add(k + "_n", "No investigation ticket", "", k, False, P + [(PB, "in", [lab]), (RAISED, "in", ["No"])])
-    add("ph_vis", "Visible damage in photo (pack / carton / shipper / leak / quality / closure)", "of photos read", "ph_read", True, P + [(PB, "in", VISIBLE)])
-    add("ph_vis_y", "Zoho ticket raised", "", "ph_vis", False, P + [(PB, "in", VISIBLE), (RAISED, "in", ["Yes"])])
-    add("ph_vis_n", "No investigation ticket", "real damage nobody investigated", "ph_vis", False, P + [(PB, "in", VISIBLE), (RAISED, "in", ["No"])])
     add("ph_unread", P_UNREAD, "return raised, photo still to be read - must be 0 for a final view", "phys", False, P + [(PB, "in", [P_UNREAD])])
     add("ph_nofile", P_NOFILE, "return raised but no photo uploaded", "phys", False, P + [(PB, "in", [P_NOFILE])])
     add("ph_other", P_OTHER, "ticket-only complaint; the item was returned under a non-damage reason - its photo is not read here", "phys", False, P + [(PB, "in", [P_OTHER])])
