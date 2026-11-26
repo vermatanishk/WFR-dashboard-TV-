@@ -1795,5 +1795,26 @@
     "manifester": "Ronu_DEL"
    }
   ]
+ },
+ "2026-11-24": {
+  "total": 28,
+  "accepted": 1,
+  "by_category": {
+   "Missing/Wrong Qty": 26,
+   "Wrong Medicines": 1,
+   "Damaged/Defective": 1
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "271062",
+    "order_id": 4897150,
+    "category": "Missing/Wrong Qty",
+    "location": "Mumbai",
+    "picker": "RiyaM_MUM",
+    "packer": "TarunP_MUM",
+    "qc": "Vasant_D_MUM",
+    "manifester": "Vijay-P_MUM"
+   }
+  ]
  }
 }
