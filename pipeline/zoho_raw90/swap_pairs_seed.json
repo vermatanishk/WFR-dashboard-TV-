@@ -195,7 +195,6 @@
  "image_checked": {
   "note": "Orders whose complainant return images / ticket attachments were read for the other order id (invoice / courier label) and gave no readable evidence; the daily routine must add every NEW unpaired case here after trying (fetch_swap_images.py / damage_images.py sheets). Gate \"swap residual cases image-checked\" turns red until then. 2026-11-22: 15 earlier cases + the cases added from the complaint baseline. 2026-11-23: +4800814 - no Zoho ticket at all (empty Ticket ID) so there is no thread to read, and cdn.platinumrx.in was blocked by this container's network policy this run (403, update_environment refused with nobody present to approve) so its return-item images could not be fetched either; nothing else to try.",
   "orders": [
-   4800814,
    3543190,
    3977111,
    4001240,
@@ -226,7 +225,11 @@
    4562936,
    4589625,
    4768586,
-   4800885
+   4798856,
+   4800814,
+   4800885,
+   4850373,
+   4895817
   ]
  }
 }

@@ -32,14 +32,14 @@ NOISE_WRONGMED = re.compile(r"wrong (?:cx|medicine).{0,40}instead of", re.I)
 
 
 def search(field, pat, a, b):
-    rows, frm = [], 1
+    rows, frm = [], 0          # Zoho search `from` is a 0-based offset (from=1 silently skipped the first hit of every query - found 2026-11-26)
     while True:
         for i in range(4):
             try:
                 r = desk_get("/tickets/search", {field: pat, "createdTimeRange": f"{a}T00:00:00.000Z,{b}T23:59:00.000Z", "limit": 100, "from": frm})
                 break
             except Exception as ex:
-                if "204" in str(ex) or "No Content" in str(ex):
+                if "204" in str(ex) or "No Content" in str(ex) or "JSONDecodeError" in repr(ex) or "Expecting value" in str(ex):
                     return rows
                 time.sleep(2 * (i + 1))
         else:

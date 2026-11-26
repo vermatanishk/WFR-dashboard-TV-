@@ -29,26 +29,41 @@ def _clean_order(v):
     return v if re.fullmatch(r"\d{6,9}", v) else ("unparseable" if v else None)
 
 
+def _window(t0, t1):
+    """All tickets created in [t0, t1] (ISO, UTC). One page of 100 WITHOUT a `from` parameter: Zoho's `from` is a 0-based offset, so the old
+    `from=1` silently skipped the first ticket of every query. A window that holds 100+ tickets is split in half, so no offset paging is needed."""
+    for i in range(8):
+        try:
+            r = desk_get("/tickets/search", {"createdTimeRange": f"{t0},{t1}", "limit": 100})
+            break
+        except Exception as ex:
+            if "204" in str(ex) or "No Content" in str(ex) or "JSONDecodeError" in repr(ex) or "Expecting value" in str(ex):
+                return []
+            time.sleep(3 * (i + 1))
+    else:
+        raise RuntimeError(f"zoho search failed for {t0} .. {t1}")
+    data = (r or {}).get("data") or []
+    if len(data) < 100:
+        return data
+    a = datetime.strptime(t0, "%Y-%m-%dT%H:%M:%S.000Z")
+    b = datetime.strptime(t1, "%Y-%m-%dT%H:%M:%S.000Z")
+    if (b - a).total_seconds() < 2:
+        raise RuntimeError(f"{t0}: 100+ tickets in one second")
+    mid = a + (b - a) / 2
+    f = "%Y-%m-%dT%H:%M:%S.000Z"
+    return _window(t0, mid.strftime(f)) + _window((mid + timedelta(seconds=1)).strftime(f), t1)
+
+
 def day_tickets(day):
-    rows, frm = [], 1
-    while True:
-        for i in range(8):
-            try:
-                r = desk_get("/tickets/search", {"createdTimeRange": f"{day}T00:00:00.000Z,{day}T23:59:59.000Z", "limit": 100, "from": frm})
-                break
-            except Exception as ex:
-                if "204" in str(ex) or "No Content" in str(ex):
-                    return rows
-                time.sleep(3 * (i + 1))
-        else:
-            raise RuntimeError(f"zoho search failed for {day} from {frm}")
-        data = (r or {}).get("data") or []
-        rows += data
-        if len(data) < 100:
-            return rows
-        frm += 100
-        if frm > 4800:
-            raise RuntimeError(f"{day}: more than 4800 tickets in a day - split the range")
+    """Every ticket of one UTC day. 2026-11-26: the old one-query-per-day offset paging (from=1,101,...) silently dropped ~1-2 tickets per day
+    (and returned others twice) because Zoho's offset order is not stable; hourly windows with a recursive split are deterministic, then deduped by ticketNumber."""
+    seen, out = set(), []
+    for h in range(24):
+        for t in _window(f"{day}T{h:02d}:00:00.000Z", f"{day}T{h:02d}:59:59.000Z"):
+            if t["ticketNumber"] not in seen:
+                seen.add(t["ticketNumber"])
+                out.append(t)
+    return out
 
 
 def main():
@@ -64,9 +79,13 @@ def main():
         final = pulled is not None and (datetime.strptime(pulled, "%Y-%m-%d").date() - d).days >= 2
         if k not in store["days"] or (today - d).days <= 3 or not final:
             rows = day_tickets(k)
-            store["days"][k] = [{"ticket_id": t["ticketNumber"], "created_time": t["createdTime"], "order_raw": _clean_order((t.get("cf") or {}).get("cf_order_id")),
+            fresh = [{"ticket_id": t["ticketNumber"], "created_time": t["createdTime"], "order_raw": _clean_order((t.get("cf") or {}).get("cf_order_id")),
                                  "disposition": (t.get("cf") or {}).get("cf_dispositions"), "sub_disposition": (t.get("cf") or {}).get("cf_sub_disposition"),
                                  "dependency": (t.get("cf") or {}).get("cf_dependency"), "status": t.get("status"), "channel": t.get("channel")} for t in rows]
+            # UNION with what is already stored (never drop a ticket the earlier pulls / MCP fallback captured; fresh values win)
+            prev = {t["ticket_id"]: t for t in store["days"].get(k, [])}
+            prev.update({t["ticket_id"]: t for t in fresh})
+            store["days"][k] = list(prev.values())
             store.setdefault("day_pulled", {})[k] = today.isoformat()
             print(k, len(rows), flush=True)
         d += timedelta(days=1)
