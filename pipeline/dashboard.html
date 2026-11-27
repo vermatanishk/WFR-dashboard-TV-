@@ -737,11 +737,12 @@ function barRow(name, total, accepted, maxTotal) {
 
 // Multiple tickets can be raised for the same order (repeat customer contact about the
 // same issue) - dedupe by order_id so headline counts reflect distinct issues, not raw
-// ticket volume. Within a dedup group, resolution/location are identical across tickets
-// (they're looked up per order_id from ClickHouse), so picking any one row is safe.
+// ticket volume. The first ticket of the order is the representative; its resolution already
+// includes a Warehouse admission made on any later ticket of the same order.
 function dedupeByOrder(tickets) {
+  // build_full_dataset.py marks every later ticket of an order with dup_of and carries a Warehouse admission onto the first ticket
   const seen = new Map();
-  tickets.forEach(t => { if (!seen.has(t.order_id)) seen.set(t.order_id, t); });
+  tickets.forEach(t => { if (!t.dup_of && !seen.has(t.order_id)) seen.set(t.order_id, t); });
   return Array.from(seen.values());
 }
 

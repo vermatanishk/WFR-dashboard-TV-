@@ -15,7 +15,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 data = json.loads((HERE / "data.json").read_text())
-tickets = data["tickets"]
+tickets = [t for t in data["tickets"] if not t.get("dup_of")]     # order level: later tickets of an order are not counted again
 
 CATEGORIES = ["Missing/Wrong Qty", "Wrong Medicines", "Expiry Issue", "Damaged/Defective", "Switch Orders"]
 

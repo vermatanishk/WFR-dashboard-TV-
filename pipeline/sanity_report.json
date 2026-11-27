@@ -4,7 +4,7 @@
   "2026-09-27",
   "2026-11-25"
  ],
- "generated_at": "2026-11-26T19:17:30Z",
+ "generated_at": "2026-11-27T06:09:23Z",
  "checks": [
   {
    "status": "INFO",
@@ -44,7 +44,7 @@
   {
    "status": "PASS",
    "section": "2 WH accepted",
-   "text": "EOD history: 94 admissions across 59 days; 0 not in the verdict cache []"
+   "text": "EOD history: 94 admissions across 60 days; 0 not in the verdict cache []"
   },
   {
    "status": "WARN",
@@ -54,7 +54,7 @@
   {
    "status": "INFO",
    "section": "2 WH accepted",
-   "text": "macro table 'WH Accepted' (T-2 capped) sums to 89 in the window; complaint baseline shows 108; EOD 94"
+   "text": "macro table 'WH Accepted' (T-2 capped) sums to 85 in the window; complaint baseline shows 108; EOD 94"
   },
   {
    "status": "PASS",
@@ -98,6 +98,36 @@
   },
   {
    "status": "PASS",
+   "section": "6 order level",
+   "text": "complaint rows: one row per (order, type): 4301 rows, 0 duplicates"
+  },
+  {
+   "status": "PASS",
+   "section": "6 order level",
+   "text": "no (order, type) complaint sits on 2 days"
+  },
+  {
+   "status": "INFO",
+   "section": "6 order level",
+   "text": "WFR complaints to 2026-11-25: 2586 rows = 2567 unique orders (19 orders carry 2+ WFR complaint types, counted once per type by design)"
+  },
+  {
+   "status": "PASS",
+   "section": "6 order level",
+   "text": "dashboard dataset: 2843 tickets -> 2576 order-level rows, 267 repeat tickets ignored"
+  },
+  {
+   "status": "PASS",
+   "section": "6 order level",
+   "text": "macro table 'Return Requested' raised 2560 vs unique orders to 2026-11-25: 2560"
+  },
+  {
+   "status": "PASS",
+   "section": "6 order level",
+   "text": "orders accepted (any ticket admitted): 185 orders vs 185 counted on representative tickets"
+  },
+  {
+   "status": "PASS",
    "section": "5 fresh",
    "text": "complaints_export reaches 2026-11-25"
   },
@@ -127,9 +157,9 @@
    "text": "rca_export reaches 2026-11-24"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "5 fresh",
-   "text": "EOD tab date 2026-11-24"
+   "text": "EOD tab date 2026-11-25"
   },
   {
    "status": "FAIL",
@@ -142,6 +172,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 6,
- "pass": 14
+ "fail": 5,
+ "pass": 20
 }

@@ -98,7 +98,7 @@ def wfr_pto_cell(accepted, delivered):
 
 def main():
     data = json.loads((HERE / "data.json").read_text())
-    tickets = data["tickets"]
+    tickets = [t for t in data["tickets"] if not t.get("dup_of")]     # order level: an order counts once, on its first ticket's day
 
     delivered_path = HERE / "zoho_raw90/ch_delivered_daily.json"
     delivered_daily = json.loads(delivered_path.read_text()) if delivered_path.exists() else {}

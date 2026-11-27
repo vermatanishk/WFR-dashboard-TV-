@@ -207,6 +207,25 @@ for t in tickets:
         "is_cold": order_cold_flag.get(order_id),
     })
 
+# ORDER-LEVEL COUNTING (owner, 2026-11-27): Zoho can hold several tickets for one order (customer follow-ups, a ticket that ran over 2 days).
+# The FIRST ticket (by created time) represents the order everywhere (day, category); every later ticket carries `dup_of` and is ignored by all
+# counts (tiles, trend, macro table, personnel). If a LATER ticket of the order is a Warehouse admission, that admission is carried onto the
+# representative ticket (an order is accepted if the Warehouse admitted fault on any of its tickets).
+out_tickets.sort(key=lambda t: (t["created_time"], t["ticket_id"]))
+_first = {}
+for t in out_tickets:
+    t["dup_of"] = None
+    rep = _first.get(t["order_id"])
+    if rep is None:
+        _first[t["order_id"]] = t
+        continue
+    t["dup_of"] = rep["ticket_id"]
+    if t["resolution"] == "wh_accepted" and rep["resolution"] != "wh_accepted":
+        for k in ("resolution", "accepted", "accept_reason", "picker", "picker_ids", "qc", "qc_id"):
+            rep[k] = t[k]
+    elif t["resolution"] == "bod" and rep["resolution"] == "considered_bod":
+        rep["resolution"], rep["accept_reason"] = t["resolution"], t["accept_reason"]
+
 _now = datetime.now(timezone.utc)
 _window_start = _now - timedelta(days=90)
 data = {
@@ -222,7 +241,7 @@ data = {
 print(f"Wrote {len(out_tickets)} tickets to data.json")
 
 from collections import Counter
-print("By resolution:", Counter(t["resolution"] for t in out_tickets))
+print("By resolution (order level):", Counter(t["resolution"] for t in out_tickets if not t["dup_of"]), "| duplicate tickets of an order:", sum(1 for t in out_tickets if t["dup_of"]))
 
 # ---- Personnel leaderboard (accepted orders only, grouped by warehouse) ----
 picker_totals = {}
@@ -243,7 +262,7 @@ for line in open(HERE / "zoho_raw90/qc_totals.csv"):
 picker_errors = defaultdict(int)
 qc_errors = defaultdict(int)
 for t in out_tickets:
-    if not t["accepted"]:
+    if not t["accepted"] or t["dup_of"]:
         continue
     for uid in t["picker_ids"]:
         picker_errors[uid] += 1
@@ -296,6 +315,8 @@ print("Wrote personnel.json:", {k: len(v) for k, v in by_wh_pickers.items()})
 # i.e. every ticket that isn't wh_accepted or no_return_record.
 trend = defaultdict(lambda: defaultdict(lambda: {"raised": 0, "accepted": 0, "bod": 0}))
 for t in out_tickets:
+    if t["dup_of"]:
+        continue                      # order-level: one count per order, on its first ticket's day
     day = t["created_time"][:10]
     trend[day]["All"]["raised"] += 1
     trend[day][t["category"]]["raised"] += 1

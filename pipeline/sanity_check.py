@@ -124,6 +124,31 @@ def main(cap):
     note("PASS" if not unread else "FAIL", "4 damage", f"{len(dmg)} damage complaints; {unread} still 'Photo not read yet' in {lo}..{cap}")
     note("INFO", "4 damage", f"buckets: {bk.most_common()}")
 
+    # ---------- 6. order level: one order = one count, never twice across days
+    ce = js("complaints_export.json"); cc = {c: i for i, c in enumerate(ce["columns"])}
+    k = Counter((r[0], r[cc["Complaint type"]]) for r in ce["rows"])
+    note("PASS" if all(v == 1 for v in k.values()) else "FAIL", "6 order level", f"complaint rows: one row per (order, type): {len(ce['rows'])} rows, {sum(1 for v in k.values() if v > 1)} duplicates")
+    dates = defaultdict(set)
+    for r in ce["rows"]:
+        dates[(r[0], r[cc["Complaint type"]])].add(r[1])
+    note("PASS" if all(len(v) == 1 for v in dates.values()) else "FAIL", "6 order level", "no (order, type) complaint sits on 2 days")
+    wfr = [r for r in ce["rows"] if r[cc["Complaint type"]] in ("Wrong medicine", "Missing / short qty", "Expiry", "MRP / batch mismatch") and r[1] <= cap]
+    by_o = Counter(r[0] for r in wfr)
+    note("INFO", "6 order level", f"WFR complaints to {cap}: {len(wfr)} rows = {len(by_o)} unique orders ({sum(1 for v in by_o.values() if v > 1)} orders carry 2+ WFR complaint types, counted once per type by design)")
+    dd = js("data.json")["tickets"]
+    prim = [t for t in dd if not t.get("dup_of")]
+    note("PASS" if len({t["order_id"] for t in prim}) == len(prim) else "FAIL", "6 order level", f"dashboard dataset: {len(dd)} tickets -> {len(prim)} order-level rows, {len(dd) - len(prim)} repeat tickets ignored")
+    mt = js("macro_trend.json")
+    capt = mt["t2_cutoff"]
+    want = sum(1 for t in prim if t["created_time"][:10] <= capt)
+    got = next(r for r in mt["rows"] if r["label"] == "Return Requested")["3mo"]
+    note("PASS" if got["raised"] == want else "FAIL", "6 order level", f"macro table 'Return Requested' raised {got['raised']} vs unique orders to {capt}: {want}")
+    from collections import defaultdict as _dd
+    acc = sum(1 for t in prim if t["created_time"][:10] <= capt and t["accepted"])
+    adm_any = {t["order_id"] for t in dd if t["accepted"] and t["created_time"][:10] <= capt}
+    note("PASS" if acc >= len({o for o in adm_any if o in {t['order_id'] for t in prim}}) - 0 and acc == len(adm_any & {t['order_id'] for t in prim if t['created_time'][:10] <= capt}) else "FAIL",
+         "6 order level", f"orders accepted (any ticket admitted): {len(adm_any)} orders vs {acc} counted on representative tickets")
+
     # ---------- 5. freshness / archive
     for f in ("complaints_export", "cmp_wfr_export", "cmp_damage_export", "cmp_swap_baseline_export", "swap_export", "rca_export"):
         e = js(f + ".json")

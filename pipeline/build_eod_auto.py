@@ -30,11 +30,24 @@ def ist_day(created):
     return (datetime.strptime(created[:19], "%Y-%m-%dT%H:%M:%S") + timedelta(hours=5, minutes=30)).date().isoformat()
 
 
+# ORDER LEVEL (owner 2026-11-27): an order counts once, on its first ticket's day; later tickets of the order (dup_of) are skipped and the best
+# Warehouse verdict across the order's tickets (admitted > denied > unrecognized > no comment) represents it.
+_rank = {"admitted": 3, "denied": 2, "unrecognized": 1, "no_wh_comment": 0}
+_order_tickets = {}
+for t in data["tickets"]:
+    _order_tickets.setdefault(t["order_id"], []).append(t["ticket_id"])
+
+
+def _best(t):
+    cands = [wh.get(x) or {} for x in _order_tickets[t["order_id"]]]
+    return max(cands, key=lambda v: _rank.get(v.get("verdict"), -1)) if cands else {}
+
+
 out, need = [], []
 for t in data["tickets"]:
-    if ist_day(t["created_time"]) != for_date:
+    if ist_day(t["created_time"]) != for_date or t.get("dup_of"):
         continue
-    v = wh.get(t["ticket_id"]) or {}
+    v = _best(t)
     verdict = v.get("verdict")
     acc = verdict == "admitted"
     texts = v.get("wh_texts") or ([v["evidence"]] if v.get("evidence") else [])
