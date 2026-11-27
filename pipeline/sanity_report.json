@@ -4,7 +4,7 @@
   "2026-09-27",
   "2026-11-25"
  ],
- "generated_at": "2026-11-27T06:09:23Z",
+ "generated_at": "2026-11-27T07:07:24Z",
  "checks": [
   {
    "status": "INFO",
@@ -37,9 +37,9 @@
    "text": "327 complaints exist only as a Zoho ticket (no return request) and are counted"
   },
   {
-   "status": "PASS",
+   "status": "FAIL",
    "section": "2 WH accepted",
-   "text": "108 accepted complaint rows; 0 orders without any 'admitted' ticket verdict []"
+   "text": "109 accepted complaint rows; 1 orders without any 'admitted' ticket verdict ['4230365']"
   },
   {
    "status": "PASS",
@@ -49,7 +49,7 @@
   {
    "status": "WARN",
    "section": "2 WH accepted",
-   "text": "94 admitted verdicts on dashboard tickets in window; 4 whose ORDER is not WH accepted in the baseline (no return request yet / multi-order ticket / complaint type differs): ['261336', '261371', '261651', '261714']"
+   "text": "99 admitted verdicts on dashboard tickets in window; 6 whose ORDER is not WH accepted in the baseline (no return request yet / multi-order ticket / complaint type differs): ['261336', '261371', '261404', '261500', '261651', '261714']"
   },
   {
    "status": "INFO",
@@ -124,7 +124,22 @@
   {
    "status": "PASS",
    "section": "6 order level",
-   "text": "orders accepted (any ticket admitted): 185 orders vs 185 counted on representative tickets"
+   "text": "orders accepted (any ticket admitted): 187 orders vs 187 counted on representative tickets"
+  },
+  {
+   "status": "PASS",
+   "section": "7 WH error log",
+   "text": "133 logged orders in 2026-08-26..2026-11-25: 128 counted WH accepted; 0 in-scope WFR complaints of logged orders NOT accepted []"
+  },
+  {
+   "status": "INFO",
+   "section": "7 WH error log",
+   "text": "4 logged orders have no complaint row (no return request / complaint-type ticket in the window): ['3540978', '3546433', '3967920', '4857275']"
+  },
+  {
+   "status": "PASS",
+   "section": "7 WH error log",
+   "text": "Tab 1: 170 logged orders have a ticket in the dashboard dataset; 167 are wh_accepted, 3 stay no_return_record by design (no ClickHouse return row yet: excluded from the refund total) []"
   },
   {
    "status": "PASS",
@@ -172,6 +187,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 5,
- "pass": 20
+ "fail": 6,
+ "pass": 21
 }

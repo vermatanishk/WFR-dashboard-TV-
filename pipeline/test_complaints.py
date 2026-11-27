@@ -32,7 +32,8 @@ check("WH verdict gap is zero (every ticket past T-2 has a read verdict)", not a
 check("no complaint-type ticket left unattached", exp["notes"].get("unaccounted_ticket_ids") == [], str(exp["notes"].get("unaccounted_ticket_ids"))[:80])
 check("ticket-only rows always have a ticket", all(r[C["Ticket raised"]] == "Yes" for r in rows if r[C["Source"]] == "Zoho ticket only"))
 check("return-based rows never say 'Return request: Not raised'", all(r[C["Return request"]] != "Not raised" for r in rows if r[C["Source"]] != "Zoho ticket only"))
-check("WH input is 'No ticket' exactly when no ticket was raised", all((r[C["WH input"]] == "No ticket") == (r[C["Ticket raised"]] == "No") for r in rows))
+check("WH input is 'No ticket' exactly when no ticket was raised", all((r[C["WH input"]] == "No ticket") == (r[C["Ticket raised"]] == "No" and r[C["WH error log"]] == "No") for r in rows))
+check("a row flagged from the Warehouse error log is WH accepted", all(r[C["WH error log"]] == "No" or r[C["WH input"]] == "WH accepted" for r in rows))
 check("cancelled / rejected <=> out of scope", all((r[C["In scope"]] == "No") == (r[C["Return request"]] in ("Raised - Cancelled", "Raised - Rejected")) for r in rows))
 
 # 2. independent recount of the return side from the raw ClickHouse chunks -------------------------------------------
@@ -137,7 +138,7 @@ for name, types in (("wfr", {"Wrong medicine", "Missing / short qty", "Expiry", 
             "ex_rej": sum(r[X["Return request"]] == "Raised - Rejected" for r in R),
             "t_yes": sum(bool(r[X["Ticket ID"]]) and r[X["Ticket relation"]] in ("Filed under this complaint type", "Filed under another complaint type") for r in sc),
             "t_none": sum(r[X["Ticket relation"]] == "No ticket" for r in sc),
-            "wh_acc": sum(r[X["WH input"]] == "WH accepted" for r in sc), "wh_none": sum(r[X["WH input"]] == "No WH comment" for r in sc)}
+            "wh_acc": sum(r[X["WH input"]] == "WH accepted" and r[X["Ticket raised"]] == "Yes" for r in sc), "wh_log": sum(r[X["WH input"]] == "WH accepted" and r[X["Ticket raised"]] == "No" for r in sc), "wh_none": sum(r[X["WH input"]] == "No WH comment" for r in sc)}
     for k, v in hand.items():
         check(f"{name}: hand count '{k}' = engine ({v})", n[k] == v, f"engine {n[k]}")
 

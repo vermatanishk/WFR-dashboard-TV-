@@ -46,6 +46,8 @@ def _common(L, add, types, root_label):
     add("t_other", "Filed under another complaint type", "agent chose a different sub-disposition", "t_yes", False, S + [(REL, "in", [T_OTHER])])
     add("t_non", "Ticket exists but filed as non-complaint", "e.g. 'No longer needed' / pickup delayed: nobody investigates", "scope", False, S + [(REL, "in", [T_NONCMP])])
     add("t_none", "No ticket at all", "of in scope", "scope", False, S + [(REL, "in", [T_NONE])])
+    add("wh_log", "WH accepted without a complaint ticket", "Warehouse error log: the Warehouse itself logged this order as its mistake", "scope", False,
+        S + [(RAISED, "in", ["No"]), (WH, "in", [WH_ACC])])
     return S
 
 

@@ -58,7 +58,7 @@ COLUMNS = ["Order ID", "Created date", "Complaint type", "Source", "Return reque
            "Ticket relation", "Ticket raised", "Ticket ID", "Ticket sub-disposition", "WH input", "Damage type", "Cold item",
            "Photo bucket", "Warehouse",
            "RCA read", "RCA investigation", "RCA no-decision reason", "RCA bucket 1", "RCA bucket 2", "RCA bucket 3", "RCA evidence basis",
-           "WFR cut 1", "WFR cut 2", "WFR cut detail", "WFR cut basis"]
+           "WFR cut 1", "WFR cut 2", "WFR cut detail", "WFR cut basis", "WH error log"]
 
 T_MATCH, T_OTHER, T_NONCMP, T_NONE = ("Filed under this complaint type", "Filed under another complaint type",
                                       "Filed as non-complaint (e.g. No longer needed)", "No ticket")
@@ -322,7 +322,7 @@ def main():
         return [oid, created, typ, src, state, reason, in_scope, rel, raised,
                 chosen[0]["ticket_id"] if chosen else "", (chosen[0]["sub_disposition"] or "") if chosen else "",
                 wh, dmg_type, "Yes" if any(x["cold"] for x in lines) else "No", pb,
-                wh_name.get(ws, f"WH {ws}" if ws is not None else "Unknown")] + rca_vals + [""] * 4
+                wh_name.get(ws, f"WH {ws}" if ws is not None else "Unknown")] + rca_vals + [""] * 4 + ["No"]
 
     # One real complaint must be ONE row: a ticket explains at most one return complaint, and a ticket that explains a
     # return complaint never also becomes a "ticket only" complaint.
@@ -374,6 +374,7 @@ def main():
     end_day = max(x["created"][:10] for x in items)                      # last day the return pull covers completely
     rows = [r for r in rows if win_start <= r[1] <= end_day]
     rows.sort(key=lambda r: (r[1], r[0], r[2]))
+    apply_wh_error_log(rows)
     add_wfr_cuts(rows, ret)
     latest = max(r[1] for r in rows)
     in_win = [t for t in tickets if (t["created_time"][:10] >= win_start) and sub_type(t["sub_disposition"]) and parse_order_id(t["order_raw"]) is not None]
@@ -396,6 +397,28 @@ def main():
     print(f"tickets for Warehouse-comment read (baseline orders, complaint types): {len(toread)} -> zoho_raw90/cmp_tickets_to_read.json")
     print(f"complaint-type tickets with no usable order id (cannot be joined): {len(unl)}")
     print(f"complaint-type tickets in window not attached to any complaint row: {len(unaccounted)} {unaccounted[:8]}")
+
+
+def apply_wh_error_log(rows):
+    """Warehouse self-reported error log (wh_error_log.py): the Warehouse itself logged the order as its mistake = an explicit admission, so the
+    complaint counts as WH accepted even when it has no complaint ticket (return request only / non-complaint ticket) or the ticket verdict was a
+    denial. Target rows: the logged complaint type; if the order has none, its other WFR-type rows (never swap / damage rows on a short-qty line)."""
+    import wh_error_log
+    log = wh_error_log.load()
+    C = {c: i for i, c in enumerate(COLUMNS)}
+    byo = defaultdict(list)
+    for r in rows:
+        byo[r[0]].append(r)
+    for o, rs in byo.items():
+        rec = log.get(str(o))
+        if not rec:
+            continue
+        lt = rec["entries"][0]["type"]
+        tgt = [r for r in rs if r[C["Complaint type"]] == lt] or ([r for r in rs if r[C["Complaint type"]] in (WM, MQ, EXP, MRP)] if lt not in (SWP, DMG) else [])
+        for r in tgt:
+            if r[C["In scope"]] == "Yes":
+                r[C["WH input"]] = WH_ACC
+                r[C["WH error log"]] = "Yes"
 
 
 def add_wfr_cuts(rows, ret):
@@ -439,7 +462,8 @@ def sanity(out, items, tickets, skipped):
         assert r[C["Source"]] == SRC_TKT or r[C["Return request"]] != R_NONE, r
         assert (r[C["In scope"]] == "No") == (r[C["Return request"]] in (R_CAN, R_REJ)), r
         assert r[C["Ticket raised"]] == ("Yes" if r[C["Ticket relation"]] in (T_MATCH, T_OTHER) else "No"), r
-        assert (r[C["WH input"]] == WH_NA) == (r[C["Ticket raised"]] == "No"), r
+        assert (r[C["WH input"]] == WH_NA) == (r[C["Ticket raised"]] == "No" and r[C["WH error log"]] == "No"), r
+        assert r[C["WH error log"]] == "No" or r[C["WH input"]] == WH_ACC, r
     print(f"\nbaseline window {out['window_start']} .. {out['t2_cap_date']}   WH T-2 cap {out['wh_t2_cap']}")
     print(f"complaints (order x type): {n}   unique orders: {len({r[0] for r in rows})}")
     for t in TYPES:

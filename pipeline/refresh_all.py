@@ -212,6 +212,8 @@ def pending():
     print("     read every sheet, CROP + enlarge each invoice / courier label to read its Order ID; a different id = pair -> swap_pairs_seed.json image_pairs.pairs;")
     print("     pull swap_orders / swap_status_raw / swap_return_status for the partner orders; then add every order you tried to image_checked.orders; build_swap.py, swap_view_spec.py")
     print("     (orders with no return request: fetch_swap_images.py <ticketNumber> pulls the Zoho ticket attachments)")
+    print("0. Warehouse error log: download the Drive sheet 'Pan India errors sheets' (1uDa_W4mPkiWnr5y8xckobhbJ3fW_pvnFDfFPzxqdhHo; CSV export = live tab) with the Drive MCP,")
+    print("     save it as a file and run `python3 wh_error_log.py <csv>` BEFORE `refresh_all.py build` (merge only adds; see wh_error_log.py docstring)")
     n5 = sum(len(v) for v in wp.values())
     print(f"5. WFR root-cause inputs pending: {n5} complaints -> zoho_raw90/wfr_rca_pending.json  (by type; detail says what is missing)")
     print("     pull the inputs named in wfr_rca.py's docstring / WFR_RCA_inputs.md (ClickHouse MCP, repeat('x',N) pad + save_ch_result.py), UNION into the wfr_*.json files, append the orders to")
@@ -221,6 +223,7 @@ def pending():
 # ------------------------------------------------------------------------------------------------ build
 STEPS = [
     ("Zoho complaint tickets (incremental, last 3 days)", ["python3", "pull_complaint_tickets.py"]),
+    ("Warehouse error log -> verdict cache (re-apply)", ["python3", "wh_error_log.py"]),
     ("RCA: Zoho Dependency field (incremental)", ["python3", "pull_dependency.py"]),
     ("RCA: provisional WH verdicts re-read", ["python3", "recheck_wh_comments.py"]),
     ("RCA: ticket routing history", ["python3", "pull_ticket_routing.py"]),

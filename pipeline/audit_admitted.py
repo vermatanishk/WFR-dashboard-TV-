@@ -12,7 +12,8 @@ IST = timezone(timedelta(hours=5, minutes=30))
 cache = json.loads((HERE / "zoho_raw90/wh_text_check.json").read_text())
 data = json.loads((HERE / "data.json").read_text())
 cut = (datetime.now(IST).date() - timedelta(days=60)).isoformat()
-ids = [t["ticket_id"] for t in data["tickets"] if t["created_time"][:10] >= cut and (cache.get(t["ticket_id"]) or {}).get("verdict") == "admitted"]
+ids = [t["ticket_id"] for t in data["tickets"] if t["created_time"][:10] >= cut and (cache.get(t["ticket_id"]) or {}).get("verdict") == "admitted"
+       and (cache.get(t["ticket_id"]) or {}).get("source") != "wh_error_log"]      # error-log admissions are not Zoho comments - nothing to re-read
 ex = HERE / "zoho_raw90/cmp_tickets_to_read.json"
 if ex.exists():
     ids += [t["ticket_id"] for t in json.loads(ex.read_text()) if t["created_time"][:10] >= cut and (cache.get(t["ticket_id"]) or {}).get("verdict") == "admitted" and t["ticket_id"] not in ids]

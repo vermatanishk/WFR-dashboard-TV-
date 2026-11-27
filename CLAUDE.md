@@ -535,3 +535,11 @@ nodes empty over the whole window are pruned).
 - Expiry: expired / near expiry (<= 6 months) / allocation correct, at ALLOCATION time; cut 2 = batch has multiple expiry year-months in warehouse inventory.
 - Rows older than 60 days read "Older than the 60-day RCA window"; unpulled inputs read "Inputs pending" (gate `WFR root-cause inputs complete`, `refresh_all.py pending` item 5 ->
   `zoho_raw90/wfr_rca_pending.json`). After pulling, append the orders / brands to `zoho_raw90/wfr_inputs_done.json`. Test: `python3 pipeline/test_wfr_rca.py`.
+
+### 2026-11-27 - Warehouse error log (owner: "tickets logged by the warehouse team saying they made these mistakes - tally, add missing")
+Google Sheet "Pan India errors sheets" (id 1uDa_W4mPkiWnr5y8xckobhbJ3fW_pvnFDfFPzxqdhHo, live tab "October" = gid 128620232; Drive MCP `download_file_content` text/csv returns that tab; the
+other monthly tabs are older than our data) = the Warehouse's own list of order-level mistakes (Short qty / Wrong sku / Switch order / Excess / Wrong MRP). It has NO ticket ids, only order ids.
+`pipeline/wh_error_log.py <csv>` merges it into `zoho_raw90/wh_error_log.json` (cumulative) and writes `admitted` verdicts (source `wh_error_log`) for the order's same-type complaint tickets
+(else its other WFR-type tickets; never swap / damage tickets) into `wh_text_check.json`, so Tab 1, EOD, baseline and RCA all see them. `build_complaints.py::apply_wh_error_log` also marks the order's
+complaint rows WH accepted + column `WH error log` = Yes even with no complaint ticket (funnel row "WH accepted without a complaint ticket"). Orders with no return row stay `no_return_record` on
+Tab 1 by design. Run the CSV download + merge each daily refresh (`refresh_all.py pending` item 0). sanity_check section 7 tallies the log against WH accepted.
