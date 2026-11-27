@@ -222,7 +222,7 @@ def summary():
         wh = [r for r in tk if r[C["WH input"]] in (WH_ACC, WH_DEN, WH_OTH)]
         due = [r for r in tk if r[C["WH input"]] != WH_DUE]
         data.append(dict(name=name, first=first, last=last, n=len(rows), excl=len(rows) - len(sc), scope=len(sc), tk=len(tk), notk=len(sc) - len(tk),
-                         wh=len(wh), due=len(due), acc=sum(1 for r in tk if r[C["WH input"]] == WH_ACC),
+                         wh=len(wh), due=len(due), acc=sum(1 for r in sc if r[C["WH input"]] == WH_ACC),
                          refunded_no_tk=sum(1 for r in sc if r[C["Ticket raised"]] == "No" and r[C["Return request"]] == R_ACC)))
     pct = lambda a, b: f"{round(100 * a / b)}%" if b else "–"
     spec = [("Complaints raised", "return requests + Zoho tickets, last 30 days", lambda d: str(d["n"])),
