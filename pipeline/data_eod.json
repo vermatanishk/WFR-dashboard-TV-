@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T07:06:56Z",
+  "generated_at": "2026-11-27T07:15:54Z",
   "for_date": "2026-11-25",
   "methodology": "WH-Accepted here is TEXT-BASED and requires the Warehouse team's OWN comment (Zoho commenter role 'Warehouse') to contain a genuine admission (e.g. 'we have sent wrong sku', 'short qty') - not the support agent's restatement of the customer's complaint, and not the WH team's stock denial ('We have sent proper medicine to Cx'). This is stricter than category alone, so it undercounts relative to the eventual ClickHouse-confirmed return outcome, but gives ops a same-day, defensible WH-admission signal rather than a proxy.",
   "tickets": [

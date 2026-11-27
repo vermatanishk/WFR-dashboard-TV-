@@ -155,7 +155,7 @@ def main(cap):
     if lg:
         acc_o = {r[0] for r in ce["rows"] if r[cc["WH input"]] == "WH accepted"}
         scope_o = {r[0] for r in ce["rows"] if r[cc["In scope"]] == "Yes" and r[cc["Complaint type"]] in ("Wrong medicine", "Missing / short qty", "Expiry", "MRP / batch mismatch")}
-        inw = [o for o, v in lg.items() if v["first_date"] >= ce["window_start"] and v["first_date"] <= cap]
+        inw = [o for o, v in lg.items() if v["first_date"] >= ce["window_start"] and v["first_date"] <= cap and v.get("scope") != "out"]   # out = return cancelled / QC-rejected: not counted
         miss = [o for o in inw if int(o) in scope_o and int(o) not in acc_o]
         note("PASS" if not miss else "FAIL", "7 WH error log", f"{len(inw)} logged orders in {ce['window_start']}..{cap}: {sum(1 for o in inw if int(o) in acc_o)} counted WH accepted; {len(miss)} in-scope WFR complaints of logged orders NOT accepted {miss[:5]}")
         nocmp = [o for o in inw if int(o) not in {r[0] for r in ce["rows"]}]
@@ -163,7 +163,7 @@ def main(cap):
         dd = js("data.json")["tickets"]
         t1 = {t["order_id"] for t in dd if t["accepted"] or t.get("dup_of")}
         acc1 = {t["order_id"] for t in dd if t["resolution"] == "wh_accepted"}
-        in1 = [int(o) for o, v in lg.items() if int(o) in {t["order_id"] for t in dd}]
+        in1 = [int(o) for o, v in lg.items() if int(o) in {t["order_id"] for t in dd} and v.get("scope") != "out"]
         norec = {t["order_id"] for t in dd if t["resolution"] == "no_return_record" and not t.get("dup_of")}
         bad1 = [o for o in in1 if o not in acc1 and o not in norec]
         note("PASS" if not bad1 else "FAIL", "7 WH error log", f"Tab 1: {len(in1)} logged orders have a ticket in the dashboard dataset; {sum(1 for o in in1 if o in acc1)} are wh_accepted, "

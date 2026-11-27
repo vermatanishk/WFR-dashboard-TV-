@@ -77,14 +77,36 @@ def target_tickets(tickets, log_type):
     return [t for t, ty in tickets.items() if ty in ("Missing / short qty", "Wrong medicine", "Expiry", "MRP / batch mismatch")]
 
 
+def refresh_scope(log):
+    """Owner rule (2026-11-27): a logged order whose return was cancelled by the customer / rejected at QC is NOT counted (same in-scope rule as the funnel).
+    scope 'out' = every WFR complaint row of the order is out of scope. Updated from the current complaint export; values for older orders (before the export window,
+    derived from the historic Jun-Nov rebuild) are kept."""
+    p = HERE / "complaints_export.json"
+    if not p.exists():
+        return
+    e = json.loads(p.read_text())
+    C = {c: i for i, c in enumerate(e["columns"])}
+    by = {}
+    for r in e["rows"]:
+        if r[C["Complaint type"]] in ("Wrong medicine", "Missing / short qty", "Expiry", "MRP / batch mismatch"):
+            by.setdefault(str(r[0]), []).append(r[C["In scope"]])
+    for o, rec in log.items():
+        if o in by:
+            rec["scope"] = "out" if all(x == "No" for x in by[o]) else "in"
+
+
 def apply(log=None):
     log = log or load()
+    refresh_scope(log)
+    LOG.write_text(json.dumps(log, separators=(",", ":"), sort_keys=True))
     cache_p = RAW / "wh_text_check.json"
     cache = json.loads(cache_p.read_text())
     ot = order_tickets()
     new = changed = 0
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     for o, rec in log.items():
+        if rec.get("scope") == "out":
+            continue                      # return cancelled / QC-rejected: not counted
         e = rec["entries"][0]
         for tid in sorted(target_tickets(ot.get(int(o), {}), e["type"])):
             old = cache.get(tid)

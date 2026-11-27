@@ -543,3 +543,6 @@ other monthly tabs are older than our data) = the Warehouse's own list of order-
 (else its other WFR-type tickets; never swap / damage tickets) into `wh_text_check.json`, so Tab 1, EOD, baseline and RCA all see them. `build_complaints.py::apply_wh_error_log` also marks the order's
 complaint rows WH accepted + column `WH error log` = Yes even with no complaint ticket (funnel row "WH accepted without a complaint ticket"). Orders with no return row stay `no_return_record` on
 Tab 1 by design. Run the CSV download + merge each daily refresh (`refresh_all.py pending` item 0). sanity_check section 7 tallies the log against WH accepted.
+Owner decision (2026-11-27): a logged order whose return was cancelled by the customer or rejected at QC is NOT counted (same in-scope rule as everywhere). `wh_error_log.json` carries `scope: out` for
+those orders (derived from the complaint export; older orders from the Jun-Nov historic rebuild) and `wh_error_log.py` never writes verdicts for them. Aug check: 93 logged August orders = 69 already
+accepted + 6 real misses (added) + 12 out of scope (10 QC-rejected, 2 cancelled) + 3 dated July + 3 with no WFR complaint.

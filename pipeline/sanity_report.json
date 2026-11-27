@@ -4,7 +4,7 @@
   "2026-09-27",
   "2026-11-25"
  ],
- "generated_at": "2026-11-27T07:07:24Z",
+ "generated_at": "2026-11-27T07:16:07Z",
  "checks": [
   {
    "status": "INFO",
@@ -129,7 +129,7 @@
   {
    "status": "PASS",
    "section": "7 WH error log",
-   "text": "133 logged orders in 2026-08-26..2026-11-25: 128 counted WH accepted; 0 in-scope WFR complaints of logged orders NOT accepted []"
+   "text": "125 logged orders in 2026-08-26..2026-11-25: 120 counted WH accepted; 0 in-scope WFR complaints of logged orders NOT accepted []"
   },
   {
    "status": "INFO",
@@ -139,7 +139,7 @@
   {
    "status": "PASS",
    "section": "7 WH error log",
-   "text": "Tab 1: 170 logged orders have a ticket in the dashboard dataset; 167 are wh_accepted, 3 stay no_return_record by design (no ClickHouse return row yet: excluded from the refund total) []"
+   "text": "Tab 1: 156 logged orders have a ticket in the dashboard dataset; 154 are wh_accepted, 2 stay no_return_record by design (no ClickHouse return row yet: excluded from the refund total) []"
   },
   {
    "status": "PASS",
