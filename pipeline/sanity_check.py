@@ -68,6 +68,11 @@ def main(cap):
     # a complaint row is accepted when ANY ticket of the case carries an admission, so the check is per order
     adm_orders = {str(v.get("order_id")) for t, v in wh.items() if v.get("verdict") == "admitted"}
     adm_orders |= {str(t["order_id"]) for t in js("data.json")["tickets"] if str(t["ticket_id"]) in adm}
+    # wh_error_log can accept an order with no complaint ticket at all (CLAUDE.md "WH accepted without a complaint ticket") -
+    # such orders never get a wh_text_check entry, so credit them here too (scope 'in' only, same rule as wh_error_log.py)
+    if (RAW / "wh_error_log.json").exists():
+        errlog = json.loads((RAW / "wh_error_log.json").read_text())
+        adm_orders |= {oid for oid, v in errlog.items() if v.get("scope", "in") == "in"}
     notadm = sorted(str(r[C["Order ID"]]) for r in base_rows if str(r[C["Order ID"]]) not in adm_orders)
     note("PASS" if not notadm else "FAIL", "2 WH accepted", f"{len(base_rows)} accepted complaint rows; {len(notadm)} orders without any 'admitted' ticket verdict {notadm[:5]}")
     ewrong = []

@@ -31,7 +31,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3462545,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Okamet 500mg Tablet SR 15s
 3464001,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Telgard 40mg Tablet 10s
 3466415,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,ST Gliptin M 100/500mg Tablet SR 15s
-3468526,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Lycored Softgel Capsule 10s
+3468526,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Lycored Softgel Capsule 10s
 3470814,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Curlzvit Tablet 10s
 3471321,Not in mapping,SKU missing from pack mapping,Pack qty confusion - catalog / MDM pack definition,Accepted,Raised - Accepted & refunded,
 3471515,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Himalaya Liv.52 HB Capsule 10s
@@ -64,7 +64,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 3530486,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Entacom Plus 100mg Tablet 10s
 3532151,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Atovastrin Gold 75/20/75mg Capsule 15s
 3534357,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Levipil 100mg Syrup 100ml
-3536838,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Minkesh Forte 5% Solution 60ml
+3536838,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Minkesh Forte 5% Solution 60ml
 3540978,Single,,Counting error - confirmed by WH,Accepted,Raised - Accepted & refunded,Gluci 50/87.5mg Injection 1X10ml
 3541143,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Glypen MF 80/500mg Tablet 10s
 3542297,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Vencher Tablet 10s
@@ -553,7 +553,7 @@ order_id,structure,flag_list,bucket,wh,ret,skus
 4481059,Not identified,,Undetermined - SKU not identified,No decision,Not raised,
 4482293,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Hirepa 2mg Tablet 10s
 4482477,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Lodoz 5/6.25mg Tablet 10s
-4482635,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,No decision,Raised - Accepted & refunded,BD Glide with TBL Ultra Fine Needle Insulin Syringes U40 (31g x 6mm) 10s
+4482635,Single,inward qty = pack-size x PO qty (before the order),Pack qty confusion - WH inward unit mismatch,Accepted,Raised - Accepted & refunded,BD Glide with TBL Ultra Fine Needle Insulin Syringes U40 (31g x 6mm) 10s
 4483825,Not identified,,Undetermined - SKU not identified,Rejected,Not raised,
 4485687,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - In progress,Finaworth 1mg Tablet 10s
 4485728,Single,,"Counting error - by elimination (no pack flag, WH did not accept)",Rejected,Raised - Accepted & refunded,Eslizen 600mg Tablet 10s

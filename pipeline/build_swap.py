@@ -142,7 +142,9 @@ def main():
     routing = load("swap_ticket_routing.json", {})
     rca = load("../rca.json") if False else json.loads((HERE / "rca.json").read_text())
     cap, gen = rca["t2_cap_date"], rca["generated_at"]
-    start = (datetime.strptime(gen[:10], "%Y-%m-%d") - timedelta(days=WINDOW_DAYS)).date().isoformat()
+    # anchor the window on the T-2 cap (same as sanity_check.py's 60-day window), not "today" - anchoring on today
+    # left a 2-3 day gap at the old edge where a ticketless swap complaint could sit uncovered (found 2026-11-27, order 3844008)
+    start = (datetime.strptime(cap, "%Y-%m-%d") - timedelta(days=WINDOW_DAYS - 1)).date().isoformat()
     by_order = {}
     for t in sorted(tickets.values(), key=lambda x: x["created_time"]):
         by_order.setdefault(t["order_id"], []).append(t)

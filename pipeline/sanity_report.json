@@ -4,22 +4,22 @@
   "2026-09-27",
   "2026-11-25"
  ],
- "generated_at": "2026-11-27T07:16:07Z",
+ "generated_at": "2026-11-27T14:00:56Z",
  "checks": [
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "window 2026-09-27..2026-11-25: 2726 complaints (order x type) = {'Missing / short qty': 1015, 'Wrong medicine': 376, 'Damage': 1032, 'Order swap': 86, 'Expiry': 144, 'MRP / batch mismatch': 73}"
+   "text": "window 2026-09-27..2026-11-25: 2726 complaints (order x type) = {'Missing / short qty': 1015, 'Wrong medicine': 375, 'Damage': 1032, 'Order swap': 87, 'Expiry': 144, 'MRP / batch mismatch': 73}"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "source split (return request vs ticket): {'Zoho ticket only': 327, 'Return request only': 1071, 'Return request + ticket': 1328}"
+   "text": "source split (return request vs ticket): {'Zoho ticket only': 323, 'Return request only': 1068, 'Return request + ticket': 1335}"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_wfr_export.json: 1608 rows in window vs 1608 in complaints_export"
+   "text": "cmp_wfr_export.json: 1607 rows in window vs 1607 in complaints_export"
   },
   {
    "status": "PASS",
@@ -29,17 +29,17 @@
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_swap_baseline_export.json: 86 rows in window vs 86 in complaints_export"
+   "text": "cmp_swap_baseline_export.json: 87 rows in window vs 87 in complaints_export"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "327 complaints exist only as a Zoho ticket (no return request) and are counted"
+   "text": "323 complaints exist only as a Zoho ticket (no return request) and are counted"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "2 WH accepted",
-   "text": "109 accepted complaint rows; 1 orders without any 'admitted' ticket verdict ['4230365']"
+   "text": "109 accepted complaint rows; 0 orders without any 'admitted' ticket verdict []"
   },
   {
    "status": "PASS",
@@ -67,9 +67,9 @@
    "text": "0 provisional verdicts (last 7 days) not re-read since yesterday"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "3 swap",
-   "text": "swap export reaches 2026-11-24 (cap 2026-11-25)"
+   "text": "swap export reaches 2026-11-25 (cap 2026-11-25)"
   },
   {
    "status": "INFO",
@@ -87,19 +87,19 @@
    "text": "75/75 in-scope swap complaints in the window have a case; 0 missing []"
   },
   {
-   "status": "PASS",
+   "status": "FAIL",
    "section": "4 damage",
-   "text": "1032 damage complaints; 0 still 'Photo not read yet' in 2026-09-27..2026-11-25"
+   "text": "1032 damage complaints; 1 still 'Photo not read yet' in 2026-09-27..2026-11-25"
   },
   {
    "status": "INFO",
    "section": "4 damage",
-   "text": "buckets: [('Photo shows the product intact - no visible damage', 266), ('Primary pack breached: blister punctured/burst, sachet torn, strip crushed', 214), ('Not photo-read (temperature complaint)', 188), ('Liquid / gel leaked or spilled', 86), ('Vial label peeled off / flip-off cap loose', 61), ('Photo not available (no return request)', 51), ('Individual carton crushed, torn or water-soaked; product intact', 50), ('Product itself defective (split tablet, lumpy formula, dose delivery)', 50), ('Image not relevant: only the app logo, or a photo of a different product', 27), ('Courier / outer shipper crushed or torn; product inside intact', 19), ('Return filed under another reason (photo not checked)', 16), ('No photo on file', 4)]"
+   "text": "buckets: [('Photo shows the product intact - no visible damage', 266), ('Primary pack breached: blister punctured/burst, sachet torn, strip crushed', 214), ('Not photo-read (temperature complaint)', 188), ('Liquid / gel leaked or spilled', 86), ('Vial label peeled off / flip-off cap loose', 61), ('Individual carton crushed, torn or water-soaked; product intact', 50), ('Photo not available (no return request)', 50), ('Product itself defective (split tablet, lumpy formula, dose delivery)', 50), ('Image not relevant: only the app logo, or a photo of a different product', 27), ('Courier / outer shipper crushed or torn; product inside intact', 19), ('Return filed under another reason (photo not checked)', 16), ('No photo on file', 4), ('Photo not read yet', 1)]"
   },
   {
    "status": "PASS",
    "section": "6 order level",
-   "text": "complaint rows: one row per (order, type): 4301 rows, 0 duplicates"
+   "text": "complaint rows: one row per (order, type): 4341 rows, 0 duplicates"
   },
   {
    "status": "PASS",
@@ -109,7 +109,7 @@
   {
    "status": "INFO",
    "section": "6 order level",
-   "text": "WFR complaints to 2026-11-25: 2586 rows = 2567 unique orders (19 orders carry 2+ WFR complaint types, counted once per type by design)"
+   "text": "WFR complaints to 2026-11-25: 2585 rows = 2566 unique orders (19 orders carry 2+ WFR complaint types, counted once per type by design)"
   },
   {
    "status": "PASS",
@@ -144,32 +144,32 @@
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "complaints_export reaches 2026-11-25"
+   "text": "complaints_export reaches 2026-11-26"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "cmp_wfr_export reaches 2026-11-25"
+   "text": "cmp_wfr_export reaches 2026-11-26"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "cmp_damage_export reaches 2026-11-25"
+   "text": "cmp_damage_export reaches 2026-11-26"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "cmp_swap_baseline_export reaches 2026-11-25"
+   "text": "cmp_swap_baseline_export reaches 2026-11-26"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "5 fresh",
-   "text": "swap_export reaches 2026-11-24"
+   "text": "swap_export reaches 2026-11-25"
   },
   {
-   "status": "FAIL",
+   "status": "PASS",
    "section": "5 fresh",
-   "text": "rca_export reaches 2026-11-24"
+   "text": "rca_export reaches 2026-11-25"
   },
   {
    "status": "PASS",
@@ -187,6 +187,6 @@
    "text": "archive intact"
   }
  ],
- "fail": 6,
- "pass": 21
+ "fail": 3,
+ "pass": 24
 }
