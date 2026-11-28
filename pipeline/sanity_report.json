@@ -1,60 +1,60 @@
 {
- "cap": "2026-11-25",
+ "cap": "2026-11-26",
  "window": [
-  "2026-09-27",
-  "2026-11-25"
+  "2026-09-28",
+  "2026-11-26"
  ],
- "generated_at": "2026-11-27T14:00:56Z",
+ "generated_at": "2026-11-28T13:55:47Z",
  "checks": [
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "window 2026-09-27..2026-11-25: 2726 complaints (order x type) = {'Missing / short qty': 1015, 'Wrong medicine': 375, 'Damage': 1032, 'Order swap': 87, 'Expiry': 144, 'MRP / batch mismatch': 73}"
+   "text": "window 2026-09-28..2026-11-26: 2716 complaints (order x type) = {'Damage': 1022, 'Wrong medicine': 378, 'Missing / short qty': 1014, 'MRP / batch mismatch': 72, 'Order swap': 86, 'Expiry': 144}"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "source split (return request vs ticket): {'Zoho ticket only': 323, 'Return request only': 1068, 'Return request + ticket': 1335}"
+   "text": "source split (return request vs ticket): {'Zoho ticket only': 318, 'Return request only': 1062, 'Return request + ticket': 1336}"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_wfr_export.json: 1607 rows in window vs 1607 in complaints_export"
+   "text": "cmp_wfr_export.json: 1608 rows in window vs 1608 in complaints_export"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_damage_export.json: 1032 rows in window vs 1032 in complaints_export"
+   "text": "cmp_damage_export.json: 1022 rows in window vs 1022 in complaints_export"
   },
   {
    "status": "PASS",
    "section": "1 total",
-   "text": "cmp_swap_baseline_export.json: 87 rows in window vs 87 in complaints_export"
+   "text": "cmp_swap_baseline_export.json: 86 rows in window vs 86 in complaints_export"
   },
   {
    "status": "INFO",
    "section": "1 total",
-   "text": "323 complaints exist only as a Zoho ticket (no return request) and are counted"
+   "text": "318 complaints exist only as a Zoho ticket (no return request) and are counted"
   },
   {
    "status": "PASS",
    "section": "2 WH accepted",
-   "text": "109 accepted complaint rows; 0 orders without any 'admitted' ticket verdict []"
+   "text": "108 accepted complaint rows; 0 orders without any 'admitted' ticket verdict []"
   },
   {
    "status": "PASS",
    "section": "2 WH accepted",
-   "text": "EOD history: 94 admissions across 60 days; 0 not in the verdict cache []"
+   "text": "EOD history: 92 admissions across 60 days; 0 not in the verdict cache []"
   },
   {
    "status": "WARN",
    "section": "2 WH accepted",
-   "text": "99 admitted verdicts on dashboard tickets in window; 6 whose ORDER is not WH accepted in the baseline (no return request yet / multi-order ticket / complaint type differs): ['261336', '261371', '261404', '261500', '261651', '261714']"
+   "text": "96 admitted verdicts on dashboard tickets in window; 3 whose ORDER is not WH accepted in the baseline (no return request yet / multi-order ticket / complaint type differs): ['261500', '261651', '261714']"
   },
   {
    "status": "INFO",
    "section": "2 WH accepted",
-   "text": "macro table 'WH Accepted' (T-2 capped) sums to 85 in the window; complaint baseline shows 108; EOD 94"
+   "text": "macro table 'WH Accepted' (T-2 capped) sums to 84 in the window; complaint baseline shows 107; EOD 92"
   },
   {
    "status": "PASS",
@@ -69,12 +69,12 @@
   {
    "status": "PASS",
    "section": "3 swap",
-   "text": "swap export reaches 2026-11-25 (cap 2026-11-25)"
+   "text": "swap export reaches 2026-11-26 (cap 2026-11-26)"
   },
   {
    "status": "INFO",
    "section": "3 swap",
-   "text": "attribution {'Pair not identified': 28, 'WH issue': 41, 'Logistics issue': 11, 'Unclassified': 3}; 31 residual cases (no readable evidence of the other order after image check)"
+   "text": "attribution {'Pair not identified': 28, 'Logistics issue': 11, 'WH issue': 40, 'Unclassified': 3}; 31 residual cases (no readable evidence of the other order after image check)"
   },
   {
    "status": "FAIL",
@@ -84,22 +84,22 @@
   {
    "status": "PASS",
    "section": "3 swap",
-   "text": "75/75 in-scope swap complaints in the window have a case; 0 missing []"
+   "text": "74/74 in-scope swap complaints in the window have a case; 0 missing []"
   },
   {
    "status": "FAIL",
    "section": "4 damage",
-   "text": "1032 damage complaints; 1 still 'Photo not read yet' in 2026-09-27..2026-11-25"
+   "text": "1022 damage complaints; 15 still 'Photo not read yet' in 2026-09-28..2026-11-26"
   },
   {
    "status": "INFO",
    "section": "4 damage",
-   "text": "buckets: [('Photo shows the product intact - no visible damage', 266), ('Primary pack breached: blister punctured/burst, sachet torn, strip crushed', 214), ('Not photo-read (temperature complaint)', 188), ('Liquid / gel leaked or spilled', 86), ('Vial label peeled off / flip-off cap loose', 61), ('Individual carton crushed, torn or water-soaked; product intact', 50), ('Photo not available (no return request)', 50), ('Product itself defective (split tablet, lumpy formula, dose delivery)', 50), ('Image not relevant: only the app logo, or a photo of a different product', 27), ('Courier / outer shipper crushed or torn; product inside intact', 19), ('Return filed under another reason (photo not checked)', 16), ('No photo on file', 4), ('Photo not read yet', 1)]"
+   "text": "buckets: [('Photo shows the product intact - no visible damage', 259), ('Primary pack breached: blister punctured/burst, sachet torn, strip crushed', 210), ('Not photo-read (temperature complaint)', 186), ('Liquid / gel leaked or spilled', 81), ('Vial label peeled off / flip-off cap loose', 60), ('Product itself defective (split tablet, lumpy formula, dose delivery)', 49), ('Individual carton crushed, torn or water-soaked; product intact', 49), ('Photo not available (no return request)', 47), ('Image not relevant: only the app logo, or a photo of a different product', 27), ('Courier / outer shipper crushed or torn; product inside intact', 19), ('Return filed under another reason (photo not checked)', 16), ('Photo not read yet', 15), ('No photo on file', 4)]"
   },
   {
    "status": "PASS",
    "section": "6 order level",
-   "text": "complaint rows: one row per (order, type): 4341 rows, 0 duplicates"
+   "text": "complaint rows: one row per (order, type): 4382 rows, 0 duplicates"
   },
   {
    "status": "PASS",
@@ -109,7 +109,7 @@
   {
    "status": "INFO",
    "section": "6 order level",
-   "text": "WFR complaints to 2026-11-25: 2585 rows = 2566 unique orders (19 orders carry 2+ WFR complaint types, counted once per type by design)"
+   "text": "WFR complaints to 2026-11-26: 2609 rows = 2590 unique orders (19 orders carry 2+ WFR complaint types, counted once per type by design)"
   },
   {
    "status": "PASS",
@@ -129,7 +129,7 @@
   {
    "status": "PASS",
    "section": "7 WH error log",
-   "text": "125 logged orders in 2026-08-26..2026-11-25: 120 counted WH accepted; 0 in-scope WFR complaints of logged orders NOT accepted []"
+   "text": "127 logged orders in 2026-08-26..2026-11-26: 122 counted WH accepted; 0 in-scope WFR complaints of logged orders NOT accepted []"
   },
   {
    "status": "INFO",
@@ -139,47 +139,47 @@
   {
    "status": "PASS",
    "section": "7 WH error log",
-   "text": "Tab 1: 156 logged orders have a ticket in the dashboard dataset; 154 are wh_accepted, 2 stay no_return_record by design (no ClickHouse return row yet: excluded from the refund total) []"
+   "text": "Tab 1: 157 logged orders have a ticket in the dashboard dataset; 155 are wh_accepted, 2 stay no_return_record by design (no ClickHouse return row yet: excluded from the refund total) []"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "complaints_export reaches 2026-11-26"
+   "text": "complaints_export reaches 2026-11-27"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "cmp_wfr_export reaches 2026-11-26"
+   "text": "cmp_wfr_export reaches 2026-11-27"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "cmp_damage_export reaches 2026-11-26"
+   "text": "cmp_damage_export reaches 2026-11-27"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "cmp_swap_baseline_export reaches 2026-11-26"
+   "text": "cmp_swap_baseline_export reaches 2026-11-27"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "swap_export reaches 2026-11-25"
+   "text": "swap_export reaches 2026-11-26"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "rca_export reaches 2026-11-25"
+   "text": "rca_export reaches 2026-11-26"
   },
   {
    "status": "PASS",
    "section": "5 fresh",
-   "text": "EOD tab date 2026-11-25"
+   "text": "EOD tab date 2026-11-26"
   },
   {
    "status": "FAIL",
    "section": "5 fresh",
-   "text": "RCA columns with unfinished inputs in the window: {'Tags pending': 12, 'Photo not read yet': 2} (photo reads / item-missing tags)"
+   "text": "RCA columns with unfinished inputs in the window: {'Tags pending': 25, 'Photo not read yet': 4} (photo reads / item-missing tags)"
   },
   {
    "status": "PASS",

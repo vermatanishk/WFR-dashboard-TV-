@@ -1,4 +1,4 @@
-# Known blockers in this container (2026-11-27 7pm scheduled run)
+# Known blockers in this container (2026-11-28 7pm scheduled run)
 
 ## This run: 17/24 gates green via the ClickHouse + Zoho Desk MCP connectors only
 
@@ -6,45 +6,38 @@ Both connectors worked (ClickHouse org PlatinumRx, Zoho org 60026539570). `pipel
 still absent, so every REST-only script fails immediately - same as every recent unattended run.
 Work done this run:
 
-- ClickHouse returns pull: the 4 incremental 7-day chunks `refresh_all.py plan` listed (30 Oct - 27
+- ClickHouse returns pull: the 4 incremental 7-day chunks `refresh_all.py plan` listed (31 Oct - 28
   Nov), closing the "returns pull covers through yesterday" gate.
-- Zoho complaint-ticket pull: REST failed immediately (`pull_complaint_tickets.py`), so pulled the
-  "Return and Pickup" disposition tickets for 2026-11-26 and 2026-11-27 via the Zoho Desk MCP
-  `searchTickets` fallback with `customField1="cf_dispositions:Return and Pickup"` (keeps each day's
-  result well under the ~100-row API cap that a whole-day unfiltered query hits - confirmed the hard
-  way: an unfiltered day-level query for 2026-11-26 silently returned only 100 of 149 tickets despite
-  `count` reporting the true total, and even a half-day window still hit the cap at 106; the
-  disposition filter is what actually fixes it, not date-splitting). Merged via `ingest_tickets.py`.
-  2026-11-25 was re-checked and matched exactly (127=127), so left alone (never-recheck-on-match).
+- Core WH verdicts: the 23 tickets past T-2 with no cached verdict, plus 7 more baseline-only gap
+  tickets surfaced by `build_complaints.py`, were all read live via the Zoho Desk MCP fallback
+  (`searchTickets` by ticketNumber -> `getTicketComments`, paired by ticketNumber as always) and
+  classified with the real `wh_comment_classifier` logic via `ingest_wh.py`: 15 denied, 15
+  no_wh_comment, 0 new admissions this run (every Warehouse comment read was the stock "We have
+  sent proper medicine to CX" denial template).
 - Downloaded the "Pan India errors sheets" Google Sheet via the Drive MCP (`wh_error_log.py <csv>`):
-  2 new August-through-today rows, 1 ticket newly marked `admitted`.
-- Ran the full local (non-REST) build/RCA/swap chain: `build_rca_wrongmed/inputs/extra/build_rca`,
-  `build_item_missing_tags` (needed `pip install pandas openpyxl` for the `python3` binary this
-  container's `python3` resolves to - `/usr/local/bin/python3` = 3.11, pandas was only present under
-  the separate `python3.13`), `build_rca_export/trend`, `build_swap`, `swap_view_spec`,
-  `build_complaints` (both passes), `cmp_view_spec`, `archive_exports`, `build_html`, full test suite.
-- Fixed two real bugs found while reconciling `sanity_check.py` against today's rebuild (not data
-  staleness - both would have kept failing every day otherwise):
-  1. `sanity_check.py`'s WH-accepted check only credited an order via a ticket's `admitted` verdict
-     in `wh_text_check.json`, so a `wh_error_log`-only acceptance on an order with **no complaint
-     ticket at all** (order 4230365 - legitimate per CLAUDE.md's "WH accepted without a complaint
-     ticket" row) always failed the check. Now also credits orders present in `wh_error_log.json`
-     with `scope: "in"`.
-  2. `build_swap.py` anchored its 60-day window on **today** (`rca["generated_at"]`) instead of the
-     T-2 cap `sanity_check.py` uses, leaving a 2-3 day gap at the old edge of the window where a
-     ticketless swap complaint could sit uncovered (order 3844008, created 2026-09-27, fell just
-     outside `start` while sanity's window still counted it). Anchored on `cap` instead - this was a
-     standing bug that would recur at the window's trailing edge every day, not a one-off.
-- `pull_ticket_routing.py` ran to completion without a REST error (unclear why - likely all 11
-  candidate fetches failed individually inside its own try/except and it just resaved the unchanged
-  cache; not investigated further, no gate depends on it today).
-- Skipped (REST-only, hangs/fails immediately with no `.zoho.env`): `wh_error_log.py`'s own apply
-  step ran fine with no args, but `pull_dependency.py`, `recheck_wh_comments.py` (both the no-arg and
-  `--extra` calls - full backlog is ~1,165 tickets, far beyond what a single day's MCP fallback
-  budget can cover one ticket at a time), `pull_swap_tickets.py`, `pull_swap_routing.py`,
-  `read_swap_wh.py`, `scan_pack_text.py` all failed or hung on the missing REST credentials and were
-  left alone; `wh_text_check.json`'s existing cache already has 0 hard gaps (gate green), so nothing
-  this skip touches is a correctness gap today, only thoroughness.
+  7 new rows, applied to the verdict cache (0 newly flipped to admitted - all were already covered).
+- `build_eod_auto.py`: 1 order (4916284) was missing its packer/manifester status-log rows; pulled
+  via ClickHouse (`current_status_id IN (52,64)`) and added to `zoho_raw90/eod_chain.json`.
+- WFR root-cause inputs (the funnel's root-cause sub-trees, added 2026-11-27): pulled ClickHouse
+  inputs for every Missing/short-qty (26 orders total across two passes) and Expiry (6 orders)
+  complaint that was "Inputs pending" in the 60-day window - return-item lines
+  (`marketplace_return_items` x `marketplace_return_request` x `mdm_master_drug_data`), GRN
+  signature rows (`mdm_grn_po_deltas`, marked `checked_codes` even where no inward-pack-confusion
+  row existed), and batch-allocation/expiry rows (`marketplace_order_item_batches` +
+  `mdm_warehouse_batch_inventory`). `test_wfr_rca.py` now passes clean for both types; only
+  Wrong-medicine (10 orders, needs photo reads) is still pending, see blocker #2 below.
+- Ran the full local (non-REST) build/RCA/swap/complaints chain: `build_full_dataset`, `build_report`,
+  `build_eod_auto`, `build_complaints` (two passes), `cmp_view_spec`, the RCA chain
+  (`build_rca_wrongmed/inputs/extra/build_rca`, `build_item_missing_tags` - needed `python3.13`
+  explicitly, this container's default `python3` has no pandas/openpyxl), `build_rca_export/trend`,
+  `build_swap`, `swap_view_spec`, `archive_exports`, `build_html`, and the full test suite
+  (`test_wh_comment_classifier`, `test_rca`, `test_rca_trend`, `test_complaints`, `test_wfr_rca`,
+  `test_view_js.js wfr|damage|swap`, `check_view_from_export.py`) - all green except the two photo-
+  backlog checks below (expected, structural).
+- `pull_ticket_routing.py`, `pull_dependency.py`, `recheck_wh_comments.py`, `pull_swap_tickets.py`,
+  `pull_swap_routing.py`, `read_swap_wh.py`, `scan_pack_text.py`, `check_complaints_live.py`: all
+  REST-only, skipped (no `.zoho.env`). `wh_text_check.json`'s cache already has 0 hard gaps
+  (gate green), so nothing this skip touches is a correctness gap today, only thoroughness.
 
 Gates still red, same 3 structural causes as every recent run (see below): damage/RCA photos
 (network), RCA item-missing tags (workbook), Zoho Desk REST access. `sanity_check.py` fails the same
@@ -53,17 +46,20 @@ Gates still red, same 3 structural causes as every recent run (see below): damag
 ## 1. Zoho Desk REST credentials missing (`pipeline/.zoho.env`)
 
 Still absent. Blocks `pull_dependency.py`, `pull_ticket_routing.py` (effectively), `pull_swap_tickets.py`,
-`pull_swap_routing.py`, `scan_pack_text.py`, and the ~1,165-ticket WH-comment recheck backlog
-(`recheck_wh_comments.py`). The MCP fallback (`searchTickets` + per-ticket `getTicketComments`) works
-but costs roughly one tool round-trip per ticket, so it only scales to the handful of tickets a gate
-actually requires (today: the 2 new ticket-pull days), not the full backlog.
+`pull_swap_routing.py`, `scan_pack_text.py`, `check_complaints_live.py`, and the full-backlog
+WH-comment recheck (`recheck_wh_comments.py`). The MCP fallback (`searchTickets` + per-ticket
+`getTicketComments`) works but costs roughly one tool round-trip per ticket, so it only scales to
+the handful of tickets a gate actually requires (today: 30 tickets across the core/baseline gaps),
+not the full backlog.
 
 ## 2. cdn.platinumrx.in not in this environment's network allowlist
 
-Re-confirmed this run with a direct curl request: `CONNECT tunnel failed, response 403`. Blocks:
-- 15 damage/RCA complaint rows "Photo not read yet" in the sanity window (ClickHouse image-URL pull
+Re-confirmed this run with a direct curl request (connection reset, no response). Blocks:
+- 25 damage/RCA complaint rows "Photo not read yet" in the sanity window (ClickHouse image-URL pull
   works fine, only the image *download* is blocked).
-- Every RCA image read (expiry/wrong-medicine/damage photo evidence).
+- Every RCA image read (expiry/wrong-medicine/damage photo evidence) - this is also why the 10
+  Wrong-medicine WFR root-cause complaints stay "Inputs pending": their cut needs a photo read of
+  the received product before the LASA/family/different classification can run.
 - The 1 residual swap case (4923220) that needs an image check to pair.
 
 An unattended run cannot get live approval for `update_environment`, so this needs the owner to add
@@ -72,9 +68,8 @@ the host once from an interactive session (see "For the owner" below).
 ## 3. RCA item-missing tags: pack-mapping workbook not in this container
 
 `~/Downloads/Pack Quantity & Base Value Changes*.xlsx` still does not exist in this container, so
-the 12 orders flagged "Tags pending" in the T-2 window (18 "Inputs pending" in the wider WFR
-root-cause view) cannot be tagged. Manual-pull input per CLAUDE.md, not something a session can
-regenerate itself.
+the 25 orders flagged "Tags pending" in the T-2 window cannot be tagged. Manual-pull input per
+CLAUDE.md, not something a session can regenerate itself.
 
 ## For the owner
 
