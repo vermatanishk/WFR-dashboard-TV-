@@ -1826,5 +1826,25 @@
    "Wrong Medicines": 2
   },
   "accepted_tickets": []
+ },
+ "2026-11-26": {
+  "total": 16,
+  "accepted": 1,
+  "by_category": {
+   "Missing/Wrong Qty": 13,
+   "Wrong Medicines": 3
+  },
+  "accepted_tickets": [
+   {
+    "ticket_id": "271354",
+    "order_id": 4916284,
+    "category": "Missing/Wrong Qty",
+    "location": "Bangalore",
+    "picker": "Niveditha_BLRW / Mahantaya",
+    "packer": "Mahantaya",
+    "qc": "Shabana_BLRWH",
+    "manifester": "Roopa_BLRWH"
+   }
+  ]
  }
 }
